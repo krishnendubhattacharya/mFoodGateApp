@@ -55,22 +55,30 @@ $scope.validateAndSubmit = function(params) {
                         $scope.user_password = '';
                         myAuth.updateUserinfo(myAuth.getUserAuthorisation());
                         $scope.loggedindetails = myAuth.getUserNavlinks();
-                        console.log('hiiiiiiiiii');
-                        $scope.$broadcast('updateLoginDetails');
+                        //console.log('hiiiiiiiiii');
+                        $rootScope.$emit('updateLoginDetails');
                         $scope.loggedin = true;
                         $scope.notloggedin = false;
-                        console.log($scope.loggedindetails);
-                        $location.path('/');                      
+                        //console.log($scope.loggedindetails);
+                        $location.path('/');
+                        DevExpress.ui.notify({
+                            message: message,
+                            position: {
+                                my: "center top",
+                                at: "center top"
+                            }
+                        }, "success", 3000);                      
                 }else{
                         var message = "Login failed.";
+                        DevExpress.ui.notify({
+                            message: message,
+                            position: {
+                                my: "center top",
+                                at: "center top"
+                            }
+                        }, "error", 3000);
                 }                
-                DevExpress.ui.notify({
-                    message: message,
-                    position: {
-                        my: "center top",
-                        at: "center top"
-                    }
-                }, "success", 3000);
+                
         })
         
         //form.submit();

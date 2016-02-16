@@ -55,17 +55,25 @@ $scope.validateAndSubmit = function(params) {
                 if(data.type == 'success'){
                         var message = data.message;
                         params.validationGroup.reset(); 
-                        $location.path('/login');                      
+                        $location.path('/login'); 
+                        DevExpress.ui.notify({
+                            message: "Added Successfilly, please check your email for account activation",
+                            position: {
+                                my: "center top",
+                                at: "center top"
+                            }
+                        }, "success", 3000);                     
                 }else{
                         var message = "Email or Username already exist.";
+                        DevExpress.ui.notify({
+                            message: message,
+                            position: {
+                                my: "center top",
+                                at: "center top"
+                            }
+                        }, "error", 3000);
                 }                
-                DevExpress.ui.notify({
-                    message: message,
-                    position: {
-                        my: "center top",
-                        at: "center top"
-                    }
-                }, "success", 3000);
+                
         })
         
         //form.submit();
