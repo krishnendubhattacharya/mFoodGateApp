@@ -10,90 +10,67 @@
     <meta name="HandheldFriendly" content="true" />
     <meta name="apple-touch-fullscreen" content="yes" />
     <title >mFoodGate</title>
-
-    <!--<script type="text/javascript" src="app/assets/js/jquery-1.11.3.min.js"></script>
-
-
-    <script type="text/javascript" src="app/assets/js/jquery-2.1.4.min.js"></script>
-
-     <script type="text/javascript" src="app/assets/js/globalize.min.js"></script>
-
-    <script type="text/javascript" src="app/assets/js/dx.chartjs.js"></script>
-    <script type="text/javascript" src="app/assets/js/vectormap-data/world.js"></script>
-    <script type="text/javascript" src="app/assets/js/vectormap-data/africa.js"></script>
-    <script type="text/javascript" src="app/assets/js/vectormap-data/canada.js"></script>
-    <script type="text/javascript" src="app/assets/js/vectormap-data/eurasia.js"></script>
-    <script type="text/javascript" src="app/assets/js/vectormap-data/europe.js"></script>
-    <script type="text/javascript" src="app/assets/js/vectormap-data/usa.js"></script>
-
-    <script type="text/javascript" src="app/assets/js/dx.module-widgets-base.js"></script>
-    <script type="text/javascript" src="app/assets/js/dx.module-widgets-web.js"></script>-->
+    <base href="http://localhost:63342/mFoodGateApp/">
+  
     
-    <script type="text/javascript" src="http://107.170.152.166/mFood/bower_components/devextreme/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="http://107.170.152.166/mFood/bower_components/devextreme/angular.js"></script>
-    <script type="text/javascript" src="http://107.170.152.166/mFood/bower_components/devextreme/angular-sanitize.js"></script>
-    <script type="text/javascript" src="http://107.170.152.166/mFood/bower_components/devextreme/globalize.min.js"></script>
+    <script type="text/javascript" src="bower_components/devextreme/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="bower_components/devextreme/angular.js"></script>
+    <script type="text/javascript" src="bower_components/devextreme/angular-sanitize.js"></script>
+    <script type="text/javascript" src="bower_components/devextreme/globalize.min.js"></script>
     
     
-    <script type="text/javascript" src="http://107.170.152.166/mFood/bower_components/devextreme/dx.all.js"></script>
+    <script type="text/javascript" src="bower_components/devextreme/dx.all.js"></script>
    
 
-    <link rel="stylesheet" type="text/css" href="http://107.170.152.166/mFood/app/assets/css/reset.css" />
-    <link rel="stylesheet" href="http://107.170.152.166/mFood/app/assets/css/dx.common.css" />
-    <link rel="stylesheet" href="http://107.170.152.166/mFood/app/assets/css/dx.light.css" />
-    <link rel="stylesheet" type="text/css" href="http://107.170.152.166/mFood/app/assets/css/site.css" media="screen and (min-width: 740px)" />
+    <link rel="stylesheet" type="text/css" href="app/assets/css/reset.css" />
+    <link rel="stylesheet" href="app/assets/css/dx.common.css" />
+    <link rel="stylesheet" href="app/assets/css/dx.light.css" />
+    <link rel="stylesheet" type="text/css" href="app/assets/css/site.css" media="screen and (min-width: 740px)" />
     <!--[if lt IE 9]>
     <link rel="stylesheet" type="text/css" media="all" href="app/assets/css/site.css"/>
     <script type="text/javascript" src="app/assets/scripts/ie8html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="http://107.170.152.166/mFood/app/assets/css/phone.css" media="screen and (max-width: 739px)"/>
- <script type="text/javascript" src="http://107.170.152.166/mFood/app/assets/scripts/date.js"></script>
-    <link rel="stylesheet" href="http://107.170.152.166/mFood/bower_components/loadingbar/loading-bar.min.css">
-<base href="/mFood/">
+    <link rel="stylesheet" type="text/css" href="app/assets/css/phone.css" media="screen and (max-width: 739px)"/>
+    <script type="text/javascript" src="app/assets/scripts/date.js"></script>
+    <link rel="stylesheet" href="bower_components/loadingbar/loading-bar.min.css">
+
 
 </head>
 <body ng-controller="RootScopeCtrl" id="mfoodmain">
-    <div class="dx-viewport dx-ios-stripes slideout-layout"  dx-slide-out="{
-            items: navigationItems,
-            onItemClick: ToggleMenu,
-            bindingOptions: {
-                menuVisible: 'menuVisible'
-            }
-        }">
-<div data-options="dxTemplate: { name: 'item' } ">
+
+
 <div ui-view id="app"></div>
-</div>
-</div>
+
 
 
 
 <!--<script src="bower_components/angular/angular.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-cookies.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/angular-animate/angular-animate.min.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/angular/angular-ui-router.min.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/angular-route/angular-route.min.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/angular-touch/angular-touch.min.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/angular-resource/angular-resource.min.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/angular-base64/angular-base64.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-touch/angular-touch.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-base64/angular-base64.min.js"></script>
 
 <!-- Angular storage -->
-<script src="http://107.170.152.166/mFood/bower_components/angularstorage/ngStorage.min.js"></script>
+<script src="bower_components/angularstorage/ngStorage.min.js"></script>
 <!-- Angular Translate -->
-<script src="http://107.170.152.166/mFood/bower_components/angulartranslate/angular-translate.min.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/angulartranslate/angular-translate-loader-url.min.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/angulartranslate/angular-translate-loader-static-files.min.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/angulartranslate/angular-translate-storage-local.min.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/angulartranslate/angular-translate-storage-cookie.min.js"></script>
+<script src="bower_components/angulartranslate/angular-translate.min.js"></script>
+<script src="bower_components/angulartranslate/angular-translate-loader-url.min.js"></script>
+<script src="bower_components/angulartranslate/angular-translate-loader-static-files.min.js"></script>
+<script src="bower_components/angulartranslate/angular-translate-storage-local.min.js"></script>
+<script src="bower_components/angulartranslate/angular-translate-storage-cookie.min.js"></script>
 <!-- oclazyload -->
-<script src="http://107.170.152.166/mFood/app/auth-front-module.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/oclazyload/ocLazyLoad.min.js"></script>
-<script src="http://107.170.152.166/mFood/bower_components/loadingbar/loading-bar.min.js"></script>
-<script src="http://107.170.152.166/mFood/app/app.js"></script>
-<script src="http://107.170.152.166/mFood/app/config.constant.js"></script>
-<script src="http://107.170.152.166/mFood/app/Controllers/RootScopeCtrl.js"></script>
-<script src="http://107.170.152.166/mFood/app/Controllers/headerCtrl.js"></script>
+<script src="app/auth-front-module.js"></script>
+<script src="bower_components/oclazyload/ocLazyLoad.min.js"></script>
+<script src="bower_components/loadingbar/loading-bar.min.js"></script>
+<script src="app/app.js"></script>
+<script src="app/config.constant.js"></script>
+<script src="app/Controllers/RootScopeCtrl.js"></script>
+<script src="app/Controllers/headerCtrl.js"></script>
 
 </body>
 </html>
