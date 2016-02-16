@@ -139,6 +139,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             resolve: loadSequence('activation'),
             templateUrl: 'app/views/activation.html',
             title: 'activation'
+        })
+        .state('sample', {
+            url: '/sample',
+            resolve: loadSequence('activation'),
+            templateUrl: 'app/views/sample.html',
+            title: 'sample'
         });
 
 

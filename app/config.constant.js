@@ -20,6 +20,7 @@ app.constant('JS_REQUIRES', {
         'login':['app/Controllers/loginCtrl.js'],
         'register':['app/Controllers/registerCtrl.js'],
         'activation':['app/Controllers/activationCtrl.js'],
+        'sample':['app/Controllers/sampleCtrl.js'],
     },
 
     //*** angularJS Modules
