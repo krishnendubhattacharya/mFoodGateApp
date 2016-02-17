@@ -1,9 +1,10 @@
-'use strict';
+    'use strict';
 /** 
  * controllers used for the login
  */
-app.controller('loginCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore) {
+app.controller('loginCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore,ngToast) {
 
+    ngToast.create('a toast message...');
    var user_type = ["Merchant", "Client"];
 $scope.textBox = {
         first_name: {
@@ -17,7 +18,7 @@ $scope.textBox = {
         mode: "text",
               
         },
-        email: {
+        email: { 
         placeholder: "Enter Email",
         mode: "email",
                

@@ -9,7 +9,8 @@ var app = angular.module("mFoodApp", [
         'oc.lazyLoad',
         'cfp.loadingBar',
         'dx',
-        'authFront'
+        'authFront',
+        'ngToast'
 ]);
 
 
