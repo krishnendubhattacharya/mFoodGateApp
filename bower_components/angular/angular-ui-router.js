@@ -3269,7 +3269,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * <pre>
      * $state.$current.name = 'contacts.details.item';
      *
-     * // Using partial names
+     * // Using partials names
      * $state.includes("contacts"); // returns true
      * $state.includes("contacts.details"); // returns true
      * $state.includes("contacts.details.item"); // returns true
@@ -3294,7 +3294,7 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
      * $state.includes("item.**"); // returns false
      * </pre>
      *
-     * @param {string} stateOrName A partial name, relative name, or glob pattern
+     * @param {string} stateOrName A partials name, relative name, or glob pattern
      * to be searched for within the current state name.
      * @param {object=} params A param object, e.g. `{sectionId: section.id}`,
      * that you'd like to test against the current active state.

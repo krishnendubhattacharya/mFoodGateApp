@@ -2,7 +2,7 @@
 /** 
  * controllers used for the login
  */
-app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$base64) {
+app.controller('homeCtrl', function ($rootScope, $scope, $http, $location) {
 
 
    

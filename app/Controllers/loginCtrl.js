@@ -60,7 +60,11 @@ $scope.validateAndSubmit = function(params) {
                         $scope.loggedin = true;
                         $scope.notloggedin = false;
                         //console.log($scope.loggedindetails);
-                        $location.path('/');
+                        if(data.user_details.is_logged_in == 1){
+                            $location.path('admin/home');
+                        }else {
+                            $location.path('/');
+                        }
                         DevExpress.ui.notify({
                             message: message,
                             position: {

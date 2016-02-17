@@ -8,7 +8,6 @@ var app = angular.module("mFoodApp", [
         'base64',
         'oc.lazyLoad',
         'cfp.loadingBar',
-        'pascalprecht.translate',
         'dx',
         'authFront'
 ]);
@@ -113,7 +112,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
           url: '',
           templateUrl: 'app/views/app.html',
             abstract :true,
-            //resolve: loadSequence('devExtremeJS','devExtremeCSS'),
+            resolve: loadSequence('frontend'),
 
         })
         .state('frontend.index', {
@@ -145,6 +144,36 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             resolve: loadSequence('activation'),
             templateUrl: 'app/views/sample.html',
             title: 'sample'
+        })
+        .state('admin', {
+            url: '/admin',
+            templateUrl: 'app/views/admin/adminbase.html',
+            abstract :true,
+            resolve: loadSequence('admin'),
+
+        })
+        .state('admin.index', {
+            url: '/home',
+            templateUrl: 'app/views/admin/home.html',
+            title: 'Home'
+        })
+        .state('admin.categorylist', {
+            url: '/categorylist',
+            templateUrl: 'app/views/admin/categorylist.html',
+            title: 'CategoryList',
+            resolve: loadSequence('categorylist')
+        })
+        .state('adminlogin', {
+            url: '/adminlogin',
+            template: '<div ui-view ></div>',
+            abstract :true,
+            resolve: loadSequence('admin')
+        })
+        .state('adminlogin.signin', {
+        url: '/signin',
+        templateUrl: 'app/views/admin/login.html',
+        resolve: loadSequence('adminlogin'),
+        title: 'Login'
         });
 
 

@@ -2,7 +2,7 @@
 /** 
  * controllers used for the login
  */
-app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, $base64, myAuth, $cookieStore) {
+app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore) {
         $scope.getLoginDetails=function(){
        
         myAuth.updateUserinfo(myAuth.getUserAuthorisation());

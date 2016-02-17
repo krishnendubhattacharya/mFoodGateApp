@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d8f91848-addd-487b-85b1-8fb7004e4464" name="mFoodAppFtp" url="http://107.170.152.166">
+        <fileTransfer host="107.170.152.166" port="21" rootFolder="/mFood" username="ftpuser">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

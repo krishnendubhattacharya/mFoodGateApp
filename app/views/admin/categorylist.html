@@ -1,0 +1,41 @@
+<div ng-controller="categorylistCtrl">
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Category
+                        <span class="tools pull-right">
+                            <a class="fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="fa fa-times" href="javascript:;"></a>
+                         </span>
+                </header>
+                <div class="panel-body">
+                    <table class="table  table-hover general-table">
+                        <thead>
+                        <tr>
+                            <th> Id</th>
+                            <th class="hidden-phone">Name</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr ng-repeat="item in allcat">
+                            <td>
+                                {{item.id}}
+                            </td>
+                            <td class="hidden-phone">{{item.name}}</td>
+
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</div>
