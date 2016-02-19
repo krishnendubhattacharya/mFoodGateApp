@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-sm-12">
             <section class="panel">
+                <div ng-if="categoryView == 'view'">
                 <header class="panel-heading">
                     Category
                         <span class="tools pull-right">
@@ -12,11 +13,17 @@
                          </span>
                 </header>
                 <div class="panel-body">
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="editable-sample_new" ng-click ="addCategory()">
+                            Add Category
+                        </button>
+                    </div>
                     <table class="table  table-hover general-table">
                         <thead>
                         <tr>
                             <th> Id</th>
                             <th class="hidden-phone">Name</th>
+                            <th>Action</th>
 
                         </tr>
                         </thead>
@@ -26,13 +33,47 @@
                             <td>
                                 {{item.id}}
                             </td>
-                            <td class="hidden-phone">{{item.name}}</td>
+                            <td >{{item.name}}</td>
+                            <td ><a class="edit" href="javascript:;" ng-click ="editCategory(item)">Edit</a>
+                                <a class="delete" href="javascript:;" ng-click="deleteCategory(item.id)"
+                                   >Delete</a></td>
 
                         </tr>
 
 
                         </tbody>
                     </table>
+                </div>
+                </div>
+
+                <div ng-if="categoryView == 'edit'">
+                    <header class="panel-heading">
+                        Edit Category
+                    </header>
+                    <div class="panel-body">
+                        <form role="form" ng-submit="saveCategory()">
+                            <div class="form-group">
+                                <label for="exampleInputName">Category Name</label>
+                                <input type="text" placeholder="Enter Category Name"  id="exampleInputName" ng-model="item.name" class="form-control">
+                                <input type="hidden"  ng-model="item.id" >
+                            </div>
+
+
+                            <!--<div class="form-group">
+                                <label for="exampleInputFile">File input</label>
+                                <input type="file" id="exampleInputFile">
+                                <p class="help-block">Example block-level help text here.</p>
+                            </div>-->
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="item.is_active" ng-true-value="1" ng-false-value="0"> Is Active
+                                </label>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <button class="btn btn-danger" type="button" ng-click="cancelCat()">Cancel</button>
+                        </form>
+
+                    </div>
                 </div>
             </section>
         </div>
