@@ -31,7 +31,7 @@ angular
                         }
            	}
            }*/
-           factobj.userinfo = { loginstatus: obj.is_logged_in, id: obj.id, email: obj.email,first_name:obj.first_name,last_name:obj.last_name,username:obj.username,user_type_id:obj.user_type_id,merchant_name:obj.merchant_name};
+           factobj.userinfo = { loginstatus:true, id: obj.id, email: obj.email,first_name:obj.first_name,last_name:obj.last_name,username:obj.username,user_type_id:obj.user_type_id,merchant_name:obj.merchant_name};
            return true;
 	}
     };

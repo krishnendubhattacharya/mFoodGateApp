@@ -29,30 +29,30 @@
                         <div class="dx-fieldset">
                                 <div class="dx-field">
                                     <div class="dx-field-label">Email</div>
-                                    <div class="dx-field-value">                                        
+                                    <div class="dx-field-value">
                                         <div dx-text-box="textBox.email" dx-validator="emailValidationRules" ng-model="email"></div>
                                     </div>
-                                </div> 
-                                
+                                </div>
+
                                 <div class="dx-field">
                                     <div class="dx-field-label">Password</div>
-                                    <div class="dx-field-value">                                        
+                                    <div class="dx-field-value">
                                         <div dx-text-box="textBox.password" dx-validator="passwordValidationRules" ng-model="password"></div>
                                     </div>
-                                </div> 
+                                </div>
                         </div>
-                        
+
                         <!--<div id="summary" dx-validation-summary="{ }"></div>-->
                         <div id="button" dx-button="{
                                 text: 'Login',
-                                type: 'success', 
+                                type: 'success',
                                 onClick: validateAndSubmit }" ></div>
                 </div>
                 <p style="border-bottom: solid 1px #ccc;"></p>
                 <div class="social">
-                    <span><img src="app/assets/Images/f-icon.png" width="43" height="43"  alt=""/></span>
-                    <span><img src="app/assets/Images/t-icon.png" width="43" height="43"  alt=""/></span>
-                    <img src="app/assets/Images/p-icon.png" width="43" height="43"  alt=""/>
+                    <span><img src="app/assets/Images/f-icon.png" width="43" height="43"  alt="" ng-click="fbsignuser()"/></span>
+                    <span><img src="app/assets/Images/g-icon.png" width="43" height="43"  alt="" /></span>
+                    <!--<img src="app/assets/Images/p-icon.png" width="43" height="43"  alt=""/>-->
                 </div>
             </div>
         </div>
@@ -77,9 +77,9 @@
             <p style="border-bottom: solid 1px #ccc;"></p>
         </ul>
         <div class="social">
-            <span><img src="app/assets/Images/f-icon.png" width="43" height="43"  alt=""/></span>
-            <span><img src="app/assets/Images/t-icon.png" width="43" height="43"  alt=""/></span>
-            <img src="app/assets/Images/p-icon.png" width="43" height="43"  alt=""/>
+            <span><img src="app/assets/Images/f-icon.png" width="43" height="43"  alt="" ng-click="fbsignuser()"/></span>
+            <span><img src="app/assets/Images/g-icon.png" width="43" height="43"  alt="" /></span>
+            <!--<img src="app/assets/Images/p-icon.png" width="43" height="43"  alt=""/>-->
         </div>
     </div>
 </div>
