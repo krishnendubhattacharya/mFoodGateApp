@@ -138,7 +138,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
           url: '',
           templateUrl: 'app/views/app.html',
             abstract :true,
-            resolve: loadSequence('frontend'),
+            //resolve: loadSequence('frontend'),
 
         })
         .state('frontend.index', {

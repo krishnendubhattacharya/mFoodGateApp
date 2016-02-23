@@ -434,7 +434,7 @@ $(function () {
     });
     $(window).bind("resize", SalesDashboard.setScreenSize);
     SalesDashboard.setScreenSize()
-    SalesDashboard.loadPage(window.location.hash.substring(1) || "Index");
+    //SalesDashboard.loadPage(window.location.hash.substring(1) || "Index");
   
     $("#currentDate").text((Globalize.format(getDate(), "MMM d, yyyy")).toUpperCase());
     
