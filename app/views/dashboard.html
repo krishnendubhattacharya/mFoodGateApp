@@ -1,0 +1,177 @@
+<!--Web header-->
+<div ng-controller="dashboardCtrl">
+
+    <div class="container phone-hide">
+        <div class="myaccount-details">
+            <h1>My Account</h1>
+                <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
+
+            <div class="profile-details">
+                <h1>{{userInfo.first_name}} {{userInfo.last_name}}</h1>
+                <p><span class="title">Tel:</span> <span class="val">{{userInfo.phone}}</span></p>
+                <p><span class="title">Member Since:</span> <span class="val">{{userInfo.registration_date}}</span></p>
+                <!--<p><span class="title">Date of Birth:</span> <span class="val">18 oct 1970</span></p>-->
+                <p><span class="title">Email:</span> <span class="val">{{userInfo.email}}</span></p>
+                <!--<p><span class="title">mPoint:</span> <span class="val">120,000</span></p>-->
+                <div style="margin-top: 20px;" class="clear-fix"></div>
+                <h1>About me</h1>
+                <P style="padding:0; margin:0;">
+                    {{userInfo.about_me}}
+                </P>
+            </div>
+
+        </div>
+    </div>
+    <div class="m-myaccount-details tablet-hide">
+        <h1>My Account</h1>
+        <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
+
+        <div class="m-profile-details">
+            <h1>{{userInfo.first_name}} {{userInfo.last_name}}</h1>
+            <p><span class="title">Tel:</span> <span class="val">{{userInfo.phone}}</span></p>
+            <p><span class="title">Member Since:</span> <span class="val">{{userInfo.registration_date}}</span></p>
+            <!--<p><span class="title">Date of Birth:</span> <span class="val">18 oct 1970</span></p>-->
+            <p><span class="title">Email:</span> <span class="val">{{userInfo.email}}</span></p>
+            <!--<p><span class="title">mPoint:</span> <span class="val">120,000</span></p>-->
+            <div style="margin-top: 20px;" class="clear-fix"></div>
+            <h1>About me</h1>
+            <P style="padding:0; margin:0;">
+                {{userInfo.about_me}}
+            </P>
+        </div>
+
+    </div>
+    <div class="dx-clearfix"></div>
+    <!--<div class="container phone-hide">
+        <div class="transaction-details">
+            <h1>Transaction Details</h1>
+            <table>
+                <tr>
+                    <td width="15%" class="header-color">Transaction Date</td>
+                    <td width="14%" class="header-color">Transaction ID</td>
+                    <td width="33%" class="header-color">Transaction Description</td>
+                    <td width="13%" class="header-color">Debit (mPts)</td>
+                    <td width="12%" class="header-color">Credit (mPts)</td>
+                    <td width="13%" class="header-color">Total (mPts)</td>
+                </tr>
+                <tr>
+                    <td><div class="select-box"><select>
+                        <option>Select</option>
+                        <option>Select</option>
+                        <option>Select</option>
+                    </select></div></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><div class="select-box"><select>
+                        <option>Select</option>
+                        <option>Select</option>
+                        <option>Select</option>
+                    </select></div></td>
+                </tr>
+                <tr>
+                    <td>7/1/2015</td>
+                    <td>TRN120953549</td>
+                    <td>Brought Forward Balance</td>
+                    <td>250,000</td>
+                    <td>0</td>
+                    <td>250,000</td>
+                </tr>
+                <tr>
+                    <td>7/1/2015</td>
+                    <td>TRN120953549</td>
+                    <td>Brought Forward Balance</td>
+                    <td>250,000</td>
+                    <td>0</td>
+                    <td>250,000</td>
+                </tr>
+                <tr>
+                    <td>7/1/2015</td>
+                    <td>TRN120953549</td>
+                    <td>Brought Forward Balance</td>
+                    <td>250,000</td>
+                    <td>0</td>
+                    <td>250,000</td>
+                </tr>
+                <tr>
+                    <td>7/1/2015</td>
+                    <td>TRN120953549</td>
+                    <td>Brought Forward Balance</td>
+                    <td>250,000</td>
+                    <td>0</td>
+                    <td>250,000</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="m-transaction-details tablet-hide">
+        <h1>Transaction Details</h1>
+        <table>
+            <tr>
+                <td width="30%" class="m-header-color">Transaction Date</td>
+                <td>7/1/2015</td>
+            </tr>
+            <tr>
+                <td width="30%" class="m-header-color">Transaction ID</td>
+                <td>TRN120953549</td>
+            </tr>
+            <tr>
+                <td width="30%" class="m-header-color">Transaction Description</td>
+                <td>Brought Forward Balance</td>
+            </tr>
+            <tr>
+                <td width="30%" class="m-header-color">Debit (mPts)</td>
+                <td>250,000</td>
+            </tr>
+            <tr>
+                <td width="12%" class="m-header-color">Credit (mPts)</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td width="13%" class="m-header-color">Total (mPts)</td>
+                <td>250,000</td>
+            </tr>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="m-transaction-details tablet-hide">
+        <h1>Transaction Details</h1>
+        <table>
+            <tr>
+                <td width="30%" class="m-header-color">Transaction Date</td>
+                <td>7/1/2015</td>
+            </tr>
+            <tr>
+                <td width="30%" class="m-header-color">Transaction ID</td>
+                <td>TRN120953549</td>
+            </tr>
+            <tr>
+                <td width="30%" class="m-header-color">Transaction Description</td>
+                <td>Brought Forward Balance</td>
+            </tr>
+            <tr>
+                <td width="30%" class="m-header-color">Debit (mPts)</td>
+                <td>250,000</td>
+            </tr>
+            <tr>
+                <td width="12%" class="m-header-color">Credit (mPts)</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td width="13%" class="m-header-color">Total (mPts)</td>
+                <td>250,000</td>
+            </tr>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="dx-clearfix"></div>-->
+</div>
+
+

@@ -19,20 +19,26 @@ body#mfoodmain{
     display: none;
 }
 
+.dx-toolbar{ height: 52px !important; background: url(../Images/h-bg-mobile.png) left top repeat-x !important;}
+.dx-toolbar-item-content{ width: 100% !important;}
+.dx-toolbar-center{ width: 100% !important; margin: 0 !important;}
+
 .mobile-header{
-    position: fixed;
-    z-index:3;
-    background: url(../Images/h-bg-mobile.png) left top repeat-x;
+    /* position: fixed;
+     z-index:3;
+     background: url(../Images/h-bg-mobile.png) left top repeat-x;*/
     top: 0;
     height: 52px;
-    width: 100%;
+    width: 94%;
     text-align: left;
     padding: 18px 0 14px 12px !important;
 	overflow: hidden;
 	box-sizing: border-box;
+    float: left;
+    margin: 0 0 0 30px !important;
 }
 .mobile-header .m-logo{ width:173px; height:17px; float: left;}
-.mobile-header .m-top-link{ width:42px; height: 14px; float: right; margin-right:12px;}
+.mobile-header .m-top-link{ width:14px; height: 14px; float: right; margin-right:12px;}
 .mobile-header .m-top-link .search{ width: 14px; height: 18px; float: left; }
 .mobile-header .m-top-link .cat-menu{ width:16px; height: 14px; float: right; }
 .dashboard-mobile-header h1{
@@ -539,6 +545,46 @@ line-height: 53px; background: url(../Images/green-circle.png) center center no-
 .m-newpromo-section .pro-item .p-circle{ width:53px; height:53px; position: absolute; z-index: 1001; bottom: 130px; right:20px; font-size:20px; text-align: center;
 line-height: 53px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
 
+/*---------------------------------- my account -----------------------------*/
+.m-myaccount-details{ width:90%; margin: 0 auto; }
+.m-myaccount-details h1{font-size:22px; color:#3b3b3b; line-height:30px; padding-bottom:10px; margin-top:15px;}
+.m-left-panel{width:100%;height: auto;overflow: hidden;padding:10px;box-sizing: border-box;border:1px solid #eaeaea; float:none; margin: 0 auto;}
+.m-left-panel .profile-img{width:100%;height: auto;overflow: hidden;}
+.m-left-panel.profile-img img{width:100%}
+.m-left-panel ul{ padding: 10px; margin: 0;}
+.m-left-panel ul li { padding: 0; margin: 0; line-height:35px; font-size:14px; height: 35px; list-style-type: none; float: none; border-bottom:dashed 1px #ccc;}
+.m-left-panel ul li:last-child { border: none; }
+.m-left-panel ul li a{ text-decoration: none; color: #6b6b6b; }
+.m-left-panel ul li a:hover{ text-decoration: none; color: #319432; }
+
+.m-profile-details{ width:100%; float: none; margin: 15px auto;}
+.m-profile-details h1{ font-size: 22px; color:#1d1d1d; padding: 0; margin:0 0 3px; line-height:30px; }
+.m-profile-details p{ padding:5px 0; margin:0; font-size:14px; color:#292929; line-height:18px; overflow:hidden;}
+.m-profile-details p .title{ float:left; width:45%; font-weight:500; color:#1d1d1d; }
+.m-profile-details p .val{ float:left; width:55%; font-weight: normal; color:#5e5e5e;}
+
+.m-transaction-details{ width:100%; height:auto;  border: solid 1px #349c34; margin-top:20px;}
+.m-transaction-details h1{ height:47px; display: block; line-height:47px; background: url(../Images/green-bg.jpg) left top repeat-x; margin:0; padding: 0 0 0 15px; font-size:18px; font-weight: bold; color:#fff; }
+.m-transaction-details table {
+    border-collapse: collapse;
+    width: 100%;
+    border-bottom: solid 1px #ccc;
+}
+
+.m-transaction-details table th, td {
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color:#535353;
+}
+
+.m-transaction-details table tr:hover{background-color:#f5f5f5}
+.m-header-color{color:#070707; font-weight: normal;}
+
+.m-transaction-details input[type="text"]{ width:100%; height: 28px; background: #fff; border: solid 1px #e7e7e7; padding: 0 5px;}
+.m-transaction-details .select-box{ width:100%; height: 28px; background: url(../Images/select-drop.png) 90% center no-repeat #fff; border: solid 1px #e7e7e7; overflow: hidden;}
+.m-transaction-details .select-box select{ width:120%; background: transparent; border: none; height:28px; line-height: 28px; }
 
 
 @media (max-width:321px){

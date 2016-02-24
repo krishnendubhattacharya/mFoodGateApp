@@ -12,6 +12,7 @@ var app = angular.module("mFoodApp", [
         'authFront',
         'ngToast',
         'ngFacebook',
+        'angularFileUpload'
 ]);
 
 app.config(['$facebookProvider', function($facebookProvider) {
@@ -164,6 +165,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             resolve: loadSequence('activation'),
             templateUrl: 'app/views/activation.html',
             title: 'activation'
+        })
+        .state('frontend.dashboard', {
+            url: '/dashboard',
+            resolve: loadSequence('dashboard'),
+            templateUrl: 'app/views/dashboard.html',
+            title: 'Dashboard'
+        })
+        .state('frontend.profile', {
+            url: '/profile',
+            resolve: loadSequence('profile'),
+            templateUrl: 'app/views/profile.html',
+            title: 'Profile'
         })
         .state('sample', {
             url: '/sample',

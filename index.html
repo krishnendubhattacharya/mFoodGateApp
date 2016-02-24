@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="app/assets/css/site.css" media="screen and (min-width: 740px)" />
     <!--[if lt IE 9]>
     <link rel="stylesheet" type="text/css" media="all" href="app/assets/css/site.css"/>
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="app/assets/scripts/ie8html5.js"></script>
     <![endif]-->
 
@@ -66,14 +67,14 @@
     }
 
     .dx-field-label {
-        width: 70%;
+        /*width: 70%;*/
     }
 </style>
 <body ng-controller="RootScopeCtrl" id="mfoodmain">
 
 <toast></toast>
 
-<div class="slideout-container">
+<div class="slideout-container tablet-hide">
     <div dx-slide-out="{
         dataSource: data1,
 		onItemClick: showMenu,
@@ -86,7 +87,13 @@
         <div data-options="dxTemplate: { name: 'item' }">
             <div dx-toolbar="{ dataSource: $parent.toolbarItems }">
                 <div data-options="dxTemplate: { name: 'title' }">
-                    <p>{{$parent.text}}</p>
+                    <!--<p>{{$parent.text}}</p>-->
+                    <div class="mobile-header">
+                    <div class="m-logo"><img src="app/assets/Images/m-logo.png" width="173" height="17"  alt=""/></div>
+                        <div class="m-top-link">
+                    <div class="search"><img src="app/assets/Images/s-icon-m.png" width="14" height="14"  alt=""/></div>
+                        </div>
+                    </div>
                 </div>
             </div>
            <!-- <div id="info">
@@ -104,15 +111,13 @@
 				    }"></div>
                 </div>
             </div>-->
-            <div ui-view id="app"></div>y
+            <div ui-view id="app"></div>
         </div>
-        <div data-options="dxTemplate: { name: 'menuGroup' }">
-            <b>{{key}}</b>
-        </div>
+
     </div>
 </div>
 
-
+<div ui-view id="app" class="phone-hide"></div>
 
 
 
@@ -143,6 +148,7 @@
 <script src="bower_components/loadingbar/loading-bar.min.js"></script>
 <!-- facebook -->
 <script src="app/vendor/ngFacebook/ngFacebook.js"></script>
+<script src="app/assets/js/angular-file-upload.js"></script>
 <script src="app/app.js"></script>
 <script src="app/config.constant.js"></script>
 <script src="app/Controllers/RootScopeCtrl.js"></script>

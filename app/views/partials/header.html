@@ -5,7 +5,7 @@
 	<header class="main-header phone-hide">
 		<div class="container">
 			<div class="logo"><img src="app/assets/Images/logo.jpg" width="418" height="61"  alt=""/></div>
-			<div class="top-link"><a ng-if="loggedindetails.loginstatus != 1" href="login">Login</a><a ng-if="loggedindetails.loginstatus == 1" href="login">{{loggedindetails.email}}</a>  |  <a ng-if="loggedindetails.loginstatus != 1" href="register">Register</a><a ng-if="loggedindetails.loginstatus == 1" href="javascript:void(0)" ng-click="userLogout();">Logout</a></div>
+			<div class="top-link"><a ng-if="loggedindetails.loginstatus != 1" href="login">Login</a><a ng-if="loggedindetails.loginstatus == 1" href="dashboard">{{loggedindetails.email}}</a>  |  <a ng-if="loggedindetails.loginstatus != 1" href="register">Register</a><a ng-if="loggedindetails.loginstatus == 1" href="javascript:void(0)" ng-click="userLogout();">Logout</a></div>
 			<div class="dx-clearfix"></div>
 			<div class="nab-bar">
 				<div class="navigation phone-hide">
@@ -26,12 +26,12 @@
 	</header>
 
 	<!--Mobile header-->
-	<header class="mobile-header tablet-hide">
+	<!--<header class="mobile-header tablet-hide">
 
 		<div class="m-logo"><img src="app/assets/Images/m-logo.png" width="173" height="17"  alt=""/></div>
 		<div class="m-top-link">
 			<div class="search"><img src="app/assets/Images/s-icon-m.png" width="14" height="14"  alt=""/></div>
 			<div class="cat-menu"><img src="app/assets/Images/m-menu.png" width="16" height="13"  alt=""/></div>
 		</div>
-	</header>
+	</header>-->
 </div>
