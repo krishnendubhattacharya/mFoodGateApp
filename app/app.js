@@ -178,6 +178,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             templateUrl: 'app/views/profile.html',
             title: 'Profile'
         })
+        .state('frontend.allvoucher', {
+            url: '/allvoucher',
+            resolve: loadSequence('allvoucher'),
+            templateUrl: 'app/views/allvoucher.html',
+            title: 'Voucher'
+        })
         .state('sample', {
             url: '/sample',
             resolve: loadSequence('activation'),

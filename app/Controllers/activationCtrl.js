@@ -103,6 +103,21 @@ app.controller('activationCtrl', function ($rootScope, $scope, $http, $location,
         //params.validationGroup.reset();
     
 };
+
+    $scope.fileUploaderOptions = {
+        selectButtonText: "Select photo",
+        labelText: "",
+        accept: "app/assets/Images/*",
+        uploadMode: "useForm"
+    };
+    $scope.buttonOptions = {
+        text: "Update profile",
+        type: "success",
+        onClick: function(){
+            DevExpress.ui.dialog.alert("Uncomment the line to enable sending a form to the server.", "Click Handler");
+            $("#form").submit();
+        }
+    };
    
    
 });
