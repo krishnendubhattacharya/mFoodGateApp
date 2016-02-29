@@ -41,6 +41,20 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
                                 })
                                 .appendTo(container);
                         }
+                    },
+                    {
+                        width: 100,
+                        alignment: 'center',
+                        cellTemplate: function (container, options) {
+                            $('<button/>').addClass('dx-button')
+                                .text('ReSell')
+                                .on('dxclick', function () {
+                                    //Do something with options.data;
+                                    $location.path('/vouchersell/'+options.data.id);
+                                })
+                                .appendTo(container);
+
+                        }
                     }
 
                 ]
@@ -78,6 +92,20 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
                                 $location.path('/voucherdetail/'+options.data.id);
                             })
                             .appendTo(container);
+                    }
+                },
+                {
+                    width: 100,
+                    alignment: 'center',
+                    cellTemplate: function (container, options) {
+                        $('<button/>').addClass('dx-button')
+                            .text('ReSell')
+                            .on('dxclick', function () {
+                                //Do something with options.data;
+                                $location.path('/vouchersell/'+options.data.id);
+                            })
+                            .appendTo(container);
+
                     }
                 }
 

@@ -178,6 +178,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             templateUrl: 'app/views/profile.html',
             title: 'Profile'
         })
+        .state('frontend.changepassword', {
+            url: '/changepassword',
+            resolve: loadSequence('changepassword'),
+            templateUrl: 'app/views/changepassword.html',
+            title: 'Change Password'
+        })
         .state('frontend.allvoucher', {
             url: '/allvoucher',
             resolve: loadSequence('allvoucher'),
@@ -189,6 +195,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             resolve: loadSequence('voucherdetail'),
             templateUrl: 'app/views/voucherdetail.html',
             title: 'Voucher Detail'
+        })
+        .state('frontend.vouchersell', {
+            url: '/vouchersell/:voucherId',
+            resolve: loadSequence('vouchersell'),
+            templateUrl: 'app/views/vouchersell.html',
+            title: 'Voucher Sell'
         })
         .state('sample', {
             url: '/sample',

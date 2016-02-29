@@ -13,7 +13,7 @@ app.controller('dashboardCtrl', function ($rootScope, $scope, $http, $location, 
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
             //console.log(data.email);
-            $scope.userInfo =data;
+            $scope.userInfo =data.user_details;
             //console.log($scope.allcat);
 
             //console.log($scope.userInfo.email);

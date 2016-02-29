@@ -48,7 +48,7 @@ $scope.validateAndSubmit = function(params) {
         $http({
                 method: "POST",
                 url: $rootScope.serviceurl+"users",
-                data: {"email":$scope.email,"password":$scope.password,"user_type_id":$scope.user_type_id,"activation_url":"http://107.170.152.166/mFood/activation"},
+                data: {"email":$scope.email,"password":$scope.password,"user_type_id":$scope.user_type_id,"activation_url":$rootScope.siteurl+"activation"},
                 headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
                 console.log(data);

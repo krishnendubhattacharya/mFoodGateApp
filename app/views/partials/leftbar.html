@@ -2,14 +2,15 @@
 
 	<div class="left-panel phone-hide">
 		<div class="profile-img">
-			<img src="app/assets/Images/default-profile.png" width="100%" height="auto"  alt=""/>
+			<!--<img src="app/assets/Images/default-profile.png" width="100%" height="auto"  alt=""/>-->
+			<img src="{{userImagePath}}" width="100%" height="auto"  alt=""/>
 			<form>
-			<!--<input type="file" id="i_file" name="file" ng-file-select="onFileSelect($files)" />-->
+			<input type="file" id="i_file" name="file" ng-file-select="onFileSelect($files)" />
 				</form>
 		</div>
 		<ul>
 			<li><a href=""><i class="fa fa-gear"></i> Setting</a></li>
-			<li><a href=""><i class="fa fa-lock"></i> Change Password</a></li>
+			<li><a href="changepassword"><i class="fa fa-lock"></i> Change Password</a></li>
 			<li><a href="profile"><i class="fa fa-user"></i> Change Profile</a></li>
 			<li><a href="allvoucher"><i class="fa fa-user"></i> Voucher</a></li>
 		</ul>
@@ -21,7 +22,7 @@
 		</div>
 		<ul>
 			<li><a href=""><i class="fa fa-gear"></i> Setting</a></li>
-			<li><a href=""><i class="fa fa-lock"></i> Change Password</a></li>
+			<li><a href="changepassword"><i class="fa fa-lock"></i> Change Password</a></li>
 			<li><a href="profile"><i class="fa fa-user"></i> Change Profile</a></li>
 			<li><a href="allvoucher"><i class="fa fa-user"></i> Voucher</a></li>
 		</ul>

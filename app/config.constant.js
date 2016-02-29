@@ -22,9 +22,11 @@ app.constant('JS_REQUIRES', {
         'activation':['app/Controllers/activationCtrl.js'],
         'dashboard':['app/Controllers/dashboardCtrl.js','app/Controllers/leftbarCtrl.js'],
         'profile':['app/Controllers/profileCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'changepassword':['app/Controllers/changepasswordCtrl.js','app/Controllers/leftbarCtrl.js'],
         'sample':['app/Controllers/sampleCtrl.js'],
         'allvoucher':['app/Controllers/allvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
         'voucherdetail':['app/Controllers/voucherdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'vouchersell':['app/Controllers/vouchersellCtrl.js','app/Controllers/leftbarCtrl.js'],
         'admin':['app/assets/admin/css/style.css','app/assets/admin/css/style-responsive.css','app/assets/admin/js/bootstrap.min.js','app/assets/admin/js/jquery.nicescroll.js','app/assets/admin/js/jquery-migrate-1.2.1.min.js','app/assets/admin/js/jquery-ui-1.9.2.custom.min.js'
             ,'app/assets/admin/js/modernizr.min.js','app/assets/admin/js/scripts.js','app/Controllers/admin/headerCtrl.js','app/Controllers/admin/leftbarCtrl.js'],
         'frontend':["app/assets/css/site.css","app/assets/css/reset.css"

@@ -9,6 +9,18 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
     console.log($stateParams.voucherId);
     $scope.voucherInfo = null;
 
+    $scope.getVoucherDetail = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "vourcherdetail/"+$stateParams.voucherId,
+        }).success(function (data) {
+            console.log(data);
+            $scope.voucherInfo =data;
+        });
+
+    }
+    $scope.getVoucherDetail();
+
 
 
 
