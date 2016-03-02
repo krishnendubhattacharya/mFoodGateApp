@@ -25,6 +25,7 @@ app.constant('JS_REQUIRES', {
         'changepassword':['app/Controllers/changepasswordCtrl.js','app/Controllers/leftbarCtrl.js'],
         'sample':['app/Controllers/sampleCtrl.js'],
         'allvoucher':['app/Controllers/allvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'mypoints':['app/Controllers/mypointsCtrl.js','app/Controllers/leftbarCtrl.js'],
         'voucherdetail':['app/Controllers/voucherdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
         'vouchersell':['app/Controllers/vouchersellCtrl.js','app/Controllers/leftbarCtrl.js'],
         'bidvoucher':['app/Controllers/bidvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
