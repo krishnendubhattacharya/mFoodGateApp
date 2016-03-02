@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 18, 2016 at 06:56 AM
+-- Generation Time: Mar 02, 2016 at 12:18 PM
 -- Server version: 5.5.44-MariaDB
 -- PHP Version: 5.4.16
 
@@ -31,15 +31,18 @@ CREATE TABLE IF NOT EXISTS `category` (
   `name` varchar(255) NOT NULL,
   `parent_id` int(11) NOT NULL,
   `is_active` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `parent_id`, `is_active`) VALUES
-(1, 'resturant_1', 0, 1),
-(2, 'resturant_2', 0, 1);
+(1, 'resturant_1', 0, 0),
+(2, 'resturant_2', 0, 1),
+(3, 'abc', 0, 0),
+(5, 'dfgddrg', 0, 0),
+(7, 'fgbddgttr', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -67,6 +70,95 @@ INSERT INTO `coupons` (`id`, `user_id`, `title`, `short_des`, `discount_percent`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `offers`
+--
+
+CREATE TABLE IF NOT EXISTS `offers` (
+  `id` int(11) NOT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `price` double(10,2) NOT NULL,
+  `offer_price` double(10,2) NOT NULL,
+  `offer_percent` double(10,2) NOT NULL,
+  `offer_from_date` datetime NOT NULL,
+  `offer_to_date` datetime NOT NULL,
+  `image` varchar(500) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `merchant_id` int(11) DEFAULT NULL,
+  `restaurant_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `offers`
+--
+
+INSERT INTO `offers` (`id`, `created_on`, `title`, `description`, `price`, `offer_price`, `offer_percent`, `offer_from_date`, `offer_to_date`, `image`, `is_active`, `merchant_id`, `restaurant_id`) VALUES
+(1, '2016-02-25 00:00:00', 'test', 'aabbccdd', 23.00, 20.00, 10.00, '2016-02-26 00:00:00', '2016-03-10 00:00:00', '', 1, 3, 1),
+(2, '2016-02-25 00:00:00', 'another', 'sdfb', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-07 00:00:00', '', 1, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offer_images`
+--
+
+CREATE TABLE IF NOT EXISTS `offer_images` (
+  `id` int(11) NOT NULL,
+  `offer_id` int(11) NOT NULL,
+  `image` varchar(500) NOT NULL,
+  `position` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `points`
+--
+
+CREATE TABLE IF NOT EXISTS `points` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `voucher_id` int(11) NOT NULL,
+  `old_points` int(11) NOT NULL,
+  `new_points` int(11) NOT NULL,
+  `points` int(11) NOT NULL,
+  `type` enum('D','C') NOT NULL DEFAULT 'D' COMMENT '''D'' - Debit, ''C'' - Credit',
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `expire_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `points`
+--
+
+INSERT INTO `points` (`id`, `user_id`, `voucher_id`, `old_points`, `new_points`, `points`, `type`, `date`, `expire_date`) VALUES
+(1, 4, 0, 0, 10, 10, 'C', '2016-03-02 10:35:55', '2016-03-31 04:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `restaurant_details`
+--
+
+CREATE TABLE IF NOT EXISTS `restaurant_details` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `logo` varchar(255) DEFAULT NULL,
+  `address` text
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `restaurant_details`
+--
+
+INSERT INTO `restaurant_details` (`id`, `user_id`, `title`, `logo`, `address`) VALUES
+(1, 3, 'Shiraz', 'shiraz_logo.png', 'Shambazar');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -84,18 +176,25 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_type_id` int(11) NOT NULL DEFAULT '0',
   `is_logged_in` tinyint(1) NOT NULL DEFAULT '0',
   `last_login` datetime DEFAULT NULL,
-  `unique_code` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `unique_code` varchar(255) DEFAULT NULL,
+  `is_social_login` int(10) NOT NULL DEFAULT '0',
+  `fb_id` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `about_me` text
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `merchant_name`, `email`, `username`, `password`, `txt_pwd`, `registration_date`, `is_active`, `user_type_id`, `is_logged_in`, `last_login`, `unique_code`) VALUES
-(1, 'admin', 'admin', 'abc', 'admin', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-12 09:02:28', 1, 1, 0, '2016-02-18 05:02:12', NULL),
-(2, NULL, NULL, NULL, 'nits.anup1@gmail.com', NULL, '827ccb0eea8a706c4c34a16891f84e7b', '12345', '2016-02-15 10:02:57', 1, 3, 0, '2016-02-16 12:02:45', '123'),
-(3, NULL, NULL, NULL, 'nits.krishnendu@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-15 11:02:06', 1, 3, 0, NULL, NULL),
-(4, NULL, NULL, NULL, 'nits.anup@gmail.com', NULL, '827ccb0eea8a706c4c34a16891f84e7b', '12345', '2016-02-16 12:02:27', 1, 2, 0, '2016-02-17 03:02:48', '1455626727299005');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `merchant_name`, `email`, `username`, `password`, `txt_pwd`, `registration_date`, `is_active`, `user_type_id`, `is_logged_in`, `last_login`, `unique_code`, `is_social_login`, `fb_id`, `image`, `phone`, `about_me`) VALUES
+(1, 'admin', 'admin', 'abc', 'admin', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-12 09:02:28', 1, 1, 0, '2016-03-02 07:03:56', NULL, 0, NULL, NULL, NULL, NULL),
+(2, NULL, NULL, NULL, 'nits.anup1@gmail.com', NULL, '827ccb0eea8a706c4c34a16891f84e7b', '12345', '2016-02-15 10:02:57', 1, 3, 0, '2016-02-16 12:02:45', '123', 0, NULL, NULL, NULL, NULL),
+(3, NULL, NULL, NULL, 'nits.krishnendu@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-15 11:02:06', 1, 3, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
+(4, 'Anup', 'Chakraborty', NULL, 'nits.anup@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-16 12:02:27', 1, 2, 0, '2016-03-02 09:03:34', '1455626727299005', 0, NULL, '1456900270690476_232_RL_product.jpg', '968745', 'abcd'),
+(6, 'Rahul', 'Roy', NULL, 'nits.santanu@gmail.com', NULL, NULL, NULL, '2016-02-22 03:02:46', 1, 2, 0, '2016-02-29 12:02:54', '1456156186779391', 0, '1670701249873793', '1456745423267591_134_man1.jpg', NULL, NULL),
+(9, 'Arup', 'Chakraborty', 'a', 'nits.sarojkumar@gmail.com', 'saroj', 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-25 08:02:26', 0, 2, 0, NULL, '1456387586434984', 0, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -120,6 +219,106 @@ INSERT INTO `user_types` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vouchers`
+--
+
+CREATE TABLE IF NOT EXISTS `vouchers` (
+  `id` bigint(20) NOT NULL,
+  `offer_id` int(11) NOT NULL,
+  `created_on` datetime NOT NULL,
+  `view_id` varchar(255) NOT NULL,
+  `price` double(10,2) NOT NULL,
+  `offer_price` double(10,2) NOT NULL,
+  `offer_percent` double(10,2) NOT NULL,
+  `from_date` datetime NOT NULL,
+  `to_date` datetime NOT NULL,
+  `is_used` tinyint(1) NOT NULL DEFAULT '0',
+  `is_active` tinyint(1) NOT NULL,
+  `user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vouchers`
+--
+
+INSERT INTO `vouchers` (`id`, `offer_id`, `created_on`, `view_id`, `price`, `offer_price`, `offer_percent`, `from_date`, `to_date`, `is_used`, `is_active`, `user_id`) VALUES
+(1, 1, '2016-02-26 00:00:00', 'vch0001', 23.00, 20.00, 10.00, '2016-02-24 00:00:00', '2016-03-10 00:00:00', 0, 1, 4),
+(2, 2, '2016-02-26 00:00:00', 'vch0002', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-07 00:00:00', 0, 1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `voucher_bids`
+--
+
+CREATE TABLE IF NOT EXISTS `voucher_bids` (
+  `id` int(11) NOT NULL,
+  `voucher_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `bid_price` double DEFAULT NULL,
+  `voucher_resale_id` int(11) DEFAULT NULL,
+  `is_accepted` tinyint(1) NOT NULL DEFAULT '0',
+  `m_points` varchar(255) DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `voucher_bids`
+--
+
+INSERT INTO `voucher_bids` (`id`, `voucher_id`, `user_id`, `bid_price`, `voucher_resale_id`, `is_accepted`, `m_points`, `is_active`) VALUES
+(1, 1, 2, 555, 1, 0, NULL, 1),
+(3, 1, 9, 825, 1, 0, NULL, 1),
+(4, 1, 4, 2250, 1, 0, NULL, 1),
+(5, 1, 6, 2250, 1, 0, '110', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `voucher_owner`
+--
+
+CREATE TABLE IF NOT EXISTS `voucher_owner` (
+  `id` int(11) NOT NULL,
+  `offer_id` int(11) NOT NULL,
+  `voucher_id` int(11) NOT NULL,
+  `voucher_view_id` int(11) NOT NULL,
+  `from_user_id` int(11) NOT NULL,
+  `to_user_id` int(11) NOT NULL,
+  `purchased_date` datetime NOT NULL,
+  `sold_date` datetime NOT NULL,
+  `is_active` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `voucher_resales`
+--
+
+CREATE TABLE IF NOT EXISTS `voucher_resales` (
+  `id` int(11) NOT NULL,
+  `voucher_id` int(11) NOT NULL,
+  `price` double(10,2) NOT NULL,
+  `points` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `is_sold` tinyint(1) NOT NULL,
+  `created_on` datetime NOT NULL,
+  `sold_on` datetime NOT NULL,
+  `is_active` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `voucher_resales`
+--
+
+INSERT INTO `voucher_resales` (`id`, `voucher_id`, `price`, `points`, `user_id`, `is_sold`, `created_on`, `sold_on`, `is_active`) VALUES
+(1, 1, 662.00, 0, 4, 0, '2016-03-01 10:03:54', '0000-00-00 00:00:00', 1),
+(2, 1, 662.00, 0, 5, 0, '2016-03-01 10:03:54', '0000-00-00 00:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `wine`
 --
 
@@ -132,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `wine` (
   `region` varchar(45) DEFAULT NULL,
   `description` blob,
   `picture` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `wine`
@@ -169,6 +368,30 @@ ALTER TABLE `coupons`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `offers`
+--
+ALTER TABLE `offers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `offer_images`
+--
+ALTER TABLE `offer_images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `points`
+--
+ALTER TABLE `points`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `restaurant_details`
+--
+ALTER TABLE `restaurant_details`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -178,6 +401,30 @@ ALTER TABLE `users`
 -- Indexes for table `user_types`
 --
 ALTER TABLE `user_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vouchers`
+--
+ALTER TABLE `vouchers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `voucher_bids`
+--
+ALTER TABLE `voucher_bids`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `voucher_owner`
+--
+ALTER TABLE `voucher_owner`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `voucher_resales`
+--
+ALTER TABLE `voucher_resales`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -194,27 +441,67 @@ ALTER TABLE `wine`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT for table `offers`
+--
+ALTER TABLE `offers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `offer_images`
+--
+ALTER TABLE `offer_images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `points`
+--
+ALTER TABLE `points`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `restaurant_details`
+--
+ALTER TABLE `restaurant_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `user_types`
 --
 ALTER TABLE `user_types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `vouchers`
+--
+ALTER TABLE `vouchers`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `voucher_bids`
+--
+ALTER TABLE `voucher_bids`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `voucher_owner`
+--
+ALTER TABLE `voucher_owner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `voucher_resales`
+--
+ALTER TABLE `voucher_resales`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `wine`
 --
 ALTER TABLE `wine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
