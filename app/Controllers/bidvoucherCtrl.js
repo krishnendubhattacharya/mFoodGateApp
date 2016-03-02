@@ -99,7 +99,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                     alignment: 'center',
                     cellTemplate: function (container, options) {
                         $('<button/>').addClass('dx-button')
-                            .text('ReSell')
+                            .text('Bid')
                             .on('dxclick', function () {
                                 //Do something with options.data;
                                 $location.path('/vouchersell/'+options.data.id);
