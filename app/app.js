@@ -196,6 +196,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             templateUrl: 'app/views/voucherdetail.html',
             title: 'Voucher Detail'
         })
+        .state('frontend.bidvoucher', {
+            url: '/bidvoucher',
+            resolve: loadSequence('bidvoucher'),
+            templateUrl: 'app/views/bidvoucher.html',
+            title: 'Voucher Resell'
+        })
         .state('frontend.vouchersell', {
             url: '/vouchersell/:voucherId',
             resolve: loadSequence('vouchersell'),
