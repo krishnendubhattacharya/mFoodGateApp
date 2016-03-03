@@ -8,7 +8,7 @@ var showText = function (e) {
 var menuItemClicked = function (e) {
     DevExpress.ui.notify(e.model.text + " item clicked", "success", 2000);
 };
-app.controller('activationCtrl', function ($rootScope, $scope, $http, $location, $stateParams) {
+app.controller('activationCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, $cookieStore) {
 
     var products = [{
         key: "Televisions",
@@ -85,7 +85,17 @@ app.controller('activationCtrl', function ($rootScope, $scope, $http, $location,
                 console.log(data);
                 if(data.type == 'success'){
                         var message = "you have successfully logged in";
-                        //params.validationGroup.reset(); 
+                        //params.validationGroup.reset();
+                        $cookieStore.put('users', data.user_details);
+                        $scope.user_username = '';
+                        $scope.user_password = '';
+                        myAuth.updateUserinfo(myAuth.getUserAuthorisation());
+                        $scope.loggedindetails = myAuth.getUserNavlinks();
+                        //console.log('hiiiiiiiiii');
+                        console.log($scope.loggedindetails);
+                        $rootScope.$emit('updateLoginDetails');
+                        $scope.loggedin = true;
+                        $scope.notloggedin = false;
                         $location.path('/');                      
                 }else{
                         var message = "Login error.";
