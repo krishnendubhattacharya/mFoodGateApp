@@ -54,7 +54,7 @@ app.run(['$rootScope', '$state', '$stateParams',
         //$rootScope.serviceurl = "http://localhost/prohelp/";
         //$rootScope.serviceurl = "http://livehelpout.com/beta.admin";
         $rootScope.serviceurl = "http://107.170.152.166/mFoodGateAPI/";
-         $rootScope.siteurl = "http://107.170.152.166/mFood/";
+         $rootScope.siteurl = "http://107.170.152.166/mFood/#/";
         $rootScope.app = {
             name: 'mFoodGate', // name of your project
             author: 'NITS', // author's name or company name
@@ -124,7 +124,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
         });
 
 ///Remove Hash from URL//////
- $locationProvider.html5Mode(true).hashPrefix('!');
+ //$locationProvider.html5Mode(true).hashPrefix('!');
 
     // APPLICATION ROUTES
     // -----------------------------------
