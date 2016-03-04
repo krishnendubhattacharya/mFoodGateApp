@@ -4,7 +4,8 @@
  */
  
 app.controller('registerCtrl', function ($rootScope, $scope, $http, $location) {
-var user_type = ["Merchant", "Client"];
+//var user_type = ["Merchant", "Client"];
+var user_type = {"M":"Merchant", "C":"Client"};
 $scope.textBox = {
         first_name: {
         placeholder: "Enter First Name",
@@ -36,7 +37,7 @@ $scope.textBox = {
 $scope.radioGroup = {
         changeLayout: {
         items: user_type,
-        value: user_type[0],
+        //value: user_type[0],
         layout: "horizontal"
         }
 };

@@ -50,19 +50,19 @@ app.controller('vouchersellCtrl', function ($rootScope, $scope, $http, $location
         //alert($scope.loggedindetails.id);
         //var result = params.validationGroup.validate();
        // if(result.isValid) {
-            /*$http({
+            $http({
                 method: "POST",
-                url: $rootScope.serviceurl+"voucher/savesell",
+                url: $rootScope.serviceurl+"resale",
                 data: {"price":$scope.price,"points":$scope.points,"voucher_id":$stateParams.voucherId,"user_id":$scope.loggedindetails.id},
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
                 console.log(data);
                 //return false;
-                params.validationGroup.reset();
+                //params.validationGroup.reset();
                 if(data.type == 'success'){
                     //var message = data.message;
                     //params.validationGroup.reset();
-                    //$location.path('/dashboard');
+                    $location.path('/allvoucher');
 
                     DevExpress.ui.notify({
                         message: data.message,
@@ -82,7 +82,7 @@ app.controller('vouchersellCtrl', function ($rootScope, $scope, $http, $location
                     }, "error", 3000);
                 }
 
-            })*/
+            })
 
             //form.submit();
             //params.validationGroup.reset();

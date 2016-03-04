@@ -21,7 +21,13 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
     }
     $scope.getVoucherDetail();
 
+    $scope.boucherResell = function () {
+        $location.path('/vouchersell/' + $stateParams.voucherId);
+    }
 
+    $scope.bocherGift = function () {
+        $location.path('/giftvoucher/' + $stateParams.voucherId);
+    }
 
 
 

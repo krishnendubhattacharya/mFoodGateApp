@@ -196,6 +196,24 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             templateUrl: 'app/views/voucherdetail.html',
             title: 'Voucher Detail'
         })
+        .state('frontend.addbid', {
+            url: '/addbid/:sellId/:voucherId',
+            resolve: loadSequence('vouchersell'),
+            templateUrl: 'app/views/addbid.html',
+            title: 'Add Bid'
+        })
+        .state('frontend.bidderlist', {
+            url: '/bidderlist/:sellId',
+            resolve: loadSequence('bidderlist'),
+            templateUrl: 'app/views/bidderlist.html',
+            title: 'Bidder List'
+        })
+        .state('frontend.giftvoucher', {
+            url: '/giftvoucher/:voucherId',
+            resolve: loadSequence('giftvoucher'),
+            templateUrl: 'app/views/giftvoucher.html',
+            title: 'Gift Voucher'
+        })
         .state('frontend.mypoints', {
             url: '/mypoints',
             resolve: loadSequence('mypoints'),
