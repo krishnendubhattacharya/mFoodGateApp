@@ -1,5 +1,5 @@
 <!--Web header-->
-<div ng-controller="profileCtrl">
+<div ng-controller="merchantprofileCtrl">
 
     <div class="container phone-hide">
         <div class="myaccount-details">
@@ -10,19 +10,14 @@
                 <div class="form">
                     <div class="dx-fieldset">
                         <div class="dx-field">
-                            <div class="dx-field-label">First Name</div>
+                            <div class="dx-field-label">Merchant Name</div>
                             <div class="dx-field-value">
-                                <div dx-text-box="textBox.first_name"  ng-model="userInfo.first_name"></div>
+                                <div dx-text-box="textBox.merchant_name"  ng-model="userInfo.merchant_name"></div>
 
 
                             </div>
                         </div>
-                        <div class="dx-field">
-                            <div class="dx-field-label">Last Name</div>
-                            <div class="dx-field-value">
-                                <div dx-text-box="textBox.last_name"  ng-model="userInfo.last_name"></div>
-                            </div>
-                        </div>
+
                         <div class="dx-field">
                             <div class="dx-field-label">Email</div>
                             <div class="dx-field-value">
@@ -42,7 +37,13 @@
                             </div>
                         </div>
                         <div class="dx-field">
-                            <div class="dx-field-label">About Me</div>
+                            <div class="dx-field-label">Address</div>
+                            <div class="dx-field-value">
+                                <div dx-text-area="textArea"  ng-model="userInfo.address"></div>
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">About Us</div>
                             <div class="dx-field-value">
                                 <div dx-text-area="textArea"  ng-model="userInfo.about_me"></div>
                             </div>
@@ -68,19 +69,14 @@
             <div class="form">
                 <div class="dx-fieldset">
                     <div class="dx-field">
-                        <div class="dx-field-label">First Name</div>
+                        <div class="dx-field-label">Merchant Name</div>
                         <div class="dx-field-value">
-                            <div dx-text-box="textBox.first_name"  ng-model="userInfo.first_name"></div>
+                            <div dx-text-box="textBox.merchant_name"  ng-model="userInfo.merchant_name"></div>
 
 
                         </div>
                     </div>
-                    <div class="dx-field">
-                        <div class="dx-field-label">Last Name</div>
-                        <div class="dx-field-value">
-                            <div dx-text-box="textBox.last_name"  ng-model="userInfo.last_name"></div>
-                        </div>
-                    </div>
+
                     <div class="dx-field">
                         <div class="dx-field-label">Email</div>
                         <div class="dx-field-value">
@@ -100,7 +96,13 @@
                         </div>
                     </div>
                     <div class="dx-field">
-                        <div class="dx-field-label">About Me</div>
+                        <div class="dx-field-label">Address</div>
+                        <div class="dx-field-value">
+                            <div dx-text-area="textArea"  ng-model="userInfo.address"></div>
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">About Us</div>
                         <div class="dx-field-value">
                             <div dx-text-area="textArea"  ng-model="userInfo.about_me"></div>
                         </div>

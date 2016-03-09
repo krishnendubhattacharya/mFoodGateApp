@@ -6,6 +6,49 @@ app.controller('bidderlistCtrl', function ($rootScope, $scope, $http, $location,
 
         $location.path("/login");
     }
+
+    $scope.sellVoucher = function(to_id,bid_price,bid_id,voucher_id){
+        alert(to_id);
+        alert(bid_price);
+        alert(bid_id);
+        alert($stateParams.sellId);
+        alert(voucher_id);
+        alert($scope.loggedindetails.id);
+        /*$http({
+            method: "POST",
+            url: $rootScope.serviceurl+"resale",
+            data: {"to_user_id":to_id,"price":bid_price,"voucher_id":voucher_id,"from_user_id":$scope.loggedindetails.id,"bid_id":bid_id,"resell_id":$stateParams.sellId},
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            console.log(data);
+            //return false;
+            //params.validationGroup.reset();
+            if(data.type == 'success'){
+                //var message = data.message;
+                //params.validationGroup.reset();
+                $location.path('/allvoucher');
+
+                DevExpress.ui.notify({
+                    message: data.message,
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "success", 3000);
+            }else{
+                var message = "Error occured.";
+                DevExpress.ui.notify({
+                    message: data.message,
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "error", 3000);
+            }
+
+        });*/
+    };
+
     $scope.bidderList = function(){
 
         $http({
@@ -38,6 +81,7 @@ app.controller('bidderlistCtrl', function ($rootScope, $scope, $http, $location,
                                 .text('Sell')
                                 .on('dxclick', function () {
                                    // $location.path('/voucherdetail/'+options.data.id);
+                                    $scope.sellVoucher(options.data.bidder_id,options.data.bid_price,options.data.bid_id,options.data.voucher_id);
                                 })
                                 .appendTo(container);
                         }

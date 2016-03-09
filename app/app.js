@@ -226,6 +226,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             templateUrl: 'app/views/bidvoucher.html',
             title: 'Voucher Resell'
         })
+        .state('frontend.setting', {
+            url: '/setting',
+            resolve: loadSequence('setting'),
+            templateUrl: 'app/views/setting.html',
+            title: 'Setting'
+        })
         .state('frontend.vouchersell', {
             url: '/vouchersell/:voucherId',
             resolve: loadSequence('vouchersell'),
@@ -267,7 +273,35 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
         templateUrl: 'app/views/admin/login.html',
         resolve: loadSequence('adminlogin'),
         title: 'Login'
-        });
+        })
+        .state('merchant', {
+            url: '/merchant',
+            templateUrl: 'app/views/merchant/merchantbase.html',
+            abstract :true,
+            resolve: loadSequence('merchanthome'),
+
+        })
+        .state('merchant.login', {
+            url: '/login',
+            templateUrl: 'app/views/merchant/merchantlogin.html',
+            resolve: loadSequence('merchantlogin'),
+
+        })
+        .state('frontend.merchantprofile', {
+            url: '/merchantprofile',
+            resolve: loadSequence('merchantprofile'),
+            templateUrl: 'app/views/merchant/merchantprofile.html',
+            title: 'Merchant Profile'
+        })
+        .state('frontend.merchantoffer', {
+            url: '/merchantoffer',
+            resolve: loadSequence('merchantoffer'),
+            templateUrl: 'app/views/merchant/merchantoffer.html',
+            title: 'My Offer'
+        })
+
+
+    ;
 
 
 

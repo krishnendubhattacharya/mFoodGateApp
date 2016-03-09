@@ -67,13 +67,19 @@
                                 </div>  
                         </div>
                         <!--<div id="summary" dx-validation-summary="{ }"></div>-->
-                        <div id="button" dx-button="{
-                                text: 'Submit',
-                                type: 'success', 
-                                onClick: validateAndSubmit }" ></div>
+                    <ul>
+                        <li>
+                            <div id="button" dx-button="{
+                                    text: 'Submit',
+                                    type: 'success',
+                                    onClick: validateAndSubmit }" >
+
+                            </div>
+                        </li>
+                        <p style="border-bottom: solid 1px #ccc;"></p>
+                    </ul>
                 </div>
-                <p style="border-bottom: solid 1px #ccc;"></p>
-                
+
                 
                 <div class="social">
                     <span><img src="app/assets/Images/f-icon.png" width="43" height="43"  alt=""/></span>
@@ -85,8 +91,8 @@
     </div>
     <!--Login area end Web-->
     <div class="login-box tablet-hide">
-        <h2>Sign In</h2>
-        <ul>
+        <h2>Sign Up</h2>
+        <!--<ul>
             <li>
                 <label>Email:</label>
                 <input type="text" class="form-control ng-pristine ng-valid ng-valid-required ng-touched" placeholder="Enter your email">
@@ -101,7 +107,61 @@
             </li>
             <li><button type="submit" class="btn btn-success btn-lg btn-block">Login</button></li>
             <p style="border-bottom: solid 1px #ccc;"></p>
-        </ul>
+        </ul>-->
+        <div class="form">
+            <div class="dx-fieldset">
+                <!--<div class="dx-field">
+                    <div class="dx-field-label">First Name</div>
+                    <div class="dx-field-value">
+                        <div dx-text-box="textBox.first_name" dx-validator="firstNameValidationRules" ng-model="first_name"></div>
+
+
+                    </div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Last Name</div>
+                    <div class="dx-field-value">
+                        <div dx-text-box="textBox.last_name" dx-validator="lastNameValidationRules" ng-model="last_name"></div>
+                    </div>
+                </div>-->
+                <div class="dx-field">
+                    <div class="dx-field-label">Email</div>
+                    <div class="dx-field-value">
+                        <div dx-text-box="textBox.email" dx-validator="emailValidationRules" ng-model="email"></div>
+                    </div>
+                </div>
+                <!--<div class="dx-field">
+                    <div class="dx-field-label">Username</div>
+                    <div class="dx-field-value">
+                        <div dx-text-box="textBox.username" dx-validator="usernameValidationRules" ng-model="username"></div>
+                    </div>
+                </div>-->
+                <div class="dx-field">
+                    <div class="dx-field-label">Password</div>
+                    <div class="dx-field-value">
+                        <div dx-text-box="textBox.password" dx-validator="passwordValidationRules" ng-model="password"></div>
+                    </div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">User Type</div>
+                    <div class="dx-field-value">
+                        <div dx-radio-group="radioGroup.changeLayout"  ng-model="user_type_id"></div>
+                    </div>
+                </div>
+            </div>
+            <!--<div id="summary" dx-validation-summary="{ }"></div>-->
+            <ul>
+                <li>
+                    <div id="button" dx-button="{
+                                    text: 'Submit',
+                                    type: 'success',
+                                    onClick: validateAndSubmit }" >
+
+                    </div>
+                </li>
+                <p style="border-bottom: solid 1px #ccc;"></p>
+            </ul>
+        </div>
         <div class="social">
             <span><img src="app/assets/Images/f-icon.png" width="43" height="43"  alt=""/></span>
             <span><img src="app/assets/Images/t-icon.png" width="43" height="43"  alt=""/></span>

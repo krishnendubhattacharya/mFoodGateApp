@@ -6,6 +6,46 @@ app.controller('giftvoucherCtrl', function ($rootScope, $scope, $http, $location
 
         $location.path("/login");
     }
+
+    $scope.giftVoucher = function(to_id){
+        alert(to_id);
+        alert($stateParams.voucherId);
+        alert($scope.loggedindetails.id);
+       /* $http({
+             method: "POST",
+             url: $rootScope.serviceurl+"resale",
+             data: {"to_user_id":to_id,"voucher_id":$stateParams.voucherId,"from_user_id":$scope.loggedindetails.id},
+             headers: {'Content-Type': 'application/json'},
+         }).success(function(data) {
+             console.log(data);
+             //return false;
+             //params.validationGroup.reset();
+             if(data.type == 'success'){
+             //var message = data.message;
+             //params.validationGroup.reset();
+                 $location.path('/allvoucher');
+
+                 DevExpress.ui.notify({
+                 message: data.message,
+                 position: {
+                     my: "center top",
+                     at: "center top"
+                 }
+                 }, "success", 3000);
+             }else{
+                 var message = "Error occured.";
+                 DevExpress.ui.notify({
+                 message: data.message,
+                 position: {
+                     my: "center top",
+                     at: "center top"
+                 }
+                 }, "error", 3000);
+             }
+
+         });*/
+    };
+
     $scope.giftUserList = function(){
 
         $http({
@@ -38,6 +78,7 @@ app.controller('giftvoucherCtrl', function ($rootScope, $scope, $http, $location
                                 .text('Gift')
                                 .on('dxclick', function () {
                                    // $location.path('/voucherdetail/'+options.data.id);
+                                    $scope.giftVoucher(options.data.id);
                                 })
                                 .appendTo(container);
                         }

@@ -4,8 +4,8 @@
  */
  
 app.controller('registerCtrl', function ($rootScope, $scope, $http, $location) {
-//var user_type = ["Merchant", "Client"];
-var user_type = {"M":"Merchant", "C":"Client"};
+var user_type = ["Merchant", "Client"];
+//var user_type = {"M":"Merchant", "C":"Client"};
 $scope.textBox = {
         first_name: {
         placeholder: "Enter First Name",

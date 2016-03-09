@@ -1,6 +1,7 @@
 app.controller('leftbarCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth,$upload) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
+    console.log($scope.loggedindetails);
 
     $scope.getImageInfo = function () {
         $http({

@@ -1,4 +1,4 @@
-﻿.screen-size:after {
+﻿﻿.screen-size:after {
     content: "large";
     position: fixed;
     left: -9999px;
@@ -19,7 +19,7 @@ body {
     min-height: 748px;
     height: 100%;
     margin: 0;
-    
+
 }
 
 a,
@@ -82,10 +82,10 @@ h5, h6 {
     font-size: 1em;
 }
 
-    h5 a:link, h5 a:visited, h5 a:active {
-        padding: 0;
-        text-decoration: none;
-    }
+h5 a:link, h5 a:visited, h5 a:active {
+    padding: 0;
+    text-decoration: none;
+}
 
 
 /* main layout
@@ -149,7 +149,7 @@ h5, h6 {
 .featured-Promo .pro-item .desc .txt .price span{ text-decoration:line-through; font-size:16px; color:#b4b4b4;  }
 .featured-Promo .pro-item .desc .view-btn{ width: 66px; height: 42px; float: right; margin-top: 14px;}
 .featured-Promo .pro-item .p-circle{ width:73px; height:73px; position: absolute; z-index: 1001; top: 20px; right:20px; font-size:24px; text-align: center;
-line-height: 73px; background: url(../Images/trans-circle.png) center center no-repeat; color:#fff; }
+    line-height: 73px; background: url(../Images/trans-circle.png) center center no-repeat; color:#fff; }
 
 /*------------------------------- New Promo -------------------------------------*/
 .new-Promo{ width:100%; margin:0; border-top: solid 1px #dcdcdc; margin-top:42px;  }
@@ -167,7 +167,7 @@ line-height: 73px; background: url(../Images/trans-circle.png) center center no-
 .new-Promo .pro-item .desc .txt .price span{ text-decoration:line-through; font-size:16px; color:#b4b4b4;  }
 .new-Promo .pro-item .desc .view-btn{ width: 66px; height: 42px; float: right; margin-top: 14px;}
 .new-Promo .pro-item .p-circle{ width:73px; height:73px; position: absolute; z-index: 1001; top: 20px; right:20px; font-size:24px; text-align: center;
-line-height: 73px; background: url(../Images/trans-circle.png) center center no-repeat; color:#fff; }
+    line-height: 73px; background: url(../Images/trans-circle.png) center center no-repeat; color:#fff; }
 
 
 /*------------------------------- Featured Restaurant -------------------------------------*/
@@ -190,25 +190,38 @@ line-height: 73px; background: url(../Images/trans-circle.png) center center no-
 .login-section .img-box{ width: 65%; height: auto; float: left; }
 .login-section .login-box{ width:30%; height: auto; overflow: hidden; padding: 25px; background: #fff; border: solid 1px #e9e9e9; border-radius: 5px; float: right;  box-shadow: 2px 2px 3px #ccc; margin-top: 15px;}
 .login-section .login-box h2{ font-size:22px; color:#2d2d2d; line-height: 30px; margin-bottom: 10px; padding:0;}
-.login-section .login-box ul{ padding: 15px 0; margin: 0;}
+.login-section .login-box ul{ padding: 0 0 15px; margin: 0;}
 .login-section .login-box ul li{ padding:0; margin: 0 0 15px 0; list-style-type: none; float: none; }
 
+.login-section .login-box .dx-field-label{float: none !important;
+    width: 100% !important;}
+
+.login-section .login-box .dx-field-value, .dx-field-value-static {
+    float: none !important;
+}
+.login-section .login-box .dx-field-value:not(.dx-switch):not(.dx-checkbox):not(.dx-button), .dx-field-value-static {
+    width: 100%;
+}
+.login-section .login-box .dx-fieldset {
+    margin: 20px 0 !important;
+    padding: 0;
+}
 .login-section .login-box label {
     font-weight: normal;
     margin-bottom: 10px;
-	width:100%;
-	text-align: left;
-	line-height: 20px;
-	color:#121212;
-	overflow: hidden;
-	font-size:14px;
+    width:100%;
+    text-align: left;
+    line-height: 20px;
+    color:#121212;
+    overflow: hidden;
+    font-size:14px;
 }
 
 .login-section .login-box .form-control {
     margin-bottom: 0;
     width: 100%;
-	border-radius: 3px;
-	margin-top: 10px;
+    border-radius: 3px;
+    margin-top: 10px;
 }
 .login-section .login-box .form-control {
     background-color: #ffffff;
@@ -241,12 +254,12 @@ line-height: 73px; background: url(../Images/trans-circle.png) center center no-
     background-color: #339933 !important;
     border-color: #226622;
     color: #fff;
-	background: transparent;
+    background: transparent;
 }
 .btn-block {
     display: block;
     width: 87px;
-	
+
 }
 
 
@@ -259,10 +272,10 @@ line-height: 73px; background: url(../Images/trans-circle.png) center center no-
     display: block;
     line-height: 20px !important;
     text-align: center;
-	font-size: 18px;
-	color:#fff;
-	padding: 6px 0 9px;
-	
+    font-size: 18px;
+    color:#fff;
+    padding: 6px 0 9px;
+
 }
 
 .login-section .login-box ul li p{ color:#737373; font-size:14px; line-height: 25px; margin-bottom: 10px;}
@@ -291,7 +304,7 @@ line-height: 73px; background: url(../Images/trans-circle.png) center center no-
 .voucher-section .pro-item .desc .btn_o a:hover{ display: block; background:#ca6009;}
 
 .voucher-section .pro-item .p-circle{ width:73px; height:73px; position: absolute; z-index: 1001; bottom: 130px; right:20px; font-size:24px; text-align: center;
-line-height: 73px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; }
+    line-height: 73px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; }
 
 /*---------------------------------- Expire Soon -----------------------------*/
 
@@ -315,7 +328,7 @@ line-height: 73px; background: url(../Images/green-circle.png) center center no-
 .expire-section .pro-item .desc .btn_o a:hover{ display: block; background:#ca6009;}
 
 .expire-section .pro-item .p-circle{ width:73px; height:73px; position: absolute; z-index: 1001; bottom: 130px; right:20px; font-size:24px; text-align: center;
-line-height: 73px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; }
+    line-height: 73px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; }
 
 /*---------------------------Voucher Details --------------------*/
 .voucher-details{ width:100%; margin:0; border-top: solid 0px #dcdcdc; margin-top:22px;  }
@@ -376,7 +389,7 @@ line-height: 73px; background: url(../Images/green-circle.png) center center no-
 
 
 .reseller-section .pro-item .p-circle{ width:53px; height:53px; position: absolute; z-index: 1001; bottom: 130px; right:20px; font-size:20px; text-align: center;
-line-height: 53px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
+    line-height: 53px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
 
 
 /*---------------------------------- merchant page -----------------------------*/
@@ -398,7 +411,7 @@ line-height: 53px; background: url(../Images/green-circle.png) center center no-
 
 
 .fpromo-section .pro-item .p-circle{ width:53px; height:53px; position: absolute; z-index: 1001; bottom: 130px; right:20px; font-size:20px; text-align: center;
-line-height: 53px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
+    line-height: 53px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
 
 
 .newpromo-section{ width:100%; margin:0; border-top: solid 0px #dcdcdc; margin-top:2px;  }
@@ -422,7 +435,7 @@ line-height: 53px; background: url(../Images/green-circle.png) center center no-
 
 
 .newpromo-section .pro-item .p-circle{ width:53px; height:53px; position: absolute; z-index: 1001; bottom: 130px; right:20px; font-size:20px; text-align: center;
-line-height: 53px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
+    line-height: 53px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
 
 /*---------------------------------- my account -----------------------------*/
 
@@ -522,9 +535,9 @@ line-height: 53px; background: url(../Images/green-circle.png) center center no-
         height: 220px; /*+20px*/
     }
 
-        .layout-box .hb-5.pie-max {
-            height: 280px; /*+20px*/
-        }
+    .layout-box .hb-5.pie-max {
+        height: 280px; /*+20px*/
+    }
 
     .layout-box .hb-7 {
         height: 710px; /*+45px*/
@@ -568,9 +581,9 @@ line-height: 53px; background: url(../Images/green-circle.png) center center no-
         height: 260px; /*+60px*/
     }
 
-        .layout-box .hb-5.pie-max {
-            height: 320px; /*+60px*/
-        }
+    .layout-box .hb-5.pie-max {
+        height: 320px; /*+60px*/
+    }
 
     .layout-box .hb-7 {
         height: 800px; /*+135px*/
@@ -614,9 +627,9 @@ line-height: 53px; background: url(../Images/green-circle.png) center center no-
         height: 290px; /*+90px*/
     }
 
-        .layout-box .hb-5.pie-max {
-            height: 350px; /*+90px*/
-        }
+    .layout-box .hb-5.pie-max {
+        height: 350px; /*+90px*/
+    }
 
     .layout-box .hb-7 {
         height: 880px; /*+215px*/
@@ -660,9 +673,9 @@ line-height: 53px; background: url(../Images/green-circle.png) center center no-
         height: 340px; /*+140px*/
     }
 
-        .layout-box .hb-5.pie-max {
-            height: 400px; /*+140px*/
-        }
+    .layout-box .hb-5.pie-max {
+        height: 400px; /*+140px*/
+    }
 
     .layout-box .hb-7 {
         height: 1000px; /*+335px*/
@@ -688,3 +701,9 @@ line-height: 53px; background: url(../Images/green-circle.png) center center no-
         height: 445px; /*+140px*/
     }
 }
+
+/*----------------------- Anirban 09-03-16 ----------------*/
+.login-marchent{ float:none !important; margin: 15px auto !important; }
+
+.marchent-logo{ width:418px; height:auto; float: none; margin: 25px auto;  overflow: hidden; }
+.marchent-logo img{ width:100%; height: auto; }

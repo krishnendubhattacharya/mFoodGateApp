@@ -26,6 +26,7 @@ app.constant('JS_REQUIRES', {
         'sample':['app/Controllers/sampleCtrl.js'],
         'allvoucher':['app/Controllers/allvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
         'bidderlist':['app/Controllers/bidderlistCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'setting':['app/Controllers/settingCtrl.js','app/Controllers/leftbarCtrl.js'],
         'giftvoucher':['app/Controllers/giftvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
         'mypoints':['app/Controllers/mypointsCtrl.js','app/Controllers/leftbarCtrl.js'],
         'voucherdetail':['app/Controllers/voucherdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
@@ -37,6 +38,10 @@ app.constant('JS_REQUIRES', {
             ],
         'adminlogin':['app/Controllers/admin/loginCtrl.js'],
         'categorylist':['app/Controllers/admin/categorylistCtrl.js'],
+        'merchanthome':['app/Controllers/merchanthomeCtrl.js'],
+        'merchantlogin':['app/Controllers/merchantloginCtrl.js'],
+        'merchantprofile':['app/Controllers/merchantprofileCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'merchantoffer':['app/Controllers/merchantofferCtrl.js','app/Controllers/leftbarCtrl.js'],
     },
 
     //*** angularJS Modules

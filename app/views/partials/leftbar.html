@@ -9,7 +9,27 @@
 				</form>
 		</div>
 		<ul>
-			<li><a href=""><i class="fa fa-gear"></i> Setting</a></li>
+			<li ng-if="loggedindetails.user_type_id == 2"><a ui-sref="frontend.setting"><i class="fa fa-gear"></i> Setting</a></li>
+			<li ng-if="loggedindetails.user_type_id == 2"><a ui-sref="frontend.changepassword"><i class="fa fa-lock"></i> Change Password</a></li>
+			<li ng-if="loggedindetails.user_type_id == 2"><a ui-sref="frontend.profile"><i class="fa fa-user"></i> Change Profile</a></li>
+			<li ng-if="loggedindetails.user_type_id == 2"><a ui-sref="frontend.allvoucher"><i class="fa fa-user"></i> Voucher</a></li>
+			<li ng-if="loggedindetails.user_type_id == 2"><a ui-sref="frontend.bidvoucher"><i class="fa fa-user"></i> Resell Voucher</a></li>
+			<!--<li ng-if="loggedindetails.user_type_id == 2"><a ui-sref="frontend.mypoints"><i class="fa fa-user"></i> My Points</a></li>-->
+			<!--<li ui-sref-active="active"><a ui-sref="frontend.allvoucher"><i class="fa fa-user"></i> Resell Voucher</a></li>-->
+
+			<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantprofile"><i class="fa fa-user"></i> Change Profile</a></li>
+			<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantoffer"><i class="fa fa-user"></i> My Offer</a></li>
+
+		</ul>
+
+	</div>
+
+	<div class="m-left-panel tablet-hide">
+		<div class="profile-img">
+			<img src="app/assets/Images/default-profile.png" width="100%" height="auto"  alt=""/>
+		</div>
+		<ul ng-if="loggedindetails.user_type_id == 2">
+			<li><a ui-sref="frontend.setting"><i class="fa fa-gear"></i> Setting</a></li>
 			<li><a ui-sref="frontend.changepassword"><i class="fa fa-lock"></i> Change Password</a></li>
 			<li><a ui-sref="frontend.profile"><i class="fa fa-user"></i> Change Profile</a></li>
 			<li><a ui-sref="frontend.allvoucher"><i class="fa fa-user"></i> Voucher</a></li>
@@ -17,18 +37,14 @@
 			<li><a ui-sref="frontend.mypoints"><i class="fa fa-user"></i> My Points</a></li>
 			<!--<li ui-sref-active="active"><a ui-sref="frontend.allvoucher"><i class="fa fa-user"></i> Resell Voucher</a></li>-->
 		</ul>
-	</div>
-
-	<div class="m-left-panel tablet-hide">
-		<div class="profile-img">
-			<img src="app/assets/Images/default-profile.png" width="100%" height="auto"  alt=""/>
-		</div>
-		<ul>
-			<li><a href=""><i class="fa fa-gear"></i>Setting</a></li>
+		<ul ng-if="loggedindetails.user_type_id == 3">
+			<li><a ui-sref="frontend.setting"><i class="fa fa-gear"></i> Setting</a></li>
 			<li><a ui-sref="frontend.changepassword"><i class="fa fa-lock"></i> Change Password</a></li>
 			<li><a ui-sref="frontend.profile"><i class="fa fa-user"></i> Change Profile</a></li>
-			<li><a ui-sref="frontend.allvoucher"><i class="fa fa-user"></i> Voucher</a></li>
-			<!--<li><a href="bidvoucher"><i class="fa fa-user"></i> Resell Voucher</a></li>-->
+			<li><a ui-sref="frontend.allvoucher"><i class="fa fa-user"></i> My Offer</a></li>
+			<!--<li><a ui-sref="frontend.bidvoucher"><i class="fa fa-user"></i> Resell Voucher</a></li>
+			<li><a ui-sref="frontend.mypoints"><i class="fa fa-user"></i> My Points</a></li>-->
+			<!--<li ui-sref-active="active"><a ui-sref="frontend.allvoucher"><i class="fa fa-user"></i> Resell Voucher</a></li>-->
 		</ul>
 	</div>
 </div>

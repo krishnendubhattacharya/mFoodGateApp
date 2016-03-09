@@ -17,13 +17,14 @@
         <div class="category-left">
             <h1>Browse Categories</h1>
             <ul>
-                <li><a href="">Chinese Food (28)</a></li>
-                <li><a href="">Western Food (39)</a></li>
+                <li ng-repeat="catdetail in catInfo"><a href="">{{catdetail.name}}</a></li>
+
+                <!--<li><a href="">Western Food (39)</a></li>
                 <li><a href="">Indonesian Food (108)</a></li>
                 <li><a href="">Japanese Food (65)</a></li>
                 <li><a href="">Warong Kopi (27)</a></li>
                 <li><a href="">Food Court (8)</a></li>
-                <li><a href="">All Restaurants (280)</a></li>
+                <li><a href="">All Restaurants (280)</a></li>-->
             </ul>
         </div>
     </div>

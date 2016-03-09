@@ -23,10 +23,8 @@ body#mfoodmain{
 .dx-toolbar-item-content{ width: 100% !important;}
 .dx-toolbar-center{ width: 100% !important; margin: 0 !important;}
 
-.mobile-header{
-    /* position: fixed;
-     z-index:3;
-     background: url(../Images/h-bg-mobile.png) left top repeat-x;*/
+/*.mobile-header{
+
     top: 0;
     height: 52px;
     width: 94%;
@@ -39,6 +37,40 @@ body#mfoodmain{
 }
 .mobile-header .m-logo{ width:173px; height:17px; float: left;}
 .mobile-header .m-top-link{ width:14px; height: 14px; float: right; margin-right:12px;}
+.mobile-header .m-top-link .search{ width: 14px; height: 18px; float: left; }
+.mobile-header .m-top-link .cat-menu{ width:16px; height: 14px; float: right; }
+.dashboard-mobile-header h1{
+    font-family:'Segoe UI Light', 'Helvetica Neue Light', 'Segoe UI', 'Helvetica Neue', 'Trebuchet MS', Verdana;
+    color: #d8dadd;
+    font-size: 25px;
+    vertical-align:middle;
+}*/
+/*.mobile-header{
+    position: fixed;
+    z-index:3;
+    background: url(../Images/h-bg-mobile.png) left top repeat-x;
+    top: 0;
+    height: 52px;
+    width: 100%;
+    text-align: left;
+    padding: 18px 0 14px 12px !important;
+    overflow: hidden;
+    box-sizing: border-box;
+}*/
+.mobile-header{
+    position: fixed;
+    z-index:3;
+    background: url(../Images/h-bg-mobile.png) left top repeat-x;
+    /*top: 0;*/
+    height: 52px;
+    width: 100%;
+    text-align: left;
+    padding: 18px 0 14px 12px !important;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.mobile-header .m-logo{ width:173px; height:17px; float: left;}
+.mobile-header .m-top-link{ width:42px; height: 14px; float: right; margin-right:12px;}
 .mobile-header .m-top-link .search{ width: 14px; height: 18px; float: left; }
 .mobile-header .m-top-link .cat-menu{ width:16px; height: 14px; float: right; }
 .dashboard-mobile-header h1{
@@ -270,7 +302,8 @@ body#mfoodmain{
 .m-banner{margin:0}
 .m-ads-banner{overflow: hidden;height:41px}
 
-.m-promo{width:100%;height: auto;overflow: hidden;background:#fff}
+/*.m-promo{width:100%;height: auto;overflow: hidden;background:#fff}*/
+.m-promo{width:100%;height: auto;overflow: hidden;background:#fff; margin-top: 10px;}
 .m-promo-heading{display: block;color:#3b3b3b;font-size:18px;line-height:32px;text-indent:10px}
 .m-pro-item{position: relative;}
 .m-pro-item img{ width:100%; height: auto;}

@@ -15,7 +15,9 @@
     <base href="http://107.170.152.166/mFood/">
 
 
-    <script type="text/javascript" src="bower_components/devextreme/jquery-2.1.1.min.js"></script>
+    <!--<script type="text/javascript" src="bower_components/devextreme/jquery-2.1.1.min.js"></script>-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
     <script type="text/javascript" src="bower_components/devextreme/angular.js"></script>
     <script type="text/javascript" src="bower_components/devextreme/angular-sanitize.js"></script>
     <script type="text/javascript" src="bower_components/devextreme/globalize.min.js"></script>
@@ -27,6 +29,9 @@
     <link rel="stylesheet" type="text/css" href="app/assets/css/reset.css" />
     <link rel="stylesheet" href="app/assets/css/dx.common.css" />
     <link rel="stylesheet" href="app/assets/css/dx.light.css" />
+    <link rel="stylesheet" href="app/assets/css/index.css" />
+    <link rel="stylesheet" href="app/assets/css/menu.css" />
+
 
     <link rel="stylesheet" type="text/css" href="app/assets/css/site.css" media="screen and (min-width: 740px)" />
     <!--[if lt IE 9]>
@@ -74,7 +79,7 @@
 
 <toast></toast>
 
-<div class="slideout-container tablet-hide">
+<!--<div class="slideout-container tablet-hide">
     <div dx-slide-out="{
         dataSource: data1,
 		onItemClick: showMenu,
@@ -87,7 +92,7 @@
         <div data-options="dxTemplate: { name: 'item' }">
             <div dx-toolbar="{ dataSource: $parent.toolbarItems }">
                 <div data-options="dxTemplate: { name: 'title' }">
-                    <!--<p>{{$parent.text}}</p>-->
+                    <!--<p>{{$parent.text}}</p>
                     <div class="mobile-header">
                     <div class="m-logo"><img src="app/assets/Images/m-logo.png" width="173" height="17"  alt=""/></div>
                         <div class="m-top-link">
@@ -110,14 +115,21 @@
 						}
 				    }"></div>
                 </div>
-            </div>-->
+            </div>
             <div ui-view id="app"></div>
         </div>
 
     </div>
-</div>
+</div>-->
 
-<div ui-view id="app" class="phone-hide"></div>
+
+
+
+<div ui-view id="app"></div>
+
+
+
+<div class="screen-size"></div>
 
 
 
@@ -158,6 +170,44 @@
 
 <script>
 
+
+    function menuClick()
+    {
+        var $body = $( 'body' ),
+                $page = $( '#page' ),
+                $menu = $( '#menu' ),
+
+        /* Cross browser support for CSS "transition end" event */
+                transitionEnd = 'transitionend webkitTransitionEnd otransitionend MSTransitionEnd';
+
+        /* When the toggle menu link is clicked, animation starts */
+        $body.addClass( 'animating' );
+
+        /***
+         * Determine the direction of the animation and
+         * add the correct direction class depending
+         * on whether the menu was already visible.
+         */
+        if ( $body.hasClass( 'menu-visible' ) ) {
+            $body.addClass( 'right' );
+        } else {
+            $body.addClass( 'left' );
+        }
+
+        /***
+         * When the animation (technically a CSS transition)
+         * has finished, remove all animating classes and
+         * either add or remove the "menu-visible" class
+         * depending whether it was visible or not previously.
+         */
+        $page.on( transitionEnd, function() {
+            $body
+                    .removeClass( 'animating left right' )
+                    .toggleClass( 'menu-visible' );
+
+            $page.off( transitionEnd );
+        } );
+    }
 </script>
 </body>
 </html>

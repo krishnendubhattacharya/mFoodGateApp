@@ -1,10 +1,14 @@
 <!--Web header-->
-<div ng-controller="loginCtrl">
+<div ng-controller="merchantloginCtrl">
     <div class="container">
+        <div class="marchent-logo">
+            <img src="app/assets/Images/logo.jpg" alt=""/>
+
+        </div>
         <div class="login-section phone-hide">
-            <div class="img-box"><img src="app/assets/Images/login-bg.jpg" width="634" height="467"  alt=""/></div>
-            <div class="login-box">
-                <h2>Sign In</h2>
+            <!--<div class="img-box"><img src="app/assets/Images/login-bg.jpg" width="634" height="467"  alt=""/></div>-->
+            <div class="login-box login-marchent">
+                <h2>Merchant Login </h2>
                 <!--<form ng-submit="Login()">
                 <ul>
                     <li>
@@ -45,20 +49,20 @@
                         <!--<div id="summary" dx-validation-summary="{ }"></div>-->
                     <ul>
                         <li>
+                            <p><input type="checkbox"> Remember me                   <span style="float: right;"><a href="javascript:;">Forgot your password?</a></span></p>
+
+                        </li>
+                        <li>
                             <div id="button" dx-button="{
                                 text: 'Login',
                                 type: 'success',
                                 onClick: validateAndSubmit }" ></div>
                         </li>
-                        <p style="border-bottom: solid 1px #ccc;"></p>
+
                     </ul>
                 </div>
 
-                <div class="social">
-                    <span><img src="app/assets/Images/f-icon.png" width="43" height="43"  alt="" ng-click="fbsignuser()"/></span>
-                    <span><img src="app/assets/Images/g-icon.png" width="43" height="43"  alt="" /></span>
-                    <!--<img src="app/assets/Images/p-icon.png" width="43" height="43"  alt=""/>-->
-                </div>
+
             </div>
         </div>
     </div>
