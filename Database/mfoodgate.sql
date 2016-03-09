@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 02, 2016 at 12:18 PM
+-- Generation Time: Mar 09, 2016 at 03:02 PM
 -- Server version: 5.5.44-MariaDB
 -- PHP Version: 5.4.16
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `category`
 --
 
+DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -38,11 +39,11 @@ CREATE TABLE IF NOT EXISTS `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `parent_id`, `is_active`) VALUES
-(1, 'resturant_1', 0, 0),
-(2, 'resturant_2', 0, 1),
-(3, 'abc', 0, 0),
-(5, 'dfgddrg', 0, 0),
-(7, 'fgbddgttr', 0, 1);
+(1, 'Chinese Food', 0, 1),
+(2, 'Western Food', 0, 1),
+(3, 'Indonesian Food', 0, 1),
+(5, 'Japanese Food', 0, 1),
+(7, 'Warong Kopi', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -50,6 +51,7 @@ INSERT INTO `category` (`id`, `name`, `parent_id`, `is_active`) VALUES
 -- Table structure for table `coupons`
 --
 
+DROP TABLE IF EXISTS `coupons`;
 CREATE TABLE IF NOT EXISTS `coupons` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -73,6 +75,7 @@ INSERT INTO `coupons` (`id`, `user_id`, `title`, `short_des`, `discount_percent`
 -- Table structure for table `offers`
 --
 
+DROP TABLE IF EXISTS `offers`;
 CREATE TABLE IF NOT EXISTS `offers` (
   `id` int(11) NOT NULL,
   `created_on` datetime DEFAULT NULL,
@@ -86,16 +89,24 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `image` varchar(500) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `merchant_id` int(11) DEFAULT NULL,
-  `restaurant_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `restaurant_id` int(11) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `lat` varchar(255) DEFAULT NULL,
+  `lng` varchar(255) DEFAULT NULL,
+  `is_featured` tinyint(1) NOT NULL DEFAULT '0',
+  `buy_count` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `offers`
 --
 
-INSERT INTO `offers` (`id`, `created_on`, `title`, `description`, `price`, `offer_price`, `offer_percent`, `offer_from_date`, `offer_to_date`, `image`, `is_active`, `merchant_id`, `restaurant_id`) VALUES
-(1, '2016-02-25 00:00:00', 'test', 'aabbccdd', 23.00, 20.00, 10.00, '2016-02-26 00:00:00', '2016-03-10 00:00:00', '', 1, 3, 1),
-(2, '2016-02-25 00:00:00', 'another', 'sdfb', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-07 00:00:00', '', 1, 3, 1);
+INSERT INTO `offers` (`id`, `created_on`, `title`, `description`, `price`, `offer_price`, `offer_percent`, `offer_from_date`, `offer_to_date`, `image`, `is_active`, `merchant_id`, `restaurant_id`, `location`, `lat`, `lng`, `is_featured`, `buy_count`, `category_id`) VALUES
+(1, '2016-02-25 00:00:00', 'offer 1', 'aabbccdd', 23.00, 20.00, 10.00, '2016-02-26 00:00:00', '2016-03-16 00:00:00', '', 1, 3, 1, 'Kolkata', '22.5667', '88.3667', 1, 3, 1),
+(2, '2016-02-25 00:00:00', 'offer 2', 'sdfb', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-17 00:00:00', '', 1, 3, 1, 'Mumbai', '18.9750', '72.8258', 1, 2, 1),
+(3, '2016-02-25 00:00:00', 'offer 3', 'sdfb', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-15 00:00:00', '', 1, 3, 1, 'Kolkata', '22.5667', '88.3667', 0, 2, 2),
+(4, '2016-02-25 00:00:00', 'offer 4', 'sdfb', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-16 00:00:00', '', 1, 3, 1, 'Kolkata', '22.5667', '88.3667', 0, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -103,6 +114,7 @@ INSERT INTO `offers` (`id`, `created_on`, `title`, `description`, `price`, `offe
 -- Table structure for table `offer_images`
 --
 
+DROP TABLE IF EXISTS `offer_images`;
 CREATE TABLE IF NOT EXISTS `offer_images` (
   `id` int(11) NOT NULL,
   `offer_id` int(11) NOT NULL,
@@ -116,6 +128,7 @@ CREATE TABLE IF NOT EXISTS `offer_images` (
 -- Table structure for table `points`
 --
 
+DROP TABLE IF EXISTS `points`;
 CREATE TABLE IF NOT EXISTS `points` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -126,14 +139,15 @@ CREATE TABLE IF NOT EXISTS `points` (
   `type` enum('D','C') NOT NULL DEFAULT 'D' COMMENT '''D'' - Debit, ''C'' - Credit',
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `expire_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `points`
 --
 
 INSERT INTO `points` (`id`, `user_id`, `voucher_id`, `old_points`, `new_points`, `points`, `type`, `date`, `expire_date`) VALUES
-(1, 4, 0, 0, 10, 10, 'C', '2016-03-02 10:35:55', '2016-03-31 04:00:00');
+(1, 4, 0, 0, 10, 10, 'C', '2016-03-02 10:35:55', '2016-03-31 04:00:00'),
+(2, 4, 0, 0, 10, 10, 'C', '2016-03-02 10:35:55', '2016-03-07 05:00:00');
 
 -- --------------------------------------------------------
 
@@ -141,6 +155,7 @@ INSERT INTO `points` (`id`, `user_id`, `voucher_id`, `old_points`, `new_points`,
 -- Table structure for table `restaurant_details`
 --
 
+DROP TABLE IF EXISTS `restaurant_details`;
 CREATE TABLE IF NOT EXISTS `restaurant_details` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -162,6 +177,7 @@ INSERT INTO `restaurant_details` (`id`, `user_id`, `title`, `logo`, `address`) V
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL,
   `first_name` varchar(255) DEFAULT NULL,
@@ -181,20 +197,26 @@ CREATE TABLE IF NOT EXISTS `users` (
   `fb_id` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
-  `about_me` text
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `about_me` text,
+  `media_notification` tinyint(1) NOT NULL DEFAULT '0',
+  `expire_date_notification` tinyint(1) NOT NULL DEFAULT '0',
+  `promo_notification` tinyint(1) NOT NULL DEFAULT '0',
+  `news_letter_notification` tinyint(1) NOT NULL DEFAULT '0',
+  `address` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `merchant_name`, `email`, `username`, `password`, `txt_pwd`, `registration_date`, `is_active`, `user_type_id`, `is_logged_in`, `last_login`, `unique_code`, `is_social_login`, `fb_id`, `image`, `phone`, `about_me`) VALUES
-(1, 'admin', 'admin', 'abc', 'admin', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-12 09:02:28', 1, 1, 0, '2016-03-02 07:03:56', NULL, 0, NULL, NULL, NULL, NULL),
-(2, NULL, NULL, NULL, 'nits.anup1@gmail.com', NULL, '827ccb0eea8a706c4c34a16891f84e7b', '12345', '2016-02-15 10:02:57', 1, 3, 0, '2016-02-16 12:02:45', '123', 0, NULL, NULL, NULL, NULL),
-(3, NULL, NULL, NULL, 'nits.krishnendu@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-15 11:02:06', 1, 3, 0, NULL, NULL, 0, NULL, NULL, NULL, NULL),
-(4, 'Anup', 'Chakraborty', NULL, 'nits.anup@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-16 12:02:27', 1, 2, 0, '2016-03-02 09:03:34', '1455626727299005', 0, NULL, '1456900270690476_232_RL_product.jpg', '968745', 'abcd'),
-(6, 'Rahul', 'Roy', NULL, 'nits.santanu@gmail.com', NULL, NULL, NULL, '2016-02-22 03:02:46', 1, 2, 0, '2016-02-29 12:02:54', '1456156186779391', 0, '1670701249873793', '1456745423267591_134_man1.jpg', NULL, NULL),
-(9, 'Arup', 'Chakraborty', 'a', 'nits.sarojkumar@gmail.com', 'saroj', 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-25 08:02:26', 0, 2, 0, NULL, '1456387586434984', 0, NULL, NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `merchant_name`, `email`, `username`, `password`, `txt_pwd`, `registration_date`, `is_active`, `user_type_id`, `is_logged_in`, `last_login`, `unique_code`, `is_social_login`, `fb_id`, `image`, `phone`, `about_me`, `media_notification`, `expire_date_notification`, `promo_notification`, `news_letter_notification`, `address`) VALUES
+(1, 'admin', 'admin', 'abc', 'admin', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-12 09:02:28', 1, 1, 0, '2016-03-09 02:03:36', NULL, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, ''),
+(2, NULL, NULL, NULL, 'nits.anup1@gmail.com', NULL, '827ccb0eea8a706c4c34a16891f84e7b', '12345', '2016-02-15 10:02:57', 1, 3, 0, '2016-02-16 12:02:45', '123', 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, ''),
+(3, 'krish', NULL, 'abcd', 'nits.krishnendu@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-15 11:02:06', 1, 3, 0, '2016-03-09 02:03:54', NULL, 0, NULL, '1457524492160540_231_RL_product.jpg', '3698745221', 'test', 0, 0, 0, 0, 'kolkata'),
+(4, 'Anup', 'Chakraborty', NULL, 'nits.anup@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-16 12:02:27', 1, 2, 0, '2016-03-09 02:03:19', '1455626727299005', 0, NULL, '1456900270690476_232_RL_product.jpg', '968745', 'abcd', 0, 0, 0, 0, ''),
+(6, 'Rahul', 'Roy', NULL, 'nits.santanu@gmail.com', NULL, NULL, NULL, '2016-02-22 03:02:46', 1, 2, 0, '2016-02-29 12:02:54', '1456156186779391', 0, '1670701249873793', '1456745423267591_134_man1.jpg', NULL, NULL, 0, 0, 0, 0, ''),
+(9, 'Arup', 'Chakraborty', 'a', 'nits.sarojkumar@gmail.com', 'saroj', 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-25 08:02:26', 0, 2, 0, NULL, '1456387586434984', 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, ''),
+(15, NULL, NULL, NULL, 'nits.ananya15@gmail.com', NULL, '827ccb0eea8a706c4c34a16891f84e7b', '12345', '2016-03-03 06:03:52', 1, 2, 0, '2016-03-03 08:03:57', '1456987192653171', 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -202,6 +224,7 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `merchant_name`, `email`, 
 -- Table structure for table `user_types`
 --
 
+DROP TABLE IF EXISTS `user_types`;
 CREATE TABLE IF NOT EXISTS `user_types` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
@@ -222,6 +245,7 @@ INSERT INTO `user_types` (`id`, `name`) VALUES
 -- Table structure for table `vouchers`
 --
 
+DROP TABLE IF EXISTS `vouchers`;
 CREATE TABLE IF NOT EXISTS `vouchers` (
   `id` bigint(20) NOT NULL,
   `offer_id` int(11) NOT NULL,
@@ -242,8 +266,8 @@ CREATE TABLE IF NOT EXISTS `vouchers` (
 --
 
 INSERT INTO `vouchers` (`id`, `offer_id`, `created_on`, `view_id`, `price`, `offer_price`, `offer_percent`, `from_date`, `to_date`, `is_used`, `is_active`, `user_id`) VALUES
-(1, 1, '2016-02-26 00:00:00', 'vch0001', 23.00, 20.00, 10.00, '2016-02-24 00:00:00', '2016-03-10 00:00:00', 0, 1, 4),
-(2, 2, '2016-02-26 00:00:00', 'vch0002', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-07 00:00:00', 0, 1, 4);
+(1, 1, '2016-02-26 00:00:00', 'vch0001', 23.00, 20.00, 10.00, '2016-02-24 00:00:00', '2016-03-16 00:00:00', 0, 1, 4),
+(2, 2, '2016-02-26 00:00:00', 'vch0002', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-15 00:00:00', 0, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -251,6 +275,7 @@ INSERT INTO `vouchers` (`id`, `offer_id`, `created_on`, `view_id`, `price`, `off
 -- Table structure for table `voucher_bids`
 --
 
+DROP TABLE IF EXISTS `voucher_bids`;
 CREATE TABLE IF NOT EXISTS `voucher_bids` (
   `id` int(11) NOT NULL,
   `voucher_id` int(11) DEFAULT NULL,
@@ -260,17 +285,18 @@ CREATE TABLE IF NOT EXISTS `voucher_bids` (
   `is_accepted` tinyint(1) NOT NULL DEFAULT '0',
   `m_points` varchar(255) DEFAULT NULL,
   `is_active` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `voucher_bids`
 --
 
 INSERT INTO `voucher_bids` (`id`, `voucher_id`, `user_id`, `bid_price`, `voucher_resale_id`, `is_accepted`, `m_points`, `is_active`) VALUES
-(1, 1, 2, 555, 1, 0, NULL, 1),
+(1, 1, 2, 555, 1, 1, NULL, 1),
 (3, 1, 9, 825, 1, 0, NULL, 1),
 (4, 1, 4, 2250, 1, 0, NULL, 1),
-(5, 1, 6, 2250, 1, 0, '110', 1);
+(5, 1, 6, 2250, 2, 0, '110', 1),
+(6, 1, 4, 23, 2, 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -278,17 +304,29 @@ INSERT INTO `voucher_bids` (`id`, `voucher_id`, `user_id`, `bid_price`, `voucher
 -- Table structure for table `voucher_owner`
 --
 
+DROP TABLE IF EXISTS `voucher_owner`;
 CREATE TABLE IF NOT EXISTS `voucher_owner` (
   `id` int(11) NOT NULL,
   `offer_id` int(11) NOT NULL,
   `voucher_id` int(11) NOT NULL,
-  `voucher_view_id` int(11) NOT NULL,
+  `voucher_view_id` varchar(255) NOT NULL,
   `from_user_id` int(11) NOT NULL,
   `to_user_id` int(11) NOT NULL,
   `purchased_date` datetime NOT NULL,
   `sold_date` datetime NOT NULL,
-  `is_active` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `is_active` tinyint(1) NOT NULL,
+  `price` double(10,2) DEFAULT NULL,
+  `offer_price` double(10,2) NOT NULL,
+  `offer_percent` double(10,2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `voucher_owner`
+--
+
+INSERT INTO `voucher_owner` (`id`, `offer_id`, `voucher_id`, `voucher_view_id`, `from_user_id`, `to_user_id`, `purchased_date`, `sold_date`, `is_active`, `price`, `offer_price`, `offer_percent`) VALUES
+(1, 1, 1, 'vch0001', 3, 4, '2016-02-24 00:00:00', '2016-03-07 01:06:34', 0, 23.00, 20.00, 10.00),
+(2, 1, 1, 'vch0001', 3, 4, '2016-03-07 01:06:34', '0000-00-00 00:00:00', 1, 200.00, 0.00, 0.00);
 
 -- --------------------------------------------------------
 
@@ -296,6 +334,7 @@ CREATE TABLE IF NOT EXISTS `voucher_owner` (
 -- Table structure for table `voucher_resales`
 --
 
+DROP TABLE IF EXISTS `voucher_resales`;
 CREATE TABLE IF NOT EXISTS `voucher_resales` (
   `id` int(11) NOT NULL,
   `voucher_id` int(11) NOT NULL,
@@ -306,15 +345,16 @@ CREATE TABLE IF NOT EXISTS `voucher_resales` (
   `created_on` datetime NOT NULL,
   `sold_on` datetime NOT NULL,
   `is_active` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `voucher_resales`
 --
 
 INSERT INTO `voucher_resales` (`id`, `voucher_id`, `price`, `points`, `user_id`, `is_sold`, `created_on`, `sold_on`, `is_active`) VALUES
-(1, 1, 662.00, 0, 4, 0, '2016-03-01 10:03:54', '0000-00-00 00:00:00', 1),
-(2, 1, 662.00, 0, 5, 0, '2016-03-01 10:03:54', '0000-00-00 00:00:00', 1);
+(1, 1, 662.00, 0, 4, 1, '2016-03-01 10:03:54', '2016-03-07 01:06:34', 1),
+(2, 1, 662.00, 0, 5, 0, '2016-03-01 10:03:54', '0000-00-00 00:00:00', 1),
+(3, 2, 369.00, 0, 4, 0, '2016-03-03 11:03:39', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -322,6 +362,7 @@ INSERT INTO `voucher_resales` (`id`, `voucher_id`, `price`, `points`, `user_id`,
 -- Table structure for table `wine`
 --
 
+DROP TABLE IF EXISTS `wine`;
 CREATE TABLE IF NOT EXISTS `wine` (
   `id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
@@ -451,7 +492,7 @@ ALTER TABLE `coupons`
 -- AUTO_INCREMENT for table `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `offer_images`
 --
@@ -461,7 +502,7 @@ ALTER TABLE `offer_images`
 -- AUTO_INCREMENT for table `points`
 --
 ALTER TABLE `points`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `restaurant_details`
 --
@@ -471,7 +512,7 @@ ALTER TABLE `restaurant_details`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `user_types`
 --
@@ -486,17 +527,17 @@ ALTER TABLE `vouchers`
 -- AUTO_INCREMENT for table `voucher_bids`
 --
 ALTER TABLE `voucher_bids`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `voucher_owner`
 --
 ALTER TABLE `voucher_owner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `voucher_resales`
 --
 ALTER TABLE `voucher_resales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `wine`
 --
