@@ -65,7 +65,7 @@ app.controller('merchantloginCtrl', function ($rootScope, $scope, $http, $locati
                     if(data.user_details.is_logged_in == 1){
                         $location.path('admin/home');
                     }else {
-                        $location.path('/');
+                        $location.path('/merchantprofile');
                     }
                     DevExpress.ui.notify({
                         message: message,
