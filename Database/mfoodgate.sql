@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 09, 2016 at 03:02 PM
+-- Generation Time: Mar 10, 2016 at 03:45 PM
 -- Server version: 5.5.44-MariaDB
 -- PHP Version: 5.4.16
 
@@ -82,11 +82,11 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `price` double(10,2) NOT NULL,
-  `offer_price` double(10,2) NOT NULL,
+  `offer_price` double(10,2) DEFAULT NULL,
   `offer_percent` double(10,2) NOT NULL,
   `offer_from_date` datetime NOT NULL,
   `offer_to_date` datetime NOT NULL,
-  `image` varchar(500) NOT NULL,
+  `image` varchar(500) DEFAULT NULL,
   `is_active` tinyint(1) NOT NULL,
   `merchant_id` int(11) DEFAULT NULL,
   `restaurant_id` int(11) DEFAULT NULL,
@@ -95,18 +95,20 @@ CREATE TABLE IF NOT EXISTS `offers` (
   `lng` varchar(255) DEFAULT NULL,
   `is_featured` tinyint(1) NOT NULL DEFAULT '0',
   `buy_count` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `category_id` int(11) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `offers`
 --
 
-INSERT INTO `offers` (`id`, `created_on`, `title`, `description`, `price`, `offer_price`, `offer_percent`, `offer_from_date`, `offer_to_date`, `image`, `is_active`, `merchant_id`, `restaurant_id`, `location`, `lat`, `lng`, `is_featured`, `buy_count`, `category_id`) VALUES
-(1, '2016-02-25 00:00:00', 'offer 1', 'aabbccdd', 23.00, 20.00, 10.00, '2016-02-26 00:00:00', '2016-03-16 00:00:00', '', 1, 3, 1, 'Kolkata', '22.5667', '88.3667', 1, 3, 1),
-(2, '2016-02-25 00:00:00', 'offer 2', 'sdfb', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-17 00:00:00', '', 1, 3, 1, 'Mumbai', '18.9750', '72.8258', 1, 2, 1),
-(3, '2016-02-25 00:00:00', 'offer 3', 'sdfb', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-15 00:00:00', '', 1, 3, 1, 'Kolkata', '22.5667', '88.3667', 0, 2, 2),
-(4, '2016-02-25 00:00:00', 'offer 4', 'sdfb', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-16 00:00:00', '', 1, 3, 1, 'Kolkata', '22.5667', '88.3667', 0, 2, 2);
+INSERT INTO `offers` (`id`, `created_on`, `title`, `description`, `price`, `offer_price`, `offer_percent`, `offer_from_date`, `offer_to_date`, `image`, `is_active`, `merchant_id`, `restaurant_id`, `location`, `lat`, `lng`, `is_featured`, `buy_count`, `category_id`, `city`) VALUES
+(1, '2016-02-25 00:00:00', 'offer 1', 'aabbccdd', 23.00, 20.00, 10.00, '2016-02-26 00:00:00', '2016-03-16 00:00:00', '', 1, 3, 1, 'Kolkata', '22.5667', '88.3667', 1, 3, 1, NULL),
+(2, '2016-02-25 00:00:00', 'offer 2', 'sdfb', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-17 00:00:00', '', 1, 3, 1, 'Mumbai', '18.9750', '72.8258', 1, 2, 1, NULL),
+(3, '2016-02-25 00:00:00', 'offer 3', 'sdfb', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-15 00:00:00', '', 1, 3, 1, 'Kolkata', '22.5667', '88.3667', 0, 2, 2, NULL),
+(4, '2016-02-25 00:00:00', 'offer 4', 'sdfb', 50.00, 45.00, 10.00, '2016-02-26 00:00:00', '2016-03-16 00:00:00', '', 1, 3, 1, 'Kolkata', '22.5667', '88.3667', 0, 2, 2, NULL),
+(7, '2016-03-10 02:03:07', 'abcd', 'test', 369.00, NULL, 10.00, '2016-03-10 00:00:00', '2016-03-22 00:00:00', NULL, 1, 3, NULL, 'kolkata', NULL, NULL, 0, NULL, 1, 'kolkata');
 
 -- --------------------------------------------------------
 
@@ -119,8 +121,17 @@ CREATE TABLE IF NOT EXISTS `offer_images` (
   `id` int(11) NOT NULL,
   `offer_id` int(11) NOT NULL,
   `image` varchar(500) NOT NULL,
-  `position` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `position` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `offer_images`
+--
+
+INSERT INTO `offer_images` (`id`, `offer_id`, `image`, `position`) VALUES
+(1, 2, '1457623026317684_231_RL_product.jpg', NULL),
+(2, 2, '1457624201219497_g-icon.png', NULL),
+(3, 2, '1457624219245187_2_2_leftbottom_corner.png', NULL);
 
 -- --------------------------------------------------------
 
@@ -212,8 +223,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `merchant_name`, `email`, `username`, `password`, `txt_pwd`, `registration_date`, `is_active`, `user_type_id`, `is_logged_in`, `last_login`, `unique_code`, `is_social_login`, `fb_id`, `image`, `phone`, `about_me`, `media_notification`, `expire_date_notification`, `promo_notification`, `news_letter_notification`, `address`) VALUES
 (1, 'admin', 'admin', 'abc', 'admin', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-12 09:02:28', 1, 1, 0, '2016-03-09 02:03:36', NULL, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, ''),
 (2, NULL, NULL, NULL, 'nits.anup1@gmail.com', NULL, '827ccb0eea8a706c4c34a16891f84e7b', '12345', '2016-02-15 10:02:57', 1, 3, 0, '2016-02-16 12:02:45', '123', 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, ''),
-(3, 'krish', NULL, 'abcd', 'nits.krishnendu@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-15 11:02:06', 1, 3, 0, '2016-03-09 02:03:54', NULL, 0, NULL, '1457524492160540_231_RL_product.jpg', '3698745221', 'test', 0, 0, 0, 0, 'kolkata'),
-(4, 'Anup', 'Chakraborty', NULL, 'nits.anup@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-16 12:02:27', 1, 2, 0, '2016-03-09 02:03:19', '1455626727299005', 0, NULL, '1456900270690476_232_RL_product.jpg', '968745', 'abcd', 0, 0, 0, 0, ''),
+(3, 'krish', NULL, 'abcd', 'nits.krishnendu@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-15 11:02:06', 1, 3, 0, '2016-03-10 12:03:56', NULL, 0, NULL, '1457524492160540_231_RL_product.jpg', '3698745221', 'test', 0, 0, 0, 0, 'kolkata'),
+(4, 'Anup', 'Chakraborty', NULL, 'nits.anup@gmail.com', NULL, 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-16 12:02:27', 1, 2, 0, '2016-03-09 03:03:47', '1455626727299005', 0, NULL, '1456900270690476_232_RL_product.jpg', '968745', 'abcd', 0, 0, 0, 0, ''),
 (6, 'Rahul', 'Roy', NULL, 'nits.santanu@gmail.com', NULL, NULL, NULL, '2016-02-22 03:02:46', 1, 2, 0, '2016-02-29 12:02:54', '1456156186779391', 0, '1670701249873793', '1456745423267591_134_man1.jpg', NULL, NULL, 0, 0, 0, 0, ''),
 (9, 'Arup', 'Chakraborty', 'a', 'nits.sarojkumar@gmail.com', 'saroj', 'e10adc3949ba59abbe56e057f20f883e', '123456', '2016-02-25 08:02:26', 0, 2, 0, NULL, '1456387586434984', 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, ''),
 (15, NULL, NULL, NULL, 'nits.ananya15@gmail.com', NULL, '827ccb0eea8a706c4c34a16891f84e7b', '12345', '2016-03-03 06:03:52', 1, 2, 0, '2016-03-03 08:03:57', '1456987192653171', 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '');
@@ -492,12 +503,12 @@ ALTER TABLE `coupons`
 -- AUTO_INCREMENT for table `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `offer_images`
 --
 ALTER TABLE `offer_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `points`
 --
