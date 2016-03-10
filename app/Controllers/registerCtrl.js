@@ -34,16 +34,16 @@ $scope.textBox = {
                  
         }
 };
-$scope.radioGroup = {
+/*$scope.radioGroup = {
         changeLayout: {
         items: user_type,
         //value: user_type[0],
         layout: "horizontal"
         }
-};
+};*/
 $scope.validateAndSubmit = function(params) {
-        
-        
+
+    $scope.user_type_id = 2;
     var result = params.validationGroup.validate();    
     if(result.isValid) {
         $http({
@@ -52,7 +52,7 @@ $scope.validateAndSubmit = function(params) {
                 data: {"email":$scope.email,"password":$scope.password,"user_type_id":$scope.user_type_id,"activation_url":$rootScope.siteurl+"activation"},
                 headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
-                console.log(data);
+                //console.log(data);
                 if(data.type == 'success'){
                         var message = data.message;
                         params.validationGroup.reset(); 
