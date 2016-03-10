@@ -42,6 +42,8 @@ app.constant('JS_REQUIRES', {
         'merchantlogin':['app/Controllers/merchantloginCtrl.js'],
         'merchantprofile':['app/Controllers/merchantprofileCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantoffer':['app/Controllers/merchantofferCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'merchantaddoffer':['app/Controllers/merchantaddofferCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'merchantofferdetail':['app/Controllers/merchantofferdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
     },
 
     //*** angularJS Modules

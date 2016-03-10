@@ -28,7 +28,22 @@ app.controller('merchantofferCtrl', function ($rootScope, $scope, $http, $locati
                     showInfo: true
                 },
 
-                columns: ["title", "price", "offer_percent", "expire_date"
+                columns: ["title", "price", "offer_percent", "expire_date",
+                    {
+                        width: 100,
+                        alignment: 'center',
+                        cellTemplate: function (container, options) {
+
+                            $('<button/>').addClass('dx-button')
+                                .text('Details')
+                                .on('dxclick', function () {
+                                    //Do something with options.data;
+                                    $location.path('/merchantofferdetail/' + options.data.id);
+                                })
+                                .appendTo(container);
+
+                        }
+                    }
 
 
                 ]

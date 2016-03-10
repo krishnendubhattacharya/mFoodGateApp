@@ -299,6 +299,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             templateUrl: 'app/views/merchant/merchantoffer.html',
             title: 'My Offer'
         })
+        .state('frontend.merchantaddoffer', {
+            url: '/merchantaddoffer',
+            resolve: loadSequence('merchantaddoffer'),
+            templateUrl: 'app/views/merchant/merchantaddoffer.html',
+            title: 'Add Offer'
+        })
+        .state('frontend.merchantofferdetail', {
+            url: '/merchantofferdetail/:offerId',
+            resolve: loadSequence('merchantofferdetail'),
+            templateUrl: 'app/views/merchant/merchantofferdetail.html',
+            title: 'Offer Detail'
+        })
 
 
     ;
