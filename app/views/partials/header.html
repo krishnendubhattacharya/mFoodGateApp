@@ -62,12 +62,12 @@
 			<div class="nab-bar">
 				<div class="navigation phone-hide">
 					<ul>
-						<li><a href="" class="active">Home</a></li>
-						<li><a href="">Voucher</a></li>
-						<li><a href="">Membership</a></li>
-						<li><a href="">Marketplace</a></li>
-						<li><a href="">Member</a></li>
-						<li><a href="">News</a></li>
+						<li><a ui-sref="frontend.index" ui-sref-active="active">Home</a></li>
+						<li><a ui-sref="frontend.voucher" ui-sref-active="active">Voucher</a></li>
+						<li><a ui-sref="frontend.membership" ui-sref-active="active">Membership</a></li>
+						<li><a ui-sref="frontend.marketplace" ui-sref-active="active">Marketplace</a></li>
+						<li ng-show="showMember"><a href="">Member</a></li>
+						<li><a ui-sref-active="active" ui-sref="frontend.news">News</a></li>
 
 					</ul>
 				</div>

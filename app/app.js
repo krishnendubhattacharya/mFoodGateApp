@@ -311,6 +311,30 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             templateUrl: 'app/views/merchant/merchantofferdetail.html',
             title: 'Offer Detail'
         })
+        .state('frontend.voucher', {
+            url: '/voucher',
+            //resolve: loadSequence('voucher'),
+            templateUrl: 'app/views/voucher.html',
+            title: 'Voucher'
+        })
+        .state('frontend.membership', {
+            url: '/membership',
+            //resolve: loadSequence('membership'),
+            templateUrl: 'app/views/membership.html',
+            title: 'Membership'
+        })
+        .state('frontend.marketplace', {
+            url: '/marketplace',
+            //resolve: loadSequence('marketplace'),
+            templateUrl: 'app/views/marketplace.html',
+            title: 'Marketplace'
+        })
+        .state('frontend.news', {
+            url: '/news',
+            //resolve: loadSequence('news'),
+            templateUrl: 'app/views/news.html',
+            title: 'News'
+        })
 
 
     ;

@@ -22,6 +22,7 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
         });
     };
     $scope.sidemenubar();*/
+    $scope.showMember= false;
         $scope.getLoginDetails=function(){
        
         myAuth.updateUserinfo(myAuth.getUserAuthorisation());
@@ -66,6 +67,7 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
          $rootScope.$on('updateLoginDetails',function(){
                  //console.log('called');
                  $scope.getLoginDetails();
+                $scope.showMember= true;
                  //$scope.$apply();
          });
          

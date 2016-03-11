@@ -1,12 +1,42 @@
+<style>
+	.choose_file{
+		/*position:relative;*/
+		display:inline-block;
+		/*border-radius:8px;*/
+		border:none;
+		padding: 5px 6px 5px 8px;
+		font: normal 14px Myriad Pro, Verdana, Geneva, sans-serif;
+		color: #fff;
+		margin-top: 2px;
+		/*background:white;*/
+		background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+		width: 90%;
+		height: 20px;
+		position: absolute;
+		bottom: 10px;
+	}
+	.choose_file input[type="file"]{
+		-webkit-appearance:none;
+		position:absolute;
+		top:0; left:0;
+		opacity:0;
+	}
+</style>
 <div ng-controller="leftbarCtrl">
 
 	<div class="left-panel phone-hide">
-		<div class="profile-img">
+		<div class="profile-img" style="position: relative;">
 			<!--<img src="app/assets/Images/default-profile.png" width="100%" height="auto"  alt=""/>-->
 			<img src="{{userImagePath}}" width="100%" height="auto"  alt=""/>
-			<form>
+			<!--<form>
 			<input type="file" id="i_file" name="file" ng-file-select="onFileSelect($files)" />
+				</form>-->
+			<div class="choose_file">
+				<span style="margin-left: 20px;">Change Image</span>
+				<form>
+				<input type="file" id="i_file" name="file" class="form-control" ng-file-select="onFileSelect($files)" />
 				</form>
+			</div>
 		</div>
 		<ul>
 			<li ng-if="loggedindetails.user_type_id == 2"><a ui-sref="frontend.setting"><i class="fa fa-gear"></i> Setting</a></li>

@@ -61,6 +61,7 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                     $rootScope.$emit('updateLoginDetails');
                     $scope.loggedin = true;
                     $scope.notloggedin = false;
+
                     //console.log($scope.loggedindetails);
                     if(data.user_details.is_logged_in == 1){
                         $location.path('admin/home');
