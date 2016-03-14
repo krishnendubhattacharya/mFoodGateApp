@@ -25,18 +25,14 @@
                 <td>mFoodGate Premium Member</td>
                 <td>7/25/2018</td>
             </tr>
-            <div id="one">
-                this is some info.
-            </div>
+
             <tr>
                 <td><p><span><a href="#two"><img style="vertical-align:middle;" src="app/assets/Images/circle-arrow.png" width="22" height="22"  alt=""/></a></span> <span style=" vertical-align: middle;"><input type="checkbox"></span></p></td>
                 <td>MBR034FBC2039</td>
                 <td>mFoodGate Premium Member</td>
                 <td>7/25/2018</td>
             </tr>
-            <div id="two">
-                this is some info.
-            </div>
+
         </table>
     </div>
 
@@ -56,20 +52,36 @@
             <td>mFoodGate Premium Member</td>
             <td>7/25/2018</td>
         </tr>
-        <div id="one">
-            this is some info.
-        </div>
+
         <tr>
             <td><p><span><a href="#two"><img style="vertical-align:middle;" src="app/assets/Images/circle-arrow.png" width="22" height="22"  alt=""/></a></span> <span style=" vertical-align: middle;"><input type="checkbox"></span></p></td>
             <td>MBR034FBC2039</td>
             <td>mFoodGate Premium Member</td>
             <td>7/25/2018</td>
         </tr>
-        <div id="two">
-            this is some info.
-        </div>
+
     </table>
 </div>
 
 <div class="dx-clearfix"></div>
 <!--</div>-->
+<script>
+    $("#accordion div").first().css('display', 'none');
+
+
+    // Get all the links.
+    var link = $("#accordion a");
+
+    // On clicking of the links do something.
+    link.on('click', function(e) {
+        e.preventDefault();
+
+        var a = $(this).attr("href");
+
+        $(a).slideDown('fast');
+
+        //$(a).slideToggle('fast');
+        $("#accordion div").not(a).slideUp('fast');
+
+    });
+</script>
