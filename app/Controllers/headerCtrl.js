@@ -28,6 +28,7 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
         myAuth.updateUserinfo(myAuth.getUserAuthorisation());
         $scope.loggedindetails = myAuth.getUserNavlinks();
         console.log($scope.loggedindetails);
+        $scope.showMember= true;
         //console.log('nnnnnnnnnnnnn');
          };
          
@@ -67,7 +68,7 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
          $rootScope.$on('updateLoginDetails',function(){
                  //console.log('called');
                  $scope.getLoginDetails();
-                $scope.showMember= true;
+                
                  //$scope.$apply();
          });
          

@@ -66,7 +66,18 @@
 						<li><a ui-sref="frontend.voucher" ui-sref-active="active">Voucher</a></li>
 						<li><a ui-sref="frontend.membership" ui-sref-active="active">Membership</a></li>
 						<li><a ui-sref="frontend.marketplace" ui-sref-active="active">Marketplace</a></li>
-						<li ng-show="showMember"><a href="">Member</a></li>
+						<li ng-show="showMember" id="dropdown"><a href="">Member</a>
+						    <ul  id="dropdown-content">
+						        <li><a ui-sref="frontend.allvoucher">My Voucher</a></li>
+						        <li><a ui-sref="frontend.membership">My Membership</a></li>
+						        <li><a ui-sref="frontend.setting">My Account</a></li>
+						        <li><a href="#">My Points</a></li>
+						        <li><a href="#">Event Offer</a></li>
+						        <li><a ui-sref="frontend.queuing">Queuing</a></li>
+						        <li><a ui-sref="frontend.preorder">Pre-Order</a></li>
+						        <li><a ui-sref="frontend.feedback">Feedback</a></li>
+						    </ul>    
+						</li>
 						<li><a ui-sref-active="active" ui-sref="frontend.news">News</a></li>
 
 					</ul>

@@ -476,7 +476,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 .transaction-details input[type="text"]{ width:100%; height: 28px; background: #fff; border: solid 1px #e7e7e7; padding: 0 5px;}
 .transaction-details .select-box{ width:100%; height: 28px; background: url(../Images/select-drop.png) 90% center no-repeat #fff; border: solid 1px #e7e7e7; overflow: hidden;}
 .transaction-details .select-box select{ width:120%; background: transparent; border: none; height:28px; line-height: 28px; }
-
+.transaction-details .calendar{width:100%; height: 28px;border: solid 1px #e7e7e7; padding: 0 5px; background: url(../Images/calendar2.png) 92% center no-repeat #fff; cursor: pointer;}
 
 
 /*---------------------------Footer --------------------*/
@@ -707,3 +707,160 @@ h5 a:link, h5 a:visited, h5 a:active {
 
 .marchent-logo{ width:418px; height:auto; float: none; margin: 25px auto;  overflow: hidden; }
 .marchent-logo img{ width:100%; height: auto; }
+
+/*--------------------------------- 12-03-2016 -----------------------*/
+/*---------------------------------- Fedback -------------------------*/
+.feedback{ width:100%; height: auto; margin: 0; overflow: hidden; border-bottom: solid 1px #e0e0e0; padding-bottom: 15px; margin-bottom: 20px;}
+.feedback ul{ width:100%; height: auto; margin: 0; padding:0; }
+.feedback ul li{ float: none; list-style-type: none; margin: 0 10px 10px 0; overflow: hidden; }
+.feedback .label{ width: 30%; height: auto; line-height: 35px; float: left; font-size: 16px; color:#4e4e4e; }
+.feedback .filds{ width: 65%; float: left;}
+.feedback .filds{ font-size:16px; color:#202020; line-height:35px; }
+.feedback .filds span{ color:#349c34;}
+.feedback .filds .select-box{ width:60%; height: 35px; border: solid 1px #e3e3e3; line-height:35px; border-radius:5px; background: url(../Images/select-drop.png) 95% center no-repeat #fff; overflow: hidden;}
+.feedback .filds .select-box select{ width:110%; height: 35px; background: transparent; border:  none; cursor: pointer; padding:0 10px; }
+.feedback .filds .calendar{ width:30%; height: 35px; border: solid 1px #e3e3e3; line-height:35px; border-radius:5px; background: url(../Images/calendar.png) 92% center no-repeat #fff; overflow: hidden; cursor: pointer;}
+.feedback .filds textarea {
+ background:#FFF;
+ width: 100%;
+ height: 100px;
+ line-height: 25px;
+ padding: 2px 10px;
+ border: solid 1px #e3e3e3;
+ border-radius: 3px;
+}
+
+.feedback .filds input[type="button"], input[type="submit"], button
+{
+   background: url(../Images/submit-btn-bg.png) left top repeat-x;
+   display: inline-block;
+   line-height: 15px;
+   padding:8px 15px;
+   margin:0 5px 0 0;
+   color: #36a236;
+   font-size: 14px;
+   font-weight: bold;
+   border: solid 1px #d7d7d7;
+   border-radius: 5px;
+   cursor:pointer;
+
+}
+
+.queue{ width:100%; height: auto; margin-top: 20px;}
+.queue ul{ width:100%; height: auto; margin: 0;}
+.queue ul li{ width:31%; height: auto; margin:0 1.7%; float: left; list-style-type: none; }
+.queue ul li .item{ width:100%; height: auto; border: solid 1px #349c34; background:#f7f7f7; overflow: hidden; padding-bottom: 15px;}
+.queue ul li .item h1{ background:#39ac38; height:48px; line-height: 48px; font-size:18px; font-weight: bold; color: #fff; padding: 0 5px; }
+.queue ul li .item h2{margin: 2px; height:39px; line-height: 39px; border: solid 2px #36a336; font-size: 14px; padding: 0 5px; font-weight: normal; }
+.queue ul li .item h3{margin: 2px; height:20px; line-height: 20px; font-size: 18px; padding: 5px 10px; font-weight: normal; color:#36a637; }
+.queue ul li:last-child{ margin-right: 0; }
+.queue ul li:first-child{ margin-left: 0; }
+.queue ul li .item .cont{ width:94%; height: auto; overflow: hidden; background:#fff; margin: 10px auto; border: solid 1px #d0d0d0; }
+.queue ul li .item .cont ul{ width:100%; height: auto; margin: 0; }
+.queue ul li .item .cont ul li{ float: none; margin:0; padding: 5px; line-height: 25px; height: 25px; border-bottom: solid 1px #d0d0d0; font-size: 14px;
+color: #313131; font-weight: normal; width:100%; }
+.queue ul li .item .cont ul li span{ font-weight: bold; }
+.queue ul li .item .cont ul li:last-child{ border: none;}
+
+.menu-f{ width:100%; height: auto; overflow: hidden; margin: 20px 0;  }
+.menu-f h1{ padding: 0; margin: 0 0 15px; font-size:18px; color:#37a536; }
+.menu-f ul{ width: 100%; height: auto; padding: 0; margin:0;}
+.menu-f ul li{ list-style-type: none; float: left; margin: 0 20px 0 0; vertical-align:middle; }
+.menu-f ul li:last-child{ margin:0; }
+.menu-f ul li .item{ width: auto; padding: 14px; background:#fff; border: solid 1px #e0e0e0; }
+.menu-f ul li .item .image-box{ width:100%; height: auto; }
+.menu-f ul li .item .image-box img{ width:100%; height: auto; }
+.menu-f ul li .item h2{ text-align: center; font-size:14px; color:#37a536; padding: 0; margin:0; line-height: 25px; }
+
+.item-order{ width:100%; height:auto; border-top:1px solid #e0e0e0; margin:20px 0 15px; overflow: hidden;}
+.item-order h1{ height:47px; display: block; line-height:47px; background: url(../Images/green-bg.jpg) left top repeat-x; margin:0; padding: 0 0 0 15px; font-size:18px; font-weight: bold; color:#fff; margin-top: 20px; }
+.item-order table {
+    border-collapse: collapse;
+    width: 100%;
+	
+}
+.item-order table th, td:first-child {
+	border-left: 1px solid #ddd;
+}
+
+.item-order table th, td {
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	font-size: 14px;
+	color:#535353;
+}
+
+.item-order table tr:hover{background-color:#f5f5f5}
+.item-order .header-color{color:#36a235; font-weight:bold;}
+
+.merchant-nav{ width:100%; padding: 20px 0; margin: 0 0 25px; overflow: hidden; border-bottom: solid 1px #d2d2d2;}
+.merchant-nav ul{ width:100%; height: auto; margin: 0 0 20px; padding:0; }
+.merchant-nav ul li{ float: left; margin: 0; list-style-type: none; padding: 0 37px 0; display: inline-block; }
+.merchant-nav ul li:first-child{ padding: 0 20px 0 0; }
+.merchant-nav ul li p{ font-size:14; font-weight: normal; text-align: left; color: #696969; line-height: 21px;}
+.merchant-nav ul li p a{ font-size:18px; color:#319230; text-decoration: none; }
+.merchant-nav ul li p a:hover{ color:#F00; }
+
+.merchant-card{ width:100%; height: auto; overflow: hidden; margin-bottom:30px; }
+.merchant-card .card-img{ width:35%; height: auto; float: left; }
+.merchant-card .card-img img{ width:100%; height: auto;}
+.merchant-card .card-dsc{ width:60%; height: auto; float: right; }
+.merchant-card .card-dsc h1{ padding: 0; margin: 0; color:#232323; font-size:30px; line-height:36px; margin-bottom:20px;}
+.merchant-card .card-dsc h2{ color:#309030; font-size:24px; line-height: 30px; padding: 0; margin: 0; }
+.merchant-card .card-dsc p{ padding: 0; margin: 0 0 5px; line-height: 21px; font-size:16px; color: #3c3c3c;}
+
+.three-box{ width:100%; height: auto; padding: 30px 15px; background:#f7f7f7; border: solid 1px #e6e6e6; overflow: hidden;}
+.three-box ul{ padding:0; margin: 0;}
+.three-box ul li{ padding:0; margin: 0 1.4%; list-style-type: none; float: left; width: 31%;}
+
+.three-box ul li:last-child{ margin-right: 0;}
+.three-box ul li .card-item{ width:100%; height: auto; margin: 0; }
+.three-box ul li .card-item h1{ font-size:24px; padding: 0; margin: 0 0 15px; line-height: 30px; color:#309030; font-weight: normal;}
+.three-box ul li .card-item p{ color: #5b5b5b; font-size: 14px; line-height: 21px; margin: 15px 0; padding:0; }
+.three-box ul li .card-item .card-box{ width:100%; height: auto; margin:0; text-align: center; }
+.three-box ul li .card-item .card-box img{ width:100%; height: auto; text-align: center; }
+
+/*-------------------------- Item Details ---------------------------*/
+.item-details{ width:100%; height: auto; margin: 25px 0; overflow: hidden;}
+.item-details .offers{ width: 27%; height: auto; margin: 0; border: solid 1px #dfdfdf; float: left; }
+.item-details .offers h1{ font-size:24px; color:#fff; line-height: 24px; background:#319431; display: block; padding: 13px; margin: 0;}
+.item-details .offers .offer{ width:92%; margin: 10px; background:#f8f8f8; border: solid 1px #dfdfdf; overflow: hidden; }
+.item-details .offers .offer p{ padding: 5px 10px 0; margin: 0; line-height: 24px; font-size:18px; color:#333333; }
+.item-details .offers .offer p span{ color:#969696;}
+.item-details .offers .offer .price-div{ padding: 10px; overflow: hidden; }
+.item-details .offers .offer .price-div .off{ font-size:18px; color:#319431; line-height: 30px; float: left; }
+.item-details .offers .offer .price-div .off span{ color:#5c5c5c; }
+.item-details .offers .offer .price-div .price-m{ float: right; color:#ed5c1b; font-size:24px; line-height: 30px;}
+.item-details .offers .offer .price-div .price-m span{ font-size:18px; line-height: 30px; color: #c6c6c6; text-decoration: line-through; }
+.item-details .offers .offer .qty-totals{padding: 10px; overflow: hidden;}
+.item-details .details{ width:71%; float: right; margin: 0;}
+
+/*****************Drop down menu*********************/
+#dropdown {
+    position: absolute;
+    display: inline-block;
+}
+
+#dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+     z-index: 9999;
+}
+
+#dropdown:hover #dropdown-content {
+    display: block;
+    width:100%;
+    
+    
+}
+#dropdown-content li a:hover {
+    background: none !important;
+}
+
+

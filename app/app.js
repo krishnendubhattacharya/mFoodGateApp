@@ -133,211 +133,241 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
     //
     // Set up the states
 
-    $stateProvider
-      //Login state
-        .state('frontend', {
-          url: '',
-          templateUrl: 'app/views/app.html',
-            abstract :true,
-            //resolve: loadSequence('frontend'),
+        $stateProvider
+        //Login state
+            .state('frontend', {
+                url: '',
+                templateUrl: 'app/views/app.html',
+                abstract :true,
+                //resolve: loadSequence('frontend'),
 
-        })
-        .state('frontend.index', {
-          url: '/',
-          resolve: loadSequence('home'),
-          templateUrl: 'app/views/home.html',
-          title: 'Home'
-        })
-        .state('frontend.login', {
-            url: '/login',
-            resolve: loadSequence('login'),
-            templateUrl: 'app/views/login.html',
-            title: 'Login'
-        })
-        .state('frontend.register', {
-            url: '/register',
-            resolve: loadSequence('register'),
-            templateUrl: 'app/views/register.html',
-            title: 'Register'
-        })
-        .state('frontend.activation', {
-            url: '/activation/:userId',
-            resolve: loadSequence('activation'),
-            templateUrl: 'app/views/activation.html',
-            title: 'activation'
-        })
-        .state('frontend.dashboard', {
-            url: '/dashboard',
-            resolve: loadSequence('dashboard'),
-            templateUrl: 'app/views/dashboard.html',
-            title: 'Dashboard'
-        })
-        .state('frontend.profile', {
-            url: '/profile',
-            resolve: loadSequence('profile'),
-            templateUrl: 'app/views/profile.html',
-            title: 'Profile'
-        })
-        .state('frontend.changepassword', {
-            url: '/changepassword',
-            resolve: loadSequence('changepassword'),
-            templateUrl: 'app/views/changepassword.html',
-            title: 'Change Password'
-        })
-        .state('frontend.allvoucher', {
-            url: '/allvoucher',
-            resolve: loadSequence('allvoucher'),
-            templateUrl: 'app/views/allvoucher.html',
-            title: 'Voucher'
-        })
-        .state('frontend.voucherdetail', {
-            url: '/voucherdetail/:voucherId',
-            resolve: loadSequence('voucherdetail'),
-            templateUrl: 'app/views/voucherdetail.html',
-            title: 'Voucher Detail'
-        })
-        .state('frontend.addbid', {
-            url: '/addbid/:sellId/:voucherId',
-            resolve: loadSequence('vouchersell'),
-            templateUrl: 'app/views/addbid.html',
-            title: 'Add Bid'
-        })
-        .state('frontend.bidderlist', {
-            url: '/bidderlist/:sellId',
-            resolve: loadSequence('bidderlist'),
-            templateUrl: 'app/views/bidderlist.html',
-            title: 'Bidder List'
-        })
-        .state('frontend.giftvoucher', {
-            url: '/giftvoucher/:voucherId',
-            resolve: loadSequence('giftvoucher'),
-            templateUrl: 'app/views/giftvoucher.html',
-            title: 'Gift Voucher'
-        })
-        .state('frontend.mypoints', {
-            url: '/mypoints',
-            resolve: loadSequence('mypoints'),
-            templateUrl: 'app/views/mypoints.html',
-            title: 'My Points'
-        })
-        .state('frontend.bidvoucher', {
-            url: '/bidvoucher',
-            resolve: loadSequence('bidvoucher'),
-            templateUrl: 'app/views/bidvoucher.html',
-            title: 'Voucher Resell'
-        })
-        .state('frontend.setting', {
-            url: '/setting',
-            resolve: loadSequence('setting'),
-            templateUrl: 'app/views/setting.html',
-            title: 'Setting'
-        })
-        .state('frontend.vouchersell', {
-            url: '/vouchersell/:voucherId',
-            resolve: loadSequence('vouchersell'),
-            templateUrl: 'app/views/vouchersell.html',
-            title: 'Voucher Sell'
-        })
-        .state('sample', {
-            url: '/sample',
-            resolve: loadSequence('activation'),
-            templateUrl: 'app/views/sample.html',
-            title: 'sample'
-        })
-        .state('admin', {
-            url: '/admin',
-            templateUrl: 'app/views/admin/adminbase.html',
-            abstract :true,
-            resolve: loadSequence('admin'),
+            })
+            .state('frontend.index', {
+                url: '/',
+                resolve: loadSequence('home'),
+                templateUrl: 'app/views/home.html',
+                title: 'Home'
+            })
+            .state('frontend.login', {
+                url: '/login',
+                resolve: loadSequence('login'),
+                templateUrl: 'app/views/login.html',
+                title: 'Login'
+            })
+            .state('frontend.register', {
+                url: '/register',
+                resolve: loadSequence('register'),
+                templateUrl: 'app/views/register.html',
+                title: 'Register'
+            })
+            .state('frontend.activation', {
+                url: '/activation/:userId',
+                resolve: loadSequence('activation'),
+                templateUrl: 'app/views/activation.html',
+                title: 'activation'
+            })
+            .state('frontend.dashboard', {
+                url: '/dashboard',
+                resolve: loadSequence('dashboard'),
+                templateUrl: 'app/views/dashboard.html',
+                title: 'Dashboard'
+            })
+            .state('frontend.profile', {
+                url: '/profile',
+                resolve: loadSequence('profile'),
+                templateUrl: 'app/views/profile.html',
+                title: 'Profile'
+            })
+            .state('frontend.changepassword', {
+                url: '/changepassword',
+                resolve: loadSequence('changepassword'),
+                templateUrl: 'app/views/changepassword.html',
+                title: 'Change Password'
+            })
+            .state('frontend.allvoucher', {
+                url: '/allvoucher',
+                resolve: loadSequence('allvoucher'),
+                templateUrl: 'app/views/allvoucher.html',
+                title: 'Voucher'
+            })
+            .state('frontend.voucherdetail', {
+                url: '/voucherdetail/:voucherId',
+                resolve: loadSequence('voucherdetail'),
+                templateUrl: 'app/views/voucherdetail.html',
+                title: 'Voucher Detail'
+            })
+            .state('frontend.addbid', {
+                url: '/addbid/:sellId/:voucherId',
+                resolve: loadSequence('vouchersell'),
+                templateUrl: 'app/views/addbid.html',
+                title: 'Add Bid'
+            })
+            .state('frontend.bidderlist', {
+                url: '/bidderlist/:sellId',
+                resolve: loadSequence('bidderlist'),
+                templateUrl: 'app/views/bidderlist.html',
+                title: 'Bidder List'
+            })
+            .state('frontend.giftvoucher', {
+                url: '/giftvoucher/:voucherId',
+                resolve: loadSequence('giftvoucher'),
+                templateUrl: 'app/views/giftvoucher.html',
+                title: 'Gift Voucher'
+            })
+            .state('frontend.mypoints', {
+                url: '/mypoints',
+                resolve: loadSequence('mypoints'),
+                templateUrl: 'app/views/mypoints.html',
+                title: 'My Points'
+            })
+            .state('frontend.bidvoucher', {
+                url: '/bidvoucher',
+                resolve: loadSequence('bidvoucher'),
+                templateUrl: 'app/views/bidvoucher.html',
+                title: 'Voucher Resell'
+            })
+            .state('frontend.setting', {
+                url: '/setting',
+                resolve: loadSequence('setting'),
+                templateUrl: 'app/views/setting.html',
+                title: 'Setting'
+            })
+            .state('frontend.vouchersell', {
+                url: '/vouchersell/:voucherId',
+                resolve: loadSequence('vouchersell'),
+                templateUrl: 'app/views/vouchersell.html',
+                title: 'Voucher Sell'
+            })
+            .state('sample', {
+                url: '/sample',
+                resolve: loadSequence('activation'),
+                templateUrl: 'app/views/sample.html',
+                title: 'sample'
+            })
+            .state('frontend.feedback', {
+                url: '/feedback',
+                resolve: loadSequence('feedback'),
+                templateUrl: 'app/views/feedback.html',
+                title: 'Feedback'
+            })
+            .state('frontend.preorder', {
+                url: '/preorder',
+                resolve: loadSequence('preorder'),
+                templateUrl: 'app/views/preorder.html',
+                title: 'Pre-Order'
+            })
+            .state('frontend.queuing', {
+                url: '/queuing',
+                resolve: loadSequence('queuing'),
+                templateUrl: 'app/views/queuing.html',
+                title: 'Merchant-queuing'
+            })
+            .state('frontend.merchantmembership', {
+                url: '/merchant-membership',
+                resolve: loadSequence('merchantmembership'),
+                templateUrl: 'app/views/merchantmembership.html',
+                title: 'Merchant-membership'
+            })
+            .state('frontend.promotionresults', {
+                url: '/promotion-results',
+                resolve: loadSequence('promotionresults'),
+                templateUrl: 'app/views/promotionresults.html',
+                title: 'Promotion Results'
+            })
+            .state('admin', {
+                url: '/admin',
+                templateUrl: 'app/views/admin/adminbase.html',
+                abstract :true,
+                resolve: loadSequence('admin'),
 
-        })
-        .state('admin.index', {
-            url: '/home',
-            templateUrl: 'app/views/admin/home.html',
-            title: 'Home'
-        })
-        .state('admin.categorylist', {
-            url: '/categorylist',
-            templateUrl: 'app/views/admin/categorylist.html',
-            title: 'CategoryList',
-            resolve: loadSequence('categorylist')
-        })
-        .state('adminlogin', {
-            url: '/adminlogin',
-            template: '<div ui-view ></div>',
-            abstract :true,
-            resolve: loadSequence('admin')
-        })
-        .state('adminlogin.signin', {
-        url: '/signin',
-        templateUrl: 'app/views/admin/login.html',
-        resolve: loadSequence('adminlogin'),
-        title: 'Login'
-        })
-        .state('merchant', {
-            url: '/merchant',
-            templateUrl: 'app/views/merchant/merchantbase.html',
-            abstract :true,
-            resolve: loadSequence('merchanthome'),
+            })
+            .state('admin.index', {
+                url: '/home',
+                templateUrl: 'app/views/admin/home.html',
+                title: 'Home'
+            })
+            .state('admin.categorylist', {
+                url: '/categorylist',
+                templateUrl: 'app/views/admin/categorylist.html',
+                title: 'CategoryList',
+                resolve: loadSequence('categorylist')
+            })
+            .state('adminlogin', {
+                url: '/adminlogin',
+                template: '<div ui-view ></div>',
+                abstract :true,
+                resolve: loadSequence('admin')
+            })
+            .state('adminlogin.signin', {
+                url: '/signin',
+                templateUrl: 'app/views/admin/login.html',
+                resolve: loadSequence('adminlogin'),
+                title: 'Login'
+            })
+            .state('merchant', {
+                url: '/merchant',
+                templateUrl: 'app/views/merchant/merchantbase.html',
+                abstract :true,
+                resolve: loadSequence('merchanthome'),
 
-        })
-        .state('merchant.login', {
-            url: '/login',
-            templateUrl: 'app/views/merchant/merchantlogin.html',
-            resolve: loadSequence('merchantlogin'),
+            })
+            .state('merchant.login', {
+                url: '/login',
+                templateUrl: 'app/views/merchant/merchantlogin.html',
+                resolve: loadSequence('merchantlogin'),
 
-        })
-        .state('frontend.merchantprofile', {
-            url: '/merchantprofile',
-            resolve: loadSequence('merchantprofile'),
-            templateUrl: 'app/views/merchant/merchantprofile.html',
-            title: 'Merchant Profile'
-        })
-        .state('frontend.merchantoffer', {
-            url: '/merchantoffer',
-            resolve: loadSequence('merchantoffer'),
-            templateUrl: 'app/views/merchant/merchantoffer.html',
-            title: 'My Offer'
-        })
-        .state('frontend.merchantaddoffer', {
-            url: '/merchantaddoffer',
-            resolve: loadSequence('merchantaddoffer'),
-            templateUrl: 'app/views/merchant/merchantaddoffer.html',
-            title: 'Add Offer'
-        })
-        .state('frontend.merchantofferdetail', {
-            url: '/merchantofferdetail/:offerId',
-            resolve: loadSequence('merchantofferdetail'),
-            templateUrl: 'app/views/merchant/merchantofferdetail.html',
-            title: 'Offer Detail'
-        })
-        .state('frontend.voucher', {
-            url: '/voucher',
-            //resolve: loadSequence('voucher'),
-            templateUrl: 'app/views/voucher.html',
-            title: 'Voucher'
-        })
-        .state('frontend.membership', {
-            url: '/membership',
-            //resolve: loadSequence('membership'),
-            templateUrl: 'app/views/membership.html',
-            title: 'Membership'
-        })
-        .state('frontend.marketplace', {
-            url: '/marketplace',
-            //resolve: loadSequence('marketplace'),
-            templateUrl: 'app/views/marketplace.html',
-            title: 'Marketplace'
-        })
-        .state('frontend.news', {
-            url: '/news',
-            //resolve: loadSequence('news'),
-            templateUrl: 'app/views/news.html',
-            title: 'News'
-        })
+            })
+            .state('frontend.merchantprofile', {
+                url: '/merchantprofile',
+                resolve: loadSequence('merchantprofile'),
+                templateUrl: 'app/views/merchant/merchantprofile.html',
+                title: 'Merchant Profile'
+            })
+            .state('frontend.merchantoffer', {
+                url: '/merchantoffer',
+                resolve: loadSequence('merchantoffer'),
+                templateUrl: 'app/views/merchant/merchantoffer.html',
+                title: 'My Offer'
+            })
+            .state('frontend.merchantaddoffer', {
+                url: '/merchantaddoffer',
+                resolve: loadSequence('merchantaddoffer'),
+                templateUrl: 'app/views/merchant/merchantaddoffer.html',
+                title: 'Add Offer'
+            })
+            .state('frontend.merchantofferdetail', {
+                url: '/merchantofferdetail/:offerId',
+                resolve: loadSequence('merchantofferdetail'),
+                templateUrl: 'app/views/merchant/merchantofferdetail.html',
+                title: 'Offer Detail'
+            })
+            .state('frontend.voucher', {
+                url: '/voucher',
+                //resolve: loadSequence('voucher'),
+                templateUrl: 'app/views/voucher.html',
+                title: 'Voucher'
+            })
+            .state('frontend.membership', {
+                url: '/membership',
+                //resolve: loadSequence('membership'),
+                templateUrl: 'app/views/membership.html',
+                title: 'Membership'
+            })
+            .state('frontend.marketplace', {
+                url: '/marketplace',
+                //resolve: loadSequence('marketplace'),
+                templateUrl: 'app/views/marketplace.html',
+                title: 'Marketplace'
+            })
+            .state('frontend.news', {
+                url: '/news',
+                //resolve: loadSequence('news'),
+                templateUrl: 'app/views/news.html',
+                title: 'News'
+            })
 
 
-    ;
+        ;
 
 
 
