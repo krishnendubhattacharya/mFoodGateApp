@@ -36,7 +36,8 @@ app.constant('JS_REQUIRES', {
         'preorder':['app/Controllers/preorderCtrl.js','app/Controllers/leftbarCtrl.js'],
         'queuing':['app/Controllers/queuingCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantmembership':['app/Controllers/merchantmembershipCtrl.js'],
-        'promotionresults':['app/Controllers/promotionresultsCtrl.js'],
+        'news':['app/Controllers/newsCtrl.js'],
+
         'admin':['app/assets/admin/css/style.css','app/assets/admin/css/style-responsive.css','app/assets/admin/js/bootstrap.min.js','app/assets/admin/js/jquery.nicescroll.js','app/assets/admin/js/jquery-migrate-1.2.1.min.js','app/assets/admin/js/jquery-ui-1.9.2.custom.min.js'
             ,'app/assets/admin/js/modernizr.min.js','app/assets/admin/js/scripts.js','app/Controllers/admin/headerCtrl.js','app/Controllers/admin/leftbarCtrl.js'],
         'frontend':["app/assets/css/site.css","app/assets/css/reset.css"

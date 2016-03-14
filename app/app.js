@@ -365,6 +365,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/news.html',
                 title: 'News'
             })
+            .state('frontend.promodetails', {
+                url: '/promodetails',
+                //resolve: loadSequence('news'),
+                templateUrl: 'app/views/promodetails.html',
+                title: 'News'
+            })
 
 
         ;
