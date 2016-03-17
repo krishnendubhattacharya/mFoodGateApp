@@ -1,12 +1,12 @@
-<div ng-controller="categorylistCtrl">
+<div ng-controller="locationlistCtrl">
 
 
     <div class="row">
         <div class="col-sm-12">
             <section class="panel">
-                <div ng-if="categoryView == 'view'">
+                <div ng-if="locationView == 'view'">
                 <header class="panel-heading">
-                    Category
+                    Location
                         <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -14,8 +14,8 @@
                 </header>
                 <div class="panel-body">
                     <div class="btn-group">
-                        <button class="btn btn-primary" id="editable-sample_new" ng-click ="addCategory()">
-                            Add Category
+                        <button class="btn btn-primary" id="editable-sample_new" ng-click ="addLocation()">
+                            Add Location
                         </button>
                     </div>
                     <table class="table  table-hover general-table">
@@ -29,13 +29,13 @@
                         </thead>
                         <tbody>
 
-                        <tr ng-repeat="item in allcat">
+                        <tr ng-repeat="item in alllocation">
                             <td>
                                 {{item.id}}
                             </td>
                             <td >{{item.name}}</td>
-                            <td ><a class="edit" href="javascript:;" ng-click ="editCategory(item)">Edit</a>
-                                <a class="delete" href="javascript:;" ng-click="deleteCategory(item.id)"
+                            <td ><a class="edit" href="javascript:;" ng-click ="editLocation(item)">Edit</a>
+                                <a class="delete" href="javascript:;" ng-click="deleteLocation(item.id)"
                                    >Delete</a></td>
 
                         </tr>
@@ -46,17 +46,18 @@
                 </div>
                 </div>
 
-                <div ng-if="categoryView == 'edit'">
+                <div ng-if="locationView == 'edit'">
                     <header class="panel-heading">
-                        Edit Category
+                        Location
                     </header>
                     <div class="panel-body">
-                        <form role="form" ng-submit="saveCategory()">
+                        <form role="form" ng-submit="saveLocation()">
                             <div class="form-group">
-                                <label for="exampleInputName">Category Name</label>
-                                <input type="text" placeholder="Enter Category Name"  id="exampleInputName" ng-model="item.name" class="form-control">
+                                <label for="exampleInputName">Location Name</label>
+                                <input type="text" placeholder="Enter Location Name"  id="exampleInputName" ng-model="item.name" class="form-control">
                                 <input type="hidden"  ng-model="item.id" >
                             </div>
+
 
 
                             <!--<div class="form-group">
@@ -64,13 +65,14 @@
                                 <input type="file" id="exampleInputFile">
                                 <p class="help-block">Example block-level help text here.</p>
                             </div>-->
+                            <div ng-dropdown-multiselect="" options="example1data" selected-model="example1model"></div>
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" ng-model="item.is_active" ng-true-value="1" ng-false-value="0"> Is Active
                                 </label>
                             </div>
                             <button class="btn btn-primary" type="submit">Submit</button>
-                            <button class="btn btn-danger" type="button" ng-click="cancelCat()">Cancel</button>
+                            <button class="btn btn-danger" type="button" ng-click="cancelLocation()">Cancel</button>
                         </form>
 
                     </div>

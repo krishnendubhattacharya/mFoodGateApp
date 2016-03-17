@@ -28,7 +28,11 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
         myAuth.updateUserinfo(myAuth.getUserAuthorisation());
         $scope.loggedindetails = myAuth.getUserNavlinks();
         console.log($scope.loggedindetails);
-        $scope.showMember= true;
+            if($scope.loggedindetails){
+
+                $scope.showMember= true;
+            }
+
         //console.log('nnnnnnnnnnnnn');
          };
          
@@ -50,8 +54,8 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
                     $scope.loggedindetails = '';
                     $rootScope.$emit('updateLoginDetails');
                     $scope.loggedin = false;                   
-                    $scope.notloggedin = true;                   
-			        
+                    $scope.notloggedin = true;
+                    $scope.showMember= false;
                     $location.path("/");
                     DevExpress.ui.notify({
                             message: "Logout Successfully",

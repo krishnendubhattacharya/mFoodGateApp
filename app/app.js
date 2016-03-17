@@ -12,7 +12,8 @@ var app = angular.module("mFoodApp", [
         'authFront',
         'ngToast',
         'ngFacebook',
-        'angularFileUpload'
+        'angularFileUpload',
+        'angularjs-dropdown-multiselect',
 ]);
 
 app.config(['$facebookProvider', function($facebookProvider) {
@@ -289,8 +290,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             .state('admin.categorylist', {
                 url: '/categorylist',
                 templateUrl: 'app/views/admin/categorylist.html',
-                title: 'CategoryList',
+                title: 'Category List',
                 resolve: loadSequence('categorylist')
+            })
+            .state('admin.locationlist', {
+                url: '/location',
+                templateUrl: 'app/views/admin/locationlist.html',
+                title: 'Location List',
+                resolve: loadSequence('locationlist')
             })
             .state('adminlogin', {
                 url: '/adminlogin',
