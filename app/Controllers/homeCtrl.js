@@ -11,7 +11,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location) {
             url: $rootScope.serviceurl + "getCategories",
         }).success(function (data) {
             $scope.catInfo =data.category;
-            console.log($scope.catInfo);
+            //console.log($scope.catInfo);
 
         });
     }
@@ -48,9 +48,9 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location) {
 
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getFeaturedCategories",
+            url: $rootScope.serviceurl + "getHotSellingPromo",
         }).success(function (data) {
-            $scope.hotSellingInfo =data.featuredcat;
+            $scope.hotSellingInfo =data.getHotSellingPromo;
             //console.log($scope.newPromoInfo);
 
         });
@@ -75,10 +75,10 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location) {
 
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getLastdayPromo",
+            url: $rootScope.serviceurl + "getFeaturedResturantHome",
         }).success(function (data) {
-            $scope.restaurantInfo =data.lastdayPromo;
-            //console.log($scope.newPromoInfo);
+            $scope.restaurantInfo =data.restaurants;
+            console.log($scope.restaurantInfo);
 
         });
     }

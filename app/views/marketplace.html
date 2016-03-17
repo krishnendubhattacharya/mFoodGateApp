@@ -1,14 +1,82 @@
 <!--Web header-->
+<div ng-controller="marketplaceCtrl">
+    <div class="container">
+        <div class="reseller-section phone-hide">
+            <h1>Re-Seller Voucher</h1>
+            <ul>
+                <li ng-repeat="resaleDetail in resaleInfo">
+                    <div class="pro-item">
+                        <div class="logo-box">
+                            <div class="p-circle">{{resaleDetail.offer_percent}}%</div>
+                            <img src="{{resaleDetail.image}}" width="218" height="100"  alt=""/>
+                        </div>
+                        <div class="desc">
+                            <h2>{{resaleDetail.title}}</h2>
 
-<div class="container">
-    <div class="reseller-section phone-hide">
+                            <div class="price">
+                                <h2>RP {{resaleDetail.price-((resaleDetail.price*resaleDetail.offer_percent)/100)}}</h2>
+                                <p>RP {{resaleDetail.price}}</p>
+                            </div>
+                            <div class="pts">
+                                <h2>mPts 120</h2>
+                                <p>{{resaleDetail.buy_count}} Sold</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!--<li>
+                    <div class="pro-item">
+                        <div class="logo-box">
+                            <div class="p-circle">50%</div>
+                            <img src="app/assets/Images/pro-2.png" alt=""/>
+                        </div>
+                        <div class="desc">
+                            <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
+
+                            <div class="price">
+                                <h2>RP 299,000</h2>
+                                <p>RP 350,000</p>
+                            </div>
+                            <div class="pts">
+                                <h2>mPts 120</h2>
+                                <p>33 Sold</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="pro-item">
+                        <div class="logo-box">
+                            <div class="p-circle">50%</div>
+                            <img src="app/assets/Images/pro-3.png" alt=""/>
+                        </div>
+                        <div class="desc">
+                            <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
+
+                            <div class="price">
+                                <h2>RP 299,000</h2>
+                                <p>RP 350,000</p>
+                            </div>
+                            <div class="pts">
+                                <h2>mPts 120</h2>
+                                <p>33 Sold</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="m-reseller-section tablet-hide">
         <h1>Re-Seller Voucher</h1>
         <ul>
             <li>
                 <div class="pro-item">
                     <div class="logo-box">
                         <div class="p-circle">50%</div>
-                        <img src="app/assets/Images/pro-1.png" width="218" height="100"  alt=""/>
+                        <img src="Images/pro-1.png" width="218" height="100"  alt=""/>
                     </div>
                     <div class="desc">
                         <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
@@ -28,7 +96,7 @@
                 <div class="pro-item">
                     <div class="logo-box">
                         <div class="p-circle">50%</div>
-                        <img src="app/assets/Images/pro-2.png" alt=""/>
+                        <img src="Images/pro-2.png" alt=""/>
                     </div>
                     <div class="desc">
                         <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
@@ -48,7 +116,7 @@
                 <div class="pro-item">
                     <div class="logo-box">
                         <div class="p-circle">50%</div>
-                        <img src="app/assets/Images/pro-3.png" alt=""/>
+                        <img src="Images/pro-3.png" alt=""/>
                     </div>
                     <div class="desc">
                         <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
@@ -66,72 +134,4 @@
             </li>
         </ul>
     </div>
-
 </div>
-
-<div class="m-reseller-section tablet-hide">
-    <h1>Re-Seller Voucher</h1>
-    <ul>
-        <li>
-            <div class="pro-item">
-                <div class="logo-box">
-                    <div class="p-circle">50%</div>
-                    <img src="Images/pro-1.png" width="218" height="100"  alt=""/>
-                </div>
-                <div class="desc">
-                    <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
-
-                    <div class="price">
-                        <h2>RP 299,000</h2>
-                        <p>RP 350,000</p>
-                    </div>
-                    <div class="pts">
-                        <h2>mPts 120</h2>
-                        <p>33 Sold</p>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="pro-item">
-                <div class="logo-box">
-                    <div class="p-circle">50%</div>
-                    <img src="Images/pro-2.png" alt=""/>
-                </div>
-                <div class="desc">
-                    <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
-
-                    <div class="price">
-                        <h2>RP 299,000</h2>
-                        <p>RP 350,000</p>
-                    </div>
-                    <div class="pts">
-                        <h2>mPts 120</h2>
-                        <p>33 Sold</p>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="pro-item">
-                <div class="logo-box">
-                    <div class="p-circle">50%</div>
-                    <img src="Images/pro-3.png" alt=""/>
-                </div>
-                <div class="desc">
-                    <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
-
-                    <div class="price">
-                        <h2>RP 299,000</h2>
-                        <p>RP 350,000</p>
-                    </div>
-                    <div class="pts">
-                        <h2>mPts 120</h2>
-                        <p>33 Sold</p>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
-

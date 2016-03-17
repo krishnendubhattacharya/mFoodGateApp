@@ -37,15 +37,17 @@ app.constant('JS_REQUIRES', {
         'queuing':['app/Controllers/queuingCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantmembership':['app/Controllers/merchantmembershipCtrl.js'],
         'news':['app/Controllers/newsCtrl.js'],
-        'admin':['app/assets/admin/css/style.css','app/assets/admin/css/style-responsive.css','app/assets/admin/js/bootstrap.min.js','app/assets/admin/js/jquery.nicescroll.js','app/assets/admin/js/jquery-migrate-1.2.1.min.js','app/assets/admin/js/jquery-ui-1.9.2.custom.min.js'
-            ,'app/assets/admin/js/modernizr.min.js','app/assets/admin/js/scripts.js','app/Controllers/admin/headerCtrl.js','app/Controllers/admin/leftbarCtrl.js'],
+        'admin':['http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css','app/assets/admin/css/style.css','app/assets/admin/css/style-responsive.css','app/assets/admin/js/bootstrap.min.js','app/assets/admin/js/jquery.nicescroll.js','app/assets/admin/js/jquery-migrate-1.2.1.min.js','app/assets/admin/js/jquery-ui-1.9.2.custom.min.js'
+            ,'app/assets/admin/js/modernizr.min.js','app/assets/admin/js/scripts.js','app/Controllers/admin/headerCtrl.js','app/Controllers/admin/leftbarCtrl.js',"app/directives/datatableDirective.js"],
         'frontend':["app/assets/css/site.css","app/assets/css/reset.css"
             ],
         'adminlogin':['app/Controllers/admin/loginCtrl.js'],
+        'newslist':['app/Controllers/admin/newslistCtrl.js'],
         'categorylist':['app/Controllers/admin/categorylistCtrl.js'],
         'locationlist':['app/Controllers/admin/locationlistCtrl.js'],
         'merchanthome':['app/Controllers/merchanthomeCtrl.js'],
         'merchantlogin':['app/Controllers/merchantloginCtrl.js'],
+        'marketplace':['app/Controllers/marketplaceCtrl.js'],
         'merchantprofile':['app/Controllers/merchantprofileCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantoffer':['app/Controllers/merchantofferCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantaddoffer':['app/Controllers/merchantaddofferCtrl.js','app/Controllers/leftbarCtrl.js'],
@@ -56,5 +58,10 @@ app.constant('JS_REQUIRES', {
     modules: [{
         name: 'angularMoment',
         files: ['vendor/moment/angular-moment.min.js']
-    }]
+    },
+        {
+            name: 'datatables',
+            files: ['bower_components/angular-datatables/jquery.dataTables.js','bower_components/angular-datatables/angular-datatables.js','bower_components/angular-datatables/dataTables.bootstrap.css']
+        }
+    ]
 });

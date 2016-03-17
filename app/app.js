@@ -279,7 +279,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/admin',
                 templateUrl: 'app/views/admin/adminbase.html',
                 abstract :true,
-                resolve: loadSequence('admin'),
+                resolve: loadSequence('admin','datatables'),
 
             })
             .state('admin.index', {
@@ -292,6 +292,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/admin/categorylist.html',
                 title: 'Category List',
                 resolve: loadSequence('categorylist')
+            })
+            .state('admin.newslist', {
+                url: '/newslist',
+                templateUrl: 'app/views/admin/newslist.html',
+                title: 'News List',
+                resolve: loadSequence('newslist')
             })
             .state('admin.locationlist', {
                 url: '/location',
@@ -362,7 +368,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             })
             .state('frontend.marketplace', {
                 url: '/marketplace',
-                //resolve: loadSequence('marketplace'),
+                resolve: loadSequence('marketplace'),
                 templateUrl: 'app/views/marketplace.html',
                 title: 'Marketplace'
             })
