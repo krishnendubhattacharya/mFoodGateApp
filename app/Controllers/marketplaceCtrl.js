@@ -10,6 +10,7 @@ app.controller('marketplaceCtrl', function ($rootScope, $scope, $http, $location
             method: "GET",
             url: $rootScope.serviceurl + "getAllResellList",
         }).success(function (data) {
+
             $scope.resaleInfo =data.resale_details;
             //console.log($scope.catInfo);
 

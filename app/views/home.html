@@ -18,7 +18,7 @@
         <div class="category-left">
             <h1>Browse Categories</h1>
             <ul>
-                <li ng-repeat="catdetail in catInfo"><a href="">{{catdetail.name}}</a></li>
+                <li ng-repeat="catdetail in catInfo"><a ui-sref="frontend.refinerestaurent({ categoryId: catdetail.id })">{{catdetail.name}}</a></li>
 
                 <!--<li><a href="">Western Food (39)</a></li>
                 <li><a href="">Indonesian Food (108)</a></li>
@@ -43,7 +43,7 @@
                             <!--<p>Bekasi</p>-->
                             <p class="price"><span>IDR{{featuredCatDetail.price}}</span> IDR{{featuredCatDetail.price-((featuredCatDetail.price*featuredCatDetail.offer_percent)/100)}}</p>
                         </div>
-                        <div class="view-btn"><a ui-sref="frontend.promodetails"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: featuredCatDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                     </div>
                 </div>
             </li>
@@ -120,34 +120,6 @@
                     </div>
                 </div>
             </li>
-            <!--<li>
-                <div class="pro-item">
-                    <img src="app/assets/Images/pro-3.png" width="406" height="255"  alt=""/>
-                    <div class="p-circle">50%</div>
-                    <div class="desc">
-                        <div class="txt">
-                            <h2>Paket Hemat Sowe</h2>
-                            <p>11D:21H:50M:20S</p>
-                        </div>
-
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="pro-item">
-                    <img src="app/assets/Images/pro-3.png" width="406" height="255"  alt=""/>
-                    <div class="p-circle">50%</div>
-                    <div class="desc">
-                        <div class="txt">
-                            <h2>Paket Hemat Sowe</h2>
-                            <p>11D:21H:50M:20S</p>
-                        </div>
-
-                    </div>
-                </div>
-            </li>-->
-
-
         </ul>
     </div>
 </div>
@@ -174,7 +146,7 @@
                     <div class="logo-box"><img src="{{restaurantDetail.logo}}" width="218" height="100"  alt=""/></div>
                     <div class="desc">
                         <h2>{{restaurantDetail.title}}</h2>
-                        <div class="btn"><a href="">View All Promo</a></div>
+                        <div class="btn"><a ui-sref="frontend.restaurentpromo({ restaurantId: restaurantDetail.id })">View All Promo</a></div>
                     </div>
                 </div>
             </li>
@@ -196,6 +168,84 @@
                     </div>
                 </div>
             </li>-->
+        </ul>
+    </div>
+</div>
+
+<div class="dx-clearfix"></div>
+<div class="container">
+    <div class="new-Promo phone-hide">
+        <h1>Menu Voucher Promo</h1>
+        <ul>
+            <li ng-repeat="menuPromoDetail in menuPromoInfo">
+                <div class="pro-item">
+                    <img src="{{menuPromoDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{menuPromoDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{menuPromoDetail.title}}</h2>
+                            <!--<p>11D:21H:50M:20S</p>-->
+                            <p class="price"><span>IDR{{menuPromoDetail.price}}</span> IDR{{menuPromoDetail.price-((menuPromoDetail.price*menuPromoDetail.offer_percent)/100)}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+
+
+
+        </ul>
+    </div>
+</div>
+
+<div class="dx-clearfix"></div>
+<div class="container">
+    <div class="new-Promo phone-hide">
+        <h1>Payment Voucher Promo</h1>
+        <ul>
+            <li ng-repeat="paymentPromoDetail in paymentPromoInfo">
+                <div class="pro-item">
+                    <img src="{{paymentPromoDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{paymentPromoDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{paymentPromoDetail.title}}</h2>
+                            <!--<p>11D:21H:50M:20S</p>-->
+                            <p class="price"><span>IDR{{paymentPromoDetail.price}}</span> IDR{{paymentPromoDetail.price-((paymentPromoDetail.price*paymentPromoDetail.offer_percent)/100)}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+
+
+
+        </ul>
+    </div>
+</div>
+
+<div class="dx-clearfix"></div>
+<div class="container">
+    <div class="new-Promo phone-hide">
+        <h1>Merchants Membership Promo</h1>
+        <ul>
+            <li ng-repeat="merchantMembershipPromoDetail in merchantMembershipPromoInfo">
+                <div class="pro-item">
+                    <img src="{{merchantMembershipPromoDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{merchantMembershipPromoDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{merchantMembershipPromoDetail.title}}</h2>
+                            <!--<p>11D:21H:50M:20S</p>-->
+                            <p class="price"><span>IDR{{merchantMembershipPromoDetail.price}}</span> IDR{{merchantMembershipPromoDetail.price-((merchantMembershipPromoDetail.price*merchantMembershipPromoDetail.offer_percent)/100)}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+
+
+
         </ul>
     </div>
 </div>
@@ -251,6 +301,29 @@
         </ul>
     </div>
 </div>
+
+    <div class="dx-clearfix"></div>
+    <div class="container">
+        <div class="new-Promo phone-hide">
+            <h1>Special Promo</h1>
+            <ul>
+                <li ng-repeat="specialDetail in specialInfo">
+                    <div class="pro-item">
+                        <img src="{{specialDetail.image}}" width="406" height="255"  alt=""/>
+                        <div class="p-circle">{{specialDetail.offer_percent}}%</div>
+                        <div class="desc">
+                            <div class="txt">
+                                <h2>{{specialDetail.title}}</h2>
+                                <p>{{specialDetail.special_tag}}</p>
+                                <p class="price"><span>IDR{{specialDetail.price}}</span> IDR{{specialDetail.price-((specialDetail.price*specialDetail.offer_percent)/100)}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 <div class="dx-clearfix"></div>
 </div>

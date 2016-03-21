@@ -11,7 +11,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location) {
             url: $rootScope.serviceurl + "getCategories",
         }).success(function (data) {
             $scope.catInfo =data.category;
-            //console.log($scope.catInfo);
+            console.log($scope.catInfo);
 
         });
     }
@@ -78,11 +78,63 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location) {
             url: $rootScope.serviceurl + "getFeaturedResturantHome",
         }).success(function (data) {
             $scope.restaurantInfo =data.restaurants;
-            console.log($scope.restaurantInfo);
+            //console.log($scope.restaurantInfo);
 
         });
     }
     $scope.restaurantList();
+
+    $scope.specialList = function(){
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getSpecialPromo",
+        }).success(function (data) {
+            $scope.specialInfo =data.getSpecialPromo;
+            //console.log($scope.specialInfo);
+
+        });
+    }
+    $scope.specialList();
+
+    $scope.menuPromoList = function(){
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getMenuPromo",
+        }).success(function (data) {
+            $scope.menuPromoInfo =data.getMenuPromo;
+            //console.log($scope.menuPromoInfo);
+
+        });
+    }
+    $scope.menuPromoList();
+
+    $scope.paymentPromoList = function(){
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getPaymentPromo",
+        }).success(function (data) {
+            $scope.paymentPromoInfo =data.getPaymentPromo;
+            //console.log($scope.menuPromoInfo);
+
+        });
+    }
+    $scope.paymentPromoList();
+
+    $scope.merchamtMembershipPromoList = function(){
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getMerchantPromo",
+        }).success(function (data) {
+            $scope.merchantMembershipPromoInfo =data.getMerchantPromo;
+            //console.log($scope.menuPromoInfo);
+
+        });
+    }
+    $scope.merchamtMembershipPromoList();
    
 });
 

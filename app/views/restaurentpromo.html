@@ -1,0 +1,50 @@
+<!--Web Body-->
+
+<div ng-controller="restaurentpromoCtrl">
+<!--<div class="container phone-hide">
+    <div class="ads-banner"><img src="app/assets/Images/banner.jpg" width="1081" height="88"  alt=""/></div>
+</div>
+<div class="m-banner moblie-potrait">
+    <div class="m-ads-banner">
+        <img src="app/assets/Images/m-banner.png" alt="" width="320px"/>
+    </div>
+</div>-->
+<!--mobile Body-->
+
+<!--Section - 1-->
+
+<!--mobile promo-->
+
+<!--end-->
+
+
+<div class="dx-clearfix"></div>
+<div class="container">
+    <div class="new-Promo phone-hide">
+        <h1>Restaurant Promo</h1>
+        <ul>
+            <li ng-repeat="restaurantPromoDetail in restaurantPromoInfo">
+                <div class="pro-item">
+                    <img src="{{restaurantPromoDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{restaurantPromoDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{restaurantPromoDetail.title}}</h2>
+                            <!--<p>11D:21H:50M:20S</p>-->
+                            <p class="price"><span>IDR{{restaurantPromoDetail.price}}</span> IDR{{restaurantPromoDetail.price-((restaurantPromoDetail.price*restaurantPromoDetail.offer_percent)/100)}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+
+
+
+        </ul>
+    </div>
+</div>
+
+
+
+<div class="dx-clearfix"></div>
+</div>
