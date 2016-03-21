@@ -39,8 +39,7 @@ app.constant('JS_REQUIRES', {
         'news':['app/Controllers/newsCtrl.js'],
         'admin':['http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css','app/assets/admin/css/style.css','app/assets/admin/css/style-responsive.css','app/assets/admin/js/bootstrap.min.js','app/assets/admin/js/jquery.nicescroll.js','app/assets/admin/js/jquery-migrate-1.2.1.min.js','app/assets/admin/js/jquery-ui-1.9.2.custom.min.js'
             ,'app/assets/admin/js/modernizr.min.js','app/assets/admin/js/scripts.js','app/Controllers/admin/headerCtrl.js','app/Controllers/admin/leftbarCtrl.js',"app/directives/datatableDirective.js"],
-        'frontend':["app/assets/css/site.css","app/assets/css/reset.css"
-            ],
+        'frontend':["app/assets/css/site.css","app/assets/css/reset.css"],
         'adminlogin':['app/Controllers/admin/loginCtrl.js'],
         'newslist':['app/Controllers/admin/newslistCtrl.js'],
         'categorylist':['app/Controllers/admin/categorylistCtrl.js'],
@@ -52,6 +51,12 @@ app.constant('JS_REQUIRES', {
         'merchantoffer':['app/Controllers/merchantofferCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantaddoffer':['app/Controllers/merchantaddofferCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantofferdetail':['app/Controllers/merchantofferdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'cms':['app/Controllers/cmsCtrl.js'],
+        'refinerestaurent':['app/Controllers/refinerestaurentCtrl.js'],
+        'footer':["app/Controllers/footerCtrl.js"],
+        'restaurentpromo':['app/Controllers/restaurentpromoCtrl.js'],
+        'promodetails':['app/Controllers/promodetailsCtrl.js'],
+        'voucherdetailforall':['app/Controllers/voucherdetailforallCtrl.js'],
     },
 
     //*** angularJS Modules
@@ -62,6 +67,14 @@ app.constant('JS_REQUIRES', {
         {
             name: 'datatables',
             files: ['bower_components/angular-datatables/jquery.dataTables.js','bower_components/angular-datatables/angular-datatables.js','bower_components/angular-datatables/dataTables.bootstrap.css']
+        },
+        {
+            name: 'ngMap',
+            files: ['bower_components/ngmap/build/scripts/ng-map.min.js','http://maps.google.com/maps/api/js']
+        },
+        {
+            name: 'mCart',
+            files: ['app/cartFactory.js']
         }
     ]
 });

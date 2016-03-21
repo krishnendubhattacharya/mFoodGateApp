@@ -140,7 +140,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '',
                 templateUrl: 'app/views/app.html',
                 abstract :true,
-                //resolve: loadSequence('frontend'),
+                resolve: loadSequence('footer'),
 
             })
             .state('frontend.index', {
@@ -199,8 +199,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             })
             .state('frontend.addbid', {
                 url: '/addbid/:sellId/:voucherId',
-                resolve: loadSequence('vouchersell'),
+                resolve: loadSequence('bidvoucher'),
                 templateUrl: 'app/views/addbid.html',
+                title: 'Add Bid'
+            })
+            .state('frontend.sellbid', {
+                url: '/sellbid/:sellId/:voucherId',
+                resolve: loadSequence('bidvoucher'),
+                templateUrl: 'app/views/sellbid.html',
                 title: 'Add Bid'
             })
             .state('frontend.bidderlist', {
@@ -274,6 +280,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('promotionresults'),
                 templateUrl: 'app/views/promotionresults.html',
                 title: 'Promotion Results'
+            })
+            .state('frontend.cms', {
+                url: '/cms/:pageName',
+                resolve: loadSequence('cms','ngMap'),
+                templateUrl: 'app/views/cms.html',
+                title: 'Pages'
             })
             .state('admin', {
                 url: '/admin',
@@ -374,15 +386,33 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             })
             .state('frontend.news', {
                 url: '/news',
-                //resolve: loadSequence('news'),
+                resolve: loadSequence('news'),
                 templateUrl: 'app/views/news.html',
                 title: 'News'
             })
             .state('frontend.promodetails', {
-                url: '/promodetails',
-                //resolve: loadSequence('news'),
+                url: '/promodetails/:promoId',
+                resolve: loadSequence('promodetails','ngMap','mCart'),
                 templateUrl: 'app/views/promodetails.html',
-                title: 'News'
+                title: 'Promo Detail'
+            })
+            .state('frontend.refinerestaurent', {
+                url: '/refinerestaurent/:categoryId',
+                resolve: loadSequence('refinerestaurent'),
+                templateUrl: 'app/views/refinerestaurent.html',
+                title: 'Restaurent'
+            })
+            .state('frontend.restaurentpromo', {
+                url: '/restaurentpromo/:restaurantId',
+                resolve: loadSequence('restaurentpromo'),
+                templateUrl: 'app/views/restaurentpromo.html',
+                title: 'Restaurent Promo'
+            })
+            .state('frontend.voucherdetailforall', {
+                url: '/sellvoucherdetail/:voucherId/:sellId',
+                resolve: loadSequence('voucherdetailforall'),
+                templateUrl: 'app/views/voucherdetailforall.html',
+                title: 'Voucher Detail'
             })
 
 
