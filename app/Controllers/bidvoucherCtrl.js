@@ -92,7 +92,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                         alignment: 'center',
                         cellTemplate: function (container, options) {
                             $('<button/>').addClass('dx-button')
-                                .text('Bidding List')
+                                .text('Bidder List')
                                 .on('dxclick', function () {
                                     //Do something with options.data;
                                     $location.path('/bidderlist/'+options.data.voucher_resale_id);
@@ -219,7 +219,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
             if(data.type == 'success'){
                 //var message = data.message;
                 //params.validationGroup.reset();
-                $location.path('/bidvoucher');
+                $location.path('/dashboard');
 
                 DevExpress.ui.notify({
                     message: data.message,

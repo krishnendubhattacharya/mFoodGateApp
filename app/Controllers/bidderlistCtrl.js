@@ -14,9 +14,10 @@ app.controller('bidderlistCtrl', function ($rootScope, $scope, $http, $location,
         alert($stateParams.sellId);
         alert(voucher_id);
         alert($scope.loggedindetails.id);
-        /*$http({
+        //return false;
+        $http({
             method: "POST",
-            url: $rootScope.serviceurl+"resale",
+            url: $rootScope.serviceurl+"saveVoucherResale",
             data: {"to_user_id":to_id,"price":bid_price,"voucher_id":voucher_id,"from_user_id":$scope.loggedindetails.id,"bid_id":bid_id,"resell_id":$stateParams.sellId},
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
@@ -26,7 +27,7 @@ app.controller('bidderlistCtrl', function ($rootScope, $scope, $http, $location,
             if(data.type == 'success'){
                 //var message = data.message;
                 //params.validationGroup.reset();
-                $location.path('/allvoucher');
+                $location.path('/dashboard');
 
                 DevExpress.ui.notify({
                     message: data.message,
@@ -46,7 +47,7 @@ app.controller('bidderlistCtrl', function ($rootScope, $scope, $http, $location,
                 }, "error", 3000);
             }
 
-        });*/
+        });
     };
 
     $scope.bidderList = function(){

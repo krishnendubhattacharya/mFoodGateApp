@@ -18,6 +18,22 @@ app.controller('marketplaceCtrl', function ($rootScope, $scope, $http, $location
     }
     $scope.resaleList();
 
+    $scope.offerdetails = function(voucher_id,resell_id){
+
+        /*$http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getAllResellList",
+        }).success(function (data) {
+
+            $scope.resaleInfo =data.resale_details;
+
+        });*/
+        $location.path('/sellvoucherdetail/'+voucher_id+'/'+resell_id);
+        alert(12);
+        alert(voucher_id);
+
+    }
+
 
    
 });
