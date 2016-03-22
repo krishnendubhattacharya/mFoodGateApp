@@ -28,7 +28,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
                     showInfo: true
                 },
 
-                columns: ["title", "price", "offer_percent", "to_date",
+                columns: ["title", "price", "offer_percent", "expire_date",
                     {
                         width: 100,
                         alignment: 'center',
@@ -82,7 +82,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
                 showInfo: true
             },
 
-            columns: ["title", "price", "offer_percent", "to_date",
+            columns: ["title", "price", "offer_percent", "expire_date",
                 {
                     width: 100,
                     alignment: 'center',
