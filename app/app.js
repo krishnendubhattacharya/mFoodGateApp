@@ -191,6 +191,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/allvoucher.html',
                 title: 'Voucher'
             })
+            .state('frontend.swapvoucher', {
+                url: '/swapvoucher',
+                resolve: loadSequence('swapvoucher'),
+                templateUrl: 'app/views/swapvoucher.html',
+                title: 'Swap Voucher'
+            })
             .state('frontend.mymembership', {
                 url: '/mymembership',
                 resolve: loadSequence('mymembership'),
@@ -204,6 +210,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/membershipdetail.html',
                 title: 'Membership Detail',
                 controller:'membershipdetailCtrl'
+            })
+            .state('frontend.swapvoucherdetail', {
+                url: '/swapvoucherdetail/:swapId',
+                resolve: loadSequence('swapvoucherdetail'),
+                templateUrl: 'app/views/swapvoucherdetail.html',
+                title: 'Swap Voucher Detail'
+            })
+            .state('frontend.swapinterested', {
+                url: '/swapinterested/:swapId',
+                resolve: loadSequence('swapinterested'),
+                templateUrl: 'app/views/swapinterested.html',
+                title: 'Swap Voucher'
             })
             .state('frontend.voucherdetail', {
                 url: '/voucherdetail/:voucherId',

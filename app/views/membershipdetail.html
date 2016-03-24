@@ -12,14 +12,14 @@
                     <div class="pro-item">
                         <div class="logo-box">
                             <div class="p-circle">5X</div>
-                            <img src="{{voucherInfo.voucher_image.0.image}}" width="218" height="100"  alt=""/>
+                            <img src="{{voucherInfo.voucher_details.image}}" width="218" height="100"  alt=""/>
                         </div>
 
                     </div>
                 </div>
                 <div class="desc-box">
                     <h1>{{voucherInfo.voucher_details.title}}</h1>
-                    <p ng-bind-html="voucherInfo.voucher_details.description"></p>
+                    <p ng-bind-html="voucherInfo.voucher_details.benefits"></p>
 
                     <div class="pay-box">
                         <p>DISCOUNT  &nbsp; &nbsp; &nbsp;<span class="discount">{{voucherInfo.voucher_details.offer_percent}}%</span></p>
