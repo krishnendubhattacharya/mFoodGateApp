@@ -291,7 +291,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 .voucher-section ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:31.3%; margin: 0 1%; }
 .voucher-section .pro-item{ width: 100%; height: 294px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
 .voucher-section .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4;}
-.voucher-section .pro-item .logo-box img{ width: auto; height: auto; vertical-align:middle; }
+.voucher-section .pro-item .logo-box img{ height: auto; vertical-align:middle; }
 .voucher-section .pro-item .desc{ padding: 10px 10px;}
 .voucher-section .pro-item .desc h2{font-size:14px; color:#5187ca; text-transform: uppercase; padding: 5px 0; text-align: center;}
 .voucher-section .pro-item .desc p{ color:#ff0000; text-align: center; font-size:12px; font-weight: bold;}
@@ -315,7 +315,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 .expire-section ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:31.3%; margin: 0 1%; }
 .expire-section .pro-item{ width: 100%; height: 294px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
 .expire-section .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4;}
-.expire-section .pro-item .logo-box img{ width: auto; height: auto; vertical-align:middle; }
+.expire-section .pro-item .logo-box img{ height: auto; vertical-align:middle; }
 .expire-section .pro-item .desc{ padding: 10px 10px;}
 .expire-section .pro-item .desc h2{font-size:14px; color:#5187ca; text-transform: uppercase; padding: 5px 0; text-align: center;}
 .expire-section .pro-item .desc p{ color:#ff0000; text-align: center; font-size:12px; font-weight: bold;}

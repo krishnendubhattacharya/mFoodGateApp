@@ -28,7 +28,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
                     showInfo: true
                 },
 
-                columns: ["title", "price", "offer_percent", "to_date",
+                columns: ["title", "price", "offer_percent", "expire_date",
                     {
                         width: 100,
                         alignment: 'center',
@@ -37,7 +37,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
                             $('<button/>').addClass('dx-button')
                                 .text('Details')
                                 .on('dxclick', function () {
-                                    $location.path('/voucherdetail/'+options.data.id);
+                                    $location.path('/voucherdetail/'+options.data.voucher_id);
                                 })
                                 .appendTo(container);
                         }
@@ -51,7 +51,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
                                     .text('ReSell')
                                     .on('dxclick', function () {
                                         //Do something with options.data;
-                                        $location.path('/vouchersell/' + options.data.id);
+                                        $location.path('/vouchersell/' + options.data.voucher_id);
                                     })
                                     .appendTo(container);
                             }
@@ -82,7 +82,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
                 showInfo: true
             },
 
-            columns: ["title", "price", "offer_percent", "to_date",
+            columns: ["title", "price", "offer_percent", "expire_date",
                 {
                     width: 100,
                     alignment: 'center',
@@ -92,7 +92,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
                             .text('Details')
                             .on('dxclick', function () {
                                 //Do something with options.data;
-                                $location.path('/voucherdetail/' + options.data.id);
+                                $location.path('/voucherdetail/' + options.data.voucher_id);
                             })
                             .appendTo(container);
 
@@ -107,7 +107,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
                                 .text('ReSell')
                                 .on('dxclick', function () {
                                     //Do something with options.data;
-                                    $location.path('/vouchersell/' + options.data.id);
+                                    $location.path('/vouchersell/' + options.data.voucher_id);
                                 })
                                 .appendTo(container);
                         }

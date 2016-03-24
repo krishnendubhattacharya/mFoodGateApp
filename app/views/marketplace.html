@@ -16,10 +16,14 @@
                             <div class="price">
                                 <h2>RP {{resaleDetail.price-((resaleDetail.price*resaleDetail.offer_percent)/100)}}</h2>
                                 <p>RP {{resaleDetail.price}}</p>
+                                <h6>Highetst Bid {{resaleDetail.high_bid}}</h6>
+                                <h6>Lowest Bid {{resaleDetail.low_bid}}</h6>
+
                             </div>
                             <div class="pts">
                                 <h2>mPts 120</h2>
                                 <p>{{resaleDetail.buy_count}} Sold</p>
+                                <p> <button class="btn-default" ng-click="offerdetails(resaleDetail.voucher_id,resaleDetail.voucher_resale_id)">Details</button></p>
                             </div>
                         </div>
                     </div>
