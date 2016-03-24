@@ -150,7 +150,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Home'
             })
             .state('frontend.login', {
-                url: '/login',
+                url: '/login?returnUrl',
                 resolve: loadSequence('login'),
                 templateUrl: 'app/views/login.html',
                 title: 'Login'
@@ -190,6 +190,20 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('allvoucher'),
                 templateUrl: 'app/views/allvoucher.html',
                 title: 'Voucher'
+            })
+            .state('frontend.mymembership', {
+                url: '/mymembership',
+                resolve: loadSequence('mymembership'),
+                templateUrl: 'app/views/mymembership.html',
+                title: 'My Membership',
+                controller:'mymembershipCtrl'
+            })
+            .state('frontend.membershipdetail', {
+                url: '/membershipdetail/:membershipId',
+                resolve: loadSequence('membershipdetail'),
+                templateUrl: 'app/views/membershipdetail.html',
+                title: 'Membership Detail',
+                controller:'membershipdetailCtrl'
             })
             .state('frontend.voucherdetail', {
                 url: '/voucherdetail/:voucherId',
@@ -368,13 +382,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             })
             .state('frontend.voucher', {
                 url: '/voucher',
-                //resolve: loadSequence('voucher'),
+                resolve: loadSequence('voucher'),
                 templateUrl: 'app/views/voucher.html',
                 title: 'Voucher'
             })
             .state('frontend.membership', {
                 url: '/membership',
-                //resolve: loadSequence('membership'),
+                resolve: loadSequence('membership'),
                 templateUrl: 'app/views/membership.html',
                 title: 'Membership'
             })
@@ -413,6 +427,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('voucherdetailforall'),
                 templateUrl: 'app/views/voucherdetailforall.html',
                 title: 'Voucher Detail'
+            })
+            .state('frontend.payment_return',{
+                url:'/payment_return?success&paymentId&token&PayerID',
+                resolve: loadSequence('paymentreturnCtrl'),
+                templateUrl:'app/views/payment_return.html',
+                title: 'Please Wait...'
             })
 
 

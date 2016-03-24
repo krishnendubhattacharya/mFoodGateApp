@@ -1,5 +1,6 @@
-app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap,mFoodCart) {
+app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap,mFoodCart,$window) {
     $scope.promoId = $stateParams.promoId;
+    $scope.loggedindetails = myAuth.getUserNavlinks();
 
     NgMap.getMap().then(function(map) {
         $scope.map = map;
@@ -71,7 +72,41 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     }
 
     $scope.pay_now = function(){
+        $scope.cartDetails = mFoodCart.get_cart();
+        console.log($scope.cartDetails);
+        if(!$scope.loggedindetails){
+            var ret = $location.path();
+            $location.path("/login").search('returnUrl', ret);
+        }
+        else {
+            $scope.getCartTotals();
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl+"cart_checkout",
+                headers: {'Content-Type': 'application/json'},
+                data:{cart:$scope.cartDetails,total:$scope.cart_total,user_id:$scope.loggedindetails.id}
+            }).success(function(data) {
 
+                if(data.type == 'success') {
+                    //console.log(data.getRelatedPromo);
+                    //$scope.related_products = data.getRelatedPromo;
+                    //console.log($scope.related_products);
+                    $window.location.href = data.url;
+
+                }
+                else {
+                    var message = "Internal error. Please try again later";
+                    DevExpress.ui.notify({
+                        message: message,
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "error", 3000);
+                }
+            })
+        }
+        /**/
     }
 
 });

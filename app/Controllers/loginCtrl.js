@@ -2,8 +2,8 @@
 /**
  * controllers used for the login
  */
-app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$facebook, myAuth, $cookieStore,ngToast) {
-
+app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$facebook, myAuth, $cookieStore,ngToast,$stateParams) {
+    $scope.returnUrl = $stateParams.returnUrl;
     //ngToast.create('a toast message...');
     var user_type = ["Merchant", "Client"];
     $scope.textBox = {
@@ -66,7 +66,13 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                     if(data.user_details.is_logged_in == 1){
                         $location.path('admin/home');
                     }else {
-                        $location.path('/');
+                        if($scope.returnUrl) {
+                            $location.search('returnUrl', null)
+                            $location.path($scope.returnUrl);
+                        }
+                        else {
+                            $location.path('/');
+                        }
                     }
                     DevExpress.ui.notify({
                         message: message,

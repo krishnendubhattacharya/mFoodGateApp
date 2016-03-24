@@ -57,6 +57,10 @@ app.constant('JS_REQUIRES', {
         'restaurentpromo':['app/Controllers/restaurentpromoCtrl.js'],
         'promodetails':['app/Controllers/promodetailsCtrl.js'],
         'voucherdetailforall':['app/Controllers/voucherdetailforallCtrl.js'],
+        'paymentreturnCtrl':['app/Controllers/paymentreturnCtrl.js'],
+        'voucher':['app/Controllers/voucherCtrl.js'],
+        'mymembership':['app/Controllers/mymembershipCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'membershipdetail':['app/Controllers/membershipdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
     },
 
     //*** angularJS Modules
