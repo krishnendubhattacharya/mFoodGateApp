@@ -61,6 +61,9 @@ app.constant('JS_REQUIRES', {
         'voucher':['app/Controllers/voucherCtrl.js'],
         'mymembership':['app/Controllers/mymembershipCtrl.js','app/Controllers/leftbarCtrl.js'],
         'membershipdetail':['app/Controllers/membershipdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'swapvoucher':['app/Controllers/swapvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'swapvoucherdetail':['app/Controllers/swapvoucherdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'swapinterested':['app/Controllers/swapinterestedCtrl.js','app/Controllers/leftbarCtrl.js'],
     },
 
     //*** angularJS Modules
