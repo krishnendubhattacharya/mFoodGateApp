@@ -30,7 +30,7 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
                     showInfo: true
                 },
 
-                columns: ["sl", "points", "type", "date","expire_date"
+                columns: ["sl", "points","redeemed_points", "remaining_points" ,"source", "date","expire_date"
                     /*{
                         width: 100,
                         alignment: 'center',
@@ -65,58 +65,62 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
     }
     $scope.getPoints();
 
-    $http({
-        method: "GET",
-        url: $rootScope.serviceurl + "expiresoonvoucher/"+$scope.loggedindetails.id,
-    }).success(function (data) {
-        $scope.soonVoucherInfo =data;
-        //console.log($scope.voucherInfo);
-        $scope.dataGridOptions2 = {
-            dataSource: $scope.soonVoucherInfo,
-            paging: {
-                pageSize: 5
-            },
-            pager: {
-                showPageSizeSelector: true,
-                allowedPageSizes: [5, 10, 20],
-                showInfo: true
-            },
+    $scope.getExpiredSoon = function(){
 
-            columns: ["title", "price", "offer_percent", "to_date",
-                {
-                    width: 100,
-                    alignment: 'center',
-                    cellTemplate: function (container, options) {
-                        $('<button/>').addClass('dx-button')
-                            .text('Details')
-                            .on('dxclick', function () {
-                                //Do something with options.data;
-                                $location.path('/voucherdetail/'+options.data.id);
-                            })
-                            .appendTo(container);
-                    }
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "expiresoonpoints/" + $scope.loggedindetails.id,
+        }).success(function (data) {
+            $scope.voucherInfo = data.data;
+            //console.log($scope.voucherInfo);
+            $scope.dataGridOptions2 = {
+                dataSource: $scope.voucherInfo,
+                selection: {
+                    mode: "single"
                 },
-                {
-                    width: 100,
-                    alignment: 'center',
-                    cellTemplate: function (container, options) {
-                        $('<button/>').addClass('dx-button')
-                            .text('ReSell')
-                            .on('dxclick', function () {
-                                //Do something with options.data;
-                                $location.path('/vouchersell/'+options.data.id);
-                            })
-                            .appendTo(container);
+                paging: {
+                    pageSize: 5
+                },
+                pager: {
+                    showPageSizeSelector: true,
+                    allowedPageSizes: [5, 10, 20],
+                    showInfo: true
+                },
 
-                    }
-                }
+                columns: ["sl", "points", "redeemed_points", "remaining_points", "source", "date","expire_date"
+                    /*{
+                     width: 100,
+                     alignment: 'center',
+                     cellTemplate: function (container, options) {
 
-            ]
-        };
+                     $('<button/>').addClass('dx-button')
+                     .text('Details')
+                     .on('dxclick', function () {
+                     $location.path('/voucherdetail/' + options.data.id);
+                     })
+                     .appendTo(container);
+                     }
+                     },
+                     {
+                     width: 100,
+                     alignment: 'center',
+                     cellTemplate: function (container, options) {
+                     $('<button/>').addClass('dx-button')
+                     .text('ReSell')
+                     .on('dxclick', function () {
+                     //Do something with options.data;
+                     $location.path('/vouchersell/' + options.data.id);
+                     })
+                     .appendTo(container);
 
+                     }
+                     }*/
 
-    });
-
+                ]
+            };
+        });
+    }
+    $scope.getExpiredSoon();
 
 
 

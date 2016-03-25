@@ -50,6 +50,19 @@ angular
         $cookieStore.put('cart',cart);
 
     }
+
+    factobj.remove = function(offer_id){
+        var cart=$cookieStore.get('cart');
+        angular.forEach(cart,function(val,key){
+            if(val.offer_id == offer_id)
+            {
+               cart.splice(key,1);
+                //found = true;
+            }
+        })
+        $cookieStore.put('cart',cart);
+
+    }
     
     
     return factobj;

@@ -9,20 +9,44 @@
                 <div class="price-div">
                     <div class="off">{{cart.offer_percent}}% <span>off</span></div>
                     <div class="price-m"><span>{{cart.price}}</span>  ${{cart.offer_price}}</div>
+                    <div style="clear: both"></div>
+                    <div class="off">M-points</div>
+                    <div class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>
                 <div class="qty-totals">
                     <div class="qty">Qty: <span><input type="text" ng-model="cart.quantity" value="1" ng-change="updateQuantity(cart)"></span></div>
                     <div class="totals" ><span>Total:</span> ${{cart.quantity*cart.offer_price}}</div>
+                </div>
+                <div class="qty-totals">
+                    <div class="qty"><a href="javascript:;" ng-click="remove_offer(cart.offer_id)" style="color:red">Delete</a></div>
+                    <div class="totals" ><span>M-points:</span>{{cart.quantity*cart.mpoints}}</div>
+                </div>
+            </div>
+            <div ng-if="cartDetails && loggedindetails" class="offer">
+                <p>
+                    <span>Payment By:-</span>
+                </p>
+                <div class="qty-totals">
+                    <div class="qty">
+                        <input type="radio" name="payments" ng-model="$parent.payments" value="C">Cash
+                    </div>
+                    <div class="qty">
+                        <input type="radio" name="payments" ng-model="$parent.payments" value="P">M-points
+                    </div>
+                    <div class="qty" ng-if="payments=='P'">Available M-points:</div>
+                    <div class="totals" ng-if="payments=='P'">{{mpoints}}</div>
                 </div>
             </div>
             <div ng-if="cartDetails" class="offer">
                 <div class="qty-totals">
                     <div class="qty">Total : </div>
                     <div class="totals" ng-init="getCartTotals()">${{cart_total}}</div>
+                    <div class="qty">M-points : </div>
+                    <div class="totals">{{cart_total_points}}</div>
                 </div>
             </div>
 
-            <div ng-if="!cartDetails" class="offer">
+            <div ng-if="!cartDetails || cartDetails.length==0" class="offer">
                 <p>
                     <span>No item found.</span>
                 </p>
@@ -47,8 +71,12 @@
             <div class="banner-main">
                 <p>{{restaurant.title}}</p>
                 <h1>{{promodetails.title}}</h1>
-                <div style="text-align:right">
-                    <div id="button" dx-button="{
+                <div >
+                    <div style="width:300px;float:left">
+                    <p><b>Price : </b>${{promodetails.offer_price}}</p>
+                    <p><b>M-points : </b>{{promodetails.mpoints}}</p>
+                    </div>
+                    <div style="float:right" id="button" dx-button="{
                                 text: 'Add to Cart',
                                 type: 'success',
                                 onClick: add_to_cart }" ></div>
