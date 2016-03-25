@@ -64,6 +64,9 @@ app.constant('JS_REQUIRES', {
         'swapvoucher':['app/Controllers/swapvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
         'swapvoucherdetail':['app/Controllers/swapvoucherdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
         'swapinterested':['app/Controllers/swapinterestedCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'acceptswap':['app/Controllers/acceptswapCtrl.js'],
+        'newsdetail':['app/Controllers/newsdetailCtrl.js'],
+        'membership':['app/Controllers/membershipCtrl.js'],
     },
 
     //*** angularJS Modules
@@ -82,6 +85,14 @@ app.constant('JS_REQUIRES', {
         {
             name: 'mCart',
             files: ['app/cartFactory.js']
-        }
+        },
+        {
+            name: 'ngCkeditor',
+            files: ['bower_components/ng-ckeditor/libs/ckeditor/ckeditor.js','bower_components/ng-ckeditor/ng-ckeditor.js','bower_components/ng-ckeditor/ng-ckeditor.css']
+        },
+        {
+            name: 'naif.base64',
+            files: ['bower_components/angular-base64-upload/src/angular-base64-upload.js']
+        },
     ]
 });

@@ -6,7 +6,7 @@ app.controller('swapvoucherdetailCtrl', function ($rootScope, $scope, $http, $lo
 
         $location.path("/login");
     }
-    console.log($stateParams.voucherId);
+    //console.log($stateParams.voucherId);
     $scope.voucherInfo = null;
 
     $scope.getSwapVoucherDetail = function () {

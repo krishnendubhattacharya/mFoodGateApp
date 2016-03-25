@@ -947,6 +947,40 @@ color: #313131; font-weight: normal; width:100%; }
 .news .right-col .latest-news .most-viewed ul li .v-dsc .posted{ font-size:11px; color:#5b5b5b; padding: 0; margin: 0; }
 .news .right-col .latest-news .most-viewed ul li .v-dsc .posted span{ font-size:11px; color:#5b5b5b; padding: 0; margin: 0; float: right; }
 
+/*-------------------------------- News Details -------------------------*/
+.news .left-col .news-details{  width:100%; height: auto; margin: 0;}
+.news .left-col .news-details .img-box{ width:100%; height: auto; margin-bottom: 25px; overflow: hidden;}
+.news .left-col .news-details .img-box img{ width:100%; height: auto; }
+.news .left-col .news-details .desc{ width:100%; height: auto;}
+.news .left-col .news-details .desc h1{
+    color: #329432;
+    font-size: 22px;
+    line-height: 26px;
+    margin: 0 0 10px;
+    padding: 0;
+}
+.news .left-col .news-details .desc p {
+    color: #585858;
+    font-size: 16px;
+    line-height: 22px;
+    margin: 0 0 10px;
+    padding: 0;
+}
+
+.news .left-col .news-details .desc .posted {
+    color: #5b5b5b;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+.news .left-col .news-details .desc .posted span {
+    color: #5b5b5b;
+    float: right;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
 /*****************Drop down menu*********************/
 #dropdown {
     position: absolute;

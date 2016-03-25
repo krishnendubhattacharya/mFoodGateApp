@@ -14,7 +14,7 @@ app.controller('voucherdetailforallCtrl', function ($rootScope, $scope, $http, $
             method: "GET",
             url: $rootScope.serviceurl + "resellVoucherDetail/"+$stateParams.voucherId+'/'+$stateParams.sellId,
         }).success(function (data) {
-            //console.log(data);
+            console.log(data);
             $scope.voucherInfo =data;
             $scope.resellId =$stateParams.sellId;
             $scope.voucherId =$stateParams.voucherId;

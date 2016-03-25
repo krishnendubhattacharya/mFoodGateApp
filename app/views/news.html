@@ -9,8 +9,8 @@
                 <div class="news-item" ng-repeat="news in allnews">
                     <div class="pix"><img src="{{news.image}}" width="264" height="167"  alt=""/></div>
                     <div class="dsc">
-                        <h1>{{news.title}}</h1>
-                        <p>{{news.description | limitTo:300}}...</p>
+                        <h1><a ui-sref="frontend.newsdetail({ newsId: news.id })">{{news.title}}</a></h1>
+                        <p ng-bind-html="news.description | limitTo:300"></p>
                         <div class="posted"><strong>Posted on:</strong> {{news.date}} | By: Admin
                             <span>View ({{news.views}})</span></div>
                     </div>
@@ -25,8 +25,8 @@
                         <li ng-repeat="latest in latestnews | limitTo:4">
                             <div class="n-pix"><img src="{{latest.image}}" alt=""/></div>
                             <div class="n-dsc">
-                                <p><a href="">{{latest.title}}</a></p>
-                                <p>{{latest.description | limitTo:20}}...</p>
+                                <p><a ui-sref="frontend.newsdetail({ newsId: latest.id })">{{latest.title}}</a></p>
+                                <p ng-bind-html="latest.description | limitTo:20"></p>
                             </div>
                         </li>
                         <!--<li>
@@ -47,8 +47,8 @@
                         <li ng-repeat="mostview in mostviews | limitTo:4">
                             <div class="v-pix"><img src="{{mostview.image}}" alt=""/></div>
                             <div class="v-dsc">
-                                <p><a href="">{{mostview.title}}</a><br/>
-                                    {{mostview.description | limitTo:30}}...</p>
+                                <p><a ui-sref="frontend.newsdetail({ newsId: mostview.id })">{{mostview.title}}</a></p><br/>
+                                   <p ng-bind-html="mostview.description | limitTo:30"></p>
                                 <div class="posted"><strong>Posted on:</strong> {{mostview.date}} | By: Admin
                                     <span>View ({{mostview.views}})</span></div>
                             </div>

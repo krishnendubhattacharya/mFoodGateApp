@@ -10,19 +10,19 @@ app.controller('settingCtrl', function ($rootScope, $scope, $http, $location, $s
 
     $scope.checkBox = {
         checked: {
-            value: 1
+            value: true
         },
         unchecked: {
-            value: 0
+            value: false
         }
 
     };
 
     $scope.saveSetting = function(params) {
-        alert($scope.media_notification);
-        alert($scope.expire_date_notification);
-        alert($scope.promo_notification);
-        alert($scope.news_letter_notification);
+        //alert($scope.media_notification);
+        //alert($scope.expire_date_notification);
+        //alert($scope.promo_notification);
+        //alert($scope.news_letter_notification);
 
         /*$http({
             method: "POST",

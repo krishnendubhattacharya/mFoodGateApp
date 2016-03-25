@@ -48,9 +48,9 @@ app.controller('giftvoucherCtrl', function ($rootScope, $scope, $http, $location
 
     $scope.saveGift = function(params) {
 
-        alert($scope.gift_email);
-        alert($stateParams.voucherId);
-        alert($scope.loggedindetails.id);
+        //alert($scope.gift_email);
+        //alert($stateParams.voucherId);
+        //alert($scope.loggedindetails.id);
         //return false;
         //alert(1);
         //console.log(params);

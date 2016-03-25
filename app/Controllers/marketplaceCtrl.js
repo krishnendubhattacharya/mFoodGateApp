@@ -29,8 +29,8 @@ app.controller('marketplaceCtrl', function ($rootScope, $scope, $http, $location
 
         });*/
         $location.path('/sellvoucherdetail/'+voucher_id+'/'+resell_id);
-        alert(12);
-        alert(voucher_id);
+        //alert(12);
+        //alert(voucher_id);
 
     }
 

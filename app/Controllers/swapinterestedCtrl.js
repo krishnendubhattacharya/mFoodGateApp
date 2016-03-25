@@ -50,9 +50,9 @@ app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $locat
         //console.log(params);
         var result = params.validationGroup.validate();
         if(result.isValid) {
-            alert($scope.subject);
-            alert($scope.voucher_url);
-            alert($scope.comment);
+            //alert($scope.subject);
+            //alert($scope.voucher_url);
+            //alert($scope.comment);
             //return false;
             $http({
                 method: "POST",

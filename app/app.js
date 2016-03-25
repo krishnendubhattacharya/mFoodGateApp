@@ -341,7 +341,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/newslist',
                 templateUrl: 'app/views/admin/newslist.html',
                 title: 'News List',
-                resolve: loadSequence('newslist')
+                resolve: loadSequence('newslist','ngCkeditor','naif.base64')
             })
             .state('admin.locationlist', {
                 url: '/location',
@@ -451,6 +451,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('paymentreturnCtrl'),
                 templateUrl:'app/views/payment_return.html',
                 title: 'Please Wait...'
+            })
+            .state('frontend.acceptswap', {
+                url: '/acceptswap/:siid',
+                resolve: loadSequence('acceptswap'),
+                templateUrl: 'app/views/acceptswap.html',
+                title: 'swap'
+            })
+            .state('frontend.newsdetail', {
+                url: '/newsdetail/:newsId',
+                resolve: loadSequence('newsdetail'),
+                templateUrl: 'app/views/newsdetail.html',
+                title: 'News Detail'
             })
 
 

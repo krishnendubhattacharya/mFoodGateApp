@@ -8,12 +8,12 @@ app.controller('bidderlistCtrl', function ($rootScope, $scope, $http, $location,
     }
 
     $scope.sellVoucher = function(to_id,bid_price,bid_id,voucher_id){
-        alert(to_id);
-        alert(bid_price);
-        alert(bid_id);
-        alert($stateParams.sellId);
-        alert(voucher_id);
-        alert($scope.loggedindetails.id);
+        //alert(to_id);
+       // alert(bid_price);
+        //alert(bid_id);
+        //alert($stateParams.sellId);
+        //alert(voucher_id);
+        //alert($scope.loggedindetails.id);
         //return false;
         $http({
             method: "POST",
