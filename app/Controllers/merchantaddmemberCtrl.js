@@ -124,7 +124,7 @@ app.controller('merchantaddmemberCtrl', function ($rootScope, $scope, $http, $lo
             alert($scope.user_type);
             //alert($scope.uniqueCode);
             //alert($scope.email);
-            return false;
+            //return false;
             $http({
                 method: "POST",
                 url: $rootScope.serviceurl+"merchantSaveMember",
@@ -146,9 +146,9 @@ app.controller('merchantaddmemberCtrl', function ($rootScope, $scope, $http, $lo
                         }
                     }, "success", 3000);
                 }else{
-                    var message = "Error occured.";
+                    //var message = "Error occured.";
                     DevExpress.ui.notify({
-                        message: message,
+                        message: data.message,
                         position: {
                             my: "center top",
                             at: "center top"

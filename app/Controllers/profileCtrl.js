@@ -124,12 +124,17 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
         //var result = params.validationGroup.validate();
         //if(result.isValid) {
         console.log($scope.capitals);
-        return false;
+        alert($scope.userInfo.dob);
+        $scope.userInfo.dob = moment($scope.userInfo.dob).format("YYYY/MM/DD");
+        alert($scope.userInfo.dob);
+
+
+        //return false;
 
             $http({
                 method: "PUT",
                 url: $rootScope.serviceurl+"users/"+$scope.loggedindetails.id,
-                data: {"email":$scope.userInfo.email,"phone":$scope.userInfo.phone,"about_me":$scope.userInfo.about_me,"first_name":$scope.userInfo.first_name,"last_name":$scope.userInfo.last_name},
+                data: {"email":$scope.userInfo.email,"phone":$scope.userInfo.phone,"about_me":$scope.userInfo.about_me,"first_name":$scope.userInfo.first_name,"last_name":$scope.userInfo.last_name,"dob":$scope.userInfo.dob,"occupation":$scope.userInfo.occupation,"gender":$scope.userInfo.gender},
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
                 console.log(data);
