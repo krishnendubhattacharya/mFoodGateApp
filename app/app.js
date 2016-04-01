@@ -14,6 +14,7 @@ var app = angular.module("mFoodApp", [
         'ngFacebook',
         'angularFileUpload',
         'angularjs-dropdown-multiselect',
+        'angularMoment'
 ]);
 
 app.config(['$facebookProvider', function($facebookProvider) {
@@ -403,6 +404,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('merchantaddmember'),
                 templateUrl: 'app/views/merchant/merchantaddmember.html',
                 title: 'Add Member'
+            })
+            .state('frontend.merchantmenu', {
+                url: '/merchantmenu',
+                resolve: loadSequence('merchantmenu'),
+                templateUrl: 'app/views/merchant/merchantmenu.html',
+                title: 'Menu'
             })
             .state('frontend.voucher', {
                 url: '/voucher',
