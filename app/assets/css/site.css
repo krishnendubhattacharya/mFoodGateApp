@@ -372,7 +372,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 .reseller-section h1{ font-size:18px; color:#fff; line-height:36px; padding: 0 20px; margin-top:20px; background:#ff3300; display: inline-block; border-radius: 5px 5px 0 0; font-weight: bold;}
 .reseller-section h1 span{ color:#ff0000; font-size:18px; }
 .reseller-section ul{ padding: 20px 7px; margin:0; border: solid 1px #ff3300; overflow: hidden;}
-.reseller-section ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:31.3%; margin: 0 1%; }
+.reseller-section ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:31.3%; margin: 0 1%;margin-bottom:15px; }
 .reseller-section .pro-item{ width: 100%; height: 294px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
 .reseller-section .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4; overflow: hidden;}
 .reseller-section .pro-item .logo-box img{ width: 100%; height: auto; vertical-align:middle; }

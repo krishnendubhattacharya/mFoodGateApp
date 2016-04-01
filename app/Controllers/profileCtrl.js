@@ -7,6 +7,7 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
     }
     //console.log($scope.loggedindetails);
     //$scope.userInfo ='';
+    $scope.capitals = [];
     $scope.getUserInfo = function () {
         $http({
             method: "GET",
@@ -17,6 +18,7 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
             //console.log(data.email);
             $scope.userInfo =data.user_details;
             //console.log($scope.allcat);
+            $scope.capitals = [{"id":"5","name":"Japanese Food","parent_id":"0","is_active":"1"},{"id":"7","name":"Warong Kopi","parent_id":"0","is_active":"1"},{"id":"8","name":"Cafe & Bar","parent_id":"0","is_active":"1"}];
 
             console.log($scope.userInfo.email);
 
@@ -26,6 +28,22 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
 
     }
     $scope.getUserInfo();
+    $scope.dateBox = {
+        dob: {
+            format: "yyyy/MM/dd"
+        },
+    };
+    var selectBoxData = [
+        { "name": "Male", "value": "M" },
+        { "name": "Female", "value": "F" }
+    ];
+    $scope.selectBox = {
+        simple: {
+            dataSource: selectBoxData,
+            displayExpr: "name",
+            valueExpr: "value"
+        }
+    };
     $scope.textBox = {
         first_name: {
             mode: "text"
@@ -59,6 +77,45 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
 
         }]
     };
+    var BoxData = [
+        { "name": "Male", "id": "M" },
+        { "name": "Female", "id": "F" }
+    ];
+
+    /*$scope.tagBoxData = new DevExpress.data.DataSource({ store: [], paginate: false });
+
+        for (var i = 0; i < BoxData.length; i++) {
+            $scope.tagBoxData.store().insert(BoxData[i]);
+        }
+        $scope.tagBoxData.load();
+    console.log($scope.tagBoxData);*/
+
+    $scope.tagBoxData = new DevExpress.data.DataSource({ store: [], paginate: false });
+    $scope.viewCategory = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getCategories",
+
+        }).success(function (data) {
+
+            $scope.allcat = data.category;
+
+            for (var i = 0; i < $scope.allcat.length; i++) {
+                $scope.tagBoxData.store().insert($scope.allcat[i]);
+            }
+            $scope.tagBoxData.load();
+            console.log($scope.tagBoxData._items);
+            $scope.taglist = $scope.tagBoxData._items;
+
+
+
+        });
+
+    }
+
+    $scope.viewCategory();
+    //$scope.capitals = [];
+    //$scope.capitals = ["8", "5"];
 
     $scope.validateAndSubmit = function(params) {
 
@@ -66,6 +123,9 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
         //console.log(params);
         //var result = params.validationGroup.validate();
         //if(result.isValid) {
+        console.log($scope.capitals);
+        return false;
+
             $http({
                 method: "PUT",
                 url: $rootScope.serviceurl+"users/"+$scope.loggedindetails.id,

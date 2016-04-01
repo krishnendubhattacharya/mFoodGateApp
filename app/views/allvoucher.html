@@ -8,10 +8,84 @@
 
             <div class="profile-details">
                 <h3>All Voucher</h3>
+                <div class="reseller-section phone-hide" style="border:none;">
+
+                    <ul>
+                        <li ng-repeat="voucherDetail in voucherInfo">
+                            <div class="pro-item">
+                                <div class="logo-box">
+                                    <div class="p-circle">{{voucherDetail.offer_percent}}%</div>
+                                    <img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/>
+                                </div>
+                                <div class="desc">
+                                    <h2>{{voucherDetail.title}}</h2>
+
+                                    <div class="price">
+                                        <h2>RP {{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</h2>
+                                        <p>RP {{voucherDetail.price}}</p>
+                                        <!--<h6>Highetst Bid {{voucherDetail.high_bid}}</h6>
+                                        <h6>Lowest Bid {{voucherDetail.low_bid}}</h6>-->
+
+
+                                    </div>
+                                    <div class="pts">
+                                        <!--<h2>mPts 120</h2>-->
+                                        <p>{{voucherDetail.buy_count}} Sold</p>
+                                        <p> <button class="btn-default" ng-click="voucherdetails(voucherDetail.voucher_id)">Details</button></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!--<li>
+                            <div class="pro-item">
+                                <div class="logo-box">
+                                    <div class="p-circle">50%</div>
+                                    <img src="app/assets/Images/pro-2.png" alt=""/>
+                                </div>
+                                <div class="desc">
+                                    <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
+
+                                    <div class="price">
+                                        <h2>RP 299,000</h2>
+                                        <p>RP 350,000</p>
+                                    </div>
+                                    <div class="pts">
+                                        <h2>mPts 120</h2>
+                                        <p>33 Sold</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pro-item">
+                                <div class="logo-box">
+                                    <div class="p-circle">50%</div>
+                                    <img src="app/assets/Images/pro-3.png" alt=""/>
+                                </div>
+                                <div class="desc">
+                                    <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
+
+                                    <div class="price">
+                                        <h2>RP 299,000</h2>
+                                        <p>RP 350,000</p>
+                                    </div>
+                                    <div class="pts">
+                                        <h2>mPts 120</h2>
+                                        <p>33 Sold</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>-->
+                        <button class="btn-default" ng-click="">Load More</button>
+                    </ul>
+
+                </div>
+                <!--<h3>All Voucher</h3>
                 <div id="gridContainer" dx-data-grid="dataGridOptions"></div>
 
                 <h3>Expire soon Voucher</h3>
-                <div id="gridContainer2" dx-data-grid="dataGridOptions2"></div>
+                <div id="gridContainer2" dx-data-grid="dataGridOptions2"></div>-->
             </div>
 
         </div>

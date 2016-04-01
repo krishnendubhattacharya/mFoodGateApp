@@ -398,6 +398,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/merchant/merchantofferdetail.html',
                 title: 'Offer Detail'
             })
+            .state('frontend.merchantaddmember', {
+                url: '/addmember',
+                resolve: loadSequence('merchantaddmember'),
+                templateUrl: 'app/views/merchant/merchantaddmember.html',
+                title: 'Add Member'
+            })
             .state('frontend.voucher', {
                 url: '/voucher',
                 resolve: loadSequence('voucher'),

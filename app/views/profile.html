@@ -42,13 +42,60 @@
                             </div>
                         </div>
                         <div class="dx-field">
+                            <div class="dx-field-label">Gender</div>
+                            <div class="dx-field-value">
+                                <div dx-select-box="selectBox.simple" ng-model="userInfo.gender"></div>
+                            </div>
+                        </div>
+
+                        <div class="dx-field">
+                            <div class="dx-field-label">Date of Birth</div>
+                            <div class="dx-field-value">
+                                <div dx-date-box="dateBox.dob" ng-model="userInfo.dob"></div>
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Occupation</div>
+                            <div class="dx-field-value">
+                                <div dx-text-box="textBox.occupation"  ng-model="userInfo.occupation"></div>
+                            </div>
+                        </div>
+                        <div class="dx-field">
                             <div class="dx-field-label">About Me</div>
                             <div class="dx-field-value">
                                 <div dx-text-area="textArea"  ng-model="userInfo.about_me"></div>
                             </div>
                         </div>
 
+                        <div class="dx-field">
+                            <div class="dx-field-label">Favourite Food</div>
+                            <div class="dx-field-value">
+                                <div class="tagBox" dx-tag-box="{
+                                dataSource: tagBoxData,
+                                placeholder: 'Select Foods',
+                                displayExpr: 'name',
+
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'capitals'
+                                    }
+                                }
+                            }"></div>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <!--<div>
+                        <p><b>Selected state capitals:</b></p>
+                        <ul ng-repeat="capital in capitals">
+                            <li>
+                                <p>"{{capital}}"</p>
+                            </li>
+                        </ul>
+                    </div>-->
                     <!--<div id="summary" dx-validation-summary="{ }"></div>-->
                     <div id="button" dx-button="{
                                 text: 'Submit',
