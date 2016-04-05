@@ -10,6 +10,7 @@
                 <div id="button" dx-button="{
                                 text: 'Add Menu',
                                 onClick: changeView }" ></div>
+                <!--<input type="button" ng-click="refresh_grid()" value="Refresh">-->
                 <div id="gridContainer" dx-data-grid="dataGridOptions"></div>
 
             </div>
@@ -44,17 +45,19 @@
                             </div>
                         </div>
 
-                        <!--<div class="dx-field">
+                        <div class="dx-field">
                             <div class="dx-field-label">Image</div>
                             <div class="dx-field-value">
-                                <div dx-file-uploader="{
-                                    buttonText: 'Select file',
-                                    labelText: 'Drop file here',
-                                    multiple: true,
-                                    accept: 'image/*'
-                                }" ng-model="menuInfo.image"></div>
+                                <div dx-file-uploader="textBox.image"></div>
                             </div>
-                        </div>-->
+                        </div>
+
+                        <div class="dx-field">
+                            <div class="dx-field-label"></div>
+                            <div class="dx-field-value">
+                                <img src="{{menuInfo.imageurl}}" ng-if="menuInfo.imageurl" width="200">
+                            </div>
+                        </div>
 
                         <div class="dx-field">
                             <div class="dx-field-label">Is Active</div>
