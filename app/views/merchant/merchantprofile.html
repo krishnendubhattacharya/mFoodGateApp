@@ -49,6 +49,45 @@
                             </div>
                         </div>
 
+
+                        <div class="dx-field">
+                            <div class="dx-field-label">Outlet Type</div>
+                            <div class="dx-field-value">
+                                <div class="tagBox" dx-tag-box="{
+                                dataSource: tagBoxData,
+                                placeholder: 'Select Type',
+                                displayExpr: 'name',
+
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'typeList'
+                                    }
+                                }
+                            }"></div>
+                            </div>
+                        </div>
+
+                        <div class="dx-field">
+                            <div class="dx-field-label">Outlet Location</div>
+                            <div class="dx-field-value">
+                                <div class="tagBox" dx-tag-box="{
+                                dataSource: tagBoxDataLocation,
+                                placeholder: 'Select Location',
+                                displayExpr: 'city',
+
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'areaList'
+                                    }
+                                }
+                            }"></div>
+                            </div>
+                        </div>
+
                     </div>
                     <!--<div id="summary" dx-validation-summary="{ }"></div>-->
                     <div id="button" dx-button="{
@@ -99,6 +138,44 @@
                         <div class="dx-field-label">Address</div>
                         <div class="dx-field-value">
                             <div dx-text-area="textArea"  ng-model="userInfo.address"></div>
+                        </div>
+                    </div>
+
+                    <div class="dx-field">
+                        <div class="dx-field-label">Outlet Type</div>
+                        <div class="dx-field-value">
+                            <div class="tagBox" dx-tag-box="{
+                                dataSource: tagBoxData,
+                                placeholder: 'Select Type',
+                                displayExpr: 'name',
+
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'typeList'
+                                    }
+                                }
+                            }"></div>
+                        </div>
+                    </div>
+
+                    <div class="dx-field">
+                        <div class="dx-field-label">Outlet Location</div>
+                        <div class="dx-field-value">
+                            <div class="tagBox" dx-tag-box="{
+                                dataSource: tagBoxDataLocation,
+                                placeholder: 'Select Location',
+                                displayExpr: 'city',
+
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'areaList'
+                                    }
+                                }
+                            }"></div>
                         </div>
                     </div>
                     <div class="dx-field">
