@@ -1,4 +1,5 @@
-<div class="container phone-hide" ng-controller="promodetailsCtrl">
+<div ng-controller="promodetailsCtrl">
+    <div class="container phone-hide">
     <div class="item-details">
         <div class="offers">
             <h1>Cart</h1>
@@ -112,110 +113,122 @@
             </div>
         </div>
     </div>
-
-
-<div class="m-item-details tablet-hide">
-    <div class="offers">
-        <h1>Choose An Offer</h1>
-        <div class="offer">
-            <p>
-                <span>Offer - 1:</span> Lorem ip dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            </p>
-            <div class="price-div">
-                <div class="off">64% <span>off</span></div>
-                <div class="price-m"><span>2,800</span>  $999</div>
-            </div>
-            <div class="qty-totals">
-                <div class="qty">Qty: <span><input type="text" value="1"></span></div>
-                <div class="totals"><span>Total:</span> $1400</div>
-            </div>
-        </div>
-        <div class="offer">
-            <p>
-                <span>Offer - 1:</span> Lorem ip dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            </p>
-            <div class="price-div">
-                <div class="off">64% <span>off</span></div>
-                <div class="price-m"><span>2,800</span>  $999</div>
-            </div>
-            <div class="qty-totals">
-                <div class="qty">Qty: <span><input type="text" value="1"></span></div>
-                <div class="totals"><span>Total:</span> $1400</div>
-            </div>
-        </div>
-        <p><input type="button" value="BUY NOW"></p>
     </div>
-    <div class="details">
-        <div class="banner-main">
-            <p>Tandoori Delights Park Street</p>
-            <h1>Chinese / Indian Combo Meal & More at Tandoori Delights, Park Street</h1>
-            <div class="banner"><img src="app/assets/Images/big-banner.jpg" alt=""/></div>
-        </div>
-        <div class="share">
-            <p>Share this deal <span><img src="app/assets/Images/icon-mail.png" width="20" height="20"  alt=""/></span><span><img src="app/assets/Images/icon-f.png" width="20" height="20"  alt=""/></span><span><img src="app/assets/Images/icon-t.png" width="20" height="20"  alt=""/></span></p>
-        </div>
-        <div class="highlights">
-            <p>An apple a day keeps the doctor away, is what they say. After you’re done with the Apple how about some mouth-watering delicacies?</p>
-            <ul>
-                <h1>Highlights</h1>
-                <li>Located at Park Street</li>
-                <li>Inclusive of all taxes and service charges</li>
-            </ul>
-            <ul>
-                <h1>What You Get</h1>
-                <li><strong>Offer 1: 1</strong> Chicken Biryani</li>
-                <li><strong>Offer 2: 1</strong> Chicken Reshmi / Tikka / Haryali Kebab</li>
-                <li><strong>Offer 3: 3</strong> Chicken Biryani</li>
-                <li><strong>Offer 4:</strong> Chinese Combo Meal</li>
-                <li><strong>Offer 5:</strong> Indian Combo Meal</li>
-            </ul>
-            <ul>
-                <h1>Indian Combo Meal Inclusions:</h1>
-                <li>Veg / Non-Veg Starter (ANY 1) </li>
-                <li>Veg / Non-Veg Main Course (ANY 1)</li>
-                <li>Dal (ANY 1)</li>
-                <li>Rice (ANY 1)</li>
-                <li>Indian Breads (2pcs)</li>
-                <li>2 Cold Drinks <strong>Chinese Combo Meal Inclusions:</strong></li>
-                <li>2 Cold Drinks </li>
-                <li>Soup (1 by 2)</li>
-                <li>Starter (ANY 1)</li>
-                <li>Main Course (ANY 1)</li>
-                <li>Rice (ANY 1)</li>
-                <li>Noodles / Chop Suey (ANY 1)</li>
-                <li>Desserts</li>
-            </ul>
 
-            <ul>
-                <h1>Validity</h1>
-                <li>Valid until: 30.04.2016
-                <li>Valid 6 days a week (Monday - Saturday)</li>
-                <li>Timings: 12:00 Noon to 10:30PM</li>
-                <li>Offer 4 & 5: Valid for 2 Persons</li>
-                <li>Offers 1, 2 & 3 are valid for dine in & takeaway</li>
-                <li>Offers 4 & 5 are valid for dine-in only</li>
-            </ul>
-            <ul>
-                <h1>General Fine Print</h1>
-                <li>Prior appointment mandatory (Upon purchase, you will receive a voucher with the reservation number). Rescheduling may result in additional charges</li>
-                <li>For weekend appointments, we recommend calling 2 - 3 days in advance</li>
-                <li>Voucher printout is mandatory</li>
-            </ul>
-        </div>
-        <div class="location">
-            <div class="map">
-                <!--<img src="app/assets/Images/map.png" alt=""/>-->
-                <ng-map center="15.8669606,101.30007" zoom="6">
-                    <marker position="15.8669606,101.30007"></marker>
-                </ng-map>
+    <div class="m-item-details tablet-hide">
+        <div class="offers">
+            <h1>Cart</h1>
+            <div ng-if="cartDetails" class="offer" ng-repeat="cart in cartDetails">
+                <p>
+                    <span>{{cart.offer_title}}:</span> {{cart.restaurant_title}}
+                </p>
+                <div class="price-div">
+                    <div class="off">{{cart.offer_percent}}% <span>off</span></div>
+                    <div class="price-m"><span>{{cart.price}}</span>  ${{cart.offer_price}}</div>
+                    <div style="clear: both"></div>
+                    <div class="off">M-points</div>
+                    <div class="price-m" style="float: right">{{cart.mpoints}}</div>
+                </div>
+                <div class="qty-totals">
+                    <div class="qty">Qty: <span><input type="text" ng-model="cart.quantity" value="1" ng-change="updateQuantity(cart)"></span></div>
+                    <div class="totals" ><span>Total:</span> ${{cart.quantity*cart.offer_price}}</div>
+                </div>
+                <div class="qty-totals">
+                    <div class="qty"><a href="javascript:;" ng-click="remove_offer(cart.offer_id)" style="color:red">Delete</a></div>
+                    <div class="totals" ><span>M-points:</span>{{cart.quantity*cart.mpoints}}</div>
+                </div>
             </div>
-            <div class="address">
-                <h1>Tandoori Delights</h1>
-                <p>173, Park Street, Park Circus Area, Kolkata 700017</p>
+            <div ng-if="cartDetails && loggedindetails" class="offer">
+                <p>
+                    <span>Payment By:-</span>
+                </p>
+                <div class="qty-totals">
+                    <div class="qty">
+                        <input type="radio" name="payments" ng-model="$parent.payments" value="C">Cash
+                    </div>
+                    <div class="qty">
+                        <input type="radio" name="payments" ng-model="$parent.payments" value="P">M-points
+                    </div>
+                    <div class="qty" ng-if="payments=='P'">Available M-points:</div>
+                    <div class="totals" ng-if="payments=='P'">{{mpoints}}</div>
+                </div>
+            </div>
+            <div ng-if="cartDetails" class="offer">
+                <div class="qty-totals">
+                    <div class="qty">Total : </div>
+                    <div class="totals" ng-init="getCartTotals()">${{cart_total}}</div>
+                    <div class="qty">M-points : </div>
+                    <div class="totals">{{cart_total_points}}</div>
+                </div>
+            </div>
+
+            <div ng-if="!cartDetails || cartDetails.length==0" class="offer">
+                <p>
+                    <span>No item found.</span>
+                </p>
+            </div>
+
+            <!--<div class="offer">
+                <p>
+                    <span>Offer - 1:</span> Lorem ip dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                </p>
+                <div class="price-div">
+                    <div class="off">64% <span>off</span></div>
+                    <div class="price-m"><span>2,800</span>  $999</div>
+                </div>
+                <div class="qty-totals">
+                    <div class="qty">Qty: <span><input type="text" value="1"></span></div>
+                    <div class="totals"><span>Total:</span> $1400</div>
+                </div>
+            </div>-->
+            <p ng-if="cartDetails"><input type="button" value="BUY NOW" ng-click="pay_now()"></p>
+        </div>
+        <div class="details">
+            <div class="banner-main">
+                <p>{{restaurant.title}}</p>
+                <h1>{{promodetails.title}}</h1>
+                <div >
+                    <div style="width:300px;float:left">
+                        <p><b>Price : </b>${{promodetails.offer_price}}</p>
+                        <p><b>M-points : </b>{{promodetails.mpoints}}</p>
+                    </div>
+                    <div style="float:right" id="button" dx-button="{
+                                text: 'Add to Cart',
+                                type: 'success',
+                                onClick: add_to_cart }" ></div>
+                    <div class="clearfix" style="margin-bottom: 10px;"></div>
+                </div>
+                <div class="banner"><img src="{{promodetails.image}}" alt=""/></div>
+            </div>
+
+            <div class="share">
+                <p>Share this deal <span><img src="app/assets/Images/icon-mail.png" width="20" height="20"  alt=""/></span><span><img src="app/assets/Images/icon-f.png" width="20" height="20"  alt=""/></span><span><img src="app/assets/Images/icon-t.png" width="20" height="20"  alt=""/></span></p>
+            </div>
+            <div class="highlights" ng-bind-html="promodetails.description">
+
+            </div>
+            <div class="location">
+                <div class="map"><!--<img src="app/assets/Images/map.png" alt=""/>-->
+                    <ng-map center="{{restaurant.address}}" zoom="6">
+                        <marker position="{{restaurant.address}}"></marker>
+                    </ng-map>
+                </div>
+                <div class="address">
+                    <h1>{{restaurant.title}}</h1>
+                    <p>{{restaurant.address}}</p>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div style="text-align:right">
+                <div id="button" dx-button="{
+                                text: 'Add to Cart',
+                                type: 'success',
+                                onClick: add_to_cart }" ></div>
+                <div style="clear: both;margin-bottom: 10px;"></div>
             </div>
         </div>
     </div>
-</div>
+
 <div class="container">
     <div class="new-Promo phone-hide">
         <h1>Related Products</h1>
@@ -264,16 +277,50 @@
         </ul>
     </div>
 </div>
-<div class="m-new-Promo tablet-hide">
-    <div class="m-pro-item">
-        <img width="100%" height="255" alt="" src="app/assets/Images/pro-3.png">
-        <div class="m-promo-circle">50%</div>
-        <div class="desc">
-            <div class="txt">
-                <h2>Paket Hemat Sowe</h2>
-                <p>11D:21H:50M:20S</p>
-            </div>
-        </div>
+    <div class="new-Promo tablet-hide">
+        <h1>Related Products</h1>
+        <ul>
+            <li ng-repeat="related in related_products">
+                <div class="pro-item">
+                    <img src="{{related.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle" >{{related.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2 ng-bind="related.title"></h2>
+                            <p ng-bind="related.offer_to_date"></p>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <!--<li>
+                <div class="pro-item">
+                    <img src="app/assets/Images/pro-3.png" width="406" height="255"  alt=""/>
+                    <div class="p-circle">50%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>Paket Hemat Sowe</h2>
+                            <p>11D:21H:50M:20S</p>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pro-item">
+                    <img src="app/assets/Images/pro-3.png" width="406" height="255"  alt=""/>
+                    <div class="p-circle">50%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>Paket Hemat Sowe</h2>
+                            <p>11D:21H:50M:20S</p>
+                        </div>
+
+                    </div>
+                </div>
+            </li>-->
+
+
+        </ul>
     </div>
-</div>
 </div>

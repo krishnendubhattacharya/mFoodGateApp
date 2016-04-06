@@ -119,7 +119,28 @@ h5 a:link, h5 a:visited, h5 a:active {
 .main-header .nab-bar .navigation ul li a:hover{ display: block; background:url(../Images/nav-hover.jpg) left top repeat-x; border-radius: 3px 3px 0 0; }
 .main-header .nab-bar .navigation ul li a.active{ display: block; background:url(../Images/nav-hover.jpg) left top repeat-x; border-radius: 3px 3px 0 0; }
 
-.search-br{ width: 266px; height:33px; float: right; margin: 8px 11px 0 0;}
+.search-br{ width: 300px; height:33px; float: right; margin: 8px 11px 0 0; background:#236923; border: solid 1px #42c541; border-radius: 3px; padding: 0 5px;}
+.search-br .search-f{ width:180px; height:33px; overflow: hidden; float: left; }
+.search-br .select-box{ width:120px; height: 33px; float: left; color:#fff; font-size:14px; background: url(../Images/down-arrow.png) no-repeat 96% center; line-height: 33px; overflow: hidden; }
+.search-br .select-box select{ background: transparent; border: none; color:#fff; font-size:14px; width:120%; }
+.search-br .search-f input[type="text"]{background: transparent; width:75% !important; font-size:14px; padding: 0 5px; color:#fff; border: none; height: 33px; line-height: 33px; float: left;}
+
+.search-br .search-f .s-button
+{
+   background: url(../Images/icon-search.png) no-repeat center center;
+   display: inline-block;
+   line-height: 33px;
+   padding:0;
+   margin:0;
+   border:0;
+   cursor: pointer;
+   width:15%;
+   float: left;
+   height: 33px;
+   padding-right: 5px;
+   border-right: solid 1px #339833;
+   border-radius: 0;
+}
 
 /*------------------------- Ads Banner --------------------------*/
 .ads-banner{ width: 100%; height: 88px; margin: 18px 0; overflow: hidden;}
@@ -140,39 +161,39 @@ h5 a:link, h5 a:visited, h5 a:active {
 .featured-Promo ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:48.5%; margin-right:3%; }
 .featured-Promo ul li:last-child{ margin-right: 0; }
 .featured-Promo .pro-item{ width: 100%; height: 255px; position: relative; overflow: hidden;}
-.featured-Promo .pro-item img{ width:100%; height: auto;}
+.featured-Promo .pro-item img{ width:100%; height: 100%;}
 .featured-Promo .pro-item .desc{ position: absolute; z-index: 100; width:94%; height:auto; padding: 5px 13px; bottom:0; background: url(../Images/b-trans-bg.png) left top repeat; overflow: hidden;}
 .featured-Promo .pro-item .desc .txt{ width:70%; height: auto; float: left;}
-.featured-Promo .pro-item .desc .txt h2{ font-size:18px; line-height:20px; line-height: 24px; margin-bottom:5px; padding: 0; margin:0; color:#fff; font-weight: bold; }
+.featured-Promo .pro-item .desc .txt h2{ font-size:18px; line-height: 24px; margin-bottom:5px; padding: 0; margin:0; color:#fff; font-weight: bold; }
 .featured-Promo .pro-item .desc .txt p{ font-size:16px; color:#d2d2d2; line-height:21px; margin:0}
 .featured-Promo .pro-item .desc .txt .price{ font-size: 24px; color:#339933 !important;}
 .featured-Promo .pro-item .desc .txt .price span{ text-decoration:line-through; font-size:16px; color:#b4b4b4;  }
-.featured-Promo .pro-item .desc .view-btn{ width: 66px; height: 42px; float: right; margin-top: 14px;}
+.featured-Promo .pro-item .desc .view-btn{ width: 66px; height: 42px; float: right; margin-top: 3px;}
 .featured-Promo .pro-item .p-circle{ width:73px; height:73px; position: absolute; z-index: 1001; top: 20px; right:20px; font-size:24px; text-align: center;
     line-height: 73px; background: url(../Images/trans-circle.png) center center no-repeat; color:#fff; }
 
 /*------------------------------- New Promo -------------------------------------*/
 .new-Promo{ width:100%; margin:0; border-top: solid 1px #dcdcdc; margin-top:42px;  }
-.new-Promo h1{ font-size:26px; color:#3b3b3b; line-height:36px; padding-bottom:7px; margin-top:20px;}
+.new-Promo h1{ font-size:26px; color:#3b3b3b; line-height:36px; padding-bottom:7px; margin-top:20px !important;}
 .new-Promo h1 span{ color:#ff0000; font-size:18px; }
 .new-Promo ul{ padding:17px 0 0 0; margin:0;}
 .new-Promo ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:31.3%; margin: 0 1% 20px; }
 .new-Promo .pro-item{ width: 100%; height: 258px; position: relative; overflow: hidden;}
-.new-Promo .pro-item img{ width:100%; height: auto;}
+.new-Promo .pro-item img{ width:100%; height: 100%;}
 .new-Promo .pro-item .desc{ position: absolute; z-index: 100; width:94%; height:auto; padding: 5px 13px; bottom:0; background: url(../Images/b-trans-bg.png) left top repeat; overflow: hidden;}
 .new-Promo .pro-item .desc .txt{ width:70%; height: auto; float: left;}
-.new-Promo .pro-item .desc .txt h2{ font-size:18px; line-height:20px; line-height: 24px; margin-bottom:5px; padding: 0; margin:0; color:#fff; font-weight: bold; }
+.new-Promo .pro-item .desc .txt h2{ font-size:18px; line-height: 24px; margin-bottom:5px; padding: 0; margin:0; color:#fff; font-weight: bold; }
 .new-Promo .pro-item .desc .txt p{ font-size:16px; color:#d2d2d2; line-height:21px; margin:0}
 .new-Promo .pro-item .desc .txt .price{ font-size: 24px; color:#339933 !important;}
 .new-Promo .pro-item .desc .txt .price span{ text-decoration:line-through; font-size:16px; color:#b4b4b4;  }
-.new-Promo .pro-item .desc .view-btn{ width: 66px; height: 42px; float: right; margin-top: 14px;}
+.new-Promo .pro-item .desc .view-btn{ width: 66px; height: 42px; float: right; margin-top: 3px;}
 .new-Promo .pro-item .p-circle{ width:73px; height:73px; position: absolute; z-index: 1001; top: 20px; right:20px; font-size:24px; text-align: center;
     line-height: 73px; background: url(../Images/trans-circle.png) center center no-repeat; color:#fff; }
 
 
 /*------------------------------- Featured Restaurant -------------------------------------*/
 .restaurant-Promo{ width:100%; margin:0; border-top: solid 1px #dcdcdc; margin-top:42px;  }
-.restaurant-Promo h1{ font-size:26px; color:#3b3b3b; line-height:36px; padding-bottom:7px; margin-top:20px;}
+.restaurant-Promo h1{ font-size:26px; color:#3b3b3b; line-height:36px; padding-bottom:7px; margin-top:20px !important;}
 .restaurant-Promo h1 span{ color:#ff0000; font-size:18px; }
 .restaurant-Promo ul{ padding:17px 0 0 0; margin:0;}
 .restaurant-Promo ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:31.3%; margin: 0 1%; }
@@ -288,7 +309,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 .voucher-section h1{ font-size:26px; color:#3b3b3b; line-height:36px; padding-bottom:7px; margin-top:20px;}
 .voucher-section h1 span{ color:#ff0000; font-size:18px; }
 .voucher-section ul{ padding:17px 0 0 0; margin:0;}
-.voucher-section ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:31.3%; margin: 0 1%; }
+.voucher-section ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:31.3%; margin: 0 1% 15px; }
 .voucher-section .pro-item{ width: 100%; height: 294px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
 .voucher-section .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4;}
 .voucher-section .pro-item .logo-box img{ height: auto; vertical-align:middle; }
@@ -373,22 +394,37 @@ h5 a:link, h5 a:visited, h5 a:active {
 .reseller-section h1 span{ color:#ff0000; font-size:18px; }
 .reseller-section ul{ padding: 20px 7px; margin:0; border: solid 1px #ff3300; overflow: hidden;}
 .reseller-section ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:31.3%; margin: 0 1%;margin-bottom:15px; }
-.reseller-section .pro-item{ width: 100%; height: 294px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
+.reseller-section .pro-item{ width: 100%; height: 310px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
 .reseller-section .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4; overflow: hidden;}
-.reseller-section .pro-item .logo-box img{ width: 100%; height: auto; vertical-align:middle; }
+.reseller-section .pro-item .logo-box img{ width: 100%; height: 100%; vertical-align:middle; }
 .reseller-section .pro-item .desc{ padding: 10px 10px;}
 .reseller-section .pro-item .desc h2{font-size:14px; color:#000; padding: 5px 0; text-align: center;}
 .reseller-section .pro-item .desc p{ color:#ff0000; text-align: center; font-size:12px; font-weight: bold;}
-.reseller-section .pro-item .desc .price{ width:48%; float: left; margin: 15px 0; overflow: hidden;}
+.reseller-section .pro-item .desc .price{ width:62%; float: left; margin: 15px 0; overflow: hidden;}
 .reseller-section .pro-item .desc .price h2{color:#ff0000; text-align: left; font-size:18px; font-weight: bold; }
-.reseller-section .pro-item .desc .price p{color:#999; text-align: left; font-size:14px; text-decoration:line-through; font-weight: normal; }
+.reseller-section .pro-item .desc .price p{color:#666; text-align: left; font-size:13px; font-weight: normal; margin-bottom:5px; }
+.reseller-section .pro-item .desc .price p span{text-decoration:line-through; color:#999;}
 
-.reseller-section .pro-item .desc .pts{ width:48%; float: right; margin: 15px 0; overflow: hidden;}
+.reseller-section .pro-item .desc .pts{ width:38%; float: right; margin: 15px 0; overflow: hidden;}
 .reseller-section .pro-item .desc .pts h2{color:#ff0000; text-align: right; font-size:14px; font-weight: bold; }
-.reseller-section .pro-item .desc .pts p{color:#999; text-align: right; font-size:14px; font-weight: normal; }
+.reseller-section .pro-item .desc .pts p{color:#999; text-align: right; font-size:14px; font-weight: normal; margin-bottom:5px; }
+
+.reseller-section .pro-item .desc .pts .button-details {
+    background: rgba(0, 0, 0, 0) url("../Images/submit-btn-bg.png") repeat-x scroll left top;
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    color: #36a236;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 15px;
+    margin: 0;
+    padding: 3px 10px;
+}
 
 
-.reseller-section .pro-item .p-circle{ width:53px; height:53px; position: absolute; z-index: 1001; bottom: 130px; right:20px; font-size:20px; text-align: center;
+.reseller-section .pro-item .p-circle{ width:53px; height:53px; position: absolute; z-index: 1001; bottom: 150px; right:20px; font-size:20px; text-align: center;
     line-height: 53px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
 
 
@@ -564,6 +600,7 @@ h5 a:link, h5 a:visited, h5 a:active {
     }
 }
 
+
 @media (min-height:900px) {
     .layout-box .hb-1 {
         height: 390px; /*+75px*/
@@ -609,6 +646,7 @@ h5 a:link, h5 a:visited, h5 a:active {
         height: 365px; /*+60px*/
     }
 }
+
 
 @media (min-height:970px) {
     .layout-box .hb-1 {
@@ -656,6 +694,7 @@ h5 a:link, h5 a:visited, h5 a:active {
     }
 }
 
+
 @media (min-height:1050px) {
     .layout-box .hb-1 {
         height: 510px; /*+195px*/
@@ -701,6 +740,8 @@ h5 a:link, h5 a:visited, h5 a:active {
         height: 445px; /*+140px*/
     }
 }
+
+
 
 /*----------------------- Anirban 09-03-16 ----------------*/
 .login-marchent{ float:none !important; margin: 15px auto !important; }

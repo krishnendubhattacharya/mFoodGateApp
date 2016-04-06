@@ -9,7 +9,7 @@
                 <div class="pro-item">
                     <div class="logo-box">
                         <!--<div class="p-circle">5X</div>-->
-                        <img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/>
+                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
                     </div>
                     <div class="desc">
 
@@ -71,28 +71,72 @@
 
 </div>
 
-<div class="m-voucher-section tablet-hide">
-    <h1>Membership</h1>
-    <ul>
-        <li ng-repeat="voucherDetail in voucherInfo">
-            <div class="pro-item">
-                <div class="logo-box">
-                    <!--<div class="p-circle">5X</div>-->
-                    <img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/>
-                </div>
-                <div class="desc">
+    <div class="m-voucher-section tablet-hide">
+        <h1>Membership</h1>
+        <ul>
+            <li ng-repeat="voucherDetail in voucherInfo">
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <!--<div class="p-circle">5X</div>-->
+                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
+                    </div>
+                    <div class="desc">
 
-                    <h2>{{voucherDetail.offer_percent}}% off</h2>
-                    <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
-                    <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
-                    <div class="btn_o"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
-                    <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
+                        <h2>{{voucherDetail.offer_percent}}% off</h2>
+                        <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
+                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
+                        <div class="btn_o"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
+                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
+            <!--<li ng-repeat="voucherDetail in voucherInfo">
+                <div class="pro-item">
+                    <img src="{{voucherDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{voucherDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{voucherDetail.title}}</h2>
 
-    </ul>
-</div>
+                            <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
+                            <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
+                            <div class="btn_g"><a href="">Resell</a></div>
+                            <div class="btn_o"><a href="">Give Friend</a></div>
+                        </div>
+
+                    </div>
+                </div>
+            </li>-->
+            <!--<li>
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <div class="p-circle">5X</div>
+                        <img src="app/assets/Images/logo-2.png" width="218" height="100"  alt=""/>
+                    </div>
+                    <div class="desc">
+                        <h2>10% OFF MAY STAR</h2>
+                        <p>49 days 21 : 47 : 55 left</p>
+                        <div class="btn_g"><a href="">Resell</a></div>
+                        <div class="btn_o"><a href="">Give Friend</a></div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <div class="p-circle">5X</div>
+                        <img src="app/assets/Images/logo-3.png" width="218" height="100"  alt=""/>
+                    </div>
+                    <div class="desc">
+                        <h2>10% OFF MAY STAR</h2>
+                        <p>49 days 21 : 47 : 55 left</p>
+                        <div class="btn_g"><a href="">Resell</a></div>
+                        <div class="btn_o"><a href="">Give Friend</a></div>
+                    </div>
+                </div>
+            </li>-->
+        </ul>
+    </div>
 </div>
 <!--<div class="container phone-hide">
     <div class="myaccount-details">
