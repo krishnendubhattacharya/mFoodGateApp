@@ -22,6 +22,20 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
             is_active:false,
         }
     }
+    $scope.edit_event = function(event)
+    {
+        console.log(event);
+        $scope.edit_mode = !$scope.edit_mode;
+        $scope.event = {
+            id:event.id,
+            title:event.title,
+            description:event.description,
+            from_date:event.from_date,
+            to_date:event.to_date,
+            status:event.is_active=="1"?true:false
+        }
+        //$scope.img_uploader.reset();
+    }
 
     $scope.getEvents = function() {
         $scope.edit_mode = false;
@@ -45,7 +59,55 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
                     showInfo: true
                 },
 
-                columns: ["title", "created_on","from_date", "to_date"
+                columns: ["title", "created_on","from_date", "to_date",
+                    {
+                        caption:'Action',
+                        width: 300,
+                        alignment: 'center',
+                        cellTemplate: function (container, options) {
+                            $('<button/>').addClass('dx-button')
+                                .text('Image')
+                                .on('dxclick',function(){$scope.image_event(options.data); })
+                                .appendTo(container);
+
+                            $('<button/>').addClass('dx-button')
+                                .text('Edit')
+                                .on('dxclick',function(){$scope.edit_event(options.data); })
+                                .appendTo(container);
+
+                            $('<button/>').addClass('dx-button')
+                                .text('Delete')
+                                .on('dxclick', function () {
+                                    $scope.delete_event(options.data);
+                                })
+                                .appendTo(container);
+                        }
+                    },
+                    /*{
+                        caption:'Edit',
+                        width: 100,
+                        alignment: 'center',
+                        cellTemplate: function (container, options) {
+                            $('<button/>').addClass('dx-button')
+                                .text('Edit')
+                                .on('dxclick',function(){$scope.edit_event(options.data); })
+                                .appendTo(container);
+                        }
+                    },
+                    {
+                        caption: 'Delete',
+                        width: 100,
+                        alignment: 'center',
+                        cellTemplate: function (container, options) {
+                            $('<button/>').addClass('dx-button')
+                                .text('Delete')
+                                .on('dxclick', function () {
+                                    $scope.delete_event(options.data);
+                                })
+                                .appendTo(container);
+                        }
+                    }*/
+
                     /*{
                      width: 100,
                      alignment: 'center',

@@ -20,7 +20,8 @@ app.controller('merchantprofileCtrl', function ($rootScope, $scope, $http, $loca
 
             console.log($scope.userInfo.email);
 
-
+            $scope.setSelectedLocation();
+            $scope.setSelectedTypes();
 
         });
 
@@ -28,6 +29,8 @@ app.controller('merchantprofileCtrl', function ($rootScope, $scope, $http, $loca
 
     $scope.typeList = [];
     $scope.areaList = [];
+    $scope.selectedLocation = [];
+    $scope.selectedTypes = [];
 
     $scope.getUserInfo();
     $scope.textBox = {
@@ -113,8 +116,11 @@ app.controller('merchantprofileCtrl', function ($rootScope, $scope, $http, $loca
             //params.validationGroup.reset();
        // }
     };
-
-    $scope.tagBoxDataLocation = new DevExpress.data.DataSource({ store: [], paginate: false });
+    $scope.locationData = null;
+    //$scope.tagBoxDataLocation = new DevExpress.data.DataSource({
+    //                                                        store: [],
+    //                                                        paginate: false
+    //                                                          });
     $scope.viewLocation = function () {
         $http({
             method: "GET",
@@ -123,11 +129,13 @@ app.controller('merchantprofileCtrl', function ($rootScope, $scope, $http, $loca
         }).success(function (data) {
 
             $scope.allLoc = data.location;
-
-            for (var i = 0; i < $scope.allLoc.length; i++) {
-                $scope.tagBoxDataLocation.store().insert($scope.allLoc[i]);
-            }
-            $scope.tagBoxDataLocation.load();
+            $scope.locationData.option('items',$scope.allLoc);
+            $scope.setSelectedLocation();
+            //for (var i = 0; i < $scope.allLoc.length; i++) {
+            //    $scope.tagBoxDataLocation.store().insert($scope.allLoc[i]);
+            //}
+            //$scope.tagBoxDataLocation.load();
+            //$scope.locationData.option('values',$scope.allLoc[0]);
             //console.log($scope.tagBoxData._items);
             //$scope.taglist = $scope.tagBoxData._items;
 
@@ -136,6 +144,67 @@ app.controller('merchantprofileCtrl', function ($rootScope, $scope, $http, $loca
         });
 
     }
+
+    $scope.setSelectedTypes = function(){
+        if($scope.allcat && $scope.userInfo)
+        {
+            //console.log($scope.allLoc,$scope.userInfo.locations);
+
+            angular.forEach($scope.allcat,function(all,key){
+                angular.forEach($scope.userInfo.categories,function(own){
+                    if(all.id == own.category_id)
+                    {
+                        $scope.selectedTypes.push($scope.allcat[key]);
+                    }
+                })
+            })
+            $scope.typeList = $scope.selectedTypes;
+        }
+    }
+
+    $scope.setSelectedLocation = function(){
+        if($scope.allLoc && $scope.userInfo)
+        {
+            //console.log($scope.allLoc,$scope.userInfo.locations);
+
+            angular.forEach($scope.allLoc,function(all,key){
+                angular.forEach($scope.userInfo.locations,function(own){
+                    if(all.id == own.location_id)
+                    {
+                        $scope.selectedLocation.push($scope.allLoc[key]);
+                    }
+                })
+            })
+            $scope.areaList = $scope.selectedLocation;
+        }
+    }
+
+    $scope.$watchCollection('selectedLocation',function(){
+        if($scope.selectedLocation)
+            //console.log('hellooo',$scope.allLoc[0]);
+            $scope.locationData.option('values',$scope.selectedLocation);
+    })
+
+    $scope.$watchCollection('selectedTypes',function(){
+        if($scope.typeData)
+        //console.log('hellooo',$scope.allLoc[0]);
+            $scope.typeData.option('values',$scope.selectedTypes);
+    })
+
+
+    $scope.inialLoc = function(e){
+        $scope.locationData = e.component;
+        //if($scope.allLoc[0])
+            //$scope.locationData.option('values',$scope.allLoc[0]);
+    }
+
+    $scope.inialType = function(e){
+        $scope.typeData = e.component;
+        //if($scope.allLoc[0])
+        //$scope.locationData.option('values',$scope.allLoc[0]);
+    }
+
+
 
     $scope.viewLocation();
 
@@ -148,13 +217,15 @@ app.controller('merchantprofileCtrl', function ($rootScope, $scope, $http, $loca
         }).success(function (data) {
 
             $scope.allcat = data.category;
-
-            for (var i = 0; i < $scope.allcat.length; i++) {
-                $scope.tagBoxData.store().insert($scope.allcat[i]);
-            }
-            $scope.tagBoxData.load();
-            //console.log($scope.tagBoxData._items);
-            $scope.taglist = $scope.tagBoxData._items;
+            $scope.typeData.option('items',$scope.allcat);
+            $scope.setSelectedTypes();
+            //for (var i = 0; i < $scope.allcat.length; i++) {
+            //
+            //    $scope.tagBoxData.store().insert($scope.allcat[i]);
+            //}
+            //$scope.tagBoxData.load();
+            ////console.log($scope.tagBoxData._items);
+            //$scope.taglist = $scope.tagBoxData._items;
 
 
 
