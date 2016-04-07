@@ -411,6 +411,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/merchant/merchantmenu.html',
                 title: 'Menu'
             })
+            .state('frontend.merchantoutlets', {
+                url: '/merchantmenu',
+                resolve: loadSequence('merchantoutlets'),
+                templateUrl: 'app/views/merchant/merchantoutlets.html',
+                title: 'Outlets'
+            })
             .state('frontend.voucher', {
                 url: '/voucher',
                 resolve: loadSequence('voucher'),
