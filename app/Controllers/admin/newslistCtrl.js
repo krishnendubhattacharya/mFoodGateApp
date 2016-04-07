@@ -26,7 +26,7 @@ app.controller('newslistCtrl', function ($rootScope, $scope, $http, $location, m
 
     $scope.addCategory = function () {
         //alert(13);
-        $scope.item={$points[$i]->status = 'Expired';
+        $scope.item={
             "id":'',
             "title": '',
             "description": '',
