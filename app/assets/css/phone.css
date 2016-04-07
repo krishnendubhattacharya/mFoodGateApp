@@ -59,8 +59,8 @@ body#mfoodmain{
     box-sizing: border-box;
 }*/
 .mobile-header{
-    position: fixed;
-    z-index:3;
+    position: fixed !important;
+    z-index:100000;
     background: url(../Images/h-bg-mobile.png) left top repeat-x;
     /*top: 0;*/
     height: 52px;
@@ -69,7 +69,9 @@ body#mfoodmain{
     padding: 18px 0 14px 12px !important;
     overflow: hidden;
     box-sizing: border-box;
+	top: 0 !important;
 }
+#page{ position: relative !important; padding: 50px 0 60px !important; background: #fff !important;}
 .mobile-header .m-logo{ width:173px; height:17px; float: left;}
 .mobile-header .m-top-link{ width:42px; height: 14px; float: right; margin-right:12px;}
 .mobile-header .m-top-link .search{ width: 14px; height: 18px; float: left; }
@@ -343,7 +345,7 @@ body#mfoodmain{
 .m-app-menu ul li:hover,.m-app-menu ul li.active{background:#fe611c}
 
 
-.login-box{ width:75%; height: auto; overflow: hidden; padding: 25px; background: #fff; border: solid 1px #e9e9e9; border-radius: 5px; float: none;  box-shadow: 2px 2px 3px #ccc; margin-top: 15px; margin: 60px auto 30px;}
+.login-box{ width:75%; height: auto; overflow: hidden; padding: 25px; background: #fff; border: solid 1px #e9e9e9; border-radius: 5px; float: none;  box-shadow: 2px 2px 3px #ccc; margin-top: 15px; margin: 40px auto 30px;}
 .login-box h2{ font-size:22px; color:#2d2d2d; line-height: 30px; margin-bottom: 10px; padding:0;}
 .login-box ul{ padding: 15px 0; margin: 0;}
 .login-box ul li{ padding:0; margin: 0 0 15px 0; list-style-type: none; float: none; }
@@ -448,7 +450,7 @@ body#mfoodmain{
 .m-voucher-section ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:100%; margin: 10px 0; }
 .m-voucher-section .pro-item{ width: 100%; height: 294px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
 .m-voucher-section .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4;}
-.m-voucher-section .pro-item .logo-box img{ width: auto; height: auto; vertical-align:middle; }
+.m-voucher-section .pro-item .logo-box img{ width: 100%; height: 100%; vertical-align:middle; }
 .m-voucher-section .pro-item .desc{ padding: 10px 10px;}
 .m-voucher-section .pro-item .desc h2{font-size:14px; color:#5187ca; text-transform: uppercase; padding: 5px 0; text-align: center;}
 .m-voucher-section .pro-item .desc p{ color:#ff0000; text-align: center; font-size:12px; font-weight: bold;}
@@ -537,16 +539,31 @@ body#mfoodmain{
 .m-reseller-section .pro-item .desc p{ color:#ff0000; text-align: center; font-size:12px; font-weight: bold;}
 .m-reseller-section .pro-item .desc .price{ width:48%; float: left; margin: 15px 0; overflow: hidden;}
 .m-reseller-section .pro-item .desc .price h2{color:#ff0000; text-align: left; font-size:18px; font-weight: bold; }
-.m-reseller-section .pro-item .desc .price p{color:#999; text-align: left; font-size:14px; text-decoration:line-through; font-weight: normal; }
+.m-reseller-section .pro-item .desc .price p{color:#666; text-align: left; font-size:12px; font-weight: normal; margin-bottom:5px; }
+.m-reseller-section .pro-item .desc .price p span{color:#999; text-decoration:line-through;}
 
 .m-reseller-section .pro-item .desc .pts{ width:48%; float: right; margin: 15px 0; overflow: hidden;}
 .m-reseller-section .pro-item .desc .pts h2{color:#ff0000; text-align: right; font-size:14px; font-weight: bold; }
-.m-reseller-section .pro-item .desc .pts p{color:#999; text-align: right; font-size:14px; font-weight: normal; }
+.m-reseller-section .pro-item .desc .pts p{color:#999; text-align: right; font-size:12px; font-weight: normal; margin-bottom:5px; }
 
 
 .m-reseller-section .pro-item .p-circle{ width:53px; height:53px; position: absolute; z-index: 1001; top: 20px; right:20px; font-size:20px; text-align: center;
     line-height: 53px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
-
+.m-reseller-section .pro-item .desc .pts .button-details {
+    background: rgba(0, 0, 0, 0) url("../Images/submit-btn-bg.png") repeat-x scroll left top;
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    color: #36a236;
+    cursor: pointer;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 25px;
+    margin: 0;
+	height: 25px;
+	width:70px;
+	text-align: center;
+}
 
 /*---------------------------------- merchant page -----------------------------*/
 
@@ -878,7 +895,57 @@ body#mfoodmain{
     padding: 0;
 }
 
+/*--------------------------------------- 05-04-2016 Anirban ---------------------------------------------*/
+/*---------------------------- Featured Promo ------------------------*/
+.m-featured-Promo{ width:92%; margin:20px auto 20px; border: solid 0px green; overflow: hidden; }
+.m-featured-Promo h1{ font-size:18px; color:#3b3b3b; border-bottom: solid 1px #dedede; line-height:24px; padding-bottom:7px;}
+.m-featured-Promo ul{ padding:0; margin:0;}
+.m-featured-Promo ul li{ padding: 0; margin: 0; float: none; list-style-type: none; width:100%; margin-bottom: 20px; }
+.m-featured-Promo ul li:last-child{  margin-bottom:0; }
+.m-featured-Promo .pro-item{ width: 100%; height: 255px; position: relative; overflow: hidden;}
+.m-featured-Promo .pro-item img{ width:100%; height: 100%;}
+.m-featured-Promo .pro-item .desc{ position: absolute; z-index: 100; width:94%; height:auto; padding: 8px 13px; bottom:0; background: url(../Images/b-trans-bg.png) left top repeat; overflow: hidden;}
+.m-featured-Promo .pro-item .desc .txt{ width:70%; height: auto; float: left;}
+.m-featured-Promo .pro-item .desc .txt h2{ font-size:16px; line-height: 21px; margin-bottom:5px; padding: 0; margin:0; color:#fff; font-weight: bold; }
+.m-featured-Promo .pro-item .desc .txt p{ font-size:14px; color:#d2d2d2; line-height:18px; margin:0}
+.m-featured-Promo .pro-item .desc .txt .price{ font-size: 20px; color:#339933 !important;}
+.m-featured-Promo .pro-item .desc .txt .price span{ text-decoration:line-through; font-size:14px; color:#b4b4b4;  }
+.m-featured-Promo .pro-item .desc .view-btn{ width: 66px; height: 42px; float: right; margin-top: 2px;}
+.m-featured-Promo .pro-item .p-circle{ width:53px; height:53px; position: absolute; z-index: 2; top: 20px; right:20px; font-size:20px; text-align: center;
+    line-height: 53px; background: url(../Images/trans-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
+	
+	/*------------------------------- New Promo -------------------------------------*/
+.m-new-Promo{ width:92%; margin:0 auto; border-top: solid 0px #dcdcdc; overflow: hidden;}
+.m-new-Promo h1{ font-size:18px; color:#3b3b3b; line-height:30px; padding-bottom:7px; margin-top:10px !important;}
+.m-new-Promo h1 span{ color:#ff0000; font-size:14px; }
+.m-new-Promo ul{ padding:0; margin:0;}
+.m-new-Promo ul li{ padding: 0; margin: 0; float: none; list-style-type: none; width:100%; margin: 0 0 20px; }
+.m-new-Promo .pro-item{ width: 100%; height: 258px; position: relative; overflow: hidden;}
+.m-new-Promo .pro-item img{ width:100%; height: 100%;}
+.m-new-Promo .pro-item .desc{ position: absolute; z-index: 100; width:94%; height:auto; padding: 10px 13px; bottom:0; background: url(../Images/b-trans-bg.png) left top repeat; overflow: hidden;}
+.m-new-Promo .pro-item .desc .txt{ width:70%; height: auto; float: left;}
+.m-new-Promo .pro-item .desc .txt h2{ font-size:16px; line-height: 21px; margin-bottom:5px; padding: 0; margin:0; color:#fff; font-weight: bold; }
+.m-new-Promo .pro-item .desc .txt p{ font-size:14px; color:#d2d2d2; line-height:18px; margin:0}
+.m-new-Promo .pro-item .desc .txt .price{ font-size: 20px; color:#339933 !important;}
+.m-new-Promo .pro-item .desc .txt .price span{ text-decoration:line-through; font-size:14px; color:#b4b4b4;  }
+.m-new-Promo .pro-item .desc .view-btn{ width: 66px; height: 42px; float: right; margin-top: 2px;}
+.m-new-Promo .pro-item .p-circle{ width:53px; height:53px; position: absolute; z-index: 1001; top: 20px; right:20px; font-size:20px; text-align: center;
+    line-height: 53px; background: url(../Images/trans-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
 
+/*------------------------------- Featured Restaurant -------------------------------------*/
+.m-restaurant-Promo{ width:92%; margin:0 auto; border-top: solid 0px #dcdcdc; }
+.m-restaurant-Promo h1{ font-size:18px; color:#3b3b3b; line-height:24px; padding-bottom:7px; margin-top:10px !important;}
+.m-restaurant-Promo h1 span{ color:#ff0000; font-size:14px; }
+.m-restaurant-Promo ul{ padding:0; margin:0;}
+.m-restaurant-Promo ul li{ padding: 0; margin: 0; float: none; list-style-type: none; width:100%; margin: 0 0 15px; }
+.m-restaurant-Promo .pro-item{ width: 100%; height: auto; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4;}
+.m-restaurant-Promo .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4;}
+.m-restaurant-Promo .pro-item .logo-box img{ width: auto; height: auto; vertical-align:middle; }
+.m-restaurant-Promo .pro-item .desc{ padding: 10px 10px; overflow: hidden;}
+.m-restaurant-Promo .pro-item .desc h2{font-size:16px; color:#4b4b4b; text-transform: uppercase; padding: 5px 0; text-align: center;}
+.m-restaurant-Promo .pro-item .desc .btn{width:144px; height: 36px; margin: 5px auto; overflow: hidden;}
+.m-restaurant-Promo .pro-item .desc .btn a{ display: block; border-radius: 3px; background: #339933; text-align:center; font-size: 16px; color:#fff; text-decoration: none; height: 36px; line-height: 36px; font-weight: bold;}
+.m-restaurant-Promo .pro-item .desc .btn a{ display: block; background:#3db63d;}
 
 
 

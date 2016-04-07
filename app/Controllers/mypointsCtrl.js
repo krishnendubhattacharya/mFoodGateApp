@@ -61,7 +61,26 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
 
                 ]
             };
+            console.log("ajax")
+            $scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
+
+           /*$scope.listDataSource = new DevExpress.data.DataSource({
+                store: []
+            });
+            for (var i = 0; i < $scope.voucherInfo.length; i++) {
+                $scope.listDataSource.store().insert($scope.voucherInfo[i]);
+            }
+
+            $scope.listDataSource.load();*/
+
+
+
         });
+    }
+    $scope.loadList=function(e)
+    {
+        console.log("loadList")
+        $scope.listViewData= e.component;
     }
     $scope.getPoints();
 

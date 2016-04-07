@@ -61,25 +61,12 @@
                     </div>
                 </div>
             </li>
-            <li>
-                <div class="pro-item">
-                    <img src="app/assets/Images/pro-2.png" width="406" height="255"  alt=""/>
-                    <div class="p-circle">50%</div>
-                    <div class="desc">
-                        <div class="txt">
-                            <h2>Voucher Oel Merdeka</h2>
-                            <p>Bekasi</p>
-                            <p class="price"><span>IDR150.000</span> IDR75.000</p>
-                        </div>
-                        <div class="view-btn"><a href=""><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
-                    </div>
-                </div>
-            </li>-->
+            -->
         </ul>
     </div>
 </div>
 <!--mobile promo-->
-<div class="m-promo tablet-hide">
+<!--<div class="m-promo tablet-hide">
     <p class="m-promo-heading">Featured Promo</p>
     <div class="m-pro-item">
         <img width="100%" height="255" src="app/assets/Images/pro-1.png" alt="">
@@ -99,7 +86,41 @@
             <li><a href="">Featured Restaurant Last Day Promo</a></li>
         </ul>
     </div>
-</div>
+</div>-->
+    <div class="featured-Promo tablet-hide">
+        <h1>Featured Promo</h1>
+        <ul>
+            <li ng-repeat="featuredCatDetail in featuredCatInfo">
+                <div class="pro-item">
+                    <img src="{{featuredCatDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{featuredCatDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{featuredCatDetail.title}}</h2>
+                            <!--<p>Bekasi</p>-->
+                            <p class="price"><span>IDR{{featuredCatDetail.price}}</span> IDR{{featuredCatDetail.price-((featuredCatDetail.price*featuredCatDetail.offer_percent)/100)}}</p>
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: featuredCatDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>
+            <!--<li>
+                <div class="pro-item">
+                    <img src="app/assets/Images/pro-1.png" width="406" height="255"  alt=""/>
+                    <div class="p-circle">50%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>Voucher Oel Merdeka</h2>
+                            <p>Bekasi</p>
+                            <p class="price"><span>IDR150.000</span> IDR75.000</p>
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>
+            -->
+        </ul>
+    </div>
 <!--end-->
 <div class="dx-clearfix"></div>
 <div class="container">
@@ -123,7 +144,7 @@
         </ul>
     </div>
 </div>
-<div class="m-new-Promo tablet-hide">
+<!--<div class="m-new-Promo tablet-hide">
     <div class="m-pro-item">
         <img width="100%" height="255" alt="" src="app/assets/Images/pro-3.png">
         <div class="m-promo-circle">50%</div>
@@ -134,7 +155,26 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
+    <div class="new-Promo tablet-hide">
+        <h1>New Promo Today <span>({{newPromoCount}} new)</span></h1>
+        <ul>
+            <li ng-repeat="newPromoDetail in newPromoInfo">
+                <div class="pro-item">
+                    <img src="{{newPromoDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{newPromoDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{newPromoDetail.title}}</h2>
+                            <!--<p>11D:21H:50M:20S</p>-->
+                            <p class="price"><span>IDR{{newPromoDetail.price}}</span> IDR{{newPromoDetail.price-((newPromoDetail.price*newPromoDetail.offer_percent)/100)}}</p>
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: newPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 
 <div class="dx-clearfix"></div>
 <div class="container">
@@ -159,18 +199,35 @@
                     </div>
                 </div>
             </li>
-            <li>
+            -->
+        </ul>
+    </div>
+</div>
+
+    <div class="restaurant-Promo tablet-hide">
+        <h1>Featured Restaurant</h1>
+        <ul>
+            <li ng-repeat="restaurantDetail in restaurantInfo">
                 <div class="pro-item">
-                    <div class="logo-box"><img src="app/assets/Images/logo-3.png" width="218" height="100"  alt=""/></div>
+                    <div class="logo-box"><img src="{{restaurantDetail.logo}}" width="218" height="100"  alt=""/></div>
+                    <div class="desc">
+                        <h2>{{restaurantDetail.title}}</h2>
+                        <div class="btn"><a ui-sref="frontend.restaurentpromo({ restaurantId: restaurantDetail.id })">View All Promo</a></div>
+                    </div>
+                </div>
+            </li>
+            <!--<li>
+                <div class="pro-item">
+                    <div class="logo-box"><img src="app/assets/Images/logo-2.png" width="218" height="100"  alt=""/></div>
                     <div class="desc">
                         <h2>IMPERIAL KITCHEN</h2>
                         <div class="btn"><a href="">View All Promo</a></div>
                     </div>
                 </div>
-            </li>-->
+            </li>
+            -->
         </ul>
     </div>
-</div>
 
 <div class="dx-clearfix"></div>
 <div class="container">
@@ -198,6 +255,29 @@
     </div>
 </div>
 
+    <div class="new-Promo tablet-hide">
+        <h1>Menu Voucher Promo</h1>
+        <ul>
+            <li ng-repeat="menuPromoDetail in menuPromoInfo">
+                <div class="pro-item">
+                    <img src="{{menuPromoDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{menuPromoDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{menuPromoDetail.title}}</h2>
+                            <!--<p>11D:21H:50M:20S</p>-->
+                            <p class="price"><span>IDR{{menuPromoDetail.price}}</span> IDR{{menuPromoDetail.price-((menuPromoDetail.price*menuPromoDetail.offer_percent)/100)}}</p>
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: menuPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>
+
+
+
+        </ul>
+    </div>
+
 <div class="dx-clearfix"></div>
 <div class="container">
     <div class="new-Promo phone-hide">
@@ -223,6 +303,29 @@
         </ul>
     </div>
 </div>
+
+    <div class="new-Promo tablet-hide">
+        <h1>Payment Voucher Promo</h1>
+        <ul>
+            <li ng-repeat="paymentPromoDetail in paymentPromoInfo">
+                <div class="pro-item">
+                    <img src="{{paymentPromoDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{paymentPromoDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{paymentPromoDetail.title}}</h2>
+                            <!--<p>11D:21H:50M:20S</p>-->
+                            <p class="price"><span>IDR{{paymentPromoDetail.price}}</span> IDR{{paymentPromoDetail.price-((paymentPromoDetail.price*paymentPromoDetail.offer_percent)/100)}}</p>
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: paymentPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>
+
+
+
+        </ul>
+    </div>
 
 <div class="dx-clearfix"></div>
 <div class="container">
@@ -250,6 +353,29 @@
     </div>
 </div>
 
+    <div class="new-Promo tablet-hide">
+        <h1>Merchants Membership Promo</h1>
+        <ul>
+            <li ng-repeat="merchantMembershipPromoDetail in merchantMembershipPromoInfo">
+                <div class="pro-item">
+                    <img src="{{merchantMembershipPromoDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{merchantMembershipPromoDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{merchantMembershipPromoDetail.title}}</h2>
+                            <!--<p>11D:21H:50M:20S</p>-->
+                            <p class="price"><span>IDR{{merchantMembershipPromoDetail.price}}</span> IDR{{merchantMembershipPromoDetail.price-((merchantMembershipPromoDetail.price*merchantMembershipPromoDetail.offer_percent)/100)}}</p>
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: merchantMembershipPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>
+
+
+
+        </ul>
+    </div>
+
 <div class="dx-clearfix"></div>
 <div class="container">
     <div class="new-Promo phone-hide">
@@ -275,6 +401,29 @@
         </ul>
     </div>
 </div>
+
+    <div class="new-Promo tablet-hide">
+        <h1>Hot Selling</h1>
+        <ul>
+            <li ng-repeat="hotSellingDetail in hotSellingInfo">
+                <div class="pro-item">
+                    <img src="{{hotSellingDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{hotSellingDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{hotSellingDetail.title}}</h2>
+                            <!--<p>11D:21H:50M:20S</p>-->
+                            <p class="price"><span>IDR{{hotSellingDetail.price}}</span> IDR{{hotSellingDetail.price-((hotSellingDetail.price*hotSellingDetail.offer_percent)/100)}}</p>
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: hotSellingDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>
+
+
+
+        </ul>
+    </div>
 
 <div class="dx-clearfix"></div>
 <div class="container">
@@ -302,6 +451,29 @@
     </div>
 </div>
 
+    <div class="new-Promo tablet-hide">
+        <h1>Last Day Promo</h1>
+        <ul>
+            <li ng-repeat="lastDayPromoDetail in lastDayPromoInfo">
+                <div class="pro-item">
+                    <img src="{{lastDayPromoDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{lastDayPromoDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{lastDayPromoDetail.title}}</h2>
+                            <!--<p>11D:21H:50M:20S</p>-->
+                            <p class="price"><span>IDR{{lastDayPromoDetail.price}}</span> IDR{{lastDayPromoDetail.price-((lastDayPromoDetail.price*lastDayPromoDetail.offer_percent)/100)}}</p>
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: lastDayPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>
+
+
+
+        </ul>
+    </div>
+
     <div class="dx-clearfix"></div>
     <div class="container">
         <div class="new-Promo phone-hide">
@@ -323,6 +495,26 @@
                 </li>
             </ul>
         </div>
+    </div>
+
+    <div class="new-Promo tablet-hide">
+        <h1>Special Promo</h1>
+        <ul>
+            <li ng-repeat="specialDetail in specialInfo">
+                <div class="pro-item">
+                    <img src="{{specialDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{specialDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{specialDetail.title}}</h2>
+                            <p>{{specialDetail.special_tag}}</p>
+                            <p class="price"><span>IDR{{specialDetail.price}}</span> IDR{{specialDetail.price-((specialDetail.price*specialDetail.offer_percent)/100)}}</p>
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 
 <div class="dx-clearfix"></div>
