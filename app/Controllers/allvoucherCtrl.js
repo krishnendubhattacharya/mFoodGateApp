@@ -15,7 +15,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
             $scope.voucherInfo =data;
             console.log($scope.voucherInfo);
             //console.log($scope.voucherInfo);
-            /*$scope.dataGridOptions = {
+            $scope.dataGridOptions = {
                 dataSource: $scope.voucherInfo,
                 selection: {
                     mode: "single"
@@ -61,7 +61,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
                     }
 
                 ]
-            };*/
+            };
 
 
         });
@@ -72,7 +72,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
     }).success(function (data) {
         $scope.soonVoucherInfo =data;
         //console.log($scope.voucherInfo);
-        /*$scope.dataGridOptions2 = {
+        $scope.dataGridOptions2 = {
             dataSource: $scope.soonVoucherInfo,
             paging: {
                 pageSize: 5
@@ -117,7 +117,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
                 }
 
             ]
-        };*/
+        };
 
 
     });

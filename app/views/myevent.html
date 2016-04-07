@@ -1,4 +1,11 @@
 <!--Web header-->
+<style>
+    .right-side {
+        position: absolute;
+        right: 1px;
+        top: 6px;
+    }
+</style>
 <div ng-controller="myeventCtrl">
 
     <div class="container phone-hide">
@@ -10,6 +17,9 @@
                 <div id="button" dx-button="{
                                 text: 'Add Event',
                                 onClick: changeView }" ></div>
+                <div class="right-side">
+                    <div dx-select-box="selectStatusOptions"></div>
+                </div>
                 <div id="gridContainer" dx-data-grid="dataGridOptions"></div>
 
             </div>
@@ -50,17 +60,18 @@
                             </div>
                         </div>
 
-                        <!--<div class="dx-field">
-                            <div class="dx-field-label">Image</div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Cover Image</div>
                             <div class="dx-field-value">
-                                <div dx-file-uploader="{
-                                    buttonText: 'Select file',
-                                    labelText: 'Drop file here',
-                                    multiple: true,
-                                    accept: 'image/*'
-                                }" ng-model="menuInfo.image"></div>
+                                <div dx-file-uploader="textBox.image"></div>
                             </div>
-                        </div>-->
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label"></div>
+                            <div class="dx-field-value">
+                                <img src="{{event.imageurl}}" ng-if="event.imageurl" width="200">
+                            </div>
+                        </div>
                         <div class="dx-field">
                             <div class="dx-field-label">Outlet Type</div>
                             <div class="dx-field-value">
