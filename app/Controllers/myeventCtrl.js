@@ -14,6 +14,26 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
     $scope.selectedLocation = [];
     $scope.selectedTypes = [];
     //$scope.event.image = [];
+    $scope.img_uploader = null;
+    $scope.textBox = {image:  {
+        buttonText: 'Select file',
+        labelText: 'Drop file here',
+        multiple: false,
+        accept: 'image/*',
+        uploadUrl: $rootScope.serviceurl + 'eventFilesUpload',
+        onUploaded:function(ret){
+            //console.log(ret.file);
+            //$scope.event.image = ret.file.value.name;
+            $scope.event.image = ret.file.value.name;
+            //console.log(ret.file.value,ret.file.value.name);
+        },
+        onInitialized : function(e)
+        {
+            $scope.img_uploader = e.component;
+        }
+    }
+    };
+
     $scope.changeView = function(){
         $scope.edit_mode = !$scope.edit_mode;
         $scope.event = {
@@ -25,6 +45,7 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         }
         $scope.selectedLocation=[];
         $scope.selectedTypes =[];
+        $scope.img_uploader.reset();
 
     }
     $scope.edit_event = function(event)
@@ -37,11 +58,13 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
             description:event.description,
             from_date:event.from_date,
             to_date:event.to_date,
-            is_active:event.is_active=="1"?true:false
+            is_active:event.is_active=="1"?true:false,
+            imageurl:event.image_url
         }
         $scope.event_info=event;
         $scope.setSelectedTypes();
         $scope.setSelectedLocation();
+        $scope.img_uploader.reset();
         //console.log($scope.event);
         //$scope.img_uploader.reset();
     }
@@ -62,12 +85,19 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         onInitialized : function(e){
             $scope.datagridobj = e.component;
         },
-        columns: ["title", "created_on","from_date", "to_date",
+        columns: ["title", "created_on","from_date", "to_date","status",
             {
                 caption:'Action',
-                width: 300,
+                width: 400,
                 alignment: 'center',
                 cellTemplate: function (container, options) {
+                    $('<button/>').addClass('dx-button')
+                        .text('Detail')
+                        .on('dxclick',function(){
+                            //$scope.image_event(options.data.id);
+                            $location.path('/eventdetail/' + options.data.id);
+                        })
+                        .appendTo(container);
                     $('<button/>').addClass('dx-button')
                         .text('Image')
                         .on('dxclick',function(){$scope.image_event(options.data.id); })
@@ -78,12 +108,12 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
                         .on('dxclick',function(){$scope.edit_event(options.data); })
                         .appendTo(container);
 
-                    $('<button/>').addClass('dx-button')
+                    /*$('<button/>').addClass('dx-button')
                         .text('Delete')
                         .on('dxclick', function () {
                             $scope.delete_event(options.data);
                         })
-                        .appendTo(container);
+                        .appendTo(container);*/
                 }
             },
             /*{
@@ -404,6 +434,21 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         //if($scope.allLoc[0])
         //$scope.locationData.option('values',$scope.allLoc[0]);
     }
+    var statuses = ["All","Open", "Completed", "Expired"];
+    $scope.selectStatusOptions = {
+        dataSource: statuses,
+        value: statuses[0],
+        onValueChanged: function(data) {
+            if (data.value == "All")
+                $("#gridContainer")
+                    .dxDataGrid("instance")
+                    .clearFilter();
+            else
+                $("#gridContainer")
+                    .dxDataGrid("instance")
+                    .filter(["status", "=", data.value]);
+        }
+    };
 
 
 
