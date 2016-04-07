@@ -941,8 +941,8 @@ body#mfoodmain{
 .m-restaurant-Promo ul{ padding:0; margin:0;}
 .m-restaurant-Promo ul li{ padding: 0; margin: 0; float: none; list-style-type: none; width:100%; margin: 0 0 15px; }
 .m-restaurant-Promo .pro-item{ width: 100%; height: auto; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4;}
-.m-restaurant-Promo .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4;}
-.m-restaurant-Promo .pro-item .logo-box img{ width: auto; height: auto; vertical-align:middle; }
+.m-restaurant-Promo .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4; overflow: hidden;}
+.m-restaurant-Promo .pro-item .logo-box img{ width: auto; height: 100%; vertical-align:middle; }
 .m-restaurant-Promo .pro-item .desc{ padding: 10px 10px; overflow: hidden;}
 .m-restaurant-Promo .pro-item .desc h2{font-size:16px; color:#4b4b4b; text-transform: uppercase; padding: 5px 0; text-align: center;}
 .m-restaurant-Promo .pro-item .desc .btn{width:144px; height: 36px; margin: 5px auto; overflow: hidden;}
