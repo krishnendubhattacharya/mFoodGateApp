@@ -18,7 +18,7 @@
                             Add Category
                         </button>
                     </div>
-                    <table datatableDirective class="table  table-hover general-table">
+                    <table id="categoryList" class="table  table-hover general-table">
                         <thead>
                         <tr>
                             <th> Id</th>
@@ -34,9 +34,9 @@
                                 {{item.id}}
                             </td>
                             <td >{{item.name}}</td>
-                            <td ><a class="edit" href="javascript:;" ng-click ="editCategory(item)">Edit</a>
-                                <a class="delete" href="javascript:;" ng-click="deleteCategory(item.id)"
-                                   >Delete</a></td>
+                            <td ><a class="btn btn-default edit" href="javascript:;" ng-click ="editCategory(item)"><i class="fa fa-pencil"></i> Edit</a>
+                                <a class="btn btn-default delete" href="javascript:;" ng-click="deleteCategory(item.id)"
+                                   ><i class="fa fa-trash-o"></i> Delete</a></td>
 
                         </tr>
 

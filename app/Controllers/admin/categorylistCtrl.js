@@ -2,7 +2,8 @@
 /** 
  * controllers used for the login
  */
-app.controller('categorylistCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore) {
+app.controller('categorylistCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore,$timeout) {
+
     $scope.viewCategory = function () {
         $http({
             method: "GET",
@@ -12,6 +13,18 @@ app.controller('categorylistCtrl', function ($rootScope, $scope, $http, $locatio
         }).success(function (data) {
 
             $scope.allcat = data.category;
+
+            $timeout(function(){
+
+                $scope.table=  angular.element('#categoryList').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false
+                });
+            }, 3000, false);
             //console.log($scope.allcat);
 
 

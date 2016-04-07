@@ -2,7 +2,7 @@
 /** 
  * controllers used for the login
  */
-app.controller('newslistCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore) {
+app.controller('newslistCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore,$timeout) {
 
     $scope.viewNews = function () {
         $http({
@@ -12,6 +12,17 @@ app.controller('newslistCtrl', function ($rootScope, $scope, $http, $location, m
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
             $scope.allnews = data.news;
+            $timeout(function(){
+
+                $scope.table=  angular.element('#categoryList').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false
+                });
+            }, 3000, false);
         });
         $scope.newView='view';
     }

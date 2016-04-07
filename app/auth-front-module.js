@@ -1,6 +1,6 @@
 angular
 .module("authFront", ["ngCookies"])
-.factory("myAuth", function ($http, $cookies, $cookieStore, $window) {
+.factory("myAuth", function ($http, $cookies, $cookieStore, $window, $location) {
   var factobj = {};
   
     
@@ -79,13 +79,51 @@ angular
 
     /******************************** Cart ***********************************/
     factobj.cart = [];
-    factobj.add_to_cart = function(){
+    factobj.add_to_cart = function(){};
 
-    }
+        /*********************************Admin Authorisation ***********************************/
+        factobj.adminuserinfo = { loginstatus: false, id: "",username:"" };
+        factobj.updateAdminUserinfo = function (obj) {
+            console.log(obj);
+            if(obj)
+            {
+                factobj.adminuserinfo = { loginstatus: obj.isloggedin, id: obj.id,username:obj.username };
+                return true;
+            }
     /******************************** Cart ***********************************/
-       
-    
-    
+        };
+        factobj.resetAdminUserinfo = function () {
+            factobj.adminuserinfo = { loginstatus: false, id: "", username:""};
+        };
+
+        factobj.getAdminAuthorisation = function () {
+            var obj=$cookieStore.get('admin');
+            if(obj)
+                return obj;
+            else
+                return null;
+        };
+
+        factobj.getAdminNavlinks = function () {
+            console.log(factobj.adminuserinfo.loginstatus);
+            var adminlogin = factobj.adminuserinfo.loginstatus,
+                adminemail = (typeof factobj.adminuserinfo.id == "undefined" || factobj.adminuserinfo.id == "") ? "Unknown" : factobj.adminuserinfo.id;
+            if ($cookieStore.get('admin')==null) {
+                $location.path("/adminlogin/signin");
+            } else {
+                return factobj.adminuserinfo;
+            }
+        };
+
+        factobj.isAdminLoggedIn = function () {
+            var adminlogin = factobj.adminuserinfo.loginstatus;
+            if (!adminlogin||adminlogin==null) {
+                $location.path("/adminlogin/signin");
+            } else {
+                return true;
+            }
+        };
+
     return factobj;
     
 })

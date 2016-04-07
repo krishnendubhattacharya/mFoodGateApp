@@ -4706,3 +4706,76 @@ ol.comment-list {
     border-radius: 5px;
     -webkit-border-radius: 5px;
 }
+.dataTables_paginate{
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+    text-align: right;
+
+    float: right;
+
+    white-space: nowrap;
+}
+.dataTables_paginate a.paginate_button {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    color: #c7c7c7;
+    cursor: no-drop;
+    margin: 10px 2px;
+    padding: 4px 8px;
+}
+.dataTables_paginate.paging_bootstrap.pagination {
+    float: right;
+    margin-bottom: 15px;
+}
+.dataTables_paginate.paging_bootstrap.pagination li.disabled a {
+    color: #c7c7c7;
+}
+.dataTables_paginate.paging_bootstrap.pagination li a {
+    color: #797979;
+    padding: 5px 10px;
+    display: inline-block;
+}
+.dataTables_paginate.paging_bootstrap.pagination li {
+    float: left;
+    margin: 0 1px;
+    border: 1px solid #ddd;
+    list-style: none;
+}
+.dataTables_paginate.paging_bootstrap.pagination li.active {
+    border-color: #65cea7;
+}
+.dataTables_paginate.paging_bootstrap.pagination li {
+    float: left;
+    margin: 0 1px;
+    border: 1px solid #ddd;
+    list-style: none;
+}
+.dataTables_paginate.paging_bootstrap.pagination li.active a {
+    color: #fff;
+    background: #65cea7;
+    text-decoration: none;
+}
+.dataTables_paginate.paging_bootstrap.pagination li a {
+    color: #797979;
+    padding: 5px 10px;
+    display: inline-block;
+}
+.dataTables_paginate.paging_bootstrap.pagination li {
+    float: left;
+    margin: 0 1px;
+    border: 1px solid #ddd;
+    list-style: none;
+}
+.dataTables_paginate.paging_bootstrap.pagination li a {
+    color: #797979;
+    padding: 5px 10px;
+    display: inline-block;
+}
+.dataTables_paginate.paging_bootstrap.pagination li {
+     float: left;
+     margin: 0 1px;
+     border: 1px solid #ddd;
+     list-style: none;
+ }

@@ -23,7 +23,7 @@ $scope.getAdminLogin = function() {
         if(data.type == 'success'){
             $scope.loggedindetails = '';
             var message = data.message;
-            $cookieStore.put('users', data.user_details);
+            $cookieStore.put('admin', data.user_details);
             $scope.user_username = '';
             $scope.user_password = '';
             myAuth.updateUserinfo(myAuth.getUserAuthorisation());
