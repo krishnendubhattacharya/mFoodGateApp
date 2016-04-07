@@ -350,6 +350,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Location List',
                 resolve: loadSequence('locationlist')
             })
+            .state('admin.resturantlist', {
+                url: '/resturantlist',
+                templateUrl: 'app/views/admin/resturantlist.html',
+                title: 'Resturant List',
+                resolve: loadSequence('resturantlist')
+            })
             .state('adminlogin', {
                 url: '/adminlogin',
                 template: '<div ui-view ></div>',
@@ -412,7 +418,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Menu'
             })
             .state('frontend.merchantoutlets', {
-                url: '/merchantmenu',
+                url: '/merchantoutlets',
                 resolve: loadSequence('merchantoutlets'),
                 templateUrl: 'app/views/merchant/merchantoutlets.html',
                 title: 'Outlets'
@@ -494,6 +500,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('eventimage'),
                 templateUrl: 'app/views/eventimage.html',
                 title: 'Event Images'
+            })
+            .state('frontend.eventdetail', {
+                url: '/eventdetail/:eventId',
+                resolve: loadSequence('eventdetail'),
+                templateUrl: 'app/views/eventdetail.html',
+                title: 'Event Detail'
             })
 
 

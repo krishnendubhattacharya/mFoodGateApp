@@ -14,7 +14,7 @@ app.controller('newslistCtrl', function ($rootScope, $scope, $http, $location, m
             $scope.allnews = data.news;
             $timeout(function(){
 
-                $scope.table=  angular.element('#categoryList').DataTable({
+                $scope.table=  angular.element('#newsList').DataTable({
                     "paging": true,
                     "lengthChange": false,
                     "searching": true,

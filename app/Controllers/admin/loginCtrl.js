@@ -15,7 +15,7 @@ $scope.getAdminLogin = function() {
 
     $http({
         method: "POST",
-        url: $rootScope.serviceurl+"users/login",
+        url: $rootScope.serviceurl+"users/adminlogin",
         data: {"email":$scope.email,"password":$scope.password},
         headers: {'Content-Type': 'application/json'},
     }).success(function(data) {

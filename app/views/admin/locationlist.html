@@ -18,7 +18,7 @@
                             Add Location
                         </button>
                     </div>
-                    <table class="table  table-hover general-table">
+                    <table id="locationsList" class="table  table-hover general-table">
                         <thead>
                         <tr>
                             <th> Id</th>
@@ -33,9 +33,9 @@
                             <td>
                                 {{item.id}}
                             </td>
-                            <td >{{item.name}}</td>
-                            <td ><a class="edit" href="javascript:;" ng-click ="editLocation(item)">Edit</a>
-                                <a class="delete" href="javascript:;" ng-click="deleteLocation(item.id)"
+                            <td >{{item.city}}</td>
+                            <td ><a class="btn btn-default edit" href="javascript:;" ng-click ="editLocation(item)">Edit</a>
+                                <a class="btn btn-default delete" href="javascript:;" ng-click="deleteLocation(item.id)"
                                    >Delete</a></td>
 
                         </tr>
@@ -52,9 +52,17 @@
                     </header>
                     <div class="panel-body">
                         <form role="form" ng-submit="saveLocation()">
+                            <div class="form-group" >
+                                <label for="exampleInputName">Select Country</label>
+                                <select class="form-control" ng-model="item.country_id">
+                                    <option value="">--Select Country--</option></option>
+                                    <option ng-repeat="country in countryList | orderBy:'country_name' " value="{{country.id}}">{{country.country_name}}</option>
+                                </select>
+                            </div>
+
                             <div class="form-group">
-                                <label for="exampleInputName">Location Name</label>
-                                <input type="text" placeholder="Enter Location Name"  id="exampleInputName" ng-model="item.name" class="form-control">
+                                <label for="exampleInputName">City Name</label>
+                                <input type="text" required placeholder="Enter City Name"  id="exampleInputName" ng-model="item.city" class="form-control">
                                 <input type="hidden"  ng-model="item.id" >
                             </div>
 
@@ -65,7 +73,7 @@
                                 <input type="file" id="exampleInputFile">
                                 <p class="help-block">Example block-level help text here.</p>
                             </div>-->
-                            <div ng-dropdown-multiselect="" options="example1data" selected-model="example1model"></div>
+                           <!--<div ng-dropdown-multiselect="" options="example1data" selected-model="example1model"></div>-->
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" ng-model="item.is_active" ng-true-value="1" ng-false-value="0"> Is Active

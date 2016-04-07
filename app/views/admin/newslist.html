@@ -6,7 +6,7 @@
             <section class="panel">
                 <div ng-if="newView == 'view'">
                 <header class="panel-heading">
-                    Category
+                    News
                         <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -18,7 +18,7 @@
                             Add News
                         </button>
                     </div>
-                    <table datatableDirective class="table  table-hover general-table">
+                    <table id="newsList" class="table  table-hover general-table">
                         <thead>
                         <tr>
                             <th> Id</th>
@@ -38,8 +38,8 @@
                             <td >{{item.title}}</td>
                             <td >{{item.date}}</td>
                             <td >{{item.is_active==1?'Active':'Inactive'}}</td>
-                            <td ><a class="edit" href="javascript:;" ng-click ="editNews(item)">Edit</a>
-                                <a class="delete" href="javascript:;" ng-click="deleteNews(item.id)"
+                            <td ><a class="btn btn-default edit" href="javascript:;" ng-click ="editNews(item)">Edit</a>
+                                <a class="btn btn-default delete" href="javascript:;" ng-click="deleteNews(item.id)"
                                    >Delete</a></td>
 
                         </tr>

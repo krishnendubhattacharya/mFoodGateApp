@@ -44,6 +44,7 @@ app.constant('JS_REQUIRES', {
         'newslist':['app/Controllers/admin/newslistCtrl.js'],
         'categorylist':['app/Controllers/admin/categorylistCtrl.js'],
         'locationlist':['app/Controllers/admin/locationlistCtrl.js'],
+        'resturantlist':['app/Controllers/admin/resturantlistCtrl.js'],
         'merchanthome':['app/Controllers/merchanthomeCtrl.js'],
         'merchantlogin':['app/Controllers/merchantloginCtrl.js'],
         'marketplace':['app/Controllers/marketplaceCtrl.js'],
@@ -72,6 +73,7 @@ app.constant('JS_REQUIRES', {
         'membership':['app/Controllers/membershipCtrl.js'],
         'myevent':['app/Controllers/myeventCtrl.js','app/Controllers/leftbarCtrl.js'],
         'eventimage':['app/Controllers/eventimageCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'eventdetail':['app/Controllers/eventdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
     },
 
     //*** angularJS Modules
