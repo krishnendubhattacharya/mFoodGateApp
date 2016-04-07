@@ -65,10 +65,11 @@
                             <div class="dx-field-label">Outlet Type</div>
                             <div class="dx-field-value">
                                 <div class="tagBox" dx-tag-box="{
-                                dataSource: tagBoxData,
+
                                 placeholder: 'Select Type',
                                 displayExpr: 'name',
-
+                                values:selectedTypes,
+                                onInitialized : inialType,
                                 bindingOptions: {
                                     valueExpr: 'id',
                                     values: {
@@ -84,10 +85,11 @@
                             <div class="dx-field-label">Outlet Location</div>
                             <div class="dx-field-value">
                                 <div class="tagBox" dx-tag-box="{
-                                dataSource: tagBoxDataLocation,
+
                                 placeholder: 'Select Location',
                                 displayExpr: 'city',
-
+                                values:selectedLocation,
+                                onInitialized : inialLoc,
                                 bindingOptions: {
                                     valueExpr: 'id',
                                     values: {

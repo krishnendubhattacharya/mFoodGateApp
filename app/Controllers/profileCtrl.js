@@ -120,7 +120,8 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
     $scope.validateAndSubmit = function(params) {
 
         //alert(1);
-        //console.log(params);
+        console.log($scope.capitals);
+        return false;
         //var result = params.validationGroup.validate();
         //if(result.isValid) {
         console.log($scope.capitals);

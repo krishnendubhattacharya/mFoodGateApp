@@ -483,6 +483,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/myevent.html',
                 title: 'My Events'
             })
+            .state('frontend.eventimage', {
+                url: '/eventimage/:eventId',
+                resolve: loadSequence('eventimage'),
+                templateUrl: 'app/views/eventimage.html',
+                title: 'Event Images'
+            })
 
 
         ;

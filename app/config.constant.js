@@ -70,6 +70,7 @@ app.constant('JS_REQUIRES', {
         'newsdetail':['app/Controllers/newsdetailCtrl.js'],
         'membership':['app/Controllers/membershipCtrl.js'],
         'myevent':['app/Controllers/myeventCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'eventimage':['app/Controllers/eventimageCtrl.js','app/Controllers/leftbarCtrl.js'],
     },
 
     //*** angularJS Modules
