@@ -85,11 +85,11 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         onInitialized : function(e){
             $scope.datagridobj = e.component;
         },
-        columns: ["title", "created_on","from_date", "to_date","status",
+        columns: ["title", "from_date", "to_date","status",
             {
                 caption:'Action',
-                width: 400,
-                alignment: 'center',
+                width: 500,
+                alignment: 'left',
                 cellTemplate: function (container, options) {
                     $('<button/>').addClass('dx-button')
                         .text('Detail')
@@ -114,6 +114,14 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
                             $scope.delete_event(options.data);
                         })
                         .appendTo(container);*/
+                    if(options.data.status == "Open"){
+                        $('<button/>').addClass('dx-button')
+                            .text('Bidder')
+                            .on('dxclick',function(){
+                                $location.path('/eventbidder/' + options.data.id);
+                            })
+                            .appendTo(container);
+                    }
                 }
             },
             /*{
