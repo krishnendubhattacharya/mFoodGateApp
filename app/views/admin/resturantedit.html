@@ -1,57 +1,13 @@
-<div ng-controller="resturantlistCtrl">
+<div ng-controller="resturanteditCtrl">
 
 
     <div class="row">
         <div class="col-sm-12">
             <section class="panel">
-                <div ng-if="resturantView == 'view'">
+
+                <div >
                     <header class="panel-heading">
-                        Resturant
-                        <span class="tools pull-right">
-                            <a class="fa fa-chevron-down" href="javascript:;"></a>
-                            <a class="fa fa-times" href="javascript:;"></a>
-                         </span>
-                    </header>
-                    <div class="panel-body">
-                        <div class="btn-group">
-                            <button class="btn btn-primary" id="editable-sample_new" ng-click ="addResturant()">
-                                Add Resturant
-                            </button>
-                        </div>
-                        <table id="resturantsList" class="table  table-hover general-table">
-                            <thead>
-                            <tr>
-                                <th> Id</th>
-                                <th class="hidden-phone">Name</th>
-                                <th class="hidden-phone">Merchant Name</th>
-                                <th>Action</th>
-
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            <tr ng-repeat="item in allresturant">
-                                <td>
-                                    {{item.id}}
-                                </td>
-                                <td >{{item.title}}</td>
-                                <td >{{item.merchant_name}}</td>
-                                <td ><a class="btn btn-default edit" ui-sref="admin.resturantedit({resturantId:item.id})" >Edit</a>
-                                    <a class="btn btn-default edit" ui-sref="admin.outletlist({resturantId:item.id})" >Outlet</a>
-                                    <a class="btn btn-default delete" href="javascript:;" ng-click="deleteResturant(item.id)"
-                                            >Delete</a></td>
-
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div ng-if="resturantView == 'edit'">
-                    <header class="panel-heading">
-                        Resturant
+                        Resturant Edit
                     </header>
                     <div class="panel-body">
                         <form role="form" ng-submit="saveResturant()" enctype="multipart/form-data">
@@ -84,6 +40,7 @@
                             <div class="form-group">
                                 <label for="exampleInputName">Image</label>
                                 <input type="file"  id="logo" ng-model="item.logo" base-sixty-four-input>
+                                <img src="{{item.image_url}}" ng-if="item.image_url" width="200">
                             </div>
 
                             <div class="checkbox">

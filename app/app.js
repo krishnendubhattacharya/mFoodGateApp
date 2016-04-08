@@ -354,7 +354,25 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/resturantlist',
                 templateUrl: 'app/views/admin/resturantlist.html',
                 title: 'Resturant List',
-                resolve: loadSequence('resturantlist')
+                resolve: loadSequence('resturantlist','naif.base64')
+            })
+            .state('admin.resturantedit', {
+                url: '/resturantedit/:resturantId',
+                templateUrl: 'app/views/admin/resturantedit.html',
+                title: 'Resturant Edit',
+                resolve: loadSequence('resturantedit','naif.base64')
+            })
+            .state('admin.outletlist', {
+                url: '/outletlist/:resturantId',
+                templateUrl: 'app/views/admin/outletlist.html',
+                title: 'Outlet List',
+                resolve: loadSequence('outletlist','naif.base64')
+            })
+            .state('admin.outletedit', {
+                url: '/outletedit/:outletId',
+                templateUrl: 'app/views/admin/outletedit.html',
+                title: 'Outlet Edit',
+                resolve: loadSequence('outletedit','naif.base64')
             })
             .state('adminlogin', {
                 url: '/adminlogin',
@@ -506,6 +524,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('eventdetail'),
                 templateUrl: 'app/views/eventdetail.html',
                 title: 'Event Detail'
+            })
+            .state('frontend.eventbidder', {
+                url: '/eventbidder/:eventId',
+                resolve: loadSequence('eventbidder'),
+                templateUrl: 'app/views/eventbidder.html',
+                title: 'Event Bidder'
+            })
+            .state('frontend.merchantevent', {
+                url: '/merchantevent',
+                resolve: loadSequence('merchantevent'),
+                templateUrl: 'app/views/merchant/merchantevent.html',
+                title: 'Event'
             })
 
 
