@@ -1,11 +1,11 @@
-<div ng-controller="outletlistCtrl">
+<div ng-controller="promolistCtrl">
 
     <div class="row">
         <div class="col-sm-12">
             <section class="panel">
-                <div ng-if="outletView == 'view'">
+                <div ng-if="promoView == 'view'">
                     <header class="panel-heading">
-                        Outlet
+                        Promo
                         <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -13,11 +13,11 @@
                     </header>
                     <div class="panel-body">
                         <div class="btn-group">
-                            <button class="btn btn-primary" id="editable-sample_new" ng-click ="addOutlet()">
-                                Add Outlet
+                            <button class="btn btn-primary" id="editable-sample_new" ng-click ="addPromo()">
+                                Add Promo
                             </button>
                         </div>
-                        <table id="outletsList" class="table  table-hover general-table">
+                        <table id="promosList" class="table  table-hover general-table">
                             <thead>
                             <tr>
                                 <th> Id</th>
@@ -29,14 +29,14 @@
                             </thead>
                             <tbody>
 
-                            <tr ng-repeat="item in alloutlet">
+                            <tr ng-repeat="item in allpromo">
                                 <td>
                                     {{item.id}}
                                 </td>
                                 <td >{{item.title}}</td>
                                 <td >{{item.city}}</td>
-                                <td ><a class="btn btn-default edit" ui-sref="admin.outletedit({outletId:item.id})" >Edit</a>
-                                    <a class="btn btn-default delete" href="javascript:;" ng-click="deleteOutlet(item.id)"
+                                <td ><a class="btn btn-default edit" ui-sref="admin.promoedit({promoId:item.id})" >Edit</a>
+                                    <a class="btn btn-default delete" href="javascript:;" ng-click="deletePromo(item.id)"
                                             >Delete</a></td>
 
                             </tr>
@@ -47,18 +47,53 @@
                     </div>
                 </div>
 
-                <div ng-if="outletView == 'edit'">
+                <div ng-if="promoView == 'edit'">
                     <header class="panel-heading">
-                        Outlet
+                        Promo
                     </header>
                     <div class="panel-body">
-                        <form role="form" ng-submit="saveOutlet()" enctype="multipart/form-data">
+                        <form role="form" ng-submit="savePromo()" enctype="multipart/form-data">
 
                             <div class="form-group">
-                                <label for="title">Outlet Name</label>
-                                <input type="text" required placeholder="Enter Outlet Name"  id="title" ng-model="item.title" class="form-control">
+                                <label for="title">Promo Title</label>
+                                <input type="text" required placeholder="Enter Promo Title"  id="title" ng-model="item.title" class="form-control">
                                 <input type="hidden"  ng-model="item.id" >
                                 <input type="hidden"  ng-model="item.restaurant_id" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea placeholder="Enter Description" required  id="description" ng-model="item.description" ckeditor class="form-control"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Benefits</label>
+                                <textarea placeholder="Enter Benefits" required id="benefits" ng-model="item.benefits" ckeditor class="form-control"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input type="text" required placeholder="Enter Price"  id="price" ng-model="item.price" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Offer Price</label>
+                                <input type="text" required placeholder="Enter Offer Price"  id="offer_price" ng-model="item.offer_price" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Offer Percent</label>
+                                <input type="text" required placeholder="Enter Offer Percent"  id="offer_percent" ng-model="item.offer_percent" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Offer From Date</label>
+                                <input type="text" required placeholder="From Date"  id="offer_from_date" ng-model="item.offer_from_date" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Offer To Date</label>
+                                <input type="text" required placeholder="To Date"  id="offer_to_date" ng-model="item.offer_to_date" class="form-control">
                             </div>
 
                             <div class="form-group" ng-init="getLocation()">
@@ -89,7 +124,7 @@
                                 </label>
                             </div>
                             <button class="btn btn-primary" type="submit">Submit</button>
-                            <button class="btn btn-danger" type="button" ng-click="cancelOutlet()">Cancel</button>
+                            <button class="btn btn-danger" type="button" ng-click="cancelPromo()">Cancel</button>
                         </form>
 
                     </div>

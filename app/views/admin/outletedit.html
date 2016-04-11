@@ -18,12 +18,19 @@
                                 <input type="hidden"  ng-model="item.restaurant_id" >
                             </div>
 
-                            <div class="form-group" ng-init="getLocation()">
+                            <div class="form-group" ng-init="">
                                 <label for="exampleInputName">Select Location</label>
                                 <select class="form-control" ng-model="item.location_id">
                                     <option value="">--Select Location--</option></option>
-                                    <option ng-repeat="location in locationList | orderBy:'name' " value="{{location.id}}">{{location.name}}</option>
+                                    <option ng-repeat="location in locationList | orderBy:'city' " value="{{location.id}}">{{location.city}}</option>
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input required places-auto-complete id="address" ng-model="item.address" class="form-control" on-place-changed="placeChanged()"/>
+                                <input type="hidden"  ng-model="item.lat" >
+                                <input type="hidden"  ng-model="item.lng" >
                             </div>
 
                             <div class="form-group" ng-init="getCategories()">

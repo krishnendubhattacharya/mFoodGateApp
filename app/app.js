@@ -366,13 +366,25 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/outletlist/:resturantId',
                 templateUrl: 'app/views/admin/outletlist.html',
                 title: 'Outlet List',
-                resolve: loadSequence('outletlist','naif.base64')
+                resolve: loadSequence('outletlist','naif.base64','ngMap','ngmapautocomplete')
             })
             .state('admin.outletedit', {
                 url: '/outletedit/:outletId',
                 templateUrl: 'app/views/admin/outletedit.html',
                 title: 'Outlet Edit',
-                resolve: loadSequence('outletedit','naif.base64')
+                resolve: loadSequence('outletedit','naif.base64','ngMap')
+            })
+            .state('admin.promolist', {
+                url: '/promolist/:resturantId',
+                templateUrl: 'app/views/admin/promolist.html',
+                title: 'Promo List',
+                resolve: loadSequence('promolist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
+            })
+            .state('admin.promoedit', {
+                url: '/promoedit/:promoId',
+                templateUrl: 'app/views/admin/promoedit.html',
+                title: 'Promo Edit',
+                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor')
             })
             .state('adminlogin', {
                 url: '/adminlogin',
@@ -536,6 +548,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('merchantevent'),
                 templateUrl: 'app/views/merchant/merchantevent.html',
                 title: 'Event'
+            })
+            .state('frontend.eventbid', {
+                url: '/eventbid/:eventId',
+                resolve: loadSequence('merchanteventbid'),
+                templateUrl: 'app/views/merchant/merchanteventbid.html',
+                title: 'Event Bid'
             })
 
 
