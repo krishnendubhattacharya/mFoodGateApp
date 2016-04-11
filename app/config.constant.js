@@ -48,6 +48,8 @@ app.constant('JS_REQUIRES', {
         'resturantedit':['app/Controllers/admin/resturanteditCtrl.js'],
         'outletlist':['app/Controllers/admin/outletlistCtrl.js'],
         'outletedit':['app/Controllers/admin/outleteditCtrl.js'],
+        'promolist':['app/Controllers/admin/promolistCtrl.js'],
+        'promoedit':['app/Controllers/admin/promoeditCtrl.js'],
         'merchanthome':['app/Controllers/merchanthomeCtrl.js'],
         'merchantlogin':['app/Controllers/merchantloginCtrl.js'],
         'marketplace':['app/Controllers/marketplaceCtrl.js'],
@@ -79,6 +81,8 @@ app.constant('JS_REQUIRES', {
         'eventdetail':['app/Controllers/eventdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
         'eventbidder':['app/Controllers/eventbidderCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantevent':['app/Controllers/merchanteventCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'merchanteventbid':['app/Controllers/merchanteventbidCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'ngmapautocomplete':['bower_components/ngmap/directives/places-auto-complete.js'],
     },
 
     //*** angularJS Modules
@@ -92,7 +96,7 @@ app.constant('JS_REQUIRES', {
         },
         {
             name: 'ngMap',
-            files: ['bower_components/ngmap/build/scripts/ng-map.min.js','http://maps.google.com/maps/api/js']
+            files: ['bower_components/ngmap/build/scripts/ng-map.min.js','http://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places']
         },
         {
             name: 'mCart',

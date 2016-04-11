@@ -2,35 +2,44 @@
 /**
  * controllers used for the login
  */
-app.controller('resturanteditCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore, $timeout, $stateParams) {
-    $scope.viewResturant = function () {
+app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, myAuth, NgMap, $cookieStore,$timeout,$stateParams) {
+
+    $scope.placeChanged = function() {
+        $scope.place = this.getPlace();
+        $scope.item.lat=$scope.place.geometry.location.lat();
+        $scope.item.lng=$scope.place.geometry.location.lng();
+        console.log('Lat:'+$scope.item.lat+" Lng:"+$scope.item.lng);
+        //$scope.map.setCenter($scope.place.geometry.location);
+    }
+    NgMap.getMap().then(function(map) {
+        $scope.map = map;
+    });
+    $scope.viewPromo = function () {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getRestaurantDetails/"+$stateParams.resturantId,
+            url: $rootScope.serviceurl + "getPromosByRestaurant/"+$stateParams.resturantId,
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
-            console.log(data.data);
-            $scope.categoryList=data.data.categories;
-            $scope.category_id = [];
-            angular.forEach($scope.categoryList,function(value){
-                $scope.category_id.push({id:value.category_id})
-            })
-            console.log($scope.category_id);
-            $scope.item = { id:data.data.restaurant.id,
-                            user_id:data.data.user.id,
-                            title:data.data.restaurant.title,
-                            image_url:data.data.restaurant.logo_url,
-                            is_featured:data.data.restaurant.is_featured,
-                            is_active:data.data.restaurant.is_active,
-                            category_id:$scope.category_id
-                          }
-            console.log($scope.item.category_id);
-            console.log($scope.item);
-        });
 
+            $scope.allpromo = data.data;
+            $timeout(function(){
+
+                $scope.table=  angular.element('#promosList').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false
+                });
+            }, 3000, false);
+            //console.log($scope.allcat);
+
+
+        });
+        $scope.promoView='view';
     }
-    $scope.viewResturant();
     $scope.getCategories = function(){
         $http({
             method: "GET",
@@ -49,24 +58,27 @@ app.controller('resturanteditCtrl', function ($rootScope, $scope, $http, $locati
         });
 
     }
-    $scope.getMerchant = function(){
+
+    $scope.getLocation = function(){
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getAllMerchants",
+            url: $rootScope.serviceurl + "getAllLocations",
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
+            console.log(data);
             if(angular.isObject(data))
             {
-                $scope.merchantList=data;
+                $scope.locationList=data.locations;
             }
         });
 
     }
 
 
+    $scope.viewPromo();
 
-    /*$scope.editResturant = function (params) {
+    $scope.editPromo = function (params) {
 
         setTimeout(function () {
             $scope.$apply(function () {
@@ -77,41 +89,47 @@ app.controller('resturanteditCtrl', function ($rootScope, $scope, $http, $locati
 
         //console.log(params);$scope.item = params;
         //setTimeout(function(){$scope.item = params},1000);
-        $scope.resturantView='edit';
-    }*/
+        $scope.promoView='edit';
+    }
 
 
-    /*$scope.addResturant = function () {
+    $scope.addPromo = function () {
         //alert(13);
         $scope.item={
             "title": '',
             "category_id":[],
             "id": '',
+            "address": '',
+            "lat": '',
+            "lng": '',
             "is_active":0,
-            "is_featured":0,
-            "image":'',
-            "user_id":'',
-        };
+            "location_id":'',
+            "resturant_id":$stateParams.resturantId,
+        };console.log($scope.item);
+        /*$scope.example1model = [];
+         $scope.example1data = [
+         {id: 1, label: "David"},
+         {id: 2, label: "Jhon"},
+         {id: 3, label: "Danny"}];*/
+        $scope.promoView='edit';
+    }
 
-        $scope.resturantView='edit';
-    }*/
+    $scope.cancelPromo = function () {
+        $scope.viewPromo();
+    }
 
-    /*$scope.cancelResturant = function () {
-        $scope.viewResturant();
-    }*/
-
-    $scope.saveResturant = function () {
+    $scope.savePromo = function () {
         console.log($scope.item);
         //return false;
         if($scope.item.id == '') {
             $http({
                 method: "POST",
-                url: $rootScope.serviceurl + "addResturant",
+                url: $rootScope.serviceurl + "addPromo",
                 data: $scope.item,
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
                 console.log(data);
-                $scope.viewResturant();
+                $scope.viewPromo();
                 $scope.item={};
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
@@ -119,14 +137,13 @@ app.controller('resturanteditCtrl', function ($rootScope, $scope, $http, $locati
         }else{
             $http({
                 method: "PUT",
-                url: $rootScope.serviceurl + "updateResturant/"+$scope.item.id,
-                data: $scope.item,
+                url: $rootScope.serviceurl + "updatePromo/"+$scope.item.id,
+                data: {"city": $scope.item.city, "country_id": $scope.item.country_id,"is_active": $scope.item.is_active},
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
                 console.log(data);
-               // $scope.viewResturant();
+                $scope.viewPromo();
                 $scope.item={};
-                $location.path('/admin/resturantlist');
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
             });
@@ -134,17 +151,17 @@ app.controller('resturanteditCtrl', function ($rootScope, $scope, $http, $locati
 
     }
 
-    $scope.deleteResturant = function (c_id) {
+    $scope.deletePromo = function (c_id) {
         //alert(c_id);
         if ( window.confirm("Want to delete?") ) {
             $http({
                 method: "DELETE",
-                url: $rootScope.serviceurl + "deleteResturant/"+c_id,
+                url: $rootScope.serviceurl + "deletePromo/"+c_id,
                 //data: {"name": $scope.item.name,"is_active": $scope.item.is_active},
                 //headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
                 console.log(data);
-                $scope.viewResturant();
+                $scope.viewPromo();
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
             });
@@ -152,10 +169,6 @@ app.controller('resturanteditCtrl', function ($rootScope, $scope, $http, $locati
 
         }
 
-    }
-
-    $scope.cancelResturant = function(){
-        $location.path('/admin/resturantlist');
     }
 
 

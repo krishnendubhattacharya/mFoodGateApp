@@ -2,7 +2,18 @@
 /**
  * controllers used for the login
  */
-app.controller('outletlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore,$timeout,$stateParams) {
+app.controller('outletlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, NgMap, $cookieStore,$timeout,$stateParams) {
+
+    $scope.placeChanged = function() {
+        $scope.place = this.getPlace();
+        $scope.item.lat=$scope.place.geometry.location.lat();
+        $scope.item.lng=$scope.place.geometry.location.lng();
+        console.log('Lat:'+$scope.item.lat+" Lng:"+$scope.item.lng);
+        //$scope.map.setCenter($scope.place.geometry.location);
+    }
+    NgMap.getMap().then(function(map) {
+        $scope.map = map;
+    });
     $scope.viewOutlet = function () {
         $http({
             method: "GET",
@@ -88,6 +99,9 @@ app.controller('outletlistCtrl', function ($rootScope, $scope, $http, $location,
             "title": '',
             "category_id":[],
             "id": '',
+            "address": '',
+            "lat": '',
+            "lng": '',
             "is_active":0,
             "location_id":'',
             "resturant_id":$stateParams.resturantId,
