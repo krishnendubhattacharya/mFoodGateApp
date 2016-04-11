@@ -1,78 +1,98 @@
 <!--Web header-->
 <div ng-controller="marketplaceCtrl">
-    <div class="container">
-        <div class="reseller-section phone-hide">
-            <h1>Re-Seller Voucher</h1>
-            <ul>
-                <li ng-repeat="resaleDetail in resaleInfo">
-                    <div class="pro-item">
-                        <div class="logo-box">
-                            <div class="p-circle">{{resaleDetail.offer_percent}}%</div>
-                            <img src="{{resaleDetail.image}}" width="218" height="100"  alt="" ng-click="offerdetails(resaleDetail.voucher_id,resaleDetail.voucher_resale_id)"/>
-                        </div>
-                        <div class="desc">
-                            <h2>{{resaleDetail.title}}</h2>
-
-                            <div class="price">
-                                <h2>RP {{resaleDetail.price-((resaleDetail.price*resaleDetail.offer_percent)/100)}}</h2>
-                                <p><span>RP {{resaleDetail.price}}</span></p>
-                                <p>Highetst Bid {{resaleDetail.high_bid}}</p>
-                                <p>Lowest Bid {{resaleDetail.low_bid}}</p>
-
-                            </div>
-                            <div class="pts">
-                                <!--<h2>mPts 120</h2>-->
-                                <p>{{resaleDetail.buy_count}} Sold</p>
-                                <p> <button class="btn-default button-details" ng-click="offerdetails(resaleDetail.voucher_id,resaleDetail.voucher_resale_id)">Details</button></p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <!--<li>
-                    <div class="pro-item">
-                        <div class="logo-box">
-                            <div class="p-circle">50%</div>
-                            <img src="app/assets/Images/pro-2.png" alt=""/>
-                        </div>
-                        <div class="desc">
-                            <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
-
-                            <div class="price">
-                                <h2>RP 299,000</h2>
-                                <p>RP 350,000</p>
-                            </div>
-                            <div class="pts">
-                                <h2>mPts 120</h2>
-                                <p>33 Sold</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="pro-item">
-                        <div class="logo-box">
-                            <div class="p-circle">50%</div>
-                            <img src="app/assets/Images/pro-3.png" alt=""/>
-                        </div>
-                        <div class="desc">
-                            <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
-
-                            <div class="price">
-                                <h2>RP 299,000</h2>
-                                <p>RP 350,000</p>
-                            </div>
-                            <div class="pts">
-                                <h2>mPts 120</h2>
-                                <p>33 Sold</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>-->
+    <div class="container phone-hide">
+        <div id="tabs-container">
+            <ul class="tabs-menu">
+                <li class="current"><a href="#tab-1">Re-Seller Voucher</a></li>
+                <li><a href="#tab-2">Re-Seller Voucher</a></li>
+                <li><a href="#tab-3">Re-Seller Voucher</a></li>
+                <li><a href="#tab-4">Re-Seller Voucher</a></li>
             </ul>
-        </div>
+            <div class="tab">
+                <div id="tab-1" class="tab-content">
+                        <div class="reseller-section">
 
-    </div>
+                            <ul style="border:none">
+                                <li ng-repeat="resaleDetail in resaleInfo">
+                                    <div class="pro-item">
+                                        <div class="logo-box">
+                                            <div class="p-circle">{{resaleDetail.offer_percent}}%</div>
+                                            <img src="{{resaleDetail.image}}" width="218" height="100"  alt="" ng-click="offerdetails(resaleDetail.voucher_id,resaleDetail.voucher_resale_id)"/>
+                                        </div>
+                                        <div class="desc">
+                                            <h2>{{resaleDetail.title}}</h2>
+
+                                            <div class="price">
+                                                <h2>RP {{resaleDetail.price-((resaleDetail.price*resaleDetail.offer_percent)/100)}}</h2>
+                                                <p><span>RP {{resaleDetail.price}}</span></p>
+                                                <p>Highetst Bid {{resaleDetail.high_bid}}</p>
+                                                <p>Lowest Bid {{resaleDetail.low_bid}}</p>
+
+                                            </div>
+                                            <div class="pts">
+                                                <!--<h2>mPts 120</h2>-->
+                                                <p>{{resaleDetail.buy_count}} Sold</p>
+                                                <p> <button class="btn-default button-details" ng-click="offerdetails(resaleDetail.voucher_id,resaleDetail.voucher_resale_id)">Details</button></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!--<li>
+                                    <div class="pro-item">
+                                        <div class="logo-box">
+                                            <div class="p-circle">50%</div>
+                                            <img src="app/assets/Images/pro-2.png" alt=""/>
+                                        </div>
+                                        <div class="desc">
+                                            <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
+
+                                            <div class="price">
+                                                <h2>RP 299,000</h2>
+                                                <p>RP 350,000</p>
+                                            </div>
+                                            <div class="pts">
+                                                <h2>mPts 120</h2>
+                                                <p>33 Sold</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="pro-item">
+                                        <div class="logo-box">
+                                            <div class="p-circle">50%</div>
+                                            <img src="app/assets/Images/pro-3.png" alt=""/>
+                                        </div>
+                                        <div class="desc">
+                                            <h2>Tony Roma's Steak Combination Best Steak in town Great Offer !!</h2>
+
+                                            <div class="price">
+                                                <h2>RP 299,000</h2>
+                                                <p>RP 350,000</p>
+                                            </div>
+                                            <div class="pts">
+                                                <h2>mPts 120</h2>
+                                                <p>33 Sold</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>-->
+                            </ul>
+                                </div>
+                </div>
+                <div id="tab-2" class="tab-content">
+                    asaSAsaSAsSSAS
+                </div>
+                <div id="tab-3" class="tab-content">
+                    asaSAsaSAsSSAS
+                </div>
+                <div id="tab-4" class="tab-content">
+                    asaSAsaSAsSSAS
+                </div>
+                </div>
+            </div>
+        </div>
 
     <div class="m-reseller-section tablet-hide">
         <h1>Re-Seller Voucher</h1>
@@ -145,3 +165,16 @@
         </ul>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $(".tabs-menu a").click(function(event) {
+            event.preventDefault();
+            $(this).parent().addClass("current");
+            $(this).parent().siblings().removeClass("current");
+            var tab = $(this).attr("href");
+            $(".tab-content").not(tab).css("display", "none");
+            $(tab).fadeIn();
+        });
+    });
+</script>

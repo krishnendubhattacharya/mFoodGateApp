@@ -85,7 +85,15 @@
                             }"></div>
                             </div>
                         </div>
-
+                        <div class="dx-field">
+                            <div class="dx-field-label">&nbsp;</div>
+                            <div class="dx-field-value">
+                        <div id="button" dx-button="{
+                                text: 'Submit',
+                                type: 'success',
+                                onClick: validateAndSubmit }" ></div>
+                                </div>
+                            </div>
                     </div>
 
                     <!--<div>
@@ -97,10 +105,7 @@
                         </ul>
                     </div>-->
                     <!--<div id="summary" dx-validation-summary="{ }"></div>-->
-                    <div id="button" dx-button="{
-                                text: 'Submit',
-                                type: 'success',
-                                onClick: validateAndSubmit }" ></div>
+
                 </div>
 
             </div>
@@ -152,17 +157,24 @@
                             <div dx-text-area="textArea"  ng-model="userInfo.about_me"></div>
                         </div>
                     </div>
+                    <div class="dx-field">
 
-                </div>
-                <!--<div id="summary" dx-validation-summary="{ }"></div>-->
-                <div id="button" dx-button="{
+                        <div class="dx-field-value">
+                    <div id="button" dx-button="{
                                 text: 'Submit',
                                 type: 'success',
                                 onClick: validateAndSubmit }" ></div>
-            </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
+                <!--<div id="summary" dx-validation-summary="{ }"></div>-->
+
         </div>
 
     </div>
+    </div>
+
     <div class="dx-clearfix"></div>
     <!--<div class="container phone-hide">
         <div class="transaction-details">
