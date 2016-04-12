@@ -34,8 +34,8 @@
             </li>
         </ul>
     </div>
-
-    <ul class="tablet-hide" id="menu" ng-init="getLoginDetails()">
+<div id="menu">
+    <ul class="tablet-hide" ng-init="getLoginDetails()">
     	<li><input type="text" placeholder="Search"></li>
 
         <li><a onclick="menuClick()" title="Home" ui-sref="frontend.index">Home</a></li>
@@ -48,12 +48,23 @@
         <li><a onclick="menuClick()" title="Register" ui-sref="frontend.register">Register</a></li>
         </span>
         <span ng-show="showMember">
-        <li><a onclick="menuClick()" title="Login" ui-sref="frontend.profile" >{{loggedindetails.email}}</a></li>
-        <li><a ng-click="userLogout()" title="Logout">Logout</a></li>
+        <li><a onclick="menuClick()" title="Login" ui-sref="frontend.profile" >My Profile</a></li>
+            <li><a href="">Member</a>
+            <ul>
+        <li><a onclick="menuClick()" title="My Voucher" ui-sref="frontend.allvoucher">My Voucher</a></li>
+        <li><a onclick="menuClick()" title="My Membership" ui-sref="frontend.mymembership">My Membership</a></li>
+        <li><a onclick="menuClick()" title="My Account" ui-sref="frontend.profile">My Account</a></li>
+        <li><a onclick="menuClick()" title="My Points" ui-sref="frontend.mypoints">My Points</a></li>
+        <li><a onclick="menuClick()" title="Event Offer" href="#">Event Offer</a></li>
+        <li><a onclick="menuClick()" title="Queuing" ui-sref="frontend.queuing">Queuing</a></li>
+        <li><a onclick="menuClick()" title="Pre-Order" ui-sref="frontend.preorder">Pre-Order</a></li>
+        <li><a onclick="menuClick()" title="Feedback" ui-sref="frontend.feedback">Feedback</a></li>
+        <li><a onclick="menuClick()" title="Logout" ng-click="userLogout()" title="Logout">Logout</a></li>
+                </ul></li>
         </span>
 
     </ul>
-
+</div>
 
 </div>
 
