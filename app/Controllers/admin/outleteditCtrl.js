@@ -2,31 +2,43 @@
 /**
  * controllers used for the login
  */
-app.controller('outleteditCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore, $timeout, $stateParams) {
+app.controller('outleteditCtrl', function ($rootScope, $scope, $http, NgMap, $location, myAuth, $cookieStore, $timeout, $stateParams) {
+
+    $scope.placeChanged = function() {
+        $scope.place = this.getPlace();
+        $scope.item.lat=$scope.place.geometry.location.lat();
+        $scope.item.lng=$scope.place.geometry.location.lng();
+        console.log('Lat:'+$scope.item.lat+" Lng:"+$scope.item.lng);
+        //$scope.map.setCenter($scope.place.geometry.location);
+    }
+    NgMap.getMap().then(function(map) {
+        $scope.map = map;
+    });
     $scope.viewOutlet = function () {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getRestaurantDetails/"+$stateParams.outletId,
+            url: $rootScope.serviceurl + "getOutletDetails/"+$stateParams.outletId,
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
-            console.log(data.data);
+
             $scope.categoryList=data.data.categories;
             $scope.category_id = [];
             angular.forEach($scope.categoryList,function(value){
                 $scope.category_id.push({id:value.category_id})
             })
-            console.log($scope.category_id);
-            $scope.item = { id:data.data.restaurant.id,
-                user_id:data.data.user.id,
-                title:data.data.restaurant.title,
-                image_url:data.data.restaurant.logo_url,
-                is_featured:data.data.restaurant.is_featured,
-                is_active:data.data.restaurant.is_active,
-                category_id:$scope.category_id
+
+            $scope.item = { id:data.data.outlet.id,
+                title:data.data.outlet.title,
+                is_active:data.data.outlet.is_active,
+                category_id:$scope.category_id,
+                address: data.data.outlet.address,
+                lat: data.data.outlet.lat,
+                lng: data.data.outlet.lng,
+                restaurant_id:data.data.outlet.restaurant_id,
+                location_id:data.data.outlet.location_id
             }
-            console.log($scope.item.category_id);
-            console.log($scope.item);
+
         });
 
     }
@@ -49,6 +61,7 @@ app.controller('outleteditCtrl', function ($rootScope, $scope, $http, $location,
         });
 
     }
+
     $scope.getLocation = function(){
         $http({
             method: "GET",
@@ -56,13 +69,14 @@ app.controller('outleteditCtrl', function ($rootScope, $scope, $http, $location,
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
+            console.log(data);
             if(angular.isObject(data))
             {
-                $scope.locationList=data;
+                $scope.locationList=data.locations;
             }
         });
-
     }
+    $scope.getLocation();
 
     $scope.saveOutlet = function () {
         console.log($scope.item);
@@ -82,15 +96,16 @@ app.controller('outleteditCtrl', function ($rootScope, $scope, $http, $location,
             });
         }else{
             $http({
-                method: "PUT",
-                url: $rootScope.serviceurl + "updateOutlet/"+$scope.item.id,
+                method: "POST",
+                url: $rootScope.serviceurl + "updateOutlet",
                 data: $scope.item,
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
                 console.log(data);
                 // $scope.viewOutlet();
+
+                $location.path('/admin/outletlist/'+$scope.item.restaurant_id);
                 $scope.item={};
-                $location.path('/admin/outletlist');
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
             });
@@ -119,7 +134,9 @@ app.controller('outleteditCtrl', function ($rootScope, $scope, $http, $location,
     }
 
 
-
+    $scope.cancelOutlet = function(){
+        $location.path('/admin/outletlist/'+$scope.item.restaurant_id);
+    }
 
     //$scope.getLoginDetails();
 

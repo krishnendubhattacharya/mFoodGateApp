@@ -613,7 +613,7 @@ body#mfoodmain{
     line-height: 53px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
 
 /*---------------------------------- my account -----------------------------*/
-.m-myaccount-details{ width:90%; margin: 0 auto; }
+.m-myaccount-details{ width:90%; margin: 20px auto !important; }
 .m-myaccount-details h1{font-size:22px; color:#3b3b3b; line-height:30px; padding-bottom:10px; margin-top:15px;}
 .m-left-panel{width:100%;height: auto;overflow: hidden;padding:10px;box-sizing: border-box;border:1px solid #eaeaea; float:none; margin: 0 auto;}
 .m-left-panel .profile-img{width:100%;height: auto;overflow: hidden;}
@@ -624,11 +624,34 @@ body#mfoodmain{
 .m-left-panel ul li a{ text-decoration: none; color: #6b6b6b; }
 .m-left-panel ul li a:hover{ text-decoration: none; color: #319432; }
 
-.m-profile-details{ width:100%; float: none; margin: 15px auto;}
-.m-profile-details h1{ font-size: 22px; color:#1d1d1d; padding: 0; margin:0 0 3px; line-height:30px; }
+.m-profile-details{ width:100%; float: none; margin: 15px auto; border: solid 1px #eaeaea;}
+.m-profile-details h1{ font-size: 18px; color:#1d1d1d; padding: 0; margin:0 0 3px; line-height:30px; }
 .m-profile-details p{ padding:5px 0; margin:0; font-size:14px; color:#292929; line-height:18px; overflow:hidden;}
 .m-profile-details p .title{ float:left; width:45%; font-weight:500; color:#1d1d1d; }
 .m-profile-details p .val{ float:left; width:55%; font-weight: normal; color:#5e5e5e;}
+.m-profile-details .dx-fieldset
+{
+    margin: 15px auto;
+    padding: 0;
+    width: 92%;
+}
+.m-profile-details .dx-field-label{float: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;}
+
+.m-profile-details .dx-field-value:not(.dx-switch):not(.dx-checkbox):not(.dx-button), .dx-field-value-static {
+    width: 100%;
+    float: none;
+}
+
+.m-profile-details .dx-field-value.dx-checkbox, .dx-field-value:not(.dx-widget) > .dx-checkbox {
+    float: left;
+    margin: 7px 0;
+
+}
+.m-dash-board{ padding: 10px;}
 
 .m-transaction-details{ width:100%; height:auto;  border: solid 1px #349c34; margin-top:20px;}
 .m-transaction-details h1{ height:47px; display: block; line-height:47px; background: url(../Images/green-bg.jpg) left top repeat-x; margin:0; padding: 0 0 0 15px; font-size:18px; font-weight: bold; color:#fff; }
@@ -827,6 +850,7 @@ body#mfoodmain{
 .m-news .left-col .banner img{width:100%; height: auto;}
 .m-news .left-col .all-news{ width:100%; height:auto; margin: 20px 0 0;}
 .m-news .left-col .all-news h1{font-size:20px; line-height: 24px; color:#333333; padding: 0; margin:0; }
+.m-news .left-col .all-news h1 a{color:#329432; text-decoration: none; }
 .m-news .left-col .all-news .news-item{ width:100%; height: auto; overflow: hidden; padding: 15px 0; border-bottom: solid 1px #c5c5c5; }
 .m-news .left-col .all-news .news-item .pix{ width: 100%; height: auto; }
 .m-news .left-col .all-news .news-item .pix img{ width: 100%; height: auto;}
