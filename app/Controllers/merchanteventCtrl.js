@@ -63,7 +63,7 @@ app.controller('merchanteventCtrl', function ($rootScope, $scope, $http, $locati
         //$scope.edit_mode = false;
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getActiveEvents",
+            url: $rootScope.serviceurl + "getMerchantsRelatedEvents/"+$scope.loggedindetails.id,
         }).success(function (data) {
             $scope.eventInfo = data.data;
             //console.log($scope.voucherInfo);

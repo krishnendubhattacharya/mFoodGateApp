@@ -8,12 +8,14 @@
 
 
 <link rel="stylesheet" type="text/css" href="app/assets/css/site.css" media="screen and (min-width: 740px)" />
+
 <div data-ng-include=" 'app/views/partials/header.html' " ></div>
     <div id="page">
         
         <div class="dx-clearfix" data-ng-include=" 'app/views/partials/maincontent.html' " ></div>
         <div data-ng-include=" 'app/views/partials/footer.html' " ></div>
      </div>
+<div ng-controller="mobileMenuCtrl">
     <div class="m-app-menu tablet-hide">
         <ul>
             <li class="active">
@@ -33,12 +35,25 @@
         </ul>
     </div>
 
-    <ul class="tablet-hide" id="menu">
+    <ul class="tablet-hide" id="menu" ng-init="getLoginDetails()">
     	<li><input type="text" placeholder="Search"></li>
-        <li><a onclick="menuClick()" title="Login" ui-sref="frontend.login">Login</a></li>
+
+        <li><a onclick="menuClick()" title="Home" ui-sref="frontend.index">Home</a></li>
+        <li><a onclick="menuClick()" title="Voucher" ui-sref="frontend.voucher">Voucher</a></li>
+        <li><a onclick="menuClick()" title="Membership" ui-sref="frontend.membership">Membership</a></li>
+        <li><a onclick="menuClick()" title="Marketplace" ui-sref="frontend.marketplace">Marketplace</a></li>
+        <li><a onclick="menuClick()" title="News" ui-sref="frontend.news">News</a></li>
+        <span ng-show="!showMember">
+        <li><a onclick="menuClick()" title="Login" ui-sref="frontend.login" >Login</a></li>
         <li><a onclick="menuClick()" title="Register" ui-sref="frontend.register">Register</a></li>
+        </span>
+        <span ng-show="showMember">
+        <li><a onclick="menuClick()" title="Login" ui-sref="frontend.profile" >{{loggedindetails.email}}</a></li>
+        <li><a ng-click="userLogout()" title="Logout">Logout</a></li>
+        </span>
+
     </ul>
 
 
-
+</div>
 

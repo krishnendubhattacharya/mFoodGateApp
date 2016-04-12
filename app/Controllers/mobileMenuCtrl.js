@@ -2,7 +2,7 @@
 /** 
  * controllers used for the login
  */
-app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore) {
+app.controller('mobileMenuCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore) {
 
     /*$scope.sidemenubar=function() {
         var slideout = new Slideout({
@@ -63,12 +63,13 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
                                 my: "center top",
                                 at: "center top"
                             }
-                        }, "success", 3000); 
+                        }, "success", 3000);
+                    menuClick();
                 });
                 
          };
          
-         $scope.getLoginDetails();
+        // $scope.getLoginDetails();
          $rootScope.$on('updateLoginDetails',function(){
                  //console.log('called');
                  $scope.getLoginDetails();

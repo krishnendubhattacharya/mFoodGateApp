@@ -147,27 +147,61 @@
         </div>
     </div>
     <div class="m-myaccount-details tablet-hide">
-        <h1>Edit Profile</h1>
+        <h1>Event</h1>
         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
 
-        <div class="m-profile-details">
+        <div class="m-profile-details" ng-show ="!edit_mode">
+            <div id="button" dx-button="{
+                text: 'Add Event',
+                onClick: changeView }" ></div>
+            <div dx-list="{
+      onInitialized:loadList
+    }">
+
+                <div data-options="dxTemplate: { name: 'item' }">
+
+                    <div style="display:inline-block; margin: 5px;">
+                        <p style="font-size:larger;"><b>{{title}}</b></p>
+                        <p>From Date: <i>{{from_date}}</i></p>
+                    </div>
+                    <p>To Date: <i>{{to_date}}</i></p>
+                    <p>Status: <i>{{status}}</i></p>
+                    <p><div id="button" dx-button="{
+                text: 'Detail',
+                onClick: event_detail({{id}}) }" ></div>
+                    <div id="button" dx-button="{
+                text: 'Edit',
+                onClick: edit_event({{id}}) }" ></div>
+                    <div id="button" dx-button="{
+                text: 'Image',
+                onClick: image_event({{id}}) }" ></div>
+                    </p>
+                    <p>
+                    <div id="button" dx-button="{
+                text: 'Bidder',
+                onClick: event_bidder({{id}}) }" ></div>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-details" ng-show="edit_mode">
             <div class="form">
                 <div class="dx-fieldset">
                     <div class="dx-field">
-                        <div class="dx-field-label">Merchant Name</div>
+                        <div class="dx-field-label">Title</div>
                         <div class="dx-field-value">
-                            <div dx-text-box="textBox.merchant_name"  ng-model="userInfo.merchant_name"></div>
-
-
+                            <div dx-text-box="textBox.title" ng-model="event.title"></div>
                         </div>
                     </div>
 
                     <div class="dx-field">
-                        <div class="dx-field-label">Email</div>
+                        <div class="dx-field-label">Description</div>
                         <div class="dx-field-value">
-                            <div dx-text-box="textBox.email" dx-validator="emailValidationRules" ng-model="userInfo.email"></div>
+                            <div dx-text-area="textArea"  ng-model="event.description"></div>
                         </div>
                     </div>
+
                     <!--<div class="dx-field">
                         <div class="dx-field-label">Username</div>
                         <div class="dx-field-value">
@@ -175,21 +209,84 @@
                         </div>
                     </div>-->
                     <div class="dx-field">
-                        <div class="dx-field-label">Phone</div>
+                        <div class="dx-field-label">Event Starting Date</div>
                         <div class="dx-field-value">
-                            <div dx-text-box="textBox.phone"  ng-model="userInfo.phone"></div>
+                            <div dx-date-box="dateBox.from_date" ng-model="event.from_date"></div>
                         </div>
                     </div>
                     <div class="dx-field">
-                        <div class="dx-field-label">Address</div>
+                        <div class="dx-field-label">Event Expire Date</div>
                         <div class="dx-field-value">
-                            <div dx-text-area="textArea"  ng-model="userInfo.address"></div>
+                            <div dx-date-box="dateBox.to_date" ng-model="event.to_date"></div>
+                        </div>
+                    </div>
+
+                    <div class="dx-field">
+                        <div class="dx-field-label">Cover Image</div>
+                        <div class="dx-field-value">
+                            <div dx-file-uploader="textBox.image"></div>
                         </div>
                     </div>
                     <div class="dx-field">
-                        <div class="dx-field-label">About Us</div>
+                        <div class="dx-field-label"></div>
                         <div class="dx-field-value">
-                            <div dx-text-area="textArea"  ng-model="userInfo.about_me"></div>
+                            <img src="{{event.imageurl}}" ng-if="event.imageurl" width="200">
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Outlet Type</div>
+                        <div class="dx-field-value">
+                            <div class="tagBox" dx-tag-box="{
+
+                                placeholder: 'Select Type',
+                                displayExpr: 'name',
+                                values:selectedTypes,
+                                onInitialized : inialType,
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'typeList'
+                                    }
+                                }
+                            }"></div>
+                        </div>
+                    </div>
+
+                    <div class="dx-field">
+                        <div class="dx-field-label">Outlet Location</div>
+                        <div class="dx-field-value">
+                            <div class="tagBox" dx-tag-box="{
+
+                                placeholder: 'Select Location',
+                                displayExpr: 'city',
+                                values:selectedLocation,
+                                onInitialized : inialLoc,
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'areaList'
+                                    }
+                                }
+                            }"></div>
+                        </div>
+                    </div>
+
+                    <!--<div class="dx-field">
+                        <div class="dx-field-label">Images</div>
+                        <div class="dx-field-value">
+                            <div dx-file-uploader="textBox.image"></div>
+                        </div>
+                    </div>-->
+
+                    <div class="dx-field">
+                        <div class="dx-field-label">Is Active</div>
+                        <div class="dx-field-value">
+                            <div dx-check-box="{
+                                    text: '',
+                                    value: '1'
+                                }" style="float: left" ng-model="event.is_active"></div>
                         </div>
                     </div>
 
@@ -198,7 +295,13 @@
                 <div id="button" dx-button="{
                                 text: 'Submit',
                                 type: 'success',
-                                onClick: validateAndSubmit }" ></div>
+                                onClick: save_event }" ></div>
+
+                <div id="button" dx-button="{
+                                text: 'Cancel',
+                                onClick: changeView }" ></div>
+
+
             </div>
         </div>
 

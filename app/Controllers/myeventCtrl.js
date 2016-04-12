@@ -35,6 +35,7 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
     };
 
     $scope.changeView = function(){
+        alert(12);
         $scope.edit_mode = !$scope.edit_mode;
         $scope.event = {
             title:'',
@@ -95,7 +96,8 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
                         .text('Detail')
                         .on('dxclick',function(){
                             //$scope.image_event(options.data.id);
-                            $location.path('/eventdetail/' + options.data.id);
+                            $scope.event_detail(options.data.id);
+                            //$location.path('/eventdetail/' + options.data.id);
                         })
                         .appendTo(container);
                     $('<button/>').addClass('dx-button')
@@ -118,7 +120,8 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
                         $('<button/>').addClass('dx-button')
                             .text('Bidder')
                             .on('dxclick',function(){
-                                $location.path('/eventbidder/' + options.data.id);
+                                $scope.event_bidder(options.data.id);
+                                //$location.path('/eventbidder/' + options.data.id);
                             })
                             .appendTo(container);
                     }
@@ -189,12 +192,28 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
             $scope.voucherInfo = data.data;
             //console.log($scope.voucherInfo);
             $scope.datagridobj.option('dataSource',$scope.voucherInfo);
+
+            $scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
         });
+    }
+    $scope.loadList=function(e)
+    {
+        console.log("loadList")
+        $scope.listViewData= e.component;
     }
     $scope.getEvents();
 
     $scope.image_event = function (event_id) {
         $location.path('/eventimage/' + event_id);
+    }
+
+    $scope.event_detail = function (event_id) {
+
+        $location.path('/eventdetail/' + event_id);
+    }
+
+    $scope.event_bidder = function (event_id) {
+        $location.path('/eventbidder/' + event_id);
     }
 
     $scope.dateBox = {
