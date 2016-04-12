@@ -99,7 +99,7 @@ h5 a:link, h5 a:visited, h5 a:active {
     margin: 0;
     max-width: 960px;
 }
-.container{ width:1080px; height: auto; margin: 0 auto; border: solid 0px red; }
+.container{ width:1080px; height: auto; margin: 0 auto; border: solid 0px red; position: relative; }
 .main-header {
     width: 100%;
     min-width: 1024px;
@@ -487,17 +487,37 @@ h5 a:link, h5 a:visited, h5 a:active {
 
 .profile-details{ width:80%; float: right; margin: 0; border: solid 1px #eaeaea;}
 .profile-details h1{ font-size: 24px; color:#1d1d1d; padding: 0; margin:0 0 3px; line-height:30px; }
-.profile-details h3{ font-size: 24px; color:#1d1d1d; padding: 0; margin:0 0 3px; line-height:30px; }
+.profile-details h3{ font-size: 20px; color:#1d1d1d; padding: 0 0 0 15px; margin:0 0 3px; line-height:30px; }
+
 .profile-details p{ padding:5px 0; margin:0; font-size:14px; color:#292929; line-height:18px; overflow:hidden;}
 .profile-details p .title{ float:left; width:35%; font-weight:500; color:#1d1d1d; }
 .profile-details p .val{ float:left; width:45%; font-weight: normal; color:#5e5e5e;}
-
+.profile-details .dx-button{ margin: 5px 3px;}
 .profile-details .dx-fieldset
 {
     margin: 20px auto 20px;
     padding: 0;
     width: 70%;
 }
+.profile-details .dx-datagrid-content .dx-datagrid-table .dx-row > td:last-child {
+    width: 200px !important;
+}
+.profile-details .dx-datagrid-text-content{
+    width: auto !important;
+}
+.right-side {
+    position: absolute;
+    right: 9px !important;
+    top: 55px !important;
+}
+
+.dx-pager .dx-page-sizes { margin-left: 10px;}
+.profile-details .dx-datagrid-content .dx-datagrid-table .dx-row > td{
+    border-top:  solid 1px #d3d3d3;
+    border-bottom:  solid 1px #d3d3d3;
+}
+
+
 .dash-board{ padding: 0px 20px 20px;}
 .transaction-details{ width:100%; height:auto;  border: solid 1px #349c34; margin-top:20px;}
 .transaction-details h1{ height:47px; display: block; line-height:47px; background: url(../Images/green-bg.jpg) left top repeat-x; margin:0; padding: 0 0 0 15px; font-size:18px; font-weight: bold; color:#fff; }
@@ -788,7 +808,7 @@ h5 a:link, h5 a:visited, h5 a:active {
    margin:0 5px 0 0;
    color: #36a236;
    font-size: 14px;
-   font-weight: bold;
+   font-weight: normal;
    border: solid 1px #d7d7d7;
    border-radius: 5px;
    cursor:pointer;
@@ -1118,3 +1138,31 @@ color: #313131; font-weight: normal; width:100%; }
 #tab-1 {
     display: block;
 }
+/*------------------------ Search news -------------------------*/
+.latest-news{ width: 96%; height: auto; background:#fff; border: solid 1px #dedfde; overflow: hidden; margin: 15px auto; }
+.latest-news h1{ display: block; padding: 0 0 0 15px; height: 49px; line-height: 48px; font-size:18px; color:#2a2a2a; text-transform: uppercase; margin: 0; background: url(../Images/ln-title-bg.png) left top repeat-x;}
+.latest-news .ln-news{ width:100%; height: auto; padding: 12px; }
+.latest-news .ln-news ul{ margin: 0; overflow: hidden; padding: 0; list-style-type: none;}
+.latest-news .ln-news ul li{ list-style-type: none; margin: 0 5px 15px;
+    float: left; border-bottom: solid 1px #dfdfdf; padding-bottom:10px; overflow: hidden; width:22%; border: solid 1px #dedfde;}
+.latest-news .ln-news ul li:last-child{ border: none; padding-bottom: 0; margin-bottom: 0; }
+.latest-news .ln-news ul li .n-pix{ width:27%; float: left; margin-right: 2%; height: auto;}
+.latest-news .ln-news ul li .n-pix img{ width:100%; height: auto; }
+.latest-news .ln-news ul li .n-dsc{ width:68%; height: auto; float: left; }
+.latest-news .ln-news ul li .n-dsc p{ padding: 0; margin: 0 0 5px; font-size:14px; line-height:16px; color:#5b5b5b; }
+.latest-news .ln-news ul li .n-dsc p a { color:#339933; text-decoration: none;}
+.latest-news .ln-news ul li .n-dsc p a:hover { color:#ff0000; text-decoration: none;}
+
+.latest-news .most-viewed{ width:100%; height: auto; padding: 12px; }
+.latest-news .most-viewed ul{ margin: 0; overflow: hidden; padding: 0; list-style-type: none;}
+.latest-news .most-viewed ul li{ list-style-type: none; margin: 15px 5px; float: left; border-bottom: solid 1px #dfdfdf;
+    padding:10px 5px; overflow: hidden; width:22%; border: solid 1px #dedfde;}
+
+.latest-news .most-viewed ul li .v-pix{ width:100%; height: auto;}
+.latest-news .most-viewed ul li .v-pix img{ width:100%; height: auto; }
+.latest-news .most-viewed ul li .v-dsc{ width:100%; height: auto; margin: 10px 0;}
+.latest-news .most-viewed ul li .v-dsc p{padding: 0; margin: 0 0 5px; font-size:14px; line-height:16px; color:#5b5b5b;}
+.latest-news .most-viewed ul li .v-dsc p a{color:#339933; text-decoration: none;}
+.latest-news .most-viewed ul li .v-dsc p a:hover{color:#ff0000; text-decoration: none;}
+.latest-news .most-viewed ul li .v-dsc .posted{ font-size:11px; color:#5b5b5b; padding: 0; margin: 0; }
+.latest-news .most-viewed ul li .v-dsc .posted span{ font-size:11px; color:#5b5b5b; padding: 0; margin: 0; float: right; }

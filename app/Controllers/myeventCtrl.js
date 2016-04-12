@@ -89,8 +89,8 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         columns: ["title", "from_date", "to_date","status",
             {
                 caption:'Action',
-                width: 500,
-                alignment: 'left',
+                width: 350,
+                alignment: 'center',
                 cellTemplate: function (container, options) {
                     $('<button/>').addClass('dx-button')
                         .text('Detail')
@@ -110,12 +110,12 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
                         .on('dxclick',function(){$scope.edit_event(options.data); })
                         .appendTo(container);
 
-                    /*$('<button/>').addClass('dx-button')
+                    $('<button/>').addClass('dx-button')
                         .text('Delete')
                         .on('dxclick', function () {
                             $scope.delete_event(options.data);
                         })
-                        .appendTo(container);*/
+                        .appendTo(container);
                     if(options.data.status == "Open"){
                         $('<button/>').addClass('dx-button')
                             .text('Bidder')
