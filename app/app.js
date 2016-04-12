@@ -386,6 +386,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Promo Edit',
                 resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor')
             })
+            .state('admin.merchantlist', {
+                url: '/merchantlist',
+                templateUrl: 'app/views/admin/merchantlist.html',
+                title: 'Merchant List',
+                resolve: loadSequence('promolist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
+            })
+            .state('admin.merchantedit', {
+                url: '/merchantedit/:merchantId',
+                templateUrl: 'app/views/admin/merchantedit.html',
+                title: 'Merchant Edit',
+                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor')
+            })
             .state('adminlogin', {
                 url: '/adminlogin',
                 template: '<div ui-view ></div>',
@@ -554,6 +566,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('merchanteventbid'),
                 templateUrl: 'app/views/merchant/merchanteventbid.html',
                 title: 'Event Bid'
+            })
+            .state('frontend.searchresult', {
+                url: '/searchresult?keyword&category&sort_field&sort_by&page&lines',
+                resolve: loadSequence('searchresult'),
+                templateUrl: 'app/views/searchresult.html',
+                title: 'Search Result'
             })
 
 

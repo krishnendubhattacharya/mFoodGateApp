@@ -1,0 +1,24 @@
+Index: .idea/deployment.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/deployment.xml	(revision 1f8408e39820588e6a7b27b31da6023bc97d604c)
++++ .idea/deployment.xml	(revision )
+@@ -1,15 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="PublishConfigData" autoUpload="Always" serverName="mFoodAppFtp">
+-    <serverData>
+-      <paths name="mFoodAppFtp">
+-        <serverdata>
+-          <mappings>
+-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+-          </mappings>
+-        </serverdata>
+-      </paths>
+-    </serverData>
+     <option name="myAutoUpload" value="ALWAYS" />
+   </component>
+ </project>
+\ No newline at end of file
