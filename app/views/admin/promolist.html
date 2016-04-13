@@ -39,10 +39,9 @@
                                 <td >{{item.price}}</td>
                                 <td >{{item.offer_price}}</td>
                                 <td >{{item.offer_type}}</td>
-                                <td ><a class="btn btn-default edit" ui-sref="admin.promoedit({promoId:item.id})" >Edit</a>
+                                <td ><a class="btn btn-default edit" ui-sref="admin.promoedit({promoId:item.id},{restaurantId:item.restaurant_id})" >Edit</a>
                                     <a class="btn btn-default delete" href="javascript:;" ng-click="deletePromo(item.id)"
                                             >Delete</a></td>
-
                             </tr>
 
 

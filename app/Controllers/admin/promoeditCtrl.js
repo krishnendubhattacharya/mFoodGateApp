@@ -60,13 +60,14 @@ app.controller('promoeditCtrl', function ($rootScope, $scope, $http, NgMap, $loc
     $scope.getOutlet = function(){
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getOutletsByRestaurant/"+$stateParams.resturantId,
+            url: $rootScope.serviceurl + "getOutletsByRestaurant/"+$stateParams.restaurantId,
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
             if(angular.isObject(data))
             {
-                console.log(data.data);
+                console.log('Hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii');
+                console.log(data);
                 $scope.outletList=data.data;
                 $scope.allOutlet = [];
                 angular.forEach($scope.outletList,function(value){
@@ -85,6 +86,8 @@ app.controller('promoeditCtrl', function ($rootScope, $scope, $http, NgMap, $loc
         }).success(function (data) {
             if(angular.isObject(data))
             {
+
+                console.log(data.category);
                 $scope.categoryList=data.category;
                 $scope.allCat = [];
                 angular.forEach($scope.categoryList,function(value){

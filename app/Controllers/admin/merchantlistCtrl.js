@@ -128,7 +128,7 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
         if ( window.confirm("Want to delete?") ) {
             $http({
                 method: "DELETE",
-                url: $rootScope.serviceurl + "user/"+c_id,
+                url: $rootScope.serviceurl + "users/"+c_id,
                 //data: {"name": $scope.item.name,"is_active": $scope.item.is_active},
                 //headers: {'Content-Type': 'application/json'},
             }).success(function (data) {

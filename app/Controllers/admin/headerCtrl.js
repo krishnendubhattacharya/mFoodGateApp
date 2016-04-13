@@ -3,10 +3,6 @@
  * controllers used for the login
  */
 app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore) {
-
-    myAuth.updateAdminUserinfo(myAuth.getAdminAuthorisation());
-    $scope.loggedindetails = myAuth.getAdminNavlinks();
-
         $scope.getLoginDetails=function(){
 
             myAuth.updateAdminUserinfo(myAuth.getAdminAuthorisation());
@@ -26,7 +22,7 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
                 }).success(function(data) {
                     
                     
-                myAuth.resetUserinfo();
+                myAuth.resetAdminUserinfo();
                     $cookieStore.put('admin', null);
                     myAuth.updateAdminUserinfo(myAuth.getAdminAuthorisation());
                     $scope.loggedindetails = myAuth.getAdminNavlinks();
@@ -34,9 +30,9 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
 
                     $scope.loggedindetails = '';
                     $rootScope.$emit('updateAdminLoginDetails');
-                    $scope.loggedin = false;                   
-                    $scope.notloggedin = true;                   
-			        
+                    $scope.loggedin = false;
+                    $scope.notloggedin = true;
+
                     $location.path("/adminlogin/signin");
 
                 });

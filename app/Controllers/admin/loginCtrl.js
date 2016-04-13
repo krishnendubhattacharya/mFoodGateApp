@@ -26,8 +26,8 @@ $scope.getAdminLogin = function() {
             $cookieStore.put('admin', data.user_details);
             $scope.user_username = '';
             $scope.user_password = '';
-            myAuth.updateUserinfo(myAuth.getUserAuthorisation());
-            $scope.loggedindetails = myAuth.getUserNavlinks();
+            myAuth.updateAdminUserinfo(myAuth.getAdminAuthorisation());
+            $scope.loggedindetails = myAuth.getAdminNavlinks();
             //console.log('hiiiiiiiiii');
             $rootScope.$emit('updateAdminLoginDetails');
             $scope.loggedin = true;
