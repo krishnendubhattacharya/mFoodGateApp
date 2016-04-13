@@ -64,7 +64,7 @@ app.controller('mobileMenuCtrl', function ($rootScope, $scope, $http, $location,
                                 at: "center top"
                             }
                         }, "success", 3000);
-                    menuClick();
+                    //menuClick();
                 });
                 
          };
@@ -76,12 +76,17 @@ app.controller('mobileMenuCtrl', function ($rootScope, $scope, $http, $location,
                 
                  //$scope.$apply();
          });
-    $scope.search = function() {
-        alert(12);
-        alert($scope.keyword);
-        alert($scope.type);
-        if($scope.keyword && $scope.type){
-            $location.path("/");
+    $scope.searchAll = function() {
+        $scope.sort_field = "id";
+        $scope.sort_by = "ASC";
+        $scope.page = 1;
+        $scope.lines = 10;
+
+        if(typeof $scope.keyword != '' && $scope.type!=''){
+            //alert(23);
+
+            $location.path("/searchresult").search({keyword: $scope.keyword,category: $scope.type,sort_field: $scope.sort_field,sort_by: $scope.sort_by,page: $scope.page,lines: $scope.lines});
+
         }else{
             DevExpress.ui.notify({
                 message: "Please enter value for keyword and type",
@@ -91,8 +96,9 @@ app.controller('mobileMenuCtrl', function ($rootScope, $scope, $http, $location,
                 }
             }, "success", 3000);
         }
-
+        menuClick();
     }
+
          
    
 });

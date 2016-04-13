@@ -180,6 +180,7 @@
 
     function menuClick()
     {
+
         var $body = $( 'body' ),
                 $page = $( '#page' ),
                 $menu = $( '#menu' ),
@@ -214,6 +215,16 @@
 
             $page.off( transitionEnd );
         } );
+    }
+
+    function menuHide(){
+        setTimeout(function(){
+            $( 'body').addClass( 'right' )
+                    .removeClass( 'animating left right' )
+                    .toggleClass( 'menu-visible' );
+        },500)
+
+
     }
 </script>
 </body>
