@@ -8,37 +8,74 @@
 
 
 <link rel="stylesheet" type="text/css" href="app/assets/css/site.css" media="screen and (min-width: 740px)" />
+
 <div data-ng-include=" 'app/views/partials/header.html' " ></div>
     <div id="page">
         
         <div class="dx-clearfix" data-ng-include=" 'app/views/partials/maincontent.html' " ></div>
         <div data-ng-include=" 'app/views/partials/footer.html' " ></div>
      </div>
+<div ng-controller="mobileMenuCtrl">
     <div class="m-app-menu tablet-hide">
         <ul>
-            <li class="active">
-                <a ui-sref="frontend.index" ui-sref-active="active"><img src="app/assets/Images/MobileIcons/home.png" alt="" />
+            <li ui-sref-active="active">
+                <a ui-sref="frontend.index" ><img src="app/assets/Images/MobileIcons/home.png" alt="" />
                     <p>Home</p></a>
             </li>
-            <li><a ui-sref="frontend.voucher" ui-sref-active="active"><img src="app/assets/Images/MobileIcons/vouture.png" alt="" />
+            <li ui-sref-active="active"><a ui-sref="frontend.voucher" ><img src="app/assets/Images/MobileIcons/vouture.png" alt="" />
                 <p>Voucher</p></a>
             </li>
-            <li><a ui-sref="frontend.membership" ui-sref-active="active"><img src="app/assets/Images/MobileIcons/membership.png" alt="" />
+            <li ui-sref-active="active"><a ui-sref="frontend.membership" ><img src="app/assets/Images/MobileIcons/membership.png" alt="" />
                 <p>Membership</p></a>
             </li>
-            <li>
-                <a ui-sref="frontend.marketplace" ui-sref-active="active"><img src="app/assets/Images/MobileIcons/market_place.png" alt="" />
+            <li ui-sref-active="active">
+                <a ui-sref="frontend.marketplace" ><img src="app/assets/Images/MobileIcons/market_place.png" alt="" />
                     <p>Marketplace</p></a>
             </li>
         </ul>
     </div>
+<div id="menu">
+    <ul class="tablet-hide" ng-init="getLoginDetails()">
+        <form ng-submit="searchAll()">
+        <li><select ng-model="type">
+            <option value="">Select Type</option>
+            <option value="promo">Promo</option>
+            <option value="restaurant">Restaurant</option>
+            <option value="event">Event</option>
+            <option value="news">News</option>
+        </select></li>
 
-    <ul class="tablet-hide" id="menu">
-    	<li><input type="text" placeholder="Search"></li>
-        <li><a onclick="menuClick()" title="Login" ui-sref="frontend.login">Login</a></li>
+    	<li><input type="text" placeholder="Search Keyword" ng-model="keyword"></li>
+        </form>
+        <li><a onclick="menuClick()" title="Home" ui-sref="frontend.index">Home</a></li>
+        <li><a onclick="menuClick()" title="Voucher" ui-sref="frontend.voucher">Voucher</a></li>
+        <li><a onclick="menuClick()" title="Membership" ui-sref="frontend.membership">Membership</a></li>
+        <li><a onclick="menuClick()" title="Marketplace" ui-sref="frontend.marketplace">Marketplace</a></li>
+        <li><a onclick="menuClick()" title="News" ui-sref="frontend.news">News</a></li>
+        <span ng-show="!showMember">
+        <li><a onclick="menuClick()" title="Login" ui-sref="frontend.login" >Login</a></li>
         <li><a onclick="menuClick()" title="Register" ui-sref="frontend.register">Register</a></li>
+        </span>
+        <span ng-show="showMember">
+        <li><a onclick="menuClick()" title="Login" ui-sref="frontend.profile" >My Profile</a></li>
+            <li><a href="">Member</a>
+            <ul>
+        <li><a onclick="menuClick()" title="My Voucher" ui-sref="frontend.allvoucher">My Voucher</a></li>
+        <li><a onclick="menuClick()" title="My Membership" ui-sref="frontend.mymembership">My Membership</a></li>
+        <li><a onclick="menuClick()" title="My Account" ui-sref="frontend.profile">My Account</a></li>
+        <li><a onclick="menuClick()" title="My Points" ui-sref="frontend.mypoints">My Points</a></li>
+        <li><a onclick="menuClick()" title="Event Offer" href="#">Event Offer</a></li>
+        <li><a onclick="menuClick()" title="Queuing" ui-sref="frontend.queuing">Queuing</a></li>
+        <li><a onclick="menuClick()" title="Pre-Order" ui-sref="frontend.preorder">Pre-Order</a></li>
+        <li><a onclick="menuClick()" title="Feedback" ui-sref="frontend.feedback">Feedback</a></li>
+
+
+                </ul></li>
+            <li><a onclick="menuClick()" title="Logout" ng-click="userLogout()" title="Logout">Logout</a></li>
+        </span>
+
     </ul>
+</div>
 
-
-
+</div>
 

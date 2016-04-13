@@ -1,0 +1,54 @@
+<!--Web header-->
+<div ng-controller="eventdetailCtrl">
+
+    <div class="container phone-hide">
+        <div class="voucher-details">
+            <h1>Voucher Detail</h1>
+                <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
+
+            <div class="profile-details">
+
+                <div class="img-box">
+                    <div class="pro-item">
+                        <div class="logo-box">
+                            <!--<div class="p-circle">5X</div>-->
+                            <img src="{{eventInfo.data.image}}" width="218" height="100"  alt=""/>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="desc-box">
+                    <h1>{{eventInfo.data.title}}</h1>
+                    <p ng-bind-html="eventInfo.data.description"></p>
+
+                    <div class="pay-box">
+                        <p>Created By  &nbsp; &nbsp; &nbsp;{{eventInfo.data.user_details.first_name}}&nbsp; &nbsp;{{eventInfo.data.user_details.last_name}}</p>
+                        <p>Status  &nbsp; &nbsp; &nbsp;{{eventInfo.data.status}}</p>
+                        <p>Outlet type  &nbsp; &nbsp; &nbsp;<span ng-repeat="item in eventInfo.data.categories">{{item.name}} &nbsp; &nbsp;</span></p>
+                        <p>Outlet location  &nbsp; &nbsp; &nbsp;<span ng-repeat="item_loc in eventInfo.data.locations">{{item_loc.name}} &nbsp; &nbsp;</span></p>
+                        <p>Starting Date  &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;{{eventInfo.data.from_date}}</p>
+                        <p>Expire Date  &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;{{eventInfo.data.to_date}}</p>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="m-myaccount-details tablet-hide">
+        <h1>Voucher</h1>
+        <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
+
+        <div class="m-profile-details">
+            <div id="gridContainer" dx-data-grid="dataGridOptions"></div>
+        </div>
+
+    </div>
+
+
+</div>
+
+

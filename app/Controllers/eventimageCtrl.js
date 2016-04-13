@@ -7,14 +7,15 @@ app.controller('eventimageCtrl', function ($rootScope, $scope, $http, $location,
         $location.path("/login");
     }
     $scope.img_uploader = null;
+    //$scope.eventimage=null;
     $scope.textBox = {image:  {
             buttonText: 'Select file',
             labelText: 'Drop file here',
             multiple: false,
             accept: 'image/*',
-            uploadUrl: $rootScope.serviceurl + 'menuFileUpload',
+            uploadUrl: $rootScope.serviceurl + 'eventFilesUpload',
             onUploaded:function(ret){
-                $scope.eventimage.image = ret.file.value.name;
+                $scope.eventimage={image:ret.file.value.name};
                 console.log(ret.file.value,ret.file.value.name);
             },
             onInitialized : function(e)
@@ -52,7 +53,6 @@ app.controller('eventimageCtrl', function ($rootScope, $scope, $http, $location,
             showInfo: true
         },
         onInitialized : function(e){
-            console.log('By Bikash  --  ',e);
             $scope.datag = e.component;
         },
         columns: [{
@@ -61,12 +61,12 @@ app.controller('eventimageCtrl', function ($rootScope, $scope, $http, $location,
                 if(options.data.image) {
                     $('<img />')
                         .height(100)
-                        .attr('src', options.data.imageurl)
+                        .attr('src', options.data.image_url)
                         .appendTo(container);
                 }
             }
         },
-        {
+        /*{
             caption:'Delete',
             width: 100,
             alignment: 'center',
@@ -76,7 +76,7 @@ app.controller('eventimageCtrl', function ($rootScope, $scope, $http, $location,
                     .on('dxclick',function(){$scope.delete_menu(options.data); })
                     .appendTo(container);
             }
-        }/*,
+        }*//*,
              {
              width: 100,
              alignment: 'center',
@@ -122,7 +122,7 @@ app.controller('eventimageCtrl', function ($rootScope, $scope, $http, $location,
         $scope.edit_mode = false;
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getMenuByUser/" + $stateParams.eventId,
+            url: $rootScope.serviceurl + "getImagesByEvent/" + $stateParams.eventId,
         }).success(function (data) {
             $scope.voucherInfo = data.data;
             //console.log($scope.voucherInfo);
@@ -158,11 +158,13 @@ app.controller('eventimageCtrl', function ($rootScope, $scope, $http, $location,
 
         //console.log($scope.textBox.image.value,$scope.menuInfo);
 
-        $scope.menuInfo.user_id = $scope.loggedindetails.id;
+        $scope.eventimage.event_id = $stateParams.eventId;
+        //console.log($scope.eventimage);
+        //return false;
         $http({
             method: "POST",
-            url: $rootScope.serviceurl+"addMenu",
-            data: $scope.menuInfo,
+            url: $rootScope.serviceurl+"addEventImage",
+            data: $scope.eventimage,
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
             //console.log(data);

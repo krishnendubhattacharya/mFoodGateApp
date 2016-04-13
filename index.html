@@ -171,14 +171,16 @@
 <script src="app/config.constant.js"></script>
 <script src="app/Controllers/RootScopeCtrl.js"></script>
 <script src="app/Controllers/headerCtrl.js"></script>
+<script src="app/Controllers/mobileMenuCtrl.js"></script>
 <div class="screen-size"></div>
-<div class="dx-gesture-cover" style="pointer-events: none;"></div>
+<div class="dx-gesture-cover" style="pointer-events: none;" ng-controller="RootScopeCtrl"></div>
 
 <script>
 
 
     function menuClick()
     {
+
         var $body = $( 'body' ),
                 $page = $( '#page' ),
                 $menu = $( '#menu' ),
@@ -213,6 +215,16 @@
 
             $page.off( transitionEnd );
         } );
+    }
+
+    function menuHide(){
+        setTimeout(function(){
+            $( 'body').addClass( 'right' )
+                    .removeClass( 'animating left right' )
+                    .toggleClass( 'menu-visible' );
+        },500)
+
+
     }
 </script>
 </body>

@@ -75,6 +75,30 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
                 
                  //$scope.$apply();
          });
+
+    $scope.search = function() {
+        //alert($scope.keyword);
+        //alert($scope.type);
+        $scope.sort_field = "id";
+        $scope.sort_by = "ASC";
+        $scope.page = 1;
+        $scope.lines = 10;
+        if(typeof $scope.keyword != '' && $scope.type!=''){
+            //alert(23);
+
+            $location.path("/searchresult").search({keyword: $scope.keyword,category: $scope.type,sort_field: $scope.sort_field,sort_by: $scope.sort_by,page: $scope.page,lines: $scope.lines});
+
+        }else{
+            DevExpress.ui.notify({
+                message: "Please enter value for keyword and type",
+                position: {
+                    my: "center top",
+                    at: "center top"
+                }
+            }, "success", 3000);
+        }
+
+    }
          
    
 });

@@ -44,6 +44,14 @@ app.constant('JS_REQUIRES', {
         'newslist':['app/Controllers/admin/newslistCtrl.js'],
         'categorylist':['app/Controllers/admin/categorylistCtrl.js'],
         'locationlist':['app/Controllers/admin/locationlistCtrl.js'],
+        'resturantlist':['app/Controllers/admin/resturantlistCtrl.js'],
+        'resturantedit':['app/Controllers/admin/resturanteditCtrl.js'],
+        'outletlist':['app/Controllers/admin/outletlistCtrl.js'],
+        'outletedit':['app/Controllers/admin/outleteditCtrl.js'],
+        'promolist':['app/Controllers/admin/promolistCtrl.js'],
+        'promoedit':['app/Controllers/admin/promoeditCtrl.js'],
+        'merchantlist':['app/Controllers/admin/merchantlistCtrl.js'],
+        'merchantedit':['app/Controllers/admin/merchanteditCtrl.js'],
         'merchanthome':['app/Controllers/merchanthomeCtrl.js'],
         'merchantlogin':['app/Controllers/merchantloginCtrl.js'],
         'marketplace':['app/Controllers/marketplaceCtrl.js'],
@@ -72,6 +80,12 @@ app.constant('JS_REQUIRES', {
         'membership':['app/Controllers/membershipCtrl.js'],
         'myevent':['app/Controllers/myeventCtrl.js','app/Controllers/leftbarCtrl.js'],
         'eventimage':['app/Controllers/eventimageCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'eventdetail':['app/Controllers/eventdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'eventbidder':['app/Controllers/eventbidderCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'merchantevent':['app/Controllers/merchanteventCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'merchanteventbid':['app/Controllers/merchanteventbidCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'ngmapautocomplete':['bower_components/ngmap/directives/places-auto-complete.js'],
+        'searchresult':['app/Controllers/searchresultCtrl.js'],
     },
 
     //*** angularJS Modules
@@ -85,7 +99,7 @@ app.constant('JS_REQUIRES', {
         },
         {
             name: 'ngMap',
-            files: ['bower_components/ngmap/build/scripts/ng-map.min.js','http://maps.google.com/maps/api/js']
+            files: ['bower_components/ngmap/build/scripts/ng-map.min.js','http://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places']
         },
         {
             name: 'mCart',
@@ -98,6 +112,10 @@ app.constant('JS_REQUIRES', {
         {
             name: 'naif.base64',
             files: ['bower_components/angular-base64-upload/src/angular-base64-upload.js']
+        },
+        {
+            name: 'cgNotify',
+            files: ['bower_components/angular-notify/angular-notify.js','bower_components/angular-notify/angular-notify.css']
         },
     ]
 });

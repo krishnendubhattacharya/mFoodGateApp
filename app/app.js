@@ -324,8 +324,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/admin',
                 templateUrl: 'app/views/admin/adminbase.html',
                 abstract :true,
-                resolve: loadSequence('admin','datatables'),
-
+                resolve: loadSequence('admin','datatables','cgNotify'),
             })
             .state('admin.index', {
                 url: '/home',
@@ -349,6 +348,54 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/admin/locationlist.html',
                 title: 'Location List',
                 resolve: loadSequence('locationlist')
+            })
+            .state('admin.resturantlist', {
+                url: '/resturantlist',
+                templateUrl: 'app/views/admin/resturantlist.html',
+                title: 'Resturant List',
+                resolve: loadSequence('resturantlist','naif.base64')
+            })
+            .state('admin.resturantedit', {
+                url: '/resturantedit/:resturantId',
+                templateUrl: 'app/views/admin/resturantedit.html',
+                title: 'Resturant Edit',
+                resolve: loadSequence('resturantedit','naif.base64')
+            })
+            .state('admin.outletlist', {
+                url: '/outletlist/:resturantId',
+                templateUrl: 'app/views/admin/outletlist.html',
+                title: 'Outlet List',
+                resolve: loadSequence('outletlist','naif.base64','ngMap','ngmapautocomplete')
+            })
+            .state('admin.outletedit', {
+                url: '/outletedit/:outletId',
+                templateUrl: 'app/views/admin/outletedit.html',
+                title: 'Outlet Edit',
+                resolve: loadSequence('outletedit','naif.base64','ngMap')
+            })
+            .state('admin.promolist', {
+                url: '/promolist/:resturantId',
+                templateUrl: 'app/views/admin/promolist.html',
+                title: 'Promo List',
+                resolve: loadSequence('promolist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
+            })
+            .state('admin.promoedit', {
+                url: '/promoedit/:promoId',
+                templateUrl: 'app/views/admin/promoedit.html',
+                title: 'Promo Edit',
+                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor') 
+            })
+            .state('admin.merchantlist', {
+                url: '/merchantlist',
+                templateUrl: 'app/views/admin/merchantlist.html',
+                title: 'Merchant List',
+                resolve: loadSequence('merchantlist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
+            })
+            .state('admin.merchantedit', {
+                url: '/merchantedit/:merchantId',
+                templateUrl: 'app/views/admin/merchantedit.html',
+                title: 'Merchant Edit',
+                resolve: loadSequence('merchantedit','naif.base64','ngMap','ngCkeditor')
             })
             .state('adminlogin', {
                 url: '/adminlogin',
@@ -412,7 +459,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Menu'
             })
             .state('frontend.merchantoutlets', {
-                url: '/merchantmenu',
+                url: '/merchantoutlets',
                 resolve: loadSequence('merchantoutlets'),
                 templateUrl: 'app/views/merchant/merchantoutlets.html',
                 title: 'Outlets'
@@ -494,6 +541,36 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('eventimage'),
                 templateUrl: 'app/views/eventimage.html',
                 title: 'Event Images'
+            })
+            .state('frontend.eventdetail', {
+                url: '/eventdetail/:eventId',
+                resolve: loadSequence('eventdetail'),
+                templateUrl: 'app/views/eventdetail.html',
+                title: 'Event Detail'
+            })
+            .state('frontend.eventbidder', {
+                url: '/eventbidder/:eventId',
+                resolve: loadSequence('eventbidder'),
+                templateUrl: 'app/views/eventbidder.html',
+                title: 'Event Bidder'
+            })
+            .state('frontend.merchantevent', {
+                url: '/merchantevent',
+                resolve: loadSequence('merchantevent'),
+                templateUrl: 'app/views/merchant/merchantevent.html',
+                title: 'Event'
+            })
+            .state('frontend.eventbid', {
+                url: '/eventbid/:eventId',
+                resolve: loadSequence('merchanteventbid'),
+                templateUrl: 'app/views/merchant/merchanteventbid.html',
+                title: 'Event Bid'
+            })
+            .state('frontend.searchresult', {
+                url: '/searchresult?keyword&category&sort_field&sort_by&page&lines',
+                resolve: loadSequence('searchresult'),
+                templateUrl: 'app/views/searchresult.html',
+                title: 'Search Result'
             })
 
 
