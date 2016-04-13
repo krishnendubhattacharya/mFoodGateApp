@@ -384,7 +384,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/promoedit/:promoId',
                 templateUrl: 'app/views/admin/promoedit.html',
                 title: 'Promo Edit',
-                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor')
+                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor') 
             })
             .state('adminlogin', {
                 url: '/adminlogin',
