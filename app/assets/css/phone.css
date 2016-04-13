@@ -635,11 +635,13 @@ body#mfoodmain{
     padding: 0;
     width: 92%;
 }
-.m-profile-details .dx-field-label{float: none;
+.m-profile-details .dx-field-label{
+    float: none;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100%;}
+    width: 100%;
+}
 
 .m-profile-details .dx-field-value:not(.dx-switch):not(.dx-checkbox):not(.dx-button), .dx-field-value-static {
     width: 100%;
@@ -649,6 +651,24 @@ body#mfoodmain{
 .m-profile-details .dx-field-value.dx-checkbox, .dx-field-value:not(.dx-widget) > .dx-checkbox {
     float: left;
     margin: 7px 0;
+
+}
+.m-myaccount-details .dx-button-content .filds input[type="button"], input[type="submit"], button {
+    background: rgba(0, 0, 0, 0) url("../Images/submit-btn-bg.png") repeat-x scroll left top;
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    color: #36a236;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 15px;
+    margin: 0 5px 0 0;
+    padding: 8px 15px;
+}
+.dx-button .dx-button-text {
+    color: #36a236;
+    font-size: 14px;
 
 }
 .m-dash-board{ padding: 10px;}
@@ -723,7 +743,7 @@ body#mfoodmain{
 .m-queue{ width:100%; height: auto; margin-top: 20px; margin-bottom: 70px;}
 .m-queue ul{ width:100%; height: auto; margin: 0;}
 .m-queue ul li{ width:96%; height: auto; float: none; list-style-type: none; margin: 0  auto 15px; overflow: hidden; }
-.m-queue ul li .item{ width:100%; height: auto; border: solid 1px #349c34; background:#f7f7f7; overflow: hidden; padding-bottom: 15px;}
+.m-queue ul li .item{ width:98%; height: auto; border: solid 1px #349c34; background:#f7f7f7; overflow: hidden; padding-bottom: 15px;}
 .m-queue ul li .item h1{ background:#39ac38; height:48px; line-height: 48px; font-size:18px; font-weight: bold; color: #fff; padding: 0 5px; }
 .m-queue ul li .item h2{margin: 2px; height:39px; line-height: 39px; border: solid 2px #36a336; font-size: 14px; padding: 0 5px; font-weight: normal; }
 .m-queue ul li .item h3{margin: 2px; height:20px; line-height: 20px; font-size: 18px; padding: 5px 10px; font-weight: normal; color:#36a637; }

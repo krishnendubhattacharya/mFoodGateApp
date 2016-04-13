@@ -2,7 +2,7 @@
 /**
  * controllers used for the login
  */
-app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, myAuth, NgMap, $cookieStore,$timeout,$stateParams) {
+app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, NgMap, $cookieStore,$timeout,$stateParams) {
 
     $scope.placeChanged = function() {
         $scope.place = this.getPlace();
@@ -14,18 +14,18 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
     NgMap.getMap().then(function(map) {
         $scope.map = map;
     });
-    $scope.viewPromo = function () {
+    $scope.viewMerchant = function () {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getOffersByRestaurant/"+$stateParams.resturantId,
+            url: $rootScope.serviceurl + "getAllMerchants",
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
 
-            $scope.allpromo = data.data;
+            $scope.allMerchant = data.data;
             $timeout(function(){
 
-                $scope.table=  angular.element('#promosList').DataTable({
+                $scope.table=  angular.element('#merchantsList').DataTable({
                     "paging": true,
                     "lengthChange": false,
                     "searching": true,
@@ -38,7 +38,7 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
 
 
         });
-        $scope.promoView='view';
+        $scope.merchantView='view';
     }
     $scope.getOutlet = function(){
         $http({
@@ -49,7 +49,7 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
         }).success(function (data) {
             if(angular.isObject(data))
             {
-               console.log(data.data);
+                console.log(data.data);
                 $scope.outletList=data.data;
                 $scope.allOutlet = [];
                 angular.forEach($scope.outletList,function(value){
@@ -96,9 +96,9 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
 
 
 
-    $scope.viewPromo();
+    $scope.viewMerchant();
 
-    $scope.editPromo = function (params) {
+    $scope.editMerchant = function (params) {
 
         setTimeout(function () {
             $scope.$apply(function () {
@@ -109,11 +109,11 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
 
         //console.log(params);$scope.item = params;
         //setTimeout(function(){$scope.item = params},1000);
-        $scope.promoView='edit';
+        $scope.merchantView='edit';
     }
 
 
-    $scope.addPromo = function () {
+    $scope.addMerchant = function () {
         //alert(13);
         $scope.item={
             "outlet_id":[],
@@ -139,14 +139,14 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
          {id: 1, label: "David"},
          {id: 2, label: "Jhon"},
          {id: 3, label: "Danny"}];*/
-        $scope.promoView='edit';
+        $scope.merchantView='edit';
     }
 
-    $scope.cancelPromo = function () {
-        $scope.viewPromo();
+    $scope.cancelMerchant = function () {
+        $scope.viewMerchant();
     }
 
-    $scope.savePromo = function () {
+    $scope.saveMerchant = function () {
         console.log($scope.item);
         //return false;
         if(angular.isObject($scope.item.outlet_id))
@@ -159,7 +159,7 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
                     headers: {'Content-Type': 'application/json'},
                 }).success(function (data) {
                     console.log(data);
-                    $scope.viewPromo();
+                    $scope.viewMerchant();
                     $scope.item={};
                     //$scope.allcat = data.category;
                     //console.log($scope.allcat);
@@ -167,12 +167,12 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
             }else{
                 $http({
                     method: "PUT",
-                    url: $rootScope.serviceurl + "updatePromo/"+$scope.item.id,
+                    url: $rootScope.serviceurl + "updateMerchant/"+$scope.item.id,
                     data: {"city": $scope.item.city, "country_id": $scope.item.country_id,"is_active": $scope.item.is_active},
                     headers: {'Content-Type': 'application/json'},
                 }).success(function (data) {
                     console.log(data);
-                    $scope.viewPromo();
+                    $scope.viewMerchant();
                     $scope.item={};
                     //$scope.allcat = data.category;
                     //console.log($scope.allcat);
@@ -185,32 +185,23 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
 
     }
 
-    $scope.deletePromo = function (c_id) {
+    $scope.deleteMerchant = function (c_id) {
         //alert(c_id);
         if ( window.confirm("Want to delete?") ) {
             $http({
                 method: "DELETE",
-                url: $rootScope.serviceurl + "deletePromo/"+c_id,
+                url: $rootScope.serviceurl + "deleteMerchant/"+c_id,
                 //data: {"name": $scope.item.name,"is_active": $scope.item.is_active},
                 //headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
                 console.log(data);
-                $scope.viewPromo();
+                $scope.viewMerchant();
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
             });
         }else{
-
         }
-
     }
-
-
-
-
-    //$scope.getLoginDetails();
-
-
-
+   //$scope.getLoginDetails();
 });
 
