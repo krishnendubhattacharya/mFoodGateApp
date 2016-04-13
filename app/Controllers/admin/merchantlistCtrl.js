@@ -2,7 +2,7 @@
 /**
  * controllers used for the login
  */
-app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, NgMap, $cookieStore,$timeout,$stateParams) {
+app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, NgMap, $cookieStore,$timeout,$stateParams, notify) {
 
     $scope.placeChanged = function() {
         $scope.place = this.getPlace();
@@ -22,7 +22,8 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
 
-            $scope.allMerchant = data.data;
+            $scope.allMerchant = data;
+            console.log($scope.allMerchant);
             $timeout(function(){
 
                 $scope.table=  angular.element('#merchantsList').DataTable({
@@ -40,62 +41,6 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
         });
         $scope.merchantView='view';
     }
-    $scope.getOutlet = function(){
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "getOutletsByRestaurant/"+$stateParams.resturantId,
-            //data: {"email":$scope.email,"password":$scope.password},
-            //headers: {'Content-Type': 'application/json'},
-        }).success(function (data) {
-            if(angular.isObject(data))
-            {
-                console.log(data.data);
-                $scope.outletList=data.data;
-                $scope.allOutlet = [];
-                angular.forEach($scope.outletList,function(value){
-                    $scope.allOutlet.push({id:value.id,label:value.title})
-                })
-            }
-        });
-
-    }
-    $scope.getCategories = function(){
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "categories",
-            //data: {"email":$scope.email,"password":$scope.password},
-            //headers: {'Content-Type': 'application/json'},
-        }).success(function (data) {
-            if(angular.isObject(data))
-            {
-                $scope.categoryList=data.category;
-                $scope.allCat = [];
-                angular.forEach($scope.categoryList,function(value){
-                    $scope.allCat.push({id:value.id,label:value.name})
-                })
-            }
-        });
-
-    }
-    $scope.getOfferType = function(){
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "getAllActiveOfferType",
-            //data: {"email":$scope.email,"password":$scope.password},
-            //headers: {'Content-Type': 'application/json'},
-        }).success(function (data) {
-            console.log(data);
-            if(angular.isObject(data))
-            {
-                $scope.offerTypeList=data.data;
-            }
-        });
-
-    }
-
-
-
-
     $scope.viewMerchant();
 
     $scope.editMerchant = function (params) {
@@ -114,31 +59,19 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
 
 
     $scope.addMerchant = function () {
+
         //alert(13);
         $scope.item={
-            "outlet_id":[],
-            "title": '',
-            "description": '',
-            "benefits": '',
-            "price": '',
-            "offer_price": '',
-            "offer_percent": '',
-            "offer_from_date": '',
-            "offer_to_date": '',
+            "first_name":'',
+            "last_name": '',
+            "merchant_name": '',
+            "email": '',
             "image": '',
-            "offer_type_id": '',
-            "category_id":[],
-            "id": '',
-            "is_featured":0,
-            "is_special":0,
             "is_active":0,
-            "restaurant_id":$stateParams.resturantId,
+            "user_type_id":3,
+            "id":'',
         };console.log($scope.item);
-        /*$scope.example1model = [];
-         $scope.example1data = [
-         {id: 1, label: "David"},
-         {id: 2, label: "Jhon"},
-         {id: 3, label: "Danny"}];*/
+
         $scope.merchantView='edit';
     }
 
@@ -149,20 +82,27 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.saveMerchant = function () {
         console.log($scope.item);
         //return false;
-        if(angular.isObject($scope.item.outlet_id))
-        {
+
+
             if($scope.item.id == '') {
                 $http({
                     method: "POST",
-                    url: $rootScope.serviceurl + "addNewOffer",
+                    url: $rootScope.serviceurl + "addMerchant",
                     data: $scope.item,
                     headers: {'Content-Type': 'application/json'},
                 }).success(function (data) {
+
                     console.log(data);
-                    $scope.viewMerchant();
-                    $scope.item={};
-                    //$scope.allcat = data.category;
-                    //console.log($scope.allcat);
+                    if(data.type=='error')
+                    {
+                        notify({
+                            message : data.message,
+                            classes : 'alert-danger'
+                        });
+                    }else{
+                        $scope.viewMerchant();
+                        $scope.item={};
+                    }
                 });
             }else{
                 $http({
@@ -178,9 +118,7 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
                     //console.log($scope.allcat);
                 });
             }
-        }else{
-            alert('Please select an Outlet First');
-        }
+
 
 
     }
@@ -190,11 +128,10 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
         if ( window.confirm("Want to delete?") ) {
             $http({
                 method: "DELETE",
-                url: $rootScope.serviceurl + "deleteMerchant/"+c_id,
+                url: $rootScope.serviceurl + "user/"+c_id,
                 //data: {"name": $scope.item.name,"is_active": $scope.item.is_active},
                 //headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
-                console.log(data);
                 $scope.viewMerchant();
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
