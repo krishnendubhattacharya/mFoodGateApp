@@ -324,8 +324,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/admin',
                 templateUrl: 'app/views/admin/adminbase.html',
                 abstract :true,
-                resolve: loadSequence('admin','datatables'),
-
+                resolve: loadSequence('admin','datatables','cgNotify'),
             })
             .state('admin.index', {
                 url: '/home',
@@ -384,7 +383,19 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/promoedit/:promoId',
                 templateUrl: 'app/views/admin/promoedit.html',
                 title: 'Promo Edit',
-                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor')
+                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor') 
+            })
+            .state('admin.merchantlist', {
+                url: '/merchantlist',
+                templateUrl: 'app/views/admin/merchantlist.html',
+                title: 'Merchant List',
+                resolve: loadSequence('merchantlist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
+            })
+            .state('admin.merchantedit', {
+                url: '/merchantedit/:merchantId',
+                templateUrl: 'app/views/admin/merchantedit.html',
+                title: 'Merchant Edit',
+                resolve: loadSequence('merchantedit','naif.base64','ngMap','ngCkeditor')
             })
             .state('adminlogin', {
                 url: '/adminlogin',
@@ -554,6 +565,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('merchanteventbid'),
                 templateUrl: 'app/views/merchant/merchanteventbid.html',
                 title: 'Event Bid'
+            })
+            .state('frontend.searchresult', {
+                url: '/searchresult?keyword&category&sort_field&sort_by&page&lines',
+                resolve: loadSequence('searchresult'),
+                templateUrl: 'app/views/searchresult.html',
+                title: 'Search Result'
             })
 
 

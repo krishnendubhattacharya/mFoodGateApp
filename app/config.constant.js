@@ -50,6 +50,8 @@ app.constant('JS_REQUIRES', {
         'outletedit':['app/Controllers/admin/outleteditCtrl.js'],
         'promolist':['app/Controllers/admin/promolistCtrl.js'],
         'promoedit':['app/Controllers/admin/promoeditCtrl.js'],
+        'merchantlist':['app/Controllers/admin/merchantlistCtrl.js'],
+        'merchantedit':['app/Controllers/admin/merchanteditCtrl.js'],
         'merchanthome':['app/Controllers/merchanthomeCtrl.js'],
         'merchantlogin':['app/Controllers/merchantloginCtrl.js'],
         'marketplace':['app/Controllers/marketplaceCtrl.js'],
@@ -83,6 +85,7 @@ app.constant('JS_REQUIRES', {
         'merchantevent':['app/Controllers/merchanteventCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchanteventbid':['app/Controllers/merchanteventbidCtrl.js','app/Controllers/leftbarCtrl.js'],
         'ngmapautocomplete':['bower_components/ngmap/directives/places-auto-complete.js'],
+        'searchresult':['app/Controllers/searchresultCtrl.js'],
     },
 
     //*** angularJS Modules
@@ -109,6 +112,10 @@ app.constant('JS_REQUIRES', {
         {
             name: 'naif.base64',
             files: ['bower_components/angular-base64-upload/src/angular-base64-upload.js']
+        },
+        {
+            name: 'cgNotify',
+            files: ['bower_components/angular-notify/angular-notify.js','bower_components/angular-notify/angular-notify.css']
         },
     ]
 });

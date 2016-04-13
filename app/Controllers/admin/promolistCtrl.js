@@ -17,7 +17,7 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
     $scope.viewPromo = function () {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getPromosByRestaurant/"+$stateParams.resturantId,
+            url: $rootScope.serviceurl + "getOffersByRestaurant/"+$stateParams.resturantId,
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
@@ -40,6 +40,25 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
         });
         $scope.promoView='view';
     }
+    $scope.getOutlet = function(){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getOutletsByRestaurant/"+$stateParams.resturantId,
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            if(angular.isObject(data))
+            {
+               console.log(data.data);
+                $scope.outletList=data.data;
+                $scope.allOutlet = [];
+                angular.forEach($scope.outletList,function(value){
+                    $scope.allOutlet.push({id:value.id,label:value.title})
+                })
+            }
+        });
+
+    }
     $scope.getCategories = function(){
         $http({
             method: "GET",
@@ -58,22 +77,23 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
         });
 
     }
-
-    $scope.getLocation = function(){
+    $scope.getOfferType = function(){
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getAllLocations",
+            url: $rootScope.serviceurl + "getAllActiveOfferType",
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
             console.log(data);
             if(angular.isObject(data))
             {
-                $scope.locationList=data.locations;
+                $scope.offerTypeList=data.data;
             }
         });
 
     }
+
+
 
 
     $scope.viewPromo();
@@ -96,15 +116,23 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
     $scope.addPromo = function () {
         //alert(13);
         $scope.item={
+            "outlet_id":[],
             "title": '',
+            "description": '',
+            "benefits": '',
+            "price": '',
+            "offer_price": '',
+            "offer_percent": '',
+            "offer_from_date": '',
+            "offer_to_date": '',
+            "image": '',
+            "offer_type_id": '',
             "category_id":[],
             "id": '',
-            "address": '',
-            "lat": '',
-            "lng": '',
+            "is_featured":0,
+            "is_special":0,
             "is_active":0,
-            "location_id":'',
-            "resturant_id":$stateParams.resturantId,
+            "restaurant_id":$stateParams.resturantId,
         };console.log($scope.item);
         /*$scope.example1model = [];
          $scope.example1data = [
@@ -121,33 +149,39 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
     $scope.savePromo = function () {
         console.log($scope.item);
         //return false;
-        if($scope.item.id == '') {
-            $http({
-                method: "POST",
-                url: $rootScope.serviceurl + "addPromo",
-                data: $scope.item,
-                headers: {'Content-Type': 'application/json'},
-            }).success(function (data) {
-                console.log(data);
-                $scope.viewPromo();
-                $scope.item={};
-                //$scope.allcat = data.category;
-                //console.log($scope.allcat);
-            });
+        if(angular.isObject($scope.item.outlet_id))
+        {
+            if($scope.item.id == '') {
+                $http({
+                    method: "POST",
+                    url: $rootScope.serviceurl + "addNewOffer",
+                    data: $scope.item,
+                    headers: {'Content-Type': 'application/json'},
+                }).success(function (data) {
+                    console.log(data);
+                    $scope.viewPromo();
+                    $scope.item={};
+                    //$scope.allcat = data.category;
+                    //console.log($scope.allcat);
+                });
+            }else{
+                $http({
+                    method: "PUT",
+                    url: $rootScope.serviceurl + "updatePromo/"+$scope.item.id,
+                    data: {"city": $scope.item.city, "country_id": $scope.item.country_id,"is_active": $scope.item.is_active},
+                    headers: {'Content-Type': 'application/json'},
+                }).success(function (data) {
+                    console.log(data);
+                    $scope.viewPromo();
+                    $scope.item={};
+                    //$scope.allcat = data.category;
+                    //console.log($scope.allcat);
+                });
+            }
         }else{
-            $http({
-                method: "PUT",
-                url: $rootScope.serviceurl + "updatePromo/"+$scope.item.id,
-                data: {"city": $scope.item.city, "country_id": $scope.item.country_id,"is_active": $scope.item.is_active},
-                headers: {'Content-Type': 'application/json'},
-            }).success(function (data) {
-                console.log(data);
-                $scope.viewPromo();
-                $scope.item={};
-                //$scope.allcat = data.category;
-                //console.log($scope.allcat);
-            });
+            alert('Please select an Outlet First');
         }
+
 
     }
 

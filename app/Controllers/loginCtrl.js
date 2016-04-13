@@ -1,4 +1,4 @@
-'use strict';
++'use strict';
 /**
  * controllers used for the login
  */

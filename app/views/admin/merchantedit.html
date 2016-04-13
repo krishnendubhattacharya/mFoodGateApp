@@ -1,0 +1,58 @@
+<div ng-controller="merchanteditCtrl">
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel">
+
+                <div >
+                    <header class="panel-heading">
+                        Merchant Edit
+                    </header>
+                    <div class="panel-body">
+                        <form role="form" ng-submit="saveMerchant()" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="first_name">First Name</label>
+                                <input type="text" required placeholder="Enter First Name"  id="first_name" ng-model="item.first_name" class="form-control">
+                                <input type="hidden"  ng-model="item.id" >
+                                <input type="hidden"  ng-model="item.user_type_id" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" required placeholder="Enter Last Name"  id="last_name" ng-model="item.last_name" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="merchant_name">Merchant Name</label>
+                                <input type="text" required placeholder="Enter Merchant Name"  id="merchant_name" ng-model="item.merchant_name" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" required placeholder="Enter Email"  id="email" ng-model="item.email" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Image</label>
+                                <input type="file"  id="image" ng-model="item.image" base-sixty-four-input>
+                                <img src="{{item.image_url}}" ng-if="item.image_url" width="200">
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="item.is_active" ng-true-value="1" ng-false-value="0"> Is Active
+                                </label>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <button class="btn btn-danger" type="button" ng-click="cancelMerchant()">Cancel</button>
+                        </form>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</div>
