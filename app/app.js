@@ -324,8 +324,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/admin',
                 templateUrl: 'app/views/admin/adminbase.html',
                 abstract :true,
-                resolve: loadSequence('admin','datatables'),
-
+                resolve: loadSequence('admin','datatables','cgNotify'),
             })
             .state('admin.index', {
                 url: '/home',
@@ -390,13 +389,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/merchantlist',
                 templateUrl: 'app/views/admin/merchantlist.html',
                 title: 'Merchant List',
-                resolve: loadSequence('promolist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
+                resolve: loadSequence('merchantlist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
             })
             .state('admin.merchantedit', {
                 url: '/merchantedit/:merchantId',
                 templateUrl: 'app/views/admin/merchantedit.html',
                 title: 'Merchant Edit',
-                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor')
+                resolve: loadSequence('merchantedit','naif.base64','ngMap','ngCkeditor')
             })
             .state('adminlogin', {
                 url: '/adminlogin',

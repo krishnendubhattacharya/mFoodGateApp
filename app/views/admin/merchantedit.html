@@ -1,60 +1,16 @@
-<div ng-controller="merchantlistCtrl">
+<div ng-controller="merchanteditCtrl">
+
 
     <div class="row">
         <div class="col-sm-12">
             <section class="panel">
-                <div ng-if="merchantView == 'view'">
+
+                <div >
                     <header class="panel-heading">
-                        Merchant
-                        <span class="tools pull-right">
-                            <a class="fa fa-chevron-down" href="javascript:;"></a>
-                            <a class="fa fa-times" href="javascript:;"></a>
-                         </span>
-                    </header>
-                    <div class="panel-body">
-                        <div class="btn-group">
-                            <button class="btn btn-primary" id="editable-sample_new" ng-click ="addMerchant()">
-                                Add Merchant
-                            </button>
-                        </div>
-                        <table id="merchantsList" class="table  table-hover general-table">
-                            <thead>
-                            <tr>
-                                <th> Id</th>
-                                <th class="hidden-phone">Name</th>
-                                <th class="hidden-phone">Merchant Name</th>
-                                <th class="hidden-phone">Email</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            <tr ng-repeat="item in allMerchant">
-                                <td>
-                                    {{item.id}}
-                                </td>
-                                <td >{{item.first_name}} {{item.last_name}}</td>
-                                <td >{{item.merchant_name}}</td>
-                                <td >{{item.email}}</td>
-                                <td ><a class="btn btn-default edit" ui-sref="admin.merchantedit({merchantId:item.id})" >Edit</a>
-                                    <a class="btn btn-default delete" href="javascript:;" ng-click="deleteMerchant(item.id)"
-                                            >Delete</a></td>
-
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div ng-if="merchantView == 'edit'">
-                    <header class="panel-heading">
-                        Merchant
+                        Merchant Edit
                     </header>
                     <div class="panel-body">
                         <form role="form" ng-submit="saveMerchant()" enctype="multipart/form-data">
-
                             <div class="form-group">
                                 <label for="first_name">First Name</label>
                                 <input type="text" required placeholder="Enter First Name"  id="first_name" ng-model="item.first_name" class="form-control">
@@ -80,6 +36,7 @@
                             <div class="form-group">
                                 <label for="image">Image</label>
                                 <input type="file"  id="image" ng-model="item.image" base-sixty-four-input>
+                                <img src="{{item.image_url}}" ng-if="item.image_url" width="200">
                             </div>
 
                             <div class="checkbox">
@@ -87,6 +44,7 @@
                                     <input type="checkbox" ng-model="item.is_active" ng-true-value="1" ng-false-value="0"> Is Active
                                 </label>
                             </div>
+
                             <button class="btn btn-primary" type="submit">Submit</button>
                             <button class="btn btn-danger" type="button" ng-click="cancelMerchant()">Cancel</button>
                         </form>

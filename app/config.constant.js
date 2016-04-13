@@ -113,5 +113,9 @@ app.constant('JS_REQUIRES', {
             name: 'naif.base64',
             files: ['bower_components/angular-base64-upload/src/angular-base64-upload.js']
         },
+        {
+            name: 'cgNotify',
+            files: ['bower_components/angular-notify/angular-notify.js','bower_components/angular-notify/angular-notify.css']
+        },
     ]
 });
