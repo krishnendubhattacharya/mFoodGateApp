@@ -85,7 +85,7 @@
         </ul>
     </div>
 
-    <div class="latest-news" ng-if="type =='news' ">
+    <div class="latest-news phone-hide" ng-if="type =='news' ">
         <h1>News <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
             <option value="">Sort By Title</option>
             <option value="ASC">ASC</option>
@@ -112,28 +112,110 @@
 
 </div>
 
-<div class="m-voucher-section tablet-hide">
-    <h1>Promo</h1>
-    <ul>
-        <li ng-repeat="voucherDetail in voucherInfo">
-            <div class="pro-item">
-                <div class="logo-box">
-                    <!--<div class="p-circle">5X</div>-->
-                    <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
+    <div class="m-new-Promo tablet-hide" ng-if="type =='promo' ">
+        <h1>Promo <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
+            <option value="">Sort By Title</option>
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+        </select>
+        <select ng-model="sort_by_price" ng-model="sort_by_price" ng-change="sortChangePrice(sort_by_price)">
+            <option value="">Sort By Price</option>
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+        </select>
+        </span>
+        </h1>
+        <ul>
+            <li ng-repeat="voucherDetail in voucherInfo">
+                <div class="pro-item">
+                    <img src="{{voucherDetail.image_url}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{voucherDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{voucherDetail.title}}</h2>
+                            <!--<p>11D:21H:50M:20S</p>-->
+                            <p class="price"><span>IDR{{voucherDetail.price}}</span> IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</p>
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
                 </div>
-                <div class="desc">
+            </li>
 
-                    <h2>{{voucherDetail.offer_percent}}% off</h2>
-                    <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
-                    <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
-                    <div class="btn_o"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
-                    <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
+
+
+        </ul>
+    </div>
+
+    <div class="m-restaurant-Promo tablet-hide" ng-if="type =='restaurant' ">
+        <h1>Restaurant <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
+            <option value="">Sort By Title</option>
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+        </select>
+
+        </span></h1>
+        <ul>
+            <li ng-repeat="voucherDetail in voucherInfo">
+                <div class="pro-item">
+                    <div class="logo-box"><img src="{{voucherDetail.logo_url}}" width="218" height="100"  alt=""/></div>
+                    <div class="desc">
+                        <h2>{{voucherDetail.title}}</h2>
+                        <div class="btn"><a ui-sref="frontend.restaurentpromo({ restaurantId: voucherDetail.id })">View All Promo</a></div>
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
+        </ul>
+    </div>
 
-    </ul>
-</div>
+    <div class="new-Promo tablet-hide" ng-if="type =='event' ">
+        <h1>Events <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
+            <option value="">Sort By Title</option>
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+        </select></span></h1>
+        <ul>
+            <li ng-repeat="voucherDetail in voucherInfo">
+                <div class="pro-item">
+                    <img src="{{voucherDetail.image_url}}" width="406" height="255"  alt=""/>
+                    <!--<div class="p-circle">{{voucherDetail.offer_percent}}%</div>-->
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{voucherDetail.title}}</h2>
+                            <!--<p>11D:21H:50M:20S</p>-->
+                            <!--<p class="price"><span>{{voucherDetail.price}}</span> IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</p>-->
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>
+
+
+
+        </ul>
+    </div>
+
+    <div class="latest-news tablet-hide" ng-if="type =='news' ">
+        <h1>News <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
+            <option value="">Sort By Title</option>
+            <option value="ASC">ASC</option>
+            <option value="DESC">DESC</option>
+        </select></span></h1>
+        <div class="most-viewed">
+            <ul>
+                <li ng-repeat="voucherDetail in voucherInfo | limitTo:4">
+                    <div class="v-pix"><img src="{{voucherDetail.image_url}}" alt=""/></div>
+                    <div class="v-dsc">
+                        <p><a ui-sref="frontend.newsdetail({ newsId: voucherDetail.id })">{{voucherDetail.title}}</a></p><br/>
+                        <p ng-bind-html="voucherDetail.description | limitTo:30"></p>
+                        <div class="posted"><strong>Posted on:</strong> {{voucherDetail.date}} | By: Admin
+                            <span>View ({{voucherDetail.views}})</span></div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
 <div class="dx-clearfix"></div>
 
 

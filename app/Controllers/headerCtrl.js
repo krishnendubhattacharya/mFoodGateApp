@@ -85,7 +85,7 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
         $scope.lines = 10;
         if(typeof $scope.keyword != '' && $scope.type!=''){
             //alert(23);
-            alert()
+
             $location.path("/searchresult").search({keyword: $scope.keyword,category: $scope.type,sort_field: $scope.sort_field,sort_by: $scope.sort_by,page: $scope.page,lines: $scope.lines});
 
         }else{
