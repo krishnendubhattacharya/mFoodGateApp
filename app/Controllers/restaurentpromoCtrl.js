@@ -13,6 +13,7 @@ app.controller('restaurentpromoCtrl', function ($rootScope, $scope, $http, $loca
             //url: $rootScope.serviceurl + "getSpecialPromo",
         }).success(function (data) {
             $scope.restaurantPromoInfo =data.getMerchantPromo;
+            $scope.restaurantInfo =data.restaurant;
             //console.log($scope.restaurantPromoInfo);
 
         });
