@@ -59,6 +59,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
         }).success(function (data) {
             $scope.voucherInfo =data.resale_details;
             //console.log($scope.voucherInfo);
+            $scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
             $scope.dataGridOptions = {
                 dataSource: $scope.voucherInfo,
                 selection: {
@@ -116,6 +117,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
     }).success(function (data) {
         $scope.voucherInfo =data.bid_details;
         //console.log($scope.voucherInfo);
+        $scope.listViewData1.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
         $scope.dataGridOptions3 = {
             dataSource: $scope.voucherInfo,
             selection: {
@@ -142,6 +144,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
     }).success(function (data) {
         $scope.soonVoucherInfo =data.resale_details;
         //console.log($scope.voucherInfo);
+        $scope.listViewData2.option({"dataSource": $scope.soonVoucherInfo,showSelectionControls: true });
         $scope.dataGridOptions2 = {
             dataSource: $scope.soonVoucherInfo,
             paging: {
@@ -246,7 +249,20 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
         //}
     };
 
+    $scope.loadList=function(e)
+    {
+        $scope.listViewData= e.component;
+    }
 
+    $scope.loadList1=function(e)
+    {
+        $scope.listViewData1= e.component;
+    }
+
+    $scope.loadList2=function(e)
+    {
+        $scope.listViewData2= e.component;
+    }
 
 
 });

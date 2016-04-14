@@ -1,0 +1,56 @@
+<div ng-controller="memberlistCtrl">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel">
+                <div ng-if="memberView == 'view'">
+                    <header class="panel-heading">
+                        Member
+                        <span class="tools pull-right">
+                            <a class="fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="fa fa-times" href="javascript:;"></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+                        <div class="btn-group">
+                            <button class="btn btn-primary" id="editable-sample_new" ng-click ="addMember()">
+                                Add Member
+                            </button>
+                        </div>
+                        <table id="membersList" class="table  table-hover general-table">
+                            <thead>
+                            <tr>
+                                <th> Id</th>
+                                <th class="hidden-phone">First Name</th>
+                                <th class="hidden-phone">Last Name</th>
+                                <th class="hidden-phone">Email</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr ng-repeat="item in allMember">
+                                <td>
+                                    {{item.id}}
+                                </td>
+                                <td >{{item.first_name}} </td>
+                                <td >{{item.last_name}}</td>
+                                <td >{{item.email}}</td>
+                                <td ><a class="btn btn-default edit" ui-sref="admin.memberedit({memberId:item.id})" >Edit</a>
+                                    <a class="btn btn-default delete" href="javascript:;" ng-click="deleteMember(item.id)"
+                                            >Delete</a></td>
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </section>
+        </div>
+    </div>
+
+</div>

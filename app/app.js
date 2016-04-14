@@ -380,10 +380,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('promolist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
             })
             .state('admin.promoedit', {
-                url: '/promoedit/:promoId',
+                url: '/promoedit/:promoId/:restaurantId',
                 templateUrl: 'app/views/admin/promoedit.html',
                 title: 'Promo Edit',
-                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor') 
+                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor')
             })
             .state('admin.merchantlist', {
                 url: '/merchantlist',
@@ -396,6 +396,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/admin/merchantedit.html',
                 title: 'Merchant Edit',
                 resolve: loadSequence('merchantedit','naif.base64','ngMap','ngCkeditor')
+            })
+            .state('admin.memberlist', {
+                url: '/memberlist',
+                templateUrl: 'app/views/admin/memberlist.html',
+                title: 'Member List',
+                resolve: loadSequence('memberlist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
+            })
+            .state('admin.memberedit', {
+                url: '/memberedit/:memberId',
+                templateUrl: 'app/views/admin/memberedit.html',
+                title: 'Member Edit',
+                resolve: loadSequence('memberedit','naif.base64','ngMap','ngCkeditor')
             })
             .state('adminlogin', {
                 url: '/adminlogin',
