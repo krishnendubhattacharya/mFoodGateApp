@@ -27,8 +27,9 @@ app.controller('merchanteditCtrl', function ($rootScope, $scope, $http, NgMap, $
                 merchant_name:data.user_details.merchant_name,
                 email:data.user_details.email,
                 is_active:data.user_details.is_active,
-                image_url:data.user_details.image,
+
             }
+            $scope.image_url=data.user_details.image;
 
         });
 
@@ -55,14 +56,14 @@ app.controller('merchanteditCtrl', function ($rootScope, $scope, $http, NgMap, $
         }else{
             $http({
                 method: "PUT",
-                url: $rootScope.serviceurl + "user/"+$stateParams.merchantId,
+                url: $rootScope.serviceurl + "users/"+$stateParams.merchantId,
                 data: $scope.item,
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
                 console.log(data);
                 // $scope.viewMerchant();
 
-                $location.path('/admin/merchantlist/'+$scope.item.restaurant_id);
+                $location.path('/admin/merchantlist');
                 $scope.item={};
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
@@ -74,12 +75,9 @@ app.controller('merchanteditCtrl', function ($rootScope, $scope, $http, NgMap, $
 
 
     $scope.cancelMerchant = function(){
-        $location.path('/admin/merchantlist/'+$scope.item.restaurant_id);
+        $location.path('/admin/merchantlist');
     }
 
     //$scope.getLoginDetails();
 
-
-
 });
-

@@ -18,14 +18,32 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
             //console.log(data.email);
             $scope.userInfo =data.user_details;
             //console.log($scope.allcat);
-            $scope.capitals = [{"id":"5","name":"Japanese Food","parent_id":"0","is_active":"1"},{"id":"7","name":"Warong Kopi","parent_id":"0","is_active":"1"},{"id":"8","name":"Cafe & Bar","parent_id":"0","is_active":"1"}];
+            //$scope.capitals = [{"id":"5","name":"Japanese Food","parent_id":"0","is_active":"1"},{"id":"7","name":"Warong Kopi","parent_id":"0","is_active":"1"},{"id":"8","name":"Cafe & Bar","parent_id":"0","is_active":"1"}];
 
             console.log($scope.userInfo.email);
+            $scope.change_cats();
 
 
 
         });
 
+    }
+
+    $scope.change_cats = function() {
+        if ($scope.userInfo && $scope.userInfo.categories && $scope.allcat) {
+            angular.forEach($scope.allcat, function (cat) {
+                angular.forEach($scope.userInfo.categories, function (own) {
+                    if (cat.id == own.category_id) {
+                        $scope.capitals.push(cat);
+                    }
+                })
+            })
+            $scope.foodlist.option({values:$scope.capitals});
+        }
+    }
+
+    $scope.init_food = function(e){
+        $scope.foodlist = e.component;
     }
     $scope.getUserInfo();
     $scope.dateBox = {
@@ -100,12 +118,14 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
 
             $scope.allcat = data.category;
 
-            for (var i = 0; i < $scope.allcat.length; i++) {
-                $scope.tagBoxData.store().insert($scope.allcat[i]);
-            }
-            $scope.tagBoxData.load();
-            console.log($scope.tagBoxData._items);
-            $scope.taglist = $scope.tagBoxData._items;
+            $scope.foodlist.option({items:$scope.allcat});
+            $scope.change_cats();
+            //for (var i = 0; i < $scope.allcat.length; i++) {
+            //    $scope.tagBoxData.store().insert($scope.allcat[i]);
+            //}
+            //$scope.tagBoxData.load();
+            //console.log($scope.tagBoxData._items);
+            //$scope.taglist = $scope.tagBoxData._items;
 
 
 
@@ -120,14 +140,14 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
     $scope.validateAndSubmit = function(params) {
 
         //alert(1);
-        console.log($scope.capitals);
-        return false;
+        //console.log($scope.capitals);
+        //return false;
         //var result = params.validationGroup.validate();
         //if(result.isValid) {
         console.log($scope.capitals);
-        alert($scope.userInfo.dob);
+        //alert($scope.userInfo.dob);
         $scope.userInfo.dob = moment($scope.userInfo.dob).format("YYYY/MM/DD");
-        alert($scope.userInfo.dob);
+        //alert($scope.userInfo.dob);
 
 
         //return false;
@@ -135,7 +155,7 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
             $http({
                 method: "PUT",
                 url: $rootScope.serviceurl+"users/"+$scope.loggedindetails.id,
-                data: {"email":$scope.userInfo.email,"phone":$scope.userInfo.phone,"about_me":$scope.userInfo.about_me,"first_name":$scope.userInfo.first_name,"last_name":$scope.userInfo.last_name,"dob":$scope.userInfo.dob,"occupation":$scope.userInfo.occupation,"gender":$scope.userInfo.gender},
+                data: {"email":$scope.userInfo.email,"phone":$scope.userInfo.phone,"about_me":$scope.userInfo.about_me,"first_name":$scope.userInfo.first_name,"last_name":$scope.userInfo.last_name,"dob":$scope.userInfo.dob,"occupation":$scope.userInfo.occupation,"gender":$scope.userInfo.gender,typeList:$scope.capitals},
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
                 console.log(data);

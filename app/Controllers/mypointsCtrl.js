@@ -137,7 +137,13 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
 
                 ]
             };
+            $scope.listExpiredPointViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
         });
+    }
+    $scope.loadExpiredPointList=function(e)
+    {
+        //console.log("loadList")
+        $scope.listExpiredPointViewData= e.component;
     }
     $scope.getExpiredSoon();
 
