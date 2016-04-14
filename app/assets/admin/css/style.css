@@ -17,10 +17,13 @@ body {
     overflow-x: hidden;
     font-size: 14px;
 }
-
+.date input{
+    width: 100%; border: 0 none;
+}
 input, select, textarea {
-    font-family: 'Open Sans', sans-serif;
-    color: #767676;
+   color: #767676;
+    font-family: "Open Sans",sans-serif;
+
 }
 
 a {

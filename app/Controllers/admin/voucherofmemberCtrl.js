@@ -2,21 +2,21 @@
 /**
  * controllers used for the login
  */
-app.controller('memberlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, NgMap, $cookieStore,$timeout,$stateParams, notify) {
+app.controller('voucherofmemberCtrl', function ($rootScope, $scope, $http, $location, myAuth, NgMap, $cookieStore,$timeout,$stateParams, notify) {
 
-    $scope.viewMember = function () {
+    $scope.viewVoucher = function () {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getAllCustomers",
+            url: $rootScope.serviceurl + "allvoucher/"+$stateParams.memberId,
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
 
-            $scope.allMember = data;
-            console.log($scope.allMember);
+            $scope.allVoucher = data;
+            console.log($scope.allVoucher);
             $timeout(function(){
 
-                $scope.table=  angular.element('#membersList').DataTable({
+                $scope.table=  angular.element('#vouchersList').DataTable({
                     "paging": true,
                     "lengthChange": false,
                     "searching": true,
@@ -29,11 +29,11 @@ app.controller('memberlistCtrl', function ($rootScope, $scope, $http, $location,
 
 
         });
-        $scope.memberView='view';
+        $scope.voucherView='view';
     }
-    $scope.viewMember();
+    $scope.viewVoucher();
 
-    $scope.editMember = function (params) {
+    $scope.editVoucher = function (params) {
 
         setTimeout(function () {
             $scope.$apply(function () {
@@ -44,11 +44,11 @@ app.controller('memberlistCtrl', function ($rootScope, $scope, $http, $location,
 
         //console.log(params);$scope.item = params;
         //setTimeout(function(){$scope.item = params},1000);
-        $scope.memberView='edit';
+        $scope.voucherView='edit';
     }
 
 
-    $scope.addMember = function () {
+    $scope.addVoucher = function () {
 
         //alert(13);
         $scope.item={
@@ -61,15 +61,15 @@ app.controller('memberlistCtrl', function ($rootScope, $scope, $http, $location,
             "id":'',
         };console.log($scope.item);
 
-        $scope.memberView='edit';
+        $scope.voucherView='edit';
     }
 
-    $scope.cancelMember = function () {
+    $scope.cancelVoucher = function () {
         $scope.item='';
-        $scope.viewMember();
+        $scope.viewVoucher();
     }
 
-    $scope.saveMember = function () {
+    $scope.saveVoucher = function () {
         console.log($scope.item);
         //return false;
 
@@ -77,7 +77,7 @@ app.controller('memberlistCtrl', function ($rootScope, $scope, $http, $location,
         if($scope.item.id == '') {
             $http({
                 method: "POST",
-                url: $rootScope.serviceurl + "addMember",
+                url: $rootScope.serviceurl + "addVoucher",
                 data: $scope.item,
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
@@ -90,19 +90,19 @@ app.controller('memberlistCtrl', function ($rootScope, $scope, $http, $location,
                         classes : 'alert-danger'
                     });
                 }else{
-                    $scope.viewMember();
+                    $scope.viewVoucher();
                     $scope.item={};
                 }
             });
         }else{
             $http({
                 method: "PUT",
-                url: $rootScope.serviceurl + "updateMember/"+$scope.item.id,
+                url: $rootScope.serviceurl + "updateVoucher/"+$scope.item.id,
                 data: {"city": $scope.item.city, "country_id": $scope.item.country_id,"is_active": $scope.item.is_active},
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
                 console.log(data);
-                $scope.viewMember();
+                $scope.viewVoucher();
                 $scope.item={};
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
@@ -113,7 +113,7 @@ app.controller('memberlistCtrl', function ($rootScope, $scope, $http, $location,
 
     }
 
-    $scope.deleteMember = function (c_id) {
+    $scope.deleteVoucher = function (c_id) {
         //alert(c_id);
         if ( window.confirm("Want to delete?") ) {
             $http({
@@ -122,7 +122,7 @@ app.controller('memberlistCtrl', function ($rootScope, $scope, $http, $location,
                 //data: {"name": $scope.item.name,"is_active": $scope.item.is_active},
                 //headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
-                $scope.viewMember();
+                $scope.viewVoucher();
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
             });

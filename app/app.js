@@ -377,19 +377,19 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/promolist/:resturantId',
                 templateUrl: 'app/views/admin/promolist.html',
                 title: 'Promo List',
-                resolve: loadSequence('promolist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
+                resolve: loadSequence('promolist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor','ng-bootstrap-datepicker')
             })
             .state('admin.promoedit', {
                 url: '/promoedit/:promoId/:restaurantId',
                 templateUrl: 'app/views/admin/promoedit.html',
                 title: 'Promo Edit',
-                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor')
+                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor','ng-bootstrap-datepicker')
             })
             .state('admin.merchantlist', {
                 url: '/merchantlist',
                 templateUrl: 'app/views/admin/merchantlist.html',
                 title: 'Merchant List',
-                resolve: loadSequence('merchantlist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
+                resolve: loadSequence('merchantlist','naif.base64','ngCkeditor')
             })
             .state('admin.merchantedit', {
                 url: '/merchantedit/:merchantId',
@@ -402,6 +402,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/admin/memberlist.html',
                 title: 'Member List',
                 resolve: loadSequence('memberlist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
+            })
+            .state('admin.voucherofmember', {
+                url: '/voucherofmember/:memberId',
+                templateUrl: 'app/views/admin/voucherofmember.html',
+                title: 'Voucher Member List',
+                resolve: loadSequence('voucherofmember','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
             })
             .state('admin.memberedit', {
                 url: '/memberedit/:memberId',
@@ -583,6 +589,24 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('searchresult'),
                 templateUrl: 'app/views/searchresult.html',
                 title: 'Search Result'
+            })
+            .state('frontend.swapallvoucherdetail', {
+                url: '/swapallvoucherdetail/:voucherId',
+                resolve: loadSequence('swapallvoucherdetail'),
+                templateUrl: 'app/views/swapallvoucherdetail.html',
+                title: 'Voucher Detail'
+            })
+            .state('frontend.paymentVoucher', {
+                url: '/paymentVoucher',
+                resolve: loadSequence('paymentVoucher'),
+                templateUrl: 'app/views/paymentVoucher.html',
+                title: 'Payment Voucher Detail'
+            })
+            .state('frontend.cartpage', {
+                url: '/cartpage',
+                resolve: loadSequence('cartpage','ngMap','mCart'),
+                templateUrl: 'app/views/cartpage.html',
+                title: 'Promo Detail'
             })
 
 

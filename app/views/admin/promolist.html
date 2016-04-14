@@ -39,7 +39,7 @@
                                 <td >{{item.price}}</td>
                                 <td >{{item.offer_price}}</td>
                                 <td >{{item.offer_type}}</td>
-                                <td ><a class="btn btn-default edit" ui-sref="admin.promoedit({promoId:item.id},{restaurantId:item.restaurant_id})" >Edit</a>
+                                <td ><a class="btn btn-default edit" ui-sref="admin.promoedit({promoId:item.id,restaurantId:item.restaurant_id})" >Edit</a>
                                     <a class="btn btn-default delete" href="javascript:;" ng-click="deletePromo(item.id)"
                                             >Delete</a></td>
                             </tr>
@@ -80,6 +80,16 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="price">Quantity</label>
+                                <input type="text" required placeholder="Enter Quantity"  id="quantity" ng-model="item.quantity" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">M-points Price</label>
+                                <input type="text" required placeholder="Enter M-points"  id="mpoints" ng-model="item.mpoints" class="form-control">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="price">Price</label>
                                 <input type="text" required placeholder="Enter Price"  id="price" ng-model="item.price" class="form-control">
                             </div>
@@ -95,13 +105,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="price">M-points Given</label>
+                                <input type="text" required placeholder="Enter M-points Given"  id="mpoints_given" ng-model="item.mpoints_given" class="form-control">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="price">Offer From Date</label>
-                                <input type="text" required placeholder="From Date"  id="offer_from_date" ng-model="item.offer_from_date" class="form-control">
+                                <input type="text" data-ng-datepicker data-ng-options="datepickerOptions" required placeholder="From Date"  id="offer_from_date" ng-model="item.offer_from_date" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label for="price">Offer To Date</label>
-                                <input type="text" required placeholder="To Date"  id="offer_to_date" ng-model="item.offer_to_date" class="form-control">
+                                <input type="text" data-ng-datepicker data-ng-options="datepickerOptions" required placeholder="To Date"  id="offer_to_date" ng-model="item.offer_to_date" class="form-control">
                             </div>
 
                             <div class="form-group">

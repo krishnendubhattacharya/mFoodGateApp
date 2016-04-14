@@ -51,6 +51,8 @@ app.controller('locationlistCtrl', function ($rootScope, $scope, $http, $locatio
         setTimeout(function () {
             $scope.$apply(function () {
                 $scope.item = params;
+                console.log('||||||||||||||||||||||||');
+                console.log($scope.item);
             });
         }, 2000);
 
@@ -101,7 +103,7 @@ app.controller('locationlistCtrl', function ($rootScope, $scope, $http, $locatio
             $http({
                 method: "PUT",
                 url: $rootScope.serviceurl + "updateLocation/"+$scope.item.id,
-                data: {"city": $scope.item.city, "country_id": $scope.item.country_id,"is_active": $scope.item.is_active},
+                data: {"id": $scope.item.id,"city": $scope.item.city, "country_id": $scope.item.country_id,"is_active": $scope.item.is_active},
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
                 console.log(data);
