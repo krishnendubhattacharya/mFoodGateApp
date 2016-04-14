@@ -99,6 +99,19 @@ app.controller('mobileMenuCtrl', function ($rootScope, $scope, $http, $location,
         menuClick();
     }
 
+    $scope.catList = function () {
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getCategories",
+        }).success(function (data) {
+            $scope.catInfo = data.category;
+            console.log($scope.catInfo);
+
+        });
+    }
+    $scope.catList();
+
          
    
 });

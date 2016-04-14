@@ -35,7 +35,6 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
     };
 
     $scope.changeView = function(){
-        alert(12);
         $scope.edit_mode = !$scope.edit_mode;
         $scope.event = {
             title:'',

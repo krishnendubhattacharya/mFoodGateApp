@@ -2,27 +2,27 @@
 /** 
  * controllers used for the login
  */
-app.controller('membershipCtrl', function ($rootScope, $scope, $http, $location) {
+app.controller('paymentVoucherCtrl', function ($rootScope, $scope, $http, $location) {
 
-    $scope.membershipList = function(){
+    $scope.voucherList = function(){
 
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getMerchantPromo",
+            url: $rootScope.serviceurl + "getPromoList",
         }).success(function (data) {
 
-            $scope.voucherInfo =data.getMerchantPromo;
+            $scope.voucherInfo =data.getMenuPromo;
             //console.log($scope.catInfo);
 
         });
     }
-    $scope.membershipList();
+    $scope.voucherList();
 
     $scope.newPromoList = function () {
 
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getLaunchTodayMembership",
+            url: $rootScope.serviceurl + "getLaunchTodayPaymentPromo",
         }).success(function (data) {
             $scope.newPromoInfo = data.todayPromo;
             $scope.newPromoCount = data.count;
@@ -36,7 +36,7 @@ app.controller('membershipCtrl', function ($rootScope, $scope, $http, $location)
 
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getHotSellingMembership",
+            url: $rootScope.serviceurl + "getHotSellingPaymentPromo",
         }).success(function (data) {
             $scope.hotSellingInfo = data.getHotSellingPromo;
             //console.log($scope.newPromoInfo);
@@ -49,7 +49,7 @@ app.controller('membershipCtrl', function ($rootScope, $scope, $http, $location)
 
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getLastdayMembership",
+            url: $rootScope.serviceurl + "getLastdayPaymentPromo",
         }).success(function (data) {
             $scope.lastDayPromoInfo = data.lastdayPromo;
             //console.log($scope.newPromoInfo);
@@ -65,7 +65,7 @@ app.controller('membershipCtrl', function ($rootScope, $scope, $http, $location)
 
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getSpecialMembership",
+            url: $rootScope.serviceurl + "getSpecialPaymentPromo",
         }).success(function (data) {
             $scope.specialInfo = data.getSpecialPromo;
             //console.log($scope.specialInfo);
@@ -74,6 +74,19 @@ app.controller('membershipCtrl', function ($rootScope, $scope, $http, $location)
     }
     $scope.specialList();
 
+    $scope.voucherExpireSoonList = function(){
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getExpireSoonPromoList",
+        }).success(function (data) {
+
+            $scope.voucherExpireSoonInfo =data.getMenuPromo;
+            //console.log($scope.catInfo);
+
+        });
+    }
+    $scope.voucherExpireSoonList();
 
 
 

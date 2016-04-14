@@ -14,6 +14,7 @@
 <!--Section - 1-->
 <div class="container phone-hide">
     <!--Left menu-->
+    
     <div class="category-left">
         <div class="category-left">
             <h1>Browse Categories</h1>
@@ -30,8 +31,10 @@
         </div>
     </div>
     <!--Featured Promo-->
-    <div class="restaurant-Promo phone-hide">
-        <h1>Featured Restaurant</h1>
+
+<div class="category-f">
+    <div style="border: none; margin: 0;" class="restaurant-Promo phone-hide">
+        <h1>{{categoryInfo.name}}</h1>
         <ul>
             <li ng-repeat="restaurantDetail in restaurantInfo">
                 <div class="pro-item">
@@ -73,7 +76,49 @@
         </ul>
     </div>
 </div>
+</div>
 <!--mobile promo-->
-
+    <div class="m-restaurant-Promo tablet-hide">
+        <h1>{{categoryInfo.name}}</h1>
+        <ul>
+            <li ng-repeat="restaurantDetail in restaurantInfo">
+                <div class="pro-item">
+                    <div class="logo-box"><img src="{{restaurantDetail.logo}}" width="218" height="100"  alt=""/></div>
+                    <div class="desc">
+                        <h2>{{restaurantDetail.title}}</h2>
+                        <div class="btn"><a ui-sref="frontend.restaurentpromo({ restaurantId: restaurantDetail.id })">View All Promo</a></div>
+                    </div>
+                </div>
+            </li>
+            <!--<li>
+                <div class="pro-item">
+                    <img src="app/assets/Images/pro-1.png" width="406" height="255"  alt=""/>
+                    <div class="p-circle">50%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>Voucher Oel Merdeka</h2>
+                            <p>Bekasi</p>
+                            <p class="price"><span>IDR150.000</span> IDR75.000</p>
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pro-item">
+                    <img src="app/assets/Images/pro-2.png" width="406" height="255"  alt=""/>
+                    <div class="p-circle">50%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>Voucher Oel Merdeka</h2>
+                            <p>Bekasi</p>
+                            <p class="price"><span>IDR150.000</span> IDR75.000</p>
+                        </div>
+                        <div class="view-btn"><a href=""><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>-->
+        </ul>
+    </div>
 <div class="dx-clearfix"></div>
 </div>
