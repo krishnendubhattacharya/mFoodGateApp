@@ -14,6 +14,10 @@ app.controller('promoeditCtrl', function ($rootScope, $scope, $http, NgMap, $loc
     NgMap.getMap().then(function(map) {
         $scope.map = map;
     });
+    $scope.datepickerOptions = {format: 'yyyy-mm-dd',
+                                language: 'en',
+                                autoclose: true,
+                                weekStart: 0}
     $scope.viewPromo = function () {
         $http({
             method: "GET",
@@ -39,11 +43,14 @@ app.controller('promoeditCtrl', function ($rootScope, $scope, $http, NgMap, $loc
                 "outlet_id":$scope.outlet_id,
                 "description": data.offer.description,
                 "benefits": data.offer.benefits,
+                "quantity":data.offer.quantity,
+                "mpoints":data.offer.mpoints,
+                "mpoints_given":data.offer.mpoints_given,
                 "price": data.offer.price,
                 "offer_price": data.offer.offer_price,
                 "offer_percent": data.offer.offer_percent,
-                "offer_from_date": data.offer.offer_from_date,
-                "offer_to_date": data.offer.offer_to_date,
+                "offer_from_date": moment(data.offer.offer_from_date,'MM-DD-YYYY').format('YYYY-MM-DD'),
+                "offer_to_date": moment(data.offer.offer_to_date,'MM-DD-YYYY').format('YYYY-MM-DD'),
                 "image_url": data.offer.image,
                 "offer_type_id": data.offer.offer_type_id,
                 "category_id":$scope.category_id,
@@ -73,6 +80,9 @@ app.controller('promoeditCtrl', function ($rootScope, $scope, $http, NgMap, $loc
                 angular.forEach($scope.outletList,function(value){
                     $scope.allOutlet.push({id:value.id,label:value.title})
                 })
+            }else{
+                $scope.allOutlet = [];
+                $scope.allOutlet.push({id:'',label:'No Outlets Found'})
             }
         });
 

@@ -22,7 +22,7 @@ app.controller('voucherCtrl', function ($rootScope, $scope, $http, $location) {
 
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getLaunchTodayPromo",
+            url: $rootScope.serviceurl + "getLaunchTodayMenuPromo",
         }).success(function (data) {
             $scope.newPromoInfo = data.todayPromo;
             $scope.newPromoCount = data.count;
@@ -36,7 +36,7 @@ app.controller('voucherCtrl', function ($rootScope, $scope, $http, $location) {
 
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getHotSellingPromo",
+            url: $rootScope.serviceurl + "getHotSellingMenuPromo",
         }).success(function (data) {
             $scope.hotSellingInfo = data.getHotSellingPromo;
             //console.log($scope.newPromoInfo);
@@ -49,7 +49,7 @@ app.controller('voucherCtrl', function ($rootScope, $scope, $http, $location) {
 
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getLastdayPromo",
+            url: $rootScope.serviceurl + "getLastdayMenuPromo",
         }).success(function (data) {
             $scope.lastDayPromoInfo = data.lastdayPromo;
             //console.log($scope.newPromoInfo);
@@ -65,7 +65,7 @@ app.controller('voucherCtrl', function ($rootScope, $scope, $http, $location) {
 
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getSpecialPromo",
+            url: $rootScope.serviceurl + "getSpecialMenuPromo",
         }).success(function (data) {
             $scope.specialInfo = data.getSpecialPromo;
             //console.log($scope.specialInfo);

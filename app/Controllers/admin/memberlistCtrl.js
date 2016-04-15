@@ -7,7 +7,7 @@ app.controller('memberlistCtrl', function ($rootScope, $scope, $http, $location,
     $scope.viewMember = function () {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getAllMembers",
+            url: $rootScope.serviceurl + "getAllCustomers",
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
@@ -65,6 +65,7 @@ app.controller('memberlistCtrl', function ($rootScope, $scope, $http, $location,
     }
 
     $scope.cancelMember = function () {
+        $scope.item='';
         $scope.viewMember();
     }
 

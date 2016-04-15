@@ -4,9 +4,9 @@
         <div id="tabs-container">
             <ul class="tabs-menu">
                 <li class="current"><a href="#tab-1">Re-Seller Voucher</a></li>
-                <li><a href="#tab-2">Re-Seller Voucher</a></li>
-                <li><a href="#tab-3">Re-Seller Voucher</a></li>
-                <li><a href="#tab-4">Re-Seller Voucher</a></li>
+                <li><a href="#tab-2">Swap Voucher</a></li>
+                <li><a href="#tab-3">Events</a></li>
+                <!--<li><a href="#tab-4">Re-Seller Voucher</a></li>-->
             </ul>
             <div class="tab">
                 <div id="tab-1" class="tab-content">
@@ -82,10 +82,71 @@
                                 </div>
                 </div>
                 <div id="tab-2" class="tab-content">
-                    asaSAsaSAsSSAS
+                    <div class="reseller-section">
+
+                        <ul style="border:none">
+                            <li ng-repeat="resaleDetail in promoInfo">
+                                <div class="pro-item">
+                                    <div class="logo-box">
+                                        <div class="p-circle">{{resaleDetail.offer_percent}}%</div>
+                                        <img src="{{resaleDetail.image}}" width="218" height="100"  alt="" ng-click="swapdetails(resaleDetail.voucher_id)"/>
+                                    </div>
+                                    <div class="desc">
+                                        <h2>{{resaleDetail.title}}</h2>
+
+                                        <div class="price">
+                                            <h2>RP {{resaleDetail.price-((resaleDetail.price*resaleDetail.offer_percent)/100)}}</h2>
+                                            <p><span>RP {{resaleDetail.price}}</span></p>
+                                            <!--<p>Highetst Bid {{resaleDetail.high_bid}}</p>
+                                            <p>Lowest Bid {{resaleDetail.low_bid}}</p>-->
+
+                                        </div>
+                                        <div class="pts">
+                                            <!--<h2>mPts 120</h2>-->
+                                            <p>{{resaleDetail.buy_count}} Sold</p>
+                                            <p> <button class="btn-default button-details" ng-click="swapdetails(resaleDetail.voucher_id)">Details</button></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </div>
                 </div>
                 <div id="tab-3" class="tab-content">
-                    asaSAsaSAsSSAS
+                    <div class="reseller-section">
+
+                        <ul style="border:none">
+                            <li ng-repeat="resaleDetail in eventInfo">
+                                <div class="pro-item">
+                                    <div class="logo-box">
+                                        <!--<div class="p-circle">{{resaleDetail.offer_percent}}%</div>-->
+                                        <img src="{{resaleDetail.image_url}}" width="218" height="100"  alt="" ng-click="eventdetails(resaleDetail.id)"/>
+                                    </div>
+                                    <div class="desc">
+                                        <h2>{{resaleDetail.title}}</h2>
+
+                                        <div class="price">
+                                            <!--<h2>RP {{resaleDetail.price-((resaleDetail.price*resaleDetail.offer_percent)/100)}}</h2>
+                                            <p><span>RP {{resaleDetail.price}}</span></p>
+                                            <p>Highetst Bid {{resaleDetail.high_bid}}</p>
+                                            <p>Lowest Bid {{resaleDetail.low_bid}}</p>-->
+
+                                        </div>
+                                        <div class="pts">
+                                            <!--<h2>mPts 120</h2>-->
+                                            <!--<p>{{resaleDetail.buy_count}} Sold</p>-->
+                                            <!--<p> <button class="btn-default button-details" ng-click="eventdetails(resaleDetail.id)">Details</button></p>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
                 </div>
                 <div id="tab-4" class="tab-content">
                     asaSAsaSAsSSAS
@@ -162,6 +223,70 @@
                     </div>
                 </div>
             </li>-->
+        </ul>
+    </div>
+    <div class="dx-clearfix"></div>
+    <div class="m-reseller-section tablet-hide">
+
+        <ul style="border:none">
+            <li ng-repeat="resaleDetail in promoInfo">
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <div class="p-circle">{{resaleDetail.offer_percent}}%</div>
+                        <img src="{{resaleDetail.image}}" width="218" height="100"  alt="" ng-click="swapdetails(resaleDetail.voucher_id)"/>
+                    </div>
+                    <div class="desc">
+                        <h2>{{resaleDetail.title}}</h2>
+
+                        <div class="price">
+                            <h2>RP {{resaleDetail.price-((resaleDetail.price*resaleDetail.offer_percent)/100)}}</h2>
+                            <p><span>RP {{resaleDetail.price}}</span></p>
+                            <!--<p>Highetst Bid {{resaleDetail.high_bid}}</p>
+                            <p>Lowest Bid {{resaleDetail.low_bid}}</p>-->
+
+                        </div>
+                        <div class="pts">
+                            <!--<h2>mPts 120</h2>-->
+                            <p>{{resaleDetail.buy_count}} Sold</p>
+                            <p> <button class="btn-default button-details" ng-click="swapdetails(resaleDetail.voucher_id)">Details</button></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+
+        </ul>
+    </div>
+    <div class="dx-clearfix"></div>
+    <div class="m-reseller-section tablet-hide">
+
+        <ul style="border:none">
+            <li ng-repeat="resaleDetail in eventInfo">
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <!--<div class="p-circle">{{resaleDetail.offer_percent}}%</div>-->
+                        <img src="{{resaleDetail.image_url}}" width="218" height="100"  alt="" ng-click="eventdetails(resaleDetail.id)"/>
+                    </div>
+                    <div class="desc">
+                        <h2>{{resaleDetail.title}}</h2>
+
+                        <div class="price">
+                            <!--<h2>RP {{resaleDetail.price-((resaleDetail.price*resaleDetail.offer_percent)/100)}}</h2>
+                            <p><span>RP {{resaleDetail.price}}</span></p>
+                            <p>Highetst Bid {{resaleDetail.high_bid}}</p>
+                            <p>Lowest Bid {{resaleDetail.low_bid}}</p>-->
+
+                        </div>
+                        <div class="pts">
+                            <!--<h2>mPts 120</h2>-->
+                            <!--<p>{{resaleDetail.buy_count}} Sold</p>-->
+                            <!--<p> <button class="btn-default button-details" ng-click="eventdetails(resaleDetail.id)">Details</button></p>-->
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+
         </ul>
     </div>
 </div>

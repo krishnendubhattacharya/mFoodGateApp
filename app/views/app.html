@@ -51,8 +51,20 @@
     	<li><input type="text" placeholder="Search Keyword" ng-model="keyword"></li>
         </form>
         <li><a onclick="menuClick()" title="Home" ui-sref="frontend.index">Home</a></li>
-        <li><a onclick="menuClick()" title="Voucher" ui-sref="frontend.voucher">Voucher</a></li>
+        <li><a href="">Browse Categories</a>
+            <ul>
+                <li ng-repeat="catdetail in catInfo"><a onclick="menuClick()" title="Category" ui-sref="frontend.refinerestaurent({ categoryId: catdetail.id })">{{catdetail.name}}</a></li>
+            </ul></li>
+        <li><a href="" title="Voucher">Voucher</a>
+            <ul>
+                <li><a onclick="menuClick()" title="My Voucher" ui-sref="frontend.voucher">Menu Voucher</a></li>
+                <li><a onclick="menuClick()" title="My Membership" ui-sref="frontend.membership">Payment Membership</a></li>
+
+            </ul>
+        </li>
+
         <li><a onclick="menuClick()" title="Membership" ui-sref="frontend.membership">Membership</a></li>
+
         <li><a onclick="menuClick()" title="Marketplace" ui-sref="frontend.marketplace">Marketplace</a></li>
         <li><a onclick="menuClick()" title="News" ui-sref="frontend.news">News</a></li>
         <span ng-show="!showMember">

@@ -36,7 +36,7 @@ app.controller('searchresultCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.voucherExpireSoonList();*/
 
     $scope.sortChangeTitle = function(title){
-        alert(title);
+        //alert(title);
         $http({
             method: "GET",
             url: $rootScope.serviceurl + "getSiteSearch?keyword="+$stateParams.keyword+"&category="+$stateParams.category+"&sort=title&sort_by="+title+"&page="+$stateParams.page+"&lines="+$stateParams.lines,
@@ -50,7 +50,7 @@ app.controller('searchresultCtrl', function ($rootScope, $scope, $http, $locatio
         });
     };
     $scope.sortChangePrice = function(price){
-        alert(price);
+        //alert(price);
         $http({
             method: "GET",
             url: $rootScope.serviceurl + "getSiteSearch?keyword="+$stateParams.keyword+"&category="+$stateParams.category+"&sort=price&sort_by="+price+"&page="+$stateParams.page+"&lines="+$stateParams.lines,
