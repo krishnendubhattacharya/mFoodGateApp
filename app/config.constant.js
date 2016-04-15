@@ -53,6 +53,7 @@ app.constant('JS_REQUIRES', {
         'merchantlist':['app/Controllers/admin/merchantlistCtrl.js'],
         'merchantedit':['app/Controllers/admin/merchanteditCtrl.js'],
         'memberlist':['app/Controllers/admin/memberlistCtrl.js'],
+        'voucherofmember':['app/Controllers/admin/voucherofmemberCtrl.js'],
         'memberedit':['app/Controllers/admin/membereditCtrl.js'],
         'merchanthome':['app/Controllers/merchanthomeCtrl.js'],
         'merchantlogin':['app/Controllers/merchantloginCtrl.js'],
@@ -88,6 +89,9 @@ app.constant('JS_REQUIRES', {
         'merchanteventbid':['app/Controllers/merchanteventbidCtrl.js','app/Controllers/leftbarCtrl.js'],
         'ngmapautocomplete':['bower_components/ngmap/directives/places-auto-complete.js'],
         'searchresult':['app/Controllers/searchresultCtrl.js'],
+        'swapallvoucherdetail':['app/Controllers/swapallvoucherdetailCtrl.js'],
+        'paymentVoucher':['app/Controllers/paymentVoucherCtrl.js'],
+        'cartpage':['app/Controllers/cartpageCtrl.js'],
     },
 
     //*** angularJS Modules
@@ -118,6 +122,10 @@ app.constant('JS_REQUIRES', {
         {
             name: 'cgNotify',
             files: ['bower_components/angular-notify/angular-notify.js','bower_components/angular-notify/angular-notify.css']
+        },
+        {
+            name: 'ng-bootstrap-datepicker',
+            files: ['bower_components/angular-bootstrap-datepicker.js','bower_components/angular-bootstrap-datepicker.css']
         },
     ]
 });

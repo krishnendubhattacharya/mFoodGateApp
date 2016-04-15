@@ -25,7 +25,8 @@ app.controller('refinerestaurentCtrl', function ($rootScope, $scope, $http, $loc
             url: $rootScope.serviceurl + "getResturantByCategory/"+$stateParams.categoryId,
         }).success(function (data) {
             $scope.restaurantInfo =data.restaurants;
-            console.log($scope.restaurantInfo);
+            $scope.categoryInfo =data.category;
+            //console.log($scope.restaurantInfo);
 
         });
     }

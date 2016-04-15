@@ -14,6 +14,10 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
     NgMap.getMap().then(function(map) {
         $scope.map = map;
     });
+    $scope.datepickerOptions = {format: 'yyyy-mm-dd',
+        language: 'en',
+        autoclose: true,
+        weekStart: 0}
     $scope.viewPromo = function () {
         $http({
             method: "GET",
@@ -120,6 +124,9 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
             "title": '',
             "description": '',
             "benefits": '',
+            "quantity":'',
+            "mpoints":'',
+            "mpoints_given":'',
             "price": '',
             "offer_price": '',
             "offer_percent": '',

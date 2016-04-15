@@ -1,11 +1,11 @@
-<div ng-controller="memberlistCtrl">
+<div ng-controller="voucherofmemberCtrl">
 
     <div class="row">
         <div class="col-sm-12">
             <section class="panel">
-                <div ng-if="memberView == 'view'">
+                <div ng-if="voucherView == 'view'">
                     <header class="panel-heading">
-                        Member
+                        List of Voucher
                         <span class="tools pull-right">
                             <a class="fa fa-chevron-down" href="javascript:;"></a>
                             <a class="fa fa-times" href="javascript:;"></a>
@@ -13,32 +13,27 @@
                     </header>
                     <div class="panel-body">
 
-                        <table id="membersList" class="table  table-hover general-table">
+                        <table id="vouchersList" class="table  table-hover general-table">
                             <thead>
                             <tr>
-                                <th> Id</th>
-                                <th class="hidden-phone">First Name</th>
-                                <th class="hidden-phone">Last Name</th>
-                                <th class="hidden-phone">Email</th>
-                                <th class="hidden-phone">M-Points</th>
-                                <th>Action</th>
+
+                                <th class="hidden-phone">Title</th>
+                                <th class="hidden-phone">Price</th>
+                                <th class="hidden-phone">Offer Price</th>
+                                <th class="hidden-phone">From Date</th>
+                                <th class="hidden-phone">To Date</th>
+
                             </tr>
                             </thead>
                             <tbody>
 
-                            <tr ng-repeat="item in allMember">
-                                <td>
-                                    {{item.id}}
-                                </td>
-                                <td >{{item.first_name}} </td>
-                                <td >{{item.last_name}}</td>
-                                <td >{{item.email}}</td>
-                                <td >{{item.points}}</td>
-                                <td ><a class="btn btn-default edit" href="javascript:;" ng-click ="editMember(item)">View</a>
-                                    <a class="btn btn-default edit" ui-sref="admin.voucherofmember({memberId:item.id})">Voucher</a>
-                                    <a class="btn btn-default delete" href="javascript:;" ng-click="deleteMember(item.id)"
-                                            >Delete</a></td>
+                            <tr ng-repeat="item in allVoucher">
 
+                                <td >{{item.title}} </td>
+                                <td >${{item.price}}</td>
+                                <td >${{item.offer_price}}</td>
+                                <td >{{item.offer_from_date}}</td>
+                                <td >{{item.offer_to_date}}</td>
                             </tr>
 
 
@@ -47,9 +42,9 @@
                     </div>
                 </div>
 
-                <div ng-if="memberView == 'edit'">
+                <div ng-if="voucherView == 'edit'">
                     <header class="panel-heading">
-                        Member Details
+                        Voucher Details
                     </header>
                     <div class="panel-body">
                         <form role="form" ng-submit="saveLocation()">
@@ -90,10 +85,10 @@
                             </div>
 
                             <div class="form-group" >
-                                <label ><img src="{{item.image}}" style="width:250px;height:auto;" > </label>
+                                <label >{{item.image_url}} </label>
                             </div>
 
-                            <button class="btn btn-danger" type="button" ng-click="cancelMember()">Back</button>
+                            <button class="btn btn-danger" type="button" ng-click="cancelvoucher()">Back</button>
                         </form>
 
                     </div>

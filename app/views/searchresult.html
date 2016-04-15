@@ -1,18 +1,22 @@
 <!--Web header-->
 <div ng-controller="searchresultCtrl">
-<div class="container">
+<div class="container phone-hide">
 
-    <div class="new-Promo phone-hide" ng-if="type =='promo' ">
-        <h1>Promo <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
+    <div class="new-Promo" ng-if="type =='promo' ">
+        <h1>Promo <span style="float:right;">
+            <div class="select-box">
+            <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
             <option value="">Sort By Title</option>
             <option value="ASC">ASC</option>
             <option value="DESC">DESC</option>
         </select>
-        <select ng-model="sort_by_price" ng-model="sort_by_price" ng-change="sortChangePrice(sort_by_price)">
+            </div>
+        <div class="select-box"><select ng-model="sort_by_price" ng-model="sort_by_price" ng-change="sortChangePrice(sort_by_price)">
             <option value="">Sort By Price</option>
             <option value="ASC">ASC</option>
             <option value="DESC">DESC</option>
         </select>
+            </div>
         </span>
         </h1>
         <ul>
@@ -37,11 +41,14 @@
     </div>
 
     <div class="restaurant-Promo phone-hide" ng-if="type =='restaurant' ">
-        <h1>Restaurant <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
-            <option value="">Sort By Title</option>
-            <option value="ASC">ASC</option>
-            <option value="DESC">DESC</option>
-        </select>
+        <h1>Restaurant <span style="float:right;"><div class="select-box">
+            <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
+                <option value="">Sort By Title</option>
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+            </select>
+        </div>
+
 
         </span></h1>
         <ul>
@@ -59,11 +66,15 @@
 
 
     <div class="new-Promo phone-hide" ng-if="type =='event' ">
-        <h1>Events <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
-            <option value="">Sort By Title</option>
-            <option value="ASC">ASC</option>
-            <option value="DESC">DESC</option>
-        </select></span></h1>
+        <h1>Events <span style="float:right;"><div class="select-box">
+            <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
+                <option value="">Sort By Title</option>
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+            </select>
+        </div>
+
+        </span></h1>
         <ul>
             <li ng-repeat="voucherDetail in voucherInfo">
                 <div class="pro-item">
@@ -75,7 +86,7 @@
                             <!--<p>11D:21H:50M:20S</p>-->
                             <!--<p class="price"><span>{{voucherDetail.price}}</span> IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</p>-->
                         </div>
-                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                        <div class="view-btn"><a ui-sref="frontend.eventdetail({ eventId: voucherDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                     </div>
                 </div>
             </li>
@@ -85,12 +96,17 @@
         </ul>
     </div>
 
-    <div class="latest-news phone-hide" ng-if="type =='news' ">
-        <h1>News <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
-            <option value="">Sort By Title</option>
-            <option value="ASC">ASC</option>
-            <option value="DESC">DESC</option>
-        </select></span></h1>
+    <div class="d-latest-news phone-hide" ng-if="type =='news' ">
+        <h1>News <span style="float:right;">
+            <div class="select-box">
+            <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
+                <option value="">Sort By Title</option>
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+            </select>
+        </div>
+
+        </span></h1>
         <div class="most-viewed">
             <ul>
                 <li ng-repeat="voucherDetail in voucherInfo | limitTo:4">
@@ -113,16 +129,20 @@
 </div>
 
     <div class="m-new-Promo tablet-hide" ng-if="type =='promo' ">
-        <h1>Promo <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
-            <option value="">Sort By Title</option>
-            <option value="ASC">ASC</option>
-            <option value="DESC">DESC</option>
-        </select>
-        <select ng-model="sort_by_price" ng-model="sort_by_price" ng-change="sortChangePrice(sort_by_price)">
+        <h1>Promo <span style="float:right;">
+            <div class="select-box">
+            <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
+                <option value="">Sort By Title</option>
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+            </select>
+        </div>
+        <div class="select-box"><select ng-model="sort_by_price" ng-model="sort_by_price" ng-change="sortChangePrice(sort_by_price)">
             <option value="">Sort By Price</option>
             <option value="ASC">ASC</option>
             <option value="DESC">DESC</option>
         </select>
+        </div>
         </span>
         </h1>
         <ul>
@@ -147,11 +167,14 @@
     </div>
 
     <div class="m-restaurant-Promo tablet-hide" ng-if="type =='restaurant' ">
-        <h1>Restaurant <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
-            <option value="">Sort By Title</option>
-            <option value="ASC">ASC</option>
-            <option value="DESC">DESC</option>
-        </select>
+        <h1>Restaurant <span style="float:right;">
+<div class="select-box">
+    <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
+        <option value="">Sort By Title</option>
+        <option value="ASC">ASC</option>
+        <option value="DESC">DESC</option>
+    </select>
+</div>
 
         </span></h1>
         <ul>
@@ -167,12 +190,22 @@
         </ul>
     </div>
 
-    <div class="new-Promo tablet-hide" ng-if="type =='event' ">
-        <h1>Events <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
-            <option value="">Sort By Title</option>
+    <div class="m-new-Promo tablet-hide" ng-if="type =='event' ">
+        <h1>Events <span style="float:right;">
+            <div class="select-box">
+                <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
+                    <option value="">Sort By Title</option>
+                    <option value="ASC">ASC</option>
+                    <option value="DESC">DESC</option>
+                </select>
+            </div>
+        <div class="select-box"><select ng-model="sort_by_price" ng-model="sort_by_price" ng-change="sortChangePrice(sort_by_price)">
+            <option value="">Sort By Price</option>
             <option value="ASC">ASC</option>
             <option value="DESC">DESC</option>
-        </select></span></h1>
+        </select>
+        </div>
+        </span></h1>
         <ul>
             <li ng-repeat="voucherDetail in voucherInfo">
                 <div class="pro-item">
@@ -184,22 +217,26 @@
                             <!--<p>11D:21H:50M:20S</p>-->
                             <!--<p class="price"><span>{{voucherDetail.price}}</span> IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</p>-->
                         </div>
-                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                        <div class="view-btn"><a ui-sref="frontend.eventdetail({ eventId: voucherDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                     </div>
                 </div>
             </li>
 
 
-
         </ul>
     </div>
 
-    <div class="latest-news tablet-hide" ng-if="type =='news' ">
-        <h1>News <span style="float:right;"><select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
-            <option value="">Sort By Title</option>
-            <option value="ASC">ASC</option>
-            <option value="DESC">DESC</option>
-        </select></span></h1>
+    <div class="m-dlatest-news tablet-hide" ng-if="type =='news' ">
+        <h1>News <span style="float:right;">
+            <div class="select-box">
+                <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
+                    <option value="">Sort By Title</option>
+                    <option value="ASC">ASC</option>
+                    <option value="DESC">DESC</option>
+                </select>
+            </div>
+
+        </span></h1>
         <div class="most-viewed">
             <ul>
                 <li ng-repeat="voucherDetail in voucherInfo | limitTo:4">

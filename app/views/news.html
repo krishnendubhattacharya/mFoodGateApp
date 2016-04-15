@@ -4,7 +4,11 @@
 <div class="container phone-hide" ng-controller="newsCtrl">
     <div class="news">
         <div class="left-col">
-            <div class="banner"><img src="{{bannernews.image}}" alt=""/></div>
+            <div class="banner">
+
+                <h1><a ui-sref="frontend.newsdetail({ newsId: bannernews.id })">{{bannernews.title}}</a></h1>
+                <img src="{{bannernews.image}}" alt=""/>
+            </div>
             <div class="all-news">
                 <h1>All News</h1>
                 <div class="news-item" ng-repeat="news in allnews">
@@ -63,7 +67,10 @@
 </div>
 <div class="m-news tablet-hide" ng-controller="newsCtrl">
     <div class="left-col">
-        <div class="banner"><img src="{{bannernews.image}}" alt=""/></div>
+        <div class="banner">
+            <h1><a ui-sref="frontend.newsdetail({ newsId: bannernews.id })">{{bannernews.title}}</a></h1>
+            <img src="{{bannernews.image}}" alt=""/>
+        </div>
         <div class="all-news">
             <h1>All News</h1>
             <div class="news-item" ng-repeat="news in allnews">

@@ -56,14 +56,20 @@
 	<!--Web header-->
 	<header class="main-header phone-hide">
 		<div class="container">
-			<div class="logo"><img src="app/assets/Images/logo.jpg" width="418" height="61"  alt=""/></div>
+			<div class="logo"><img src="app/assets/Images/logo.jpg" width="306" height="61"  alt=""/></div>
 			<div class="top-link"><a ng-if="loggedindetails.loginstatus != 1" ui-sref="frontend.login">Login</a><a ng-if="loggedindetails.user_type_id == 2" ui-sref="frontend.dashboard">{{loggedindetails.email}}</a><a ng-if="loggedindetails.user_type_id == 3" ui-sref="frontend.merchantprofile">{{loggedindetails.email}}</a>  |  <a ng-if="loggedindetails.loginstatus != 1" ui-sref="frontend.register">Register</a><a ng-if="loggedindetails.loginstatus == 1" href="javascript:void(0)" ng-click="userLogout();">Logout</a></div>
 			<div class="dx-clearfix"></div>
 			<div class="nab-bar">
 				<div class="navigation phone-hide">
 					<ul>
 						<li><a ui-sref="frontend.index" ui-sref-active="active">Home</a></li>
-						<li><a ui-sref="frontend.voucher" ui-sref-active="active">Voucher</a></li>
+						<li id="dropdown"><a ui-sref-active="active">Voucher</a>
+							<ul  id="dropdown-content">
+
+								<li><a ui-sref="frontend.voucher">Menu Voucher</a></li>
+								<li><a ui-sref="frontend.paymentVoucher">Payment Voucher</a></li>
+							</ul>
+						</li>
 						<li><a ui-sref="frontend.membership" ui-sref-active="active">Membership</a></li>
 						<li><a ui-sref="frontend.marketplace" ui-sref-active="active">Marketplace</a></li>
 						<li ng-show="showMember" id="dropdown"><a href="">Member</a>
@@ -78,7 +84,7 @@
 						        <li><a ui-sref="frontend.feedback">Feedback</a></li>
 						    </ul>    
 						</li>
-						<li><a ui-sref-active="active" ui-sref="frontend.news">News</a></li>
+						<li><a ui-sref-active="active" ui-sref="frontend.news" ui-sref-active="active">News</a></li>
 
 					</ul>
 				</div>
