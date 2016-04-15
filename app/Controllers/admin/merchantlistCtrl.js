@@ -2,18 +2,8 @@
 /**
  * controllers used for the login
  */
-app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, NgMap, $cookieStore,$timeout,$stateParams, notify) {
+app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore, $timeout, $stateParams, notify) {
 
-    $scope.placeChanged = function() {
-        $scope.place = this.getPlace();
-        $scope.item.lat=$scope.place.geometry.location.lat();
-        $scope.item.lng=$scope.place.geometry.location.lng();
-        console.log('Lat:'+$scope.item.lat+" Lng:"+$scope.item.lng);
-        //$scope.map.setCenter($scope.place.geometry.location);
-    }
-    NgMap.getMap().then(function(map) {
-        $scope.map = map;
-    });
     $scope.viewMerchant = function () {
         $http({
             method: "GET",
