@@ -37,13 +37,16 @@
 <div id="menu">
     <ul class="tablet-hide" ng-init="getLoginDetails()">
         <form ng-submit="searchAll()">
-        <li><select ng-model="type">
+        <li>
+            <div class="select-box"><select ng-model="type">
             <option value="">Select Type</option>
             <option value="promo">Promo</option>
             <option value="restaurant">Restaurant</option>
             <option value="event">Event</option>
             <option value="news">News</option>
-        </select></li>
+        </select>
+        </div>
+        </li>
 
     	<li><input type="text" placeholder="Search Keyword" ng-model="keyword"></li>
         </form>

@@ -39,7 +39,7 @@
                     </ul>
 
                 </div>-->
-                <div class="voucher-section phone-hide">
+                <div class="pvoucher-section phone-hide">
                     <h1>All Voucher</h1>
                     <ul>
                         <li ng-repeat="voucherDetail in voucherInfo">
@@ -49,8 +49,8 @@
                                     <a ui-sref="frontend.voucherdetail({ voucherId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
                                 </div>
                                 <div class="desc">
-
-                                    <h2>{{voucherDetail.offer_percent}}% off</h2>
+                                    <h2>Title</h2>
+                                    <h3>{{voucherDetail.offer_percent}}% off</h3>
                                     <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
                                     <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
                                     <div class="btn_o"><a ui-sref="frontend.voucherdetail({ voucherId: voucherDetail.id })">Detail</a></div>
@@ -61,7 +61,7 @@
                     </ul>
                 </div>
                 <div class="dx-clearfix"></div>
-                <div class="voucher-section phone-hide">
+                <div class="pvoucher-section phone-hide">
                     <h1>Expire soon Voucher</h1>
                     <ul>
                         <li ng-repeat="voucherDetail in soonVoucherInfo">
@@ -71,8 +71,8 @@
                                     <a ui-sref="frontend.voucherdetail({ voucherId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
                                 </div>
                                 <div class="desc">
-
-                                    <h2>{{voucherDetail.offer_percent}}% off</h2>
+                                    <h2>Title</h2>
+                                    <h3>{{voucherDetail.offer_percent}}% off</h3>
                                     <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
                                     <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
                                     <div class="btn_o"><a ui-sref="frontend.voucherdetail({ voucherId: voucherDetail.id })">Detail</a></div>
@@ -82,6 +82,7 @@
                         </li>
                     </ul>
                 </div>
+
 
                 <!--<h3>All Voucher</h3>-->
                 <!--<div id="gridContainer" dx-data-grid="dataGridOptions"></div>-->
@@ -97,7 +98,7 @@
         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
 
         <div class="m-profile-details">
-            <div class="m-voucher-section tablet-hide">
+            <div class="m-pvoucher-section tablet-hide">
                 <h1>All Voucher</h1>
                 <ul>
                     <li ng-repeat="voucherDetail in voucherInfo">
@@ -107,8 +108,8 @@
                                 <a ui-sref="frontend.voucherdetail({ voucherId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
                             </div>
                             <div class="desc">
-
-                                <h2>{{voucherDetail.offer_percent}}% off</h2>
+                                <h2>Title</h2>
+                                <h3>{{voucherDetail.offer_percent}}% off</h3>
                                 <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
                                 <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
                                 <div class="btn_o"><a ui-sref="frontend.voucherdetail({ voucherId: voucherDetail.id })">Detail</a></div>
@@ -120,7 +121,7 @@
                 </ul>
             </div>
             <div class="dx-clearfix"></div>
-            <div class="m-voucher-section tablet-hide">
+            <div class="m-pvoucher-section tablet-hide">
                 <h1>Expire soon Voucher</h1>
                 <ul>
                     <li ng-repeat="voucherDetail in soonVoucherInfo">
@@ -131,7 +132,8 @@
                             </div>
                             <div class="desc">
 
-                                <h2>{{voucherDetail.offer_percent}}% off</h2>
+                                <h2>Title</h2>
+                                <h3>{{voucherDetail.offer_percent}}% off</h3>
                                 <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
                                 <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
                                 <div class="btn_o"><a ui-sref="frontend.voucherdetail({ voucherId: voucherDetail.id })">Detail</a></div>
