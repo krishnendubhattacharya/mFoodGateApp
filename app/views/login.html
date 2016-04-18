@@ -25,6 +25,13 @@
                     <p style="border-bottom: solid 1px #ccc;"></p>
                 </ul>
                 </form>-->
+                <style>
+                    .dx-overlay-content.dx-resizable {
+                        position: relative;
+                        width: 220px !important;
+                        color: red;
+                    }
+                </style>
                 <div class="form">
                         <div class="dx-fieldset">
                                 <div class="dx-field">
@@ -45,10 +52,12 @@
                         <!--<div id="summary" dx-validation-summary="{ }"></div>-->
                     <ul>
                         <li>
-                            <div id="button" dx-button="{
+                            <div id="button1" dx-button="{
                                 text: 'Login',
                                 type: 'success',
+
                                 onClick: validateAndSubmit }" ></div>
+                            <!--<button type="submit" class="btn btn-success btn-lg btn-block" ng-click="validateAndSubmit()">Login</button>-->
                         </li>
                         <p style="border-bottom: solid 1px #ccc;"></p>
                     </ul>
@@ -104,6 +113,10 @@
             <div id="button" dx-button="{
                                 text: 'Login',
                                 type: 'success',
+                                class:'btn btn-success btn-lg btn-block',
+                                height:'40px',
+                                width:'90px',
+
                                 onClick: validateAndSubmit }" ></div>
                 </li>
                 <p style="border-bottom: solid 1px #ccc;"></p>

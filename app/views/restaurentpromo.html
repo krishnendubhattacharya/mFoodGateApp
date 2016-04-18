@@ -31,7 +31,7 @@
                         <div class="txt">
                             <h2>{{restaurantPromoDetail.title}}</h2>
                             <!--<p>11D:21H:50M:20S</p>-->
-                            <p class="price"><span>IDR{{restaurantPromoDetail.price}}</span> IDR{{restaurantPromoDetail.price-((restaurantPromoDetail.price*restaurantPromoDetail.offer_percent)/100)}}</p>
+                            <p class="price"><span>IDR{{restaurantPromoDetail.price | number}}</span> IDR{{restaurantPromoDetail.price-((restaurantPromoDetail.price*restaurantPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
 
                     </div>
@@ -55,7 +55,7 @@
                         <div class="txt">
                             <h2>{{restaurantPromoDetail.title}}</h2>
                             <!--<p>11D:21H:50M:20S</p>-->
-                            <p class="price"><span>IDR{{restaurantPromoDetail.price}}</span> IDR{{restaurantPromoDetail.price-((restaurantPromoDetail.price*restaurantPromoDetail.offer_percent)/100)}}</p>
+                            <p class="price"><span>IDR{{restaurantPromoDetail.price | number}}</span> IDR{{restaurantPromoDetail.price-((restaurantPromoDetail.price*restaurantPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
 
                     </div>

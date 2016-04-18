@@ -57,7 +57,7 @@
 	<header class="main-header phone-hide">
 		<div class="container">
 			<div class="logo"><img src="app/assets/Images/logo.jpg" width="306" height="61"  alt=""/></div>
-			<div class="top-link"><a ng-if="loggedindetails.loginstatus != 1" ui-sref="frontend.login">Login</a><a ng-if="loggedindetails.user_type_id == 2" ui-sref="frontend.dashboard">{{loggedindetails.email}}</a><a ng-if="loggedindetails.user_type_id == 3" ui-sref="frontend.merchantprofile">{{loggedindetails.email}}</a>  |  <a ng-if="loggedindetails.loginstatus != 1" ui-sref="frontend.register">Register</a><a ng-if="loggedindetails.loginstatus == 1" href="javascript:void(0)" ng-click="userLogout();">Logout</a></div>
+			<div class="top-link"><a ui-sref="frontend.cartpage"> <img src="app/assets/Images/cart.png" alt=""/></a> | <a ng-if="loggedindetails.loginstatus != 1" ui-sref="frontend.login">Login</a><a ng-if="loggedindetails.user_type_id == 2" ui-sref="frontend.dashboard">{{loggedindetails.email}}</a><a ng-if="loggedindetails.user_type_id == 3" ui-sref="frontend.merchantprofile">{{loggedindetails.email}}</a>  |  <a ng-if="loggedindetails.loginstatus != 1" ui-sref="frontend.register">Register</a><a ng-if="loggedindetails.loginstatus == 1" href="javascript:void(0)" ng-click="userLogout();">Logout</a></div>
 			<div class="dx-clearfix"></div>
 			<div class="nab-bar">
 				<div class="navigation phone-hide">
@@ -114,7 +114,7 @@
 
 		<div class="m-logo"><img src="app/assets/Images/m-logo.png" width="173" height="17"  alt=""/></div>
 		<div class="m-top-link">
-			<!--<div class="search"><img src="app/assets/Images/s-icon-m.png" width="14" height="14"  alt=""/></div>-->
+			<div class="search"><a ui-sref="frontend.cartpage"><img src="app/assets/Images/cart.png" alt=""/></a></div>
 			<div class="cat-menu" ><a href="javascript:;" onclick="menuClick()" id="toggle-menu"><img src="app/assets/Images/m-menu.png" width="16" height="13"  alt=""/></a></div>
 		</div>
 	</header>
