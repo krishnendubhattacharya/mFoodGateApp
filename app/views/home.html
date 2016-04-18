@@ -23,13 +23,12 @@
                 <li ng-repeat="catdetail in catInfo"><a ui-sref="frontend.refinerestaurent({ categoryId: catdetail.id })">{{catdetail.name}}</a></li>
 
             </ul>
-
     </div>
     <!--Featured Promo-->
     <div class="featured-Promo">
         <h1>Featured Promo</h1>
         <ul>
-            <li ng-repeat="featuredCatDetail in featuredCatInfo">
+            <li ng-repeat="featuredCatDetail in featuredCatInfo | limitTo:2">
                 <div class="pro-item">
                     <img src="{{featuredCatDetail.image}}" width="406" height="255"  alt=""/>
                     <div class="p-circle">{{featuredCatDetail.offer_percent}}%</div>
@@ -37,7 +36,7 @@
                         <div class="txt">
                             <h2>{{featuredCatDetail.title}}</h2>
                             <!--<p>Bekasi</p>-->
-                            <p class="price"><span>IDR{{featuredCatDetail.price}}</span> IDR{{featuredCatDetail.price-((featuredCatDetail.price*featuredCatDetail.offer_percent)/100)}}</p>
+                            <p class="price"><span>IDR{{featuredCatDetail.price | number}}</span> IDR{{featuredCatDetail.price-((featuredCatDetail.price*featuredCatDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: featuredCatDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                     </div>
@@ -52,7 +51,7 @@
     <div class="m-featured-Promo tablet-hide">
         <h1>Featured Promo</h1>
         <ul>
-            <li ng-repeat="featuredCatDetail in featuredCatInfo">
+            <li ng-repeat="featuredCatDetail in featuredCatInfo | limitTo:2">
                 <div class="pro-item">
                     <img src="{{featuredCatDetail.image}}" width="406" height="255"  alt=""/>
                     <div class="p-circle">{{featuredCatDetail.offer_percent}}%</div>
@@ -60,7 +59,7 @@
                         <div class="txt">
                             <h2>{{featuredCatDetail.title}}</h2>
                             <!--<p>Bekasi</p>-->
-                            <p class="price"><span>IDR{{featuredCatDetail.price}}</span> IDR{{featuredCatDetail.price-((featuredCatDetail.price*featuredCatDetail.offer_percent)/100)}}</p>
+                            <p class="price"><span>IDR{{featuredCatDetail.price | number}}</span> IDR{{featuredCatDetail.price-((featuredCatDetail.price*featuredCatDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: featuredCatDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                     </div>
@@ -83,7 +82,7 @@
                         <div class="txt">
                             <h2>{{newPromoDetail.title}}</h2>
                             <!--<p>11D:21H:50M:20S</p>-->
-                            <p class="price"><span>IDR{{newPromoDetail.price}}</span> IDR{{newPromoDetail.price-((newPromoDetail.price*newPromoDetail.offer_percent)/100)}}</p>
+                            <p class="price"><span>IDR{{newPromoDetail.price | number}}</span> IDR{{newPromoDetail.price-((newPromoDetail.price*newPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: newPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                     </div>
@@ -104,7 +103,7 @@
                         <div class="txt">
                             <h2>{{newPromoDetail.title}}</h2>
                             <!--<p>11D:21H:50M:20S</p>-->
-                            <p class="price"><span>IDR{{newPromoDetail.price}}</span> IDR{{newPromoDetail.price-((newPromoDetail.price*newPromoDetail.offer_percent)/100)}}</p>
+                            <p class="price"><span>IDR{{newPromoDetail.price | number}}</span> IDR{{newPromoDetail.price-((newPromoDetail.price*newPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: newPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                     </div>
@@ -275,7 +274,7 @@
                         <div class="txt">
                             <h2>{{hotSellingDetail.title}}</h2>
 
-                            <p class="price"><span>IDR{{hotSellingDetail.price}}</span> IDR{{hotSellingDetail.price-((hotSellingDetail.price*hotSellingDetail.offer_percent)/100)}}</p>
+                            <p class="price"><span>IDR{{hotSellingDetail.price | number}}</span> IDR{{hotSellingDetail.price-((hotSellingDetail.price*hotSellingDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: hotSellingDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                     </div>
@@ -299,7 +298,7 @@
                         <div class="txt">
                             <h2>{{hotSellingDetail.title}}</h2>
                             <!--<p>11D:21H:50M:20S</p>-->
-                            <p class="price"><span>IDR{{hotSellingDetail.price}}</span> IDR{{hotSellingDetail.price-((hotSellingDetail.price*hotSellingDetail.offer_percent)/100)}}</p>
+                            <p class="price"><span>IDR{{hotSellingDetail.price | number}}</span> IDR{{hotSellingDetail.price-((hotSellingDetail.price*hotSellingDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: hotSellingDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                     </div>
@@ -324,7 +323,7 @@
                         <div class="txt">
                             <h2>{{lastDayPromoDetail.title}}</h2>
                             <!--<p>11D:21H:50M:20S</p>-->
-                            <p class="price"><span>IDR{{lastDayPromoDetail.price}}</span> IDR{{lastDayPromoDetail.price-((lastDayPromoDetail.price*lastDayPromoDetail.offer_percent)/100)}}</p>
+                            <p class="price"><span>IDR{{lastDayPromoDetail.price | number}}</span> IDR{{lastDayPromoDetail.price-((lastDayPromoDetail.price*lastDayPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: lastDayPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                     </div>
@@ -348,7 +347,7 @@
                         <div class="txt">
                             <h2>{{lastDayPromoDetail.title}}</h2>
                             <!--<p>11D:21H:50M:20S</p>-->
-                            <p class="price"><span>IDR{{lastDayPromoDetail.price}}</span> IDR{{lastDayPromoDetail.price-((lastDayPromoDetail.price*lastDayPromoDetail.offer_percent)/100)}}</p>
+                            <p class="price"><span>IDR{{lastDayPromoDetail.price | number}}</span> IDR{{lastDayPromoDetail.price-((lastDayPromoDetail.price*lastDayPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: lastDayPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                     </div>
@@ -373,7 +372,7 @@
                             <div class="txt">
                                 <h2>{{specialDetail.title}}</h2>
                                 <p>{{specialDetail.special_tag}}</p>
-                                <p class="price"><span>IDR{{specialDetail.price}}</span> IDR{{specialDetail.price-((specialDetail.price*specialDetail.offer_percent)/100)}}</p>
+                                <p class="price"><span>IDR{{specialDetail.price | number}}</span> IDR{{specialDetail.price-((specialDetail.price*specialDetail.offer_percent)/100) | number}}</p>
                             </div>
                             <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                         </div>
@@ -394,7 +393,7 @@
                         <div class="txt">
                             <h2>{{specialDetail.title}}</h2>
                             <p>{{specialDetail.special_tag}}</p>
-                            <p class="price"><span>IDR{{specialDetail.price}}</span> IDR{{specialDetail.price-((specialDetail.price*specialDetail.offer_percent)/100)}}</p>
+                            <p class="price"><span>IDR{{specialDetail.price | number}}</span> IDR{{specialDetail.price-((specialDetail.price*specialDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
                     </div>

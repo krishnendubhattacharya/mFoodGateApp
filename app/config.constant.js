@@ -50,6 +50,7 @@ app.constant('JS_REQUIRES', {
         'outletedit':['app/Controllers/admin/outleteditCtrl.js'],
         'promolist':['app/Controllers/admin/promolistCtrl.js'],
         'promoedit':['app/Controllers/admin/promoeditCtrl.js'],
+       // 'merchantlist':['app/Controllers/admin/merchantlistCtrl.js'],
         'merchantlist':['app/Controllers/admin/merchantlistCtrl.js'],
         'merchantedit':['app/Controllers/admin/merchanteditCtrl.js'],
         'memberlist':['app/Controllers/admin/memberlistCtrl.js'],

@@ -18,7 +18,7 @@ app.controller("RootScopeCtrl", function($scope) {
     };
 
     $scope.checkList = function() {
-       alert(12);
+       //alert(12);
     };
 
     $scope.toolbarItems = [{
