@@ -66,10 +66,12 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
             price               :   $scope.promodetails.price,
             mpoints             :   $scope.promodetails.mpoints,
             offer_price         :   $scope.promodetails.offer_price,
-            quantity            :   1
+            quantity            :   1,
+            image               :   $scope.promodetails.image
         }
         mFoodCart.add_to_cart(cart_obj);
         $scope.cartDetails = mFoodCart.get_cart();
+        $scope.getCartTotals();
     }
 
     $scope.cartDetails = mFoodCart.get_cart();
@@ -96,7 +98,8 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     }
 
     $scope.pay_now = function(){
-
+        $location.path("/cartpage");
+        /*
         $scope.cartDetails = mFoodCart.get_cart();
         console.log($scope.cartDetails);
         if(!$scope.loggedindetails){
@@ -182,7 +185,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                 }
 
             }
-        }
+        }*/
         /**/
     }
 

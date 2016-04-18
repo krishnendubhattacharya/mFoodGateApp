@@ -14,6 +14,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
         }).success(function (data) {
             $scope.voucherInfo =data;
             //console.log($scope.voucherInfo.membership);
+            $scope.listViewData.option({"dataSource": $scope.voucherInfo.membership,showSelectionControls: true });
             $scope.dataGridOptions = {
                 dataSource: $scope.voucherInfo.membership,
                 selection: {
@@ -28,7 +29,9 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
                     showInfo: true
                 },
 
-                columns: ["title", "price", "offer_percent", "expire_date",
+                columns: [{ dataField: 'title',caption:'Description'},
+                    { dataField: 'restaurant.title',caption:'Restaurant'},
+                    { dataField: 'purchased_date',caption:'Member Since'}, "expire_date",
                     {
                         width: 100,
                         alignment: 'center',
@@ -52,6 +55,16 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
 
 
         });
+
+    $scope.loadList=function(e)
+    {
+        $scope.listViewData= e.component;
+    }
+
+    $scope.view_det = function (id) {
+        console.log(id);
+        $location.path('/membershipdetail/'+id);
+    }
 
 
 });

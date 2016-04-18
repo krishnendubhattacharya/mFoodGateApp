@@ -1,7 +1,7 @@
 <div ng-controller="promodetailsCtrl">
-    <div class="container phone-hide">
-    <div class="item-details">
-        <div class="offers">
+
+
+        <div class="carts phone-hide">
             <h1>Cart</h1>
             <div ng-if="cartDetails" class="offer" ng-repeat="cart in cartDetails">
                 <p>
@@ -9,14 +9,14 @@
                 </p>
                 <div class="price-div">
                     <div class="off">{{cart.offer_percent}}% <span>off</span></div>
-                    <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price}}</div>
+                    <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
                     <div class="off">M-points</div>
                     <div class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>
                 <div class="qty-totals">
                     <div class="qty">Qty: <span><input type="text" ng-model="cart.quantity" value="1" ng-change="updateQuantity(cart)"></span></div>
-                    <div class="totals" ><span>Total:</span> IDR{{cart.quantity*cart.offer_price}}</div>
+                    <div class="totals" ><span>Total:</span> IDR{{cart.quantity*cart.offer_price  | number}}</div>
                 </div>
                 <div class="qty-totals">
                     <div class="qty"><a href="javascript:;" ng-click="remove_offer(cart.offer_id)" style="color:red">Delete</a></div>
@@ -41,7 +41,7 @@
             <div ng-if="cartDetails" class="offer">
                 <div class="qty-totals">
                     <div class="qty">Total : </div>
-                    <div class="totals" ng-init="getCartTotals()">IDR{{cart_total}}</div>
+                    <div class="totals" ng-init="getCartTotals()">IDR{{cart_total | number}}</div>
                     <div class="qty">M-points : </div>
                     <div class="totals">{{cart_total_points}}</div>
                 </div>
@@ -69,11 +69,11 @@
             <p ng-if="cartDetails"><input type="button" value="BUY NOW" ng-click="pay_now()"></p>
         </div>
 
-    </div>
-    </div>
 
-    <div class="m-item-details tablet-hide">
-        <div class="offers">
+
+
+
+        <div class="m-carts tablet-hide">
             <h1>Cart</h1>
             <div ng-if="cartDetails" class="offer" ng-repeat="cart in cartDetails">
                 <p>
@@ -81,14 +81,14 @@
                 </p>
                 <div class="price-div">
                     <div class="off">{{cart.offer_percent}}% <span>off</span></div>
-                    <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price}}</div>
+                    <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
                     <div class="off">M-points</div>
                     <div class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>
                 <div class="qty-totals">
                     <div class="qty">Qty: <span><input type="text" ng-model="cart.quantity" value="1" ng-change="updateQuantity(cart)"></span></div>
-                    <div class="totals" ><span>Total:</span> IDR{{cart.quantity*cart.offer_price}}</div>
+                    <div class="totals" ><span>Total:</span> IDR{{cart.quantity*cart.offer_price | number}}</div>
                 </div>
                 <div class="qty-totals">
                     <div class="qty"><a href="javascript:;" ng-click="remove_offer(cart.offer_id)" style="color:red">Delete</a></div>
@@ -113,7 +113,7 @@
             <div ng-if="cartDetails" class="offer">
                 <div class="qty-totals">
                     <div class="qty">Total : </div>
-                    <div class="totals" ng-init="getCartTotals()">IDR{{cart_total}}</div>
+                    <div class="totals" ng-init="getCartTotals()">IDR{{cart_total | number}}</div>
                     <div class="qty">M-points : </div>
                     <div class="totals">{{cart_total_points}}</div>
                 </div>
@@ -141,7 +141,7 @@
             <p ng-if="cartDetails"><input type="button" value="BUY NOW" ng-click="pay_now()"></p>
         </div>
 
-    </div>
+
 
 
 
