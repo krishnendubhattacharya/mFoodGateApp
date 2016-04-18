@@ -55,7 +55,7 @@
     	<li><input type="text" placeholder="Search Keyword" ng-model="keyword"></li>
         </form>
         <li><a onclick="menuClick()" title="Home" ui-sref="frontend.index">Home</a></li>
-        <li><a href="">Browse Categories</a>
+        <li><a href="">RESTAURANT CATEGORY</a>
             <ul>
                 <li ng-repeat="catdetail in catInfo"><a onclick="menuClick()" title="Category" ui-sref="frontend.refinerestaurent({ categoryId: catdetail.id })">{{catdetail.name}}</a></li>
             </ul></li>

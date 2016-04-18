@@ -88,6 +88,20 @@ app.controller('voucherCtrl', function ($rootScope, $scope, $http, $location) {
     }
     $scope.voucherExpireSoonList();
 
+    $scope.voucherAllMenuPromo = function(){
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getActiveMenuPromo",
+        }).success(function (data) {
+
+            $scope.voucherMenuInfo =data.Promo;
+            console.log($scope.voucherMenuInfo);
+
+        });
+    }
+    $scope.voucherAllMenuPromo();
+
 
 
 

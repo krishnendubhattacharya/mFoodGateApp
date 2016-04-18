@@ -415,6 +415,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Member Edit',
                 resolve: loadSequence('memberedit','naif.base64','ngMap','ngCkeditor')
             })
+            .state('admin.settings', {
+                url: '/settings',
+                templateUrl: 'app/views/admin/settings.html',
+                title: 'Site Settings',
+                resolve: loadSequence('settings')
+            })
             .state('adminlogin', {
                 url: '/adminlogin',
                 template: '<div ui-view ></div>',

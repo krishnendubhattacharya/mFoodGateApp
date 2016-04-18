@@ -18,7 +18,7 @@
     <!--Left menu-->
     <div class="category-left">
 
-            <h1>Browse Categories</h1>
+            <h1>RESTAURANT CATEGORY</h1>
             <ul>
                 <li ng-repeat="catdetail in catInfo"><a ui-sref="frontend.refinerestaurent({ categoryId: catdetail.id })">{{catdetail.name}}</a></li>
 
@@ -69,10 +69,52 @@
         </ul>
     </div>
 <!--end-->
+    <div class="dx-clearfix"></div>
+    <div class="container">
+        <div class="new-Promo phone-hide" ng-if="specialInfo.length != 0">
+            <h1>Special Promo</h1>
+            <ul>
+                <li ng-repeat="specialDetail in specialInfo">
+                    <div class="pro-item">
+                        <img src="{{specialDetail.image}}" width="406" height="255"  alt=""/>
+                        <div class="p-circle">{{specialDetail.offer_percent}}%</div>
+                        <div class="desc">
+                            <div class="txt">
+                                <h2>{{specialDetail.title}}</h2>
+                                <p>{{specialDetail.special_tag}}</p>
+                                <p class="price"><span>IDR{{specialDetail.price | number}}</span> IDR{{specialDetail.price-((specialDetail.price*specialDetail.offer_percent)/100) | number}}</p>
+                            </div>
+                            <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="m-new-Promo tablet-hide" ng-if="specialInfo.length != 0">
+        <h1>Special Promo</h1>
+        <ul>
+            <li ng-repeat="specialDetail in specialInfo">
+                <div class="pro-item">
+                    <img src="{{specialDetail.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle">{{specialDetail.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>{{specialDetail.title}}</h2>
+                            <p>{{specialDetail.special_tag}}</p>
+                            <p class="price"><span>IDR{{specialDetail.price | number}}</span> IDR{{specialDetail.price-((specialDetail.price*specialDetail.offer_percent)/100) | number}}</p>
+                        </div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 <div class="dx-clearfix"></div>
 <div class="container">
-    <div class="new-Promo phone-hide">
-        <h1>New Promo Today <span>({{newPromoCount}} new)</span></h1>
+    <div class="new-Promo phone-hide" ng-if="newPromoInfo.length != 0">
+        <h1>New Promo <span>({{newPromoCount}} new)</span></h1>
         <ul>
             <li ng-repeat="newPromoDetail in newPromoInfo">
                 <div class="pro-item">
@@ -92,8 +134,8 @@
     </div>
 </div>
 
-    <div class="m-new-Promo tablet-hide">
-        <h1>New Promo Today <span>({{newPromoCount}} new)</span></h1>
+    <div class="m-new-Promo tablet-hide" ng-if="newPromoInfo.length != 0">
+        <h1>New Promo <span>({{newPromoCount}} new)</span></h1>
         <ul>
             <li ng-repeat="newPromoDetail in newPromoInfo">
                 <div class="pro-item">
@@ -263,7 +305,7 @@
 
 <div class="dx-clearfix"></div>
 <div class="container">
-    <div class="new-Promo phone-hide">
+    <div class="new-Promo phone-hide" ng-if="hotSellingInfo.length != 0">
         <h1>Hot Selling</h1>
         <ul>
             <li ng-repeat="hotSellingDetail in hotSellingInfo">
@@ -287,7 +329,7 @@
     </div>
 </div>
 
-    <div class="m-new-Promo tablet-hide">
+    <div class="m-new-Promo tablet-hide" ng-if="hotSellingInfo.length != 0">
         <h1>Hot Selling</h1>
         <ul>
             <li ng-repeat="hotSellingDetail in hotSellingInfo">
@@ -312,8 +354,8 @@
 
 <div class="dx-clearfix"></div>
 <div class="container">
-    <div class="new-Promo phone-hide">
-        <h1>Last Day Promo</h1>
+    <div class="new-Promo phone-hide" ng-if="lastDayPromoInfo.length != 0">
+        <h1>Last Days Promo</h1>
         <ul>
             <li ng-repeat="lastDayPromoDetail in lastDayPromoInfo">
                 <div class="pro-item">
@@ -336,8 +378,8 @@
     </div>
 </div>
 
-    <div class="m-new-Promo tablet-hide">
-        <h1>Last Day Promo</h1>
+    <div class="m-new-Promo tablet-hide" ng-if="lastDayPromoInfo.length != 0">
+        <h1>Last Days Promo</h1>
         <ul>
             <li ng-repeat="lastDayPromoDetail in lastDayPromoInfo">
                 <div class="pro-item">
@@ -360,51 +402,12 @@
     </div>
 
     <div class="dx-clearfix"></div>
-    <div class="container">
-        <div class="new-Promo phone-hide">
-            <h1>Special Promo</h1>
-            <ul>
-                <li ng-repeat="specialDetail in specialInfo">
-                    <div class="pro-item">
-                        <img src="{{specialDetail.image}}" width="406" height="255"  alt=""/>
-                        <div class="p-circle">{{specialDetail.offer_percent}}%</div>
-                        <div class="desc">
-                            <div class="txt">
-                                <h2>{{specialDetail.title}}</h2>
-                                <p>{{specialDetail.special_tag}}</p>
-                                <p class="price"><span>IDR{{specialDetail.price | number}}</span> IDR{{specialDetail.price-((specialDetail.price*specialDetail.offer_percent)/100) | number}}</p>
-                            </div>
-                            <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
 
-    <div class="m-new-Promo tablet-hide">
-        <h1>Special Promo</h1>
-        <ul>
-            <li ng-repeat="specialDetail in specialInfo">
-                <div class="pro-item">
-                    <img src="{{specialDetail.image}}" width="406" height="255"  alt=""/>
-                    <div class="p-circle">{{specialDetail.offer_percent}}%</div>
-                    <div class="desc">
-                        <div class="txt">
-                            <h2>{{specialDetail.title}}</h2>
-                            <p>{{specialDetail.special_tag}}</p>
-                            <p class="price"><span>IDR{{specialDetail.price | number}}</span> IDR{{specialDetail.price-((specialDetail.price*specialDetail.offer_percent)/100) | number}}</p>
-                        </div>
-                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
+
 
         <div class="dx-clearfix"></div>
         <div class="container">
-            <div class="restaurant-Promo phone-hide">
+            <div class="restaurant-Promo phone-hide" ng-if="restaurantInfo.length != 0">
                 <h1>Featured Restaurant</h1>
                 <ul>
                     <li ng-repeat="restaurantDetail in restaurantInfo">
@@ -424,7 +427,7 @@
         <div class="m-restaurant-Promo tablet-hide">
             <h1>Featured Restaurant</h1>
             <ul>
-                <li ng-repeat="restaurantDetail in restaurantInfo">
+                <li ng-repeat="restaurantDetail in restaurantInfo" ng-if="restaurantInfo.length != 0">
                     <div class="pro-item">
                         <div class="logo-box"><img src="{{restaurantDetail.logo}}" width="218" height="100"  alt=""/></div>
                         <div class="desc">

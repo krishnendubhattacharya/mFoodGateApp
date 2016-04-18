@@ -56,6 +56,7 @@ app.constant('JS_REQUIRES', {
         'memberlist':['app/Controllers/admin/memberlistCtrl.js'],
         'voucherofmember':['app/Controllers/admin/voucherofmemberCtrl.js'],
         'memberedit':['app/Controllers/admin/membereditCtrl.js'],
+        'settings':['app/Controllers/admin/settingsCtrl.js'],
         'merchanthome':['app/Controllers/merchanthomeCtrl.js'],
         'merchantlogin':['app/Controllers/merchantloginCtrl.js'],
         'marketplace':['app/Controllers/marketplaceCtrl.js'],
