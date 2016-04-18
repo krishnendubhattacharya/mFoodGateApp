@@ -87,7 +87,7 @@ angular
             console.log(obj);
             if(obj)
             {
-                factobj.adminuserinfo = { loginstatus: obj.isloggedin, id: obj.id,username:obj.username };
+                factobj.adminuserinfo = { loginstatus: 1, id: obj.id,username:obj.username };
                 return true;
             }
     /******************************** Cart ***********************************/

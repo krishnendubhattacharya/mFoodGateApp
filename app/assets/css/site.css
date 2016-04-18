@@ -110,6 +110,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 .logo{ width:306px; height:61px; float: left; margin: 18px 0 13px; }
 .top-link{width: auto; height: 25px; float: right; font-size:14px; color:#c8c8c8; margin-top:34px; }
 .top-link a{ text-decoration: none; color:#339933; font-size:14px; font-weight: normal; line-height: 25px; }
+.top-link a img{ vertical-align: middle; margin-right: 5px;}
 
 .main-header .nab-bar{ width: 100%; background: url(../Images/nav-bg.jpg) left top repeat-x; height:49px; overflow: hidden; border-radius: 3px 3px 0 0; }
 .main-header .nab-bar .navigation{ width:613px; height:43px; margin: 6px 0 0 6px; float: left; }
@@ -996,6 +997,8 @@ color: #313131; font-weight: normal; width:100%; }
 .news{width: 100%; height: auto; margin: 25px 0; overflow: hidden; }
 .news .left-col{width:70%; float: left; margin: 0;}
 .news .left-col .banner{width:100%; height: auto;}
+.news .left-col .banner h1{ padding: 0; margin: 0 0 20px; font-size:30px; line-height: 36px; color:#329432; }
+.news .left-col .banner h1 a{color:#329432; text-decoration: none; }
 .news .left-col .banner img{width:100%; height: auto;}
 .news .left-col .all-news{ width:100%; height:auto; margin: 20px 0 0;}
 .news .left-col .all-news h1{font-size:30px; line-height: 36px; color:#333333; padding: 0; margin: 0 0 25px; }
@@ -1235,3 +1238,43 @@ color: #313131; font-weight: normal; width:100%; }
 .ev-details .event-d .dsc-bx p{ padding:5px 0; margin:0; font-size:13px; color:#292929; line-height:18px; overflow:hidden;}
 .ev-details .event-d .dsc-bx .title{ float:left; width:35%; font-weight:500; color:#999; }
 .ev-details .event-d .dsc-bx p .val{ float:left; width:45%; font-weight: normal; color:#262626;}
+
+
+/*----------------------------- Cart Page 15-04-2016 ---------------------------*/
+
+.carts{ width: 96%; height: auto; margin: 20px auto; border: solid 1px #dfdfdf; float: left;  }
+.carts h1{ font-size:24px; color:#fff; line-height: 24px; background:#319431; display: block; padding: 13px; margin: 0;}
+.carts .offer{ width:98%; margin: 10px auto; background:#f8f8f8; border: solid 1px #dfdfdf; overflow: hidden; }
+.carts .offer p{ padding: 5px 10px 0; margin: 0; line-height: 24px; font-size:18px; color:#333333; }
+.carts .offer p span{ color:#969696;}
+.carts .offer .price-div{ padding: 10px; overflow: hidden; }
+.carts .offer .price-div .off{ font-size:18px; color:#319431; line-height: 30px; float: left; }
+.carts .offer .price-div .off span{ color:#5c5c5c; }
+.carts .offer .price-div .price-m{ float: right; color:#ed5c1b; font-size:24px; line-height: 30px;}
+.carts .offer .price-div .price-m span{ font-size:18px; line-height: 30px; color: #c6c6c6; text-decoration: line-through; }
+.carts .offer .qty-totals{padding: 10px; overflow: hidden; border-top: solid 1px #e9e9e9;}
+.carts .offer .qty-totals .qty{ font-size:14px; color:#737373; line-height: 30px; float: left; width:50%; }
+.carts .offer .qty-totals .qty input[type="text"]{ width:30%; height: 30px; background: #fff; border: solid 1px #e2e2e2; padding: 0 5px; text-align: center; color:#737373;}
+.carts .offer .qty-totals .totals{float: left; color:#ed5c1b; font-size:24px; line-height: 30px; width:50%; text-align: right;}
+.carts .offer .qty-totals .totals span{ font-size:14px; color:#737373; line-height: 30px;}
+
+.carts input[type="button"], .item-details .offers input[type="submit"], .item-details .offers button
+{
+    background: url(../Images/orenge-big-btn-bg.jpg) left top repeat-x;
+    display: block;
+    line-height: 21px;
+    padding:8px 15px;
+    margin:0;
+    color: #fff;
+    font-size: 24px;
+    font-weight: normal;
+    border: none;
+    border-radius: 5px;
+    cursor:pointer;
+    line-height: 24px;
+    text-transform: uppercase;
+    width:200px;
+    margin-bottom: 15px;
+    float: right;
+    margin-right: 10px;
+}
