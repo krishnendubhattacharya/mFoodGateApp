@@ -22,8 +22,12 @@
                 <a ui-sref="frontend.index" ><img src="app/assets/Images/MobileIcons/home.png" alt="" />
                     <p>Home</p></a>
             </li>
-            <li ui-sref-active="active"><a ui-sref="frontend.voucher" ><img src="app/assets/Images/MobileIcons/vouture.png" alt="" />
+            <li ui-sref-active="active"><a href="#"><img src="app/assets/Images/MobileIcons/vouture.png" alt="" />
                 <p>Voucher</p></a>
+                <ul>
+                    <li><a ui-sref="frontend.voucher">Menu Voucher</a></li>
+                    <li><a ui-sref="frontend.paymentVoucher">Payment Voucher</a></li>
+                </ul>
             </li>
             <li ui-sref-active="active"><a ui-sref="frontend.membership" ><img src="app/assets/Images/MobileIcons/membership.png" alt="" />
                 <p>Membership</p></a>
@@ -58,7 +62,7 @@
         <li><a href="" title="Voucher">Voucher</a>
             <ul>
                 <li><a onclick="menuClick()" title="My Voucher" ui-sref="frontend.voucher">Menu Voucher</a></li>
-                <li><a onclick="menuClick()" title="My Membership" ui-sref="frontend.membership">Payment Membership</a></li>
+                <li><a onclick="menuClick()" title="My Membership" ui-sref="frontend.paymentVoucher">Payment Voucher</a></li>
 
             </ul>
         </li>
