@@ -14,8 +14,16 @@
                 <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
 
             <div class="profile-details">
-                <h3>Membership</h3>
+                <h3>Active Membership</h3>
                 <div id="gridContainer" dx-data-grid="dataGridOptions"></div>
+                <div id="employeeInfo">
+                    <p class="employeeNotes" ng-bind-html="selectedEmployee.benefits"></p>
+                </div>
+            </div>
+
+            <div class="profile-details">
+                <h3>Expired Membership</h3>
+                <div id="gridContainer" dx-data-grid="dataGridOptions1"></div>
                 <div id="employeeInfo">
                     <p class="employeeNotes" ng-bind-html="selectedEmployee.benefits"></p>
                 </div>
@@ -27,8 +35,39 @@
         <h1>Membership</h1>
         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
 
-        <div class="m-profile-details">
+        <!--<div class="m-profile-details">
             <div id="gridContainer" dx-data-grid="dataGridOptions"></div>
+        </div>-->
+        <h1>Active Membership</h1>
+        <div dx-list="{onInitialized:loadList}">
+            <div data-options="dxTemplate: { name: 'item' }">
+                <div style="display:inline-block; margin: 5px;">
+                    <p style="font-size:larger;"><b>{{title}}</b></p>
+                    <p>Restaurant: <i>{{restaurant.title}}</i></p>
+                    <p>Member Since: <i>{{purchased_date}}</i></p>
+                    <p>Expire Date: <i>{{expire_date}}</i></p>
+                </div>
+
+                <p>
+                    <div id="button" dx-button="{
+                    text: 'Details',
+                    onClick: view_det({{id}}) }" ></div>
+                </p>
+            </div>
+        </div>
+
+        <h1>Expired Membership</h1>
+        <div dx-list="{onInitialized:loadList1}">
+            <div data-options="dxTemplate: { name: 'item' }">
+                <div style="display:inline-block; margin: 5px;">
+                    <p style="font-size:larger;"><b>{{title}}</b></p>
+                    <p>Restaurant: <i>{{restaurant.title}}</i></p>
+                    <p>Member Since: <i>{{purchased_date}}</i></p>
+                    <p>Expire Date: <i>{{expire_date}}</i></p>
+                </div>
+
+
+            </div>
         </div>
 
     </div>

@@ -57,8 +57,8 @@ app.controller('voucherdetailforallCtrl', function ($rootScope, $scope, $http, $
     $scope.bidderList();
 
     $scope.boucherbid = function(voucherId, resellId) {
-        alert(voucherId);
-        alert(resellId);
+        //alert(voucherId);
+        //alert(resellId);
         $location.path('/sellbid/'+resellId+'/'+voucherId)
     }
     $scope.boucherResell = function () {

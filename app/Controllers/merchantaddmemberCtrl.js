@@ -39,7 +39,7 @@ app.controller('merchantaddmemberCtrl', function ($rootScope, $scope, $http, $lo
     $scope.getmembershipInfo();
 
     $scope.userChoice = function () {
-        alert($scope.user_type_id);
+        //alert($scope.user_type_id);
     }
 
     var selectBoxData = [
@@ -118,10 +118,10 @@ app.controller('merchantaddmemberCtrl', function ($rootScope, $scope, $http, $lo
         var result = params.validationGroup.validate();
 
         if(result.isValid) {
-            alert($scope.membership_id);
-            alert($scope.user_code);
-            alert($scope.username);
-            alert($scope.user_type);
+            //alert($scope.membership_id);
+            //alert($scope.user_code);
+            //alert($scope.username);
+            //alert($scope.user_type);
             //alert($scope.uniqueCode);
             //alert($scope.email);
             //return false;

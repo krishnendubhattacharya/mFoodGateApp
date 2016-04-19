@@ -74,7 +74,14 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                     showInfo: true
                 },
 
-                columns: ["title", "price", "expire_date",
+                columns: ["title", {caption:'Voucher Value',dataField:"voucher_price"},
+                    {caption:'Purchase Price',dataField:"purchase_price"},
+                    {caption:'Reseller Price',dataField:"price"},
+                    //{caption:'Higest Bid Price',dataField:"price"},
+                    {caption:'Expired Date',dataField:"expire_date"},
+                    //{caption:'Reseller Date',dataField:"expire_date"},
+                    {caption:'Status',dataField:"is_sold==1?'Active':'Inactive'"},
+
                     /*{
                         width: 100,
                         alignment: 'center',

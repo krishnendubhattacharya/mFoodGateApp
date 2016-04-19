@@ -5,7 +5,7 @@
 
 app.controller('appCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, $cookieStore) {
 
-    alert(12);
+    //alert(12);
    
    
 });

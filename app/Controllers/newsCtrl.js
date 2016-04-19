@@ -35,6 +35,7 @@ app.controller('newsCtrl', function ($rootScope, $scope, $http, $location, $stat
         })
     }
     $scope.getAllNews();
+    console.log('Hello Mfood');
 
     $scope.getMostViews = function(){
         $http({

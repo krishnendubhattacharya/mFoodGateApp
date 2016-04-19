@@ -22,76 +22,7 @@
         </ul>
     </div>-->
     <div class="dx-clearfix"></div>
-    <div class="voucher-section phone-hide">
-        <h1>New Promo Today <span>({{newPromoCount}} new)</span></h1>
-        <ul>
-            <li ng-repeat="voucherDetail in newPromoInfo">
-                <div class="pro-item">
-                    <div class="logo-box">
-                        <!--<div class="p-circle">5X</div>-->
-                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
-                    </div>
-                    <div class="desc">
-                        <h2>{{voucherDetail.title}}</h2>
-                        <h3>{{voucherDetail.offer_percent}}% off</h3>
-                        <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
-                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
-                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
-                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-    </div>
-    <div class="dx-clearfix"></div>
-    <div class="voucher-section phone-hide">
-        <h1>Hot Selling</h1>
-        <ul>
-            <li ng-repeat="voucherDetail in hotSellingInfo">
-                <div class="pro-item">
-                    <div class="logo-box">
-                        <!--<div class="p-circle">5X</div>-->
-                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
-                    </div>
-                    <div class="desc">
-                        <h2>{{voucherDetail.title}}</h2>
-                        <h3>{{voucherDetail.offer_percent}}% off</h3>
-                        <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
-                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
-                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
-                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-    </div>
-    <div class="dx-clearfix"></div>
-    <div class="voucher-section phone-hide">
-        <h1>Last Day Promo</h1>
-        <ul>
-            <li ng-repeat="voucherDetail in lastDayPromoInfo">
-                <div class="pro-item">
-                    <div class="logo-box">
-                        <!--<div class="p-circle">5X</div>-->
-                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
-                    </div>
-                    <div class="desc">
-                        <h2>{{voucherDetail.title}}</h2>
-                        <h3>{{voucherDetail.offer_percent}}% off</h3>
-                        <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
-                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
-                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
-                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-    </div>
-    <div class="dx-clearfix"></div>
-    <div class="voucher-section phone-hide">
+    <div class="voucher-section phone-hide" ng-if="specialInfo.length != 0">
         <h1>Special Promo</h1>
         <ul>
             <li ng-repeat="voucherDetail in specialInfo">
@@ -103,8 +34,8 @@
                     <div class="desc">
                         <h2>{{voucherDetail.title}}</h2>
                         <h3>{{voucherDetail.offer_percent}}% off</h3>
-                        <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
-                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
+                        <p class="price">Price <span>IDR{{voucherDetail.price | number}}</span> </p>
+                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100) | number}}</span></p>
                         <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
                         <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
                     </div>
@@ -114,79 +45,104 @@
         </ul>
     </div>
     <div class="dx-clearfix"></div>
+    <div class="voucher-section phone-hide" ng-if="newPromoInfo.length != 0">
+        <h1>New Promo <span>({{newPromoCount}} new)</span></h1>
+        <ul>
+            <li ng-repeat="voucherDetail in newPromoInfo">
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <!--<div class="p-circle">5X</div>-->
+                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
+                    </div>
+                    <div class="desc">
+                        <h2>{{voucherDetail.title}}</h2>
+                        <h3>{{voucherDetail.offer_percent}}% off</h3>
+                        <p class="price">Price <span>IDR{{voucherDetail.price | number}}</span> </p>
+                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100) | number}}</span></p>
+                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
+                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="dx-clearfix"></div>
+    <div class="voucher-section phone-hide" ng-if="hotSellingInfo.length != 0">
+        <h1>Hot Selling</h1>
+        <ul>
+            <li ng-repeat="voucherDetail in hotSellingInfo">
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <!--<div class="p-circle">5X</div>-->
+                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
+                    </div>
+                    <div class="desc">
+                        <h2>{{voucherDetail.title}}</h2>
+                        <h3>{{voucherDetail.offer_percent}}% off</h3>
+                        <p class="price">Price <span>IDR{{voucherDetail.price | number}}</span> </p>
+                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100) | number}}</span></p>
+                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
+                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="dx-clearfix"></div>
+    <div class="voucher-section phone-hide" ng-if="lastDayPromoInfo.length != 0">
+        <h1>Last Days Promo</h1>
+        <ul>
+            <li ng-repeat="voucherDetail in lastDayPromoInfo">
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <!--<div class="p-circle">5X</div>-->
+                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
+                    </div>
+                    <div class="desc">
+                        <h2>{{voucherDetail.title}}</h2>
+                        <h3>{{voucherDetail.offer_percent}}% off</h3>
+                        <p class="price">Price <span>IDR{{voucherDetail.price | number}}</span> </p>
+                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100) | number}}</span></p>
+                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
+                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="dx-clearfix"></div>
+
+    <div class="voucher-section phone-hide" ng-if="voucherMenuInfo.length != 0">
+        <h1>All Promo</h1>
+        <ul>
+            <li ng-repeat="voucherDetail in voucherMenuInfo">
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <!--<div class="p-circle">5X</div>-->
+                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
+                    </div>
+                    <div class="desc">
+                        <h2>{{voucherDetail.title}}</h2>
+                        <h3>{{voucherDetail.offer_percent}}% off</h3>
+                        <p class="price">Price <span>IDR{{voucherDetail.price | number}}</span> </p>
+                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100) | number}}</span></p>
+                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
+                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="dx-clearfix"></div>
+
 
 </div>
 
-    <div class="m-voucher-section tablet-hide">
-        <h1>New Promo Today <span>({{newPromoCount}} new)</span></h1>
-        <ul>
-            <li ng-repeat="voucherDetail in newPromoInfo">
-                <div class="pro-item">
-                    <div class="logo-box">
-                        <!--<div class="p-circle">5X</div>-->
-                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
-                    </div>
-                    <div class="desc">
-                        <h2>{{voucherDetail.title}}</h2>
-                        <h3>{{voucherDetail.offer_percent}}% off</h3>
-                        <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
-                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
-                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
-                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-    </div>
-    <div class="dx-clearfix"></div>
-    <div class="m-voucher-section tablet-hide">
-        <h1>Hot Selling</h1>
-        <ul>
-            <li ng-repeat="voucherDetail in hotSellingInfo">
-                <div class="pro-item">
-                    <div class="logo-box">
-                        <!--<div class="p-circle">5X</div>-->
-                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
-                    </div>
-                    <div class="desc">
-                        <h2>{{voucherDetail.title}}</h2>
-                        <h3>{{voucherDetail.offer_percent}}% off</h3>
-                        <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
-                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
-                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
-                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-    </div>
-    <div class="dx-clearfix"></div>
-    <div class="m-voucher-section tablet-hide">
-        <h1>Last Day Promo</h1>
-        <ul>
-            <li ng-repeat="voucherDetail in lastDayPromoInfo">
-                <div class="pro-item">
-                    <div class="logo-box">
-                        <!--<div class="p-circle">5X</div>-->
-                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
-                    </div>
-                    <div class="desc">
-                        <h2>{{voucherDetail.title}}</h2>
-                        <h3>{{voucherDetail.offer_percent}}% off</h3>
-                        <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
-                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
-                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
-                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-    </div>
-    <div class="dx-clearfix"></div>
-    <div class="m-voucher-section tablet-hide">
+    <div class="m-voucher-section tablet-hide" ng-if="specialInfo.length != 0">
         <h1>Special Promo</h1>
         <ul>
             <li ng-repeat="voucherDetail in specialInfo">
@@ -198,8 +154,8 @@
                     <div class="desc">
                         <h2>{{voucherDetail.title}}</h2>
                         <h3>{{voucherDetail.offer_percent}}% off</h3>
-                        <p class="price">Price <span>IDR{{voucherDetail.price}}</span> </p>
-                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100)}}</span></p>
+                        <p class="price">Price <span>IDR{{voucherDetail.price | number}}</span> </p>
+                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100) | number}}</span></p>
                         <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
                         <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
                     </div>
@@ -209,6 +165,100 @@
         </ul>
     </div>
     <div class="dx-clearfix"></div>
+
+    <div class="m-voucher-section tablet-hide" ng-if="newPromoInfo.length != 0">
+        <h1>New Promo <span>({{newPromoCount}} new)</span></h1>
+        <ul>
+            <li ng-repeat="voucherDetail in newPromoInfo">
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <!--<div class="p-circle">5X</div>-->
+                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
+                    </div>
+                    <div class="desc">
+                        <h2>{{voucherDetail.title}}</h2>
+                        <h3>{{voucherDetail.offer_percent}}% off</h3>
+                        <p class="price">Price <span>IDR{{voucherDetail.price | number}}</span> </p>
+                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100) | number}}</span></p>
+                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
+                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="dx-clearfix"></div>
+    <div class="m-voucher-section tablet-hide" ng-if="hotSellingInfo.length != 0">
+        <h1>Hot Selling</h1>
+        <ul>
+            <li ng-repeat="voucherDetail in hotSellingInfo">
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <!--<div class="p-circle">5X</div>-->
+                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
+                    </div>
+                    <div class="desc">
+                        <h2>{{voucherDetail.title}}</h2>
+                        <h3>{{voucherDetail.offer_percent}}% off</h3>
+                        <p class="price">Price <span>IDR{{voucherDetail.price | number}}</span> </p>
+                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100) | number}}</span></p>
+                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
+                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="dx-clearfix"></div>
+    <div class="m-voucher-section tablet-hide" ng-if="lastDayPromoInfo.length != 0">
+        <h1>Last Days Promo</h1>
+        <ul>
+            <li ng-repeat="voucherDetail in lastDayPromoInfo">
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <!--<div class="p-circle">5X</div>-->
+                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
+                    </div>
+                    <div class="desc">
+                        <h2>{{voucherDetail.title}}</h2>
+                        <h3>{{voucherDetail.offer_percent}}% off</h3>
+                        <p class="price">Price <span>IDR{{voucherDetail.price | number}}</span> </p>
+                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100) | number}}</span></p>
+                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
+                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="dx-clearfix"></div>
+    <div class="m-voucher-section tablet-hide" ng-if="voucherMenuInfo.length != 0">
+        <h1>All Promo</h1>
+        <ul>
+            <li ng-repeat="voucherDetail in voucherMenuInfo">
+                <div class="pro-item">
+                    <div class="logo-box">
+                        <!--<div class="p-circle">5X</div>-->
+                        <a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
+                    </div>
+                    <div class="desc">
+                        <h2>{{voucherDetail.title}}</h2>
+                        <h3>{{voucherDetail.offer_percent}}% off</h3>
+                        <p class="price">Price <span>IDR{{voucherDetail.price | number}}</span> </p>
+                        <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100) | number}}</span></p>
+                        <div class="btn_o2"><a ui-sref="frontend.promodetails({ promoId: voucherDetail.id })">Detail</a></div>
+                        <!--<div class="btn_g"><a href="">Give Friend</a></div>-->
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="dx-clearfix"></div>
+
 
 <div class="dx-clearfix"></div>
 <!--<div class="container">

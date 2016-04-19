@@ -9,6 +9,7 @@ angular
     /******************************** Cart ***********************************/
     //factobj.cart = [];
     factobj.add_to_cart = function(promo){
+        console.log('Promo =============',promo);
         var cart=$cookieStore.get('cart');
         if(cart)
         {

@@ -88,6 +88,20 @@ app.controller('paymentVoucherCtrl', function ($rootScope, $scope, $http, $locat
     }
     $scope.voucherExpireSoonList();
 
+    $scope.voucherAllPaymentPromo = function(){
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getActivePaymentPromo",
+        }).success(function (data) {
+
+            $scope.voucherPaymentInfo =data.Promo;
+            //console.log($scope.catInfo);
+
+        });
+    }
+    $scope.voucherAllPaymentPromo();
+
 
 
 

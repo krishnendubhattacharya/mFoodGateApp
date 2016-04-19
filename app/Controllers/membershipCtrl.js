@@ -75,6 +75,21 @@ app.controller('membershipCtrl', function ($rootScope, $scope, $http, $location)
     $scope.specialList();
 
 
+    $scope.voucherAllMembershipPromo = function(){
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getActiveMembershipPromo",
+        }).success(function (data) {
+
+            $scope.voucherMembershipInfo =data.Promo;
+            //console.log($scope.catInfo);
+
+        });
+    }
+    $scope.voucherAllMembershipPromo();
+
+
 
 
 

@@ -9,14 +9,14 @@
                 </p>
                 <div class="price-div">
                     <div class="off">{{cart.offer_percent}}% <span>off</span></div>
-                    <div class="price-m"><span>{{cart.price}}</span>  ${{cart.offer_price}}</div>
+                    <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
                     <div class="off">M-points</div>
                     <div class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>
                 <div class="qty-totals">
                     <div class="qty">Qty: <span><input type="text" ng-model="cart.quantity" value="1" ng-change="updateQuantity(cart)"></span></div>
-                    <div class="totals" ><span>Total:</span> ${{cart.quantity*cart.offer_price}}</div>
+                    <div class="totals" ><span>Total:</span> IDR{{cart.quantity*cart.offer_price | number}}</div>
                 </div>
                 <div class="qty-totals">
                     <div class="qty"><a href="javascript:;" ng-click="remove_offer(cart.offer_id)" style="color:red">Delete</a></div>
@@ -41,7 +41,7 @@
             <div ng-if="cartDetails" class="offer">
                 <div class="qty-totals">
                     <div class="qty">Total : </div>
-                    <div class="totals" ng-init="getCartTotals()">${{cart_total}}</div>
+                    <div class="totals" ng-init="getCartTotals()">IDR{{cart_total | number}}</div>
                     <div class="qty">M-points : </div>
                     <div class="totals">{{cart_total_points}}</div>
                 </div>
@@ -74,7 +74,7 @@
                 <h1>{{promodetails.title}}</h1>
                 <div >
                     <div style="width:300px;float:left">
-                    <p><b>Price : </b>${{promodetails.offer_price}}</p>
+                    <p><b>Price : </b>IDR{{promodetails.offer_price | number}}</p>
                     <p><b>M-points : </b>{{promodetails.mpoints}}</p>
                     </div>
                     <div style="float:right" id="button" dx-button="{
@@ -124,14 +124,14 @@
                 </p>
                 <div class="price-div">
                     <div class="off">{{cart.offer_percent}}% <span>off</span></div>
-                    <div class="price-m"><span>{{cart.price}}</span>  ${{cart.offer_price}}</div>
+                    <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
                     <div class="off">M-points</div>
                     <div class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>
                 <div class="qty-totals">
                     <div class="qty">Qty: <span><input type="text" ng-model="cart.quantity" value="1" ng-change="updateQuantity(cart)"></span></div>
-                    <div class="totals" ><span>Total:</span> ${{cart.quantity*cart.offer_price}}</div>
+                    <div class="totals" ><span>Total:</span> IDR{{cart.quantity*cart.offer_price | number}}</div>
                 </div>
                 <div class="qty-totals">
                     <div class="qty"><a href="javascript:;" ng-click="remove_offer(cart.offer_id)" style="color:red">Delete</a></div>
@@ -156,7 +156,7 @@
             <div ng-if="cartDetails" class="offer">
                 <div class="qty-totals">
                     <div class="qty">Total : </div>
-                    <div class="totals" ng-init="getCartTotals()">${{cart_total}}</div>
+                    <div class="totals" ng-init="getCartTotals()">IDR{{cart_total | number}}</div>
                     <div class="qty">M-points : </div>
                     <div class="totals">{{cart_total_points}}</div>
                 </div>
@@ -189,12 +189,14 @@
                 <h1>{{promodetails.title}}</h1>
                 <div >
                     <div style="width:300px;float:left">
-                        <p><b>Price : </b>${{promodetails.offer_price}}</p>
+                        <p><b>Price : </b>IDR{{promodetails.offer_price | number}}</p>
                         <p><b>M-points : </b>{{promodetails.mpoints}}</p>
                     </div>
                     <div style="float:right" id="button" dx-button="{
                                 text: 'Add to Cart',
                                 type: 'success',
+                                height:'40px',
+                                width:'130px',
                                 onClick: add_to_cart }" ></div>
                     <div class="clearfix" style="margin-bottom: 10px;"></div>
                 </div>
