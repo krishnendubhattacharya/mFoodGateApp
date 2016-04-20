@@ -58,7 +58,7 @@
                     <div class="desc">
                         <div class="txt">
                             <h2>{{featuredCatDetail.title}}</h2>
-                            <p>Sold:</p>
+
                             <p class="price"><span>IDR{{featuredCatDetail.price | number}}</span> IDR{{featuredCatDetail.price-((featuredCatDetail.price*featuredCatDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: featuredCatDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
@@ -82,11 +82,15 @@
                             <div class="txt">
                                 <h2>{{specialDetail.title}}</h2>
                                 <p>{{specialDetail.special_tag}}</p>
-                                <p><timer end-time="specialDetail.end_time">{{days}}D:{{hours}}H:{{minutes}}M:{{seconds}}S</timer></p>
+                                <!--<p><timer end-time="specialDetail.end_time">{{days}}D:{{hours}}H:{{minutes}}M:{{seconds}}S</timer></p> -->
                                 <p><b>Sold :</b>&nbsp;{{specialDetail.buy_count}}&nbsp;&nbsp;&nbsp;<b>Available :</b>&nbsp;{{specialDetail.quantity - specialDetail.buy_count}}</p>
                                 <p class="price"><span>IDR{{specialDetail.price | number}}</span> IDR{{specialDetail.price-((specialDetail.price*specialDetail.offer_percent)/100) | number}}</p>
                             </div>
-                            <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                            <div class="view-btn">
+                                <a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
+                                <!--<p><timer end-time="specialDetail.end_time">{{days}}D:{{hours}}H:{{minutes}}M:{{seconds}}S</timer></p>-->
+                                <p><timer end-time="specialDetail.end_time">{{end_time}} </timer></p>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -105,11 +109,14 @@
                         <div class="txt">
                             <h2>{{specialDetail.title}}</h2>
                             <p>{{specialDetail.special_tag}}</p>
-                            <p><timer end-time="specialDetail.end_time">{{days}}D:{{hours}}H:{{minutes}}M:{{seconds}}S</timer></p>
+                            <!--<p><timer end-time="specialDetail.end_time">{{days}}D:{{hours}}H:{{minutes}}M:{{seconds}}S</timer></p>-->
                             <p><b>Sold :</b>&nbsp;{{specialDetail.buy_count}}&nbsp;&nbsp;&nbsp;<b>Available :</b>&nbsp;{{specialDetail.quantity - specialDetail.buy_count}}</p>
                             <p class="price"><span>IDR{{specialDetail.price | number}}</span> IDR{{specialDetail.price-((specialDetail.price*specialDetail.offer_percent)/100) | number}}</p>
                         </div>
-                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                        <div class="view-btn">
+                            <a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
+                            <p><timer end-time="specialDetail.end_time">{{end_time}} </timer></p>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -127,11 +134,14 @@
                     <div class="desc">
                         <div class="txt">
                             <h2>{{newPromoDetail.title}}</h2>
-                            <p><timer end-time="newPromoDetail.end_time">{{days}}D:{{hours}}H:{{minutes}}M:{{seconds}}S</timer></p>
+                            <!--<p><timer end-time="newPromoDetail.end_time">{{days}}D:{{hours}}H:{{minutes}}M:{{seconds}}S</timer></p>-->
                             <p><b>Sold :</b>&nbsp;{{newPromoDetail.buy_count}}&nbsp;&nbsp;&nbsp;<b>Available :</b>&nbsp;{{newPromoDetail.quantity - newPromoDetail.buy_count}}</p>
                             <p class="price"><span>IDR{{newPromoDetail.price | number}}</span> IDR{{newPromoDetail.price-((newPromoDetail.price*newPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
-                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: newPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                        <div class="view-btn">
+                            <a ui-sref="frontend.promodetails({ promoId: newPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
+                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -149,11 +159,14 @@
                     <div class="desc">
                         <div class="txt">
                             <h2>{{newPromoDetail.title}}</h2>
-                            <p><timer end-time="newPromoDetail.end_time">{{days}}D:{{hours}}H:{{minutes}}M:{{seconds}}S</timer></p>
+                            <!--<p><timer end-time="newPromoDetail.end_time">{{days}}D:{{hours}}H:{{minutes}}M:{{seconds}}S</timer></p>-->
                             <p><b>Sold :</b>&nbsp;{{newPromoDetail.buy_count}}&nbsp;&nbsp;&nbsp;<b>Available :</b>&nbsp;{{newPromoDetail.quantity - newPromoDetail.buy_count}}</p>
                             <p class="price"><span>IDR{{newPromoDetail.price | number}}</span> IDR{{newPromoDetail.price-((newPromoDetail.price*newPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
-                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: newPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                        <div class="view-btn">
+                            <a ui-sref="frontend.promodetails({ promoId: newPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
+                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -324,7 +337,10 @@
 
                             <p class="price"><span>IDR{{hotSellingDetail.price | number}}</span> IDR{{hotSellingDetail.price-((hotSellingDetail.price*hotSellingDetail.offer_percent)/100) | number}}</p>
                         </div>
-                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: hotSellingDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                        <div class="view-btn">
+                            <a ui-sref="frontend.promodetails({ promoId: hotSellingDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
+                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -348,7 +364,10 @@
                             <!--<p>11D:21H:50M:20S</p>-->
                             <p class="price"><span>IDR{{hotSellingDetail.price | number}}</span> IDR{{hotSellingDetail.price-((hotSellingDetail.price*hotSellingDetail.offer_percent)/100) | number}}</p>
                         </div>
-                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: hotSellingDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                        <div class="view-btn">
+                            <a ui-sref="frontend.promodetails({ promoId: hotSellingDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
+                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -361,7 +380,7 @@
 <div class="dx-clearfix"></div>
 <div class="container">
     <div class="new-Promo phone-hide" ng-if="lastDayPromoInfo.length != 0">
-        <h1>Last Days Promo</h1>
+        <h1>Last  Promo</h1>
         <ul>
             <li ng-repeat="lastDayPromoDetail in lastDayPromoInfo">
                 <div class="pro-item">
@@ -373,7 +392,10 @@
                             <!--<p>11D:21H:50M:20S</p>-->
                             <p class="price"><span>IDR{{lastDayPromoDetail.price | number}}</span> IDR{{lastDayPromoDetail.price-((lastDayPromoDetail.price*lastDayPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
-                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: lastDayPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                        <div class="view-btn">
+                            <a ui-sref="frontend.promodetails({ promoId: lastDayPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
+                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -385,7 +407,7 @@
 </div>
 
     <div class="m-new-Promo tablet-hide" ng-if="lastDayPromoInfo.length != 0">
-        <h1>Last Days Promo</h1>
+        <h1>Last  Promo</h1>
         <ul>
             <li ng-repeat="lastDayPromoDetail in lastDayPromoInfo">
                 <div class="pro-item">
@@ -397,7 +419,9 @@
                             <!--<p>11D:21H:50M:20S</p>-->
                             <p class="price"><span>IDR{{lastDayPromoDetail.price | number}}</span> IDR{{lastDayPromoDetail.price-((lastDayPromoDetail.price*lastDayPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
-                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: lastDayPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a></div>
+                        <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: lastDayPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
+                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                        </div>
                     </div>
                 </div>
             </li>

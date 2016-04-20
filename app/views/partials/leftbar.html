@@ -64,7 +64,7 @@
 	</div>
 
 	<div class="m-left-panel tablet-hide">
-		<div class="profile-img">
+		<div class="profile-img" ng-if="urlParam != '/allvoucher' && urlParam != '/mymembership' && urlParam != '/mypoints'">
 			<img src="app/assets/Images/default-profile.png" width="100%" height="auto"  alt=""/>
 		</div>
 		<ul ng-if="loggedindetails.user_type_id == 2">
