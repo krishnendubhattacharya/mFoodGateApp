@@ -99,6 +99,7 @@ app.constant('JS_REQUIRES', {
         'merchantmembershiplist':['app/Controllers/merchantmembershiplistCtrl.js','app/Controllers/leftbarCtrl.js'],
         'addswapvoucher':['app/Controllers/addswapvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
         'swapinterestededit':['app/Controllers/swapinterestededitCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'humanize':['bower_components/humanize-duration/humanize-duration.js']
     },
 
     //*** angularJS Modules
@@ -136,7 +137,7 @@ app.constant('JS_REQUIRES', {
         },
         {
             name: 'timer',
-            files: ['bower_components/angular-timer/dist/angular-timer.min.js','bower_components/humanize-duration/humanize-duration.js']
+            files: ['bower_components/humanize-duration/humanize-duration.js','bower_components/angular-timer/dist/angular-timer.min.js']
         },
     ]
 });

@@ -74,6 +74,7 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                             $location.path('/');
                         }
                     }
+                    //if(!$scope.$$phase) {}
                     DevExpress.ui.notify({
                         message: message,
                         position: {
@@ -81,6 +82,7 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                             at: "center top"
                         }
                     }, "success", 3000);
+
                 }else{
                     var message = "Login failed.";
                     DevExpress.ui.notify({

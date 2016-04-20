@@ -146,7 +146,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             })
             .state('frontend.index', {
                 url: '/',
-                resolve: loadSequence('home','timer'),
+                resolve: loadSequence('home'),
                 templateUrl: 'app/views/home.html',
                 title: 'Home'
             })
