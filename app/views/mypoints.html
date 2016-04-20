@@ -21,12 +21,12 @@
         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
 
         <div class="m-profile-details">
-            <h3>All Points</h3>
+            <h3 style="font-size: 18px; line-height: 30px; padding: 10px;">All Points</h3>
             <div dx-list="{
       onInitialized:loadList
     }">
 
-                <div data-options="dxTemplate: { name: 'item' }">
+                <div  data-options="dxTemplate: { name: 'item' }">
 
                     <div style="display:inline-block; margin: 5px;">
                         <p style="font-size:larger;"><b>{{source}}</b></p>
@@ -39,7 +39,7 @@
             </div>
             <div class="dx-clearfix"></div>
 
-            <h3>Expire soon Points</h3>
+            <h3 style="font-size: 18px; line-height: 30px; padding: 10px;">Expire soon Points</h3>
             <div dx-list="{
       onInitialized:loadExpiredPointList
     }">
