@@ -32,6 +32,7 @@ app.constant('JS_REQUIRES', {
         'voucherdetail':['app/Controllers/voucherdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
         'vouchersell':['app/Controllers/vouchersellCtrl.js','app/Controllers/leftbarCtrl.js'],
         'bidvoucher':['app/Controllers/bidvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'editbid':['app/Controllers/editbidCtrl.js','app/Controllers/leftbarCtrl.js'],
         'feedback':['app/Controllers/feedbackCtrl.js','app/Controllers/leftbarCtrl.js'],
         'preorder':['app/Controllers/preorderCtrl.js','app/Controllers/leftbarCtrl.js'],
         'queuing':['app/Controllers/queuingCtrl.js','app/Controllers/leftbarCtrl.js'],
@@ -94,6 +95,8 @@ app.constant('JS_REQUIRES', {
         'swapallvoucherdetail':['app/Controllers/swapallvoucherdetailCtrl.js'],
         'paymentVoucher':['app/Controllers/paymentVoucherCtrl.js'],
         'cartpage':['app/Controllers/cartpageCtrl.js'],
+        'merchantmembershiplist':['app/Controllers/merchantmembershiplistCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'addswapvoucher':['app/Controllers/addswapvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
     },
 
     //*** angularJS Modules
@@ -128,6 +131,10 @@ app.constant('JS_REQUIRES', {
         {
             name: 'ng-bootstrap-datepicker',
             files: ['bower_components/angular-bootstrap-datepicker.js','bower_components/angular-bootstrap-datepicker.css']
+        },
+        {
+            name: 'timer',
+            files: ['bower_components/angular-timer/dist/angular-timer.min.js','bower_components/humanize-duration/humanize-duration.js']
         },
     ]
 });
