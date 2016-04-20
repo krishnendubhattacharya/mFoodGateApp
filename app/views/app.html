@@ -54,13 +54,16 @@
 
     	<li><input type="text" placeholder="Search Keyword" ng-model="keyword"></li>
         </form>
+
+        <div id='cssmenu'>
+            <ul>
         <li><a onclick="menuClick()" title="Home" ui-sref="frontend.index">Home</a></li>
-        <li><a href="">RESTAURANT CATEGORY</a>
+        <li class="has-sub"><a href=""><span>Restaurant Category</span></a>
             <ul>
                 <li ng-repeat="catdetail in catInfo"><a onclick="menuClick()" title="Category" ui-sref="frontend.refinerestaurent({ categoryId: catdetail.id })">{{catdetail.name}}</a></li>
             </ul></li>
-        <li><a href="" title="Voucher">Voucher</a>
-            <ul>
+        <li class="has-sub active"><a href="" title="Voucher"><span>Voucher</span></a>
+            <ul style="display: block;">
                 <li><a onclick="menuClick()" title="My Voucher" ui-sref="frontend.voucher">Menu Voucher</a></li>
                 <li><a onclick="menuClick()" title="My Membership" ui-sref="frontend.paymentVoucher">Payment Voucher</a></li>
 
@@ -71,14 +74,15 @@
 
         <li><a onclick="menuClick()" title="Marketplace" ui-sref="frontend.marketplace">Marketplace</a></li>
         <li><a onclick="menuClick()" title="News" ui-sref="frontend.news">News</a></li>
-        <span ng-show="!showMember">
+            </ul>
+        <ul ng-show="!showMember">
         <li><a onclick="menuClick()" title="Login" ui-sref="frontend.login" >Login</a></li>
         <li><a onclick="menuClick()" title="Register" ui-sref="frontend.register">Register</a></li>
-        </span>
-        <span ng-show="showMember">
+        </ul>
+        <ul ng-show="showMember">
         <li><a onclick="menuClick()" title="Login" ui-sref="frontend.profile" >My Profile</a></li>
-            <li><a href="">Member</a>
-            <ul>
+            <li class="has-sub active"><a href=""><span>Member</span></a>
+            <ul style="display: block;">
         <li><a onclick="menuClick()" title="My Voucher" ui-sref="frontend.allvoucher">My Voucher</a></li>
         <li><a onclick="menuClick()" title="My Membership" ui-sref="frontend.mymembership">My Membership</a></li>
         <li><a onclick="menuClick()" title="My Account" ui-sref="frontend.profile">My Account</a></li>
@@ -87,14 +91,41 @@
         <li><a onclick="menuClick()" title="Queuing" ui-sref="frontend.queuing">Queuing</a></li>
         <li><a onclick="menuClick()" title="Pre-Order" ui-sref="frontend.preorder">Pre-Order</a></li>
         <li><a onclick="menuClick()" title="Feedback" ui-sref="frontend.feedback">Feedback</a></li>
+        <li><a onclick="menuClick()" title="Feedback" href="">Setting</a></li>
 
 
                 </ul></li>
             <li><a onclick="menuClick()" title="Logout" ng-click="userLogout()" title="Logout">Logout</a></li>
-        </span>
+        </ul>
 
+</div>
     </ul>
 </div>
 
 </div>
+<script>
+    ( function( $ ) {
+        $( document ).ready(function() {
+            $('#cssmenu > ul > li > a').click(function() {
+                $('#cssmenu li').removeClass('active');
+                $(this).closest('li').addClass('active');
+                var checkElement = $(this).next();
+                if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+                    $(this).closest('li').removeClass('active');
+                    checkElement.slideUp('normal');
+                }
+                if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+                    $('#cssmenu ul ul:visible').slideUp('normal');
+                    checkElement.slideDown('normal');
+                }
+                if($(this).closest('li').find('ul').children().length == 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        });
+    } )( jQuery );
+</script>
+
 

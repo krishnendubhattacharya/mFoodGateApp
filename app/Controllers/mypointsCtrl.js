@@ -62,7 +62,7 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
                 ]
             };
             console.log("ajax")
-            $scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: false });
+            $scope.listViewData.option({"dataSource": $scope.voucherInfo,hoverStateEnabled: false });
 
            /*$scope.listDataSource = new DevExpress.data.DataSource({
                 store: []
@@ -137,7 +137,7 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
 
                 ]
             };
-            $scope.listExpiredPointViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
+            $scope.listExpiredPointViewData.option({"dataSource": $scope.voucherInfo,hoverStateEnabled: false });
         });
     }
     $scope.loadExpiredPointList=function(e)
