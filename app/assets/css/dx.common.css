@@ -1,4 +1,4 @@
-/*! 
+/*!
 * DevExtreme
 * Version: 15.2.4
 * Build date: Dec 8, 2015
@@ -1969,7 +1969,7 @@
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
   white-space: nowrap;
-  display: table-cell;
+  /*display: table-cell;*/
   width: 100%;
 }
 .dx-list-item-content:before

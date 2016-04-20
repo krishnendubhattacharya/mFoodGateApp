@@ -167,9 +167,10 @@ h5 a:link, h5 a:visited, h5 a:active {
 .featured-Promo .pro-item img{ width:100%; height: 100%;}
 .featured-Promo .pro-item .desc{ position: absolute; z-index: 100; width:94%; height:auto; padding: 5px 13px; bottom:0; background: url(../Images/b-trans-bg.png) left top repeat; overflow: hidden;}
 .featured-Promo .pro-item .desc .txt{ width:70%; height: auto; float: left;}
-.featured-Promo .pro-item .desc .txt h2{ font-size:18px; line-height: 24px; margin-bottom:5px; padding: 0; margin:0; color:#fff; font-weight: bold; }
-.featured-Promo .pro-item .desc .txt p{ font-size:16px; color:#d2d2d2; line-height:21px; margin:0}
-.featured-Promo .pro-item .desc .txt .price{ font-size: 24px; color:#339933 !important;}
+.featured-Promo .pro-item .desc .txt h2{ font-size:18px; line-height: 24px; margin-bottom:5px; padding: 0; margin:0;
+    color:#fff; font-weight: bold;	text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+.featured-Promo .pro-item .desc .txt p{ font-size:14px; color:#d2d2d2; line-height:21px; margin:0}
+.featured-Promo .pro-item .desc .txt .price{ font-size: 16px; color:#339933 !important;}
 .featured-Promo .pro-item .desc .txt .price span{ text-decoration:line-through; font-size:16px; color:#b4b4b4;  }
 .featured-Promo .pro-item .desc .view-btn{ width: 66px; height: 42px; float: right; margin-top: 3px;}
 .featured-Promo .pro-item .p-circle{ width:73px; height:73px; position: absolute; z-index: 1001; top: 20px; right:20px; font-size:24px; text-align: center;
@@ -185,11 +186,14 @@ h5 a:link, h5 a:visited, h5 a:active {
 .new-Promo .pro-item img{ width:100%; height: 100%;}
 .new-Promo .pro-item .desc{ position: absolute; z-index: 100; width:94%; height:auto; padding: 5px 13px; bottom:0; background: url(../Images/b-trans-bg.png) left top repeat; overflow: hidden;}
 .new-Promo .pro-item .desc .txt{ width:70%; height: auto; float: left;}
-.new-Promo .pro-item .desc .txt h2{ font-size:18px; line-height: 24px; margin-bottom:5px; padding: 0; margin:0; color:#fff; font-weight: bold; }
-.new-Promo .pro-item .desc .txt p{ font-size:16px; color:#d2d2d2; line-height:21px; margin:0}
-.new-Promo .pro-item .desc .txt .price{ font-size: 24px; color:#339933 !important;}
+.new-Promo .pro-item .desc .txt h2{ font-size:18px; line-height: 24px; margin-bottom:5px; padding: 0; margin:0; color:#fff;
+    font-weight: bold;text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+.new-Promo .pro-item .desc .txt p{ font-size:14px; color:#d2d2d2; line-height:21px; margin:0}
+.new-Promo .pro-item .desc .txt .price{ font-size: 16px; color:#339933 !important;}
 .new-Promo .pro-item .desc .txt .price span{ text-decoration:line-through; font-size:16px; color:#b4b4b4;  }
-.new-Promo .pro-item .desc .view-btn{ width: 66px; height: 42px; float: right; margin-top: 3px;}
+.new-Promo .pro-item .desc .view-btn{ width: 28%; height: 42px; float: right; margin-top: 3px; text-align:  right;}
+.new-Promo .pro-item .desc .view-btn img{ width: auto; height:100%;}
+.new-Promo .pro-item .desc .view-btn p{ font-size:12px; color:#ececec; line-height:21px; margin:0}
 .new-Promo .pro-item .p-circle{ width:73px; height:73px; position: absolute; z-index: 1001; top: 20px; right:20px; font-size:24px; text-align: center;
     line-height: 73px; background: url(../Images/trans-circle.png) center center no-repeat; color:#fff; }
 .new-Promo .select-box{width: 120px; background: url(../Images/select-drop.png) 90% center no-repeat #fff;
@@ -1101,7 +1105,7 @@ color: #313131; font-weight: normal; width:100%; }
     background-color: #e2571b;
     /*background: none !important;*/
     display:  block;
-    border-radius:  none;
+    border-radius: 0;
     width: 100%;
     padding-left: 0;
     text-align: left !important;
@@ -1286,4 +1290,20 @@ color: #313131; font-weight: normal; width:100%; }
     margin-bottom: 15px;
     float: right;
     margin-right: 10px;
+}
+
+
+/*------------------------------------ Media Query -------------------------*/
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .container{ width: 96%; margin: 0 auto;}
+    .category-left{ width:25%;}
+    .featured-Promo{ width:73%; float: right; }
+    .section-footer .footer-top ul li{ padding: 0; margin:0 2% 0; width:28%; float: left; list-style-type: none;}
+}
+
+@media only screen and (max-width: 767px) {
+    .container{ width: 96%; margin: 0 auto;}
+    .category-left{ width:25%;}
+    .featured-Promo{ width:73%; float: right; }
+    .section-footer .footer-top ul li{ padding: 0; margin:0 2% 0; width:28%; float: left; list-style-type: none;}
 }

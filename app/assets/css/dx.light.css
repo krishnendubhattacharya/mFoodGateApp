@@ -1,4 +1,4 @@
-/*! 
+/*!
 * DevExtreme
 * Version: 15.2.4
 * Build date: Dec 8, 2015
@@ -4542,7 +4542,7 @@
   background-color: rgba(96,96,96,.1);
   color: #232323;
 }
-.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-list-item-selected
+/*.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-list-item-selected
 {
   background-color: rgba(96,96,96,.2);
   color: #232323;
@@ -4569,7 +4569,7 @@
 {
   background-color: #606060;
   color: #fff;
-}
+}*/
 .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-active .dx-icon
 {
   color: #fff;

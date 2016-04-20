@@ -58,9 +58,11 @@ body#mfoodmain{
     overflow: hidden;
     box-sizing: border-box;
 }*/
+
+.dx-inkripple-wave{display: none !important;}
 .mobile-header{
     position: fixed !important;
-    z-index:100000;
+    z-index:1000;
     background: url(../Images/h-bg-mobile.png) left top repeat-x;
     /*top: 0;*/
     height: 52px;
@@ -497,10 +499,10 @@ body#mfoodmain{
 .m-voucher-section h1{ font-size:20px; color:#3b3b3b; line-height:24px; padding-bottom:2px; margin-top:5px;}
 .m-voucher-section ul{ padding:5px 0 0 0; margin:0;}
 .m-voucher-section ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:100%; margin: 10px 0; }
-.m-voucher-section .pro-item{ width: 100%; height: 330px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
+.m-voucher-section .pro-item{ width: 100%; height: auto; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
 .m-voucher-section .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4;}
 .m-voucher-section .pro-item .logo-box img{ width: 100%; height: 100%; vertical-align:middle; }
-.m-voucher-section .pro-item .desc{ padding: 10px 10px;}
+.m-voucher-section .pro-item .desc{ padding: 10px 10px 0;}
 .m-voucher-section .pro-item .desc h2{font-size:14px; color:#999; text-transform: uppercase; padding: 5px 0; text-align: center;}
 .m-voucher-section .pro-item .desc h3{font-size:14px; color:#5187ca; text-transform: uppercase; padding: 5px 0; text-align: center;}
 .m-voucher-section .pro-item .desc p{ color:#ff0000; text-align: center; font-size:12px; font-weight: bold; padding: 0; margin: 4px 0;}
@@ -512,7 +514,7 @@ body#mfoodmain{
 .m-voucher-section .pro-item .desc .btn_o a{ display: block; border-radius: 3px; background: #e46c0a; text-align:center; font-size: 16px; color:#fff; text-decoration: none; height: 36px; line-height: 36px; font-weight: bold;}
 .m-voucher-section .pro-item .desc .btn_o a:hover{ display: block; background:#ca6009;}
 
-.m-voucher-section .pro-item .desc .btn_o2{width:100px; height: 36px; margin: 15px auto 10px; overflow: hidden; float: none;}
+.m-voucher-section .pro-item .desc .btn_o2{width:100px; height: 36px; margin: 15px auto 0px; overflow: hidden; float: none;}
 .m-voucher-section .pro-item .desc .btn_o2 a{ display: block; border-radius: 3px; background: #e46c0a; text-align:center; font-size: 16px; color:#fff; text-decoration: none; height: 36px; line-height: 36px; font-weight: bold;}
 .m-voucher-section .pro-item .desc .btn_o2 a:hover{ display: block; background:#ca6009;}
 
@@ -684,6 +686,7 @@ body#mfoodmain{
 .m-left-panel ul li a:hover{ text-decoration: none; color: #319432; }
 
 .m-profile-details{ width:100%; float: none; margin: 15px auto; border: solid 1px #eaeaea; overflow: hidden;}
+
 .m-profile-details h1{ font-size: 18px; color:#1d1d1d; padding: 0; margin:0 0 3px; line-height:30px; }
 .m-profile-details p{ padding:2px 0; margin:0; font-size:14px; color:#292929; line-height:18px; overflow:hidden;}
 .m-profile-details p .title{ float:left; width:45%; font-weight:500; color:#1d1d1d; }
@@ -1034,9 +1037,10 @@ body#mfoodmain{
 .m-featured-Promo .pro-item img{ width:100%; height: 100%;}
 .m-featured-Promo .pro-item .desc{ position: absolute; z-index: 100; width:94%; height:auto; padding: 8px 13px; bottom:0; background: url(../Images/b-trans-bg.png) left top repeat; overflow: hidden;}
 .m-featured-Promo .pro-item .desc .txt{ width:70%; height: auto; float: left;}
-.m-featured-Promo .pro-item .desc .txt h2{ font-size:16px; line-height: 21px; margin-bottom:5px; padding: 0; margin:0; color:#fff; font-weight: bold; }
+.m-featured-Promo .pro-item .desc .txt h2{ font-size:14px; line-height: 21px; margin-bottom:5px; padding: 0; margin:0;
+    color:#fff; font-weight: bold; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 .m-featured-Promo .pro-item .desc .txt p{ font-size:14px; color:#d2d2d2; line-height:18px; margin:0}
-.m-featured-Promo .pro-item .desc .txt .price{ font-size: 20px; color:#339933 !important;}
+.m-featured-Promo .pro-item .desc .txt .price{ font-size: 14px; color:#339933 !important;}
 .m-featured-Promo .pro-item .desc .txt .price span{ text-decoration:line-through; font-size:14px; color:#b4b4b4;  }
 .m-featured-Promo .pro-item .desc .view-btn{ width: 66px; height: 42px; float: right; margin-top: 2px;}
 .m-featured-Promo .pro-item .p-circle{ width:53px; height:53px; position: absolute; z-index: 2; top: 20px; right:20px; font-size:20px; text-align: center;
@@ -1052,9 +1056,10 @@ body#mfoodmain{
 .m-new-Promo .pro-item img{ width:100%; height: 100%;}
 .m-new-Promo .pro-item .desc{ position: absolute; z-index: 100; width:94%; height:auto; padding: 10px 13px; bottom:0; background: url(../Images/b-trans-bg.png) left top repeat; overflow: hidden;}
 .m-new-Promo .pro-item .desc .txt{ width:70%; height: auto; float: left;}
-.m-new-Promo .pro-item .desc .txt h2{ font-size:16px; line-height: 21px; margin-bottom:5px; padding: 0; margin:0; color:#fff; font-weight: bold; }
+.m-new-Promo .pro-item .desc .txt h2{ font-size:14px; line-height: 21px; margin-bottom:5px; padding: 0; margin:0;
+    color:#fff; font-weight: bold; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 .m-new-Promo .pro-item .desc .txt p{ font-size:14px; color:#d2d2d2; line-height:18px; margin:0}
-.m-new-Promo .pro-item .desc .txt .price{ font-size: 20px; color:#339933 !important;}
+.m-new-Promo .pro-item .desc .txt .price{ font-size: 14px; color:#339933 !important;}
 .m-new-Promo .pro-item .desc .txt .price span{ text-decoration:line-through; font-size:14px; color:#b4b4b4;  }
 .m-new-Promo .pro-item .desc .view-btn{ width: 66px; height: 42px; float: right; margin-top: 2px;}
 .m-new-Promo .pro-item .p-circle{ width:53px; height:53px; position: absolute; z-index: 1001; top: 20px; right:20px; font-size:20px; text-align: center;
@@ -1119,7 +1124,7 @@ text-transform: capitalize;}
 .m-pvoucher-section h1{ font-size:20px; color:#3b3b3b; line-height:24px; padding-bottom:2px; margin-top:5px;}
 .m-pvoucher-section ul{ padding:5px 0 0 0; margin:0;}
 .m-pvoucher-section ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:100%; margin: 10px 0; }
-.m-pvoucher-section .pro-item{ width: 100%; height: 340px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
+.m-pvoucher-section .pro-item{ width: 100%; height: auto; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
 .m-pvoucher-section .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4;}
 .m-pvoucher-section .pro-item .logo-box img{ width: 100%; height: 100%; vertical-align:middle; }
 .m-pvoucher-section .pro-item .desc{ padding: 10px 10px;}
