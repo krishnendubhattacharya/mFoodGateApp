@@ -26,6 +26,7 @@ app.constant('JS_REQUIRES', {
         'sample':['app/Controllers/sampleCtrl.js'],
         'allvoucher':['app/Controllers/allvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
         'bidderlist':['app/Controllers/bidderlistCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'swapbidderlist':['app/Controllers/swapbidderlistCtrl.js','app/Controllers/leftbarCtrl.js'],
         'setting':['app/Controllers/settingCtrl.js','app/Controllers/leftbarCtrl.js'],
         'giftvoucher':['app/Controllers/giftvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
         'mypoints':['app/Controllers/mypointsCtrl.js','app/Controllers/leftbarCtrl.js'],
@@ -97,6 +98,8 @@ app.constant('JS_REQUIRES', {
         'cartpage':['app/Controllers/cartpageCtrl.js'],
         'merchantmembershiplist':['app/Controllers/merchantmembershiplistCtrl.js','app/Controllers/leftbarCtrl.js'],
         'addswapvoucher':['app/Controllers/addswapvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'swapinterestededit':['app/Controllers/swapinterestededitCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'humanize':['bower_components/humanize-duration/humanize-duration.js']
     },
 
     //*** angularJS Modules
@@ -134,7 +137,7 @@ app.constant('JS_REQUIRES', {
         },
         {
             name: 'timer',
-            files: ['bower_components/angular-timer/dist/angular-timer.min.js','bower_components/humanize-duration/humanize-duration.js']
+            files: ['bower_components/humanize-duration/humanize-duration.js','bower_components/angular-timer/dist/angular-timer.min.js']
         },
     ]
 });
