@@ -63,7 +63,7 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
                                 my: "center top",
                                 at: "center top"
                             }
-                        }, "success", 300000);
+                        }, "success", 3000);
                 });
                 
          };
