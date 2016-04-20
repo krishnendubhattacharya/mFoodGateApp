@@ -1,5 +1,5 @@
 <!--Web header-->
-<div ng-controller="bidvoucherCtrl">
+<div ng-controller="addswapvoucherCtrl">
 
     <div class="container phone-hide">
         <div class="myaccount-details">
@@ -10,15 +10,9 @@
                 <div class="form">
                     <div class="dx-fieldset">
                         <div class="dx-field">
-                            <div class="dx-field-label">Bid Price</div>
+                            <div class="dx-field-label">Description</div>
                             <div class="dx-field-value">
-                                <div dx-text-box="textBox.bid_price"   ng-model="bid_price"></div>
-                            </div>
-                        </div>
-                        <div class="dx-field">
-                            <div class="dx-field-label">Bid mpoints</div>
-                            <div class="dx-field-value">
-                                <div dx-text-box="textBox.m_points"   ng-model="m_points"></div>
+                                <div dx-text-area="textArea"  ng-model="description"></div>
                             </div>
                         </div>
                         <div class="dx-field">
@@ -27,7 +21,7 @@
                                 <div id="button" dx-button="{
                                 text: 'Submit',
                                 type: 'success',
-                                onClick: saveBid }" ></div>
+                                onClick: swapvoucherADD }" ></div>
                             </div>
                         </div>
 
@@ -51,15 +45,9 @@
             <div class="form">
                 <div class="dx-fieldset">
                     <div class="dx-field">
-                        <div class="dx-field-label">Bid Price</div>
+                        <div class="dx-field-label">Description</div>
                         <div class="dx-field-value">
-                            <div dx-text-box="textBox.bid_price"   ng-model="bid_price"></div>
-                        </div>
-                    </div>
-                    <div class="dx-field">
-                        <div class="dx-field-label">Bid mpoints</div>
-                        <div class="dx-field-value">
-                            <div dx-text-box="textBox.m_points"   ng-model="m_points"></div>
+                            <div dx-text-area="textArea"  ng-model="description"></div>
                         </div>
                     </div>
                     <div class="dx-field">
@@ -68,9 +56,12 @@
                             <div id="button" dx-button="{
                                 text: 'Submit',
                                 type: 'success',
-                                onClick: saveBid }" ></div>
+                                onClick: swapvoucherADD }" ></div>
                         </div>
                     </div>
+
+
+
 
                 </div>
                 <!--<div id="summary" dx-validation-summary="{ }"></div>-->

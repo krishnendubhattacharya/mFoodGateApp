@@ -146,7 +146,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             })
             .state('frontend.index', {
                 url: '/',
-                resolve: loadSequence('home'),
+                resolve: loadSequence('home','timer'),
                 templateUrl: 'app/views/home.html',
                 title: 'Home'
             })
@@ -236,6 +236,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/addbid.html',
                 title: 'Add Bid'
             })
+            .state('frontend.editbid', {
+                url: '/editbid/:bidId',
+                resolve: loadSequence('editbid'),
+                templateUrl: 'app/views/editbid.html',
+                title: 'Edit Bid'
+            })
             .state('frontend.sellbid', {
                 url: '/sellbid/:sellId/:voucherId',
                 resolve: loadSequence('bidvoucher'),
@@ -247,6 +253,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('bidderlist'),
                 templateUrl: 'app/views/bidderlist.html',
                 title: 'Bidder List'
+            })
+            .state('frontend.swapbidderlist', {
+                url: '/swapbidderlist/:swapId',
+                resolve: loadSequence('swapbidderlist'),
+                templateUrl: 'app/views/swapbidderlist.html',
+                title: 'Swap Bidder List'
             })
             .state('frontend.giftvoucher', {
                 url: '/giftvoucher/:voucherId',
@@ -482,6 +494,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/merchant/merchantmenu.html',
                 title: 'Menu'
             })
+            .state('frontend.merchantmembershiplist', {
+                url: '/merchantmembershiplist',
+                resolve: loadSequence('merchantmembershiplist'),
+                templateUrl: 'app/views/merchant/merchantmembershiplist.html',
+                title: 'Menu'
+            })
             .state('frontend.merchantoutlets', {
                 url: '/merchantoutlets',
                 resolve: loadSequence('merchantoutlets'),
@@ -613,6 +631,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('cartpage','ngMap','mCart'),
                 templateUrl: 'app/views/cartpage.html',
                 title: 'Promo Detail'
+            })
+            .state('frontend.addswapvoucher', {
+                url: '/addswapvoucher/:voucherId/:offerId',
+                resolve: loadSequence('addswapvoucher'),
+                templateUrl: 'app/views/addswapvoucher.html',
+                title: 'Swap Voucher'
+            })
+            .state('frontend.swapinterestededit', {
+                url: '/swapinterestededit/:siid',
+                resolve: loadSequence('swapinterestededit'),
+                templateUrl: 'app/views/swapinterestededit.html',
+                title: 'Edit Swap Bid'
             })
 
 
