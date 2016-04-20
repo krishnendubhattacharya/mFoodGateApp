@@ -348,7 +348,7 @@ body#mfoodmain{
 .m-app-menu ul li:hover,.m-app-menu ul li.active{background:#fe611c}
 
 .m-app-menu ul li ul li a:hover {
-    background: #37a537;
+    background: #fb601c;
     padding: 0;
     height: 35px;
     display: block;
@@ -361,7 +361,7 @@ body#mfoodmain{
     border: none;
     color: #fff;
     padding-bottom:3px;
-    background: #fe611c;
+    background: #000;
     height: 35px;
     font-size: 16px;
 }
