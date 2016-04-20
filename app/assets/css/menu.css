@@ -50,7 +50,7 @@
 	font-size: 12px;
 }
 #menu ul li ul{ list-style-type: none; height:  auto; }
-#menu ul li ul li{ padding-left: 15px; background: #414141; }
+#menu ul li ul li{  background: #414141; }
 #menu ul li ul li a{color:#ccc;}
 /* Animations */
 
@@ -128,6 +128,7 @@ border: solid 1px #3d3d3d;}
 
 
 }
+#cssmenu > ul{height: auto !important;}
 #cssmenu > ul > li {
 	margin: 0;
 }
@@ -139,7 +140,8 @@ border: solid 1px #3d3d3d;}
 	color: #fff;
 	/*padding: 10px 0;*/
 	text-decoration: none;
-	font-size: 12px;
+	font-size: 13px;
+	font-weight:  600;
 
 }
 #cssmenu > ul > li > a > span {
@@ -161,10 +163,10 @@ border: solid 1px #3d3d3d;}
 
 }
 #cssmenu > ul > li.has-sub > a span {
-
+	background: url(../Images/icon_plus.png) 98% center no-repeat;
 }
 #cssmenu > ul > li.has-sub.active > a span {
-
+	background: url(../Images/icon_minus.png) 98% center no-repeat;
 }
 /* Sub menu */
 #cssmenu ul ul {
@@ -179,8 +181,7 @@ border: solid 1px #3d3d3d;}
 #cssmenu ul ul a {
 	display: block;
 	color: #595959;
-	font-size: 13px;
-	font-weight: bold;
+	font-size: 12px;
 	padding-left: 10px;
 }
 #cssmenu ul ul a:hover {
