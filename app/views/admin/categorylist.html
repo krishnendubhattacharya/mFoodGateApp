@@ -21,7 +21,7 @@
                     <table id="categoryList" class="table  table-hover general-table">
                         <thead>
                         <tr>
-                            <th> Id</th>
+                            <th> Seq</th>
                             <th class="hidden-phone">Name</th>
                             <th>Action</th>
 
@@ -31,7 +31,7 @@
 
                         <tr ng-repeat="item in allcat">
                             <td>
-                                {{item.id}}
+                                {{item.seq}}
                             </td>
                             <td >{{item.name}}</td>
                             <td ><a class="btn btn-default edit" href="javascript:;" ng-click ="editCategory(item)"><i class="fa fa-pencil"></i> Edit</a>
@@ -48,13 +48,15 @@
 
                 <div ng-if="categoryView == 'edit'">
                     <header class="panel-heading">
-                        Edit Category
+                        {{item.id?'Edit Category':'Add Category'}}
                     </header>
                     <div class="panel-body">
                         <form role="form" ng-submit="saveCategory()">
                             <div class="form-group">
                                 <label for="exampleInputName">Category Name</label>
                                 <input type="text" placeholder="Enter Category Name"  id="exampleInputName" ng-model="item.name" class="form-control">
+                                <label for="exampleInputName">Sequence No. </label>
+                                <input type="text" placeholder="Enter Sequence Numbar"  id="seq" ng-model="item.seq" class="form-control">
                                 <input type="hidden"  ng-model="item.id" >
                             </div>
 

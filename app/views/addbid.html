@@ -13,21 +13,30 @@
                             <div class="dx-field-label">Bid Price</div>
                             <div class="dx-field-value">
                                 <div dx-text-box="textBox.bid_price"   ng-model="bid_price"></div>
-
-
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Bid mpoints</div>
+                            <div class="dx-field-value">
+                                <div dx-text-box="textBox.m_points"   ng-model="m_points"></div>
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">&nbsp;</div>
+                            <div class="dx-field-value">
+                                <div id="button" dx-button="{
+                                text: 'Submit',
+                                type: 'success',
+                                onClick: saveBid }" ></div>
                             </div>
                         </div>
 
 
 
 
-
                     </div>
                     <!--<div id="summary" dx-validation-summary="{ }"></div>-->
-                    <div id="button" dx-button="{
-                                text: 'Submit',
-                                type: 'success',
-                                onClick: saveBid }" ></div>
+
                 </div>
 
             </div>
@@ -45,17 +54,27 @@
                         <div class="dx-field-label">Bid Price</div>
                         <div class="dx-field-value">
                             <div dx-text-box="textBox.bid_price"   ng-model="bid_price"></div>
-
-
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Bid mpoints</div>
+                        <div class="dx-field-value">
+                            <div dx-text-box="textBox.m_points"   ng-model="m_points"></div>
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">&nbsp;</div>
+                        <div class="dx-field-value">
+                            <div id="button" dx-button="{
+                                text: 'Submit',
+                                type: 'success',
+                                onClick: saveBid }" ></div>
                         </div>
                     </div>
 
                 </div>
                 <!--<div id="summary" dx-validation-summary="{ }"></div>-->
-                <div id="button" dx-button="{
-                                text: 'Submit',
-                                type: 'success',
-                                onClick: saveBid }" ></div>
+
             </div>
         </div>
 

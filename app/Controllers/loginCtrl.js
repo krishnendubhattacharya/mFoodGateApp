@@ -2,7 +2,7 @@
 /**
  * controllers used for the login
  */
-app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$facebook, myAuth, $cookieStore,ngToast,$stateParams) {
+app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$facebook, myAuth, $cookieStore,ngToast,$stateParams,$timeout) {
     $scope.returnUrl = $stateParams.returnUrl;
     //ngToast.create('a toast message...');
     var user_type = ["Merchant", "Client"];
@@ -48,8 +48,16 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
             }).success(function(data) {
                 console.log(data);
                 if(data.type == 'success'){
+                    $scope.message = data.message;
+                    DevExpress.ui.notify({
+                        message: $scope.message,
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "success", 3000);
                     $scope.loggedindetails = '';
-                    var message = data.message;
+
                     params.validationGroup.reset();
                     $cookieStore.put('users', data.user_details);
                     $scope.user_username = '';
@@ -63,25 +71,27 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                     $scope.notloggedin = false;
 
                     //console.log($scope.loggedindetails);
-                    if(data.user_details.is_logged_in == 1){
-                        $location.path('admin/home');
-                    }else {
-                        if($scope.returnUrl) {
-                            $location.search('returnUrl', null)
-                            $location.path($scope.returnUrl);
+                    $timeout(function(){
+                        if(data.user_details.is_logged_in == 1){
+
+                            $location.path('admin/home');
+                        }else {
+                            if($scope.returnUrl) {
+                                $location.search('returnUrl', null)
+                                $location.path($scope.returnUrl);
+                            }
+                            else {
+                                $location.path('/');
+                            }
                         }
-                        else {
-                            $location.path('/');
-                        }
+                    },3100);
+
+
+
+
+                    if(!$scope.$$phase) {
+                        $scope.$apply();
                     }
-                    //if(!$scope.$$phase) {}
-                    DevExpress.ui.notify({
-                        message: message,
-                        position: {
-                            my: "center top",
-                            at: "center top"
-                        }
-                    }, "success", 3000);
 
                 }else{
                     var message = "Login failed.";

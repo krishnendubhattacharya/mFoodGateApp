@@ -25,7 +25,7 @@
 <div ng-controller="leftbarCtrl">
 
 	<div class="left-panel phone-hide">
-		<div class="profile-img" style="position: relative;">
+		<div class="profile-img" style="position: relative;" ng-if="urlParam == '/profile'">
 			<!--<img src="app/assets/Images/default-profile.png" width="100%" height="auto"  alt=""/>-->
 			<img src="{{userImagePath}}" width="100%" height="auto"  alt=""/>
 			<!--<form>
@@ -64,8 +64,8 @@
 	</div>
 
 	<div class="m-left-panel tablet-hide">
-		<div class="profile-img">
-			<img src="app/assets/Images/default-profile.png" width="100%" height="auto"  alt=""/>
+		<div class="profile-img" ng-if="urlParam == '/profile'">
+			<img src="{{userImagePath}}" width="100%" height="auto"  alt=""/>
 		</div>
 		<ul ng-if="loggedindetails.user_type_id == 2">
 			<li><a ui-sref="frontend.setting"><i class="fa fa-gear"></i> Setting</a></li>

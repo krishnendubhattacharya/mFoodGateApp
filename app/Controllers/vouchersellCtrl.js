@@ -43,7 +43,7 @@ app.controller('vouchersellCtrl', function ($rootScope, $scope, $http, $location
     $scope.validateAndSubmit = function(params) {
 
         //alert(1);
-        console.log(params);
+        //console.log(params);
         //alert($scope.price);
         //alert($scope.points);
         //alert($stateParams.voucherId);

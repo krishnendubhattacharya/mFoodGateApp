@@ -17,7 +17,6 @@ app.controller('marketplaceCtrl', function ($rootScope, $scope, $http, $location
         });
     }
     $scope.resaleList();
-
     $scope.swapList = function(){
 
         $http({

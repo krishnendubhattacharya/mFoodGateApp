@@ -1,4 +1,4 @@
-app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth) {
+app.controller('addswapvoucherCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
@@ -6,38 +6,17 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
 
         $location.path("/login");
     }
-    console.log($stateParams.voucherId);
-    $scope.voucherInfo = null;
 
-    $scope.getVoucherDetail = function () {
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "vourcherdetail/"+$stateParams.voucherId,
-        }).success(function (data) {
-            console.log(data);
-            $scope.voucherInfo =data;
-        });
 
-    }
-    $scope.getVoucherDetail();
-
-    $scope.boucherResell = function () {
-        $location.path('/vouchersell/' + $stateParams.voucherId);
-    }
-
-    $scope.bocherGift = function () {
-        $location.path('/giftvoucher/' + $stateParams.voucherId);
-    }
-
-    $scope.swapvoucher = function (offer_id) {
+    $scope.swapvoucherADD = function () {
         //$location.path('/giftvoucher/' + $stateParams.voucherId);
         //alert(offer_id);
         //return false;
-        $location.path('/addswapvoucher/' + $stateParams.voucherId + '/' +offer_id);
-        /*$http({
+       // $location.path('/addswapvoucher/' + $stateParams.voucherId + '/' + $stateParams.offerId);
+        $http({
             method: "POST",
             url: $rootScope.serviceurl + "swap",
-            data: {"voucher_id":$stateParams.voucherId,"user_id":$scope.loggedindetails.id,"offer_id":offer_id},
+            data: {"voucher_id":$stateParams.voucherId,"user_id":$scope.loggedindetails.id,"offer_id":$stateParams.offerId,"description":$scope.description},
         }).success(function (data) {
             console.log(data);
             if(data.type == 'success'){
@@ -62,7 +41,7 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
                     }
                 }, "error", 3000);
             }
-        });*/
+        });
     }
 
 

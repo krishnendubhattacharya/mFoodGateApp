@@ -55,11 +55,20 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
         { "name": "Male", "value": "M" },
         { "name": "Female", "value": "F" }
     ];
+    $scope.all_locations = [];
     $scope.selectBox = {
         simple: {
             dataSource: selectBoxData,
             displayExpr: "name",
             valueExpr: "value"
+        },
+        location:{
+            dataSource: $scope.all_locations,
+            displayExpr: "name",
+            valueExpr: "value",
+            onInitialized:function(e){
+                $scope.loc_select = e.component;
+            }
         }
     };
     $scope.textBox = {
@@ -155,7 +164,7 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
             $http({
                 method: "PUT",
                 url: $rootScope.serviceurl+"users/"+$scope.loggedindetails.id,
-                data: {"email":$scope.userInfo.email,"phone":$scope.userInfo.phone,"about_me":$scope.userInfo.about_me,"first_name":$scope.userInfo.first_name,"last_name":$scope.userInfo.last_name,"dob":$scope.userInfo.dob,"occupation":$scope.userInfo.occupation,"gender":$scope.userInfo.gender,typeList:$scope.capitals},
+                data: {"email":$scope.userInfo.email,"phone":$scope.userInfo.phone,"about_me":$scope.userInfo.about_me,"first_name":$scope.userInfo.first_name,"last_name":$scope.userInfo.last_name,"dob":$scope.userInfo.dob,"occupation":$scope.userInfo.occupation,"gender":$scope.userInfo.gender,typeList:$scope.capitals,address:$scope.userInfo.address,location_id:$scope.userInfo.location_id},
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
                 console.log(data);
@@ -190,5 +199,21 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
     };
 
 
+    $scope.getAllLocations = function(){
+        $http({
+            method: "get",
+            url: $rootScope.serviceurl+"getAllLocations",
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            $scope.all_locations = [];
+            angular.forEach(data.locations,function(val){
+                $scope.all_locations.push({name:val.city,value:val.id});
+            })
+
+            $scope.loc_select.option({dataSource: $scope.all_locations,});
+
+        })
+    }
+    $scope.getAllLocations();
 
 });

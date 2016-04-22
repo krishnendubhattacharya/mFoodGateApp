@@ -85,7 +85,7 @@ app.controller('merchantmembershiplistCtrl', function ($rootScope, $scope, $http
                     $('<button/>').addClass('dx-button')
                         .text('Details')
                         .on('dxclick',function(){
-                            window.location = 'http://111.94.39.137:8181/Member_Ship/masterdata/member_master_mfoodgate.aspx?MerchantID=M004';
+                            window.location = 'http://111.94.39.137:8181/Member_Ship/masterdata/member_reward_redeem_mfoodgate.aspx?MemberID=GC00000001&MerchantID=A0001&OutletID=10001';
                         })
                         .appendTo(container);
 

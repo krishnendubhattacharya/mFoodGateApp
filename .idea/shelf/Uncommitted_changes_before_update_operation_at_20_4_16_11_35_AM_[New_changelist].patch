@@ -1,0 +1,490 @@
+Index: .idea/shelf/Uncommitted_changes_before_update_operation_at_13_4_16_5_58_PM_[Default]1.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_update_operation_at_13_4_16_5_58_PM_[Default]1.patch	(revision )
++++ .idea/shelf/Uncommitted_changes_before_update_operation_at_13_4_16_5_58_PM_[Default]1.patch	(revision )
+@@ -0,0 +1,32 @@
++Index: app/app.js
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/app.js	(revision 1db0c4212ce467943fc2d26c415ba2b89ccfaac7)
+++++ app/app.js	(revision )
++@@ -412,7 +412,7 @@
++                 title: 'Menu'
++             })
++             .state('frontend.merchantoutlets', {
++-                url: '/merchantmenu',
+++                url: '/merchantoutlets',
++                 resolve: loadSequence('merchantoutlets'),
++                 templateUrl: 'app/views/merchant/merchantoutlets.html',
++                 title: 'Outlets'
++Index: app/Controllers/newsCtrl.js
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/Controllers/newsCtrl.js	(revision 1db0c4212ce467943fc2d26c415ba2b89ccfaac7)
+++++ app/Controllers/newsCtrl.js	(revision )
++@@ -35,6 +35,7 @@
++         })
++     }
++     $scope.getAllNews();
+++    console.log('Hello Mfood');
++ 
++     $scope.getMostViews = function(){
++         $http({
++\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_update_operation_at_18_4_16_12_32_PM_[New_changelist].patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_update_operation_at_18_4_16_12_32_PM_[New_changelist].patch	(revision )
++++ .idea/shelf/Uncommitted_changes_before_update_operation_at_18_4_16_12_32_PM_[New_changelist].patch	(revision )
+@@ -0,0 +1,27 @@
++Index: .idea/deployment.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- .idea/deployment.xml	(revision 4d17c6ed6d781bbfef8d708fe85220f672c579f9)
+++++ .idea/deployment.xml	(revision )
++@@ -1,8 +1,8 @@
++ <?xml version="1.0" encoding="UTF-8"?>
++ <project version="4">
++-  <component name="PublishConfigData" autoUpload="Always" serverName="mFoodGateApp">
+++  <component name="PublishConfigData" autoUpload="Always" serverName="mfood">
++     <serverData>
++-      <paths name="mFoodGateApp">
+++      <paths name="mfood">
++         <serverdata>
++           <mappings>
++             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
++\ No newline at end of file
++Index: app/Controllers/cartpageCtrl.js
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/Controllers/cartpageCtrl.js	(date 1460962936000)
+++++ app/Controllers/cartpageCtrl.js	(revision )
++@@ -1,0 +1,0 @@
+Index: .idea/shelf/Uncommitted_changes_before_update_operation_at_15_4_16_11_16_AM_[Default].patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_update_operation_at_15_4_16_11_16_AM_[Default].patch	(revision )
++++ .idea/shelf/Uncommitted_changes_before_update_operation_at_15_4_16_11_16_AM_[Default].patch	(revision )
+@@ -0,0 +1,298 @@
++Index: app/views/myevent.html
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/views/myevent.html	(date 1460699170000)
+++++ app/views/myevent.html	(revision )
++@@ -129,16 +129,23 @@
++                             </div>
++                         </div>
++ 
++-                    </div>
++-                    <!--<div id="summary" dx-validation-summary="{ }"></div>-->
+++                        <div class="dx-field">
+++                            <div class="dx-field-label">&nbsp;</div>
+++                            <div class="dx-field-value">
++-                    <div id="button" dx-button="{
+++                                <div id="button" dx-button="{
++                                 text: 'Submit',
++                                 type: 'success',
++                                 onClick: save_event }" ></div>
++ 
++-                    <div id="button" dx-button="{
+++                                <div id="button" dx-button="{
++                                 text: 'Cancel',
++                                 onClick: changeView }" ></div>
+++                            </div>
+++                        </div>
+++
+++                    </div>
+++                    <!--<div id="summary" dx-validation-summary="{ }"></div>-->
+++
++ 
++ 
++                 </div>
++Index: app/views/partials/leftbar.html
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/views/partials/leftbar.html	(date 1460699170000)
+++++ app/views/partials/leftbar.html	(revision )
++@@ -74,6 +74,7 @@
++ 			<li><a ui-sref="frontend.bidvoucher"><i class="fa fa-user"></i> Resell Voucher</a></li>
++ 			<li><a ui-sref="frontend.mymembership"><i class="fa fa-user"></i> My Membership</a></li>
++ 			<li><a ui-sref="frontend.mypoints"><i class="fa fa-user"></i> My Points</a></li>
+++			<li><a ui-sref="frontend.myevent"><i class="fa fa-user"></i> My Events</a></li>
++ 			<!--<li ui-sref-active="active"><a ui-sref="frontend.allvoucher"><i class="fa fa-user"></i> Resell Voucher</a></li>-->
++ 		</ul>
++ 		<ul ng-if="loggedindetails.user_type_id == 3">
++Index: app/Controllers/myeventCtrl.js
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/Controllers/myeventCtrl.js	(date 1460699170000)
+++++ app/Controllers/myeventCtrl.js	(revision )
++@@ -35,7 +35,6 @@
++     };
++ 
++     $scope.changeView = function(){
++-        alert(12);
++         $scope.edit_mode = !$scope.edit_mode;
++         $scope.event = {
++             title:'',
++Index: app/Controllers/promodetailsCtrl.js
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/Controllers/promodetailsCtrl.js	(date 1460699170000)
+++++ app/Controllers/promodetailsCtrl.js	(revision )
++@@ -1,0 +1,0 @@
++Index: app/app.js
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/app.js	(date 1460699170000)
+++++ app/app.js	(revision )
++@@ -377,13 +377,13 @@
++                 url: '/promolist/:resturantId',
++                 templateUrl: 'app/views/admin/promolist.html',
++                 title: 'Promo List',
++-                resolve: loadSequence('promolist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
+++                resolve: loadSequence('promolist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor','ng-bootstrap-datepicker')
++             })
++             .state('admin.promoedit', {
++                 url: '/promoedit/:promoId/:restaurantId',
++                 templateUrl: 'app/views/admin/promoedit.html',
++                 title: 'Promo Edit',
++-                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor')
+++                resolve: loadSequence('promoedit','naif.base64','ngMap','ngCkeditor','ng-bootstrap-datepicker')
++             })
++             .state('admin.merchantlist', {
++                 url: '/merchantlist',
++@@ -403,6 +403,12 @@
++                 title: 'Member List',
++                 resolve: loadSequence('memberlist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
++             })
+++            .state('admin.voucherofmember', {
+++                url: '/voucherofmember/:memberId',
+++                templateUrl: 'app/views/admin/voucherofmember.html',
+++                title: 'Voucher Member List',
+++                resolve: loadSequence('voucherofmember','naif.base64','ngMap','ngmapautocomplete','ngCkeditor')
+++            })
++             .state('admin.memberedit', {
++                 url: '/memberedit/:memberId',
++                 templateUrl: 'app/views/admin/memberedit.html',
++@@ -583,6 +589,24 @@
++                 resolve: loadSequence('searchresult'),
++                 templateUrl: 'app/views/searchresult.html',
++                 title: 'Search Result'
+++            })
+++            .state('frontend.swapallvoucherdetail', {
+++                url: '/swapallvoucherdetail/:voucherId',
+++                resolve: loadSequence('swapallvoucherdetail'),
+++                templateUrl: 'app/views/swapallvoucherdetail.html',
+++                title: 'Voucher Detail'
+++            })
+++            .state('frontend.paymentVoucher', {
+++                url: '/paymentVoucher',
+++                resolve: loadSequence('paymentVoucher'),
+++                templateUrl: 'app/views/paymentVoucher.html',
+++                title: 'Payment Voucher Detail'
+++            })
+++            .state('frontend.cartpage', {
+++                url: '/cartpage',
+++                resolve: loadSequence('cartpage','ngMap','mCart'),
+++                templateUrl: 'app/views/cartpage.html',
+++                title: 'Promo Detail'
++             })
++ 
++ 
++Index: app/views/app.html
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/views/app.html	(date 1460699170000)
+++++ app/views/app.html	(revision )
++@@ -37,13 +37,16 @@
++ <div id="menu">
++     <ul class="tablet-hide" ng-init="getLoginDetails()">
++         <form ng-submit="searchAll()">
++-        <li><select ng-model="type">
+++        <li>
+++            <div class="select-box"><select ng-model="type">
++             <option value="">Select Type</option>
++             <option value="promo">Promo</option>
++             <option value="restaurant">Restaurant</option>
++             <option value="event">Event</option>
++             <option value="news">News</option>
++-        </select></li>
+++        </select>
+++        </div>
+++        </li>
++ 
++     	<li><input type="text" placeholder="Search Keyword" ng-model="keyword"></li>
++         </form>
++Index: app/views/mymembership.html
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/views/mymembership.html	(date 1460699170000)
+++++ app/views/mymembership.html	(revision )
++@@ -27,8 +27,25 @@
++         <h1>Membership</h1>
++         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
++ 
++-        <div class="m-profile-details">
+++        <!--<div class="m-profile-details">
++             <div id="gridContainer" dx-data-grid="dataGridOptions"></div>
+++        </div>-->
+++        <h1>Membership</h1>
+++        <div dx-list="{onInitialized:loadList}">
+++            <div data-options="dxTemplate: { name: 'item' }">
+++                <div style="display:inline-block; margin: 5px;">
+++                    <p style="font-size:larger;"><b>{{title}}</b></p>
+++                    <p>Price: <i>{{price}}</i></p>
+++                    <p>Offer Percent: <i>{{offer_percent}}</i></p>
+++                    <p>Expire Date: <i>{{expire_date}}</i></p>
+++                </div>
+++
+++                <p>
+++                    <div id="button" dx-button="{
+++                    text: 'Details',
+++                    onClick: view_det({{id}}) }" ></div>
+++                </p>
+++            </div>
++         </div>
++ 
++     </div>
++Index: app/Controllers/newsCtrl.js
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/Controllers/newsCtrl.js	(date 1460699170000)
+++++ app/Controllers/newsCtrl.js	(revision )
++@@ -35,6 +35,7 @@
++         })
++     }
++     $scope.getAllNews();
+++    console.log('Hello Mfood');
++ 
++     $scope.getMostViews = function(){
++         $http({
++\ No newline at end of file
++Index: app/Controllers/mymembershipCtrl.js
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/Controllers/mymembershipCtrl.js	(date 1460699170000)
+++++ app/Controllers/mymembershipCtrl.js	(revision )
++@@ -14,6 +14,7 @@
++         }).success(function (data) {
++             $scope.voucherInfo =data;
++             //console.log($scope.voucherInfo.membership);
+++            $scope.listViewData.option({"dataSource": $scope.voucherInfo.membership,showSelectionControls: true });
++             $scope.dataGridOptions = {
++                 dataSource: $scope.voucherInfo.membership,
++                 selection: {
++@@ -52,6 +53,16 @@
++ 
++ 
++         });
+++
+++    $scope.loadList=function(e)
+++    {
+++        $scope.listViewData= e.component;
+++    }
+++
+++    $scope.view_det = function (id) {
+++        console.log(id);
+++        $location.path('/membershipdetail/'+id);
+++    }
++ 
++ 
++ });
++\ No newline at end of file
++Index: app/config.constant.js
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/config.constant.js	(date 1460699170000)
+++++ app/config.constant.js	(revision )
++@@ -53,6 +53,7 @@
++         'merchantlist':['app/Controllers/admin/merchantlistCtrl.js'],
++         'merchantedit':['app/Controllers/admin/merchanteditCtrl.js'],
++         'memberlist':['app/Controllers/admin/memberlistCtrl.js'],
+++        'voucherofmember':['app/Controllers/admin/voucherofmemberCtrl.js'],
++         'memberedit':['app/Controllers/admin/membereditCtrl.js'],
++         'merchanthome':['app/Controllers/merchanthomeCtrl.js'],
++         'merchantlogin':['app/Controllers/merchantloginCtrl.js'],
++@@ -88,6 +89,9 @@
++         'merchanteventbid':['app/Controllers/merchanteventbidCtrl.js','app/Controllers/leftbarCtrl.js'],
++         'ngmapautocomplete':['bower_components/ngmap/directives/places-auto-complete.js'],
++         'searchresult':['app/Controllers/searchresultCtrl.js'],
+++        'swapallvoucherdetail':['app/Controllers/swapallvoucherdetailCtrl.js'],
+++        'paymentVoucher':['app/Controllers/paymentVoucherCtrl.js'],
+++        'cartpage':['app/Controllers/cartpageCtrl.js'],
++     },
++ 
++     //*** angularJS Modules
++@@ -118,6 +122,10 @@
++         {
++             name: 'cgNotify',
++             files: ['bower_components/angular-notify/angular-notify.js','bower_components/angular-notify/angular-notify.css']
+++        },
+++        {
+++            name: 'ng-bootstrap-datepicker',
+++            files: ['bower_components/angular-bootstrap-datepicker.js','bower_components/angular-bootstrap-datepicker.css']
++         },
++     ]
++ });
++Index: .idea/deployment.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- .idea/deployment.xml	(date 1460699170000)
+++++ .idea/deployment.xml	(revision )
++@@ -1,8 +1,8 @@
++ <?xml version="1.0" encoding="UTF-8"?>
++ <project version="4">
++-  <component name="PublishConfigData" autoUpload="Always" serverName="mFoodGateApp">
+++  <component name="PublishConfigData" autoUpload="Always" serverName="mfood">
++     <serverData>
++-      <paths name="mFoodGateApp">
+++      <paths name="mfood">
++         <serverdata>
++           <mappings>
++             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
++\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_update_operation_at_7_4_16_12_42_PM_[Default].patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_update_operation_at_7_4_16_12_42_PM_[Default].patch	(revision )
++++ .idea/shelf/Uncommitted_changes_before_update_operation_at_7_4_16_12_42_PM_[Default].patch	(revision )
+@@ -0,0 +1,35 @@
++Index: app/Controllers/newsCtrl.js
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/Controllers/newsCtrl.js	(revision c98db9972be54c88f0f30a0581b1e4a877dfd916)
+++++ app/Controllers/newsCtrl.js	(revision )
++@@ -35,6 +35,7 @@
++         })
++     }
++     $scope.getAllNews();
+++    console.log('Hello Mfood');
++ 
++     $scope.getMostViews = function(){
++         $http({
++\ No newline at end of file
++Index: .idea/deployment.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- .idea/deployment.xml	(revision c98db9972be54c88f0f30a0581b1e4a877dfd916)
+++++ .idea/deployment.xml	(revision )
++@@ -1,8 +1,8 @@
++ <?xml version="1.0" encoding="UTF-8"?>
++ <project version="4">
++-  <component name="PublishConfigData" autoUpload="Always" serverName="mFoodGateApp">
+++  <component name="PublishConfigData" autoUpload="Always" serverName="mfood">
++     <serverData>
++-      <paths name="mFoodGateApp">
+++      <paths name="mfood">
++         <serverdata>
++           <mappings>
++             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
++\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_update_operation_at_13_4_16_5_58_PM_[Default].patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_update_operation_at_13_4_16_5_58_PM_[Default].patch	(revision )
++++ .idea/shelf/Uncommitted_changes_before_update_operation_at_13_4_16_5_58_PM_[Default].patch	(revision )
+@@ -0,0 +1,44 @@
++Index: .idea/deployment.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- .idea/deployment.xml	(revision 1db0c4212ce467943fc2d26c415ba2b89ccfaac7)
+++++ .idea/deployment.xml	(revision )
++@@ -1,6 +1,15 @@
++ <?xml version="1.0" encoding="UTF-8"?>
++ <project version="4">
++-  <component name="PublishConfigData" autoUpload="Always" serverName="mFoodAppFtp">
+++  <component name="PublishConfigData" autoUpload="Always" serverName="mfood">
+++    <serverData>
+++      <paths name="mfood">
+++        <serverdata>
+++          <mappings>
+++            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+++          </mappings>
+++        </serverdata>
+++      </paths>
+++    </serverData>
++     <option name="myAutoUpload" value="ALWAYS" />
++   </component>
++ </project>
++\ No newline at end of file
++Index: app/views/profile.html
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/views/profile.html	(revision 1db0c4212ce467943fc2d26c415ba2b89ccfaac7)
+++++ app/views/profile.html	(revision )
++@@ -71,10 +71,9 @@
++                             <div class="dx-field-label">Favourite Food</div>
++                             <div class="dx-field-value">
++                                 <div class="tagBox" dx-tag-box="{
++-                                dataSource: tagBoxData,
++                                 placeholder: 'Select Foods',
++                                 displayExpr: 'name',
++-
+++                                onInitialized:init_food,
++                                 bindingOptions: {
++                                     valueExpr: 'id',
++                                     values: {
+Index: app/Controllers/cartpageCtrl.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Controllers/cartpageCtrl.js	(date 1461132306000)
++++ app/Controllers/cartpageCtrl.js	(revision )
+@@ -180,4 +180,4 @@
+     }
+ 
+     $scope.payments = 'C';
+-});
+\ No newline at end of file
++});

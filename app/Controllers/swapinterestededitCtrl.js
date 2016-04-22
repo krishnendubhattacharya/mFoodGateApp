@@ -1,4 +1,4 @@
-app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth) {
+app.controller('swapinterestededitCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     if(!$scope.loggedindetails){
@@ -20,15 +20,8 @@ app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $locat
         confirm_password: {
             mode: "text",
 
-        },
-        vouchers : {
-            dataSource: [],
-            displayExpr: "name",
-            valueExpr: "value",
-            onInitialized:function(e){
-                $scope.voucher_sel = e.component;
-            }
         }
+
     };
 
 
@@ -39,18 +32,38 @@ app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $locat
 
         }]
     };
-    /*$scope.voucherurlValidationRules = {
+    $scope.voucherurlValidationRules = {
         validationRules: [{
             type: "required",
 
         }]
-    };*/
+    };
     $scope.commentValidationRules = {
         validationRules: [{
             type: "required",
 
         }]
     };
+
+    $scope.bidSwapEdit = function () {
+        //$location.path('/resaleCancel/' + voucher_resale_id);
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getDetailsSwapBid/"+$stateParams.siid,
+            //data: {"id":voucher_resale_id},
+        }).success(function (data) {
+            //$scope.voucherInfo =data.bid_details;
+            //console.log($scope.voucherInfo);
+            $scope.item = data.bid_details;
+            //$location.path('/editbid/'+bid_id);
+
+
+
+
+        });
+    }
+
+    $scope.bidSwapEdit();
 
     $scope.validateAndSubmit = function(params) {
 
@@ -64,13 +77,13 @@ app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $locat
             //return false;
             $http({
                 method: "POST",
-                url: $rootScope.serviceurl+"swapinterest",
-                data: {"subject":$scope.subject,"voucher_id":$scope.voucher_id,"comment":$scope.comment,"user_id":$scope.loggedindetails.id,"swap_id":$stateParams.swapId},
+                url: $rootScope.serviceurl+"updateSwapBid",
+                data: {"subject":$scope.item.subject,"voucher_id":$scope.item.voucher_id,"comment":$scope.item.comment,"userid":$scope.loggedindetails.id,"id":$stateParams.siid},
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
                 console.log(data);
                 //return false;
-                params.validationGroup.reset();
+                //params.validationGroup.reset();
                 if(data.type == 'success'){
                     //var message = data.message;
                     //params.validationGroup.reset();
@@ -83,6 +96,7 @@ app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $locat
                             at: "center top"
                         }
                     }, "success", 3000);
+                    $location.path('/swapvoucher');
                 }else{
                     var message = "Error occured.";
                     DevExpress.ui.notify({
@@ -101,7 +115,6 @@ app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $locat
         }
     };
 
-
     $scope.getSwapVouchers = function(){
         $http({
             method: "GET",
@@ -112,7 +125,17 @@ app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $locat
             angular.forEach(data,function(val){
                 vouchers.push({name:val.title,value:val.voucher_id});
             })
-            $scope.voucher_sel.option({dataSource:vouchers});
+            console.log(vouchers);
+            $scope.vouchers  = {
+                dataSource:vouchers,
+                displayExpr: "name",
+                    valueExpr: "value",
+                    onInitialized:function(e){
+                    console.log('hi');
+                    $scope.voucher_sel = e.component;
+                }
+            };
+            //.$scope.voucher_sel.option({dataSource:vouchers});
         })
     }
     $scope.getSwapVouchers();

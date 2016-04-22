@@ -19,10 +19,10 @@ app.controller('feedbackCtrl', function ($rootScope, $scope, $http, $location, $
     };
 
     $scope.saveSetting = function(params) {
-        //alert($scope.media_notification);
-        //alert($scope.expire_date_notification);
-        //alert($scope.promo_notification);
-        //alert($scope.news_letter_notification);
+        alert($scope.media_notification);
+        alert($scope.expire_date_notification);
+        alert($scope.promo_notification);
+        alert($scope.news_letter_notification);
 
         /*$http({
             method: "POST",
