@@ -61,6 +61,14 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
             "user_type_id":3,
             "id":'',
         };console.log($scope.item);
+        $scope.bank = {name:'',
+            account_no:'',
+            assignment:'',
+            address:'',
+            finance_email:'',
+            sales_email:'',
+            user_id:''
+        };
 
         $scope.merchantView='edit';
     }
@@ -81,18 +89,35 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
                     data: $scope.item,
                     headers: {'Content-Type': 'application/json'},
                 }).success(function (data) {
-
-                    console.log(data);
-                    if(data.type=='error')
-                    {
+                    if(data.type=='error') {
                         notify({
                             message : data.message,
                             classes : 'alert-danger'
                         });
-                    }else{
-                        $scope.viewMerchant();
-                        $scope.item={};
                     }
+                    else
+                    {
+                        $scope.bank.user_id = data.data.id;
+                        $http({
+                            method: "POST",
+                            url: $rootScope.serviceurl + "addBankDetails",
+                            data: $scope.bank,
+                            headers: {'Content-Type': 'application/json'},
+                        }).success(function (data) {
+                            if(data.type=='error')
+                            {
+                                notify({
+                                    message : data.message,
+                                    classes : 'alert-danger'
+                                });
+                            }else{
+                                $scope.viewMerchant();
+                                $scope.item={};
+                                $scope.bank={};
+                            }
+                        })
+                    }
+
                 });
             }else{
                 $http({
@@ -101,9 +126,25 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
                     data: {"city": $scope.item.city, "country_id": $scope.item.country_id,"is_active": $scope.item.is_active},
                     headers: {'Content-Type': 'application/json'},
                 }).success(function (data) {
-                    console.log(data);
-                    $scope.viewMerchant();
-                    $scope.item={};
+                    $http({
+                        method: "POST",
+                        url: $rootScope.serviceurl + "updateBankDetails",
+                        data: $scope.bank,
+                        headers: {'Content-Type': 'application/json'},
+                    }).success(function (data) {
+                        if(data.type=='error')
+                        {
+                            notify({
+                                message : data.message,
+                                classes : 'alert-danger'
+                            });
+                        }else{
+                            $scope.viewMerchant();
+                            $scope.item={};
+                            $scope.bank={};
+                        }
+                    })
+
                     //$scope.allcat = data.category;
                     //console.log($scope.allcat);
                 });
@@ -129,6 +170,18 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
         }else{
         }
     }
+
+    $scope.getAllLocations = function(){
+        $http({
+            method: "get",
+            url: $rootScope.serviceurl+"getAllLocations",
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            $scope.locations = data.locations;
+
+        })
+    }
+    $scope.getAllLocations();
    //$scope.getLoginDetails();
 });
 

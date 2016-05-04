@@ -1,4 +1,4 @@
-app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth) {
+app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     if(!$scope.loggedindetails){

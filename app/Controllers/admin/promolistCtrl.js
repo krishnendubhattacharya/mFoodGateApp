@@ -122,6 +122,7 @@ app.controller('promolistCtrl', function ($rootScope, $scope, $http, $location, 
         $scope.item={
             "outlet_id":[],
             "title": '',
+            special_tag:'',
             "description": '',
             "benefits": '',
             "quantity":'',

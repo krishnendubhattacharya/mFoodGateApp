@@ -41,6 +41,8 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
             description:'',
             from_date:'',
             to_date:'',
+            offer_from_date:'',
+            offer_to_date:'',
             is_active:false,
         }
         $scope.selectedLocation=[];
@@ -58,6 +60,8 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
             description:event.description,
             from_date:event.from_date,
             to_date:event.to_date,
+            offer_from_date:event.offer_from_date,
+            offer_to_date:event.offer_to_date,
             is_active:event.is_active=="1"?true:false,
             imageurl:event.image_url
         }
@@ -217,11 +221,11 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
 
     $scope.dateBox = {
         from_date: {
-            format: "date",
-            value: new Date(2015, 12, 1, 6)
+            format: "datetime",
+            //value: new Date(2015, 12, 1, 6)
         },
         to_date: {
-            format: "yyyy/MM/dd"
+            format: "datetime"
         },
     };
     /*$scope.img_uploader = null;
@@ -308,8 +312,11 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         console.log($scope.typeList);
         console.log($scope.areaList);
 
-        $scope.event.from_date = moment($scope.event.from_date).format("YYYY/MM/DD");
-        $scope.event.to_date = moment($scope.event.to_date).format("YYYY/MM/DD");
+        $scope.event.from_date = moment($scope.event.from_date).format("YYYY/MM/DD HH:mm:ss");
+        $scope.event.to_date = moment($scope.event.to_date).format("YYYY/MM/DD HH:mm:ss");
+        $scope.event.offer_to_date = $scope.event.offer_to_date + ' 23:59:59';
+        $scope.event.offer_from_date = moment($scope.event.offer_from_date).format("YYYY/MM/DD HH:mm:ss");
+        $scope.event.offer_to_date = moment($scope.event.offer_to_date).format("YYYY/MM/DD HH:mm:ss");
 
         $scope.event.user_id = $scope.loggedindetails.id;
         $scope.eventdata = $scope.event;

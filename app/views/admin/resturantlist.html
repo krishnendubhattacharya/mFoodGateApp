@@ -21,7 +21,7 @@
                         <table id="resturantsList" class="table  table-hover general-table">
                             <thead>
                             <tr>
-                                <th> Id</th>
+                                <th> Seq</th>
                                 <th class="hidden-phone">Name</th>
                                 <th class="hidden-phone">Merchant Name</th>
                                 <th>Action</th>
@@ -32,7 +32,7 @@
 
                             <tr ng-repeat="item in allresturant">
                                 <td>
-                                    {{item.id}}
+                                    {{item.seq}}
                                 </td>
                                 <td >{{item.title}}</td>
                                 <td >{{item.merchant_name}}</td>
@@ -68,6 +68,22 @@
                                 <label for="exampleInputName">Resturant Name</label>
                                 <input type="text" required placeholder="Enter Resturant Name"  id="exampleInputName" ng-model="item.title" class="form-control">
                                 <input type="hidden"  ng-model="item.id" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputName">Sub Title</label>
+                                <input type="text" required placeholder="Sub Title"  id="exampleInputName" ng-model="item.sub_title" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea placeholder="Enter Description" required  id="description" ng-model="item.description" ckeditor class="form-control"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputName">Sequence No.</label>
+                                <input type="text" required placeholder="Enter Sequence No."  id="exampleInputName" ng-model="item.seq" class="form-control">
+
                             </div>
 
 

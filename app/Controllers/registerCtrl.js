@@ -3,7 +3,7 @@
  * controllers used for the register
  */
  
-app.controller('registerCtrl', function ($rootScope, $scope, $http, $location) {
+app.controller('registerCtrl', function ($rootScope, $scope, $http, $location, $stateParams) {
 var user_type = ["Merchant", "Client"];
 //var user_type = {"M":"Merchant", "C":"Client"};
 $scope.textBox = {
@@ -41,6 +41,9 @@ $scope.textBox = {
         layout: "horizontal"
         }
 };*/
+    if($stateParams.email){
+        $scope.email = $stateParams.email;
+    }
 $scope.validateAndSubmit = function(params) {
 
     $scope.user_type_id = 2;

@@ -24,7 +24,6 @@ app.controller('settingsCtrl', function ($rootScope, $scope, $http, $location, m
     $scope.editSetting();
 
 
-
     $scope.saveSetting = function () {
 
         //return false;
@@ -34,7 +33,7 @@ app.controller('settingsCtrl', function ($rootScope, $scope, $http, $location, m
             $http({
                 method: "POST",
                 url: $rootScope.serviceurl + "updateSiteSettings",
-                data: {"new_promo_days": $scope.item.new_promo_days,"last_day_promo": $scope.item.last_day_promo,"hot_percentage": $scope.item.hot_percentage,"id": $scope.item.id},
+                data: {"new_promo_days": $scope.item.new_promo_days,"last_day_promo": $scope.item.last_day_promo,"hot_percentage": $scope.item.hot_percentage,"id": $scope.item.id,"special_promo_title":$scope.item.special_promo_title},
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
                 console.log(data);

@@ -102,6 +102,7 @@
                                 <label>
                                     <input type="checkbox" ng-model="item.is_special" ng-true-value="1" ng-false-value="0"> Is Special
                                 </label>
+                                <input type="text" required placeholder="Enter Special Title" ng-if="item.is_special==1" id="title" ng-model="item.special_tag" class="form-control">
                             </div>
 
                             <div class="checkbox">

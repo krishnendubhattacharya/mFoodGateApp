@@ -1,4 +1,4 @@
-app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap,mFoodCart,$window,$cookieStore) {
+app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap,mFoodCart,$window,$cookieStore,$timeout) {
     $scope.promoId = $stateParams.promoId;
     $scope.loggedindetails = myAuth.getUserNavlinks();
 
@@ -50,6 +50,32 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                 //console.log(data.getRelatedPromo);
                 $scope.related_products = data.getRelatedPromo;
                 //console.log($scope.related_products);
+                $timeout(function(){
+                    // $('#ca-container').contentcarousel();
+                    var banner_carousal = $('.featured_carousel');
+                    banner_carousal.owlCarousel({
+                        autoplay:true,
+                        touchDrag:false,
+                        loop:true,
+                        dots:true,
+                        nav:true,
+                        navContainerClass:"ca-nav",
+                        navText:false,
+                        autoplayTimeout:6000,
+                        autoplayHoverPause:true,
+                        responsive:{
+                            0:{
+                                items:1
+                            },
+                            600:{
+                                items:3
+                            },
+                            1000:{
+                                items:3
+                            }
+                        }
+                    });
+                },3000);
 
             }
         })
@@ -193,6 +219,50 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         mFoodCart.remove(offer_id);
         $scope.getCartTotals();
     }
+
+    $scope.getAds = function () {
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getActiveAdsByLocation/2",
+        }).success(function (data) {
+            $scope.ads = data.ads;
+            $timeout(function(){
+                // $('#ca-container').contentcarousel();
+                var carousal = $('.owl-carousel1');
+                carousal.owlCarousel({
+                    autoplay:true,
+                    touchDrag:false,
+                    loop:true,
+                    dots:true,
+                    nav:true,
+                    navContainerClass:"ca-nav",
+                    navText:false,
+                    autoplayTimeout:5000,
+                    autoplayHoverPause:true,
+                    onInitialize: function (event) {
+                        if ($('.item > img').length === 1) {
+                            this.settings.loop = false;
+                            this.settings.nav = false;
+                        }},
+                    responsive:{
+                        0:{
+                            items:1
+                        },
+                        600:{
+                            items:1
+                        },
+                        1000:{
+                            items:1
+                        }
+                    }
+                });
+            },3000);
+            //console.log($scope.newPromoInfo);
+
+        });
+    }
+    $scope.getAds();
 
     $scope.payments = 'C';
 });

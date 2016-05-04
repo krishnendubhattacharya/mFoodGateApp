@@ -9,7 +9,7 @@ angular
     /******************************** Cart ***********************************/
     //factobj.cart = [];
     factobj.add_to_cart = function(promo){
-        console.log('Promo =============',promo);
+        //console.log('Promo =============',promo);
         var cart=$cookieStore.get('cart');
         if(cart)
         {
@@ -38,6 +38,14 @@ angular
         var cart=$cookieStore.get('cart');
         return cart;
     }
+
+        factobj.getCount = function(){
+            var cart=$cookieStore.get('cart');
+            if(cart)
+                return cart.length;
+            else
+                return 0;
+        }
 
     factobj.update_cart_quantity = function(offer_id,quantity){
         var cart=$cookieStore.get('cart');

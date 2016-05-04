@@ -4,6 +4,38 @@
  */
 app.controller('marketplaceCtrl', function ($rootScope, $scope, $http, $location) {
 
+    $scope.resell_promo_show = 1;
+    $scope.event_promo_show = 1;
+    $scope.swap_promo_show = 1;
+
+
+    $scope.resellShowHide = function () {
+        console.log($scope.resell_promo_show);
+        if($scope.resell_promo_show == 1){
+            $scope.resell_promo_show = 0;
+        }else{
+            $scope.resell_promo_show = 1;
+        }
+        console.log($scope.resell_promo_show);
+    }
+
+    $scope.eventShowHide = function () {
+        if($scope.event_promo_show == 1){
+            $scope.event_promo_show = 0;
+        }else{
+            $scope.event_promo_show = 1;
+        }
+
+    }
+    $scope.swapShowHide = function () {
+        if($scope.swap_promo_show == 1){
+            $scope.swap_promo_show = 0;
+        }else{
+            $scope.swap_promo_show = 1;
+        }
+    }
+
+
     $scope.resaleList = function(){
 
         $http({
@@ -12,6 +44,8 @@ app.controller('marketplaceCtrl', function ($rootScope, $scope, $http, $location
         }).success(function (data) {
 
             $scope.resaleInfo =data.resale_details;
+            //$scope.resell_promo_show = 1;
+            console.log($scope.resell_promo_show);
             //console.log($scope.catInfo);
 
         });

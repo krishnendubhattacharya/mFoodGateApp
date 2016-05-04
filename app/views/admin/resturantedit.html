@@ -25,6 +25,22 @@
                                 <input type="hidden"  ng-model="item.id" >
                             </div>
 
+                            <div class="form-group">
+                                <label for="exampleInputName">Sub Title</label>
+                                <input type="text" required placeholder="Sub Title"  id="exampleInputName" ng-model="item.sub_title" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea placeholder="Enter Description" required  id="description" ng-model="item.description" ckeditor class="form-control"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputName">Sequence No.</label>
+                                <input type="text" required placeholder="Enter Sequence No."  id="exampleInputName" ng-model="item.seq" class="form-control">
+
+                            </div>
+
 
 
                             <!--<div class="form-group">

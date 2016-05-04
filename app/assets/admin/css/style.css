@@ -4782,3 +4782,7 @@ ol.comment-list {
      border: 1px solid #ddd;
      list-style: none;
  }
+
+.left-side.sticky-left-side {
+    overflow: scroll !important;
+}

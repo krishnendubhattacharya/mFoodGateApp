@@ -2,7 +2,7 @@
 /** 
  * controllers used for the login
  */
-app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore) {
+app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myAuth,mFoodCart, $cookieStore) {
 
     /*$scope.sidemenubar=function() {
         var slideout = new Slideout({
@@ -22,6 +22,16 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
         });
     };
     $scope.sidemenubar();*/
+    //$scope.cartCount = mFoodCart.getCount();
+    $scope.$watch(function(){
+        var cart=$cookieStore.get('cart');
+        if(cart)
+            return cart.length;
+        else
+            return 0;
+    }, function(v){
+        $scope.cartCount = v;
+    });
     $scope.showMember= false;
         $scope.getLoginDetails=function(){
        

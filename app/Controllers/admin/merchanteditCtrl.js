@@ -27,6 +27,8 @@ app.controller('merchanteditCtrl', function ($rootScope, $scope, $http, NgMap, $
                 merchant_name:data.user_details.merchant_name,
                 email:data.user_details.email,
                 is_active:data.user_details.is_active,
+                location_id:data.user_details.location_id,
+                address:data.user_details.address
 
             }
             $scope.image_url=data.user_details.image;
@@ -35,6 +37,31 @@ app.controller('merchanteditCtrl', function ($rootScope, $scope, $http, NgMap, $
 
     }
     $scope.viewMerchant();
+
+    $scope.viewMerchantBank = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getBankDetailsByUser/"+$stateParams.merchantId,
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            if(data.type == 'success') {
+                $scope.bank = {name:data.details.name,
+                    account_no:data.details.account_no,
+                    assignment:data.details.assignment,
+                    address:data.details.address,
+                    finance_email:data.details.finance_email,
+                    sales_email:data.details.sales_email,
+                    id:data.details.id
+                };
+            }
+
+            console.log($scope.bank);
+
+        });
+
+    }
+    $scope.viewMerchantBank();
 
 
     $scope.saveMerchant = function () {
@@ -62,9 +89,24 @@ app.controller('merchanteditCtrl', function ($rootScope, $scope, $http, NgMap, $
             }).success(function (data) {
                 console.log(data);
                 // $scope.viewMerchant();
-
-                $location.path('/admin/merchantlist');
-                $scope.item={};
+                $http({
+                    method: "POST",
+                    url: $rootScope.serviceurl + "updateBankDetails",
+                    data: $scope.bank,
+                    headers: {'Content-Type': 'application/json'},
+                }).success(function (data) {
+                    if(data.type=='error')
+                    {
+                        notify({
+                            message : data.message,
+                            classes : 'alert-danger'
+                        });
+                    }else{
+                        $location.path('/admin/merchantlist');
+                        $scope.item={};
+                        $scope.bank={};
+                    }
+                })
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
             });
@@ -72,7 +114,17 @@ app.controller('merchanteditCtrl', function ($rootScope, $scope, $http, NgMap, $
 
     }
 
+    $scope.getAllLocations = function(){
+        $http({
+            method: "get",
+            url: $rootScope.serviceurl+"getAllLocations",
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            $scope.locations = data.locations;
 
+        })
+    }
+    $scope.getAllLocations();
 
     $scope.cancelMerchant = function(){
         $location.path('/admin/merchantlist');

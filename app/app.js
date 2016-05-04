@@ -141,7 +141,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '',
                 templateUrl: 'app/views/app.html',
                 abstract :true,
-                resolve: loadSequence('footer'),
+                resolve: loadSequence('footer','mCart'),
 
             })
             .state('frontend.index', {
@@ -157,7 +157,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Login'
             })
             .state('frontend.register', {
-                url: '/register',
+                url: '/register/:email',
                 resolve: loadSequence('register'),
                 templateUrl: 'app/views/register.html',
                 title: 'Register'
@@ -176,7 +176,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             })
             .state('frontend.profile', {
                 url: '/profile',
-                resolve: loadSequence('profile'),
+                resolve: loadSequence('profile','ngMap'),
                 templateUrl: 'app/views/profile.html',
                 title: 'Profile'
             })
@@ -197,6 +197,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('swapvoucher'),
                 templateUrl: 'app/views/swapvoucher.html',
                 title: 'Swap Voucher'
+            })
+            .state('frontend.giftvoucherlist', {
+                url: '/giftvoucherlist',
+                resolve: loadSequence('giftvoucherlist'),
+                templateUrl: 'app/views/giftvoucherlist.html',
+                title: 'Gift Voucher'
             })
             .state('frontend.mymembership', {
                 url: '/mymembership',
@@ -347,7 +353,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/categorylist',
                 templateUrl: 'app/views/admin/categorylist.html',
                 title: 'Category List',
-                resolve: loadSequence('categorylist')
+                resolve: loadSequence('categorylist','naif.base64')
             })
             .state('admin.newslist', {
                 url: '/newslist',
@@ -365,13 +371,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/resturantlist',
                 templateUrl: 'app/views/admin/resturantlist.html',
                 title: 'Resturant List',
-                resolve: loadSequence('resturantlist','naif.base64')
+                resolve: loadSequence('resturantlist','naif.base64','ngCkeditor')
             })
             .state('admin.resturantedit', {
                 url: '/resturantedit/:resturantId',
                 templateUrl: 'app/views/admin/resturantedit.html',
                 title: 'Resturant Edit',
-                resolve: loadSequence('resturantedit','naif.base64')
+                resolve: loadSequence('resturantedit','naif.base64','ngCkeditor')
             })
             .state('admin.outletlist', {
                 url: '/outletlist/:resturantId',
@@ -433,6 +439,54 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Site Settings',
                 resolve: loadSequence('settings')
             })
+            .state('admin.promomasterlist', {
+                url: '/promomasterlist',
+                templateUrl: 'app/views/admin/promomasterlist.html',
+                title: 'Promo',
+                resolve: loadSequence('promomasterlist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor','ng-bootstrap-datepicker')
+            })
+            .state('admin.pointmasterlist', {
+                url: '/pointmasterlist',
+                templateUrl: 'app/views/admin/pointmasterlist.html',
+                title: 'Points Master',
+                resolve: loadSequence('pointmasterlist','ng-bootstrap-datepicker')
+            })
+            .state('admin.blogsmasterlist', {
+                url: '/blogsmasterlist',
+                templateUrl: 'app/views/admin/blogsmasterlist.html',
+                title: 'Points Master',
+                resolve: loadSequence('blogsmasterlist','naif.base64','ngCkeditor')
+            })
+            .state('admin.banner', {
+                url: '/banner',
+                templateUrl: 'app/views/admin/banner.html',
+                title: 'Banner',
+                resolve: loadSequence('banner','naif.base64','ngMap','ngmapautocomplete','ngCkeditor','ng-bootstrap-datepicker')
+            })
+            .state('admin.banneredit', {
+                url: '/banneredit/:bannerId',
+                templateUrl: 'app/views/admin/banneredit.html',
+                title: 'Banner Edit',
+                resolve: loadSequence('banneredit','naif.base64','ngMap','ngmapautocomplete','ngCkeditor','ng-bootstrap-datepicker')
+            })
+            .state('admin.advertisementmanagement', {
+                url: '/advertisementmanagement',
+                templateUrl: 'app/views/admin/advertisement.html',
+                title: 'Advertisement',
+                resolve: loadSequence('advertisement','naif.base64','ngMap','ngmapautocomplete','ngCkeditor','ng-bootstrap-datepicker')
+            })
+            .state('admin.advertisementedit', {
+                url: '/advertisementedit/:addvertiseId',
+                templateUrl: 'app/views/admin/advertisementedit.html',
+                title: 'Advertisement Edit',
+                resolve: loadSequence('advertisementedit','naif.base64','ngMap','ngmapautocomplete','ngCkeditor','ng-bootstrap-datepicker')
+            })
+            .state('admin.promomasteredit', {
+                url: '/promomasteredit/:promoId',
+                templateUrl: 'app/views/admin/promomasteredit.html',
+                title: 'Promo Edit',
+                resolve: loadSequence('promomasteredit','naif.base64','ngMap','ngCkeditor','ng-bootstrap-datepicker')
+            })
             .state('adminlogin', {
                 url: '/adminlogin',
                 template: '<div ui-view ></div>',
@@ -444,6 +498,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/admin/login.html',
                 resolve: loadSequence('adminlogin'),
                 title: 'Login'
+            })
+            .state('admin.emailtemplate', {
+                url: '/emailtemplate',
+                templateUrl: 'app/views/admin/emailtemplate.html',
+                title: 'Emial Template',
+                resolve: loadSequence('emailtemplate','ngCkeditor')
+            })
+            .state('admin.smsmgmt', {
+                url: '/smsmgmt',
+                templateUrl: 'app/views/admin/smsmgmt.html',
+                title: 'SMS Management',
+                resolve: loadSequence('smsmgmt')
             })
             .state('merchant', {
                 url: '/merchant',
@@ -571,6 +637,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('newsdetail'),
                 templateUrl: 'app/views/newsdetail.html',
                 title: 'News Detail'
+            })
+            .state('frontend.bannerdetail', {
+                url: '/bannerdetail/:bannerId',
+                resolve: loadSequence('bannerdetail'),
+                templateUrl: 'app/views/bannerdetail.html',
+                title: 'Banner Detail'
             })
             .state('frontend.myevent', {
                 url: '/myevent',

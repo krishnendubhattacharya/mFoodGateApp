@@ -89,6 +89,9 @@ app.controller('resturantlistCtrl', function ($rootScope, $scope, $http, $locati
             "is_featured":0,
             "image":'',
             "user_id":'',
+            "seq":'',
+            "sub_title":'',
+            "description":'',
         };
         /*$scope.example1model = [];
          $scope.example1data = [

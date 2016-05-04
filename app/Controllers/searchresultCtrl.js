@@ -5,6 +5,7 @@
 app.controller('searchresultCtrl', function ($rootScope, $scope, $http, $location, $stateParams) {
 
     console.log($stateParams);
+    $scope.keyword =$stateParams.keyword;
     $scope.voucherList = function(){
 
         $http({
@@ -44,6 +45,7 @@ app.controller('searchresultCtrl', function ($rootScope, $scope, $http, $locatio
 
             $scope.voucherInfo =data.data;
             $scope.type =data.category;
+            //$scope.keyword =$stateParams.keyword;
 
             //console.log($scope.catInfo);
 
@@ -58,6 +60,7 @@ app.controller('searchresultCtrl', function ($rootScope, $scope, $http, $locatio
 
             $scope.voucherInfo =data.data;
             $scope.type =data.category;
+
 
             //console.log($scope.catInfo);
 

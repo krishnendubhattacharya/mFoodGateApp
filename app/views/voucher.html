@@ -24,8 +24,8 @@
     <div class="dx-clearfix"></div>
 
     <div class="new-Promo phone-hide" ng-if="specialInfo.length != 0">
-        <h1>Special Promo</h1>
-        <ul>
+        <h1 ng-click="specialShowHide()">{{specialTitle}}</h1>
+        <ul ng-show="special_promo_show">
             <li ng-repeat="specialDetail in specialInfo">
                 <div class="pro-item">
                     <img src="{{specialDetail.image}}" width="406" height="255"  alt=""/>
@@ -41,7 +41,7 @@
                         <div class="view-btn">
                             <a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
                             <!--<p><timer end-time="specialDetail.end_time">{{days}}D:{{hours}}H:{{minutes}}M:{{seconds}}S</timer></p>-->
-                            <p><timer end-time="specialDetail.end_time">{{end_time}} </timer></p>
+                            <p countdown='' date='{{specialDetail.offer_to_date}}'>&nbsp;</p>
                         </div>
                     </div>
                 </div>
@@ -51,8 +51,8 @@
 
     <div class="dx-clearfix"></div>
     <div class="new-Promo phone-hide" ng-if="newPromoInfo.length != 0">
-        <h1>New Promo <span>({{newPromoCount}} new)</span></h1>
-        <ul>
+        <h1  ng-click="newShowHide()">New Promo <span>({{newPromoCount}} new)</span></h1>
+        <ul ng-show="new_promo_show">
             <li ng-repeat="newPromoDetail in newPromoInfo">
                 <div class="pro-item">
                     <img src="{{newPromoDetail.image}}" width="406" height="255"  alt=""/>
@@ -66,7 +66,7 @@
                         </div>
                         <div class="view-btn">
                             <a ui-sref="frontend.promodetails({ promoId: newPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
-                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                            <p countdown='' date='{{newPromoDetail.offer_to_date}}'>&nbsp;</p>
                         </div>
                     </div>
                 </div>
@@ -75,8 +75,8 @@
     </div>
     <div class="dx-clearfix"></div>
     <div class="new-Promo phone-hide" ng-if="hotSellingInfo.length != 0">
-        <h1>Hot Selling</h1>
-        <ul>
+        <h1 ng-click="hotShowHide()">Hot Selling</h1>
+        <ul ng-show="hot_promo_show">
             <li ng-repeat="hotSellingDetail in hotSellingInfo">
                 <div class="pro-item">
                     <img src="{{hotSellingDetail.image}}" width="406" height="255"  alt=""/>
@@ -84,12 +84,13 @@
                     <div class="desc">
                         <div class="txt">
                             <h2>{{hotSellingDetail.title}}</h2>
+                            <p><b>Sold :</b>&nbsp;{{hotSellingDetail.buy_count}}&nbsp;&nbsp;&nbsp;<b>Available :</b>&nbsp;{{hotSellingDetail.quantity - hotSellingDetail.buy_count}}</p>
 
                             <p class="price"><span>IDR{{hotSellingDetail.price | number}}</span> IDR{{hotSellingDetail.price-((hotSellingDetail.price*hotSellingDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn">
                             <a ui-sref="frontend.promodetails({ promoId: hotSellingDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
-                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                            <p countdown='' date='{{hotSellingDetail.offer_to_date}}'>&nbsp;</p>
                         </div>
                     </div>
                 </div>
@@ -101,8 +102,8 @@
     </div>
     <div class="dx-clearfix"></div>
     <div class="new-Promo phone-hide" ng-if="lastDayPromoInfo.length != 0">
-        <h1>Last Days Promo</h1>
-        <ul>
+        <h1 ng-click="lastShowHide()">Last Days Promo</h1>
+        <ul ng-show="last_promo_show">
             <li ng-repeat="lastDayPromoDetail in lastDayPromoInfo">
                 <div class="pro-item">
                     <img src="{{lastDayPromoDetail.image}}" width="406" height="255"  alt=""/>
@@ -111,11 +112,12 @@
                         <div class="txt">
                             <h2>{{lastDayPromoDetail.title}}</h2>
                             <!--<p>11D:21H:50M:20S</p>-->
+                            <p><b>Sold :</b>&nbsp;{{lastDayPromoDetail.buy_count}}&nbsp;&nbsp;&nbsp;<b>Available :</b>&nbsp;{{lastDayPromoDetail.quantity - lastDayPromoDetail.buy_count}}</p>
                             <p class="price"><span>IDR{{lastDayPromoDetail.price | number}}</span> IDR{{lastDayPromoDetail.price-((lastDayPromoDetail.price*lastDayPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn">
                             <a ui-sref="frontend.promodetails({ promoId: lastDayPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
-                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                            <p countdown='' date='{{lastDayPromoDetail.offer_to_date}}'>&nbsp;</p>
                         </div>
                     </div>
                 </div>
@@ -151,8 +153,8 @@
     </div>-->
 
     <div class="new-Promo phone-hide" ng-if="voucherMenuInfo.length != 0">
-        <h1>All Promo</h1>
-        <ul>
+        <h1 ng-click="allShowHide()">All Promo</h1>
+        <ul ng-show="all_promo_show">
             <li ng-repeat="lastDayPromoDetail in voucherMenuInfo">
                 <div class="pro-item">
                     <img src="{{lastDayPromoDetail.image}}" width="406" height="255"  alt=""/>
@@ -161,11 +163,12 @@
                         <div class="txt">
                             <h2>{{lastDayPromoDetail.title}}</h2>
                             <!--<p>11D:21H:50M:20S</p>-->
+                            <p><b>Sold :</b>&nbsp;{{lastDayPromoDetail.buy_count}}&nbsp;&nbsp;&nbsp;<b>Available :</b>&nbsp;{{lastDayPromoDetail.quantity - lastDayPromoDetail.buy_count}}</p>
                             <p class="price"><span>IDR{{lastDayPromoDetail.price | number}}</span> IDR{{lastDayPromoDetail.price-((lastDayPromoDetail.price*lastDayPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn">
                             <a ui-sref="frontend.promodetails({ promoId: lastDayPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
-                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                            <p countdown='' date='{{lastDayPromoDetail.offer_to_date}}'>&nbsp;</p>
                         </div>
                     </div>
                 </div>
@@ -181,8 +184,8 @@
 </div>
 
     <div class="m-new-Promo tablet-hide" ng-if="specialInfo.length != 0">
-        <h1>Special Promo</h1>
-        <ul>
+        <h1 ng-click="specialShowHide()">{{specialTitle}}</h1>
+        <ul ng-show="special_promo_show">
             <li ng-repeat="specialDetail in specialInfo">
                 <div class="pro-item">
                     <img src="{{specialDetail.image}}" width="406" height="255"  alt=""/>
@@ -197,7 +200,7 @@
                         </div>
                         <div class="view-btn">
                             <a ui-sref="frontend.promodetails({ promoId: specialDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
-                            <p><timer end-time="specialDetail.end_time">{{end_time}} </timer></p>
+                            <p countdown='' date='{{specialDetail.offer_to_date}}'>&nbsp;</p>
                         </div>
                     </div>
                 </div>
@@ -207,8 +210,8 @@
     <div class="dx-clearfix"></div>
 
     <div class="m-new-Promo tablet-hide" ng-if="newPromoInfo.length != 0">
-        <h1>New Promo <span>({{newPromoCount}} new)</span></h1>
-        <ul>
+        <h1 ng-click="newShowHide()">New Promo <span>({{newPromoCount}} new)</span></h1>
+        <ul ng-show="new_promo_show">
             <li ng-repeat="newPromoDetail in newPromoInfo">
                 <div class="pro-item">
                     <img src="{{newPromoDetail.image}}" width="406" height="255"  alt=""/>
@@ -222,7 +225,7 @@
                         </div>
                         <div class="view-btn">
                             <a ui-sref="frontend.promodetails({ promoId: newPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
-                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                            <p countdown='' date='{{newPromoDetail.offer_to_date}}'>&nbsp;</p>
                         </div>
                     </div>
                 </div>
@@ -231,8 +234,8 @@
     </div>
     <div class="dx-clearfix"></div>
     <div class="m-new-Promo tablet-hide" ng-if="hotSellingInfo.length != 0">
-        <h1>Hot Selling</h1>
-        <ul>
+        <h1 ng-click="hotShowHide()">Hot Selling</h1>
+        <ul ng-show="hot_promo_show">
             <li ng-repeat="hotSellingDetail in hotSellingInfo">
                 <div class="pro-item">
                     <img src="{{hotSellingDetail.image}}" width="406" height="255"  alt=""/>
@@ -241,11 +244,12 @@
                         <div class="txt">
                             <h2>{{hotSellingDetail.title}}</h2>
                             <!--<p>11D:21H:50M:20S</p>-->
+                            <p><b>Sold :</b>&nbsp;{{hotSellingDetail.buy_count}}&nbsp;&nbsp;&nbsp;<b>Available :</b>&nbsp;{{hotSellingDetail.quantity - hotSellingDetail.buy_count}}</p>
                             <p class="price"><span>IDR{{hotSellingDetail.price | number}}</span> IDR{{hotSellingDetail.price-((hotSellingDetail.price*hotSellingDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn">
                             <a ui-sref="frontend.promodetails({ promoId: hotSellingDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
-                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                            <p countdown='' date='{{hotSellingDetail.offer_to_date}}'>&nbsp;</p>
                         </div>
                     </div>
                 </div>
@@ -257,8 +261,8 @@
     </div>
     <div class="dx-clearfix"></div>
     <div class="m-new-Promo tablet-hide" ng-if="lastDayPromoInfo.length != 0">
-        <h1>Last Days Promo</h1>
-        <ul>
+        <h1 ng-click="lastShowHide()">Last Days Promo</h1>
+        <ul ng-show="last_promo_show">
             <li ng-repeat="lastDayPromoDetail in lastDayPromoInfo">
                 <div class="pro-item">
                     <img src="{{lastDayPromoDetail.image}}" width="406" height="255"  alt=""/>
@@ -267,10 +271,11 @@
                         <div class="txt">
                             <h2>{{lastDayPromoDetail.title}}</h2>
                             <!--<p>11D:21H:50M:20S</p>-->
+                            <p><b>Sold :</b>&nbsp;{{lastDayPromoDetail.buy_count}}&nbsp;&nbsp;&nbsp;<b>Available :</b>&nbsp;{{lastDayPromoDetail.quantity - lastDayPromoDetail.buy_count}}</p>
                             <p class="price"><span>IDR{{lastDayPromoDetail.price | number}}</span> IDR{{lastDayPromoDetail.price-((lastDayPromoDetail.price*lastDayPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn"><a ui-sref="frontend.promodetails({ promoId: lastDayPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
-                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                            <p countdown='' date='{{lastDayPromoDetail.offer_to_date}}'>&nbsp;</p>
                         </div>
                     </div>
                 </div>
@@ -282,8 +287,8 @@
     </div>
     <div class="dx-clearfix"></div>
     <div class="m-new-Promo tablet-hide" ng-if="voucherMenuInfo.length != 0">
-        <h1>All Promo</h1>
-        <ul>
+        <h1 ng-click="allShowHide()">All Promo</h1>
+        <ul ng-show="all_promo_show">
             <li ng-repeat="lastDayPromoDetail in voucherMenuInfo">
                 <div class="pro-item">
                     <img src="{{lastDayPromoDetail.image}}" width="406" height="255"  alt=""/>
@@ -292,11 +297,12 @@
                         <div class="txt">
                             <h2>{{lastDayPromoDetail.title}}</h2>
                             <!--<p>11D:21H:50M:20S</p>-->
+                            <p><b>Sold :</b>&nbsp;{{lastDayPromoDetail.buy_count}}&nbsp;&nbsp;&nbsp;<b>Available :</b>&nbsp;{{lastDayPromoDetail.quantity - lastDayPromoDetail.buy_count}}</p>
                             <p class="price"><span>IDR{{lastDayPromoDetail.price | number}}</span> IDR{{lastDayPromoDetail.price-((lastDayPromoDetail.price*lastDayPromoDetail.offer_percent)/100) | number}}</p>
                         </div>
                         <div class="view-btn">
                             <a ui-sref="frontend.promodetails({ promoId: lastDayPromoDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
-                            <p><timer end-time="newPromoDetail.end_time">{{end_time}} </timer></p>
+                            <p countdown='' date='{{lastDayPromoDetail.offer_to_date}}'>&nbsp;</p>
                         </div>
                     </div>
                 </div>

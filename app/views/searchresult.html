@@ -1,8 +1,11 @@
 <!--Web header-->
 <div ng-controller="searchresultCtrl">
 <div class="container phone-hide">
+    <div class="new-Promo" ng-if="voucherInfo.length == 0">
+        <h2>Results for ({{keyword}}) :Sorry, nothing to display</h2>
+    </div>
 
-    <div class="new-Promo" ng-if="type =='promo' ">
+    <div class="new-Promo" ng-if="type =='promo' && voucherInfo.length != 0">
         <h1>Promo <span style="float:right;">
             <div class="select-box">
             <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
@@ -40,7 +43,7 @@
         </ul>
     </div>
 
-    <div class="restaurant-Promo phone-hide" ng-if="type =='restaurant' ">
+    <div class="restaurant-Promo phone-hide" ng-if="type =='restaurant' && voucherInfo.length != 0"">
         <h1>Restaurant <span style="float:right;"><div class="select-box">
             <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
                 <option value="">Sort By Title</option>
@@ -65,7 +68,7 @@
     </div>
 
 
-    <div class="new-Promo phone-hide" ng-if="type =='event' ">
+    <div class="new-Promo phone-hide" ng-if="type =='event' && voucherInfo.length != 0"">
         <h1>Events <span style="float:right;"><div class="select-box">
             <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
                 <option value="">Sort By Title</option>
@@ -96,7 +99,7 @@
         </ul>
     </div>
 
-    <div class="d-latest-news phone-hide" ng-if="type =='news' ">
+    <div class="d-latest-news phone-hide" ng-if="type =='news' && voucherInfo.length != 0"">
         <h1>News <span style="float:right;">
             <div class="select-box">
             <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
@@ -128,7 +131,11 @@
 
 </div>
 
-    <div class="m-new-Promo tablet-hide" ng-if="type =='promo' ">
+    <div class="m-new-Promo tablet-hide" ng-if="voucherInfo.length == 0">
+        <h2>Sorry, nothing to display</h2>
+    </div>
+
+    <div class="m-new-Promo tablet-hide" ng-if="type =='promo' && voucherInfo.length != 0"">
         <h1>Promo <span style="float:right;">
             <div class="select-box">
             <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
@@ -166,7 +173,7 @@
         </ul>
     </div>
 
-    <div class="m-restaurant-Promo tablet-hide" ng-if="type =='restaurant' ">
+    <div class="m-restaurant-Promo tablet-hide" ng-if="type =='restaurant' && voucherInfo.length != 0"">
         <h1>Restaurant <span style="float:right;">
 <div class="select-box">
     <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
@@ -190,7 +197,7 @@
         </ul>
     </div>
 
-    <div class="m-new-Promo tablet-hide" ng-if="type =='event' ">
+    <div class="m-new-Promo tablet-hide" ng-if="type =='event' && voucherInfo.length != 0"">
         <h1>Events <span style="float:right;">
             <div class="select-box">
                 <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">
@@ -226,7 +233,7 @@
         </ul>
     </div>
 
-    <div class="m-dlatest-news tablet-hide" ng-if="type =='news' ">
+    <div class="m-dlatest-news tablet-hide" ng-if="type =='news' && voucherInfo.length != 0"">
         <h1>News <span style="float:right;">
             <div class="select-box">
                 <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">

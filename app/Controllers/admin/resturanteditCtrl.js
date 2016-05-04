@@ -23,6 +23,9 @@ app.controller('resturanteditCtrl', function ($rootScope, $scope, $http, $locati
                             image_url:data.data.restaurant.logo_url,
                             is_featured:data.data.restaurant.is_featured,
                             is_active:data.data.restaurant.is_active,
+                            seq:data.data.restaurant.seq,
+                            sub_title:data.data.restaurant.sub_title,
+                            description:data.data.restaurant.description,
                             category_id:$scope.category_id
                           }
             console.log($scope.item.category_id);

@@ -4,6 +4,50 @@
  */
 app.controller('voucherCtrl', function ($rootScope, $scope, $http, $location) {
 
+    $scope.special_promo_show = 1;
+    $scope.last_promo_show = 1;
+    $scope.all_promo_show = 1;
+    $scope.new_promo_show = 1;
+    $scope.hot_promo_show = 1;
+
+    $scope.lastShowHide = function () {
+        if($scope.last_promo_show == 1){
+            $scope.last_promo_show = 0;
+        }else{
+            $scope.last_promo_show = 1;
+        }
+    }
+
+    $scope.specialShowHide = function () {
+        if($scope.special_promo_show == 1){
+            $scope.special_promo_show = 0;
+        }else{
+            $scope.special_promo_show = 1;
+        }
+
+    }
+    $scope.allShowHide = function () {
+        if($scope.all_promo_show == 1){
+            $scope.all_promo_show = 0;
+        }else{
+            $scope.all_promo_show = 1;
+        }
+    }
+    $scope.newShowHide = function () {
+        if($scope.new_promo_show == 1){
+            $scope.new_promo_show = 0;
+        }else{
+            $scope.new_promo_show = 1;
+        }
+    }
+    $scope.hotShowHide = function () {
+        if($scope.hot_promo_show == 1){
+            $scope.hot_promo_show = 0;
+        }else{
+            $scope.hot_promo_show = 1;
+        }
+    }
+
     $scope.voucherList = function(){
 
         $http({
@@ -68,11 +112,31 @@ app.controller('voucherCtrl', function ($rootScope, $scope, $http, $location) {
             url: $rootScope.serviceurl + "getSpecialMenuPromo",
         }).success(function (data) {
             $scope.specialInfo = data.getSpecialPromo;
+            $scope.special_promo_show = 1;
+            $scope.specialTitle = data.site_setting.special_promo_title;
             //console.log($scope.specialInfo);
 
         });
     }
     $scope.specialList();
+
+    $scope.lastShowHide = function () {
+        if($scope.last_promo_show == 1){
+            $scope.last_promo_show = 0;
+        }else{
+            $scope.last_promo_show = 1;
+        }
+
+    }
+
+    $scope.specialShowHide = function () {
+        if($scope.special_promo_show == 1){
+            $scope.special_promo_show = 0;
+        }else{
+            $scope.special_promo_show = 1;
+        }
+
+    }
 
     $scope.voucherExpireSoonList = function(){
 

@@ -45,6 +45,7 @@ app.controller('categorylistCtrl', function ($rootScope, $scope, $http, $locatio
             "name": '',
             "id": '',
             "seq":'',
+            icon:'',
             "is_active":0
         };
         $scope.categoryView='edit';
@@ -61,7 +62,7 @@ app.controller('categorylistCtrl', function ($rootScope, $scope, $http, $locatio
             $http({
                 method: "POST",
                 url: $rootScope.serviceurl + "categories",
-                data: {"name": $scope.item.name, "parent_id": "0", "is_active": $scope.item.is_active,seq:$scope.item.seq},
+                data: {"name": $scope.item.name, "parent_id": "0", "is_active": $scope.item.is_active,seq:$scope.item.seq,icon:$scope.item.icon},
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
                 console.log(data);
@@ -73,7 +74,7 @@ app.controller('categorylistCtrl', function ($rootScope, $scope, $http, $locatio
             $http({
                 method: "PUT",
                 url: $rootScope.serviceurl + "categories/"+$scope.item.id,
-                data: {"name": $scope.item.name,"is_active": $scope.item.is_active,seq:$scope.item.seq},
+                data: {"name": $scope.item.name,"is_active": $scope.item.is_active,seq:$scope.item.seq,icon:$scope.item.icon},
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
                 console.log(data);

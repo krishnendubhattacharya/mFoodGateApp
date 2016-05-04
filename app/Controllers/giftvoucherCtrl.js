@@ -6,6 +6,20 @@ app.controller('giftvoucherCtrl', function ($rootScope, $scope, $http, $location
 
         $location.path("/login");
     }
+    $scope.detailsView = false;
+    $scope.detailsViewNonUser = false;
+
+    $scope.getVoucherDetail = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "vourcherdetail/"+$stateParams.voucherId,
+        }).success(function (data) {
+            console.log(data);
+            $scope.voucherInfo =data;
+        });
+
+    }
+    $scope.getVoucherDetail();
 
     $scope.giftVoucher = function(to_id){
         //alert(to_id);
@@ -46,6 +60,10 @@ app.controller('giftvoucherCtrl', function ($rootScope, $scope, $http, $location
          });*/
     };
 
+    $scope.cancel = function(){
+        $scope.detailsView = false;
+        $scope.detailsViewNonUser = false;
+    }
     $scope.saveGift = function(params) {
 
         //alert($scope.gift_email);
@@ -90,6 +108,46 @@ app.controller('giftvoucherCtrl', function ($rootScope, $scope, $http, $location
                         at: "center top"
                     }
                 }, "error", 3000);
+            }
+
+        })
+
+        //form.submit();
+        //params.validationGroup.reset();
+        //}
+    };
+
+
+    $scope.check = function(params) {
+
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getUserByEmail/"+$scope.gift_email,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            console.log(data);
+            //return false;
+            //params.validationGroup.reset();
+            if(data.type == 'success'){
+                //var message = data.message;
+                //params.validationGroup.reset();
+                $scope.userDetail = data.data;
+                $scope.detailsView = true;
+                /*$location.path('/dashboard');
+
+                DevExpress.ui.notify({
+                    message: data.message,
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "success", 3000);*/
+            }else{
+                $scope.email = $scope.gift_email;
+                $scope.detailsViewNonUser = true;
+
+
             }
 
         })

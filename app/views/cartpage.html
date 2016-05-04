@@ -1,4 +1,4 @@
-<div ng-controller="promodetailsCtrl">
+<div ng-controller="promodetailsCtrl" class="container">
 
 
         <div class="carts phone-hide">
@@ -27,12 +27,12 @@
                 <p>
                     <span>Payment By:-</span>
                 </p>
-                <div class="qty-totals">
+                <div class="qty-totals" ng-init="payments='C'">
                     <div class="qty">
-                        <input type="radio" name="payments" ng-model="$parent.payments" value="C">Cash
+                        <input type="radio" ng-model="payments" value="C">Cash
                     </div>
                     <div class="qty">
-                        <input type="radio" name="payments" ng-model="$parent.payments" value="P">M-points
+                        <input type="radio" ng-model="payments" value="P">M-points
                     </div>
                     <div class="qty" ng-if="payments=='P'">Available M-points:</div>
                     <div class="totals" ng-if="payments=='P'">{{mpoints}}</div>

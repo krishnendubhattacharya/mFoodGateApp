@@ -41,6 +41,7 @@ app.controller('promoeditCtrl', function ($rootScope, $scope, $http, NgMap, $loc
             $scope.item = { id:data.offer.id,
                 title:data.offer.title,
                 "outlet_id":$scope.outlet_id,
+                special_tag:data.offer.special_tag,
                 "description": data.offer.description,
                 "benefits": data.offer.benefits,
                 "quantity":data.offer.quantity,

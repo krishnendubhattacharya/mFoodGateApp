@@ -2,7 +2,7 @@
 /** 
  * controllers used for the login
  */
-app.controller('refinerestaurentCtrl', function ($rootScope, $scope, $http, $location, $stateParams) {
+app.controller('refinerestaurentCtrl', function ($rootScope, $scope, $http, $location, $stateParams, $timeout) {
 
     $scope.catList = function(){
 
@@ -31,6 +31,50 @@ app.controller('refinerestaurentCtrl', function ($rootScope, $scope, $http, $loc
         });
     }
     $scope.restaurantList();
+
+    $scope.getAds = function () {
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getActiveAdsByLocation/3",
+        }).success(function (data) {
+            $scope.ads = data.ads;
+            $timeout(function(){
+                // $('#ca-container').contentcarousel();
+                var carousal = $('.owl-carousel1');
+                carousal.owlCarousel({
+                    autoplay:true,
+                    touchDrag:false,
+                    loop:true,
+                    dots:true,
+                    nav:true,
+                    navContainerClass:"ca-nav",
+                    navText:false,
+                    autoplayTimeout:5000,
+                    autoplayHoverPause:true,
+                    onInitialize: function (event) {
+                        if ($('.item > img').length === 1) {
+                            this.settings.loop = false;
+                            this.settings.nav = false;
+                        }},
+                    responsive:{
+                        0:{
+                            items:1
+                        },
+                        600:{
+                            items:1
+                        },
+                        1000:{
+                            items:1
+                        }
+                    }
+                });
+            },3000);
+            //console.log($scope.newPromoInfo);
+
+        });
+    }
+    $scope.getAds();
 
    
 });
