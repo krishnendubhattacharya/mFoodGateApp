@@ -221,14 +221,15 @@ position: absolute; top: -10px; right: -10px; z-index: 1000; font-size: 12px; co
 .restaurant-Promo h1 span{ color:#ff0000; font-size:18px; }
 .restaurant-Promo ul{ padding:17px 0 0 0; margin:0; overflow: hidden; border:  solid 1px #e1e1e1; width: 99.9%;}
 .restaurant-Promo ul li{ padding: 0; float: left; list-style-type: none; width:31.3%; margin: 0 1% 15px; }
-.restaurant-Promo .pro-item{ width: 100%; height: 310px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
+.restaurant-Promo .pro-item{ width: 100%; height: 300px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
 .restaurant-Promo .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4; overflow: hidden;}
 .restaurant-Promo .pro-item .logo-box img{ width: auto; height: 100%; vertical-align:middle; max-height: 166px; }
-.restaurant-Promo .pro-item .desc{ padding: 20px 10px; overflow: hidden;}
-.restaurant-Promo .pro-item .desc h2{font-size:18px; color:#4b4b4b; text-transform: uppercase; padding: 5px 0; text-align: center;}
+.restaurant-Promo .pro-item .desc{ padding: 12px 10px; overflow: hidden;}
+.restaurant-Promo .pro-item .desc h2{font-size:15px; color:#4b4b4b; text-transform: uppercase; padding: 5px 0; text-align: center;
+overflow:  hidden; white-space:  nowrap; text-overflow: ellipsis;}
 .restaurant-Promo .pro-item .desc h3{font-size:14px; color:#4b4b4b; padding: 5px 0; text-align: center;
     text-overflow: ellipsis; overflow:  hidden; white-space:  nowrap;}
-.restaurant-Promo .pro-item .desc .btn{width:144px; height: 36px; margin: 15px auto; overflow: hidden;}
+.restaurant-Promo .pro-item .desc .btn{width:144px; height: 36px; margin: 5px auto; overflow: hidden;}
 .restaurant-Promo .pro-item .desc .btn a{ display: block; border-radius: 3px; background: #339933; text-align:center; font-size: 16px; color:#fff; text-decoration: none; height: 36px; line-height: 36px; font-weight: bold;}
 .restaurant-Promo .pro-item .desc .btn a{ display: block; background:#3db63d;}
 
@@ -941,14 +942,14 @@ color: #313131; font-weight: normal; width:100%; }
 .item-details .offers .offer p{ padding: 5px 10px 0; margin: 0; line-height: 24px; font-size:18px; color:#333333; }
 .item-details .offers .offer p span{ color:#969696;}
 .item-details .offers .offer .price-div{ padding: 10px; overflow: hidden; }
-.item-details .offers .offer .price-div .off{ font-size:18px; color:#319431; line-height: 30px; float: left; }
+.item-details .offers .offer .price-div .off{ font-size:14px; color:#319431; line-height: 30px; float: left; }
 .item-details .offers .offer .price-div .off span{ color:#5c5c5c; }
-.item-details .offers .offer .price-div .price-m{ float: right; color:#ed5c1b; font-size:24px; line-height: 30px;}
-.item-details .offers .offer .price-div .price-m span{ font-size:18px; line-height: 30px; color: #c6c6c6; text-decoration: line-through; }
+.item-details .offers .offer .price-div .price-m{ float: right; color:#ed5c1b; font-size:18px; line-height: 30px;}
+.item-details .offers .offer .price-div .price-m span{ font-size:14px; line-height: 30px; color: #c6c6c6; text-decoration: line-through; }
 .item-details .offers .offer .qty-totals{padding: 10px; overflow: hidden; border-top: solid 1px #e9e9e9;}
 .item-details .offers .offer .qty-totals .qty{ font-size:14px; color:#737373; line-height: 30px; float: left; width:50%; }
 .item-details .offers .offer .qty-totals .qty input[type="text"]{ width:30%; height: 30px; background: #fff; border: solid 1px #e2e2e2; padding: 0 5px; text-align: center; color:#737373;}
-.item-details .offers .offer .qty-totals .totals{float: left; color:#ed5c1b; font-size:24px; line-height: 30px; width:50%; text-align: right;}
+.item-details .offers .offer .qty-totals .totals{float: left; color:#ed5c1b; font-size:18px; line-height: 30px; width:50%; text-align: right;}
 .item-details .offers .offer .qty-totals .totals span{ font-size:14px; color:#737373; line-height: 30px;}
 
 .item-details .offers input[type="button"], .item-details .offers input[type="submit"], .item-details .offers button
@@ -1310,68 +1311,6 @@ color: #313131; font-weight: normal; width:100%; }
 }
 
 
-/*------------------------------------ Media Query -------------------------*/
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-    .container{ width: 98%; margin: 0 auto; border: solid 0px red;}
-    .category-left{ width:24%;}
-    .featured-Promo{ width:73%; float: right; }
-    .ca-container { width: 75% !important; }
-    .ca-item {
-        width: 100% !important;
-    }
-    .category-f {
-
-        width: 75%;
-        margin-top:  18px !important;
-    }
-    .myaccount-details h1 { margin-top:5px !important; }
-    .section-footer .footer-top ul li{ padding: 0; margin:0 2% 0; width:28%; float: left; list-style-type: none;}
-    body { min-width: 98% !important; }
-}
-
-@media only screen and (max-width: 768px) {
-    .container{ width: 98%; margin: 0 auto; border: solid 0px green;}
-    .category-left{ width:27%;}
-    .featured-Promo{ width:71%; float: right; }
-    .section-footer .footer-top ul li{ padding: 0; margin:0 2% 0; width:28%; float: left; list-style-type: none;}
-    body { min-width: 98%; }
-    .main-header{ min-width:  98% !important;}
-    .ca-container{width:71% !important;}
-    .category-left h1{ font-size: 14px !important;}
-    .main-header .nab-bar .navigation{ width: 67%;}
-    .main-header .nab-bar .navigation ul li a{ padding:  0 12px;}
-    .search-br { width: 29%;}
-    .search-br .search-f{ width: 48%;}
-    .search-br .select-box {width: 48%;}
-
-    .search-br .select-box select{ width: 121%;}
-    .search-br .search-f input[type="text"] { width: 77% !important;}
-    .ca-item { width: 100% !important;}
-    .new-Promo ul li { margin: 0 0.2% 10px !important; width: 32.7% !important;}
-   .new-Promo .pro-item { height: 230px !important;}
-    .section-footer .footer-top ul li p span{ margin-right:7px; }
-    .section-footer .footer-top ul li p span img{ width: 100%; width: auto;}
-    .section-footer .footer-top ul li{ margin: 0 1% !important;}
-    .section-footer .footer-mid{ padding:  17px 0 !important;}
-
- .section-footer .footer-bottom{ padding: 15px 0 !important; overflow:  hidden; background:#0a0a0a; }
-    .section-footer .footer-top ul li{ margin: 0 3% !important; width: 40% !important;}
-    .category-f {
-
-        width: 71%;
-        margin-top:  18px !important;
-    }
-    .left-panel { width: 21%;}
-    .profile-details{ width: 78% !important;}
-    .myaccount-details h1 { margin-top: 5px !important; font-size: 22px !important;}
-    .pvoucher-section ul li {
-        margin: 0 1.3% 15px;
-        width: 47.3%;
-    }
-    .ev-details {
-        width: 78%;
-    }
-}
 
 /*----------------------------------------------------*/
 .owl-dots{ text-align:  center !important;}
@@ -1600,7 +1539,7 @@ color: #313131; font-weight: normal; width:100%; }
 font-weight:  bold; text-overflow: ellipsis; overflow:  hidden; white-space:  nowrap;}
 .restaurant-Promo .pro-item_2 .desc h3{font-size:14px; color:#4b4b4b; padding: 5px 0; text-align: center;
     text-overflow: ellipsis; overflow:  hidden; white-space:  nowrap;}
-.restaurant-Promo .pro-item_2 .desc .btn{width:144px; height: 36px; margin: 15px auto; overflow: hidden;}
+.restaurant-Promo .pro-item_2 .desc .btn{width:144px; height: 36px; margin: 5px auto; overflow: hidden;}
 .restaurant-Promo .pro-item_2 .desc .btn a{ display: block; border-radius: 3px; background: #339933; text-align:center; font-size: 16px; color:#fff; text-decoration: none; height: 36px; line-height: 36px; font-weight: bold;}
 .restaurant-Promo .pro-item_2 .desc .btn a{ display: block; background:#3db63d;}
 .owl-carousel .owl-item img {display: inline !important;}
@@ -1634,4 +1573,144 @@ font-weight:  bold; text-overflow: ellipsis; overflow:  hidden; white-space:  no
     padding: 10px;
     width: auto !important;
     z-index: 1;
+}
+
+
+/*----------------------- Added By Bikash --------------------------*/
+.ca-nav{display:none;}
+.owl-carousel:hover .owl-controls .ca-nav{
+    display:block;
+}
+
+
+/*------------------------------------ Media Query -------------------------*/
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .container{ width: 98%; margin: 0 auto; border: solid 0px red;}
+    .category-left{ width:24%;}
+    .featured-Promo{ width:74%; float: right; }
+    .ca-container { width: 48% !important; }
+    .ca-item {
+        width: 100% !important;
+    }
+    .category-f {
+
+        width: 75%;
+        margin-top:  18px !important;
+    }
+    .myaccount-details h1 { margin-top:5px !important; }
+    .section-footer .footer-top ul li{ padding: 0; margin:0 2% 0; width:28%; float: left; list-style-type: none;}
+    body { min-width: 98% !important; }
+    .restaurant-Promo .pro-item_2 .desc .btn{ margin: 5px auto;}
+    .featured-Promo .pro-item .desc{ width: 94%;}
+    .news .right-col { width: 30%;}
+    .news .left-col{ width: 68%;}
+}
+
+@media only screen and (max-width: 768px) {
+    .container{ width: 98%; margin: 0 auto; border: solid 0px green;}
+    .category-left{ width:27%;}
+    .featured-Promo{ width:71%; float: right; }
+    .section-footer .footer-top ul li{ padding: 0; margin:0 2% 0; width:28%; float: left; list-style-type: none;}
+    body { min-width: 98%; }
+    .main-header{ min-width:  98% !important;}
+    .ca-container{width:48% !important;}
+    .category-left h1{ font-size: 14px !important;}
+    .main-header .nab-bar .navigation{ width: 67%;}
+    .main-header .nab-bar .navigation ul li a{ padding:  0 12px;}
+    .search-br { width: 29%;}
+    .search-br .search-f{ width: 48%;}
+    .search-br .select-box {width: 48%;}
+
+    .search-br .select-box select{ width: 121%;}
+    .search-br .search-f input[type="text"] { width: 77% !important;}
+    .ca-item { width: 100% !important;}
+    .new-Promo ul li { margin: 0 1% 10px !important; width: 47.7% !important;}
+    .new-Promo .pro-item { height: 230px !important;}
+    .section-footer .footer-top ul li p span{ margin-right:7px; }
+    .section-footer .footer-top ul li p span img{ width: 100%; width: auto;}
+    .section-footer .footer-top ul li{ margin: 0 1% !important;}
+    .section-footer .footer-mid{ padding:  17px 0 !important;}
+
+    .section-footer .footer-bottom{ padding: 15px 0 !important; overflow:  hidden; background:#0a0a0a; }
+    .section-footer .footer-top ul li{ margin: 0 3% !important; width: 40% !important;}
+    .category-f {
+
+        width: 71%;
+        margin-top:  18px !important;
+    }
+    .left-panel { width: 21%;}
+    .profile-details{ width: 78% !important;}
+    .myaccount-details h1 { margin-top: 5px !important; font-size: 22px !important;}
+    .pvoucher-section ul li {
+        margin: 0 1.3% 15px;
+        width: 47.3%;
+    }
+    .ev-details {
+        width: 78%;
+    }
+    .featured-Promo .pro-item{ height:200px;}
+    .category-left ul li a{ line-height: 34px;}
+    .restaurant-Promo .pro-item_2 .desc .btn{ margin: 5px auto;}
+    .reseller-section .pro-item{ height: 340px;}
+    .news .right-col { width: 40%;}
+    .news .left-col{ width: 58%;}
+
+    .restaurant-Promo .pro-item .desc h2 {
+        font-size: 14px;
+        padding: 2px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .restaurant-Promo .pro-item{ width: 100%; height: 285px;}
+    .restaurant-Promo ul li {
+        margin: 0 1% 15px;
+        width: 47.5%;
+
+    }
+    .login-section .img-box {
+        width: 56%;
+    }
+    .login-section .login-box {
+        width: 36%;
+    }
+
+    .new-Promo .pro-item2 {
+        height: 199px;
+    }
+
+    .new-Promo .pro-item2 .desc {
+        width: 85%;
+    }
+    .item-details .offers {
+        width: 30%;
+    }
+
+    .item-details .details {
+        width: 69%;
+    }
+    .item-details .offers .offer .price-div .price-m {
+        font-size: 14px;
+    }
+    .item-details .offers .offer .price-div .price-m span {
+        font-size: 12px;
+    }
+
+    .item-details .offers .offer .price-div .off {
+        font-size: 12px;
+    }
+    .item-details .offers .offer .qty-totals .qty {
+        width: 45%;
+        font-size: 12px;
+    }
+
+    .item-details .offers .offer .qty-totals .totals {
+        width: 55%;
+        font-size: 14px;
+    }
+
+    .item-details .offers h1 {
+        font-size: 19px;
+        padding: 7px;
+    }
 }

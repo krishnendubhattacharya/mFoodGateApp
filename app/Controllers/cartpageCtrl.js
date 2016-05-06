@@ -2,6 +2,33 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.promoId = $stateParams.promoId;
     $scope.loggedindetails = myAuth.getUserNavlinks();
 
+    $scope.cartIds = [];
+    $scope.save_to_db = function() {
+        $scope.cartDetails = mFoodCart.get_cart();
+        if ($scope.loggedindetails) {
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl + "addToCart",
+                headers: {'Content-Type': 'application/json'},
+                data:{user_id:$scope.loggedindetails.id,cart:$scope.cartDetails}
+            }).success(function (data) {
+                console.log('saved');
+                if(data)
+                {
+                    mFoodCart.resetAndAdd(data);
+                    $scope.cartDetails = mFoodCart.get_cart();
+                    //$scope.getCartDetails();
+                }
+            })
+        }
+    }
+    $scope.save_to_db();
+
+    //$scope.$watch(function(){
+    //    var cart=$cookieStore.get('cart');
+    //    if(cart)
+    //        $scope.getCartDetails();
+    //});
 
     $scope.mpoints = 0;
     NgMap.getMap().then(function(map) {
@@ -27,22 +54,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
 
 
 
-    $scope.relateds = [];
-    $scope.getRelatedProducts = function(){
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl+"getRelatedPromo",
-            headers: {'Content-Type': 'application/json'},
-        }).success(function(data) {
-            if(data.type == 'success') {
-                //console.log(data.getRelatedPromo);
-                $scope.related_products = data.getRelatedPromo;
-                //console.log($scope.related_products);
 
-            }
-        })
-    }
-    $scope.getRelatedProducts();
 
     $scope.add_to_cart = function(){
         var cart_obj = {
@@ -58,10 +70,43 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         }
         mFoodCart.add_to_cart(cart_obj);
         $scope.cartDetails = mFoodCart.get_cart();
+        console.log('hi');
+        $scope.save_to_db();
+        console.log('hello');
     }
 
-    $scope.cartDetails = mFoodCart.get_cart();
-    console.log('cart',$scope.cartDetails);
+    $scope.getCartDetails = function() {
+        $scope.cartDetails = mFoodCart.get_cart();
+        //console.log('cart',$scope.cartDetails);
+    }
+    $scope.getCartDetails();
+
+
+    if($scope.cartDetails)
+    {
+        angular.forEach($scope.cartDetails,function(v){
+            $scope.cartIds.push(v.offer_id);
+        })
+
+        if($scope.cartIds)
+        {
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl+"checkExpiredOffers",
+                headers: {'Content-Type': 'application/json'},
+                data:{offer_ids:$scope.cartIds}
+            }).success(function(data) {
+                if(data.type=='success')
+                {
+                    angular.forEach(data.ids,function(v){
+                        $scope.remove_offer(v);
+                    })
+                }
+                console.log(data);
+            })
+        }
+        console.log("===================IDS================", $scope.cartIds);
+    }
 
     $scope.updateQuantity = function(data){
         if(data.quantity>0) {
@@ -174,9 +219,23 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         /**/
     }
 
+    $scope.delete_from_cart = function (id)
+    {
+        if($scope.loggedindetails) {
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl + "deleteFromCart",
+                headers: {'Content-Type': 'application/json'},
+                data: {user_id: $scope.loggedindetails.id, offer_id: id}
+            }).success(function (data) {
+            })
+        }
+    }
+
     $scope.remove_offer = function(offer_id){
         mFoodCart.remove(offer_id);
         $scope.getCartTotals();
+        $scope.delete_from_cart(offer_id);
     }
 
     $scope.payments = 'C';
