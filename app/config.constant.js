@@ -96,6 +96,7 @@ app.constant('JS_REQUIRES', {
         'acceptswap':['app/Controllers/acceptswapCtrl.js'],
         'newsdetail':['app/Controllers/newsdetailCtrl.js'],
         'bannerdetail':['app/Controllers/bannerdetailCtrl.js'],
+        'advertisedetail':['app/Controllers/advertisedetailCtrl.js'],
         'membership':['app/Controllers/membershipCtrl.js'],
         'myevent':['app/Controllers/myeventCtrl.js','app/Controllers/leftbarCtrl.js'],
         'eventimage':['app/Controllers/eventimageCtrl.js','app/Controllers/leftbarCtrl.js'],
@@ -112,6 +113,7 @@ app.constant('JS_REQUIRES', {
         'addswapvoucher':['app/Controllers/addswapvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
         'swapinterestededit':['app/Controllers/swapinterestededitCtrl.js','app/Controllers/leftbarCtrl.js'],
         'humanize':['bower_components/humanize-duration/humanize-duration.js'],
+        'merchantuserlist':['app/Controllers/admin/merchantuserlistCtrl.js'],
         'owlCaraousl':['https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css','https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js']
     },
 

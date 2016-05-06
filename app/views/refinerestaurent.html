@@ -32,7 +32,7 @@
 
         <div class="owl-carousel1 new-Promo">
             <div class="item pro-item" ng-repeat="featuredCatDetail in ads">
-                <img src="{{featuredCatDetail.image_url}}"  alt=""/>
+                <a ui-sref="frontend.advertisedetail({advertiseId:featuredCatDetail.id})"><img src="{{featuredCatDetail.image_url}}"  alt=""/></a>
                 <div class="desc" ng-if="featuredCatDetail.title">
                     <h3 class="ng-binding">{{featuredCatDetail.title}}</h3>
                 </div>

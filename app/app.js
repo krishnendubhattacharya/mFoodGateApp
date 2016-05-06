@@ -14,7 +14,8 @@ var app = angular.module("mFoodApp", [
         'ngFacebook',
         'angularFileUpload',
         'angularjs-dropdown-multiselect',
-        'angularMoment'
+        'angularMoment',
+        'angularUtils.directives.dirPagination',
 ]);
 
 app.config(['$facebookProvider', function($facebookProvider) {
@@ -644,6 +645,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/bannerdetail.html',
                 title: 'Banner Detail'
             })
+            .state('frontend.advertisedetail', {
+                url: '/advertisedetail/:advertiseId',
+                resolve: loadSequence('advertisedetail'),
+                templateUrl: 'app/views/advertisedetail.html',
+                title: 'Advertise Detail'
+            })
             .state('frontend.myevent', {
                 url: '/myevent',
                 resolve: loadSequence('myevent'),
@@ -715,6 +722,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('swapinterestededit'),
                 templateUrl: 'app/views/swapinterestededit.html',
                 title: 'Edit Swap Bid'
+            })
+            .state('admin.merchantuserlist', {
+                url: '/merchantuserlist/:userId',
+                resolve: loadSequence('merchantuserlist'),
+                templateUrl: 'app/views/admin/merchantuserlist.html',
+                title: 'Merchant User Login'
             })
 
 

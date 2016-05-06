@@ -23,9 +23,33 @@ app.controller('advertisementeditCtrl', function ($rootScope, $scope, $http, NgM
             angular.forEach($scope.locationList,function(value){
                 $scope.location_id.push({id:value.location_id})
             })
+            //$scope.getOutletsByRestaurant(data.data.restaurant.restaurant_id);
+
+            $http({
+                method: "GET",
+                url: $rootScope.serviceurl + "getOutletsByRestaurant/" + data.data.restaurant.restaurant_id,
+                //data: {"email":$scope.email,"password":$scope.password},
+                //headers: {'Content-Type': 'application/json'},
+            }).success(function (data) {
+                if(angular.isObject(data))
+                {
+                    //console.log(data.data);
+                    $scope.outletList=data.data;
+                    $scope.outlets = [];
+                    angular.forEach($scope.outletList,function(value){
+                        $scope.outlets.push({id:value.id,label:value.title})
+                    })
+                }
+            });
+
+            $scope.outlet_id = [];
+            angular.forEach(data.data.outlets,function(value){
+                $scope.outlet_id.push({id:value.outlet_id})
+            })
 
             $scope.item = { id:data.data.restaurant.id,
                 title:data.data.restaurant.title,
+                description:data.data.restaurant.description,
                 "merchant_id":data.data.restaurant.merchant_id,
                 "target_click":data.data.restaurant.target_click,
                 "cost_per_click":data.data.restaurant.cost_per_click,
@@ -39,6 +63,7 @@ app.controller('advertisementeditCtrl', function ($rootScope, $scope, $http, NgM
                 "is_active":data.data.restaurant.is_active,
                 "restaurant_id":data.data.restaurant.restaurant_id,
                 "location_id":$scope.location_id,
+                "outlet_id":$scope.outlet_id,
                 "is_featured":data.data.restaurant.is_featured,
                 "is_internal_merchants":data.data.restaurant.is_internal_merchants,
             }
@@ -62,6 +87,8 @@ app.controller('advertisementeditCtrl', function ($rootScope, $scope, $http, NgM
     }
     $scope.viewBanner();
     $scope.getRestaurant = function(mer_id){
+        $scope.outlets = [];
+        $scope.item.outlet_id = [];
         $http({
             method: "GET",
             url: $rootScope.serviceurl + "getResturantByMerchant/"+mer_id,
@@ -149,6 +176,28 @@ app.controller('advertisementeditCtrl', function ($rootScope, $scope, $http, NgM
     }
 
     $scope.getLocation();
+
+    $scope.getOutletsByRestaurant = function(res_id){
+        $scope.item.outlet_id = [];
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getOutletsByRestaurant/" + res_id,
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            if(angular.isObject(data))
+            {
+                //console.log(data.data);
+                $scope.outletList=data.data;
+                $scope.outlets = [];
+                angular.forEach($scope.outletList,function(value){
+                    $scope.outlets.push({id:value.id,label:value.title})
+                })
+            }
+        });
+    }
+
+    //$scope.getLoginDetails();
 
 
     $scope.cancelBanner = function(){

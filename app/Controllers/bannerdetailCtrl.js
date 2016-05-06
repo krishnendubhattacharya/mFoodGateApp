@@ -22,15 +22,40 @@ app.controller('bannerdetailCtrl', function ($rootScope, $scope, $http, $locatio
         })
     }
     $scope.getPageDetails();*/
+
+    $scope.currentPage = 1;
+
+    $scope.pageSize = 5;
+
+    $scope.currentPagee = 1;
+
+    $scope.pageSizee = 5;
+    $scope.currentPageee = 1;
+
+    $scope.pageSizeee = 5;
+    myAuth.updateUserinfo(myAuth.getUserAuthorisation());
+    $scope.loggedindetails = myAuth.getUserNavlinks();
+
     $scope.topTab = 1;
     $scope.setActiveTab = function(v){
         $scope.topTab = v;
+        $scope.currentPage = 1;
+
+        $scope.pageSize = 5;
+
+        $scope.currentPagee = 1;
+
+        $scope.pageSizee = 5;
+        $scope.currentPageee = 1;
+
+        $scope.pageSizeee = 5;
     }
 
     $scope.bottomTab = 1;
     $scope.setBottomTab = function(v){
         $scope.bottomTab = v;
     }
+
 
     $scope.getNewsDetail = function(){
         $http({
@@ -91,7 +116,7 @@ app.controller('bannerdetailCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.getFeaturedPromo = function(){
         $http({
             method: "GET",
-            url: $rootScope.serviceurl+"getFeaturedCategories",
+            url: $rootScope.serviceurl+"getAllFeaturedPromoAds",
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
             if(data.type == 'success') {
@@ -116,4 +141,61 @@ app.controller('bannerdetailCtrl', function ($rootScope, $scope, $http, $locatio
     }
 
     $scope.getFeaturedAds();
+
+    $scope.getHotBanner = function(){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getHotBanner",
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            if(data.type == 'success') {
+                $scope.hotBanner = data.banner;
+            }
+        })
+    }
+    $scope.getHotBanner();
+
+    $scope.getFeaturedRestaurant = function(){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getFeaturedResturantHome",
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            if(data.type == 'success') {
+                $scope.featuredRes = data.restaurants;
+            }
+        })
+    }
+    $scope.getFeaturedRestaurant();
+
+    $scope.bannerClicked = function()
+    {
+        var loginid;
+        if($scope.loggedindetails)
+        {
+            loginid = $scope.loggedindetails.id;
+        }
+        else
+        {
+            loginid = '';
+        }
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getBannersClicked/" + $stateParams.bannerId + "/" + loginid,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            if(loginid && data.message)
+            {
+                DevExpress.ui.notify({
+                    message: data.message,
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "success", 3000);
+            }
+        })
+    }
+    $scope.bannerClicked();
+
 });

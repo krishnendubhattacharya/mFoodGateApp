@@ -24,19 +24,38 @@ app.controller('settingCtrl', function ($rootScope, $scope, $http, $location, $s
             method: "GET",
             url: $rootScope.serviceurl + "getUserSettings/"+$scope.loggedindetails.id,
         }).success(function (data) {
-                console.log(data.data.media_notification);
+                console.log(data.data);
 
             //$scope.settingList =data.getMenuPromo;
             if( data.data.media_notification == 0){
                 $scope.media_notification = false;
+                $scope.mediaCheck = 0;
             }else{
                 $scope.media_notification = true;
+                $scope.mediaCheck = 1;
+            }
+            if( data.data.notification_wa == 0){
+                $scope.notification_wa = false;
+            }else{
+                $scope.notification_wa = true;
+            }
+            if( data.data.notification_email == 0){
+                $scope.notification_email = false;
+            }else{
+                $scope.notification_email = true;
+            }
+            if( data.data.notification_sms == 0){
+                $scope.notification_sms = false;
+            }else{
+                $scope.notification_sms = true;
             }
 
             if( data.data.expire_date_notification == 0){
                 $scope.expire_date_notification = false;
+                $scope.dayscheck = 0;
             }else{
                 $scope.expire_date_notification = true;
+                $scope.dayscheck = 1;
             }
 
             if( data.data.promo_notification == 0){
@@ -50,6 +69,8 @@ app.controller('settingCtrl', function ($rootScope, $scope, $http, $location, $s
             }else{
                 $scope.news_letter_notification = true;
             }
+
+            $scope.remainder_days = data.data.remainder_days;
             //$scope.media_notification = data.data.media_notification;
             //$scope.expire_date_notification = data.data.expire_date_notification;
             //$scope.promo_notification = data.data.promo_notification;
@@ -61,16 +82,33 @@ app.controller('settingCtrl', function ($rootScope, $scope, $http, $location, $s
     }
     $scope.settingList();
 
+    $scope.valueChanged = function (e) {
+        //console.log($scope.media_notification);
+        if($scope.media_notification){
+            $scope.mediaCheck = 1;
+        }else{
+            $scope.mediaCheck = 0;
+        }
+
+    };
+
+    $scope.valueChangedDate = function (e) {
+        console.log($scope.expire_date_notification);
+        if($scope.expire_date_notification){
+            $scope.dayscheck = 1;
+        }else{
+            $scope.dayscheck = 0;
+        }
+    };
+
     $scope.saveSetting = function(params) {
         //alert($scope.media_notification);
         //alert($scope.expire_date_notification);
         //alert($scope.promo_notification);
-
-
         $http({
             method: "PUT",
                 url: $rootScope.serviceurl+"updateUserSettings/"+$scope.loggedindetails.id,
-                data: {"media_notification":$scope.media_notification,"expire_date_notification":$scope.expire_date_notification,"user_id":$scope.loggedindetails.id,"promo_notification":$scope.promo_notification,"news_letter_notification":$scope.news_letter_notification},
+                data: {"media_notification":$scope.media_notification,"expire_date_notification":$scope.expire_date_notification,"user_id":$scope.loggedindetails.id,"promo_notification":$scope.promo_notification,"news_letter_notification":$scope.news_letter_notification,"notification_wa":$scope.notification_wa,"notification_email":$scope.notification_email,"notification_sms":$scope.notification_sms,"remainder_days":$scope.remainder_days},
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
                 console.log(data);

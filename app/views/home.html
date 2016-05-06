@@ -3,10 +3,10 @@
 <div ng-controller="homeCtrl">
 <div class="container phone-hide">
     <div class="ads-banner ">
-        <div class="banner_carousel">
+        <div class="banner_carousel" >
             <div class="item" ng-repeat="banner in banners">
                 <a ui-sref="frontend.bannerdetail({bannerId:banner.id})" target="_blank">
-                    <img src="{{banner.image_url}}" alt="" width="1081" height="198"/>
+                    <img src="{{banner.image_url}}" alt="" width="1081" height="198" ng-show="bcar"/>
                 </a>
             </div>
         </div>
@@ -72,25 +72,29 @@
         <div class="ca-container">
             <h1>Advertisements</h1>
             <div class="ca-nav"></div>
-            <div class="ca-wrapper owl-carousel1 owl-theme">
-                <div class="item ca-item ca-item-{{$index+1}}" ng-repeat="featuredCatDetail in ads">
+            <div class="ca-wrapper owl-carousel1 owl-theme" style="overflow:hidden">
+                <div class="item ca-item" ng-repeat="featuredCatDetail in ads">
                     <div class="ca-item-main">
-                        <div class="pro-item">
-                            <img src="{{featuredCatDetail.image_url}}" width="406" height="255"  alt=""/>
-                            <!--<div class="p-circle">{{featuredCatDetail.offer_percent}}%</div>-->
-                            <div class="desc">
+                        <a ui-sref="frontend.advertisedetail({advertiseId:featuredCatDetail.id})">
+                            <div class="pro-item" style="cursor: pointer">
+                                    <img src="{{featuredCatDetail.image_url}}" width="406" height="255"  alt="" ng-show="fads"/>
 
-                                    <h3>{{featuredCatDetail.title}}</h3>
-                                    <!--<p></p>-->
-                                    <!--<p><b>Sold :</b>&nbsp;{{featuredCatDetail.buy_count}}&nbsp;&nbsp;&nbsp;<b>Available :</b>&nbsp;{{featuredCatDetail.quantity - featuredCatDetail.buy_count}}</p>-->
-                                    <!--<p class="price"><span>IDR{{featuredCatDetail.price | number}}</span> IDR{{featuredCatDetail.price-((featuredCatDetail.price*featuredCatDetail.offer_percent)/100) | number}}</p>-->
+                                <!--<div class="p-circle">{{featuredCatDetail.offer_percent}}%</div>-->
+                                <div class="desc">
+                                    <div class="txt">
+                                        <h3>{{featuredCatDetail.title}}</h3>
+                                    </div>
+                                        <!--<p></p>-->
+                                        <!--<p><b>Sold :</b>&nbsp;{{featuredCatDetail.buy_count}}&nbsp;&nbsp;&nbsp;<b>Available :</b>&nbsp;{{featuredCatDetail.quantity - featuredCatDetail.buy_count}}</p>-->
+                                        <!--<p class="price"><span>IDR{{featuredCatDetail.price | number}}</span> IDR{{featuredCatDetail.price-((featuredCatDetail.price*featuredCatDetail.offer_percent)/100) | number}}</p>-->
 
-                                <!--<div class="view-btn">-->
-                                    <!--<a ui-sref="frontend.promodetails({ promoId: featuredCatDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>-->
-                                    <!--<p countdown='' date='{{featuredCatDetail.offer_to_date}}'>&nbsp;</p>-->
-                                <!--</div>-->
+                                    <!--<div class="view-btn">-->
+                                        <!--<a ui-sref="frontend.promodetails({ promoId: featuredCatDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>-->
+                                        <!--<p countdown='' date='{{featuredCatDetail.offer_to_date}}'>&nbsp;</p>-->
+                                    <!--</div>-->
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 

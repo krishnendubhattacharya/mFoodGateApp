@@ -40,6 +40,7 @@ app.controller('refinerestaurentCtrl', function ($rootScope, $scope, $http, $loc
         }).success(function (data) {
             $scope.ads = data.ads;
             $timeout(function(){
+                //$scope.fads = true;
                 // $('#ca-container').contentcarousel();
                 var carousal = $('.owl-carousel1');
                 carousal.owlCarousel({
@@ -69,7 +70,7 @@ app.controller('refinerestaurentCtrl', function ($rootScope, $scope, $http, $loc
                         }
                     }
                 });
-            },3000);
+            },30);
             //console.log($scope.newPromoInfo);
 
         });

@@ -69,6 +69,25 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                     $rootScope.$emit('updateLoginDetails');
                     $scope.loggedin = true;
                     $scope.notloggedin = false;
+                    /********************* Getting The Cart ************/
+                    if ($scope.loggedindetails) {
+                        $http({
+                            method: "POST",
+                            url: $rootScope.serviceurl + "addToCart",
+                            headers: {'Content-Type': 'application/json'},
+                            data:{user_id:$scope.loggedindetails.id,cart:$cookieStore.get('cart')}
+                        }).success(function (data) {
+                            console.log('saved');
+                            if(data)
+                            {
+                                $cookieStore.put('cart',data);
+                               // $scope.cartDetails = mFoodCart.get_cart();
+                                //$scope.getCartDetails();
+                            }
+                        })
+                    }
+
+                    /********************* Getting The Cart ************/
 
                     //console.log($scope.loggedindetails);
                     $timeout(function(){

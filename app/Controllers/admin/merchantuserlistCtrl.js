@@ -2,41 +2,25 @@
 /**
  * controllers used for the login
  */
-app.controller('pointmasterlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore,$timeout,$stateParams) {
-    $stateParams.resturantId = 1;
-    $scope.merchantFlag = 0;
+app.controller('merchantuserlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore,$timeout,$stateParams) {
 
-
-
-
-
-    $scope.merchantFilter = function(type)
-    {
-        if(type==1){
-            $scope.merchantFlag = 1;
-        }else{
-            $scope.merchantFlag = 0;
-        }
-        $scope.item.user_id='';
-    }
 
     $scope.merchants = [];
-    $scope.getMerchants = function()
+    $scope.getRoll = function()
     {
         $http({
             method: "GET",
             url: $rootScope.serviceurl + "getActiveMerchants"
         }).success(function (data) {
             $scope.merchants = data;
-
         })
     }
-    $scope.getMerchants();
+    $scope.getRoll();
 
     $scope.viewPromo = function () {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getAllPointMaster",
+            url: $rootScope.serviceurl + "getAllSubUserByUser/"+$stateParams.userId,
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
@@ -60,98 +44,33 @@ app.controller('pointmasterlistCtrl', function ($rootScope, $scope, $http, $loca
         $scope.promoView='view';
     }
 
-    $scope.getCategories = function(){
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "categories",
-            //data: {"email":$scope.email,"password":$scope.password},
-            //headers: {'Content-Type': 'application/json'},
-        }).success(function (data) {
-            if(angular.isObject(data))
-            {
-                $scope.categoryList=data.category;
-                $scope.allCat = [];
-                angular.forEach($scope.categoryList,function(value){
-                    $scope.allCat.push({id:value.id,label:value.name})
-                })
-            }
-        });
-
-    }
-    $scope.getOfferType = function(){
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "getAllActiveOfferType",
-            //data: {"email":$scope.email,"password":$scope.password},
-            //headers: {'Content-Type': 'application/json'},
-        }).success(function (data) {
-            console.log(data);
-            if(angular.isObject(data))
-            {
-                $scope.offerTypeList=data.data;
-            }
-        });
-
-    }
-
-
-
-
     $scope.viewPromo();
 
     $scope.editPromo = function (params) {
         console.log(params);
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "getActiveMerchants"
-        }).success(function (data) {
-            $scope.merchants = data;
+        $scope.item={
+            id:params.id,
+            first_name:params.first_name,
+            last_name:params.last_name,
+            email:params.email,
+            password:"",
+            roll:params.roll,
+        };
 
-        })
-        if(params.type == 1){
-            $scope.merchantFlag = 1;
-        }
-        $scope.datepickerOptions = {format: 'yyyy-mm-dd',
-            language: 'en',
-            autoclose: true,
-            weekStart: 0};
-
-        $scope.datepickerOptions1 = {format: 'yyyy-mm-dd',
-            language: 'en',
-            autoclose: true,
-            weekStart: 0};
-        $scope.item = params;
-        $scope.item.valid_days = parseInt(params.valid_days);
-        $scope.item.start_date = moment(params.start_date).format('YYYY-MM-DD');
-        $scope.item.expire_date = moment(params.expire_date).format('YYYY-MM-DD');
-
-        //console.log(params);$scope.item = params;
-        //setTimeout(function(){$scope.item = params},1000);
         $scope.promoView='edit';
     }
 
 
     $scope.addPromo = function () {
         //alert(13);
-        $scope.datepickerOptions = {format: 'yyyy-mm-dd',
-            language: 'en',
-            autoclose: true,
-            weekStart: 0};
-
-        $scope.datepickerOptions1 = {format: 'yyyy-mm-dd',
-            language: 'en',
-            autoclose: true,
-            weekStart: 0};
         $scope.item={
             id:"",
-            name:"",
-            type:"",
-            value:"",
-            money_point:"",
-            valid_days:"",
-            start_date:moment().format('YYYY-MM-DD'),
-            expire_date:"",
-            user_id:""
+            first_name:"",
+            last_name:"",
+            email:"",
+            password:"",
+            parent_id:$stateParams.userId,
+            roll:"",
         };console.log($scope.item);
 
         $scope.promoView='edit';
@@ -176,7 +95,7 @@ app.controller('pointmasterlistCtrl', function ($rootScope, $scope, $http, $loca
         if($scope.item.id == '') {
             $http({
                 method: "POST",
-                url: $rootScope.serviceurl + "addNewPointMaster",
+                url: $rootScope.serviceurl + "addSubUser",
                 data: $scope.item,
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
@@ -188,7 +107,7 @@ app.controller('pointmasterlistCtrl', function ($rootScope, $scope, $http, $loca
         }else{
             $http({
                 method: "POST",
-                url: $rootScope.serviceurl + "updatePointMaster",
+                url: $rootScope.serviceurl + "updateSubUser",
                 data: $scope.item,
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
@@ -207,7 +126,7 @@ app.controller('pointmasterlistCtrl', function ($rootScope, $scope, $http, $loca
         if ( window.confirm("Are you sure, you Want to delete?") ) {
             $http({
                 method: "DELETE",
-                url: $rootScope.serviceurl + "deletePointMaster/"+c_id,
+                url: $rootScope.serviceurl + "users/"+c_id,
                 //data: {"name": $scope.item.name,"is_active": $scope.item.is_active},
                 //headers: {'Content-Type': 'application/json'},
             }).success(function (data) {

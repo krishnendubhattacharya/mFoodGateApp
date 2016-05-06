@@ -44,6 +44,8 @@ app.controller('bannerCtrl', function ($rootScope, $scope, $http, $location, myA
         });
         $scope.bannerView='view';
     }
+
+
     $scope.getRestaurant = function(mer_id){
         $http({
             method: "GET",
@@ -99,6 +101,7 @@ app.controller('bannerCtrl', function ($rootScope, $scope, $http, $location, myA
             "image": '',
             "restaurant_id":'',
             "description": '',
+            "outlet_id":[],
         };console.log($scope.item);
         /*$scope.example1model = [];
          $scope.example1data = [
@@ -182,6 +185,24 @@ app.controller('bannerCtrl', function ($rootScope, $scope, $http, $location, myA
         });
     }
     $scope.getAllPointMaster();
+
+    $scope.getOutlet = function(res_id){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getOutletsByRestaurant/"+res_id,
+        }).success(function (data) {
+            if(angular.isObject(data))
+            {
+                //console.log(data.data);
+                $scope.outletList=data.data;
+                $scope.allOutlet = [];
+                angular.forEach($scope.outletList,function(value){
+                    $scope.allOutlet.push({id:value.id,label:value.title})
+                })
+            }
+        });
+
+    }
 
 
 

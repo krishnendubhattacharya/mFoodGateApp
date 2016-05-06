@@ -30,7 +30,8 @@ app.controller('giftvoucherlistCtrl', function ($rootScope, $scope, $http, $loca
 
             columns: ["voucher_name", "resturant_name", "price",
                 {caption:"Expire Date",dataField:"offer_to_date"},
-                {caption:"From Friend Name",dataField:"friend"}
+                {caption:"From Friend Name",dataField:"friend"},
+                {caption:"Friend Email",dataField:"friend_email"}
             ]
         };
         $scope.listExpiredPointViewData.option({"dataSource": $scope.voucherInfo,hoverStateEnabled: false });
@@ -63,7 +64,8 @@ app.controller('giftvoucherlistCtrl', function ($rootScope, $scope, $http, $loca
 
             columns: ["voucher_name", "resturant_name", "price",
                 {caption:"Expire Date",dataField:"offer_to_date"},
-                {caption:"To Friend Name",dataField:"friend"}
+                {caption:"To Friend Name",dataField:"friend"},
+                {caption:"Friend Email",dataField:"friend_email"}
             ]
         };
         $scope.listViewData.option({"dataSource": $scope.voucherInfo2,hoverStateEnabled: false });

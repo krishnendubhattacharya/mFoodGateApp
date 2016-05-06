@@ -37,6 +37,7 @@
                                 <td >{{item.merchant_name}}</td>
                                 <td >{{item.email}}</td>
                                 <td ><a class="btn btn-default edit" ui-sref="admin.merchantedit({merchantId:item.id})" >Edit</a>
+                                    <a class="btn btn-default edit" ui-sref="admin.merchantuserlist({userId:item.id})" >Login</a>
                                     <a class="btn btn-default delete" href="javascript:;" ng-click="deleteMerchant(item.id)"
                                             >Delete</a></td>
 

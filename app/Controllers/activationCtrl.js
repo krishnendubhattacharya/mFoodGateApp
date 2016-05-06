@@ -84,7 +84,15 @@ app.controller('activationCtrl', function ($rootScope, $scope, $http, $location,
         }).success(function(data) {
                 console.log(data);
                 if(data.type == 'success'){
-                        var message = "you have successfully logged in";
+                        if(data.voucher_message)
+                        {
+                            var message = data.voucher_message;
+                        }
+                        else
+                        {
+                            var message = "you have successfully logged in";
+                        }
+
                         //params.validationGroup.reset();
                         $cookieStore.put('users', data.user_details);
                         $scope.user_username = '';

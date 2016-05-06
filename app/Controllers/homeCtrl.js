@@ -11,6 +11,8 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
     $scope.hot_promo_show = 1;
     $scope.res_promo_show = 1;
 
+    $scope.fads = false;
+
     $scope.lastShowHide = function () {
         if($scope.last_promo_show == 1){
             $scope.last_promo_show = 0;
@@ -54,6 +56,10 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
         }else{
             $scope.res_promo_show = 1;
         }
+    }
+
+    $scope.adDetailPage = function(id){
+        $location.path('/frontend/advertisedetail/' + id);
     }
     $scope.showAll = false;
     $scope.showAllFunc = function() {
@@ -114,7 +120,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                     //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseleave', function (e){
                     //    carousal.trigger('play.owl.autoplay');
                     //});
-                },3000);
+                },30);
 
 
 
@@ -122,7 +128,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
         }
         $scope.featuredPromoList();
 
-        $scope.featuredAdvertiseList = function () {
+        /*$scope.featuredAdvertiseList = function () {
 
             $http({
                 method: "GET",
@@ -131,6 +137,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                 $scope.featuredAdsInfo = data.ads;
                 //console.log($scope.featuredCatInfo);
                 $timeout(function(){
+                    $scope.fads = true;
                     // $('#ca-container').contentcarousel();
                     var carousal = $('.owl-carousel');
                     carousal.owlCarousel({
@@ -172,7 +179,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
 
             });
         }
-        $scope.featuredAdvertiseList();
+        $scope.featuredAdvertiseList();*/
 
         $scope.newPromoList = function () {
 
@@ -222,6 +229,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
             }).success(function (data) {
                 $scope.ads = data.ads;
                 $timeout(function(){
+
                     // $('#ca-container').contentcarousel();
                     var carousal = $('.owl-carousel1');
                     carousal.owlCarousel({
@@ -246,6 +254,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
+                    $scope.fads = true;
                     //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseout', function (e){
                     //    console.log('hii');
                     //    carousal.trigger('play.owl.autoplay',[5000]);
@@ -257,7 +266,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                     //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseleave', function (e){
                     //    carousal.trigger('play.owl.autoplay');
                     //});
-                },3000);
+                },30);
                 //console.log($scope.newPromoInfo);
 
             });
@@ -274,6 +283,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                 $scope.restaurantInfo = data.restaurants;
                 //console.log($scope.restaurantInfo);featured_carousel
                 $timeout(function(){
+                    //$scope.fres = true;
                     // $('#ca-container').contentcarousel();
                     var fcarousal = $('.featured_carousel');
                     fcarousal.owlCarousel({
@@ -298,7 +308,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
-                },3000);
+                },30);
             });
         }
         $scope.restaurantList();
@@ -325,6 +335,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                 $scope.banners = data.banner;
                 //console.log($scope.specialInfo);
                 $timeout(function(){
+                    $scope.bcar = true;
                     // $('#ca-container').contentcarousel();
                     var banner_carousal = $('.banner_carousel');
                     banner_carousal.owlCarousel({
@@ -349,7 +360,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
-                },3000);
+                },30);
             });
         }
         $scope.getBanners();

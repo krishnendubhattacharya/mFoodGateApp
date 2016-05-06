@@ -5,6 +5,7 @@
 app.controller('paymentreturnCtrl', function ($rootScope, $scope, $http, $location,myAuth,$stateParams,$cookieStore,$timeout) {
    //console.log('Token =========== ', $stateParams.token);
    $scope.token = $stateParams.token;
+    $scope.loggedindetails = myAuth.getUserNavlinks();
     console.log($stateParams);
     if($stateParams.success=='true')
     {
@@ -16,6 +17,13 @@ app.controller('paymentreturnCtrl', function ($rootScope, $scope, $http, $locati
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data){
             $cookieStore.remove('cart');
+            $http({
+                method: "DELETE",
+                url: $rootScope.serviceurl+"deleteCartByUser/"+$scope.loggedindetails.id,
+                headers: {'Content-Type': 'application/json'}
+            }).success(function(data) {
+
+            })
             $timeout(function(){
             var message = "Payment successfull.";
             DevExpress.ui.notify({

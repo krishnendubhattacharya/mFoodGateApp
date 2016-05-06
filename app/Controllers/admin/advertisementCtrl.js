@@ -99,6 +99,7 @@ app.controller('advertisementCtrl', function ($rootScope, $scope, $http, $locati
             "image": '',
             "restaurant_id":'',
             "location_id":[],
+            outlet_id:[],
             "is_featured":0,
             "is_internal_merchants":0,
         };console.log($scope.item);
@@ -117,8 +118,6 @@ app.controller('advertisementCtrl', function ($rootScope, $scope, $http, $locati
     $scope.saveBanner = function () {
         console.log($scope.item);
         //return false;
-
-
                 $http({
                     method: "POST",
                     url: $rootScope.serviceurl + "addAds",
@@ -208,6 +207,24 @@ app.controller('advertisementCtrl', function ($rootScope, $scope, $http, $locati
     $scope.getAllPointMaster();
 
 
+    $scope.getOutletsByRestaurant = function(res_id){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getOutletsByRestaurant/" + res_id,
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            if(angular.isObject(data))
+            {
+                //console.log(data.data);
+                $scope.outletList=data.data;
+                $scope.outlets = [];
+                angular.forEach($scope.outletList,function(value){
+                    $scope.outlets.push({id:value.id,label:value.title})
+                })
+            }
+        });
+    }
 
     //$scope.getLoginDetails();
 

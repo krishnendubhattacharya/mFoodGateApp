@@ -8,6 +8,40 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         $scope.map = map;
     });
 
+    $scope.save_to_db = function() {
+        console.log("saving -1",$scope.loggedindetails);
+        if ($scope.loggedindetails) {
+            console.log("saving -2");
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl + "addToCart",
+                headers: {'Content-Type': 'application/json'},
+                data:{user_id:$scope.loggedindetails.id,cart:$scope.cartDetails}
+            }).success(function (data) {
+                console.log('saved');
+                if(data)
+                {
+                    mFoodCart.resetAndAdd(data);
+
+                }
+            })
+        }
+    }
+
+    $scope.delete_from_cart = function (id)
+    {
+        if($scope.loggedindetails) {
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl + "deleteFromCart",
+                headers: {'Content-Type': 'application/json'},
+                data: {user_id: $scope.loggedindetails.id, offer_id: id}
+            }).success(function (data) {
+            })
+        }
+    }
+
+
     $scope.getUsersPoints = function()
     {
         $http({
@@ -75,7 +109,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                             }
                         }
                     });
-                },3000);
+                },30);
 
             }
         })
@@ -98,6 +132,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         mFoodCart.add_to_cart(cart_obj);
         $scope.cartDetails = mFoodCart.get_cart();
         $scope.getCartTotals();
+        $scope.save_to_db();
     }
 
     $scope.cartDetails = mFoodCart.get_cart();
@@ -218,6 +253,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.remove_offer = function(offer_id){
         mFoodCart.remove(offer_id);
         $scope.getCartTotals();
+        $scope.delete_from_cart(offer_id);
     }
 
     $scope.getAds = function () {
@@ -240,11 +276,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     navText:false,
                     autoplayTimeout:5000,
                     autoplayHoverPause:true,
-                    onInitialize: function (event) {
-                        if ($('.item > img').length === 1) {
-                            this.settings.loop = false;
-                            this.settings.nav = false;
-                        }},
+
                     responsive:{
                         0:{
                             items:1
@@ -257,7 +289,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                         }
                     }
                 });
-            },3000);
+           },1);
             //console.log($scope.newPromoInfo);
 
         });

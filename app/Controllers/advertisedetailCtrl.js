@@ -22,9 +22,32 @@ app.controller('advertisedetailCtrl', function ($rootScope, $scope, $http, $loca
         })
     }
     $scope.getPageDetails();*/
+
+
+    $scope.currentPage = 1;
+
+    $scope.pageSize = 5;
+
+    $scope.currentPagee = 1;
+
+    $scope.pageSizee = 5;
+    $scope.currentPageee = 1;
+
+    $scope.pageSizeee = 5;
+    $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.topTab = 1;
     $scope.setActiveTab = function(v){
         $scope.topTab = v;
+        $scope.currentPage = 1;
+
+        $scope.pageSize = 5;
+
+        $scope.currentPagee = 1;
+
+        $scope.pageSizee = 5;
+        $scope.currentPageee = 1;
+
+        $scope.pageSizeee = 5;
     }
 
     $scope.bottomTab = 1;
@@ -32,16 +55,44 @@ app.controller('advertisedetailCtrl', function ($rootScope, $scope, $http, $loca
         $scope.bottomTab = v;
     }
 
+    $scope.advertiseClicked = function()
+    {
+        var loginid;
+        if($scope.loggedindetails)
+        {
+            loginid = $scope.loggedindetails.id;
+        }
+        else
+        {
+            loginid = '';
+        }
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getAdsClicked/" + $stateParams.advertiseId + "/" + loginid,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            if(loginid && data.message)
+            {
+                DevExpress.ui.notify({
+                    message: data.message,
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "success", 3000);
+            }
+        })
+    }
+    $scope.advertiseClicked();
+
     $scope.getNewsDetail = function(){
         $http({
             method: "GET",
-            url: $rootScope.serviceurl+"getBannerDetails/"+$stateParams.bannerId,
+            url: $rootScope.serviceurl+"getAdsDetails/"+$stateParams.advertiseId,
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
-            console.log('===================',data);
             if(data.type="success") {
                 $scope.allnews = data.data;
-                console.log('===================',$scope.allnews);
             }
         })
     }
@@ -63,7 +114,7 @@ app.controller('advertisedetailCtrl', function ($rootScope, $scope, $http, $loca
     $scope.getLatestNews = function(){
         $http({
             method: "GET",
-            url: $rootScope.serviceurl+"getActiveBannerOther/"+$stateParams.bannerId,
+            url: $rootScope.serviceurl+"getActiveAdvOther/"+$stateParams.advertiseId,
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
             if(data.type == 'success') {
@@ -76,7 +127,7 @@ app.controller('advertisedetailCtrl', function ($rootScope, $scope, $http, $loca
     $scope.getUpdatedBanner = function(){
         $http({
             method: "GET",
-            url: $rootScope.serviceurl+"getUpdateBannerOther/"+$stateParams.bannerId,
+            url: $rootScope.serviceurl+"getUpdateAdvOther/"+$stateParams.advertiseId,
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
             if(data.banner) {
@@ -91,7 +142,7 @@ app.controller('advertisedetailCtrl', function ($rootScope, $scope, $http, $loca
     $scope.getFeaturedPromo = function(){
         $http({
             method: "GET",
-            url: $rootScope.serviceurl+"getFeaturedCategories",
+            url: $rootScope.serviceurl+"getAllFeaturedPromoAds",
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
             if(data.type == 'success') {
@@ -104,11 +155,11 @@ app.controller('advertisedetailCtrl', function ($rootScope, $scope, $http, $loca
     $scope.getFeaturedAds = function(){
         $http({
             method: "GET",
-            url: $rootScope.serviceurl+"getActiveAdsByLocation/1",
+            url: $rootScope.serviceurl+"getActiveBanner",
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
 
-                $scope.featuredAds = data.ads;
+                $scope.featuredAds = data.banner;
                 console.log(1);
                 console.log($scope.featuredAds);
 
@@ -116,4 +167,35 @@ app.controller('advertisedetailCtrl', function ($rootScope, $scope, $http, $loca
     }
 
     $scope.getFeaturedAds();
+
+    $scope.getHotAds = function()
+    {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getHotAds",
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            if(data.type == 'success')
+            {
+                $scope.hotAds = data.ads;
+            }
+
+        })
+    }
+    $scope.getHotAds();
+
+    $scope.getFeaturedRes = function(){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getFeaturedResturantHome",
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            if(data.type == 'success')
+            {
+                $scope.featureRes = data.restaurants;
+            }
+
+        })
+    }
+    $scope.getFeaturedRes();
 });

@@ -25,6 +25,7 @@
                                 <th class="hidden-phone">Merchant</th>
                                 <th class="hidden-phone">Restaurant</th>
                                 <th class="hidden-phone">Target Click</th>
+                                <th class="hidden-phone">Actual Click</th>
                                 <th class="hidden-phone">Cost Per Click</th>
                                 <th>Action</th>
 
@@ -40,6 +41,7 @@
                                 <td >{{item.merchant_name}}</td>
                                 <td >{{item.res_title}}</td>
                                 <td >{{item.target_click}}</td>
+                                <td >{{item.number_of_click}}</td>
                                 <td >{{item.cost_per_click}}</td>
                                 <td ><a class="btn btn-default edit" ui-sref="admin.advertisementedit({addvertiseId:item.id})">Edit</a>
                                     <a class="btn btn-default delete" href="javascript:;" ng-click="deleteBanner(item.id)"
@@ -51,7 +53,6 @@
                         </table>
                     </div>
                 </div>
-
                 <div ng-if="bannerView == 'edit'">
                     <header class="panel-heading">
                         Advertise
@@ -86,10 +87,16 @@
 
                             <div class="form-group">
                                 <label for="category_id">Select Restaurant</label>
-                                <select id="restaurant" ng-model="item.restaurant_id" required  class="form-control">
+                                <select id="restaurant" ng-model="item.restaurant_id" required  class="form-control" ng-change="getOutletsByRestaurant(item.restaurant_id)">
                                     <option value="">Select</option>
                                     <option ng-repeat="restaurant in restaurantList" value="{{restaurant.id}}">{{restaurant.title}}</option>
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location_id">Select Outlets</label>
+                                <!--<div ng-required ng-dropdown-multiselect=""  options="alllocation" selected-model="item.location_id"></div>-->
+                                <div ng-dropdown-multiselect=""  options="outlets" selected-model="item.outlet_id"></div>
                             </div>
 
                             <div class="form-group">

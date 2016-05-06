@@ -59,6 +59,7 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
                     
                 myAuth.resetUserinfo();
                     $cookieStore.put('users', null);
+                    $cookieStore.put('cart', null);
                     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
                     $scope.loggedindetails = myAuth.getUserNavlinks();
                     $scope.loggedindetails = '';

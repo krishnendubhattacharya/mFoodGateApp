@@ -18,11 +18,30 @@ app.controller('bannereditCtrl', function ($rootScope, $scope, $http, NgMap, $lo
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
 
-            
+            $http({
+                method: "GET",
+                url: $rootScope.serviceurl + "getOutletsByRestaurant/"+data.data.banner.restaurant_id,
+            }).success(function (data) {
+                if(angular.isObject(data))
+                {
+                    //console.log(data.data);
+                    $scope.outletList=data.data;
+                    $scope.allOutlet = [];
+                    angular.forEach($scope.outletList,function(value){
+                        $scope.allOutlet.push({id:value.id,label:value.title})
+                    })
+                }
+            });
+            $scope.outletList=data.outlets;
+            $scope.outlet_id = [];
+            angular.forEach($scope.outletList,function(value){
+                $scope.outlet_id.push({id:value.outlet_id})
+            })
 
             $scope.item = { id:data.data.banner.id,
                 title:data.data.banner.title,
                 "merchant_id":data.data.banner.merchant_id,
+                "outlet_id":$scope.outlet_id,
                 "target_click":data.data.banner.target_click,
                 "cost_per_click":data.data.banner.cost_per_click,
                 "income": data.data.banner.income,
@@ -142,6 +161,26 @@ app.controller('bannereditCtrl', function ($rootScope, $scope, $http, NgMap, $lo
 
     $scope.cancelBanner = function(){
         $location.path('/admin/banner');
+    }
+
+
+    $scope.getOutlet = function(res_id){
+        $scope.item.outlet_id = [];
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getOutletsByRestaurant/"+res_id,
+        }).success(function (data) {
+            if(angular.isObject(data))
+            {
+                //console.log(data.data);
+                $scope.outletList=data.data;
+                $scope.allOutlet = [];
+                angular.forEach($scope.outletList,function(value){
+                    $scope.allOutlet.push({id:value.id,label:value.title})
+                })
+            }
+        });
+
     }
 
 

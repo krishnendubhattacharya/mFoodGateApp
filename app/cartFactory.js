@@ -72,6 +72,12 @@ angular
         $cookieStore.put('cart',cart);
 
     }
+
+        factobj.resetAndAdd = function(cart)
+        {
+            //$cookieStore.remove('cart');
+            $cookieStore.put('cart',cart);
+        }
     
     
     return factobj;

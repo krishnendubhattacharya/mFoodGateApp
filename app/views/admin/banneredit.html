@@ -32,10 +32,15 @@
 
                             <div class="form-group">
                                 <label for="category_id">Select Restaurant</label>
-                                <select id="restaurant" ng-model="item.restaurant_id" required  class="form-control">
+                                <select id="restaurant" ng-model="item.restaurant_id" required  class="form-control" ng-change="getOutlet(item.restaurant_id)">
                                     <option value="">Select</option>
                                     <option ng-repeat="restaurant in restaurantList" ng-selected="restaurant.id==item.restaurant_id" value="{{restaurant.id}}" ng-selected="">{{restaurant.title}}</option>
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category_id">Select Outlet</label>
+                                <div ng-required ng-dropdown-multiselect="" id="outlet_id" options="allOutlet" selected-model="item.outlet_id"></div>
                             </div>
 
                             <div class="form-group">
