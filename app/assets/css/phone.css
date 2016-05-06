@@ -1554,3 +1554,9 @@ code {
 .ca-nav span:hover{
     opacity:1.0;
 }
+
+/*----------------------- Added By Bikash --------------------------*/
+.ca-nav{display:none;}
+.owl-carousel:hover .owl-controls .ca-nav{
+    display:block;
+}
