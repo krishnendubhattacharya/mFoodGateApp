@@ -43,7 +43,7 @@
                     <h1>All Voucher</h1>
                     <ul>
                         <li ng-repeat="voucherDetail in voucherInfo">
-                            <div class="pro-item">
+                            <div class="pro-item" style="height: auto">
                                 <div class="logo-box">
                                     <!--<div class="p-circle">5X</div>-->
                                     <a ui-sref="frontend.voucherdetail({ voucherId: voucherDetail.voucher_id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
@@ -54,7 +54,8 @@
                                     <p class="price">Price <span>IDR{{voucherDetail.price | number}}</span> </p>
                                     <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100) | number}}</span></p>
                                     <div class="btn_o"><a ui-sref="frontend.voucherdetail({ voucherId: voucherDetail.voucher_id })">Detail</a></div>
-                                    <div class="btn_g"><a ui-sref="frontend.vouchersell({ voucherId: voucherDetail.voucher_id })">Resell</a></div>
+                                    <div class="btn_g"><a href="javascript:void(0);" ng-click="export_pdf">Resell</a></div>
+                                    <!--<div class="btn_o" style="float: none;margin: 8px auto;clear: both"><a ui-sref="frontend.voucherdetail({ voucherId: voucherDetail.voucher_id })">Export</a></div>-->
                                 </div>
                             </div>
                         </li>
@@ -76,6 +77,7 @@
                                     <p class="price">Price <span>IDR{{voucherDetail.price | number}}</span> </p>
                                     <p class="price">Offer Price  <span>IDR{{voucherDetail.price-((voucherDetail.price*voucherDetail.offer_percent)/100) | number}}</span></p>
                                     <div class="btn_o"><a ui-sref="frontend.voucherdetail({ voucherId: voucherDetail.voucher_id })">Detail</a></div>
+
                                     <div class="btn_g"><a ui-sref="frontend.vouchersell({ voucherId: voucherDetail.voucher_id })">Resell</a></div>
                                 </div>
                             </div>

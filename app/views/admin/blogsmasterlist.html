@@ -22,7 +22,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th class="hidden-phone">Title</th>
-                                <th class="hidden-phone">User</th>
+                                <!--<th class="hidden-phone">User</th>-->
                                 <th class="hidden-phone">Posted On</th>
                                 <th class="hidden-phone">Is Active</th>
                                 <th>Action</th>
@@ -36,7 +36,7 @@
                                     {{item.id}}
                                 </td>
                                 <td >{{item.title}}</td>
-                                <td >{{item.user_name}}</td>
+                                <!--<td>{{item.user_name}}</td>-->
                                 <td >{{item.posted_on}}</td>
                                 <td >{{item.is_active=='1'?'Yes':'No'}}</td>
                                 <td ><a class="btn btn-default edit" href="javascript:void(0);" ng-click="editPromo(item)" >Edit</a>
@@ -52,7 +52,7 @@
 
                 <div ng-if="promoView == 'edit'">
                     <header class="panel-heading">
-                        Add Point
+                        Add Blog
                     </header>
                     <div class="panel-body">
                         <form role="form" ng-submit="savePromo()" enctype="multipart/form-data">
@@ -69,13 +69,13 @@
                                 <!--<label for="category_id">Select Outlet</label>-->
                                 <!--<div ng-required ng-dropdown-multiselect="" id="outlet_id" options="allOutlet" selected-model="item.outlet_id"></div>-->
                             <!--</div>-->
-                            <div class="form-group">
+                            <!---<div class="form-group">
                                 <label for="title">User</label>
                                 <select id="user_id" ng-model="item.user_id" required  class="form-control" >
                                     <option value="">Select</option>
                                     <option value="{{merchant.id}}" ng-selected="merchant.id==item.user_id" ng-repeat="merchant in merchants">{{merchant.first_name}} {{merchant.last_name}}</option>
                                 </select>
-                            </div>
+                            </div>-->
 
                             <div class="form-group">
                                 <label for="title">Title</label>

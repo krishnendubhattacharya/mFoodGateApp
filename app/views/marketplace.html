@@ -3,9 +3,9 @@
     <div class="container phone-hide">
         <div id="tabs-container">
             <ul class="tabs-menu">
-                <li class="current"><a href="#tab-1">Resell Voucher : {{resell_promo_show}}</a></li>
-                <li><a href="#tab-2">Swap Voucher : {{promoInfo.length}}</a></li>
-                <li><a href="#tab-3">Event Offer : {{eventInfo.length}}</a></li>
+                <li class="current"><a href="#tab-1">Resell Voucher : {{resaleInfo.length?resaleInfo.length:0}}</a></li>
+                <li><a href="#tab-2">Swap Voucher : {{promoInfo.length?promoInfo.length:0}}</a></li>
+                <li><a href="#tab-3">Event Offer : {{eventInfo.length?eventInfo.length:0}}</a></li>
                 <!--<li><a href="#tab-4">Re-Seller Voucher</a></li>-->
             </ul>
             <div class="tab">
@@ -86,7 +86,6 @@
                                 <!--</div>-->
                             </li>
 
-
                         </ul>
                     </div>
                 </div>
@@ -131,7 +130,7 @@
 
 
     <div class="m-new-Promo tablet-hide">
-        <h1 ng-click="resellShowHide()">Resell Voucher : {{resell_promo_show}}</h1>
+        <h1 ng-click="resellShowHide()">Resell Voucher : {{resaleInfo.length?resaleInfo.length:0}}</h1>
         <ul ng-show="resell_promo_show">
             <li ng-repeat="resaleDetail in resaleInfo">
                 <div class="pro-item">
@@ -163,7 +162,7 @@
     </div>
     <div class="dx-clearfix"></div>
     <div class="m-new-Promo tablet-hide">
-        <h1 ng-click="swapShowHide()">Swap Voucher : {{promoInfo.length}}</h1>
+        <h1 ng-click="swapShowHide()">Swap Voucher : {{promoInfo.length?promoInfo.length:0}}</h1>
         <ul style="border:none" ng-show="swap_promo_show">
             <li ng-repeat="resaleDetail in promoInfo">
                 <div class="pro-item">
@@ -188,7 +187,7 @@
     </div>
     <div class="dx-clearfix"></div>
     <div class="m-reseller-section tablet-hide">
-        <h1 ng-click="eventShowHide()">Event Offer : {{eventInfo.length}}</h1>
+        <h1 ng-click="eventShowHide()">Event Offer : {{eventInfo.length?eventInfo.length:0}}</h1>
         <ul style="border:none" ng-show="event_promo_show">
             <li ng-repeat="resaleDetail in eventInfo">
                 <div class="pro-item">

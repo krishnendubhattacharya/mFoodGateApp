@@ -14,7 +14,7 @@
                     <div class="panel-body">
                         <div class="btn-group">
                             <button class="btn btn-primary" id="editable-sample_new" ng-click ="addPromo()">
-                                Add New
+                                Login Detail
                             </button>
                         </div>
                         <table id="promosList" class="table  table-hover general-table">
@@ -30,9 +30,9 @@
                             <tbody>
 
                             <tr ng-repeat="item in allpromo">
-                                <td >{{item.first_name}} {{item.last_name}}</td>
-                                <td >{{item.email}}</td>
-                                <td >{{item.roll_name}}</td>
+                                <td >{{item.name}}</td>
+                                <td >{{item.merchant_name}}</td>
+                                <td >{{item.type=='1'?'Merchants Point':'mFoodGate Point'}}</td>
                                 <td ><a class="btn btn-default edit" href="javascript:void(0);" ng-click="editPromo(item)" >Edit</a>
                                     <a class="btn btn-default delete" href="javascript:;" ng-click="deletePromo(item.id)"
                                             >Delete</a></td>
@@ -86,9 +86,17 @@
 
                             <div class="form-group">
                                 <label for="value">password</label>
-                                <input type="password" placeholder="Enter Password"  id="password" ng-model="item.password" class="form-control">
+                                <input type="password" required placeholder="Enter Password"  id="password" ng-model="item.password" class="form-control">
                             </div>
-                            
+
+                            <div class="form-group">
+                                <label for="title">Access Type</label>
+                                <select id="user_id" ng-model="item.roll" required  class="form-control" >
+                                    <option value="">Select</option>
+                                    <option value="{{merchant.id}}" ng-selected="merchant.id==item.roll" ng-repeat="merchant in merchants">{{merchant.merchant_name}}</option>
+                                </select>
+                            </div>
+
 
                             <div class="form-group">
                                 <label for="title">Access Type</label>
