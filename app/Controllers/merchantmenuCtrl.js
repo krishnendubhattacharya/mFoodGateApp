@@ -34,6 +34,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             title:'',
             description:'',
             price:'',
+            is_featured:false,
             status:false
         }
         //$scope.textBox.image.value = null;
@@ -52,6 +53,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             description:menu.description,
             price:menu.price,
             status:menu.status=="Active"?true:false,
+            is_featured:menu.is_featured=="Yes"?true:false,
             imageurl:menu.imageurl
         }
         $scope.img_uploader.reset();
@@ -87,7 +89,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
                         .appendTo(container);
                 }
             }
-        },"status",
+        },"status",{caption:"Featured",dataField:"is_featured"},
             {
                 caption:'Edit',
                 width: 100,

@@ -75,12 +75,13 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                             method: "POST",
                             url: $rootScope.serviceurl + "addToCart",
                             headers: {'Content-Type': 'application/json'},
-                            data:{user_id:$scope.loggedindetails.id,cart:$cookieStore.get('cart')}
+                            data:{user_id:$scope.loggedindetails.id,cart:JSON.parse(localStorage.getItem('cart'))}
                         }).success(function (data) {
                             console.log('saved');
                             if(data)
                             {
-                                $cookieStore.put('cart',data);
+                               // $cookieStore.put('cart',data);
+                                localStorage.setItem('cart', JSON.stringify(data));
                                // $scope.cartDetails = mFoodCart.get_cart();
                                 //$scope.getCartDetails();
                             }

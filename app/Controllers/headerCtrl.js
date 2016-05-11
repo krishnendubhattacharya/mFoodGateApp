@@ -24,7 +24,8 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
     $scope.sidemenubar();*/
     //$scope.cartCount = mFoodCart.getCount();
     $scope.$watch(function(){
-        var cart=$cookieStore.get('cart');
+        //var cart=$cookieStore.get('cart');
+        var cart=JSON.parse(localStorage.getItem('cart'));
         if(cart)
             return cart.length;
         else
@@ -59,7 +60,8 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
                     
                 myAuth.resetUserinfo();
                     $cookieStore.put('users', null);
-                    $cookieStore.put('cart', null);
+                    //$cookieStore.put('cart', null);
+                    localStorage.setItem('cart', null);
                     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
                     $scope.loggedindetails = myAuth.getUserNavlinks();
                     $scope.loggedindetails = '';

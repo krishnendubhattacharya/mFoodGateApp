@@ -10,7 +10,8 @@ angular
     //factobj.cart = [];
     factobj.add_to_cart = function(promo){
         //console.log('Promo =============',promo);
-        var cart=$cookieStore.get('cart');
+        //var cart=$cookieStore.get('cart');
+        var cart=JSON.parse(localStorage.getItem('cart'));
         if(cart)
         {
             var found=false;
@@ -29,18 +30,21 @@ angular
             cart = [];
             cart.push(promo);
         }
-        $cookieStore.put('cart',cart);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        //$cookieStore.put('cart',cart);
 
     }
     /******************************** Cart ***********************************/
 
     factobj.get_cart = function(){
-        var cart=$cookieStore.get('cart');
+        //var cart=$cookieStore.get('cart');
+        var cart=JSON.parse(localStorage.getItem('cart'));
         return cart;
     }
 
         factobj.getCount = function(){
-            var cart=$cookieStore.get('cart');
+            //var cart=$cookieStore.get('cart');
+            var cart=JSON.parse(localStorage.getItem('cart'));
             if(cart)
                 return cart.length;
             else
@@ -48,7 +52,8 @@ angular
         }
 
     factobj.update_cart_quantity = function(offer_id,quantity){
-        var cart=$cookieStore.get('cart');
+        //var cart=$cookieStore.get('cart');
+        var cart=JSON.parse(localStorage.getItem('cart'));
         angular.forEach(cart,function(val,key){
             if(val.offer_id == offer_id)
             {
@@ -56,12 +61,14 @@ angular
                 //found = true;
             }
         })
-        $cookieStore.put('cart',cart);
+        //$cookieStore.put('cart',cart);
+        localStorage.setItem('cart', JSON.stringify(cart));
 
     }
 
     factobj.remove = function(offer_id){
-        var cart=$cookieStore.get('cart');
+        //var cart=$cookieStore.get('cart');
+        var cart=JSON.parse(localStorage.getItem('cart'));
         angular.forEach(cart,function(val,key){
             if(val.offer_id == offer_id)
             {
@@ -69,14 +76,16 @@ angular
                 //found = true;
             }
         })
-        $cookieStore.put('cart',cart);
+        //$cookieStore.put('cart',cart);
+        localStorage.setItem('cart', JSON.stringify(cart));
 
     }
 
         factobj.resetAndAdd = function(cart)
         {
             //$cookieStore.remove('cart');
-            $cookieStore.put('cart',cart);
+            //$cookieStore.put('cart',cart);
+            localStorage.setItem('cart', JSON.stringify(cart));
         }
     
     

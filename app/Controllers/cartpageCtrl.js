@@ -1,4 +1,4 @@
-app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap,mFoodCart,$window,$cookieStore) {
+app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap,mFoodCart,$window,$cookieStore) {
     $scope.promoId = $stateParams.promoId;
     $scope.loggedindetails = myAuth.getUserNavlinks();
 
@@ -176,7 +176,8 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     }).success(function (data) {
 
                         if (data.status == 'success') {
-                            $cookieStore.remove('cart');
+                            //$cookieStore.remove('cart');
+                            localStorage.removeItem('cart');
                             //console.log(data.getRelatedPromo);
                             //$scope.related_products = data.getRelatedPromo;
                             //console.log($scope.related_products);

@@ -60,6 +60,16 @@
                         </div>
 
                         <div class="dx-field">
+                            <div class="dx-field-label">Is Featured</div>
+                            <div class="dx-field-value">
+                                <div dx-check-box="{
+                                    text: '',
+                                    value: '1'
+                                }" style="float: left" ng-model="menuInfo.is_featured"></div>
+                            </div>
+                        </div>
+
+                        <div class="dx-field">
                             <div class="dx-field-label">Is Active</div>
                             <div class="dx-field-value">
                                 <div dx-check-box="{
@@ -68,6 +78,7 @@
                                 }" style="float: left" ng-model="menuInfo.status"></div>
                             </div>
                         </div>
+
 
                     </div>
                     <!--<div id="summary" dx-validation-summary="{ }"></div>-->

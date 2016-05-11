@@ -7,12 +7,14 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         $location.path("/login");
     }
     $scope.img_uploader = null;
+    $scope.all_locations = [];
+    $scope.all_restaurant = [];
     $scope.textBox = {image:  {
             buttonText: 'Select file',
             labelText: 'Drop file here',
             multiple: false,
             accept: 'image/*',
-            uploadUrl: $rootScope.serviceurl + 'menuFileUpload',
+            uploadUrl: $rootScope.serviceurl + 'outletFileUpload',
             onUploaded:function(ret){
                 $scope.menuInfo.image = ret.file.value.name;
                 console.log(ret.file.value,ret.file.value.name);
@@ -24,6 +26,22 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
     },
         price:{
             mode: "number"
+        },location:{
+            dataSource: $scope.all_locations,
+            displayExpr: "name",
+            valueExpr: "value",
+            onInitialized:function(e){
+                $scope.loc_select = e.component;
+                $scope.getLocations();
+            }
+        },restaurant:{
+            dataSource: $scope.all_restaurant,
+            displayExpr: "name",
+            valueExpr: "value",
+            onInitialized:function(e){
+                $scope.res_select = e.component;
+                $scope.getRestaurants();
+            }
         }};
 
 
@@ -33,8 +51,12 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             id:'',
             title:'',
             description:'',
-            price:'',
-            status:false
+            image:'',
+            restaurant_id:'',
+            address:'',
+            business_hours:'',
+            location_id:'',
+            is_active:false
         }
         //$scope.textBox.image.value = null;
         //$scope.img_uploader = ;
@@ -64,17 +86,20 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             console.log('By Bikash  --  ',e);
             $scope.datag = e.component;
         },
-        columns: ["sl", "title","price", {
+        columns: ["title","address", {
             caption:'Image',
             cellTemplate: function (container, options) {
                 if(options.data.image) {
                     $('<img />')
-                        .height(100)
+                        .width(100)
                         .attr('src', options.data.imageurl)
                         .appendTo(container);
                 }
             }
-        },"status",
+        },{caption:"Active",cellTemplate: function (container, options) {
+            var text = options.data.is_active==1?'Yes':'No';
+            $(container).html(text);
+        }},
             {
                 caption:'Edit',
                 width: 100,
@@ -121,12 +146,32 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
     $scope.getLocations = function () {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getActiveLocations",
+            url: $rootScope.serviceurl + "getAllLocations",
 
         }).success(function (data) {
+            $scope.all_locations = [];
+            angular.forEach(data.locations,function(val){
+                $scope.all_locations.push({name:val.city,value:val.id});
+            })
+            $scope.loc_select.option({dataSource: $scope.all_locations});
 
-            $scope.allLoc = data.location;
-            console.log('Locations',$scope.allLoc);
+
+
+        });
+
+    }
+
+    $scope.getRestaurants = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getResturantByMerchant/"+$scope.loggedindetails.id,
+
+        }).success(function (data) {
+            $scope.all_restaurant = [];
+            angular.forEach(data.restaurants,function(val){
+                $scope.all_restaurant.push({name:val.title,value:val.id});
+            })
+            $scope.res_select.option({dataSource: $scope.all_restaurant});
 
 
 
@@ -137,10 +182,132 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
 
 
 
+    $scope.getOutlets = function() {
+        //$scope.dataGridOptions = null;
+        $scope.edit_mode = false;
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getOutletsByUser/" + $scope.loggedindetails.id,
+        }).success(function (data) {
+            $scope.voucherInfo = data.data;
+            //console.log($scope.voucherInfo);
+            //if($scope.datag)
+            $scope.datag.option({dataSource:$scope.voucherInfo});
+
+            $scope.listViewData.option({"dataSource": $scope.voucherInfo,hoverStateEnabled: false });
+            //$scope.refresh_grid();
+            //$timeout(function(){
+            //$scope.datag.refresh();
+            //},3000)
 
 
+        });
+    }
+    $scope.getOutlets();
 
 
+    $scope.save_menu = function(){
 
+        //console.log($scope.textBox.image.value,$scope.menuInfo);
+        if($scope.menuInfo.id)
+        {
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl+"updateOutletMerchant",
+                data: $scope.menuInfo,
+                headers: {'Content-Type': 'application/json'},
+            }).success(function(data) {
+                //console.log(data);
+                if(data.type == 'success'){
+                    var message = data.message;
+                    //params.validationGroup.reset();
+                    //$location.path('/login');
+                    //$scope.getUserInfo();
+                    //$location.path('/merchantoffer');
+                    DevExpress.ui.notify({
+                        message: "Updated Successfilly",
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "success", 3000);
+                    $scope.edit_mode = !$scope.edit_mode;
+                    $scope.getOutlets();
+                }else{
+                    var message = "Error occured.";
+                    DevExpress.ui.notify({
+                        message: message,
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "error", 3000);
+                }
+            })
+        }
+        else
+        {
+            console.log($scope.menuInfo);
+            $scope.menuInfo.user_id = $scope.loggedindetails.id;
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl+"addOutletMerchant",
+                data: $scope.menuInfo,
+                headers: {'Content-Type': 'application/json'},
+            }).success(function(data) {
+                //console.log(data);
+                if(data.type == 'success'){
+                    var message = data.message;
+                    //params.validationGroup.reset();
+                    //$location.path('/login');
+                    //$scope.getUserInfo();
+                    //$location.path('/merchantoffer');
+                    DevExpress.ui.notify({
+                        message: "Added Successfilly",
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "success", 3000);
+                    $scope.edit_mode = !$scope.edit_mode;
+                    $scope.getOutlets();
+                }else{
+                    var message = "Error occured.";
+                    DevExpress.ui.notify({
+                        message: message,
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "error", 3000);
+                }
+            })
+        }
+    }
+
+    $scope.edit_menu = function(menu)
+    {
+        console.log(menu);
+        $scope.edit_mode = !$scope.edit_mode;
+        $scope.menuInfo = {
+            id:menu.id,
+            title:menu.title,
+            description:menu.description,
+            image:menu.image,
+            imageurl:menu.imageurl,
+            restaurant_id:menu.restaurant_id,
+            address:menu.address,
+            business_hours:menu.business_hours,
+            location_id:menu.location_id,
+            is_active:menu.is_active
+        }
+        $scope.img_uploader.reset();
+    }
+
+    $scope.loadList=function(e)
+    {
+        console.log("loadList")
+        $scope.listViewData= e.component;
+    }
 
 });

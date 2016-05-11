@@ -60,7 +60,7 @@
         <li><a onclick="menuClick()" title="Home" ui-sref="frontend.index">Home</a></li>
         <li class="has-sub"><a href=""><span>Restaurant Category</span></a>
             <ul>
-                <li ng-repeat="catdetail in catInfo"><a onclick="menuClick()" title="Category" ui-sref="frontend.refinerestaurent({ categoryId: catdetail.id })">{{catdetail.name}}</a></li>
+                <li ng-repeat="catdetail in catInfo"><a onclick="menuClick()" title="Category" ui-sref="frontend.refinerestaurent({ categoryId: catdetail.id })"><img src="{{catdetail.icon_url}}" width="20" height="20" ng-if="catdetail.icon_url"/>{{catdetail.name}}</a></li>
             </ul></li>
         <li class="has-sub active"><a href="" title="Voucher"><span>Voucher</span></a>
             <ul style="display: block;">
