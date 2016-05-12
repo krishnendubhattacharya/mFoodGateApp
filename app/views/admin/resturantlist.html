@@ -101,6 +101,7 @@
                             <div class="form-group">
                                 <label for="exampleInputName">Image</label>
                                 <input type="file"  id="logo" ng-model="item.logo" base-sixty-four-input>
+                                <img data-ng-src="data:{{item.logo.filetype}};base64,{{item.logo.base64}}" width="200" ng-if="item.logo">
                             </div>
 
                             <div class="checkbox">

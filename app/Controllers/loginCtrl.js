@@ -35,6 +35,21 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
         }
     };
 
+    $scope.cartConfPopup = false;
+    $scope.popupOptions = {
+        width: 500,
+        height: 'auto',
+        contentTemplate: "info",
+        showTitle: true,
+        title: "Cart",
+        dragEnabled: false,
+        closeOnOutsideClick: true,
+        bindingOptions: {
+            visible: "cartConfPopup",
+        }
+    };
+    //$scope.cartConfPopup = true;
+
     $scope.validateAndSubmit = function(params) {
 
 
@@ -70,12 +85,28 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                     $scope.loggedin = true;
                     $scope.notloggedin = false;
                     /********************* Getting The Cart ************/
+
                     if ($scope.loggedindetails) {
+                        //$http({
+                        //    method: "GET",
+                        //    url: $rootScope.serviceurl + "getCartByUser/" + $scope.loggedindetails.id,
+                        //    headers: {'Content-Type': 'application/json'}
+                        //}).success(function (data) {
+                        //    if(data)
+                        //    {
+                        //        $scope.existed_cart = data;
+                        //    }
+                        //})
+                        $scope.cartItem = JSON.parse(localStorage.getItem('cart'));
+                        //if($scope.cartItem)
+                        //{
+                        //    $scope.cartConfPopup = true;
+                        //}
                         $http({
                             method: "POST",
                             url: $rootScope.serviceurl + "addToCart",
                             headers: {'Content-Type': 'application/json'},
-                            data:{user_id:$scope.loggedindetails.id,cart:JSON.parse(localStorage.getItem('cart'))}
+                            data:{user_id:$scope.loggedindetails.id,cart:$scope.cartItem}
                         }).success(function (data) {
                             console.log('saved');
                             if(data)

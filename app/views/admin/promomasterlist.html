@@ -136,6 +136,7 @@
                             <div class="form-group">
                                 <label for="image">Image</label>
                                 <input type="file"  id="image" ng-model="item.image" base-sixty-four-input>
+                                <img data-ng-src="data:{{item.image.filetype}};base64,{{item.image.base64}}" width="300" ng-if="item.image">
                             </div>
 
                             <div class="form-group" ng-init="getOfferType()">
