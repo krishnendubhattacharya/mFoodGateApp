@@ -5,7 +5,7 @@
 app.controller('loginCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore) {
 
 
-    myAuth.updateUserinfo(myAuth.getUserAuthorisation());
+    //myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     if($scope.loggedindetails){
         $location.path('/admin/home');
@@ -26,7 +26,7 @@ $scope.getAdminLogin = function() {
             $cookieStore.put('admin', data.user_details);
             $scope.user_username = '';
             $scope.user_password = '';
-            myAuth.updateAdminUserinfo(myAuth.getAdminAuthorisation());
+            myAuth.updateAdminUserinfo(data.user_details);
             $scope.loggedindetails = myAuth.getAdminNavlinks();
             //console.log('hiiiiiiiiii');
             $rootScope.$emit('updateAdminLoginDetails');

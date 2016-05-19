@@ -12,15 +12,15 @@
                         <div id="combine_btn" dx-button="{
                                     text: 'Combine',
                                     type: 'success',
-                                    onClick: validateAndSubmit }" style="float:left;margin:0px 5px;"></div>
+                                    onClick: combineCart }" style="float:left;margin:0px 5px;"></div>
                         <div id="old_btn" dx-button="{
                                     text: 'Keep Old',
                                     type: 'success',
-                                    onClick: validateAndSubmit }" style="float:left;margin:0px 5px;"></div>
+                                    onClick: keepOldCart }" style="float:left;margin:0px 5px;"></div>
                         <div id="current_btn" dx-button="{
                                     text: 'Keep Current',
                                     type: 'success',
-                                onClick: validateAndSubmit }" style="float:left;margin:0px 5px;"></div>
+                                onClick: keepNewCart }" style="float:left;margin:0px 5px;"></div>
                     </div>
                 </div>
             </div>
@@ -49,11 +49,11 @@
                 </ul>
                 </form>-->
                 <style>
-                    .dx-overlay-content.dx-resizable {
-                        position: relative;
-                        width: 220px !important;
-                        color: red;
-                    }
+                    /*.dx-overlay-content.dx-resizable {*/
+                        /*position: relative;*/
+                        /*width: 220px !important;*/
+                        /*color: red;*/
+                    /*}*/
                 </style>
                 <div class="form">
                         <div class="dx-fieldset">

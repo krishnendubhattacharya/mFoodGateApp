@@ -110,8 +110,24 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
 
     $scope.updateQuantity = function(data){
         if(data.quantity>0) {
-            mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
-            $scope.getCartTotals();
+            if ($scope.loggedindetails) {
+                $http({
+                    method: "POST",
+                    url: $rootScope.serviceurl+"updateCartQuantity",
+                    headers: {'Content-Type': 'application/json'},
+                    data:{item:data,user_id:$scope.loggedindetails.id}
+                }).success(function(res) {
+
+                        mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
+                        $scope.getCartTotals();
+
+                })
+            }
+            else
+            {
+                mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
+                $scope.getCartTotals();
+            }
         }
     }
 

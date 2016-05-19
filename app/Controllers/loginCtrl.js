@@ -37,7 +37,7 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
 
     $scope.cartConfPopup = false;
     $scope.popupOptions = {
-        width: 500,
+        width: 'auto',
         height: 'auto',
         contentTemplate: "info",
         showTitle: true,
@@ -75,6 +75,7 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
 
                     params.validationGroup.reset();
                     $cookieStore.put('users', data.user_details);
+                    $scope.fetched_user_details = data.user_details;
                     $scope.user_username = '';
                     $scope.user_password = '';
                     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
@@ -87,55 +88,43 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                     /********************* Getting The Cart ************/
 
                     if ($scope.loggedindetails) {
-                        //$http({
-                        //    method: "GET",
-                        //    url: $rootScope.serviceurl + "getCartByUser/" + $scope.loggedindetails.id,
-                        //    headers: {'Content-Type': 'application/json'}
-                        //}).success(function (data) {
-                        //    if(data)
-                        //    {
-                        //        $scope.existed_cart = data;
-                        //    }
-                        //})
+                        $http({
+                            method: "GET",
+                            url: $rootScope.serviceurl + "getCartByUser/" + $scope.loggedindetails.id,
+                            headers: {'Content-Type': 'application/json'}
+                        }).success(function (data) {
+                            if(data)
+                            {
+                                $scope.existed_cart = data;
+                                $scope.cartConfPopup = true;
+                            }
+                        })
                         $scope.cartItem = JSON.parse(localStorage.getItem('cart'));
                         //if($scope.cartItem)
                         //{
                         //    $scope.cartConfPopup = true;
                         //}
-                        $http({
-                            method: "POST",
-                            url: $rootScope.serviceurl + "addToCart",
-                            headers: {'Content-Type': 'application/json'},
-                            data:{user_id:$scope.loggedindetails.id,cart:$scope.cartItem}
-                        }).success(function (data) {
-                            console.log('saved');
-                            if(data)
-                            {
-                               // $cookieStore.put('cart',data);
-                                localStorage.setItem('cart', JSON.stringify(data));
-                               // $scope.cartDetails = mFoodCart.get_cart();
-                                //$scope.getCartDetails();
-                            }
-                        })
+                        //$http({
+                        //    method: "POST",
+                        //    url: $rootScope.serviceurl + "addToCart",
+                        //    headers: {'Content-Type': 'application/json'},
+                        //    data:{user_id:$scope.loggedindetails.id,cart:$scope.cartItem}
+                        //}).success(function (data) {
+                        //    console.log('saved');
+                        //    if(data)
+                        //    {
+                        //       // $cookieStore.put('cart',data);
+                        //        localStorage.setItem('cart', JSON.stringify(data));
+                        //       // $scope.cartDetails = mFoodCart.get_cart();
+                        //        //$scope.getCartDetails();
+                        //    }
+                        //})
                     }
 
                     /********************* Getting The Cart ************/
 
                     //console.log($scope.loggedindetails);
-                    $timeout(function(){
-                        if(data.user_details.is_logged_in == 1){
 
-                            $location.path('admin/home');
-                        }else {
-                            if($scope.returnUrl) {
-                                $location.search('returnUrl', null)
-                                $location.path($scope.returnUrl);
-                            }
-                            else {
-                                $location.path('/');
-                            }
-                        }
-                    },3100);
 
 
 
@@ -163,8 +152,65 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
     };
 
 
+    $scope.loginRedirect = function(){
+        //$timeout(function(){
+            if($scope.fetched_user_details.is_logged_in == 1){
 
+                $location.path('admin/home');
+            }else {
+                if($scope.returnUrl) {
+                    $location.search('returnUrl', null)
+                    $location.path($scope.returnUrl);
+                }
+                else {
+                    $location.path('/');
+                }
+            }
+        //},3100);
+    }
 
+    $scope.combineCart = function(){
+        if(!$scope.cartItem)
+        {
+            $scope.cartItem = [];
+        }
+        $http({
+            method: "POST",
+            url: $rootScope.serviceurl + "addToCart",
+            headers: {'Content-Type': 'application/json'},
+            data: {user_id: $scope.loggedindetails.id, cart: $scope.cartItem}
+        }).success(function (data) {
+            console.log('saved');
+            if (data) {
+                // $cookieStore.put('cart',data);
+                localStorage.setItem('cart', JSON.stringify(data));
+                $scope.cartConfPopup = false;
+                $scope.loginRedirect();
+                // $scope.cartDetails = mFoodCart.get_cart();
+                //$scope.getCartDetails();
+            }
+        })
+
+    }
+
+    $scope.keepOldCart = function(){
+        if($scope.existed_cart)
+        {
+            localStorage.setItem('cart', JSON.stringify($scope.existed_cart));
+
+        }
+        $scope.loginRedirect();
+    }
+
+    $scope.keepNewCart = function(){
+        $http({
+            method: "delete",
+            url: $rootScope.serviceurl + "deleteCartByUser/" + $scope.loggedindetails.id,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            $scope.loginRedirect();
+        })
+    }
 
     $scope.emailValidationRules = {
         validationRules: [{

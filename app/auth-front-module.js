@@ -87,7 +87,7 @@ angular
             console.log(obj);
             if(obj)
             {
-                factobj.adminuserinfo = { loginstatus: 1, id: obj.id,username:obj.username };
+                factobj.adminuserinfo = { loginstatus: true, id: obj.id,username:obj.username };
                 return true;
             }
     /******************************** Cart ***********************************/
@@ -106,10 +106,9 @@ angular
 
         factobj.getAdminNavlinks = function () {
             console.log(factobj.adminuserinfo.loginstatus);
-            var adminlogin = factobj.adminuserinfo.loginstatus,
-                adminemail = (typeof factobj.adminuserinfo.id == "undefined" || factobj.adminuserinfo.id == "") ? "Unknown" : factobj.adminuserinfo.id;
-            if ($cookieStore.get('admin')==null) {
-                $location.path("/adminlogin/signin");
+            var adminlogin = factobj.adminuserinfo.loginstatus;
+            if (!adminlogin) {
+                return false;
             } else {
                 return factobj.adminuserinfo;
             }
