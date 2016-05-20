@@ -90,13 +90,14 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                     carousal.owlCarousel({
                         autoplay:true,
                         touchDrag:false,
-                        loop:true,
+                        loop:($scope.featuredCatInfo && $scope.featuredCatInfo.length>1?true:false),
                         dots:true,
                         nav:true,
                         navContainerClass:"ca-nav",
                         navText:false,
                         autoplayTimeout:5000,
                         autoplayHoverPause:true,
+                        singleItem:true,
                         responsive:{
                             0:{
                                 items:1

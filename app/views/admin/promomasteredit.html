@@ -11,7 +11,7 @@
                     </header>
                     <div class="panel-body">
                         <form role="form" ng-submit="savePromo()" enctype="multipart/form-data">
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label for="category_id">Select Restaurants</label>
                                 <select id="restaurants"
                                         ng-model="item.restaurant_id" required
@@ -20,6 +20,19 @@
                                     <option value="">Select</option>
                                     <option ng-repeat="restaurant in restaurants" ng-selected="restaurant.id==item.restaurant_id" value="{{restaurant.id}}" ng-selected="">{{restaurant.title}}</option>
                                 </select>
+                            </div>-->
+
+                            <div class="form-group">
+                                <label for="exampleInputName">Select Merchant</label>
+                                <select class="form-control" ng-model="item.merchant_id" ng-change="getRestaurent(item.merchant_id)">
+                                    <option value="">--Select Merchant--</option></option>
+                                    <option ng-repeat="merchant in merchantList | orderBy:'merchant_name' " ng-selected="merchant.id==item.merchant_id" value="{{merchant.id}}" ng-selected="">{{merchant.merchant_name}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category_id">Select Restaurants</label>
+                                <div ng-required ng-dropdown-multiselect="" id="restaurant_id" options="allRestaurent" selected-model="item.restaurant_id" events="yourEvents"></div>
                             </div>
 
                             <div class="form-group">

@@ -3,9 +3,9 @@
     <div class="container phone-hide">
         <div id="tabs-container">
             <ul class="tabs-menu">
-                <li class="current"><a href="#tab-1">Resell Voucher : {{resaleInfo.length?resaleInfo.length:0}}</a></li>
-                <li><a href="#tab-2">Swap Voucher : {{promoInfo.length?promoInfo.length:0}}</a></li>
-                <li><a href="#tab-3">Event Offer : {{eventInfo.length?eventInfo.length:0}}</a></li>
+                <li class="{{resaleInfo.length && resaleInfo.length>0?'current':''}}" ng-if="resaleInfo.length>0"><a href="javascript:void(0);" class="tab-1">Resell Voucher : {{resaleInfo.length?resaleInfo.length:0}}</a></li>
+                <li class="{{promoInfo.length>0 && (resaleInfo.length==0 || !resaleInfo.length)?'current':''}}" ng-if="promoInfo.length>0"><a href="javascript:void(0);"  class="tab-2">{{promoInfo.length>0 && resaleInfo.length==0?'current':''}}Swap Voucher : {{promoInfo.length?promoInfo.length:0}}</a></li>
+                <li class="{{(promoInfo.length==0 || !promoInfo.length) && (resaleInfo.length==0 || !resaleInfo.length)?'current':''}}"  ng-if="eventInfo.length>0"><a href="javascript:void(0);"  class="tab-3">Event Offer : {{eventInfo.length?eventInfo.length:0}}</a></li>
                 <!--<li><a href="#tab-4">Re-Seller Voucher</a></li>-->
             </ul>
             <div class="tab">
@@ -42,7 +42,7 @@
                             </ul>
                                 </div>
                 </div>
-                <div id="tab-2" class="tab-content">
+                <div id="tab-2" class="tab-content" style="{{promoInfo.length>0 && (resaleInfo.length==0 || !resaleInfo.length)?'display:block':''}}">
                     <div class="new-Promo">
                         <ul style="border:none">
                             <li ng-repeat="resaleDetail in promoInfo">
@@ -89,7 +89,7 @@
                         </ul>
                     </div>
                 </div>
-                <div id="tab-3" class="tab-content">
+                <div id="tab-3" class="tab-content" style="{{(promoInfo.length==0 || !promoInfo.length) && (resaleInfo.length==0 || !resaleInfo.length)?'display:block':''}}">
                     <div class="reseller-section">
 
                         <ul style="border:none">
@@ -220,13 +220,14 @@
 
 <script>
     $(document).ready(function() {
-        $(".tabs-menu a").click(function(event) {
+        $(document).on('click',".tabs-menu a",function(event) {
             event.preventDefault();
             $(this).parent().addClass("current");
             $(this).parent().siblings().removeClass("current");
-            var tab = $(this).attr("href");
-            $(".tab-content").not(tab).css("display", "none");
-            $(tab).fadeIn();
+            var tab = $(this).attr("class").split(' ')[0];
+            $(".tab-content").css("display", "none");
+            //alert(tab);
+            $("#" + tab).css("display", "block");
         });
     });
 </script>

@@ -72,7 +72,7 @@
 						</li>
 						<li><a ui-sref="frontend.membership" ui-sref-active="active">Membership</a></li>
 						<li><a ui-sref="frontend.marketplace" ui-sref-active="active">Marketplace</a></li>
-						<li ng-show="showMember" id="dropdown"><a href="">Member</a>
+						<li ng-show="showMember" id="dropdown"><a href="">{{loggedindetails.user_type_id==3?'Merchant':'Member'}}</a>
 						    <ul  id="dropdown-content">
 						        <li><a ui-sref="frontend.allvoucher">My Voucher</a></li>
 						        <li><a ui-sref="frontend.mymembership">My Membership</a></li>

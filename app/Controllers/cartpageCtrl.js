@@ -120,6 +120,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
 
                         mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
                         $scope.getCartTotals();
+                        $scope.save_to_db();
 
                 })
             }

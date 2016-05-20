@@ -59,12 +59,25 @@
                     <div class="panel-body">
                         <form role="form" ng-submit="savePromo()" enctype="multipart/form-data">
 
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label for="category_id">Select Restaurants</label>
                                 <select id="restaurants" ng-model="item.restaurant_id" required  class="form-control" ng-change="getOutlet(item.restaurant_id)">
                                     <option value="">Select</option>
                                     <option ng-repeat="restaurant in restaurants" value="{{restaurant.id}}">{{restaurant.title}}</option>
                                 </select>
+                            </div>-->
+
+                            <div class="form-group">
+                                <label for="category_id">Select Merchant</label>
+                                <select id="restaurants" ng-model="item.merchant_id" required  class="form-control" ng-change="getRestaurent(item.merchant_id)">
+                                    <option value="">Select Merchant</option>
+                                    <option ng-repeat="merchant in merchantList | orderBy:'merchant_name' " value="{{merchant.id}}">{{merchant.merchant_name}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category_id">Select Restaurants</label>
+                                <div ng-required ng-dropdown-multiselect="" id="restaurant_id" options="allRestaurent" selected-model="item.restaurant_id" events="yourEvents"></div>
                             </div>
 
                             <div class="form-group">

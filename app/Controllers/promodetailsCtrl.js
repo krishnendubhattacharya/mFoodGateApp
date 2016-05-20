@@ -2,7 +2,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.promoId = $stateParams.promoId;
     $scope.loggedindetails = myAuth.getUserNavlinks();
 
-
+    //stButtons.makeButtons();
     $scope.mpoints = 0;
     NgMap.getMap().then(function(map) {
         $scope.map = map;

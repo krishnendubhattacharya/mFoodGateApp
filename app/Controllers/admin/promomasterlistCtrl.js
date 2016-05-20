@@ -63,6 +63,26 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
         });
 
     }
+    $scope.getRestaurent = function(mer_id){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getResturantByMerchant/"+mer_id,
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            if(angular.isObject(data))
+            {
+                //console.log(data.data);
+                $scope.restaurants = data.restaurants;
+                $scope.allRestaurent = [];
+                angular.forEach($scope.restaurants,function(value){
+                    $scope.allRestaurent.push({id:value.id,label:value.title})
+                })
+            }
+        });
+
+    }
+
     $scope.getCategories = function(){
         $http({
             method: "GET",
@@ -81,6 +101,52 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
         });
 
     }
+    $scope.yourEvents = {
+        onItemSelect: function(item) {
+            //console.log(item);
+            console.log($scope.item.restaurant_id);
+            $http({
+                method: "POST",
+                data: $scope.item,
+                url: $rootScope.serviceurl + "getOutletsBySelectedRestaurant",
+                //data: {"email":$scope.email,"password":$scope.password},
+                //headers: {'Content-Type': 'application/json'},
+            }).success(function (data) {
+                console.log(data);
+                if(angular.isObject(data))
+                {
+                    console.log(data.data);
+                    $scope.outletList=data.data;
+                    $scope.allOutlet = [];
+                    angular.forEach($scope.outletList,function(value){
+                        $scope.allOutlet.push({id:value.id,label:value.title})
+                    })
+                }
+            });
+        },
+        onItemDeselect: function(item) {
+            //console.log(item);
+            //console.log($scope.item.restaurant_id);
+            $http({
+                method: "POST",
+                data: $scope.item,
+                url: $rootScope.serviceurl + "getOutletsBySelectedRestaurant",
+                //data: {"email":$scope.email,"password":$scope.password},
+                //headers: {'Content-Type': 'application/json'},
+            }).success(function (data) {
+                console.log(data);
+                if(angular.isObject(data))
+                {
+                    console.log(data.data);
+                    $scope.outletList=data.data;
+                    $scope.allOutlet = [];
+                    angular.forEach($scope.outletList,function(value){
+                        $scope.allOutlet.push({id:value.id,label:value.title})
+                    })
+                }
+            });
+        }
+    };
     $scope.getOfferType = function(){
         $http({
             method: "GET",
@@ -141,20 +207,21 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
             "is_featured":0,
             "is_special":0,
             "is_active":0,
-            "restaurant_id":'',
+            "restaurant_id":[],
+            "merchant_id":''
         };console.log($scope.item);
         /*$scope.example1model = [];
          $scope.example1data = [
          {id: 1, label: "David"},
          {id: 2, label: "Jhon"},
          {id: 3, label: "Danny"}];*/
+
         $scope.promoView='edit';
     }
 
     $scope.cancelPromo = function () {
         $scope.viewPromo();
     }
-
     $scope.savePromo = function () {
         console.log($scope.item);
         //return false;
@@ -193,7 +260,6 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
 
 
     }
-
     $scope.deletePromo = function (c_id) {
         //alert(c_id);
         if ( window.confirm("Want to delete?") ) {
@@ -224,10 +290,31 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
             if(data.type == 'success')
             {
                 $scope.restaurants = data.restaurants;
+                //$scope.outletList=data.data;
+                //console.log($scope.restaurants);
+                $scope.allRestaurent = [];
+                angular.forEach($scope.restaurants,function(value){
+                    $scope.allRestaurent.push({id:value.id,label:value.title})
+                })
+                //console.log($scope.allRestaurent);
             }
         });
     }
-    $scope.getActiveRestaurants();
+    //$scope.getActiveRestaurants();
+    $scope.getMerchant = function(){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getAllMerchants",
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            if(angular.isObject(data))
+            {
+                $scope.merchantList=data;
+            }
+        });
+    }
+    $scope.getMerchant();
 
 
 

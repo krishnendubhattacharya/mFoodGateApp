@@ -83,7 +83,7 @@ app.constant('JS_REQUIRES', {
         'refinerestaurent':['app/Controllers/refinerestaurentCtrl.js'],
         'footer':["app/Controllers/footerCtrl.js"],
         'restaurentpromo':['app/Controllers/restaurentpromoCtrl.js','app/directives/countdownDirective.js'],
-        'promodetails':['app/Controllers/promodetailsCtrl.js'],
+        'promodetails':['app/Controllers/promodetailsCtrl.js','app/directives/countdownDirective.js'],
         'voucherdetailforall':['app/Controllers/voucherdetailforallCtrl.js'],
         'paymentreturnCtrl':['app/Controllers/paymentreturnCtrl.js'],
         'voucher':['app/Controllers/voucherCtrl.js'],

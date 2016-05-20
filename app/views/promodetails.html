@@ -1,4 +1,5 @@
 <div ng-controller="promodetailsCtrl">
+
     <div class="container phone-hide">
     <div class="item-details">
         <div class="offers">
@@ -84,7 +85,10 @@
                 <h1>{{promodetails.title}}</h1>
                 <div >
                     <div style="width:300px;float:left">
-                    <p><b>Price : </b>IDR{{promodetails.offer_price | number}}</p>
+                    <p><b>Voucher Price : </b>IDR{{promodetails.price | number}}</p>
+                    <p><b>Discounted Price : </b>IDR{{promodetails.offer_price | number}}</p>
+                        <p><b>Quantity Sold : </b>{{promodetails.buy_count}}</p>
+                        <p><b>Quantity Available : </b>{{promodetails.quantity - promodetails.buy_count}}</p>
                     <p><b>M-points : </b>{{promodetails.mpoints}}</p>
                     </div>
                     <div style="float:right" id="button" dx-button="{
@@ -99,7 +103,15 @@
             </div>
 
             <div class="share">
-                <p>Share this deal <span><img src="app/assets/Images/icon-mail.png" width="20" height="20"  alt=""/></span><span><img src="app/assets/Images/icon-f.png" width="20" height="20"  alt=""/></span><span><img src="app/assets/Images/icon-t.png" width="20" height="20"  alt=""/></span></p>
+                <p>Share this deal
+                    <!--<span><img src="app/assets/Images/icon-mail.png" width="20" height="20"  alt=""/></span><span><img src="app/assets/Images/icon-f.png" width="20" height="20"  alt=""/></span><span><img src="app/assets/Images/icon-t.png" width="20" height="20"  alt=""/></span></p>-->
+                    <!--<span class='st_sharethis_large' displayText='ShareThis'></span>-->
+                    <!--<span class='st_facebook_large' displayText='Facebook'></span>-->
+                    <!--<span class='st_twitter_large' displayText='Tweet'></span>-->
+                    <!--<span class='st_linkedin_large' displayText='LinkedIn'></span>-->
+                    <!--<span class='st_pinterest_large' displayText='Pinterest'></span>-->
+                    <!--<span class='st_email_large' displayText='Email'></span>-->
+                </p>
             </div>
             <div class="highlights" ng-bind-html="promodetails.description">
 
