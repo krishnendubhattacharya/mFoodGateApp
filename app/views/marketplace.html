@@ -42,7 +42,7 @@
                             </ul>
                                 </div>
                 </div>
-                <div id="tab-2" class="tab-content" style="{{promoInfo.length>0 && (resaleInfo.length==0 || !resaleInfo.length)?'display:block':''}}">
+                <div id="tab-2" class="tab-content" style="{{promoInfo.length>0 && (resaleInfo.length==0 || !resaleInfo.length)?'display:block':''}}"  ng-if="promoInfo.length>0">
                     <div class="new-Promo">
                         <ul style="border:none">
                             <li ng-repeat="resaleDetail in promoInfo">
@@ -89,22 +89,23 @@
                         </ul>
                     </div>
                 </div>
-                <div id="tab-3" class="tab-content" style="{{(promoInfo.length==0 || !promoInfo.length) && (resaleInfo.length==0 || !resaleInfo.length)?'display:block':''}}">
+                <div id="tab-3" class="tab-content" style="{{(promoInfo.length==0 || !promoInfo.length) && (resaleInfo.length==0 || !resaleInfo.length)?'display:block':''}}"  ng-if="eventInfo.length>0">
                     <div class="reseller-section">
 
                         <ul style="border:none">
                             <li ng-repeat="resaleDetail in eventInfo">
-                                <div class="pro-item">
+                                <div class="pro-item" style="height:325px">
                                     <div class="logo-box">
                                         <!--<div class="p-circle">{{resaleDetail.offer_percent}}%</div>-->
                                         <img src="{{resaleDetail.image_url}}" width="218" height="100"  alt="" ng-click="eventdetails(resaleDetail.id)"/>
                                     </div>
                                     <div class="desc">
-                                        <h2>{{resaleDetail.title}}</h2>
+                                        <h2 style="font-size: 25px;">{{resaleDetail.title}}</h2>
 
                                         <b class="price" style="width:100%">
                                             <p><b>Start Date & Time :</b> {{resaleDetail.from_date}}</p>
                                             <p><b>End Date & Time :</b> {{resaleDetail.to_date}}</p>
+                                            <p><b>Outlet Type :</b> <span ng-repeat="category in resaleDetail.categories" style="text-decoration:none;">{{category.category}},</span></p>
                                             <p><b>Locations :</b> <span ng-repeat="location in resaleDetail.locations" style="text-decoration:none;">{{location.location}},</span></p>
                                             <p countdown='' date='{{resaleDetail.expire_date}}' style="float:right;font-weight:bold;">&nbsp;</p>
                                         </div>
@@ -126,11 +127,18 @@
                     asaSAsaSAsSSAS
                 </div>
                 </div>
+
+        <div class="dx-clearfix"></div>
+        <div class="new-Promo phone-hide" ng-if="(promoInfo.length==0 || !promoInfo.length) && (resaleInfo.length==0 || !resaleInfo.length) && (eventInfo.length==0 || !eventInfo.length)">
+            <div style="width:100%;text-align: center">
+                <h1>There is no promo on this category</h1>
+            </div>
+        </div>
             </div>
 
 
     <div class="m-new-Promo tablet-hide">
-        <h1 ng-click="resellShowHide()">Resell Voucher : {{resaleInfo.length?resaleInfo.length:0}}</h1>
+        <h1 ng-click="resellShowHide()"  ng-if="resaleInfo.length>0">Resell Voucher : {{resaleInfo.length?resaleInfo.length:0}}</h1>
         <ul ng-show="resell_promo_show">
             <li ng-repeat="resaleDetail in resaleInfo">
                 <div class="pro-item">
@@ -162,7 +170,7 @@
     </div>
     <div class="dx-clearfix"></div>
     <div class="m-new-Promo tablet-hide">
-        <h1 ng-click="swapShowHide()">Swap Voucher : {{promoInfo.length?promoInfo.length:0}}</h1>
+        <h1 ng-click="swapShowHide()"  ng-if="promoInfo.length>0">Swap Voucher : {{promoInfo.length?promoInfo.length:0}}</h1>
         <ul style="border:none" ng-show="swap_promo_show">
             <li ng-repeat="resaleDetail in promoInfo">
                 <div class="pro-item">
@@ -187,7 +195,7 @@
     </div>
     <div class="dx-clearfix"></div>
     <div class="m-reseller-section tablet-hide">
-        <h1 ng-click="eventShowHide()">Event Offer : {{eventInfo.length?eventInfo.length:0}}</h1>
+        <h1 ng-click="eventShowHide()" ng-if="eventInfo.length>0">Event Offer : {{eventInfo.length?eventInfo.length:0}}</h1>
         <ul style="border:none" ng-show="event_promo_show">
             <li ng-repeat="resaleDetail in eventInfo">
                 <div class="pro-item">
@@ -214,6 +222,11 @@
 
 
         </ul>
+    </div>
+    <div class="dx-clearfix"></div>
+
+    <div class="m-reseller-section tablet-hide" ng-if="(promoInfo.length==0 || !promoInfo.length) && (resaleInfo.length==0 || !resaleInfo.length) && (eventInfo.length==0 || !eventInfo.length)">
+        <h1 style="text-align: center" >There is no promo on this category</h1>
     </div>
 </div>
 

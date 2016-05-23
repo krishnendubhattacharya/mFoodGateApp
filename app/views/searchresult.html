@@ -5,7 +5,7 @@
         <h2>Results for ({{keyword}}) :Sorry, nothing to display</h2>
     </div>
 
-    <div class="new-Promo" ng-if="type =='promo' && voucherInfo.length != 0">
+    <div class="new-Promo" ng-if="(type =='promo' || type =='location')&& voucherInfo.length != 0">
         <h1>Promo <span style="float:right;">
             <div class="select-box">
             <select ng-model="sort_by_title" ng-change="sortChangeTitle(sort_by_title)">

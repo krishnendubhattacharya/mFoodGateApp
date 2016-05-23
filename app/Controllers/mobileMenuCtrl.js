@@ -49,6 +49,7 @@ app.controller('mobileMenuCtrl', function ($rootScope, $scope, $http, $location,
                     
                 myAuth.resetUserinfo();
                     $cookieStore.put('users', null);
+                    localStorage.setItem('cart', null);
                     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
                     $scope.loggedindetails = myAuth.getUserNavlinks();
                     $scope.loggedindetails = '';

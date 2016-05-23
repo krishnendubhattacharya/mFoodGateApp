@@ -70,6 +70,10 @@ app.controller('outletlistCtrl', function ($rootScope, $scope, $http, $location,
             if(angular.isObject(data))
             {
                 $scope.locationList=data.locations;
+                $scope.locCat = [];
+                angular.forEach($scope.locationList,function(value){
+                    $scope.locCat.push({id:value.id,label:value.city})
+                })
             }
         });
 
@@ -103,7 +107,7 @@ app.controller('outletlistCtrl', function ($rootScope, $scope, $http, $location,
             "lat": '',
             "lng": '',
             "is_active":0,
-            "location_id":'',
+            "location_id":[],
             "resturant_id":$stateParams.resturantId,
         };console.log($scope.item);
         /*$scope.example1model = [];

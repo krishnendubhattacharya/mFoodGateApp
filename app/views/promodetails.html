@@ -1,3 +1,5 @@
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5742fe39425e31de"></script>
 <div ng-controller="promodetailsCtrl">
 
     <div class="container phone-hide">
@@ -81,7 +83,7 @@
         </div>
         <div class="details">
             <div class="banner-main">
-                <p>{{restaurant.title}}</p>
+                <!--<p>{{restaurant.title}}</p>-->
                 <h1>{{promodetails.title}}</h1>
                 <div >
                     <div style="width:300px;float:left">
@@ -90,6 +92,7 @@
                         <p><b>Quantity Sold : </b>{{promodetails.buy_count}}</p>
                         <p><b>Quantity Available : </b>{{promodetails.quantity - promodetails.buy_count}}</p>
                     <p><b>M-points : </b>{{promodetails.mpoints}}</p>
+                        <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                     </div>
                     <div style="float:right" id="button" dx-button="{
                                 text: 'Add to Cart',
@@ -112,19 +115,39 @@
                     <!--<span class='st_pinterest_large' displayText='Pinterest'></span>-->
                     <!--<span class='st_email_large' displayText='Email'></span>-->
                 </p>
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_sharing_toolbox"></div>
             </div>
             <div class="highlights" ng-bind-html="promodetails.description">
 
             </div>
+            <div class="highlights" ng-bind-html="promodetails.benefits">
+
+            </div>
+            <div class="highlights" ng-repeat="restaurantInfo in restaurant">
+                <div class="merchant-dsc">
+                    <h2>{{restaurantInfo.title}}</h2>
+                    <p>{{restaurantInfo.sub_title}}</p>
+                    <p ng-bind-html="restaurantInfo.description"></p>
+                    <h2 ng-if="restaurantInfo.outlets.length">Outlets</h2>
+                    <ul>
+                        <li ng-repeat="outletsInfo in restaurantInfo.outlets">
+                            <p style="cursor: pointer;" ng-click="changeMap(outletsInfo)">{{outletsInfo.title}}</p>
+                            <p style="cursor: pointer;" ng-click="changeMap(outletsInfo)">{{outletsInfo.address}}</p>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
             <div class="location">
                 <div class="map"><!--<img src="app/assets/Images/map.png" alt=""/>-->
-                    <ng-map center="{{restaurant.address}}" zoom="6">
-                        <marker position="{{restaurant.address}}"></marker>
+                    <ng-map center="{{mapaddress}}" zoom="6">
+                        <marker position="{{mapaddress}}"></marker>
                     </ng-map>
                 </div>
                 <div class="address">
-                    <h1>{{restaurant.title}}</h1>
-                    <p>{{restaurant.address}}</p>
+                    <h1>{{maptitle}}</h1>
+                    <p>{{mapaddress}}</p>
                 </div>
                 <div style="clear: both"></div>
             </div>
@@ -219,12 +242,16 @@
         </div>
         <div class="details">
             <div class="banner-main">
-                <p>{{restaurant.title}}</p>
+                <!--<p>{{restaurant.title}}</p>-->
                 <h1>{{promodetails.title}}</h1>
                 <div >
                     <div style="width:300px;float:left">
-                        <p><b>Price : </b>IDR{{promodetails.offer_price | number}}</p>
+                        <p><b>Voucher Price : </b>IDR{{promodetails.price | number}}</p>
+                        <p><b>Discounted Price : </b>IDR{{promodetails.offer_price | number}}</p>
+                        <p><b>Quantity Sold : </b>{{promodetails.buy_count}}</p>
+                        <p><b>Quantity Available : </b>{{promodetails.quantity - promodetails.buy_count}}</p>
                         <p><b>M-points : </b>{{promodetails.mpoints}}</p>
+                        <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                     </div>
                     <div style="float:right" id="button" dx-button="{
                                 text: 'Add to Cart',
@@ -238,20 +265,39 @@
             </div>
 
             <div class="share">
-                <p>Share this deal <span><img src="app/assets/Images/icon-mail.png" width="20" height="20"  alt=""/></span><span><img src="app/assets/Images/icon-f.png" width="20" height="20"  alt=""/></span><span><img src="app/assets/Images/icon-t.png" width="20" height="20"  alt=""/></span></p>
+                <p>Share this deal</p>
+                <div class="addthis_sharing_toolbox"></div>
             </div>
             <div class="highlights" ng-bind-html="promodetails.description">
 
             </div>
+            <div class="highlights" ng-bind-html="promodetails.benefits">
+
+            </div>
+            <div class="highlights" ng-repeat="restaurantInfo in restaurant">
+                <div class="merchant-dsc">
+                    <h2>{{restaurantInfo.title}}</h2>
+                    <p>{{restaurantInfo.sub_title}}</p>
+                    <p ng-bind-html="restaurantInfo.description"></p>
+                    <h2 ng-if="restaurantInfo.outlets.length">Outlets</h2>
+                    <ul>
+                        <li ng-repeat="outletsInfo in restaurantInfo.outlets">
+                            <p ng-click="changeMap(outletsInfo)">{{outletsInfo.title}}</p>
+                            <p ng-click="changeMap(outletsInfo)">{{outletsInfo.address}}</p>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
             <div class="location">
                 <div class="map"><!--<img src="app/assets/Images/map.png" alt=""/>-->
-                    <ng-map center="{{restaurant.address}}" zoom="6">
-                        <marker position="{{restaurant.address}}"></marker>
+                    <ng-map center="{{mapaddress}}" zoom="6">
+                        <marker position="{{mapaddress}}"></marker>
                     </ng-map>
                 </div>
                 <div class="address">
-                    <h1>{{restaurant.title}}</h1>
-                    <p>{{restaurant.address}}</p>
+                    <h1>{{maptitle}}</h1>
+                    <p>{{mapaddress}}</p>
                 </div>
                 <div style="clear: both"></div>
             </div>

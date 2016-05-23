@@ -22,7 +22,7 @@
                             <tr>
                                 <th> Id</th>
                                 <th class="hidden-phone">Name</th>
-                                <th class="hidden-phone">Location</th>
+                                <th class="hidden-phone">Address</th>
                                 <th>Action</th>
 
                             </tr>
@@ -34,7 +34,7 @@
                                     {{item.id}}
                                 </td>
                                 <td >{{item.title}}</td>
-                                <td >{{item.city}}</td>
+                                <td >{{item.address}}</td>
                                 <td ><a class="btn btn-default edit" ui-sref="admin.outletedit({outletId:item.id})" >Edit</a>
                                     <a class="btn btn-default delete" href="javascript:;" ng-click="deleteOutlet(item.id)"
                                             >Delete</a></td>
@@ -63,10 +63,8 @@
 
                             <div class="form-group" ng-init="getLocation()">
                                 <label for="location_id">Select Location</label>
-                                <select class="form-control" id="location_id" ng-model="item.location_id">
-                                    <option value="">--Select Location--</option></option>
-                                    <option ng-repeat="location in locationList | orderBy:'city' " value="{{location.id}}">{{location.city}}</option>
-                                </select>
+                                <div ng-dropdown-multiselect="" id="location_id" options="locCat" selected-model="item.location_id"></div>
+
                             </div>
 
                             <div class="form-group">

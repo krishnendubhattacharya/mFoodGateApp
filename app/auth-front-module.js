@@ -88,6 +88,7 @@ angular
             if(obj)
             {
                 factobj.adminuserinfo = { loginstatus: true, id: obj.id,username:obj.username };
+                $cookieStore.put('admin', factobj.adminuserinfo);
                 return true;
             }
     /******************************** Cart ***********************************/
@@ -106,6 +107,7 @@ angular
 
         factobj.getAdminNavlinks = function () {
             console.log(factobj.adminuserinfo.loginstatus);
+            factobj.adminuserinfo = $cookieStore.get('admin');
             var adminlogin = factobj.adminuserinfo.loginstatus;
             if (!adminlogin) {
                 return false;

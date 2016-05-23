@@ -87,7 +87,7 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                     $scope.notloggedin = false;
                     /********************* Getting The Cart ************/
 
-                    if ($scope.loggedindetails) {
+                    if ($scope.loggedindetails && $scope.loggedindetails.user_type_id==2) {
                         $http({
                             method: "GET",
                             url: $rootScope.serviceurl + "getCartByUser/" + $scope.loggedindetails.id,
@@ -95,8 +95,20 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                         }).success(function (data) {
                             if(data)
                             {
+                                $scope.cartItem = JSON.parse(localStorage.getItem('cart'));
                                 $scope.existed_cart = data;
-                                $scope.cartConfPopup = true;
+                                if(!$scope.cartItem && $scope.existed_cart)
+                                {
+                                    $scope.keepOldCart();
+                                }
+                                else if((!$scope.existed_cart || $scope.existed_cart.length==0) && $scope.cartItem)
+                                {
+                                    $scope.combineCart();
+                                }
+                                else
+                                {
+                                    $scope.cartConfPopup = true;
+                                }
                             }
                         })
                         $scope.cartItem = JSON.parse(localStorage.getItem('cart'));
@@ -119,6 +131,10 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                         //        //$scope.getCartDetails();
                         //    }
                         //})
+                    }
+                    else
+                    {
+                        $scope.loginRedirect();
                     }
 
                     /********************* Getting The Cart ************/

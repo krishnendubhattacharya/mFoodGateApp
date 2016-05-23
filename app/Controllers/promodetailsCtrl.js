@@ -68,6 +68,8 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
             if(data.type == 'success') {
                 $scope.promodetails = data.offer;
                 $scope.restaurant = data.restaurants;
+                $scope.mapaddress = data.merchantInfo.address;
+                $scope.maptitle = data.merchantInfo.merchant_name;
             }
         })
     }
@@ -295,6 +297,11 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         });
     }
     $scope.getAds();
+
+    $scope.changeMap = function(outletInfo){
+        $scope.mapaddress = outletInfo.address;
+        $scope.maptitle = outletInfo.title;
+    }
 
     $scope.payments = 'C';
 });

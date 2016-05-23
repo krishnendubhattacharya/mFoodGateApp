@@ -28,6 +28,11 @@ app.controller('outleteditCtrl', function ($rootScope, $scope, $http, NgMap, $lo
                 $scope.category_id.push({id:value.category_id})
             })
 
+            $scope.location_id = [];
+            angular.forEach(data.data.locations,function(val){
+                $scope.location_id.push({id:val.location_id});
+            })
+
             $scope.item = { id:data.data.outlet.id,
                 title:data.data.outlet.title,
                 is_active:data.data.outlet.is_active,
@@ -36,7 +41,7 @@ app.controller('outleteditCtrl', function ($rootScope, $scope, $http, NgMap, $lo
                 lat: data.data.outlet.lat,
                 lng: data.data.outlet.lng,
                 restaurant_id:data.data.outlet.restaurant_id,
-                location_id:data.data.outlet.location_id
+                location_id:$scope.location_id
             }
 
         });
@@ -73,6 +78,10 @@ app.controller('outleteditCtrl', function ($rootScope, $scope, $http, NgMap, $lo
             if(angular.isObject(data))
             {
                 $scope.locationList=data.locations;
+                $scope.locCat = [];
+                angular.forEach($scope.locationList,function(value){
+                    $scope.locCat.push({id:value.id,label:value.city})
+                })
             }
         });
     }

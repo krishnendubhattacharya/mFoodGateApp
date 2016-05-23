@@ -54,6 +54,8 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
     {
         console.log(event);
         $scope.edit_mode = !$scope.edit_mode;
+        event.offer_from_date = moment(event.offer_from_date).format("MM/DD/YYYY");
+        event.offer_to_date = moment(event.offer_to_date).format("MM/DD/YYYY");
         $scope.event = {
             id:event.id,
             title:event.title,

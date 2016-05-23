@@ -2,7 +2,7 @@
 /**
  * controllers used for the login
  */
-app.controller('merchantuserlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore,$timeout,$stateParams) {
+app.controller('merchantuserlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore,$timeout,$stateParams,notify) {
 
 
     $scope.merchants = [];
@@ -55,6 +55,7 @@ app.controller('merchantuserlistCtrl', function ($rootScope, $scope, $http, $loc
             email:params.email,
             password:"",
             roll:params.roll,
+            is_active:params.is_active
         };
 
         $scope.promoView='edit';
@@ -71,6 +72,7 @@ app.controller('merchantuserlistCtrl', function ($rootScope, $scope, $http, $loc
             password:"",
             parent_id:$stateParams.userId,
             roll:"",
+            is_active:0
         };console.log($scope.item);
 
         $scope.promoView='edit';
@@ -99,8 +101,18 @@ app.controller('merchantuserlistCtrl', function ($rootScope, $scope, $http, $loc
                 data: $scope.item,
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
-                $scope.viewPromo();
-                $scope.item={};
+                if(data.type=='error')
+                {
+                    notify({
+                        message : data.message,
+                        classes : 'alert-danger'
+                    });
+                }
+                else
+                {
+                    $scope.viewPromo();
+                    $scope.item={};
+                }
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
             });
@@ -111,9 +123,17 @@ app.controller('merchantuserlistCtrl', function ($rootScope, $scope, $http, $loc
                 data: $scope.item,
                 headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
-                console.log(data);
-                $scope.viewPromo();
-                $scope.item={};
+                if(data.type=='error')
+                {
+                    notify({
+                        message : data.message,
+                        classes : 'alert-danger'
+                    });
+                }
+                else {
+                    $scope.viewPromo();
+                    $scope.item = {};
+                }
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
             });

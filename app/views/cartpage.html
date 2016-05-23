@@ -4,10 +4,12 @@
         <div class="carts phone-hide">
             <h1>Cart</h1>
             <div ng-if="cartDetails" class="offer" ng-repeat="cart in cartDetails">
+                <img src="{{cart.image}}" width="200" style="float:left;margin:10px">
                 <p>
                     <span>{{cart.offer_title}}:</span> {{cart.restaurant_title}}
                 </p>
                 <div class="price-div">
+
                     <div class="off">{{cart.offer_percent}}% <span>off</span></div>
                     <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
@@ -18,6 +20,7 @@
                     <div class="qty">Qty: <span><input type="text" ng-model="cart.quantity" value="1" ng-change="updateQuantity(cart)"></span></div>
                     <div class="totals" ><span>Total:</span> IDR{{cart.quantity*cart.offer_price  | number}}</div>
                 </div>
+                <div style="clear:both"></div>
                 <div class="qty-totals">
                     <div class="qty"><a href="javascript:;" ng-click="remove_offer(cart.offer_id)" style="color:red">Delete</a></div>
                     <div class="totals" ><span>M-points:</span>{{cart.quantity*cart.mpoints}}</div>
