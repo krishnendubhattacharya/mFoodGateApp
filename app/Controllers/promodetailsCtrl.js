@@ -70,6 +70,11 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                 $scope.restaurant = data.restaurants;
                 $scope.mapaddress = data.merchantInfo.address;
                 $scope.maptitle = data.merchantInfo.merchant_name;
+                if(data.restaurants.length = 1){
+                    $scope.restName=data.restaurants[0].title;
+                }else{
+                    $scope.restName=data.merchantInfo.merchant_name;
+                }
             }
         })
     }
@@ -123,7 +128,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
             offer_id            :   $scope.promodetails.id,
             restaurant_id       :   $scope.restaurant.id,
             offer_title         :   $scope.promodetails.title,
-            restaurant_title    :   $scope.restaurant.title,
+            restaurant_title    :   $scope.restName,
             offer_percent       :   $scope.promodetails.offer_percent,
             price               :   $scope.promodetails.price,
             mpoints             :   $scope.promodetails.mpoints,

@@ -1,4 +1,4 @@
-app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, $timeout) {
+app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, $timeout) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
@@ -7,14 +7,12 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         $location.path("/login");
     }
     $scope.img_uploader = null;
-    $scope.all_locations = [];
-    $scope.all_restaurant = [];
     $scope.textBox = {image:  {
             buttonText: 'Select file',
             labelText: 'Drop file here',
             multiple: false,
             accept: 'image/*',
-            uploadUrl: $rootScope.serviceurl + 'MerchantOutletFileUpload',
+            uploadUrl: $rootScope.serviceurl + 'newsFileUpload',
             onUploaded:function(ret){
                 $scope.menuInfo.image = ret.file.value.name;
                 console.log(ret.file.value,ret.file.value.name);
@@ -24,25 +22,7 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
                 $scope.img_uploader = e.component;
             }
     },
-        price:{
-            mode: "number"
-        },location:{
-            dataSource: $scope.all_locations,
-            displayExpr: "name",
-            valueExpr: "value",
-            onInitialized:function(e){
-                $scope.loc_select = e.component;
-                $scope.getLocations();
-            }
-        },restaurant:{
-            dataSource: $scope.all_restaurant,
-            displayExpr: "name",
-            valueExpr: "value",
-            onInitialized:function(e){
-                $scope.res_select = e.component;
-                $scope.getRestaurants();
-            }
-        }};
+        };
 
 
     $scope.changeView = function(){
@@ -51,12 +31,11 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             id:'',
             title:'',
             description:'',
-            image:'',
-            restaurant_id:'',
-            address:'',
-            business_hours:'',
-            location_id:'',
-            is_active:false
+            published_date:'',
+            featured_event:false,
+            special_event:false,
+            post_to_public:false,
+            is_active:false,
         }
         //$scope.textBox.image.value = null;
         //$scope.img_uploader = ;
@@ -64,7 +43,23 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
 
     }
 
-
+    $scope.edit_menu = function(menu)
+    {
+        console.log(menu);
+        $scope.edit_mode = !$scope.edit_mode;
+        $scope.menuInfo = {
+            id:menu.id,
+            title:menu.title,
+            description:menu.description,
+            published_date:menu.published_date,
+            featured_event:menu.featured_event==1?true:false,
+            special_event:menu.featured_event==1?true:false,
+            post_to_public:menu.post_to_public==1?true:false,
+            image:menu.image,
+            imageurl:menu.imageurl
+        }
+        $scope.img_uploader.reset();
+    }
     $scope.voucherInfo = null;
     $scope.datag = null;
 
@@ -86,20 +81,24 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             console.log('By Bikash  --  ',e);
             $scope.datag = e.component;
         },
-        columns: ["title","address", {
+        columns: [ "title", {
             caption:'Image',
             cellTemplate: function (container, options) {
                 if(options.data.image) {
                     $('<img />')
-                        .width(100)
+                        .width(200)
                         .attr('src', options.data.imageurl)
                         .appendTo(container);
                 }
             }
-        },{caption:"Active",cellTemplate: function (container, options) {
-            var text = options.data.is_active==1?'Yes':'No';
-            $(container).html(text);
+        },{caption:"status",cellTemplate:function(container, options){
+            var f=options.data.is_active==1?'Yes':'No';
+            $(container).text(f);
         }},
+            {caption:"Featured",cellTemplate:function(container, options){
+                var f=options.data.featured_event==1?'Yes':'No';
+                $(container).text(f);
+            }},
             {
                 caption:'Edit',
                 width: 100,
@@ -141,79 +140,73 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         ]
     };
 
-
-
-    $scope.getLocations = function () {
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "getAllLocations",
-
-        }).success(function (data) {
-            $scope.all_locations = [];
-            angular.forEach(data.locations,function(val){
-                $scope.all_locations.push({name:val.city,value:val.id});
+    $scope.delete_menu = function(data)
+    {
+        if(confirm('Are you sure you want to delete this news?'))
+        {
+            $http({
+                method: "delete",
+                url: $rootScope.serviceurl + "deleteNews/" + data.id,
+            }).success(function (data) {
+                DevExpress.ui.notify({
+                    message: "Deleted Successfilly",
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "success", 3000);
+                //$scope.edit_mode = !$scope.edit_mode;
+                $scope.getMenus();
             })
-            $scope.loc_select.option({dataSource: $scope.all_locations});
-
-
-
-        });
-
+        }
     }
 
-    $scope.getRestaurants = function () {
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "getActiveMerchantRestaurant/"+$scope.loggedindetails.id,
-
-        }).success(function (data) {
-            $scope.all_restaurant = [];
-            angular.forEach(data.restaurants,function(val){
-                $scope.all_restaurant.push({name:val.title,value:val.id});
-            })
-            $scope.res_select.option({dataSource: $scope.all_restaurant});
-
-
-
-        });
-
-    }
-
-
-
-
-    $scope.getOutlets = function() {
+    $scope.getMenus = function() {
         //$scope.dataGridOptions = null;
         $scope.edit_mode = false;
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getMerchantsOutlet/" + $scope.loggedindetails.id,
+            url: $rootScope.serviceurl + "getNewsByMerchant/" + $scope.loggedindetails.id,
         }).success(function (data) {
             $scope.voucherInfo = data.data;
             //console.log($scope.voucherInfo);
-            //if($scope.datag)
-            $scope.datag.option({dataSource:$scope.voucherInfo});
+            if($scope.datag)
+                $scope.datag.option({dataSource:$scope.voucherInfo});
 
-            $scope.listViewData.option({"dataSource": $scope.voucherInfo,hoverStateEnabled: false });
+
             //$scope.refresh_grid();
             //$timeout(function(){
-            //$scope.datag.refresh();
+                //$scope.datag.refresh();
             //},3000)
 
 
         });
     }
-    $scope.getOutlets();
+    $scope.getMenus();
 
+
+
+   $scope.$watchCollection('voucherInfo', function() {
+        //var dataGrid = angular.element('#gridContainer').dxDataGrid('instance');
+        //console.log($scope.voucherInfo);
+        //if(dataGrid)
+            //dataGrid.option({dataSource:$scope.voucherInfo});
+       //console.log('1st');
+       if($scope.datag) {
+           $scope.datag.option({dataSource:$scope.voucherInfo});
+           //console.log('2nd');
+       }
+    });
 
     $scope.save_menu = function(){
 
         //console.log($scope.textBox.image.value,$scope.menuInfo);
+        $scope.menuInfo.published_date = moment($scope.menuInfo.published_date).format("YYYY/MM/DD");
         if($scope.menuInfo.id)
         {
             $http({
                 method: "POST",
-                url: $rootScope.serviceurl+"updateMerchantOutlet",
+                url: $rootScope.serviceurl+"updateMerchantNews",
                 data: $scope.menuInfo,
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
@@ -232,7 +225,7 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
                         }
                     }, "success", 3000);
                     $scope.edit_mode = !$scope.edit_mode;
-                    $scope.getOutlets();
+                    $scope.getMenus();
                 }else{
                     var message = "Error occured.";
                     DevExpress.ui.notify({
@@ -247,11 +240,10 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         }
         else
         {
-            console.log($scope.menuInfo);
             $scope.menuInfo.user_id = $scope.loggedindetails.id;
             $http({
                 method: "POST",
-                url: $rootScope.serviceurl+"addMerchantOutlet",
+                url: $rootScope.serviceurl+"addMerchantNews",
                 data: $scope.menuInfo,
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
@@ -270,7 +262,7 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
                         }
                     }, "success", 3000);
                     $scope.edit_mode = !$scope.edit_mode;
-                    $scope.getOutlets();
+                    $scope.getMenus();
                 }else{
                     var message = "Error occured.";
                     DevExpress.ui.notify({
@@ -285,41 +277,6 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         }
     }
 
-    $scope.edit_menu = function(menu)
-    {
-        console.log(menu);
-        $scope.edit_mode = !$scope.edit_mode;
-        $scope.menuInfo = {
-            id:menu.id,
-            title:menu.title,
-            description:menu.description,
-            image:menu.image,
-            imageurl:menu.imageurl,
-            restaurant_id:menu.restaurant_id,
-            address:menu.address,
-            business_hours:menu.business_hours,
-            location_id:menu.location_id,
-            is_active:menu.is_active
-        }
-        $scope.img_uploader.reset();
-    }
 
-    $scope.loadList=function(e)
-    {
-        console.log("loadList")
-        $scope.listViewData= e.component;
-    }
-
-    $scope.delete_menu = function (data) {
-        if(confirm("Are you sure you want to delete?"))
-        {
-            $http({
-                method: "DELETE",
-                url: $rootScope.serviceurl + "deleteMerchantOutlet/"+data.id,
-            }).success(function (data) {
-                $scope.getOutlets();
-            });
-        }
-    }
 
 });

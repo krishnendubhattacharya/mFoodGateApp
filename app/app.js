@@ -573,6 +573,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/merchant/merchantoutlets.html',
                 title: 'Outlets'
             })
+            .state('frontend.merchantrestaurants', {
+                url: '/merchantrestaurants',
+                resolve: loadSequence('merchantrestaurants'),
+                templateUrl: 'app/views/merchant/merchanrestaurants.html',
+                title: 'Restaurants'
+            })
             .state('frontend.voucher', {
                 url: '/voucher',
                 resolve: loadSequence('voucher'),
@@ -728,6 +734,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('merchantuserlist'),
                 templateUrl: 'app/views/admin/merchantuserlist.html',
                 title: 'Merchant User Login'
+            })
+            .state('frontend.merchantnews', {
+                url: '/merchantnews',
+                resolve: loadSequence('merchantnews'),
+                templateUrl: 'app/views/merchant/merchantnews.html',
+                title: 'News'
             })
 
 

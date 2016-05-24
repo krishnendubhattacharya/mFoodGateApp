@@ -131,6 +131,25 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
         ]
     };
 
+    $scope.getRestaurants = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getActiveMerchantRestaurant/"+$scope.loggedindetails.id,
+
+        }).success(function (data) {
+            $scope.all_restaurant = [];
+            angular.forEach(data.restaurants,function(val){
+                $scope.all_restaurant.push({name:val.title,value:val.id});
+            })
+            $scope.res_select.option({dataSource: $scope.all_restaurant});
+
+
+
+        });
+
+    }
+    $scope.getRestaurants();
+
     $scope.delete_menu = function(data)
     {
         if(confirm('Are you sure you want to delete this menu?'))

@@ -1,5 +1,5 @@
 <!--Web header-->
-<div ng-controller="merchantmenuCtrl">
+<div ng-controller="merchantnewsCtrl">
 
     <div class="container phone-hide">
         <div class="myaccount-details">
@@ -8,7 +8,7 @@
 
             <div class="profile-details"  ng-show="!edit_mode">
                 <div id="button" dx-button="{
-                                text: 'Add Menu',
+                                text: 'Add News',
                                 onClick: changeView }" ></div>
                 <!--<input type="button" ng-click="refresh_grid()" value="Refresh">-->
                 <div id="gridContainer" dx-data-grid="dataGridOptions"></div>
@@ -18,13 +18,6 @@
             <div class="profile-details" ng-show="edit_mode">
                 <div class="form">
                     <div class="dx-fieldset">
-                        <div class="dx-field">
-                            <div class="dx-field-label">Restaurant</div>
-                            <div class="dx-field-value">
-                                <div dx-select-box="textBox.restaurant" ng-model="menuInfo.restaurant_id"></div>
-                            </div>
-                        </div>
-
                         <div class="dx-field">
                             <div class="dx-field-label">Title</div>
                             <div class="dx-field-value">
@@ -46,9 +39,9 @@
                             </div>
                         </div>-->
                         <div class="dx-field">
-                            <div class="dx-field-label">Price</div>
+                            <div class="dx-field-label">Event Published Date</div>
                             <div class="dx-field-value">
-                                <div dx-text-box="textBox.price"  ng-model="menuInfo.price"></div>
+                                <div dx-date-box="dateBox.published_date" ng-model="menuInfo.published_date"></div>
                             </div>
                         </div>
 
@@ -72,19 +65,37 @@
                                 <div dx-check-box="{
                                     text: '',
                                     value: '1'
-                                }" style="float: left" ng-model="menuInfo.is_featured"></div>
+                                }" style="float: left" ng-model="menuInfo.featured_event"></div>
                             </div>
                         </div>
-
                         <div class="dx-field">
-                            <div class="dx-field-label">Is Active</div>
+                            <div class="dx-field-label">Post to Public</div>
                             <div class="dx-field-value">
                                 <div dx-check-box="{
                                     text: '',
                                     value: '1'
-                                }" style="float: left" ng-model="menuInfo.status"></div>
+                                }" style="float: left" ng-model="menuInfo.post_to_public"></div>
                             </div>
                         </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Is Special</div>
+                            <div class="dx-field-value">
+                                <div dx-check-box="{
+                                    text: '',
+                                    value: '1'
+                                }" style="float: left" ng-model="menuInfo.special_event"></div>
+                            </div>
+                        </div>
+
+                        <!--<div class="dx-field">-->
+                            <!--<div class="dx-field-label">Is Active</div>-->
+                            <!--<div class="dx-field-value">-->
+                                <!--<div dx-check-box="{-->
+                                    <!--text: '',-->
+                                    <!--value: '1'-->
+                                <!--}" style="float: left" ng-model="menuInfo.is_active"></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
 
 
                     </div>

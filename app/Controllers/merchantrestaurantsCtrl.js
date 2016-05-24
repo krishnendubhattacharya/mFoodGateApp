@@ -1,4 +1,4 @@
-app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, $timeout) {
+app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, $timeout) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
@@ -14,10 +14,9 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             labelText: 'Drop file here',
             multiple: false,
             accept: 'image/*',
-            uploadUrl: $rootScope.serviceurl + 'MerchantOutletFileUpload',
+            uploadUrl: $rootScope.serviceurl + 'MerchantRestaurantLogoUpload',
             onUploaded:function(ret){
-                $scope.menuInfo.image = ret.file.value.name;
-                console.log(ret.file.value,ret.file.value.name);
+                $scope.menuInfo.logo = ret.file.value.name;
             },
             onInitialized : function(e)
             {
@@ -49,14 +48,13 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         $scope.edit_mode = !$scope.edit_mode;
         $scope.menuInfo = {
             id:'',
+            user_id:$scope.loggedindetails.id,
             title:'',
             description:'',
-            image:'',
-            restaurant_id:'',
-            address:'',
-            business_hours:'',
-            location_id:'',
-            is_active:false
+            sub_title:'',
+            logo:'',
+            is_active:false,
+            is_featured:false,
         }
         //$scope.textBox.image.value = null;
         //$scope.img_uploader = ;
@@ -86,10 +84,10 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             console.log('By Bikash  --  ',e);
             $scope.datag = e.component;
         },
-        columns: ["title","address", {
-            caption:'Image',
+        columns: ["title", {
+            caption:'Logo',
             cellTemplate: function (container, options) {
-                if(options.data.image) {
+                if(options.data.imageurl) {
                     $('<img />')
                         .width(100)
                         .attr('src', options.data.imageurl)
@@ -143,6 +141,21 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
 
 
 
+
+    $scope.delete_menu = function (data) {
+        if(confirm("Are you sure you want to delete?"))
+        {
+            $http({
+                method: "DELETE",
+                url: $rootScope.serviceurl + "deleteMerchantRestaurant/"+data.id,
+
+            }).success(function (data) {
+                $scope.getOutlets();
+            });
+        }
+    }
+
+
     $scope.getLocations = function () {
         $http({
             method: "GET",
@@ -164,7 +177,7 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
     $scope.getRestaurants = function () {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getActiveMerchantRestaurant/"+$scope.loggedindetails.id,
+            url: $rootScope.serviceurl + "getResturantByMerchant/"+$scope.loggedindetails.id,
 
         }).success(function (data) {
             $scope.all_restaurant = [];
@@ -187,9 +200,9 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         $scope.edit_mode = false;
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getMerchantsOutlet/" + $scope.loggedindetails.id,
+            url: $rootScope.serviceurl + "getMerchantsRestaurants/" + $scope.loggedindetails.id,
         }).success(function (data) {
-            $scope.voucherInfo = data.data;
+            $scope.voucherInfo = data.restaurants;
             //console.log($scope.voucherInfo);
             //if($scope.datag)
             $scope.datag.option({dataSource:$scope.voucherInfo});
@@ -213,7 +226,7 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         {
             $http({
                 method: "POST",
-                url: $rootScope.serviceurl+"updateMerchantOutlet",
+                url: $rootScope.serviceurl+"updateMerchantsResturant",
                 data: $scope.menuInfo,
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
@@ -251,7 +264,7 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             $scope.menuInfo.user_id = $scope.loggedindetails.id;
             $http({
                 method: "POST",
-                url: $rootScope.serviceurl+"addMerchantOutlet",
+                url: $rootScope.serviceurl+"addMerchantsResturant",
                 data: $scope.menuInfo,
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
@@ -291,15 +304,14 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         $scope.edit_mode = !$scope.edit_mode;
         $scope.menuInfo = {
             id:menu.id,
+            user_id:$scope.loggedindetails.id,
             title:menu.title,
             description:menu.description,
-            image:menu.image,
-            imageurl:menu.imageurl,
-            restaurant_id:menu.restaurant_id,
-            address:menu.address,
-            business_hours:menu.business_hours,
-            location_id:menu.location_id,
-            is_active:menu.is_active
+            sub_title:menu.sub_title,
+            logo:menu.logo,
+            is_active:menu.is_active==1?true:false,
+            is_featured:menu.is_featured==1?true:false,
+            imageurl:menu.imageurl
         }
         $scope.img_uploader.reset();
     }
@@ -308,18 +320,6 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
     {
         console.log("loadList")
         $scope.listViewData= e.component;
-    }
-
-    $scope.delete_menu = function (data) {
-        if(confirm("Are you sure you want to delete?"))
-        {
-            $http({
-                method: "DELETE",
-                url: $rootScope.serviceurl + "deleteMerchantOutlet/"+data.id,
-            }).success(function (data) {
-                $scope.getOutlets();
-            });
-        }
     }
 
 });

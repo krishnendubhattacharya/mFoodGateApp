@@ -87,7 +87,9 @@
                 <h1>{{promodetails.title}}</h1>
                 <div >
                     <div style="width:300px;float:left">
-                    <p><b>Voucher Price : </b>IDR{{promodetails.price | number}}</p>
+                    <p ng-if="promodetails.offer_type_id != 3"><b>Voucher Price : </b>IDR{{promodetails.price | number}}</p>
+                        <p ng-if="promodetails.offer_type_id == 3"><b>Voucher Price : </b>IDR{{promodetails.price | number}}</p>
+                        <p><b>Discount : </b>{{promodetails.offer_percent}}%</p>
                     <p><b>Discounted Price : </b>IDR{{promodetails.offer_price | number}}</p>
                         <p><b>Quantity Sold : </b>{{promodetails.buy_count}}</p>
                         <p><b>Quantity Available : </b>{{promodetails.quantity - promodetails.buy_count}}</p>
