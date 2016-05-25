@@ -62,6 +62,7 @@ app.constant('JS_REQUIRES', {
         'memberedit':['app/Controllers/admin/membereditCtrl.js'],
         'settings':['app/Controllers/admin/settingsCtrl.js'],
         'promomasterlist':['app/Controllers/admin/promomasterlistCtrl.js'],
+        'promomasterimage':['app/Controllers/admin/promomasterimageCtrl.js'],
         'pointmasterlist':['app/Controllers/admin/pointmasterlistCtrl.js'],
         'blogsmasterlist':['app/Controllers/admin/blogsmasterlistCtrl.js'],
         'banner':['app/Controllers/admin/bannerCtrl.js'],

@@ -7,6 +7,8 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
         $location.path("/login");
     }
     $scope.img_uploader = null;
+    $scope.restaurants = [];
+    $scope.restaurant_ids = [];
     $scope.textBox = {image:  {
             buttonText: 'Select file',
             labelText: 'Drop file here',
@@ -21,10 +23,38 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
             {
                 $scope.img_uploader = e.component;
             }
-    },
-        };
+        },restaurant:{
+        dataSource:$scope.restaurants,
+            displayExpr: "title",
+            valueExpr: "id",
+            onInitialized : function(e)
+            {
+                $scope.res_selecter = e.component;
+                $scope.getRestaurant();
+            },bindingOptions: {
+            //valueExpr: 'id',
+            values: {
+
+                dataPath: 'restaurant_ids'
+            }
+        }
+        }
+    };
 
 
+    $scope.getRestaurant = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getResturantByMerchant/" + $scope.loggedindetails.id,
+        }).success(function (data) {
+           if(data.restaurants)
+           {
+               $scope.res_selecter.option({dataSource:data.restaurants});
+           }
+            //$scope.edit_mode = !$scope.edit_mode;
+
+        })
+    }
     $scope.changeView = function(){
         $scope.edit_mode = !$scope.edit_mode;
         $scope.menuInfo = {
@@ -40,6 +70,7 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
         //$scope.textBox.image.value = null;
         //$scope.img_uploader = ;
         $scope.img_uploader.reset();
+        $scope.res_selecter.reset();
 
     }
 
@@ -59,6 +90,8 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
             imageurl:menu.imageurl
         }
         $scope.img_uploader.reset();
+        $scope.res_selecter.reset();
+        $scope.restaurant_ids = menu.restaurants_ids;
     }
     $scope.voucherInfo = null;
     $scope.datag = null;
@@ -201,6 +234,7 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.save_menu = function(){
 
         //console.log($scope.textBox.image.value,$scope.menuInfo);
+        $scope.menuInfo.restaurants_ids = $scope.restaurant_ids;
         $scope.menuInfo.published_date = moment($scope.menuInfo.published_date).format("YYYY/MM/DD");
         if($scope.menuInfo.id)
         {

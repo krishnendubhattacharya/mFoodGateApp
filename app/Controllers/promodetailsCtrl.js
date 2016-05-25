@@ -68,12 +68,13 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
             if(data.type == 'success') {
                 $scope.promodetails = data.offer;
                 $scope.restaurant = data.restaurants;
-                $scope.mapaddress = data.merchantInfo.address;
-                $scope.maptitle = data.merchantInfo.merchant_name;
-                if(data.restaurants.length = 1){
+                $scope.mapaddress = data.merchantInfo[0].address;
+                $scope.maptitle = data.merchantInfo[0].merchant_name;
+                //console.log(data.restaurants.length);
+                if(data.restaurants.length == 1){
                     $scope.restName=data.restaurants[0].title;
                 }else{
-                    $scope.restName=data.merchantInfo.merchant_name;
+                    $scope.restName=data.merchantInfo[0].merchant_name;
                 }
             }
         })
@@ -84,7 +85,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.getRelatedProducts = function(){
         $http({
             method: "GET",
-            url: $rootScope.serviceurl+"getRelatedPromo",
+            url: $rootScope.serviceurl+"getRelatedPromo/" + $scope.promoId,
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
             if(data.type == 'success') {

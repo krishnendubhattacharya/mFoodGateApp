@@ -446,6 +446,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Promo',
                 resolve: loadSequence('promomasterlist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor','ng-bootstrap-datepicker')
             })
+            .state('admin.promomasterimage', {
+                url: '/promomasterimage/:promoId',
+                templateUrl: 'app/views/admin/promomasterimage.html',
+                title: 'Promo',
+                resolve: loadSequence('promomasterimage','naif.base64')
+            })
             .state('admin.pointmasterlist', {
                 url: '/pointmasterlist',
                 templateUrl: 'app/views/admin/pointmasterlist.html',

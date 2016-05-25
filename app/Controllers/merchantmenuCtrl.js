@@ -24,6 +24,14 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
     },
         price:{
             mode: "number"
+        },restaurant:{
+            dataSource: $scope.all_restaurant,
+            displayExpr: "name",
+            valueExpr: "value",
+            onInitialized:function(e){
+                $scope.res_select = e.component;
+                $scope.getRestaurants();
+            }
         }};
 
 
@@ -32,6 +40,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
         $scope.menuInfo = {
             id:'',
             title:'',
+            merchantrestaurant_id:'',
             description:'',
             price:'',
             is_featured:false,
@@ -51,6 +60,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             id:menu.id,
             title:menu.title,
             description:menu.description,
+            merchantrestaurant_id:menu.merchantrestaurant_id,
             price:menu.price,
             status:menu.status=="Active"?true:false,
             is_featured:menu.is_featured=="Yes"?true:false,

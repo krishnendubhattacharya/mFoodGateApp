@@ -126,7 +126,7 @@
             <div class="highlights" ng-bind-html="promodetails.benefits">
 
             </div>
-            <div class="highlights" ng-repeat="restaurantInfo in restaurant">
+            <!--<div class="highlights" ng-repeat="restaurantInfo in restaurant">
                 <div class="merchant-dsc">
                     <h2>{{restaurantInfo.title}}</h2>
                     <p>{{restaurantInfo.sub_title}}</p>
@@ -134,6 +134,21 @@
                     <h2 ng-if="restaurantInfo.outlets.length">Outlets</h2>
                     <ul>
                         <li ng-repeat="outletsInfo in restaurantInfo.outlets">
+                            <p style="cursor: pointer;" ng-click="changeMap(outletsInfo)">{{outletsInfo.title}}</p>
+                            <p style="cursor: pointer;" ng-click="changeMap(outletsInfo)">{{outletsInfo.address}}</p>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>-->
+            <div class="highlights" ng-repeat="restaurantInfo1 in restaurant">
+                <div class="merchant-dsc">
+                    <h2>{{restaurantInfo1.title}}</h2>
+                    <p>{{restaurantInfo1.sub_title}}</p>
+                    <p ng-bind-html="restaurantInfo1.description"></p>
+                    <h2 ng-if="restaurantInfo1.outlets.length">Outlets</h2>
+                    <ul>
+                        <li ng-repeat="outletsInfo in restaurantInfo1.outlets">
                             <p style="cursor: pointer;" ng-click="changeMap(outletsInfo)">{{outletsInfo.title}}</p>
                             <p style="cursor: pointer;" ng-click="changeMap(outletsInfo)">{{outletsInfo.address}}</p>
                         </li>
