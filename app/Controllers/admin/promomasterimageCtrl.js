@@ -58,7 +58,7 @@ app.controller('promomasterimageCtrl', function ($rootScope, $scope, $http, $loc
     $scope.savePromo = function () {
         console.log($scope.item);
         //return false;
-        $scope.item.offer_id
+        $scope.item.offer_id = $stateParams.promoId;
 
 
                 $http({

@@ -76,6 +76,35 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                 }else{
                     $scope.restName=data.merchantInfo[0].merchant_name;
                 }
+
+                $scope.related_images = data.promo_images;
+                //console.log($scope.related_products);
+                $timeout(function(){
+                    // $('#ca-container').contentcarousel();
+                    var banner_carousal = $('.featured_carousel2');
+                    banner_carousal.owlCarousel({
+                        autoplay:true,
+                        touchDrag:false,
+                        loop:true,
+                        dots:true,
+                        nav:true,
+                        navContainerClass:"ca-nav",
+                        navText:false,
+                        autoplayTimeout:6000,
+                        autoplayHoverPause:true,
+                        responsive:{
+                            0:{
+                                items:1
+                            },
+                            600:{
+                                items:1
+                            },
+                            1000:{
+                                items:1
+                            }
+                        }
+                    });
+                },30);
             }
         })
     }

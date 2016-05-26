@@ -44,6 +44,23 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
         });
         $scope.promoView='view';
     }
+
+    $scope.pointmasterlist = [];
+    $scope.getPoints = function($id){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getActivePointMasterByMerchant/" + $id,
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            if(data.data)
+            {
+                $scope.pointmasterlist = data.data;
+            }
+        })
+    }
+    //$scope.getPoints();
+
     $scope.getOutlet = function(res_id){
         $http({
             method: "GET",
@@ -64,6 +81,7 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
 
     }
     $scope.getRestaurent = function(mer_id){
+        $scope.getPoints(mer_id);
         $http({
             method: "GET",
             url: $rootScope.serviceurl + "getResturantByMerchant/"+mer_id,
@@ -208,7 +226,10 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
             "is_special":0,
             "is_active":0,
             "restaurant_id":[],
-            "merchant_id":''
+            "merchant_id":'',
+            "point_master_id":'',
+            "conditions":'',
+            "given_point_master_id":''
         };console.log($scope.item);
         /*$scope.example1model = [];
          $scope.example1data = [

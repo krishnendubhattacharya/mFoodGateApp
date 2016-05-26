@@ -45,7 +45,7 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.getRestaurant = function () {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getResturantByMerchant/" + $scope.loggedindetails.id,
+            url: $rootScope.serviceurl + "getActiveMerchantRestaurant/" + $scope.loggedindetails.id,
         }).success(function (data) {
            if(data.restaurants)
            {

@@ -68,8 +68,25 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="price">M-points Price</label>
-                                <input type="text" required placeholder="Enter M-points"  id="mpoints" ng-model="item.mpoints" class="form-control">
+                                <label for="category_id">Needed Point Name</label>
+                                <select id="restaurants" ng-model="item.point_master_id" required  class="form-control"">
+                                <option value="">Select Point</option>
+                                <option ng-repeat="point in pointmasterlist | orderBy:'name' " ng-selected="point.id==item.point_master_id" value="{{point.id}}">{{point.name}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Point Needed Quantity</label>
+                                <input type="text" required placeholder="Point Needed Quantity"  id="mpoints" ng-model="item.mpoints" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category_id">Condition</label>
+                                <select id="condition" ng-model="item.conditions" required  class="form-control"">
+
+                                    <option value="0" ng-selected="item.condition==0">Or</option>
+                                    <option value="1" ng-selected="item.condition==1">And</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -85,6 +102,14 @@
                             <div class="form-group">
                                 <label for="price">Offer Percent</label>
                                 <input type="text" required placeholder="Enter Offer Percent"  id="offer_percent" ng-model="item.offer_percent" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category_id">Given Point Name</label>
+                                <select id="given_point_master_id" ng-model="item.given_point_master_id" required  class="form-control"">
+                                <option value="">Select Point</option>
+                                <option ng-repeat="point in pointmasterlist | orderBy:'name' " ng-selected="point.id==item.given_point_master_id" value="{{point.id}}">{{point.name}}</option>
+                                </select>
                             </div>
 
                             <div class="form-group">

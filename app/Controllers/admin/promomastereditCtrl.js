@@ -21,7 +21,7 @@ app.controller('promomastereditCtrl', function ($rootScope, $scope, $http, NgMap
     $scope.viewPromo = function () {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getPromoDetails/"+$stateParams.promoId,
+            url: $rootScope.serviceurl + "getPromoDetailsAdmin/"+$stateParams.promoId,
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
@@ -68,6 +68,9 @@ app.controller('promomastereditCtrl', function ($rootScope, $scope, $http, NgMap
                 "is_active":data.offer.is_active,
                 "restaurant_id":$scope.res.restaurant_id,
                 "merchant_id":data.offer.merchant_id,
+                "point_master_id":data.offer.point_master_id,
+                "conditions":data.offer.conditions,
+                "given_point_master_id":data.offer.given_point_master_id
             }
             //$scope.getOutlet(data.offer.restaurant_id);
             console.log($scope.res.restaurant_id);
@@ -117,7 +120,23 @@ app.controller('promomastereditCtrl', function ($rootScope, $scope, $http, NgMap
 
     }
 
+    $scope.pointmasterlist = [];
+    $scope.getPoints = function($id){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getActivePointMasterByMerchant/" + $id,
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            if(data.data)
+            {
+                $scope.pointmasterlist = data.data;
+            }
+        })
+    }
+
     $scope.getRestaurentFirst = function(mer_id){
+        $scope.getPoints(mer_id);
         $http({
             method: "GET",
             url: $rootScope.serviceurl + "getResturantByMerchant/"+mer_id,
