@@ -112,7 +112,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 .top-link a{ text-decoration: none; color:#339933; font-size:14px; font-weight: normal; line-height: 25px; position: relative; }
 .top-link a img{ vertical-align: middle; margin-right: 5px;}
 .top-link .cart-circle{ width: 20px; height: 20px; border-radius: 100%; background: #ed5c1b; border: solid 0px #fff;
-position: absolute; top: -10px; right: -10px; z-index: 1000; font-size: 12px; color: #fff; text-align:  center; line-height: 20px;}
+    position: absolute; top: -10px; right: -10px; z-index: 1000; font-size: 12px; color: #fff; text-align:  center; line-height: 20px;}
 .main-header .nab-bar{ width: 100%; background: url(../Images/nav-bg.jpg) left top repeat-x; height:49px; overflow: hidden; border-radius: 3px 3px 0 0; }
 .main-header .nab-bar .navigation{ width:613px; height:43px; margin: 6px 0 0 6px; float: left; }
 .main-header .nab-bar .navigation ul{ padding:0; margin:0; }
@@ -129,19 +129,19 @@ position: absolute; top: -10px; right: -10px; z-index: 1000; font-size: 12px; co
 .search-br .select-box select option{ background-color: #236923;}
 .search-br .search-f .s-button
 {
-   background: url(../Images/icon-search.png) no-repeat center center;
-   display: inline-block;
-   line-height: 33px;
-   padding:0;
-   margin:0;
-   border:0;
-   cursor: pointer;
-   width:12%;
-   float: left;
-   height: 33px;
-   padding-right: 0px;
+    background: url(../Images/icon-search.png) no-repeat center center;
+    display: inline-block;
+    line-height: 33px;
+    padding:0;
+    margin:0;
+    border:0;
+    cursor: pointer;
+    width:12%;
+    float: left;
+    height: 33px;
+    padding-right: 0px;
 
-   border-radius: 0;
+    border-radius: 0;
 }
 
 /*------------------------- Ads Banner --------------------------*/
@@ -226,7 +226,7 @@ position: absolute; top: -10px; right: -10px; z-index: 1000; font-size: 12px; co
 .restaurant-Promo .pro-item .logo-box img{ width: auto; height: 100%; vertical-align:middle; max-height: 166px; }
 .restaurant-Promo .pro-item .desc{ padding: 12px 10px; overflow: hidden;}
 .restaurant-Promo .pro-item .desc h2{font-size:15px; color:#4b4b4b; text-transform: uppercase; padding: 5px 0; text-align: center;
-overflow:  hidden; white-space:  nowrap; text-overflow: ellipsis;}
+    overflow:  hidden; white-space:  nowrap; text-overflow: ellipsis;}
 .restaurant-Promo .pro-item .desc h3{font-size:14px; color:#4b4b4b; padding: 5px 0; text-align: center;
     text-overflow: ellipsis; overflow:  hidden; white-space:  nowrap;}
 .restaurant-Promo .pro-item .desc .btn{width:144px; height: 36px; margin: 5px auto; overflow: hidden;}
@@ -833,28 +833,28 @@ overflow:  hidden; white-space:  nowrap; text-overflow: ellipsis;}
 .feedback .filds .select-box select{ width:110%; height: 35px; background: transparent; border:  none; cursor: pointer; padding:0 10px; }
 .feedback .filds .calendar{ width:30%; height: 35px; border: solid 1px #e3e3e3; line-height:35px; border-radius:5px; background: url(../Images/calendar.png) 92% center no-repeat #fff; overflow: hidden; cursor: pointer;}
 .feedback .filds textarea {
- background:#FFF;
- width: 100%;
- height: 100px;
- line-height: 25px;
- padding: 2px 10px;
- border: solid 1px #e3e3e3;
- border-radius: 3px;
+    background:#FFF;
+    width: 100%;
+    height: 100px;
+    line-height: 25px;
+    padding: 2px 10px;
+    border: solid 1px #e3e3e3;
+    border-radius: 3px;
 }
 
 .feedback .filds input[type="button"], input[type="submit"], button
 {
-   background: url(../Images/submit-btn-bg.png) left top repeat-x;
-   display: inline-block;
-   line-height: 15px;
-   padding:8px 15px;
-   margin:0 5px 0 0;
-   color: #36a236;
-   font-size: 14px;
-   font-weight: normal;
-   border: solid 1px #d7d7d7;
-   border-radius: 5px;
-   cursor:pointer;
+    background: url(../Images/submit-btn-bg.png) left top repeat-x;
+    display: inline-block;
+    line-height: 15px;
+    padding:8px 15px;
+    margin:0 5px 0 0;
+    color: #36a236;
+    font-size: 14px;
+    font-weight: normal;
+    border: solid 1px #d7d7d7;
+    border-radius: 5px;
+    cursor:pointer;
 
 }
 
@@ -870,7 +870,7 @@ overflow:  hidden; white-space:  nowrap; text-overflow: ellipsis;}
 .queue ul li .item .cont{ width:94%; height: auto; overflow: hidden; background:#fff; margin: 10px auto; border: solid 1px #d0d0d0; }
 .queue ul li .item .cont ul{ width:100%; height: auto; margin: 0; }
 .queue ul li .item .cont ul li{ float: none; margin:0; padding: 5px; line-height: 25px; height: 25px; border-bottom: solid 1px #d0d0d0; font-size: 14px;
-color: #313131; font-weight: normal; width:100%; }
+    color: #313131; font-weight: normal; width:100%; }
 .queue ul li .item .cont ul li span{ font-weight: bold; }
 .queue ul li .item .cont ul li:last-child{ border: none;}
 
@@ -889,25 +889,25 @@ color: #313131; font-weight: normal; width:100%; }
 .item-order table {
     border-collapse: collapse;
     width: 100%;
-	
+
 }
 .item-order table th, td:first-child {
-	border-left: 1px solid #ddd;
+    border-left: 1px solid #ddd;
 }
 
 .item-order table th, td {
     padding: 12px 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-	border-right: 1px solid #ddd;
-	font-size: 14px;
-	color:#535353;
+    border-right: 1px solid #ddd;
+    font-size: 14px;
+    color:#535353;
 }
 
 .item-order table tr:hover{background-color:#f5f5f5}
 .item-order .header-color{color:#36a235; font-weight:bold;}
 
-.merchant-nav{ width:100%; padding: 20px 0; margin: 0 0 25px; overflow: hidden; border-bottom: solid 1px #d2d2d2;}
+.merchant-nav{ width:100%; padding: 20px 0; margin: 0 0 16px; overflow: hidden; border-bottom: solid 1px #d2d2d2;}
 .merchant-nav ul{ width:100%; height: auto; margin: 0 0 20px; padding:0; }
 .merchant-nav ul li{ float: left; margin: 0; list-style-type: none; padding: 0 37px 0; display: inline-block; }
 .merchant-nav ul li:first-child{ padding: 0 20px 0 0; }
@@ -918,8 +918,8 @@ color: #313131; font-weight: normal; width:100%; }
 .merchant-card{ width:100%; height: auto; overflow: hidden; margin-bottom:30px; }
 .merchant-card .card-img{ width:35%; height: auto; float: left; }
 .merchant-card .card-img img{ width:100%; height: auto;}
-.merchant-card .card-dsc{ width:60%; height: auto; float: right; }
-.merchant-card .card-dsc h1{ padding: 0; margin: 0; color:#232323; font-size:30px; line-height:36px; margin-bottom:20px;}
+.merchant-card .card-dsc{ width:62%; height: auto; float: right; }
+.merchant-card .card-dsc h1{ padding: 0; margin: 0; color:#232323; font-size:30px; line-height:36px; margin-bottom:10px;}
 .merchant-card .card-dsc h2{ color:#309030; font-size:24px; line-height: 30px; padding: 0; margin: 0; }
 .merchant-card .card-dsc p{ padding: 0; margin: 0 0 5px; line-height: 21px; font-size:16px; color: #3c3c3c;}
 
@@ -1110,7 +1110,7 @@ color: #313131; font-weight: normal; width:100%; }
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 5px 0;
-     z-index: 9999;
+    z-index: 9999;
     width:150px !important;
 }
 
@@ -1531,12 +1531,13 @@ color: #313131; font-weight: normal; width:100%; }
 /*-------------------------- New Slider Promo -----------------------------*/
 
 .restaurant-Promo .pro-item_2{ /*width: 98%;*/ height: 310px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;
-/*margin: 0 2% 0 0;*/}
+    /*margin: 0 2% 0 0;*/}
+
 .restaurant-Promo .pro-item_2 .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4; overflow: hidden;}
 .restaurant-Promo .pro-item_2 .logo-box img{ width: auto; height: 100%; vertical-align:middle; text-align:  center; float: none; }
 .restaurant-Promo .pro-item_2 .desc{ padding: 20px 10px; overflow: hidden;}
 .restaurant-Promo .pro-item_2 .desc h2{font-size:18px; color:#4b4b4b; text-transform: uppercase; padding: 5px 0; text-align: center;
-font-weight:  bold; text-overflow: ellipsis; overflow:  hidden; white-space:  nowrap;}
+    font-weight:  bold; text-overflow: ellipsis; overflow:  hidden; white-space:  nowrap;}
 .restaurant-Promo .pro-item_2 .desc h3{font-size:14px; color:#4b4b4b; padding: 5px 0; text-align: center;
     text-overflow: ellipsis; overflow:  hidden; white-space:  nowrap;}
 .restaurant-Promo .pro-item_2 .desc .btn{width:144px; height: 36px; margin: 5px auto; overflow: hidden;}
@@ -1714,3 +1715,79 @@ font-weight:  bold; text-overflow: ellipsis; overflow:  hidden; white-space:  no
         padding: 7px;
     }
 }
+
+
+/*-------------------------------- 26-05-2016 Coffe Class --------------------------*/
+.merchant-nav ul li p a.active{ color:#F00; }
+.merchant-card .card-dsc h3{ color:#2b2b2b; font-size:18px; line-height: 24px; padding: 0; margin: 10px 0 5px 0; text-transform: uppercase; font-weight:600; }
+.merchant-card .card-dsc .price{ font-size:14px; color:#666; font-weight: normal; line-height:24px; vertical-align: middle; height:24px;}
+.merchant-card .card-dsc .price span{ font-size:20px; line-height:24px; color:#f68121;}
+
+/*------------------------------- Menu 26-05-2016 -------------------------------------*/
+.menu{ width:100%; margin:0;}
+.menu h1{ font-size:20px; color:#f25d1b; line-height:41px;
+    display: block; height: 41px; }
+.menu h2{ font-size:24px; color:#666; line-height:41px; height: 41px; font-weight:  bold; padding-bottom: 15px;}
+.menu h1 span{ color:#ff0000; font-size:18px; }
+.menu ul{ padding:9px 0 0 0; margin:0; overflow: hidden; border:  solid 1px #e1e1e1; width: 99.9%;}
+.menu ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:32%; margin: 0 0 10px 1%; }
+.menu .pro-item{ width: 100%; height: 258px; position: relative; overflow: hidden;}
+.menu .pro-item img{ width:100%; height: 100%;}
+.menu .pro-item .desc{ position: absolute; z-index: 100; width:94%; height:auto; padding: 5px 13px; bottom:0; background: url(../Images/b-trans-bg.png) left top repeat; overflow: hidden;}
+.menu .pro-item .desc .txt{ width:70%; height: auto; float: left;}
+.menu .pro-item .desc .txt h2{ font-size:18px; line-height: 22px !important; margin-bottom:5px; padding: 0; margin:0; color:#fff;
+    font-weight: bold;text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height:  auto !important; }
+.menu .pro-item .desc .txt p{ font-size:14px; color:#d2d2d2; line-height:21px; margin:0}
+.menu .pro-item .desc .txt .price{ font-size: 16px; color:#339933 !important;}
+.menu .pro-item .desc .txt .price span{ text-decoration:line-through; font-size:16px; color:#b4b4b4;  }
+.menu .pro-item .desc .view-btn{ width: 28%; height: 42px; float: right; margin-top: 3px; text-align:  right;}
+.menu .pro-item .desc .view-btn img{ width: auto; height:100%;}
+.menu .pro-item .desc .view-btn p{ font-size:12px; color:#ececec; line-height:21px; margin:0}
+.menu .pro-item .p-circle{ width:73px; height:73px; position: absolute; z-index: 1001; top: 20px; right:20px; font-size:24px; text-align: center;
+    line-height: 73px; background: url(../Images/trans-circle.png) center center no-repeat; color:#fff; }
+.menu .select-box{width: 120px; background: url(../Images/select-drop.png) 90% center no-repeat;
+    border: solid 0px #e7e7e7; overflow: hidden; float:  left; margin-left: 5px; }
+.menu .select-box select{ width:120%; background: transparent; border: none; height:28px; line-height: 14px; font-size: 12px; }
+
+
+/*------------------------------- About us -------------------------------*/
+
+.about{width: 100%; height: auto; margin: 8px 0 25px; overflow: hidden; }
+.about .right-col{width:68%; float: right; margin: 0;}
+.about .right-col .banner{width:100%; height: auto;}
+.about .right-col .banner h1{ padding: 0; margin: 0 0 5px; font-size:24px; line-height: 36px; color:#329432; }
+.about .right-col .banner h1 a{color:#329432; text-decoration: none; }
+.about .right-col .banner p{ padding: 0; margin: 0 0 10px; font-size:16px; line-height: 22px; color:#585858;}
+.about .right-col .banner p span{ color:#999; }
+.about .right-col .banner h2{ font-size:16px; color:#666; line-height:21px; margin-bottom:3px; text-transform: uppercase; font-weight:bold !important;
+    margin-top: 10px;}
+.about .right-col .banner img{width:100%; height: auto;}
+.about .right-col .all-news{ width:100%; height:auto; margin: 20px 0 0;}
+.about .right-col .all-news h1{font-size:18px; line-height: 24px; color:#333333; padding: 0; margin: 0 0 10px; border-bottom: solid 1px #ccc; padding-bottom:10px;
+    font-weight: bold; }
+.about .right-col .all-news .news-item{ width:100%; height: auto; overflow: hidden; padding: 15px 0; border-bottom: solid 0px #c5c5c5; }
+.about .right-col .all-news .news-item .pix{ width: 40%; height: auto; margin-right: 3%; float: left; }
+.about .right-col .all-news .news-item .pix img{ width: 100%; height: auto;}
+.about .right-col .all-news .news-item .dsc{ width:57%; height: auto; margin: 0; float: left;}
+.about .right-col .all-news .news-item .dsc h1{ padding: 0; margin: 0 0 0px; font-size:18px; line-height: 24px; color:#329432; border: none; }
+.about .right-col .all-news .news-item .dsc h1 a{color:#329432; text-decoration: none; }
+.about .right-col .all-news .news-item .dsc p{ padding: 0; margin: 0 0 10px; font-size:16px; line-height: 22px; color:#585858; }
+.about .right-col .all-news .news-item .dsc h2{ font-size:14px; color:#666; line-height:21px; margin-bottom:3px; text-transform: uppercase; font-weight:bold !important; margin-top: 10px;}
+.about .right-col .all-news .news-item .dsc .posted{ font-size:14px; color:#5b5b5b; padding: 0; margin: 0; }
+.about .right-col .all-news .news-item .dsc .posted span{ font-size:14px; color:#5b5b5b; padding: 0; margin: 0; float: right; }
+
+.about .left-col{width:30%; float: left; margin: 0; border: solid 0px green; }
+.about .left-col .latest-news{ width: 100%; height: auto; background:#fff; border: solid 1px #dedfde; overflow: hidden; margin-bottom: 15px; }
+.about .left-col .latest-news h1{ display: block; padding: 0 0 0 15px; height: 49px; line-height: 48px; font-size:18px;
+    color:#2a2a2a; text-transform: uppercase; margin: 0; background: url(../Images/ln-title-bg.png) left top repeat-x;}
+
+.about .left-col .latest-news .most-viewed{ width:94%; height: auto; padding: 3%; }
+.about .left-col .latest-news .most-viewed .v-pix{ width:100%; height: auto;}
+.about .left-col .latest-news .most-viewed .v-pix img{ width:100%; height: auto; }
+.about .left-col .latest-news .most-viewed .v-dsc{ width:100%; height: auto; margin: 10px 0;}
+.about .left-col .latest-news .most-viewed .v-dsc h4{ font-size:18px; color: #666; line-height: 24px; margin:0 0 5px 0; padding: 0; height:24px; background: no}
+.about .left-col .latest-news .most-viewed .v-dsc p{padding: 0; margin: 0 0 5px; font-size:14px; line-height:16px; color:#2b2b2b;}
+.about .left-col .latest-news .most-viewed .v-dsc p span{ color:#666;}
+.about .left-col .latest-news .most-viewed .v-dsc p a{color:#339933; text-decoration: none;}
+.about .left-col .latest-news .most-viewed .v-dsc p a:hover{color:#ff0000; text-decoration: none;}
+.about .left-col .latest-news .most-viewed .v-dsc h5{ font-size:14px; color:#666; line-height:21px; margin-bottom:3px; text-transform: uppercase; font-weight:bold !important; margin-top: 10px;}

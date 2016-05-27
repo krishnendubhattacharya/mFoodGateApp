@@ -4,6 +4,15 @@
  */
 app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, NgMap, $cookieStore,$timeout,$stateParams) {
     $stateParams.resturantId = 1;
+
+    $scope.weekdays = [{id:0,label:'Sunday'},
+        {id:1,label:'Monday'},
+        {id:2,label:'Tuesday'},
+        {id:3,label:'Wednesday'},
+        {id:4,label:'Thursday'},
+        {id:5,label:'Friday'},
+        {id:6,label:'Saturday'}];
+
     $scope.placeChanged = function() {
         $scope.place = this.getPlace();
         $scope.item.lat=$scope.place.geometry.location.lat();
@@ -216,7 +225,7 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
             "price": '',
             "offer_price": '',
             "offer_percent": '',
-            "offer_from_date": '',
+            "offer_from_date": moment().format("YYYY-MM-DD"),
             "offer_to_date": '',
             "image": '',
             "offer_type_id": '',
@@ -229,7 +238,13 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
             "merchant_id":'',
             "point_master_id":'',
             "conditions":'',
-            "given_point_master_id":''
+            "given_point_master_id":'',
+            "direct_redeem":0,
+            "posting_type":'P',
+            "start_date_type":'F',
+            "valid_days":'',
+            "weekdays":[],
+            "including_holidays":0
         };console.log($scope.item);
         /*$scope.example1model = [];
          $scope.example1data = [
@@ -337,7 +352,24 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
     }
     $scope.getMerchant();
 
+    $scope.getOfferPrice = function(){
+        if($scope.item.price && $scope.item.offer_percent)
+        {
+            $scope.item.offer_price = $scope.item.price - ($scope.item.price*$scope.item.offer_percent/100);
+        }
+    }
 
+
+    $scope.$watch('item.offer_from_date',function(){
+        $scope.calculate_expire_date();
+    })
+    $scope.calculate_expire_date = function(){
+
+        if($scope.item && $scope.item.start_date_type=='F' && $scope.item.offer_from_date && $scope.item.valid_days)
+        {
+            $scope.item.offer_to_date = moment($scope.item.offer_from_date, "YYYY-MM-DD").add($scope.item.valid_days, 'days').format("YYYY-MM-DD");
+        }
+    }
 
 
     //$scope.getLoginDetails();

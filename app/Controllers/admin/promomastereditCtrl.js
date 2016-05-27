@@ -4,6 +4,13 @@
  */
 app.controller('promomastereditCtrl', function ($rootScope, $scope, $http, NgMap, $location, myAuth, $cookieStore, $timeout, $stateParams) {
 
+    $scope.weekdays = [{id:"0",label:'Sunday'},
+        {id:"1",label:'Monday'},
+        {id:"2",label:'Tuesday'},
+        {id:"3",label:'Wednesday'},
+        {id:"4",label:'Thursday'},
+        {id:"5",label:'Friday'},
+        {id:"6",label:'Saturday'}];
     $scope.placeChanged = function() {
         $scope.place = this.getPlace();
         $scope.item.lat=$scope.place.geometry.location.lat();
@@ -70,7 +77,13 @@ app.controller('promomastereditCtrl', function ($rootScope, $scope, $http, NgMap
                 "merchant_id":data.offer.merchant_id,
                 "point_master_id":data.offer.point_master_id,
                 "conditions":data.offer.conditions,
-                "given_point_master_id":data.offer.given_point_master_id
+                "given_point_master_id":data.offer.given_point_master_id,
+                "direct_redeem":data.offer.direct_redeem,
+                "posting_type":data.offer.posting_type,
+                "start_date_type":data.offer.start_date_type,
+                "valid_days":data.offer.valid_days,
+                "weekdays":data.weekdays,
+                "including_holidays":data.offer.including_holidays
             }
             //$scope.getOutlet(data.offer.restaurant_id);
             console.log($scope.res.restaurant_id);
@@ -355,7 +368,23 @@ app.controller('promomastereditCtrl', function ($rootScope, $scope, $http, NgMap
 
     //$scope.getLoginDetails();
 
+    $scope.getOfferPrice = function(){
+        if($scope.item.price && $scope.item.offer_percent)
+        {
+            $scope.item.offer_price = $scope.item.price - ($scope.item.price*$scope.item.offer_percent/100);
+        }
+    }
 
+    $scope.$watch('item.offer_from_date',function(){
+        $scope.calculate_expire_date();
+    })
+    $scope.calculate_expire_date = function(){
+
+        if($scope.item && $scope.item.start_date_type=='F' && $scope.item.offer_from_date && $scope.item.valid_days)
+        {
+            $scope.item.offer_to_date = moment($scope.item.offer_from_date, "YYYY-MM-DD").add($scope.item.valid_days, 'days').format("YYYY-MM-DD");
+        }
+    }
 
 });
 

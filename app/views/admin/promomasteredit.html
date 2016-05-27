@@ -76,8 +76,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="price">Point Needed Quantity</label>
-                                <input type="text" required placeholder="Point Needed Quantity"  id="mpoints" ng-model="item.mpoints" class="form-control">
+                                <label for="price">Point Needed</label>
+                                <input type="text" required placeholder="Point Needed"  id="mpoints" ng-model="item.mpoints" class="form-control">
                             </div>
 
                             <div class="form-group">
@@ -91,7 +91,12 @@
 
                             <div class="form-group">
                                 <label for="price">Price</label>
-                                <input type="text" required placeholder="Enter Price"  id="price" ng-model="item.price" class="form-control">
+                                <input type="text" required placeholder="Enter Price"  id="price" ng-model="item.price" class="form-control" ng-blur="getOfferPrice()">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Offer Percent</label>
+                                <input type="text" required placeholder="Enter Offer Percent"  id="offer_percent" ng-model="item.offer_percent" class="form-control" ng-blur="getOfferPrice()">
                             </div>
 
                             <div class="form-group">
@@ -100,31 +105,67 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="price">Offer Percent</label>
-                                <input type="text" required placeholder="Enter Offer Percent"  id="offer_percent" ng-model="item.offer_percent" class="form-control">
-                            </div>
-
-                            <div class="form-group">
                                 <label for="category_id">Given Point Name</label>
-                                <select id="given_point_master_id" ng-model="item.given_point_master_id" required  class="form-control"">
+                                <select id="given_point_master_id" ng-model="item.given_point_master_id" required  class="form-control">
                                 <option value="">Select Point</option>
                                 <option ng-repeat="point in pointmasterlist | orderBy:'name' " ng-selected="point.id==item.given_point_master_id" value="{{point.id}}">{{point.name}}</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="price">M-points Given</label>
+                                <label for="price">Point Given</label>
                                 <input type="text" required placeholder="Enter M-points Given"  id="mpoints_given" ng-model="item.mpoints_given" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                <label for="price">Offer From Date</label>
-                                <input type="text" data-ng-datepicker data-ng-options="datepickerOptions" required placeholder="From Date"  id="offer_from_date" ng-model="item.offer_from_date" class="form-control">
+                                <label for="category_id">Direct Redeem</label>
+                                <select id="direct_redeem" ng-model="item.direct_redeem" required  class="form-control">
+                                    <option value="0" ng-selected="item.direct_redeem==0">No</option>
+                                    <option value="1" ng-selected="item.direct_redeem==1">Yes</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="price">Offer To Date</label>
-                                <input type="text" data-ng-datepicker data-ng-options="datepickerOptions" required placeholder="To Date"  id="offer_to_date" ng-model="item.offer_to_date" class="form-control">
+                                <label for="category_id">Posting Type</label>
+                                <select id="posting_type" ng-model="item.posting_type" required  class="form-control">
+                                    <option value="P" ng-selected="item.posting_type=='P'">Public</option>
+                                    <option value="M" ng-selected="item.posting_type=='M'">Merchant</option>
+                                    <option value="B" ng-selected="item.posting_type=='B'">Both</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category_id">Item Validation Start Date from</label>
+                                <select id="start_date_type" ng-model="item.start_date_type" required  class="form-control">
+                                    <option value="F" ng-selected="item.start_date_type=='F'">Fixed Date</option>
+                                    <option value="P" ng-selected="item.start_date_type=='P'">Purchase Date</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" ng-if="item.start_date_type=='F'">
+                                <label for="price">Item Start Fixed Date</label>
+                                <input type="text" data-ng-datepicker data-ng-options="datepickerOptions" required placeholder="Item Start Fixed Date"  id="offer_from_date" ng-model="item.offer_from_date" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Item Validation in Days</label>
+                                <input type="text" required placeholder="Item Validation in Days"  id="valid_days" ng-model="item.valid_days" class="form-control">
+                            </div>
+
+                            <div class="form-group" ng-if="item.start_date_type=='F'">
+                                <label for="price">Item Expired Date</label>
+                                <input type="text" readonly required placeholder="Item Expired Date"  id="offer_to_date" ng-model="item.offer_to_date" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category_id">Item Validation Days</label>
+                                <div ng-required ng-dropdown-multiselect="" id="days" options="weekdays" selected-model="item.weekdays" ></div>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="item.including_holidays" ng-true-value="1" ng-false-value="0"> Including Holidays
+                                </label>
                             </div>
 
                             <div class="form-group">
