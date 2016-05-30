@@ -444,7 +444,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/promomasterlist',
                 templateUrl: 'app/views/admin/promomasterlist.html',
                 title: 'Promo',
-                resolve: loadSequence('promomasterlist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor','ng-bootstrap-datepicker')
+                resolve: loadSequence('promomasterlist','naif.base64','ngMap','ngmapautocomplete','ngCkeditor','ng-bootstrap-datepicker','ui.timepicker')
             })
             .state('admin.promomasterimage', {
                 url: '/promomasterimage/:promoId',
@@ -492,7 +492,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/promomasteredit/:promoId',
                 templateUrl: 'app/views/admin/promomasteredit.html',
                 title: 'Promo Edit',
-                resolve: loadSequence('promomasteredit','naif.base64','ngMap','ngCkeditor','ng-bootstrap-datepicker')
+                resolve: loadSequence('promomasteredit','naif.base64','ngMap','ngCkeditor','ng-bootstrap-datepicker','ui.timepicker')
             })
             .state('adminlogin', {
                 url: '/adminlogin',
@@ -611,7 +611,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             })
             .state('frontend.promodetails', {
                 url: '/promodetails/:promoId',
-                resolve: loadSequence('promodetails','ngMap','mCart'),
+                resolve: loadSequence('promodetails','ngMap','mCart','720kb.socialshare'),
                 templateUrl: 'app/views/promodetails.html',
                 title: 'Promo Detail'
             })

@@ -189,8 +189,10 @@
 
                             <div class="form-group" ng-if="item.start_date_type=='F'">
                                 <label for="price">Item Start Fixed Date</label>
-                                <input type="text" data-ng-datepicker data-ng-options="datepickerOptions" placeholder="Item Start Fixed Date"  id="offer_from_date" ng-model="item.offer_from_date" class="form-control" ng-blur="calculate_expire_date()">
+                                <input type="text" data-ng-datepicker data-ng-options="datepickerOptions" placeholder="Item Start Fixed Date"  id="item_start_date" ng-model="item.item_start_date" class="form-control" ng-blur="calculate_expire_date()">
                             </div>
+
+
 
                             <div class="form-group">
                                 <label for="price">Item Validation in Days</label>
@@ -199,7 +201,7 @@
 
                             <div class="form-group">
                                 <label for="price">Item Expired Date</label>
-                                <input type="text" readonly required placeholder="Item Expired Date"  id="offer_to_date" ng-model="item.offer_to_date" class="form-control">
+                                <input type="text" readonly required placeholder="Item Expired Date"  id="item_expire_date" ng-model="item.item_expire_date" class="form-control">
                             </div>
 
                             <div class="form-group">
@@ -211,6 +213,26 @@
                                 <label>
                                     <input type="checkbox" ng-model="item.including_holidays" ng-true-value="1" ng-false-value="0"> Including Holidays
                                 </label>
+                            </div>
+
+                            <div class="form-group">
+                            <label for="price">Item Validation Start Hour</label>
+                            <input ui-timepicker="timePickerOptions" ng-model="item.item_start_hour" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                            <label for="price">Item Validation End Hour</label>
+                            <input type="text" ui-timepicker="timePickerOptions" required id="item_end_hour" ng-model="item.item_end_hour" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Promo Start Date</label>
+                                <input type="text" data-ng-datepicker data-ng-options="datepickerOptions" placeholder="Promo Start Date"  id="offer_from_date" ng-model="item.offer_from_date" class="form-control" ng-blur="calculate_expire_date()">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Promo End Date</label>
+                                <input type="text" data-ng-datepicker data-ng-options="datepickerOptions" required placeholder="Promo End Date"  id="offer_to_date" ng-model="item.offer_to_date" class="form-control">
                             </div>
 
                             <div class="form-group">

@@ -158,5 +158,13 @@ app.constant('JS_REQUIRES', {
             name: 'timer',
             files: ['bower_components/humanize-duration/humanize-duration.js','bower_components/angular-timer/dist/angular-timer.min.js']
         },
+        {
+            name: 'ui.timepicker',
+            files: ['http://recras.github.io/angular-jquery-timepicker/bower_components/jquery-timepicker-jt/jquery.timepicker.js','http://recras.github.io/angular-jquery-timepicker/javascripts/timepickerdirective.min.js','http://recras.github.io/angular-jquery-timepicker/bower_components/jquery-timepicker-jt/jquery.timepicker.css']
+        },
+        {
+            name: '720kb.socialshare',
+            files: ['https://raw.githubusercontent.com/720kb/angular-socialshare/master/dist/angular-socialshare.min.js']
+        },
     ]
 });

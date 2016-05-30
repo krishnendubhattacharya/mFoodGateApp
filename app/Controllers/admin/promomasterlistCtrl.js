@@ -5,6 +5,12 @@
 app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $location, myAuth, NgMap, $cookieStore,$timeout,$stateParams) {
     $stateParams.resturantId = 1;
 
+    $scope.timePickerOptions = {
+        step: 15,
+        timeFormat: 'g:i',
+        show2400:true
+    };
+
     $scope.weekdays = [{id:0,label:'Sunday'},
         {id:1,label:'Monday'},
         {id:2,label:'Tuesday'},
@@ -244,7 +250,11 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
             "start_date_type":'F',
             "valid_days":'',
             "weekdays":[],
-            "including_holidays":0
+            "including_holidays":0,
+            "item_start_hour":new Date(),
+            "item_end_hour":new Date(),
+            "item_start_date":moment().format("YYYY-MM-DD"),
+            "item_expire_date":''
         };console.log($scope.item);
         /*$scope.example1model = [];
          $scope.example1data = [
@@ -261,6 +271,7 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
     $scope.savePromo = function () {
         console.log($scope.item);
         //return false;
+
         if(angular.isObject($scope.item.outlet_id))
         {
             if($scope.item.id == '') {
@@ -360,14 +371,21 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
     }
 
 
-    $scope.$watch('item.offer_from_date',function(){
+    $scope.$watch('item.item_start_date',function(){
         $scope.calculate_expire_date();
     })
-    $scope.calculate_expire_date = function(){
 
-        if($scope.item && $scope.item.start_date_type=='F' && $scope.item.offer_from_date && $scope.item.valid_days)
+
+
+    $scope.calculate_expire_date = function(){
+        if($scope.item && $scope.item.start_date_type=='F' && $scope.item.item_start_date && $scope.item.valid_days)
         {
-            $scope.item.offer_to_date = moment($scope.item.offer_from_date, "YYYY-MM-DD").add($scope.item.valid_days, 'days').format("YYYY-MM-DD");
+            console.log($scope.item.item_start_date,$scope.item.valid_days);
+            //$scope.startdttime = $scope.item.item_start_date + " " + moment($scope.item.offer_from_time).format("H:m:s");
+            console.log(moment($scope.item_start_date, "YYYY-MM-DD").add($scope.item.valid_days, 'days'));
+            $scope.item.item_expire_date = moment($scope.item.item_start_date, "YYYY-MM-DD").add($scope.item.valid_days, 'days').format("YYYY-MM-DD");
+            console.log($scope.item.item_expire_date);
+            //$scope.item.offer_to_time = moment($scope.startdttime, "YYYY-MM-DD H:m:s").add($scope.item.valid_days, 'days').toDate();
         }
     }
 

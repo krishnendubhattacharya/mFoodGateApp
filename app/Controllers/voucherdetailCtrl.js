@@ -9,17 +9,30 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
     console.log($stateParams.voucherId);
     $scope.voucherInfo = null;
 
+
     $scope.getVoucherDetail = function () {
         $http({
             method: "GET",
             url: $rootScope.serviceurl + "vourcherdetail/"+$stateParams.voucherId,
         }).success(function (data) {
-            console.log(data);
+            console.log('Voucher details === ',data);
             $scope.voucherInfo =data;
+            $scope.getQrCode();
         });
 
     }
     $scope.getVoucherDetail();
+
+    $scope.qrlink = '';
+    $scope.getQrCode = function(){
+        if($scope.voucherInfo) {
+            var query_string='';
+            query_string += "?merchant_id=" + $scope.voucherInfo.voucher_details.merchant_id;
+            query_string += "&restaurant_ids=" + $scope.voucherInfo.restaurant_ids;
+            query_string += "&voucher_id=" + $stateParams.voucherId;
+            $scope.qrlink = $rootScope.serviceurl + "genVoucherQrCode" + query_string;
+        }
+    }
 
     $scope.boucherResell = function () {
         $location.path('/vouchersell/' + $stateParams.voucherId);
