@@ -79,6 +79,7 @@ app.constant('JS_REQUIRES', {
         'merchantofferdetail':['app/Controllers/merchantofferdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantaddmember':['app/Controllers/merchantaddmemberCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantmenu':['app/Controllers/merchantmenuCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'purchasedmembrship':['app/Controllers/purchasedmembrshipCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantoutlets':['app/Controllers/merchantoutletsCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantrestaurants':['app/Controllers/merchantrestaurantsCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantnews':['app/Controllers/merchantnewsCtrl.js','app/Controllers/leftbarCtrl.js'],

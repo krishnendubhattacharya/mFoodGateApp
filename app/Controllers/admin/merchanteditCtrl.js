@@ -22,6 +22,7 @@ app.controller('merchanteditCtrl', function ($rootScope, $scope, $http, NgMap, $
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
             $scope.item = { id:data.user_details.id,
+                merchant_id:data.user_details.merchant_id,
                 first_name:data.user_details.first_name,
                 last_name:data.user_details.last_name,
                 merchant_name:data.user_details.merchant_name,

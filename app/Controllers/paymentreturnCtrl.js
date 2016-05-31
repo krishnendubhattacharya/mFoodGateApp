@@ -16,7 +16,8 @@ app.controller('paymentreturnCtrl', function ($rootScope, $scope, $http, $locati
             data: 'payment_id=' + $stateParams.paymentId,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(data){
-            $cookieStore.remove('cart');
+            //$cookieStore.remove('cart');
+            localStorage.setItem('cart', null);
             $http({
                 method: "DELETE",
                 url: $rootScope.serviceurl+"deleteCartByUser/"+$scope.loggedindetails.id,

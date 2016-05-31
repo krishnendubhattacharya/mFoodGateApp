@@ -12,6 +12,11 @@
                     <div class="panel-body">
                         <form role="form" ng-submit="saveMerchant()" enctype="multipart/form-data">
                             <div class="form-group">
+                                <label for="last_name">Merchant ID</label>
+                                <input type="text" required placeholder="Enter Merchant ID"  id="merchant_id" ng-model="item.merchant_id" class="form-control">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="first_name">First Name</label>
                                 <input type="text" required placeholder="Enter First Name"  id="first_name" ng-model="item.first_name" class="form-control">
                                 <input type="hidden"  ng-model="item.id" >

@@ -17,6 +17,9 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
         }).success(function (data) {
             console.log('Voucher details === ',data);
             $scope.voucherInfo =data;
+
+                $scope.restaurant = data.restaurant;
+
             $scope.getQrCode();
         });
 

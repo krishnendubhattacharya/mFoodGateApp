@@ -34,11 +34,26 @@
                     <div class="pay-box">
                         <p>Share &nbsp; &nbsp; &nbsp;<img src="app/assets/Images/share.png" width="244" height="29"  alt=""/></p>
                     </div>
-                    <div class="merchant">
-                        <div class="merchant-logo"><img src="{{voucherInfo.restaurant_details.logo}}" width="163" height="138"  alt=""/></div>
+                    <!--<div class="merchant">-->
+                        <!--<div class="merchant-logo"><img src="{{voucherInfo.restaurant_details.logo}}" width="163" height="138"  alt=""/></div>-->
+                        <!--<div class="merchant-dsc">-->
+                            <!--<h2>{{voucherInfo.restaurant_details.title}}</h2>-->
+                            <!--<p>{{voucherInfo.restaurant_details.address}}</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="highlights" ng-repeat="restaurantInfo in restaurant">
                         <div class="merchant-dsc">
-                            <h2>{{voucherInfo.restaurant_details.title}}</h2>
-                            <p>{{voucherInfo.restaurant_details.address}}</p>
+                            <h2>{{restaurantInfo.title}}</h2>
+                            <p>{{restaurantInfo.sub_title}}</p>
+                            <p ng-bind-html="restaurantInfo.description"></p>
+                            <h2 ng-if="restaurantInfo.outlets.length">Outlets</h2>
+                            <ul>
+                                <li ng-repeat="outletsInfo in restaurantInfo.outlets">
+                                    <p ng-click="changeMap(outletsInfo)">{{outletsInfo.title}}</p>
+                                    <p ng-click="changeMap(outletsInfo)">{{outletsInfo.address}}</p>
+                                </li>
+
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -60,6 +75,10 @@
                     <div class="logo-box">
                         <!--<div class="p-circle">5X</div>-->
                         <img src="{{voucherInfo.voucher_details.image}}"alt=""/>
+                    </div>
+                    <div class="logo-box" ng-if="qrlink" style="text-align: center">
+                        <!--<div class="p-circle">5X</div>-->
+                        <img src="{{qrlink}}" alt=""/>
                     </div>
 
                 </div>

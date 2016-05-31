@@ -52,6 +52,7 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
 
         //alert(13);
         $scope.item={
+            "merchant_id":'',
             "first_name":'',
             "last_name": '',
             "merchant_name": '',

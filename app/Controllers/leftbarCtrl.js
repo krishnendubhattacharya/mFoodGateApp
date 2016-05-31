@@ -13,6 +13,7 @@ app.controller('leftbarCtrl', function ($rootScope, $scope, $http, $location, $s
         }).success(function (data) {
             //console.log(data);
             //$scope.userInfo =data;
+            $scope.user_details = data.user_details;
             $scope.userImagePath = data.user_details.image;
             //console.log($scope.allcat);
 

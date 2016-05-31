@@ -567,6 +567,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/merchant/merchantmenu.html',
                 title: 'Menu'
             })
+            .state('frontend.purchasedmembrship', {
+                url: '/purchasedmembrship',
+                resolve: loadSequence('purchasedmembrship'),
+                templateUrl: 'app/views/merchant/purchasedmembrship.html',
+                title: 'Menu'
+            })
             .state('frontend.merchantmembershiplist', {
                 url: '/merchantmembershiplist',
                 resolve: loadSequence('merchantmembershiplist'),
