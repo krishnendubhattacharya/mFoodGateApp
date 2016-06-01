@@ -36,12 +36,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
                         alignment: 'center',
                         cellTemplate: function (container, options) {
 
-                            $('<button/>').addClass('dx-button')
-                                .text('Details')
-                                .on('dxclick', function () {
-                                    $location.path('/membershipdetail/'+options.data.voucher_id);
-                                })
-                                .appendTo(container);
+
 
                             $('<button/>').addClass('dx-button')
                                 .text('Details')
