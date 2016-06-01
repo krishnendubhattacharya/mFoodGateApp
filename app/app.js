@@ -322,9 +322,27 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Merchant-queuing'
             })
             .state('frontend.merchantmembership', {
-                url: '/merchant-membership',
-                resolve: loadSequence('merchantmembership'),
+                url: '/merchant-membership/:id',
+                resolve: loadSequence('merchantmembership','merchantheader'),
                 templateUrl: 'app/views/merchantmembership.html',
+                title: 'Merchant-membership'
+            })
+            .state('frontend.websitemenus', {
+                url: '/websitemenus/:id',
+                resolve: loadSequence('websitemenus','merchantheader'),
+                templateUrl: 'app/views/websitemenus.html',
+                title: 'Merchant-membership'
+            })
+            .state('frontend.websitefeatureds', {
+                url: '/websitefeatureds/:id',
+                resolve: loadSequence('websitefeatureds','merchantheader'),
+                templateUrl: 'app/views/websitefeatureds.html',
+                title: 'Merchant-membership'
+            })
+            .state('frontend.websiteabout', {
+                url: '/websiteabout/:id',
+                resolve: loadSequence('websiteabout','merchantheader'),
+                templateUrl: 'app/views/websiteabout.html',
                 title: 'Merchant-membership'
             })
             .state('frontend.promotionresults', {
@@ -565,6 +583,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/merchantmenu',
                 resolve: loadSequence('merchantmenu'),
                 templateUrl: 'app/views/merchant/merchantmenu.html',
+                title: 'Menu'
+            })
+            .state('frontend.merchantmenucategories', {
+                url: '/merchantmenucategories',
+                resolve: loadSequence('merchantmenucategories'),
+                templateUrl: 'app/views/merchant/merchantmenucategories.html',
                 title: 'Menu'
             })
             .state('frontend.purchasedmembrship', {

@@ -33,7 +33,6 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
                     { dataField: 'restaurant.title',caption:'Restaurant'},
                     { dataField: 'purchased_date',caption:'Member Since'}, "expire_date",
                     {
-                        width: 100,
                         alignment: 'center',
                         cellTemplate: function (container, options) {
 
@@ -41,6 +40,13 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
                                 .text('Details')
                                 .on('dxclick', function () {
                                     $location.path('/membershipdetail/'+options.data.voucher_id);
+                                })
+                                .appendTo(container);
+
+                            $('<button/>').addClass('dx-button')
+                                .text('Details')
+                                .on('dxclick', function () {
+                                    $location.path('/merchant-membership/'+options.data.merchant_id);
                                 })
                                 .appendTo(container);
                         }

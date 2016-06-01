@@ -423,6 +423,7 @@ body#mfoodmain{
     color:#121212;
     overflow: hidden;
     font-size:14px;
+
 }
 
 
@@ -914,19 +915,19 @@ body#mfoodmain{
 .m-item-order .header-color{color:#36a235; font-weight:bold;}
 
 
-.m-merchant-nav{ width:100%; padding: 60px 0 0; margin: 0; overflow: hidden;}
-.m-merchant-nav ul{ width:100%; height: auto; margin: 0 0 20px; padding:0; }
-.m-merchant-nav ul li{ float: none; margin: 0 0 15px; list-style-type: none; padding: 0 0 0 20px; display: block; }
+.m-merchant-nav{ width:90%; padding: 0; margin: 0 auto; overflow: hidden;}
+.m-merchant-nav ul{ width:100%; height: auto; margin: 0 auto; padding:0; }
+.m-merchant-nav ul li{ float: none; margin: 0; list-style-type: none; padding: 0; display: block; overflow: hidden;  }
 .m-merchant-nav ul li p{ font-size: 14px; font-weight: normal; text-align: left; color: #696969; line-height: 21px;}
-.m-merchant-nav ul li p a{ font-size:18px; color:#319230; text-decoration: none; }
+.m-merchant-nav ul li p a{ font-size:14px; color:#319230; text-decoration: none; background:f7f7f7; border-bottom: solid 1px #d2d2d2; display: block; padding: 5px 0; }
 .m-merchant-nav ul li p a:hover{ color:#F00; }
 
-.m-merchant-card{ width:100%; height: auto; overflow: hidden; margin-bottom:30px; }
+.m-merchant-card{ width:94%; height: auto; overflow: hidden; margin:10px auto; }
 .m-merchant-card .card-img{ width:96%; height: auto; float: none; margin: 5px auto; }
 .m-merchant-card .card-img img{ width:100%; height: auto;}
 .m-merchant-card .card-dsc{ width:94%; height: auto; float: none; margin: 5px auto; }
-.m-merchant-card .card-dsc h1{ padding: 0; margin: 0; color:#232323; font-size:24px; line-height:30px; margin-bottom:5px;}
-.m-merchant-card .card-dsc h2{ color:#309030; font-size:20px; line-height: 24px; padding: 0; margin: 0; }
+.m-merchant-card .card-dsc h1{ padding: 0; margin: 0; color:#232323; font-size:20px; line-height:30px; margin-bottom:5px; border: none; background:none; }
+.m-merchant-card .card-dsc h2{ color:#309030; font-size:20px; line-height: 18px; padding: 0; margin: 0; }
 .m-merchant-card .card-dsc p{ padding: 0; margin: 0 0 5px; line-height: 21px; font-size:14px; color: #3c3c3c;}
 
 .m-three-box{ width:94%; height: auto; padding: 30px 0 15px; background:#f7f7f7; border: solid 1px #e6e6e6; overflow:
@@ -1649,3 +1650,12 @@ code {
 
 .dx-button-success { display:  inline-block; padding-left:5px; padding-right: 5px; color: #FFFFFF !important;}
 .dx-popup-content .dx-button .dx-button-text {color: #FFFFFF !important;}
+
+/*------------------------------ Menu Container 01-06-2016 -----------------------*/
+.m-menu-cont{ width: auto; padding: 10px 0; border-bottom: solid 1px #e1e1e1; border-left: solid 1px #e1e1e1; border-right: solid 1px #e1e1e1; overflow: hidden;}
+.m-menu-cont .item{ width:96%; float: left; margin: 0 2%; }
+.m-menu-cont .item .pro-item .desc { width:94%;}
+.m-menu-list{}
+.m-menu-list p{ padding: 5px 15px; border-bottom: solid 1px #e1e1e1; font-size:16px; color: #333; font-weight: normal; line-height: 30px; }
+.m-menu-list p span{ float: right; color:#f85f1b; font-weight: bold; }
+.m-menu-list p:last-child{ border: none; }

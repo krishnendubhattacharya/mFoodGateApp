@@ -1,4 +1,4 @@
-app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, $timeout) {
+app.controller('merchantmenucategoriesCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, $timeout) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
@@ -7,79 +7,32 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
         $location.path("/login");
     }
     $scope.img_uploader = null;
-    $scope.all_restaurant = [];
-    $scope.textBox = {image:  {
-            buttonText: 'Select file',
-            labelText: 'Drop file here',
-            multiple: false,
-            accept: 'image/*',
-            uploadUrl: $rootScope.serviceurl + 'menuFileUpload',
-            onUploaded:function(ret){
-                $scope.menuInfo.image = ret.file.value.name;
-                console.log(ret.file.value,ret.file.value.name);
-            },
-            onInitialized : function(e)
-            {
-                $scope.img_uploader = e.component;
-            }
-    },
-        price:{
-            mode: "number"
-        },restaurant:{
-            dataSource: $scope.all_restaurant,
-            displayExpr: "name",
-            valueExpr: "value",
-            onInitialized:function(e){
-                $scope.res_select = e.component;
-                $scope.getRestaurants();
-            }
-        },category:{
-            dataSource: $scope.all_categories,
-            displayExpr: "name",
-            valueExpr: "value",
-            onInitialized:function(e){
-                $scope.cat_select = e.component;
-                $scope.getCategories();
-            }
-        }};
+    $scope.textBox = {};
 
 
     $scope.changeView = function(){
         $scope.edit_mode = !$scope.edit_mode;
         $scope.menuInfo = {
             id:'',
-            title:'',
-            merchantrestaurant_id:'',
-            menucategory_id:'',
-            description:'',
-            price:'',
-            is_featured:false,
-            status:false
+            name:'',
+            is_active:false
         }
         //$scope.textBox.image.value = null;
         //$scope.img_uploader = ;
-        $scope.img_uploader.reset();
-        $scope.cat_select.reset();
+        //$scope.img_uploader.reset();
 
     }
 
     $scope.edit_menu = function(menu)
     {
-        $scope.cat_select.reset();
         console.log(menu);
         $scope.edit_mode = !$scope.edit_mode;
         $scope.menuInfo = {
             id:menu.id,
-            title:menu.title,
-            description:menu.description,
-            merchantrestaurant_id:menu.merchantrestaurant_id,
-            menucategory_id:menu.menucategory_id,
-            price:menu.price,
-            status:menu.status=="Active"?true:false,
-            is_featured:menu.is_featured=="Yes"?true:false,
-            imageurl:menu.imageurl
+            name:menu.name,
+            seq:menu.seq,
+            is_active:menu.is_active=="1"?true:false
         }
-        $scope.img_uploader.reset();
     }
     $scope.voucherInfo = null;
     $scope.datag = null;
@@ -102,17 +55,19 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             console.log('By Bikash  --  ',e);
             $scope.datag = e.component;
         },
-        columns: ["sl", "title","price", {
-            caption:'Image',
-            cellTemplate: function (container, options) {
-                if(options.data.image) {
-                    $('<img />')
-                        .height(100)
-                        .attr('src', options.data.imageurl)
-                        .appendTo(container);
-                }
+        columns: ["name", {
+            caption:'Sequence',
+            dataField:'seq'
+        },{caption:"Status",cellTemplate:function (container, options) {
+            if(options.data.is_active==1)
+            {
+                $(container).text('Active');
             }
-        },"status",{caption:"Featured",dataField:"is_featured"},
+            else
+            {
+                $(container).text('Inactive');
+            }
+        }},
             {
                 caption:'Edit',
                 width: 100,
@@ -154,41 +109,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
         ]
     };
 
-    $scope.getRestaurants = function () {
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "getActiveMerchantRestaurant/"+$scope.loggedindetails.id,
 
-        }).success(function (data) {
-            $scope.all_restaurant = [];
-            angular.forEach(data.restaurants,function(val){
-                $scope.all_restaurant.push({name:val.title,value:val.id});
-            })
-            $scope.res_select.option({dataSource: $scope.all_restaurant});
-
-
-
-        });
-
-    }
-    $scope.getRestaurants();
-
-    $scope.getCategories = function(){
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "getMerchantMenuCategory/"+$scope.loggedindetails.id,
-
-        }).success(function (data) {
-            $scope.all_categories = [];
-            angular.forEach(data.data,function(val){
-                $scope.all_categories.push({name:val.name,value:val.id});
-            })
-            $scope.cat_select.option({dataSource: $scope.all_categories});
-
-
-
-        });
-    }
 
     $scope.delete_menu = function(data)
     {
@@ -196,7 +117,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
         {
             $http({
                 method: "delete",
-                url: $rootScope.serviceurl + "deleteMenu/" + data.id,
+                url: $rootScope.serviceurl + "deleteMerchantMenuCategory/" + data.id,
             }).success(function (data) {
                 DevExpress.ui.notify({
                     message: "Deleted Successfilly",
@@ -216,12 +137,12 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
         $scope.edit_mode = false;
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getMenuByUser/" + $scope.loggedindetails.id,
+            url: $rootScope.serviceurl + "getMerchantMenuCategory/" + $scope.loggedindetails.id,
         }).success(function (data) {
             $scope.voucherInfo = data.data;
             //console.log($scope.voucherInfo);
-            //if($scope.datag)
-                //$scope.datag.option({dataSource:$scope.voucherInfo});
+            if($scope.datag)
+                $scope.datag.option({dataSource:$scope.voucherInfo});
 
 
             //$scope.refresh_grid();
@@ -236,25 +157,16 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
 
 
 
-   $scope.$watchCollection('voucherInfo', function() {
-        //var dataGrid = angular.element('#gridContainer').dxDataGrid('instance');
-        //console.log($scope.voucherInfo);
-        //if(dataGrid)
-            //dataGrid.option({dataSource:$scope.voucherInfo});
-       //console.log('1st');
-       if($scope.datag) {
-           $scope.datag.option({dataSource:$scope.voucherInfo});
-           //console.log('2nd');
-       }
-    });
+
 
     $scope.save_menu = function(){
+
         //console.log($scope.textBox.image.value,$scope.menuInfo);
         if($scope.menuInfo.id)
         {
             $http({
                 method: "POST",
-                url: $rootScope.serviceurl+"updateMenu",
+                url: $rootScope.serviceurl+"updateMerchantMenuCategory",
                 data: $scope.menuInfo,
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
@@ -291,7 +203,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             $scope.menuInfo.user_id = $scope.loggedindetails.id;
             $http({
                 method: "POST",
-                url: $rootScope.serviceurl+"addMenu",
+                url: $rootScope.serviceurl+"addMerchantMenuCategory",
                 data: $scope.menuInfo,
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {

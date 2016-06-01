@@ -79,6 +79,7 @@ app.constant('JS_REQUIRES', {
         'merchantofferdetail':['app/Controllers/merchantofferdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantaddmember':['app/Controllers/merchantaddmemberCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantmenu':['app/Controllers/merchantmenuCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'merchantmenucategories':['app/Controllers/merchantmenucategoriesCtrl.js','app/Controllers/leftbarCtrl.js'],
         'purchasedmembrship':['app/Controllers/purchasedmembrshipCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantoutlets':['app/Controllers/merchantoutletsCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantrestaurants':['app/Controllers/merchantrestaurantsCtrl.js','app/Controllers/leftbarCtrl.js'],
@@ -118,7 +119,11 @@ app.constant('JS_REQUIRES', {
         'swapinterestededit':['app/Controllers/swapinterestededitCtrl.js','app/Controllers/leftbarCtrl.js'],
         'humanize':['bower_components/humanize-duration/humanize-duration.js'],
         'merchantuserlist':['app/Controllers/admin/merchantuserlistCtrl.js'],
-        'owlCaraousl':['https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css','https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js']
+        'owlCaraousl':['https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css','https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js'],
+        'merchantheader':['app/Controllers/merchant/merchantheaderCtrl.js'],
+        'websitemenus':['app/Controllers/websitemenusCtrl.js'],
+        'websitefeatureds':['app/Controllers/websitefeaturedsCtrl.js'],
+        'websiteabout':['app/Controllers/websiteaboutCtrl.js'],
     },
 
     //*** angularJS Modules

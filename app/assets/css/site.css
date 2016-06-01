@@ -907,23 +907,23 @@ h5 a:link, h5 a:visited, h5 a:active {
 .item-order table tr:hover{background-color:#f5f5f5}
 .item-order .header-color{color:#36a235; font-weight:bold;}
 
-.merchant-nav{ width:100%; padding: 20px 0; margin: 0 0 16px; overflow: hidden; border-bottom: solid 1px #d2d2d2;}
+.merchant-nav{ width:100%; padding: 10px 0; margin: 0 0 16px; overflow: hidden; border-bottom: solid 1px #d2d2d2; background:#f7f7f7; border-radius: 0 0 5px 5px;}
 .merchant-nav ul{ width:100%; height: auto; margin: 0 0 20px; padding:0; }
-.merchant-nav ul li{ float: left; margin: 0; list-style-type: none; padding: 0 37px 0; display: inline-block; }
-.merchant-nav ul li:first-child{ padding: 0 20px 0 0; }
+.merchant-nav ul li{ float: left; margin: 0; list-style-type: none; padding: 0 15px 0; display: inline-block; }
+/*.merchant-nav ul li:first-child{ padding: 0 20px 0 0; }*/
 .merchant-nav ul li p{ font-size:14; font-weight: normal; text-align: left; color: #696969; line-height: 21px;}
-.merchant-nav ul li p a{ font-size:18px; color:#319230; text-decoration: none; }
+.merchant-nav ul li p a{ font-size:14px; color:#319230; text-decoration: none; }
 .merchant-nav ul li p a:hover{ color:#F00; }
 
-.merchant-card{ width:100%; height: auto; overflow: hidden; margin-bottom:30px; }
+.merchant-card{ width:96%; height: auto; overflow: hidden; margin:10px auto; }
 .merchant-card .card-img{ width:35%; height: auto; float: left; }
 .merchant-card .card-img img{ width:100%; height: auto;}
 .merchant-card .card-dsc{ width:62%; height: auto; float: right; }
-.merchant-card .card-dsc h1{ padding: 0; margin: 0; color:#232323; font-size:30px; line-height:36px; margin-bottom:10px;}
-.merchant-card .card-dsc h2{ color:#309030; font-size:24px; line-height: 30px; padding: 0; margin: 0; }
+.merchant-card .card-dsc h1{ padding: 0; margin: 0; color:#232323; font-size:24px; line-height:24px; margin-bottom:10px; background: none; border: none; font-weight:normal; height: auto;}
+.merchant-card .card-dsc h2{ color:#309030; font-size:18px; line-height: 22px; padding: 0; margin: 0; }
 .merchant-card .card-dsc p{ padding: 0; margin: 0 0 5px; line-height: 21px; font-size:16px; color: #3c3c3c;}
 
-.three-box{ width:100%; height: auto; padding: 30px 15px; background:#f7f7f7; border: solid 1px #e6e6e6; overflow: hidden;}
+.three-box{ width:100%; height: auto; padding: 30px 15px; background:#f7f7f7; border: solid 1px #e6e6e6; overflow: hidden; margin-top:25px;}
 .three-box ul{ padding:0; margin: 0;}
 .three-box ul li{ padding:0; margin: 0 1.4%; list-style-type: none; float: left; width: 31%;}
 
@@ -1719,7 +1719,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 
 /*-------------------------------- 26-05-2016 Coffe Class --------------------------*/
 .merchant-nav ul li p a.active{ color:#F00; }
-.merchant-card .card-dsc h3{ color:#2b2b2b; font-size:18px; line-height: 24px; padding: 0; margin: 10px 0 5px 0; text-transform: uppercase; font-weight:600; }
+.merchant-card .card-dsc h3{ color:#2b2b2b; font-size:16px; line-height: 24px; padding: 0; margin: 10px 0 5px 0; text-transform: uppercase; font-weight:500; }
 .merchant-card .card-dsc .price{ font-size:14px; color:#666; font-weight: normal; line-height:24px; vertical-align: middle; height:24px;}
 .merchant-card .card-dsc .price span{ font-size:20px; line-height:24px; color:#f68121;}
 
@@ -1752,10 +1752,10 @@ h5 a:link, h5 a:visited, h5 a:active {
 
 /*------------------------------- About us -------------------------------*/
 
-.about{width: 100%; height: auto; margin: 8px 0 25px; overflow: hidden; }
-.about .right-col{width:68%; float: right; margin: 0;}
+.about{width: 100%; height: auto; margin: 0 0 25px; overflow: hidden; }
+.about .right-col{width:100%; float: right; margin: 0;}
 .about .right-col .banner{width:100%; height: auto;}
-.about .right-col .banner h1{ padding: 0; margin: 0 0 5px; font-size:24px; line-height: 36px; color:#329432; }
+.about .right-col .banner h1{ padding: 0; margin: 0 0 5px; font-size:24px; line-height: 36px; color:#329432; border: none; background: none; }
 .about .right-col .banner h1 a{color:#329432; text-decoration: none; }
 .about .right-col .banner p{ padding: 0; margin: 0 0 10px; font-size:16px; line-height: 22px; color:#585858;}
 .about .right-col .banner p span{ color:#999; }
@@ -1763,9 +1763,9 @@ h5 a:link, h5 a:visited, h5 a:active {
     margin-top: 10px;}
 .about .right-col .banner img{width:100%; height: auto;}
 .about .right-col .all-news{ width:100%; height:auto; margin: 20px 0 0;}
-.about .right-col .all-news h1{font-size:18px; line-height: 24px; color:#333333; padding: 0; margin: 0 0 10px; border-bottom: solid 1px #ccc; padding-bottom:10px;
-    font-weight: bold; }
-.about .right-col .all-news .news-item{ width:100%; height: auto; overflow: hidden; padding: 15px 0; border-bottom: solid 0px #c5c5c5; }
+.about .right-col .all-news h1{font-size:18px; line-height: 24px; color:#333333; padding: 0; margin: 0; border-bottom: solid 1px #ccc;
+    font-weight: bold; border: none; background: none; }
+.about .right-col .all-news .news-item{ width:100%; height: auto; overflow: hidden; padding: 0; border-bottom: solid 0px #c5c5c5; }
 .about .right-col .all-news .news-item .pix{ width: 40%; height: auto; margin-right: 3%; float: left; }
 .about .right-col .all-news .news-item .pix img{ width: 100%; height: auto;}
 .about .right-col .all-news .news-item .dsc{ width:57%; height: auto; margin: 0; float: left;}
@@ -1776,18 +1776,27 @@ h5 a:link, h5 a:visited, h5 a:active {
 .about .right-col .all-news .news-item .dsc .posted{ font-size:14px; color:#5b5b5b; padding: 0; margin: 0; }
 .about .right-col .all-news .news-item .dsc .posted span{ font-size:14px; color:#5b5b5b; padding: 0; margin: 0; float: right; }
 
-.about .left-col{width:30%; float: left; margin: 0; border: solid 0px green; }
-.about .left-col .latest-news{ width: 100%; height: auto; background:#fff; border: solid 1px #dedfde; overflow: hidden; margin-bottom: 15px; }
-.about .left-col .latest-news h1{ display: block; padding: 0 0 0 15px; height: 49px; line-height: 48px; font-size:18px;
-    color:#2a2a2a; text-transform: uppercase; margin: 0; background: url(../Images/ln-title-bg.png) left top repeat-x;}
+.about .right-col{width:100%; float: left; margin: 0; border: solid 0px green; }
+.about .right-col .latest-news{ width: 100%; height: auto; background:#fff; border-top: solid 1px #dedfde; overflow: hidden; margin-top: 25px; }
+.about .right-col .latest-news h1{font-size:18px; line-height: 24px; color:#333333; padding: 0; margin: 10px 0 0 0; border-bottom: solid 1px #ccc;
+    font-weight: bold; border: none; background: none;}
 
-.about .left-col .latest-news .most-viewed{ width:94%; height: auto; padding: 3%; }
-.about .left-col .latest-news .most-viewed .v-pix{ width:100%; height: auto;}
-.about .left-col .latest-news .most-viewed .v-pix img{ width:100%; height: auto; }
-.about .left-col .latest-news .most-viewed .v-dsc{ width:100%; height: auto; margin: 10px 0;}
-.about .left-col .latest-news .most-viewed .v-dsc h4{ font-size:18px; color: #666; line-height: 24px; margin:0 0 5px 0; padding: 0; height:24px; background: no}
-.about .left-col .latest-news .most-viewed .v-dsc p{padding: 0; margin: 0 0 5px; font-size:14px; line-height:16px; color:#2b2b2b;}
-.about .left-col .latest-news .most-viewed .v-dsc p span{ color:#666;}
-.about .left-col .latest-news .most-viewed .v-dsc p a{color:#339933; text-decoration: none;}
-.about .left-col .latest-news .most-viewed .v-dsc p a:hover{color:#ff0000; text-decoration: none;}
-.about .left-col .latest-news .most-viewed .v-dsc h5{ font-size:14px; color:#666; line-height:21px; margin-bottom:3px; text-transform: uppercase; font-weight:bold !important; margin-top: 10px;}
+.about .right-col .latest-news .most-viewed{ width:100%; height: auto; padding: 0; }
+.about .right-col .latest-news .most-viewed .v-pix{ width:25%; height: auto; float: left;}
+.about .right-col .latest-news .most-viewed .v-pix img{ width:100%; height: auto; }
+.about .right-col .latest-news .most-viewed .v-dsc{ width:73%; height: auto; margin: 0; float: right;}
+.about .right-col .latest-news .most-viewed .v-dsc h4{ font-size:18px; color: #666; line-height: 24px; margin:0 0 5px 0; padding: 0; height:24px; background: no}
+.about .right-col .latest-news .most-viewed .v-dsc p{padding: 0; margin: 0 0 5px; font-size:14px; line-height:16px; color:#2b2b2b;}
+.about .right-col .latest-news .most-viewed .v-dsc p span{ color:#666;}
+.about .right-col .latest-news .most-viewed .v-dsc p a{color:#339933; text-decoration: none;}
+.about .right-col .latest-news .most-viewed .v-dsc p a:hover{color:#ff0000; text-decoration: none;}
+.about .right-col .latest-news .most-viewed .v-dsc h5{ font-size:14px; color:#666; line-height:21px; margin-bottom:3px; text-transform: uppercase; font-weight:bold !important; margin-top: 10px;}
+
+/*------------------------------ Menu Container 01-06-2016 -----------------------*/
+.menu-cont{ width: auto; padding: 10px 0; border-bottom: solid 1px #e1e1e1; border-left: solid 1px #e1e1e1; border-right: solid 1px #e1e1e1; overflow: hidden;}
+.menu-cont .item{ width:48%; float: left; margin: 0 1%; }
+.menu-cont .item .pro-item .desc { width:94%;}
+.menu-list{}
+.menu-list p{ padding: 5px 15px; border-bottom: solid 1px #e1e1e1; font-size:16px; color: #333; font-weight: normal; line-height: 30px; }
+.menu-list p span{ float: right; color:#f85f1b; font-weight: bold; }
+.menu-list p:last-child{ border: none; }
