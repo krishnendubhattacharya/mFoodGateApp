@@ -14,16 +14,18 @@
         <div class="featured-Promo">
             <!--<h1>Featured Promo</h1>-->
             <div class="menu-cont">
-                <div class="item" ng-repeat="menu in sliderImages | limitTo:2">
-                    <div class="pro-item">
-                        <img src="{{menu.image_url}}" width="406" height="255"  alt=""/>
-                        <!--<div class="p-circle">50%</div>-->
-                        <div class="desc">
-                            <div class="txt">
-                                <h2>{{menu.title}}</h2>
-                                <p class="price">IDR{{menu.price}}</p>
-                            </div>
+                <div class="newcar">
+                    <div class="item" ng-repeat="menu in sliderImages">
+                        <div class="pro-item" style="width: 98% !important;">
+                            <img src="{{menu.image_url}}" alt=""/>
+                            <!--<div class="p-circle">50%</div>-->
+                            <div class="desc">
+                                <div class="txt">
+                                    <h2>{{menu.title}}</h2>
+                                    <p class="price">IDR{{menu.price}}</p>
+                                </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,5 +74,11 @@
 
 
 </div>
+<style>
+    .menu-cont .item
+    {
+        width:100% !important;
 
+    }
+</style>
 
