@@ -11,112 +11,46 @@
         <!--Left menu-->
         <div ng-include="'app/views/partials/merchant_leftbar.html'"></div>
         <!--Featured Promo-->
-        <div class="featured-Promo">
-            <h1>Asian</h1>
+        <div class="featured-Promo" ng-repeat="cats in featuredMenus" ng-if="featuredMenus">
+            <h1>{{cats.name}}</h1>
             <div class="menu-cont">
-                <div class="merchant-card">
+                <div class="merchant-card" ng-repeat="menu in cats.menus">
                     <div class="card-img">
-                        <img src="app/assets/Images/restaurant.jpg" alt=""/> </div>
+                        <img src="{{menu.image_url}}" alt=""/> </div>
                     <div class="card-dsc">
-                        <h1>Restaurant Name</h1>
-                        <h2>Restaurant Title Lorem ipsum dolor sit amet, consectetur </h2>
-                        <h3>Descriptions:</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <p class="price">Price: <span>200</span></p>
-                    </div>
-                </div>
-
-                <div class="merchant-card">
-                    <div class="card-img">
-                        <img src="app/assets/Images/restaurant.jpg" alt=""/> </div>
-                    <div class="card-dsc">
-                        <h1>Restaurant Name</h1>
-                        <h2>Restaurant Title Lorem ipsum dolor sit amet, consectetur </h2>
-                        <h3>Descriptions:</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <p class="price">Price: <span>200</span></p>
-                    </div>
-                </div>
-
-                <div class="merchant-card">
-                    <div class="card-img">
-                        <img src="app/assets/Images/restaurant.jpg" alt=""/> </div>
-                    <div class="card-dsc">
-                        <h1>Restaurant Name</h1>
-                        <h2>Restaurant Title Lorem ipsum dolor sit amet, consectetur </h2>
-                        <h3>Descriptions:</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <p class="price">Price: <span>200</span></p>
+                        <h1>{{menu.title}}</h1>
+                        <h2>{{menu.description}} </h2>
+                        <p class="price">Price: <span>IDR{{menu.price}}</span></p>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="featured-Promo">
-            <h1>Food Court</h1>
-            <div class="menu-cont">
-                <div class="merchant-card">
-                    <div class="card-img">
-                        <img src="app/assets/Images/restaurant.jpg" alt=""/> </div>
-                    <div class="card-dsc">
-                        <h1>Restaurant Name</h1>
-                        <h2>Restaurant Title Lorem ipsum dolor sit amet, consectetur </h2>
-                        <h3>Descriptions:</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <p class="price">Price: <span>200</span></p>
-                    </div>
-                </div>
-            </div>
+        <div class="featured-Promo" ng-if="!featuredMenus || featuredMenus.length==0">
+            <h1 style="text-align: center">No menus found.</h1>
         </div>
 
-        <div class="featured-Promo">
-            <h1>Western Food</h1>
-            <div class="menu-cont">
-                <div class="merchant-card">
-                    <div class="card-img">
-                        <img src="app/assets/Images/restaurant.jpg" alt=""/> </div>
-                    <div class="card-dsc">
-                        <h1>Restaurant Name</h1>
-                        <h2>Restaurant Title Lorem ipsum dolor sit amet, consectetur </h2>
-                        <h3>Descriptions:</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <p class="price">Price: <span>200</span></p>
-                    </div>
-                </div>
-
-                <div class="merchant-card">
-                    <div class="card-img">
-                        <img src="app/assets/Images/restaurant.jpg" alt=""/> </div>
-                    <div class="card-dsc">
-                        <h1>Restaurant Name</h1>
-                        <h2>Restaurant Title Lorem ipsum dolor sit amet, consectetur </h2>
-                        <h3>Descriptions:</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <p class="price">Price: <span>200</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 
 
     <!--mobile promo-->
-    <div class="m-featured-Promo tablet-hide">
-        <h1>Featured Promo</h1>
+    <div class="m-featured-Promo tablet-hide" ng-repeat="cats in featuredMenus" ng-if="featuredMenus">
+        <h1>{{cats.name}}</h1>
         <div class="m-menu-cont">
-            <div class="m-merchant-card tablet-hide">
+            <div class="m-merchant-card tablet-hide"  ng-repeat="menu in cats.menus">
                 <div class="card-img">
-                    <img src="app/assets/Images/restaurant.jpg" alt=""/> </div>
+                    <img src="{{menu.image_url}}" alt=""/> </div>
                 <div class="card-dsc">
-                    <h1>Restaurant Name</h1>
-                    <h2>Restaurant Title Lorem ipsum dolor sit amet, consectetur </h2>
-                    <h3>Descriptions:</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p class="price">Price: <span>200</span></p>
+                    <h1>{{menu.title}}</h1>
+                    <h2>{{menu.description}}</h2>
+                    <p class="price">Price: <span>IDR{{menu.price}}</span></p>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="m-featured-Promo tablet-hide" ng-if="!featuredMenus || featuredMenus.length==0">
+        <h1>No menus found.</h1>
     </div>
     <!--end-->
 

@@ -14,27 +14,14 @@
         <div class="featured-Promo">
             <!--<h1>Featured Promo</h1>-->
             <div class="menu-cont">
-                <div class="item">
+                <div class="item" ng-repeat="menu in sliderImages | limitTo:2">
                     <div class="pro-item">
-                        <img src="app/assets/Images/pro-1.png" width="406" height="255"  alt=""/>
-                        <div class="p-circle">50%</div>
+                        <img src="{{menu.image_url}}" width="406" height="255"  alt=""/>
+                        <!--<div class="p-circle">50%</div>-->
                         <div class="desc">
                             <div class="txt">
-                                <h2>Voucher Oel Merdeka</h2>
-                                <p class="price">IDR75.000</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="pro-item">
-                        <img src="app/assets/Images/pro-1.png" width="406" height="255"  alt=""/>
-                        <div class="p-circle">50%</div>
-                        <div class="desc">
-                            <div class="txt">
-                                <h2>Voucher Oel Merdeka</h2>
-                                <p class="price">IDR75.000</p>
+                                <h2>{{menu.title}}</h2>
+                                <p class="price">IDR{{menu.price}}</p>
                             </div>
 
                         </div>
@@ -42,20 +29,10 @@
                 </div>
             </div>
             <div class="dx-clearfix"></div>
-            <h1 style="margin-top:20px;">Menu</h1>
-            <div class="menu-cont">
+            <h1 style="margin-top:20px;" ng-repeat-start="cats in featuredMenus">{{cats.name}}</h1>
+            <div class="menu-cont"  ng-repeat-end>
                 <div class="menu-list">
-                    <p>Chicken Tandoor: <span>$50.00</span></p>
-                    <p>Chicken Tandoor: <span>$50.00</span></p>
-                    <p>Chicken Tandoor: <span>$50.00</span></p>
-                    <p>Chicken Tandoor: <span>$50.00</span></p>
-                    <p>Chicken Tandoor: <span>$50.00</span></p>
-                    <p>Chicken Tandoor: <span>$50.00</span></p>
-                    <p>Chicken Tandoor: <span>$50.00</span></p>
-                    <p>Chicken Tandoor: <span>$50.00</span></p>
-                    <p>Chicken Tandoor: <span>$50.00</span></p>
-                    <p>Chicken Tandoor: <span>$50.00</span></p>
-                    <p>Chicken Tandoor: <span>$50.00</span></p>
+                    <p ng-repeat="menu in cats.menus">{{menu.title}}: <span>IDR{{menu.price}}</span></p>
                 </div>
             </div>
         </div>
@@ -68,13 +45,13 @@
         <h1>Featured Promo</h1>
         <div class="m-menu-cont">
             <div class="item">
-                <div class="pro-item">
-                    <img src="Images/pro-1.png" width="406" height="255"  alt=""/>
-                    <div class="p-circle">50%</div>
+                <div class="pro-item" ng-repeat="menu in sliderImages | limitTo:1">
+                    <img src="{{menu.image_url}}" width="406" height="255"  alt=""/>
+                    <!--<div class="p-circle">50%</div>-->
                     <div class="desc">
                         <div class="txt">
-                            <h2>Voucher Oel Merdeka</h2>
-                            <p class="price">IDR75.000</p>
+                            <h2>{{menu.title}}</h2>
+                            <p class="price">IDR{{menu.price}}</p>
                         </div>
 
                     </div>
@@ -82,20 +59,10 @@
             </div>
         </div>
         <div class="dx-clearfix"></div>
-        <h1 style="margin-top:20px;">Menu</h1>
-        <div class="m-menu-cont">
+        <h1 style="margin-top:20px;" ng-repeat-start="cats in featuredMenus">{{cats.name}}</h1>
+        <div class="m-menu-cont" ng-repeat-end>
             <div class="m-menu-list">
-                <p>Chicken Tandoor: <span>$50.00</span></p>
-                <p>Chicken Tandoor: <span>$50.00</span></p>
-                <p>Chicken Tandoor: <span>$50.00</span></p>
-                <p>Chicken Tandoor: <span>$50.00</span></p>
-                <p>Chicken Tandoor: <span>$50.00</span></p>
-                <p>Chicken Tandoor: <span>$50.00</span></p>
-                <p>Chicken Tandoor: <span>$50.00</span></p>
-                <p>Chicken Tandoor: <span>$50.00</span></p>
-                <p>Chicken Tandoor: <span>$50.00</span></p>
-                <p>Chicken Tandoor: <span>$50.00</span></p>
-                <p>Chicken Tandoor: <span>$50.00</span></p>
+                <p ng-repeat="menu in cats.menus">{{menu.title}}: <span>IDR{{menu.price}}</span></p>
             </div>
         </div>
     </div>

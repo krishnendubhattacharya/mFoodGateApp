@@ -2,27 +2,25 @@
 	<div class="container phone-hide">
 		<div class="merchant-nav">
 			<ul>
-				<li><p><a ui-sref="frontend.merchantmembership({id:merchant_id})" ui-sref-active="active" href="#">Home</a></p></li>
-				<li><p><a ui-sref="frontend.websitefeatureds({id:merchant_id})" ui-sref-active="active">Feature Menu</a></p></li>
-				<li><p><a ui-sref="frontend.websitemenus({id:merchant_id})" ui-sref-active="active">All Menu</a></p></li>
-				<li><p><a href="#">Events & News</a></p></li>
-				<li><p><a href="#">Membership</a></p></li>
-				<li><p><a href="#">Promotion</a></p></li>
-				<li><p><a ui-sref="frontend.websiteabout({id:merchant_id})" ui-sref-active="active">About Us</a></p></li>
-
+				<li><p><a ui-sref="frontend.merchantmembership({id:merchant_id,res_id:res_id})" ui-sref-active="active" href="#">Home</a></p></li>
+				<li><p><a ui-sref="frontend.websitefeatureds({id:merchant_id,res_id:res_id})" ui-sref-active="active">Feature Menu</a></p></li>
+				<li><p><a ui-sref="frontend.websitemenus({id:merchant_id,res_id:res_id})" ui-sref-active="active">All Menu</a></p></li>
+				<li><p><a ui-sref="frontend.websitenews({id:merchant_id,res_id:res_id})" ui-sref-active="active">Events & News</a></p></li>
+				<li><p><a href="javascript:void(0)">Membership</a></p></li>
+				<li><p><a href="javascript:void(0)">Promotion</a></p></li>
+				<li><p><a ui-sref="frontend.websiteabout({id:merchant_id,res_id:res_id})" ui-sref-active="active">About Us</a></p></li>
 			</ul>
 		</div>
 	</div>
 	<div class="m-merchant-nav tablet-hide">
 		<ul>
-			<li><p><a class="active" href="#">Home</a></p></li>
-			<li><p><a href="#">Feature Menu</a></p></li>
-			<li><p><a href="#">All Menu</a></p></li>
-			<li><p><a href="#">Events & News</a></p></li>
-			<li><p><a href="#">Membership</a></p></li>
-			<li><p><a href="#">Promotion</a></p></li>
-			<li><p><a style="border:none;" href="#">About Us</a></p></li>
-
+			<li><p><a ui-sref="frontend.merchantmembership({id:merchant_id,res_id:res_id})" ui-sref-active="active" href="#">Home</a></p></li>
+			<li><p><a ui-sref="frontend.websitefeatureds({id:merchant_id,res_id:res_id})" ui-sref-active="active">Feature Menu</a></p></li>
+			<li><p><a ui-sref="frontend.websitemenus({id:merchant_id,res_id:res_id})" ui-sref-active="active">All Menu</a></p></li>
+			<li><p><a ui-sref="frontend.websitenews({id:merchant_id,res_id:res_id})" ui-sref-active="active">Events & News</a></p></li>
+			<li><p><a href="javascript:void(0)">Membership</a></p></li>
+			<li><p><a href="javascript:void(0)">Promotion</a></p></li>
+			<li><p><a ui-sref="frontend.websiteabout({id:merchant_id,res_id:res_id})" ui-sref-active="active">About Us</a></p></li>
 		</ul>
 	</div>
 </div>

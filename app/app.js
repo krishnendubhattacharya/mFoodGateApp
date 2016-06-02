@@ -322,27 +322,33 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Merchant-queuing'
             })
             .state('frontend.merchantmembership', {
-                url: '/merchant-membership/:id',
-                resolve: loadSequence('merchantmembership','merchantheader'),
+                url: '/merchant-membership/:id/:res_id?',
+                resolve: loadSequence('merchantmembership','merchantheader','merchantleftbar'),
                 templateUrl: 'app/views/merchantmembership.html',
                 title: 'Merchant-membership'
             })
             .state('frontend.websitemenus', {
-                url: '/websitemenus/:id',
-                resolve: loadSequence('websitemenus','merchantheader'),
+                url: '/websitemenus/:id/:res_id?',
+                resolve: loadSequence('websitemenus','merchantheader','merchantleftbar'),
                 templateUrl: 'app/views/websitemenus.html',
                 title: 'Merchant-membership'
             })
             .state('frontend.websitefeatureds', {
-                url: '/websitefeatureds/:id',
-                resolve: loadSequence('websitefeatureds','merchantheader'),
+                url: '/websitefeatureds/:id/:res_id?',
+                resolve: loadSequence('websitefeatureds','merchantheader','merchantleftbar'),
                 templateUrl: 'app/views/websitefeatureds.html',
                 title: 'Merchant-membership'
             })
             .state('frontend.websiteabout', {
-                url: '/websiteabout/:id',
-                resolve: loadSequence('websiteabout','merchantheader'),
+                url: '/websiteabout/:id/:res_id?',
+                resolve: loadSequence('websiteabout','merchantheader','merchantleftbar'),
                 templateUrl: 'app/views/websiteabout.html',
+                title: 'Merchant-membership'
+            })
+            .state('frontend.websitenews', {
+                url: '/websitenews/:id/:res_id?',
+                resolve: loadSequence('websitenews','merchantheader','merchantleftbar'),
+                templateUrl: 'app/views/websitenews.html',
                 title: 'Merchant-membership'
             })
             .state('frontend.promotionresults', {

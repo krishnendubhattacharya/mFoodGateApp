@@ -124,6 +124,9 @@ app.constant('JS_REQUIRES', {
         'websitemenus':['app/Controllers/websitemenusCtrl.js'],
         'websitefeatureds':['app/Controllers/websitefeaturedsCtrl.js'],
         'websiteabout':['app/Controllers/websiteaboutCtrl.js'],
+        'merchantleftbar':['app/Controllers/merchant/merchantleftbarCtrl.js'],
+        'websitenews':['app/Controllers/websitenewsCtrl.js']
+
     },
 
     //*** angularJS Modules

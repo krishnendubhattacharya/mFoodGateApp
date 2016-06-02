@@ -41,7 +41,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
                             $('<button/>').addClass('dx-button')
                                 .text('Details')
                                 .on('dxclick', function () {
-                                    $location.path('/merchant-membership/'+options.data.merchant_id);
+                                    $location.path('/merchant-membership/'+options.data.merchant_id+'/');
                                 })
                                 .appendTo(container);
                         }
