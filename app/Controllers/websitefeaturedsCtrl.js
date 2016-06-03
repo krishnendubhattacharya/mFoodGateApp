@@ -8,6 +8,7 @@ app.controller('websitefeaturedsCtrl', function ($rootScope, $scope, $http, $loc
     }
 
     $scope.res_id = $stateParams.res_id;
+    $scope.res_id = $stateParams.res_id;
     $scope.getFeatureds = function(){
         $http({
             method: "GET",

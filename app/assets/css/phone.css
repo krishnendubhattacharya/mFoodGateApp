@@ -424,6 +424,7 @@ body#mfoodmain{
     overflow: hidden;
     font-size:14px;
 
+
 }
 
 
@@ -570,30 +571,30 @@ body#mfoodmain{
     line-height: 56px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; border-radius: 100%; }
 
 /*---------------------------Voucher Details --------------------*/
-.m-voucher-details{ width:90%; margin:0 auto; border-top: solid 0px #dcdcdc; margin-top:5px;  }
-.m-voucher-details h1{ font-size:18px; color:#3b3b3b; line-height:24px; padding-bottom:2px; margin-top:5px;}
+.m-voucher-details{ width:90%; margin:0 auto; border-top: solid 0px #dcdcdc; margin-top:20px;  }
+.m-voucher-details h1{ font-size:18px; color:#3b3b3b; line-height:24px; padding-bottom:10px; margin-top:5px;}
 .m-voucher-details .img-box{ width:100%; margin: 0 auto;}
 .m-voucher-details .img-box .pro-item{ width: 100%; height: auto; position: relative; overflow: hidden; background:#fff;
-    border: solid 1px #e4e4e4; padding-bottom:15px; overflow: hidden;}
-.m-voucher-details .img-box .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle;
-    line-height: 185px; height: 185px;}
-.m-voucher-details .img-box .pro-item .logo-box img{ width: auto; height: auto; vertical-align:middle; }
+    border: solid 0px #e4e4e4; padding-bottom:0px; overflow: hidden;}
+.m-voucher-details .img-box .pro-item .logo-box{ width: 100%; text-align: center; margin-bottom: 25px; }
+.m-voucher-details .img-box .pro-item .logo-box img{ width: 100%; height: auto; }
+.m-voucher-details .img-box .pro-item .logo-box:last-child{ margin-bottom: 0;}
 
 .m-voucher-details .img-box .pro-item .p-circle{ width:53px; height:53px; position: absolute; z-index: 1001; bottom: 30px;
     right:20px; font-size:20px; text-align: center; line-height: 53px; background: url(../Images/green-circle.png) center center no-repeat; color:#fff; border-radius:100%; }
 
 .m-voucher-details .desc-box{ width: 100%; margin: 20px auto; }
-.m-voucher-details .desc-box h1{ border-bottom: solid 1px #dcdcdc; font-size:16px; color: #333; line-height: 24px; margin: 0 0 15px;
-    padding:0 0 15px;}
+.m-voucher-details .desc-box h1{ border-bottom: solid 1px #dcdcdc; font-size:20px; color: #333; line-height: 24px; margin: 0 0 15px;
+    padding:0 0 15px; font-weight:  bold;}
 .m-voucher-details .desc-box p{ padding: 0; margin: 0 0 15px; font-size:14px; color:#666; line-height: 21px;}
 .m-voucher-details .desc-box .btns{border-bottom: solid 1px #dcdcdc; overflow: hidden; padding-bottom:15px;}
 
-.m-voucher-details .desc-box .btns .btn_g{width: auto; height: 36px; margin: 20px 0 5px; overflow: hidden; float: left;
+.m-voucher-details .desc-box .btns .btn_g{width: auto; height: 36px; margin: 10px 0 5px; overflow: hidden; float: left;
     margin-right: 10px;}
 .m-voucher-details .desc-box .btns .btn_g a{ display: inline-block; border-radius: 3px; background: #92d050;
     text-align:center; font-size: 12px; color:#fff; text-decoration: none; height: 36px; line-height: 36px; font-weight: bold; padding: 0 10px;}
 .m-voucher-details .desc-box .btns .btn_g a:hover{ display: block; background:#3db63d;}
-.m-voucher-details .desc-box .btns .btn_or{width: auto; height: 36px; margin: 20px 0 5px;
+.m-voucher-details .desc-box .btns .btn_or{width: auto; height: 36px; margin: 10px 0 5px;
     overflow: hidden; float: left; margin-right: 10px;}
 .m-voucher-details .desc-box .btns .btn_or a{ display: inline-block; border-radius: 3px;
     background: #e46c0a; text-align:center; font-size: 12px; color:#fff; text-decoration: none; height: 36px;
@@ -601,6 +602,7 @@ body#mfoodmain{
 .m-voucher-details .desc-box .btns .btn_or a:hover{ display: block; background:#cf6209;}
 
 .m-voucher-details .desc-box .pay-box{border-bottom: solid 1px #dcdcdc; overflow: hidden; padding-bottom:15px; margin-top: 20px;}
+.m-voucher-details .desc-box .pay-box:last-child{border-bottom: 0;}
 .m-voucher-details .desc-box .pay-box p{ font-size:16px; text-transform: uppercase; color:#666; line-height: 36px;}
 .m-voucher-details .desc-box .pay-box p img{ vertical-align: middle; }
 .m-voucher-details .desc-box .pay-box .discount{ width:36px; height:36px; border-radius: 100%; margin-right:15px;
@@ -1659,3 +1661,6 @@ code {
 .m-menu-list p{ padding: 5px 15px; border-bottom: solid 1px #e1e1e1; font-size:16px; color: #333; font-weight: normal; line-height: 30px; }
 .m-menu-list p span{ float: right; color:#f85f1b; font-weight: bold; }
 .m-menu-list p:last-child{ border: none; }
+
+.m-card-img{ width: 100%; height: auto;}
+.m-card-img img{ width: 100%; height: auto;}

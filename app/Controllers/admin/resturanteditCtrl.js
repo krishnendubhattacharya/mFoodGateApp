@@ -26,6 +26,7 @@ app.controller('resturanteditCtrl', function ($rootScope, $scope, $http, $locati
                             seq:data.data.restaurant.seq,
                             sub_title:data.data.restaurant.sub_title,
                             description:data.data.restaurant.description,
+                            restaurant_id:data.data.restaurant.restaurant_id,
                             category_id:$scope.category_id
                           }
             console.log($scope.item.category_id);

@@ -41,6 +41,7 @@ app.controller('outleteditCtrl', function ($rootScope, $scope, $http, NgMap, $lo
                 lat: data.data.outlet.lat,
                 lng: data.data.outlet.lng,
                 restaurant_id:data.data.outlet.restaurant_id,
+                outlet_id:data.data.outlet.outlet_id,
                 location_id:$scope.location_id
             }
 

@@ -299,6 +299,7 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             address:menu.address,
             business_hours:menu.business_hours,
             location_id:menu.location_id,
+            outlet_id:menu.outlet_id,
             is_active:menu.is_active
         }
         $scope.img_uploader.reset();

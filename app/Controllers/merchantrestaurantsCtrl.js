@@ -309,6 +309,7 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
             description:menu.description,
             sub_title:menu.sub_title,
             logo:menu.logo,
+            restaurant_id:menu.restaurant_id,
             is_active:menu.is_active==1?true:false,
             is_featured:menu.is_featured==1?true:false,
             imageurl:menu.imageurl

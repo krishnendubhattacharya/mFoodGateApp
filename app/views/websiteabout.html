@@ -16,11 +16,19 @@
 
                 <div class="right-col">
                     <div class="banner">
-                        <p><img src="{{restaurant.logo_url}}" alt=""/></p>
+                        <div class="left-col">
+                            <h1>{{restaurant.title}}</h1>
+                            <P><span>Subtitle:</span>{{restaurant.sub_title}}</P>
+                            <h2>Description:</h2>
+                            <p>{{restaurant.description}}</p>
+                        </div>
+                        <div class="right-col"><img src="{{restaurant.logo_url}}" alt=""/></div>
+
+                        <!--<p><img src="{{restaurant.logo_url}}" alt=""/></p>
                         <h1>{{restaurant.title}}</h1>
                         <P><span>Subtitle:</span>{{restaurant.sub_title}}</P>
                         <h2>Description:</h2>
-                        <p>{{restaurant.description}}</p>
+                        <p>{{restaurant.description}}</p>-->
                     </div>
                     <div class="all-news" ng-if="restaurant.outlets.length>0">
                         <h1>Our Outlets</h1>

@@ -19,7 +19,27 @@
                         <img src="{{menu.image_url}}" alt=""/> </div>
                     <div class="card-dsc">
                         <h1>{{menu.title}}</h1>
-                        <h2>{{menu.description}} </h2>
+                        <h2 ng-bind-html="menu.description"></h2>
+                        <!--<p class="price">Price: <span>IDR{{menu.price}}</span></p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:0;" class="container tablet-hide">
+        <!--Left menu-->
+        <!--<div ng-include="'app/views/partials/merchant_leftbar.html'"></div>-->
+        <!--Featured Promo-->
+        <div class="m-featured-Promo" >
+            <h1>Events & News</h1>
+            <div class="m-menu-cont">
+                <div class="m-merchant-card" ng-repeat="menu in allnews">
+                    <div class="m-card-img">
+                        <img src="{{menu.image_url}}" alt=""/> </div>
+                    <div class="m-card-dsc">
+                        <h1>{{menu.title}}</h1>
+                        <h2 ng-bind-html="menu.description"></h2>
                         <!--<p class="price">Price: <span>IDR{{menu.price}}</span></p>-->
                     </div>
                 </div>
@@ -30,11 +50,11 @@
 
 
     <!--mobile promo-->
-    <div class="m-about tablet-hide">
+    <!--<div class="m-about tablet-hide">
 
         <div class="left-col">
             <div class="latest-news">
-                <h1>About Us</h1>
+                <h1>Events & News</h1>
                 <div class="most-viewed">
 
                     <div class="v-pix"><img src="{{merchant.image}}" alt=""/></div>
@@ -71,7 +91,7 @@
 
             </div>
         </div>
-    </div>
+    </div>-->
     <!--end-->
 
     <div class="dx-clearfix"></div>

@@ -55,6 +55,11 @@
                         <form role="form" ng-submit="saveOutlet()" enctype="multipart/form-data">
 
                             <div class="form-group">
+                                <label for="title">Outlet ID</label>
+                                <input type="text" required placeholder="Enter Outlet Id"  id="outlet_id" ng-model="item.outlet_id" class="form-control">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="title">Outlet Name</label>
                                 <input type="text" required placeholder="Enter Outlet Name"  id="title" ng-model="item.title" class="form-control">
                                 <input type="hidden"  ng-model="item.id" >

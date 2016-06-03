@@ -30,9 +30,9 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
     $scope.getQrCode = function(){
         if($scope.voucherInfo) {
             var query_string='';
-            query_string += "?merchant_id=" + $scope.voucherInfo.voucher_details.merchant_id;
-            query_string += "&restaurant_ids=" + $scope.voucherInfo.restaurant_ids;
-            query_string += "&voucher_id=" + $stateParams.voucherId;
+            query_string += "?merchant_id=" + $scope.voucherInfo.mer_name;
+            query_string += "&restaurant_ids=" + $scope.voucherInfo.all_res;
+            query_string += "&voucher_id=" + $scope.voucherInfo.voucher_no;
             $scope.qrlink = $rootScope.serviceurl + "genVoucherQrCode" + query_string;
         }
     }

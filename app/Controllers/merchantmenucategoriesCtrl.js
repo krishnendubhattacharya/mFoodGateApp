@@ -7,7 +7,11 @@ app.controller('merchantmenucategoriesCtrl', function ($rootScope, $scope, $http
         $location.path("/login");
     }
     $scope.img_uploader = null;
-    $scope.textBox = {};
+    $scope.textBox = {
+        seq:{
+            mode: "number"
+        }
+    };
 
 
     $scope.changeView = function(){
