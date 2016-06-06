@@ -15,9 +15,13 @@ app.controller('merchantleftbarCtrl', function ($rootScope, $scope, $http, $loca
           $scope.restaurants = data.restaurants;
           if(!$scope.res_id && data.type=='success')
           {
+              var keepGoing = true;
               angular.forEach($scope.restaurants,function(t){
-                  $scope.changerestaurant(t);
-                  return false;
+                  if(keepGoing)
+                  {
+                      $scope.changerestaurant(t);
+                      keepGoing = false;
+                  }
               })
           }
       })

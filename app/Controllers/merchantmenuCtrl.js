@@ -325,6 +325,9 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
         }
     }
 
-
+    $scope.deleteImage = function(){
+        $scope.menuInfo.image = '';
+        $scope.save_menu();
+    }
 
 });

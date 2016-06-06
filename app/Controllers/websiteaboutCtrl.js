@@ -1,4 +1,4 @@
-app.controller('websiteaboutCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth) {
+app.controller('websiteaboutCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
@@ -6,6 +6,12 @@ app.controller('websiteaboutCtrl', function ($rootScope, $scope, $http, $locatio
 
         $location.path("/login");
     }
+
+    NgMap.getMap().then(function(map) {
+        $scope.map = map;
+    });
+
+    $scope.showMap = false;
 
     $scope.res_id = $stateParams.res_id;
     $scope.id = $stateParams.id;
@@ -34,6 +40,12 @@ app.controller('websiteaboutCtrl', function ($rootScope, $scope, $http, $locatio
         })
     }
     $scope.getMerchant();
+
+    $scope.changeMap = function(outletInfo){
+        $scope.showMap = true;
+        $scope.mapaddress = outletInfo.address;
+        $scope.maptitle = outletInfo.title;
+    }
 
 
 });

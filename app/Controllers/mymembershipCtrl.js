@@ -36,7 +36,12 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
                         alignment: 'center',
                         cellTemplate: function (container, options) {
 
-
+                            //$('<button/>').addClass('dx-button')
+                            //                              .text('Details')
+                            //                               .on('dxclick', function () {
+                            //                                       $location.path('/membershipdetail/'+options.data.voucher_id);
+                            //                                 })
+                            //                              .appendTo(container);
 
                             $('<button/>').addClass('dx-button')
                                 .text('Details')
@@ -121,7 +126,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
 
     $scope.view_det = function (id) {
         console.log(id);
-        $location.path('/membershipdetail/'+id);
+        $location.path('/merchant-membership/'+id);
     }
 
 

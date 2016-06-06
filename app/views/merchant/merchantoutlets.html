@@ -68,8 +68,11 @@
 
                         <div class="dx-field">
                             <div class="dx-field-label">Address</div>
-                            <div class="dx-field-value">
-                                <div dx-text-area="textArea"  ng-model="menuInfo.address"></div>
+                            <div class="dx-field-value dx-texteditor">
+                                <!--<div dx-text-area="textArea"  ng-model="menuInfo.address"></div>-->
+                                <input places-auto-complete id="address" ng-model="menuInfo.address" class="dx-texteditor-input" on-place-changed="placeChanged()"/>
+                                <input type="hidden"  ng-model="menuInfo.lat" >
+                                <input type="hidden"  ng-model="menuInfo.lng" >
                             </div>
                         </div>
 

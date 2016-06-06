@@ -31,10 +31,10 @@
                 </div>
             </div>
             <div class="dx-clearfix"></div>
-            <h1 style="margin-top:20px;" ng-repeat-start="cats in featuredMenus">{{cats.name}}</h1>
-            <div class="menu-cont"  ng-repeat-end>
+            <h1 style="margin-top:20px;" ng-click="cats.hide=!cats.hide" ng-repeat-start="cats in featuredMenus">{{cats.name}}</h1>
+            <div class="menu-cont" ng-if="!cats.hide" ng-repeat-end>
                 <div class="menu-list">
-                    <p ng-repeat="menu in cats.menus">{{menu.title}}: <span>IDR{{menu.price}}</span></p>
+                    <p ng-repeat="menu in cats.menus">{{menu.title}}: <span>IDR{{menu.price | number}}</span></p>
                 </div>
             </div>
         </div>

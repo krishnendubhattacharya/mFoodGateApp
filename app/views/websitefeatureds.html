@@ -12,15 +12,15 @@
         <div ng-include="'app/views/partials/merchant_leftbar.html'"></div>
         <!--Featured Promo-->
         <div class="featured-Promo" ng-repeat="cats in featuredMenus" ng-if="featuredMenus">
-            <h1>{{cats.name}}</h1>
-            <div class="menu-cont">
+            <h1 ng-click="cats.hide=!cats.hide">{{cats.name}}</h1>
+            <div class="menu-cont" ng-if="!cats.hide">
                 <div class="merchant-card" ng-repeat="menu in cats.menus">
                     <div class="card-img">
                         <img src="{{menu.image_url}}" alt=""/> </div>
                     <div class="card-dsc">
                         <h1>{{menu.title}}</h1>
                         <h2>{{menu.description}} </h2>
-                        <p class="price">Price: <span>IDR{{menu.price}}</span></p>
+                        <p class="price">Price: <span>IDR{{menu.price | number}}</span></p>
                     </div>
                 </div>
             </div>

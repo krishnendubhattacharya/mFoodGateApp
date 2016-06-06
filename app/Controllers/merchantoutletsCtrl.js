@@ -1,4 +1,4 @@
-app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, $timeout) {
+app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, $timeout, NgMap) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
@@ -6,6 +6,19 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
 
         $location.path("/login");
     }
+
+    NgMap.getMap().then(function(map) {
+        $scope.map = map;
+    });
+
+    $scope.placeChanged = function() {
+        $scope.place = this.getPlace();
+        $scope.menuInfo.lat=$scope.place.geometry.location.lat();
+        $scope.menuInfo.lng=$scope.place.geometry.location.lng();
+        console.log('Lat:'+$scope.menuInfo.lat+" Lng:"+$scope.menuInfo.lng);
+        //$scope.map.setCenter($scope.place.geometry.location);
+    }
+
     $scope.img_uploader = null;
     $scope.all_locations = [];
     $scope.all_restaurant = [];

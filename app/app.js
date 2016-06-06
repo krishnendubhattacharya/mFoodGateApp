@@ -78,6 +78,10 @@ app.run(['$rootScope', '$state', '$stateParams',
 
     }]);
 
+angular.module('mFoodApp').run(['$http',function($http){
+    $http.defaults.headers.common.Authorization = 'YmVlcDpib29w';
+}])
+
 // translate config
 /*app.config(['$translateProvider',
     function ($translateProvider) {
@@ -341,7 +345,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             })
             .state('frontend.websiteabout', {
                 url: '/websiteabout/:id/:res_id?',
-                resolve: loadSequence('websiteabout','merchantheader','merchantleftbar'),
+                resolve: loadSequence('websiteabout','merchantheader','merchantleftbar','ngMap'),
                 templateUrl: 'app/views/websiteabout.html',
                 title: 'Merchant-membership'
             })
@@ -611,7 +615,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             })
             .state('frontend.merchantoutlets', {
                 url: '/merchantoutlets',
-                resolve: loadSequence('merchantoutlets'),
+                resolve: loadSequence('merchantoutlets','ngMap'),
                 templateUrl: 'app/views/merchant/merchantoutlets.html',
                 title: 'Outlets'
             })

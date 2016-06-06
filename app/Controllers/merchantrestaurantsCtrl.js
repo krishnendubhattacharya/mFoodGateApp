@@ -16,6 +16,14 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
             accept: 'image/*',
             uploadUrl: $rootScope.serviceurl + 'MerchantRestaurantLogoUpload',
             onUploaded:function(ret){
+
+                //if($scope.menuInfo.id && $scope.menuInfo.imageurl && $scope.menuInfo.logo)
+                //{
+                //    console.log($scope.menuInfo.logo,$scope.menuInfo.imageurl,ret.file.value.name);
+                //    var s = $scope.menuInfo.imageurl;
+                //    $scope.menuInfo.imageurl.replace = s.replace(/$scope.menuInfo.logo/g,ret.file.value.name);
+                //    console.log($scope.menuInfo.imageurl);
+                //}
                 $scope.menuInfo.logo = ret.file.value.name;
             },
             onInitialized : function(e)
