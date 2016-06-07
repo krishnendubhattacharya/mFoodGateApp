@@ -78,9 +78,9 @@ app.run(['$rootScope', '$state', '$stateParams',
 
     }]);
 
-angular.module('mFoodApp').run(['$http',function($http){
-    $http.defaults.headers.common.Authorization = 'YmVlcDpib29w';
-}])
+//angular.module('mFoodApp').run(['$http',function($http){
+//    $http.defaults.headers.common.Authorization = 'YmVlcDpib29w';
+//}])
 
 // translate config
 /*app.config(['$translateProvider',
