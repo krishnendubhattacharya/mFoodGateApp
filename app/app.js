@@ -355,6 +355,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/websitenews.html',
                 title: 'Merchant-membership'
             })
+            .state('frontend.websitepromos', {
+                url: '/websitepromos/:id/:res_id?',
+                resolve: loadSequence('websitepromos','merchantheader','merchantleftbar'),
+                templateUrl: 'app/views/websitepromos.html',
+                title: 'Merchant-membership'
+            })
             .state('frontend.promotionresults', {
                 url: '/promotion-results',
                 resolve: loadSequence('promotionresults'),

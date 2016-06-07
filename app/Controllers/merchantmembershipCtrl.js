@@ -1,4 +1,4 @@
-app.controller('merchantmembershipCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth) {
+app.controller('merchantmembershipCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, $timeout) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
@@ -7,7 +7,7 @@ app.controller('merchantmembershipCtrl', function ($rootScope, $scope, $http, $l
         $location.path("/login");
     }
 
-
+    $scope.res_id = $stateParams.res_id;
     $scope.checkBox = {
         checked: {
             value: 1
@@ -17,6 +17,59 @@ app.controller('merchantmembershipCtrl', function ($rootScope, $scope, $http, $l
         }
 
     };
+
+    $scope.getfeaturedNews = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getFeaturedMerchantNews/" + $scope.res_id,
+        }).success(function (data) {
+            if(data.type=='success')
+            {
+                $scope.featuredPromo = data.data;
+            }
+            //console.log($scope.newPromoInfo);
+        });
+    }
+    $scope.getfeaturedNews();
+
+    $scope.getspecialNews = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getSpecialMerchantNews/" + $scope.res_id,
+        }).success(function (data) {
+            if(data.type=='success')
+            {
+                $scope.specialPromo = data.data;
+                $timeout(function(){
+                var carousal = $('.owecar');
+                carousal.owlCarousel({
+                    autoplay:true,
+                    touchDrag:false,
+                    loop:($scope.specialPromo && $scope.specialPromo.length>1?true:false),
+                    dots:true,
+                    nav:true,
+                    navContainerClass:"ca-nav",
+                    navText:false,
+                    autoplayTimeout:5000,
+                    autoplayHoverPause:true,
+                    singleItem:true,
+                    responsive:{
+                        0:{
+                            items:1
+                        },
+                        600:{
+                            items:3
+                        },
+                        1000:{
+                            items:3
+                        }
+                    }
+                });},30);
+            }
+            //console.log($scope.newPromoInfo);
+        });
+    }
+    $scope.getspecialNews();
 
     $scope.saveSetting = function(params) {
         alert($scope.media_notification);

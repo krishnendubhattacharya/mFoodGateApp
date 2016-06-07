@@ -125,7 +125,8 @@ app.constant('JS_REQUIRES', {
         'websitefeatureds':['app/Controllers/websitefeaturedsCtrl.js'],
         'websiteabout':['app/Controllers/websiteaboutCtrl.js'],
         'merchantleftbar':['app/Controllers/merchant/merchantleftbarCtrl.js'],
-        'websitenews':['app/Controllers/websitenewsCtrl.js']
+        'websitenews':['app/Controllers/websitenewsCtrl.js'],
+        'websitepromos':['app/Controllers/websitepromosCtrl.js','app/directives/countdownDirective.js']
 
     },
 
