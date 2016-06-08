@@ -10,6 +10,14 @@ app.controller('websitepromosCtrl', function ($rootScope, $scope, $http, $locati
     $scope.id = $stateParams.id;
     $scope.res_id = $stateParams.res_id;
 
+    //$http({
+    //    method: "GET",
+    //    url: 'http://52.39.33.188/MFoodGateMembershipHost/service.svc/CreateNewMember',
+    //    data:{MerchantID:"M004",RestaurantID:"A0001",MemberName:"Jonathan",PromoID:"PRC001",PurchasedDate:"2016-06-07",EmailAddress:"abc@abc.com",Mobile:"012823432",Address:"BB Address"},
+    //    headers: {'Content-Type': 'application/json'}
+    //}).success(function (data) {
+    //    console.log(" Lorem Ipsum ==== ",data);
+    //})
 
     $scope.getRestaurantDetails = function(){
         $http({
