@@ -97,21 +97,21 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
             console.log('By Bikash  --  ',e);
             $scope.datag = e.component;
         },
-        columns: ["member_name", {caption:"Membership Purchased",dataField:"promo.title"},
+        columns: ["member_name", {caption:"PromoID",dataField:"promo_id"},
             {caption:"Date Of Purchase",dataField:"purchased_date"},
-            {caption:"Membership Id",dataField:"id"},
+            {caption:"Merchant Id",dataField:"merchant_id"},
             {
-                caption:'Edit',
+                caption:'Add',
                 width: 100,
                 alignment: 'center',
                 cellTemplate: function (container, options) {
                     $('<button/>').addClass('dx-button')
-                        .text('Edit')
-                        .on('dxclick',function(){$scope.edit_menu(options.data); })
+                        .text('ADD')
+                        .on('dxclick',function(){$scope.getMemberId(options.data); })
                         .appendTo(container);
                 }
-            },
-            {
+            }
+            /*{
                 caption:'Delete',
                 width: 100,
                 alignment: 'center',
@@ -121,7 +121,7 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
                         .on('dxclick',function(){$scope.delete_menu(options.data); })
                         .appendTo(container);
                 }
-            }/*,
+            },
              {
              width: 100,
              alignment: 'center',
@@ -201,7 +201,7 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
         $scope.edit_mode = false;
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getMerchantMembership/" + $scope.loggedindetails.id,
+            url: $rootScope.serviceurl + "getPurchasedMerchantMembershipPromo/" + $scope.loggedindetails.id,
         }).success(function (data) {
             $scope.voucherInfo = data.data;
             //console.log($scope.voucherInfo);
@@ -310,6 +310,26 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
             })
         }
     }
+
+
+    $scope.getMemberId = function(data){
+
+        //console.log($scope.textBox.image.value,$scope.menuInfo);
+        console.log(12);
+
+
+            /*$scope.userdata = {"MerchantID":"M004","RestaurantID":"A0001","MemberName":"Jonathan","PromoID":"PRC001","PurchasedDate":"2016-06-07","EmailAddress":"abc@abc.com","Mobile":"012823432","Address":"L address"};
+            $http({
+                method: "POST",
+                url: "http://52.39.33.188/MfoodgateMemberlinkService/Member/",
+                data: $scope.userdata,
+                headers: {'Content-Type': 'application/json'},
+            }).success(function(data) {
+                console.log(data);
+            })*/
+    }
+
+    //$scope.test_save();
 
 
 
