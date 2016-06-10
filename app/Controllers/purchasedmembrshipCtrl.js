@@ -100,15 +100,20 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
         columns: ["member_name", {caption:"PromoID",dataField:"promo_id"},
             {caption:"Date Of Purchase",dataField:"purchased_date"},
             {caption:"Merchant Id",dataField:"merchant_id"},
+            {caption:"Member Id",dataField:"member_membership_id"},
             {
                 caption:'Add',
                 width: 100,
                 alignment: 'center',
                 cellTemplate: function (container, options) {
-                    $('<button/>').addClass('dx-button')
-                        .text('ADD')
-                        .on('dxclick',function(){$scope.getMemberId(options.data); })
-                        .appendTo(container);
+                    if(options.data.member_membership_id =='') {
+                        $('<button/>').addClass('dx-button')
+                            .text('ADD')
+                            .on('dxclick', function () {
+                                $scope.getMemberId(options.data);
+                            })
+                            .appendTo(container);
+                    }
                 }
             }
             /*{
@@ -312,21 +317,45 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
     }
 
 
-    $scope.getMemberId = function(data){
+    $scope.getMemberId = function(memdata){
 
         //console.log($scope.textBox.image.value,$scope.menuInfo);
-        console.log(12);
+        //console.log(memdata);
 
 
-            /*$scope.userdata = {"MerchantID":"M004","RestaurantID":"A0001","MemberName":"Jonathan","PromoID":"PRC001","PurchasedDate":"2016-06-07","EmailAddress":"abc@abc.com","Mobile":"012823432","Address":"L address"};
+            //$scope.userdata = {"MerchantID":"M004","RestaurantID":"A0002","MemberName":"Jonathan","PromoID":"PRC001","PurchasedDate":"2016-06-07","EmailAddress":"abc@abc.com","Mobile":"012823432","Address":"L address"};
+        $scope.userdata = {"MerchantID":memdata.merchant_id,"RestaurantID":memdata.restaurant_id,"MemberName":memdata.member_name,"PromoID":memdata.promo_id,"PurchasedDate":memdata.purchased_date_format,"EmailAddress":memdata.member_email,"Mobile":memdata.member_phone,"Address":memdata.member_address};
+        //console.log($scope.userdata);
             $http({
                 method: "POST",
                 url: "http://52.39.33.188/MfoodgateMemberlinkService/Member/",
                 data: $scope.userdata,
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
-                console.log(data);
-            })*/
+               // console.log(data);
+                $scope.start_date = moment(data.MembershipStartDate).format("YYYY-MM-DD");
+                $scope.end_date = moment(data.MembershipExpiredDate).format("YYYY-MM-DD");
+                //console.log($scope.start_date);
+                //console.log($scope.end_date);
+                $scope.mapdata={"member_id":data.MerchantMemberID,"offer_id":memdata.offer_id,"voucher_id":memdata.voucher_id,"user_id":memdata.member_id,"email":memdata.member_email,"name":memdata.member_name,"membership_start_date":$scope.start_date,"membership_end_date":$scope.end_date,"is_active":1,"merchant_id":memdata.merchant_id};
+               // console.log($scope.mapdata);
+                $http({
+                    method: "POST",
+                    url: $rootScope.serviceurl+"saveMembershipMemberMap",
+                    data: $scope.mapdata,
+                    headers: {'Content-Type': 'application/json'},
+                }).success(function(data) {
+                    //console.log(data);
+                    DevExpress.ui.notify({
+                        message: "Added Successfilly",
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "success", 3000);
+                    $scope.getMenus();
+                });
+            });
     }
 
     //$scope.test_save();

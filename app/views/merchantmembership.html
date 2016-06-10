@@ -8,12 +8,12 @@
         <div class="featured-Promo">
             <div class="merchant-card" ng-repeat="feature in featuredPromo | limitTo:1">
                 <div class="card-img">
-                    <img src="{{feature.image_url}}" alt=""/> </div>
+                    <a ui-sref="frontend.newsdetail({newsId:feature.id})" style="color: #339933"><img src="{{feature.image_url}}" alt=""/></a> </div>
                 <div class="card-dsc">
-                    <h1>{{feature.title}}</h1>
+                    <h1><a ui-sref="frontend.newsdetail({newsId:feature.id})" style="color: #339933">{{feature.title}}</a></h1>
                     <!--<h2>Give all the benefits of a mFoodGate card</h2>-->
                     <p ng-bind-html="feature.description"></p>
-                    <a ui-sref="frontend.newsdetail({newsId:feature.id})" style="color: #339933">Details</a>
+                    <!--<a ui-sref="frontend.newsdetail({newsId:feature.id})" style="color: #339933">Details</a>-->
                 </div>
             </div>
         </div>
@@ -34,10 +34,10 @@
 
                 <div ng-repeat="special in specialPromo" class="item">
                     <div class="card-item">
-                        <h1 >{{special.title}}</h1>
-                        <div class="card-box"><img src="{{special.image_url}}" alt="" height="100%" width="100%"/></div>
+                        <h1 ><a ui-sref="frontend.newsdetail({newsId:special.id})">{{special.title}}</a></h1>
+                        <div class="card-box"><a ui-sref="frontend.newsdetail({newsId:special.id})"><img src="{{special.image_url}}" alt="" height="100%" width="100%"/></a></div>
                         <p ng-bind-html="special.description"></p>
-                        <a ui-sref="frontend.newsdetail({newsId:special.id})">Details</a>
+                        <!--<a ui-sref="frontend.newsdetail({newsId:special.id})">Details</a>-->
                     </div>
                 </div>
                 <!--<li>-->

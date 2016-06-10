@@ -3,6 +3,8 @@
  * controllers used for the login
  */
 app.controller('merchantheaderCtrl', function ($rootScope, $scope, $http, $location, myAuth,mFoodCart, $cookieStore,$stateParams) {
+    myAuth.updateUserinfo(myAuth.getUserAuthorisation());
+    $scope.loggedindetails = myAuth.getUserNavlinks();
 $scope.merchant_id = $stateParams.id;
 $scope.res_id = $stateParams.res_id;
 //console.log($scope.merchant_id);
@@ -11,12 +13,13 @@ $scope.res_id = $stateParams.res_id;
 
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getMerResDetail/" + $scope.merchant_id+"/"+$scope.res_id,
+            url: $rootScope.serviceurl + "getMerResDetail/" + $scope.merchant_id+"/"+$scope.res_id+"/"+$scope.loggedindetails.id,
         }).success(function (data) {
             console.log(data);
             $scope.det = data;
             $scope.merchantId = data.merchant_id;
             $scope.resId = data.restaurant_id;
+            $scope.memberId = data.member_id;
             //$scope.voucherInfo = data.data;
             //console.log($scope.voucherInfo);
             //if($scope.datag)

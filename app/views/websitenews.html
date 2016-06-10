@@ -14,7 +14,7 @@
         <div class="featured-Promo" >
             <h1>Events & News</h1>
             <div class="menu-cont">
-                <div class="merchant-card" ng-repeat="menu in allnews">
+                <div class="merchant-card" ng-repeat="menu in allnews" ng-if="allnews">
                     <div class="card-img">
                         <img src="{{menu.image_url}}" alt=""/> </div>
                     <div class="card-dsc">
@@ -22,6 +22,9 @@
                         <h2 ng-bind-html="menu.description"></h2>
                         <!--<p class="price">Price: <span>IDR{{menu.price}}</span></p>-->
                     </div>
+                </div>
+                <div class="merchant-card" ng-repeat="menu in allnews" ng-if="!allnews || allnews.length==0">
+                    <h1 style="text-align: center">No news found.</h1>
                 </div>
             </div>
         </div>
@@ -34,7 +37,7 @@
         <div class="m-featured-Promo" >
             <h1>Events & News</h1>
             <div class="m-menu-cont">
-                <div class="m-merchant-card" ng-repeat="menu in allnews">
+                <div class="m-merchant-card" ng-repeat="menu in allnews" ng-if="allnews">
                     <div class="m-card-img">
                         <img src="{{menu.image_url}}" alt=""/> </div>
                     <div class="m-card-dsc">
@@ -42,6 +45,9 @@
                         <h2 ng-bind-html="menu.description"></h2>
                         <!--<p class="price">Price: <span>IDR{{menu.price}}</span></p>-->
                     </div>
+                </div>
+                <div class="merchant-card" ng-repeat="menu in allnews" ng-if="!allnews || allnews.length==0">
+                    <h1 style="text-align: center">No news found.</h1>
                 </div>
             </div>
         </div>
