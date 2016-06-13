@@ -242,6 +242,19 @@
                     </div>
 
                     <div class="dx-field">
+                        <div class="dx-field-label">Offer Start Date </div>
+                        <div class="dx-field-value">
+                            <div dx-date-box="dateBox.offer_from_date" ng-model="event.offer_from_date"></div>
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Offer End Date </div>
+                        <div class="dx-field-value">
+                            <div dx-date-box="dateBox.offer_to_date" ng-model="event.offer_to_date"></div>
+                        </div>
+                    </div>
+
+                    <div class="dx-field">
                         <div class="dx-field-label">Cover Image</div>
                         <div class="dx-field-value">
                             <div dx-file-uploader="textBox.image"></div>
@@ -309,6 +322,8 @@
                                 }" style="float: left" ng-model="event.is_active"></div>
                         </div>
                     </div>
+
+
 
                 </div>
                 <!--<div id="summary" dx-validation-summary="{ }"></div>-->

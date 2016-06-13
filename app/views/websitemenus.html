@@ -47,8 +47,8 @@
         <!--<h1>Featured Promo</h1>-->
         <div class="m-menu-cont">
             <div class="newcar">
-            <div class="item">
-                <div class="pro-item" ng-repeat="menu in sliderImages | limitTo:1">
+            <div class="item" ng-repeat="menu in sliderImages">
+                <div class="pro-item">
                     <img src="{{menu.image_url}}" width="406" height="255"  alt=""/>
                     <!--<div class="p-circle">50%</div>-->
                     <div class="desc">
@@ -63,8 +63,8 @@
             </div>
         </div>
         <div class="dx-clearfix"></div>
-        <h1 style="margin-top:20px;" ng-repeat-start="cats in featuredMenus">{{cats.name}}</h1>
-        <div class="m-menu-cont" ng-repeat-end>
+        <h1 style="margin-top:20px;"  ng-click="cats.hide=!cats.hide" ng-repeat-start="cats in featuredMenus">{{cats.name}}</h1>
+        <div class="m-menu-cont" ng-repeat-end  ng-if="!cats.hide">
             <div class="m-menu-list">
                 <p ng-repeat="menu in cats.menus">{{menu.title}}: <span>IDR{{menu.price}}</span></p>
             </div>

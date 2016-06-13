@@ -68,58 +68,82 @@
         </div>
     </div>
     <div class="m-myaccount-details tablet-hide">
-        <h1>Edit Profile</h1>
+        <h1>Menu Categories</h1>
         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
 
-        <div class="m-profile-details">
+        <div class="m-profile-details"  ng-show="!edit_mode">
+            <div id="button" dx-button="{
+                                text: 'Add Category',
+                                onClick: changeView }" ></div>
+            <!--<input type="button" ng-click="refresh_grid()" value="Refresh">-->
+            <div >
+                <div ng-repeat="voucher in voucherInfo" style="border-top:1px solid #EAEAEA;margin-top:10px;padding-top: 5px;">
+                    <div style="display:inline-block; margin: 5px;">
+                        <p style="font-size:larger;"><b>{{voucher.name}}</b></p>
+
+                        <p>Sequence: <i>{{voucher.seq}}</i></p>
+                        <p>Status: <i>{{voucher.is_active==1?'Active':'Inactive'}}</i></p>
+                        <!--<div class="btn_o"><a href="javascript:void(0);" ng-click="viewDetails(id)">Detail</a></div>-->
+                    </div>
+
+                    <p>
+                    <div id="button" dx-button="{
+                    text: 'Edit' }" ng-click="edit_menu(voucher)"></div>
+                    <div id="button" dx-button="{
+                    text: 'Delete' }" ng-click="delete_menu(voucher);" ></div>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="m-profile-details"  ng-show="edit_mode">
             <div class="form">
                 <div class="dx-fieldset">
                     <div class="dx-field">
-                        <div class="dx-field-label">Merchant Name</div>
+                        <div class="dx-field-label">Name</div>
                         <div class="dx-field-value">
-                            <div dx-text-box="textBox.merchant_name"  ng-model="userInfo.merchant_name"></div>
-
-
+                            <div dx-text-box="textBox.name" ng-model="menuInfo.name"></div>
                         </div>
                     </div>
 
                     <div class="dx-field">
-                        <div class="dx-field-label">Email</div>
+                        <div class="dx-field-label">Sequence No.</div>
                         <div class="dx-field-value">
-                            <div dx-text-box="textBox.email" dx-validator="emailValidationRules" ng-model="userInfo.email"></div>
+                            <div dx-text-box="textBox.seq" ng-model="menuInfo.seq"></div>
                         </div>
                     </div>
+
+                    <div class="dx-field">
+                        <div class="dx-field-label">Is Active</div>
+                        <div class="dx-field-value">
+                            <div dx-check-box="{
+                                    text: '',
+                                    value: '1'
+                                }" style="float: left" ng-model="menuInfo.is_active"></div>
+                        </div>
+                    </div>
+
                     <!--<div class="dx-field">
                         <div class="dx-field-label">Username</div>
                         <div class="dx-field-value">
                             <div dx-text-box="textBox.username" dx-validator="usernameValidationRules" ng-model="username"></div>
                         </div>
                     </div>-->
-                    <div class="dx-field">
-                        <div class="dx-field-label">Phone</div>
-                        <div class="dx-field-value">
-                            <div dx-text-box="textBox.phone"  ng-model="userInfo.phone"></div>
-                        </div>
-                    </div>
-                    <div class="dx-field">
-                        <div class="dx-field-label">Address</div>
-                        <div class="dx-field-value">
-                            <div dx-text-area="textArea"  ng-model="userInfo.address"></div>
-                        </div>
-                    </div>
-                    <div class="dx-field">
-                        <div class="dx-field-label">About Us</div>
-                        <div class="dx-field-value">
-                            <div dx-text-area="textArea"  ng-model="userInfo.about_me"></div>
-                        </div>
-                    </div>
+
 
                 </div>
                 <!--<div id="summary" dx-validation-summary="{ }"></div>-->
                 <div id="button" dx-button="{
                                 text: 'Submit',
                                 type: 'success',
-                                onClick: validateAndSubmit }" ></div>
+                                onClick: save_menu }" ></div>
+
+                <div id="button" dx-button="{
+                                text: 'Cancel',
+                                onClick: changeView }" ></div>
+
+
             </div>
         </div>
 

@@ -35,8 +35,8 @@
 
     <!--mobile promo-->
     <div class="m-featured-Promo tablet-hide" ng-repeat="cats in featuredMenus" ng-if="featuredMenus">
-        <h1>{{cats.name}}</h1>
-        <div class="m-menu-cont">
+        <h1  ng-click="cats.hide=!cats.hide">{{cats.name}}</h1>
+        <div class="m-menu-cont" ng-if="!cats.hide">
             <div class="m-merchant-card tablet-hide"  ng-repeat="menu in cats.menus">
                 <div class="card-img">
                     <img src="{{menu.image_url}}" alt=""/> </div>

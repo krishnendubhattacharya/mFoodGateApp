@@ -72,7 +72,7 @@
 						</li>
 						<li><a ui-sref="frontend.membership" ui-sref-active="active">Membership</a></li>
 						<li><a ui-sref="frontend.marketplace" ui-sref-active="active">Marketplace</a></li>
-						<li ng-show="showMember" id="dropdown"><a href="">{{loggedindetails.user_type_id==3?'Merchant':'Member'}}</a>
+						<li ng-show="showMember" ng-if="loggedindetails.user_type_id!=3" id="dropdown"><a href="">Member</a>
 						    <ul  id="dropdown-content">
 						        <li><a ui-sref="frontend.allvoucher">My Voucher</a></li>
 						        <li><a ui-sref="frontend.mymembership">My Membership</a></li>
@@ -83,6 +83,19 @@
 						        <li><a ui-sref="frontend.preorder">Pre-Order</a></li>
 						        <li><a ui-sref="frontend.feedback">Feedback</a></li>
 						    </ul>    
+						</li>
+						<li ng-show="showMember" ng-if="loggedindetails.user_type_id==3" id="dropdown"><a href="">Merchant</a>
+							<ul  id="dropdown-content" style="width:190px !important;">
+								<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantprofile"><i class="fa fa-user"></i> Change Profile</a></li>
+								<li ng-if="user_details.merchant_id"><a href="http://52.39.33.188/Member_Ship/MasterData/member_master_mfoodgate.aspx?MerchantID={{user_details.merchant_id}}"><i class="fa fa-user"></i>Manage Member</a></li>
+								<li ><a ui-sref="frontend.purchasedmembrship"><i class="fa fa-user"></i>Purchased Membership</a></li>
+								<li><a ui-sref="frontend.merchantmenu"><i class="fa fa-user"></i> All Menu</a></li>
+								<li><a ui-sref="frontend.merchantmenucategories"><i class="fa fa-user"></i>Categories</a></li>
+								<li><a ui-sref="frontend.merchantrestaurants"><i class="fa fa-user"></i> Restaurants</a></li>
+								<li><a ui-sref="frontend.merchantoutlets"><i class="fa fa-user"></i> Outlets</a></li>
+								<li><a href="http://52.39.33.188/Member_Ship/MasterData/Promotion_Header_mfoodgate.aspx?MerchantID={{user_details.merchant_id}}"><i class="fa fa-user"></i> Memberships</a></li>
+								<li><a ui-sref="frontend.merchantnews"><i class="fa fa-user"></i> News</a></li>
+							</ul>
 						</li>
 						<li><a ui-sref-active="active" ui-sref="frontend.news" ui-sref-active="active">News</a></li>
 

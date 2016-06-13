@@ -15,6 +15,8 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
             $scope.voucherInfo =data;
             //console.log($scope.voucherInfo.membership);
             $scope.listViewData.option({"dataSource": $scope.voucherInfo.membership,showSelectionControls: true });
+
+            $scope.listViewData.option({"onItemClick":$scope.viewDetails});
             $scope.dataGridOptions = {
                 dataSource: $scope.voucherInfo.membership,
                 selection: {
@@ -55,7 +57,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
                 ],
                 onSelectionChanged: function (selectedItems) {
                     //console.log(selectedItems);
-                    $scope.selectedEmployee = selectedItems.selectedRowsData[0];
+                    //$scope.selectedEmployee = selectedItems.selectedRowsData[0];
                 }
             };
 
@@ -117,6 +119,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.loadList=function(e)
     {
         $scope.listViewData= e.component;
+
     }
 
     $scope.loadList1=function(e)
@@ -124,9 +127,9 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
         $scope.listViewData1= e.component;
     }
 
-    $scope.view_det = function (id) {
-        console.log(id);
-        $location.path('/merchant-membership/'+id);
+    $scope.viewDetails = function (data) {
+        //console.log(data.itemData);
+        $location.path('/merchant-membership/'+data.itemData.merchant_id + '/');
     }
 
 

@@ -228,13 +228,18 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             //$timeout(function(){
                 //$scope.datag.refresh();
             //},3000)
+            $scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
+            $scope.listViewData.option({"onItemClick":$scope.checkClick});
 
 
         });
     }
     $scope.getMenus();
 
-
+    $scope.checkClick = function(a,b){
+        console.log(a);
+        console.log(b);
+    }
 
    $scope.$watchCollection('voucherInfo', function() {
         //var dataGrid = angular.element('#gridContainer').dxDataGrid('instance');
@@ -328,6 +333,12 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.deleteImage = function(){
         $scope.menuInfo.image = '';
         $scope.save_menu();
+    }
+
+    $scope.loadList=function(e)
+    {
+        $scope.listViewData= e.component;
+
     }
 
 });

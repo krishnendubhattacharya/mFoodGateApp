@@ -218,13 +218,17 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
             //$timeout(function(){
                 //$scope.datag.refresh();
             //},3000)
+            $scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
+            $scope.listViewData.option({"onItemClick":$scope.callMember});
 
 
         });
     }
     $scope.getMenus();
 
-
+    $scope.callMember = function(data){
+        $scope.getMemberId(data.itemData);
+    }
 
    $scope.$watchCollection('voucherInfo', function() {
         //var dataGrid = angular.element('#gridContainer').dxDataGrid('instance');
@@ -360,6 +364,11 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
 
     //$scope.test_save();
 
+    $scope.loadList=function(e)
+    {
+        $scope.listViewData= e.component;
+
+    }
 
 
 });
