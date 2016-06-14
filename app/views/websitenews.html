@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div style="margin-top:0;" class="container tablet-hide">
+    <div style="margin-top:0;" class="tablet-hide">
         <!--Left menu-->
         <!--<div ng-include="'app/views/partials/merchant_leftbar.html'"></div>-->
         <!--Featured Promo-->
@@ -40,7 +40,7 @@
                 <div class="m-merchant-card" ng-repeat="menu in allnews" ng-if="allnews">
                     <div class="m-card-img">
                         <img src="{{menu.image_url}}" alt=""/> </div>
-                    <div class="m-card-dsc">
+                    <div class="card-dsc">
                         <h1>{{menu.title}}</h1>
                         <h2 ng-bind-html="menu.description"></h2>
                         <!--<p class="price">Price: <span>IDR{{menu.price}}</span></p>-->

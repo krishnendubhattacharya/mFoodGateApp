@@ -22,13 +22,11 @@
 
         <div class="m-profile-details">
             <h3 style="font-size: 18px; line-height: 30px; padding: 10px;">All Points</h3>
-            <div dx-list="{
-      onInitialized:loadList
-    }">
+            <div dx-list="{onInitialized:loadList}">
 
                 <div  data-options="dxTemplate: { name: 'item' }">
 
-                    <div style="display:inline-block; margin: 5px;">
+                    <div>
                         <p style="font-size:larger;"><b>{{source}}</b></p>
                         <p>Points: <i>{{points}}</i></p>
                         <p>Remaining Points: <i>{{remaining_points}}</i></p>
@@ -46,7 +44,7 @@
 
                 <div data-options="dxTemplate: { name: 'item' }">
 
-                    <div style="display:inline-block; margin: 5px;">
+                    <div>
                         <p style="font-size:larger;"><b>{{source}}</b></p>
                         <p>Points: <i>{{points}}</i></p>
                         <p>Remaining Points: <i>{{remaining_points}}</i></p>

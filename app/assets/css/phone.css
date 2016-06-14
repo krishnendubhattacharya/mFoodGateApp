@@ -725,9 +725,9 @@ body#mfoodmain{
 /*---------------------------------- my account -----------------------------*/
 .m-myaccount-details{ width:90%; margin: 20px auto !important; }
 .m-myaccount-details h1{font-size:22px; color:#3b3b3b; line-height:30px; padding-bottom:10px; margin-top:15px;}
-.m-left-panel{width:100%;height: auto;overflow: hidden;padding:10px;box-sizing: border-box;border:1px solid #eaeaea;
+.m-left-panel{width:100%;height: auto;overflow: hidden;padding:0 10px;box-sizing: border-box;border:1px solid #eaeaea;
     float:none; margin: 0 auto;}
-.m-left-panel .profile-img{width:100%;height: auto;overflow: hidden;}
+.m-left-panel .profile-img{width:100%;height: auto;overflow: hidden; margin-top: 10px;}
 .m-left-panel.profile-img img{width:100%}
 .m-left-panel ul{ padding: 10px; margin: 0;}
 .m-left-panel ul li { padding: 0; margin: 0; line-height:35px; font-size:14px; height: 35px; list-style-type: none;
@@ -736,7 +736,7 @@ body#mfoodmain{
 .m-left-panel ul li a{ text-decoration: none; color: #6b6b6b; }
 .m-left-panel ul li a:hover{ text-decoration: none; color: #319432; }
 
-.m-profile-details{ width:100%; float: none; margin: 15px auto; border: solid 1px #eaeaea; overflow: hidden;}
+.m-profile-details{ width:94%; float: none; margin: 15px auto; border: solid 1px #eaeaea; overflow: hidden; padding:  0 3%;}
 
 .m-profile-details h1{ font-size: 18px; color:#1d1d1d; padding: 0; margin:0 0 3px; line-height:30px; }
 .m-profile-details p{ padding:2px 0; margin:0; font-size:14px; color:#292929; line-height:18px; overflow:hidden;}
@@ -746,7 +746,7 @@ body#mfoodmain{
 {
     margin: 15px auto;
     padding: 0;
-    width: 92%;
+    width: 100%;
 }
 .m-profile-details .dx-field-label{
     float: none;
@@ -924,16 +924,18 @@ body#mfoodmain{
 .m-merchant-nav ul li p a{ font-size:14px; color:#319230; text-decoration: none; background:f7f7f7; border-bottom: solid 1px #d2d2d2; display: block; padding: 5px 0; }
 .m-merchant-nav ul li p a:hover{ color:#F00; }
 
-.m-merchant-card{ width:94%; height: auto; overflow: hidden; margin:10px auto; }
+.m-merchant-card{ width:94%; height: auto; overflow: hidden; margin:10px auto 20px; border-bottom: solid 1px #ccc; }
+.m-merchant-card:last-child{border-bottom:none;}
 .m-merchant-card .card-img{ width:96%; height: auto; float: none; margin: 5px auto; }
 .m-merchant-card .card-img img{ width:100%; height: auto;}
 .m-merchant-card .card-dsc{ width:94%; height: auto; float: none; margin: 5px auto; }
-.m-merchant-card .card-dsc h1{ padding: 0; margin: 0; color:#232323; font-size:20px; line-height:30px; margin-bottom:5px; border: none; background:none; }
-.m-merchant-card .card-dsc h2{ color:#309030; font-size:20px; line-height: 18px; padding: 0; margin: 0; }
+.m-merchant-card .card-dsc h1{ padding: 0; margin: 0; color:#309030 !important; font-size:16px; line-height:21px;
+    border: none; background:none !important; }
+.m-merchant-card .card-dsc h1 a{ color:#309030; text-decoration:  none;}
+.m-merchant-card .card-dsc h2{ color:#232323; font-size:14px; line-height: 21px; padding: 0; margin: 0; }
 .m-merchant-card .card-dsc p{ padding: 0; margin: 0 0 5px; line-height: 21px; font-size:14px; color: #3c3c3c;}
-
-.m-three-box{ width:94%; height: auto; padding: 30px 0 15px; background:#f7f7f7; border: solid 1px #e6e6e6; overflow:
-hidden; margin: 0 auto 70px;}
+.m-three-box{ width:94%; height: auto; padding: 12px 3% 0; background:#f7f7f7; border: solid 1px #e6e6e6; overflow:
+hidden; margin: 0 auto;}
 .m-three-box ul{ padding:0; margin: 0;}
 .m-three-box ul li{ padding:0; margin: 0 auto 20px; list-style-type: none; float: none; width: 96%;}
 .m-three-box ul li .card-item{ width:96%; height: auto; margin: 0 auto; }
@@ -1105,8 +1107,8 @@ hidden; margin: 0 auto 70px;}
 
 /*--------------------------------------- 05-04-2016 Anirban ---------------------------------------------*/
 /*---------------------------- Featured Promo ------------------------*/
-.m-featured-Promo{ width:100%; margin:20px auto 20px; border: solid 0px green; overflow: hidden; }
-.m-featured-Promo h1{ font-size:18px; color:#f25d1b; line-height:36px; padding: 5px 10px 7px;
+.m-featured-Promo{ width:100%; margin:10px auto 20px; border: solid 0px green; overflow: hidden; }
+.m-featured-Promo h1{ font-size:18px; color:#f25d1b; line-height:36px; padding: 5px 10px 4px;
     background:url("../Images/ln-title-bg.png") repeat-x scroll left top;
     display: block; font-weight: bold; border-bottom: solid 2px #fff; border: solid 1px #e1e1e1;}
 /*.m-featured-Promo h1{ font-size:18px; color:#3b3b3b; border-bottom: solid 1px #dedede; line-height:24px; padding-bottom:7px;}*/
@@ -1664,3 +1666,14 @@ code {
 
 .m-card-img{ width: 100%; height: auto;}
 .m-card-img img{ width: 100%; height: auto;}
+
+/*------------------------------ 14-06-2016 ---------------------*/
+.m-three-box .item{ padding:0; margin: 0 auto 20px; width: 96%;}
+.m-three-box .item .card-item{ width:100%; height: auto; margin: 0 auto; }
+.m-three-box .item .card-item h1{ font-size:18px; padding: 0; margin: 0 0 15px; line-height: 24px; color:#309030; font-weight: normal;}
+.m-three-box .item .card-item h1 a{ color: #309030; text-decoration: none;}
+.m-three-box .item .card-item .card-box{ width:100%; height: auto; margin:0; text-align: center; }
+.m-three-box .item .card-item .card-box img{ width:100%; height: 201px; text-align: center; }
+.m-three-box .item .card-item p{ padding: 0; margin: 0 0 5px; line-height: 21px; font-size:14px; color: #3c3c3c;}
+.m-profile-details .dx-fileuploader-wrapper{ padding: 0 !important;}
+.m-profile-details .dx-button-success{ padding-left: 15px !important; padding-right: 15px !important;}

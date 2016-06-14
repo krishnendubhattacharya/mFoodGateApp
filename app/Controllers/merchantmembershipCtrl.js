@@ -19,7 +19,7 @@ app.controller('merchantmembershipCtrl', function ($rootScope, $scope, $http, $l
     };
 
     $scope.getfeaturedNews = function () {
-        $http({
+        $http({ 
             method: "GET",
             url: $rootScope.serviceurl + "getFeaturedMerchantNews/" + $scope.res_id,
         }).success(function (data) {
@@ -64,7 +64,33 @@ app.controller('merchantmembershipCtrl', function ($rootScope, $scope, $http, $l
                             items:3
                         }
                     }
-                });},30);
+                });},900);
+
+                $timeout(function(){
+                    var carousal = $('.owecar1');
+                    carousal.owlCarousel({
+                        autoplay:true,
+                        touchDrag:false,
+                        loop:($scope.specialPromo && $scope.specialPromo.length>1?true:false),
+                        dots:true,
+                        nav:true,
+                        navContainerClass:"ca-nav",
+                        navText:false,
+                        autoplayTimeout:5000,
+                        autoplayHoverPause:true,
+                        singleItem:true,
+                        responsive:{
+                            0:{
+                                items:1
+                            },
+                            600:{
+                                items:3
+                            },
+                            1000:{
+                                items:3
+                            }
+                        }
+                    });},900);
             }
             //console.log($scope.newPromoInfo);
         });

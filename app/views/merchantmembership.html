@@ -63,7 +63,7 @@
             </div>
     </div>
     <div class="m-three-box tablet-hide">
-        <div class="owecar">
+        <div class="owecar1">
             <div ng-repeat="special in specialPromo" class="item">
                 <div class="card-item">
                     <h1 ><a ui-sref="frontend.newsdetail({newsId:special.id})">{{special.title | limitTo:28}}</a></h1>
@@ -101,20 +101,5 @@
     <div class="dx-clearfix"></div>
     
 </div>
-<style>
-    .three-box .item
-    {
-        width: 98%;
-        float: left;
-    }
-    .card-box {
-        height: 241px;
-        overflow: hidden;
-    }
-    .card-item h1{margin-bottom: 10px;display: block}
-    .card-item p{font-size: 18px;
-        line-height: 18px; margin-top: 10px}
-    .card-item a{color:#339933}
 
-</style>
 

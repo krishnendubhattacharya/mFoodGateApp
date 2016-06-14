@@ -76,22 +76,6 @@
 
     <!--mobile promo-->
     <div class="m-about tablet-hide">
-
-        <div class="left-col">
-            <div class="latest-news">
-                <h1>About Us</h1>
-                <div class="most-viewed">
-
-                    <div class="v-pix"><img src="{{merchant.image}}" alt=""/></div>
-                    <div class="v-dsc">
-                        <h4>{{merchant.merchant_name}}</h4>
-                        <p><span>Email:</span> {{merchant.email}}</p>
-                        <p ng-if="merchant.phone"><span>Phone:</span> {{merchant.phone}}</p>
-                        <p ng-if="merchant.address"><span>Address:</span> {{merchant.address}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="right-col">
             <div class="banner">
                 <p><img src="{{restaurant.logo_url}}" alt=""/></p>
@@ -119,6 +103,21 @@
                 <ng-map center="{{mapaddress}}" zoom="6">
                     <marker position="{{mapaddress}}"></marker>
                 </ng-map>
+            </div>
+        </div>
+        <div class="left-col">
+            <div class="latest-news">
+                <h1>About Us</h1>
+                <div class="most-viewed">
+
+                    <div class="v-pix"><img src="{{merchant.image}}" alt=""/></div>
+                    <div class="v-dsc">
+                        <h4>{{merchant.merchant_name}}</h4>
+                        <p><span>Email:</span> {{merchant.email}}</p>
+                        <p ng-if="merchant.phone"><span>Phone:</span> {{merchant.phone}}</p>
+                        <p ng-if="merchant.address"><span>Address:</span> {{merchant.address}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
