@@ -72,13 +72,13 @@
         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
 
         <div class="m-profile-details"  ng-show="!edit_mode">
-            <div id="button" dx-button="{
+            <div style="margin-top: 10px;" id="button" dx-button="{
                                 text: 'Add Category',
                                 onClick: changeView }" ></div>
             <!--<input type="button" ng-click="refresh_grid()" value="Refresh">-->
             <div >
                 <div ng-repeat="voucher in voucherInfo" style="border-top:1px solid #EAEAEA;margin-top:10px;padding-top: 5px;">
-                    <div style="display:inline-block; margin: 5px;">
+                    <div>
                         <p style="font-size:larger;"><b>{{voucher.name}}</b></p>
 
                         <p>Sequence: <i>{{voucher.seq}}</i></p>

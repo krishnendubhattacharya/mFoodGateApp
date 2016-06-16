@@ -18,6 +18,10 @@
             </div>
         </div>
     </div>
+    <div class="tablet-hide">
+        <div ng-include="'app/views/partials/merchant_leftbar.html'"></div>
+
+    </div>
     <div class="m-merchant-card tablet-hide" ng-repeat="feature in featuredPromo | limitTo:1">
         <div class="card-img">
             <a ui-sref="frontend.newsdetail({newsId:feature.id})" style="color: #339933">

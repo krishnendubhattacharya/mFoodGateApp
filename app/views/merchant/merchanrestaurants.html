@@ -112,12 +112,12 @@
 
         <div class="m-profile-details" ng-show="!edit_mode">
             <!--<h3 style="font-size: 18px; line-height: 30px; padding: 10px;">All Points</h3>-->
-            <div id="button" dx-button="{
+            <div style="margin-top: 10px;" id="button" dx-button="{
                                 text: 'Add Restaurant',
                                 onClick: changeView }" ></div>
 
             <div ng-repeat="voucher in voucherInfo" style="border-top:1px solid #EAEAEA;margin-top:10px;padding-top: 5px;">
-                <div style="display:inline-block; margin: 5px;">
+                <div>
                     <p style="font-size:larger;"><b>{{voucher.title}}</b></p>
                     <img src="{{voucher.imageurl}}" width="100%" ng-if="voucher.imageurl">
                     <p>Active: <i>{{voucher.is_active==1?'Active':'Inactive'}}</i></p>

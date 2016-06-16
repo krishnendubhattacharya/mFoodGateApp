@@ -209,7 +209,7 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
             url: $rootScope.serviceurl + "getPurchasedMerchantMembershipPromo/" + $scope.loggedindetails.id,
         }).success(function (data) {
             $scope.voucherInfo = data.data;
-            //console.log($scope.voucherInfo);
+            console.log($scope.voucherInfo);
             //if($scope.datag)
                 //$scope.datag.option({dataSource:$scope.voucherInfo});
 
@@ -336,7 +336,7 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
                 data: $scope.userdata,
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
-               // console.log(data);
+                console.log(data);
                 $scope.start_date = moment(data.MembershipStartDate).format("YYYY-MM-DD");
                 $scope.end_date = moment(data.MembershipExpiredDate).format("YYYY-MM-DD");
                 //console.log($scope.start_date);
@@ -349,7 +349,6 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
                     data: $scope.mapdata,
                     headers: {'Content-Type': 'application/json'},
                 }).success(function(data) {
-                    //console.log(data);
                     DevExpress.ui.notify({
                         message: "Added Successfilly",
                         position: {

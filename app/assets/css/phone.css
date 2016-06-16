@@ -736,7 +736,7 @@ body#mfoodmain{
 .m-left-panel ul li a{ text-decoration: none; color: #6b6b6b; }
 .m-left-panel ul li a:hover{ text-decoration: none; color: #319432; }
 
-.m-profile-details{ width:94%; float: none; margin: 15px auto; border: solid 1px #eaeaea; overflow: hidden; padding:  0 3%;}
+.m-profile-details{ width:94%; float: none; margin: 15px auto; border: solid 1px #eaeaea; overflow: hidden; padding:  0 3% 10px;}
 
 .m-profile-details h1{ font-size: 18px; color:#1d1d1d; padding: 0; margin:0 0 3px; line-height:30px; }
 .m-profile-details p{ padding:2px 0; margin:0; font-size:14px; color:#292929; line-height:18px; overflow:hidden;}
@@ -918,6 +918,10 @@ body#mfoodmain{
 
 
 .m-merchant-nav{ width:90%; padding: 0; margin: 0 auto; overflow: hidden;}
+.m-merchant-nav h1{background: #f1f1f1 none repeat scroll 0 0;
+    color: #333;
+    font-size: 20px;
+    padding: 10px;}
 .m-merchant-nav ul{ width:100%; height: auto; margin: 0 auto; padding:0; }
 .m-merchant-nav ul li{ float: none; margin: 0; list-style-type: none; padding: 0; display: block; overflow: hidden;  }
 .m-merchant-nav ul li p{ font-size: 14px; font-weight: normal; text-align: left; color: #696969; line-height: 21px;}

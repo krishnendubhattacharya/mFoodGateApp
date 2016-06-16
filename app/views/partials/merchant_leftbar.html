@@ -1,8 +1,15 @@
 <div ng-controller="merchantleftbarCtrl">
-	<div class="category-left">
+	<div class="category-left phone-hide">
 		<h1>Restaurants</h1>
 		<ul>
 			<li ng-repeat="restaurant in restaurants"><a href="javascript:void(0);" ng-click="changerestaurant(restaurant)">{{restaurant.title}}</a></li>
+		</ul>
+	</div>
+
+	<div class="m-merchant-nav tablet-hide">
+		<h1>Restaurants</h1>
+		<ul>
+			<li ng-repeat="restaurant in restaurants"><p><a href="javascript:void(0);" ng-click="changerestaurant(restaurant)">{{restaurant.title}}</a></p></li>
 		</ul>
 	</div>
 </div>

@@ -148,6 +148,10 @@
         <!--</div>-->
     <!--</div>-->
 
+    <div class="tablet-hide">
+        <div ng-include="'app/views/partials/merchant_leftbar.html'"></div>
+
+    </div>
     <div class="m-featured-Promo tablet-hide" ng-if="specialInfo.length != 0">
         <h1 ng-click="specialShowHide()">{{specialTitle}}</h1>
         <ul ng-show="special_promo_show">
