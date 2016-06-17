@@ -396,6 +396,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'News List',
                 resolve: loadSequence('newslist','ngCkeditor','naif.base64')
             })
+            .state('admin.iconlist', {
+                url: '/iconlist',
+                templateUrl: 'app/views/admin/iconlist.html',
+                title: 'Icon List',
+                resolve: loadSequence('iconlist','naif.base64')
+            })
             .state('admin.locationlist', {
                 url: '/location',
                 templateUrl: 'app/views/admin/locationlist.html',

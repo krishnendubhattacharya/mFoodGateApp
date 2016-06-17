@@ -44,6 +44,7 @@ app.constant('JS_REQUIRES', {
         'frontend':["app/assets/css/site.css","app/assets/css/reset.css"],
         'adminlogin':['app/Controllers/admin/loginCtrl.js'],
         'newslist':['app/Controllers/admin/newslistCtrl.js'],
+        'iconlist':['app/Controllers/admin/iconlistCtrl.js'],
         'categorylist':['app/Controllers/admin/categorylistCtrl.js'],
         'locationlist':['app/Controllers/admin/locationlistCtrl.js'],
         'resturantlist':['app/Controllers/admin/resturantlistCtrl.js'],
