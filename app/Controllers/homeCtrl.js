@@ -21,6 +21,11 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
         }
     }
 
+    $scope.redirectto = function (id) {
+        console.log(id);
+        $location.path('/promodetails/' + id);
+    }
+
     $scope.specialShowHide = function () {
         if($scope.special_promo_show == 1){
             $scope.special_promo_show = 0;

@@ -59,7 +59,7 @@
                                 <p class="price"><span>IDR{{featuredCatDetail.price | number}}</span> IDR{{featuredCatDetail.price-((featuredCatDetail.price*featuredCatDetail.offer_percent)/100) | number}}</p>
                             </div>
                             <div class="view-btn">
-                                <a ui-sref="frontend.promodetails({ promoId: featuredCatDetail.id })"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
+                                <a href="#/promodetails/{{featuredCatDetail.id}}"><img src="app/assets/Images/view-btn.png" width="66" height="42"  alt=""/></a>
                                 <p countdown='' date='{{featuredCatDetail.offer_to_date}}'>&nbsp;</p>
                             </div>
                         </div>

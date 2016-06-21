@@ -1697,5 +1697,5 @@ code {
 .m-left-panel2 ul li:nth-child(3n+3){ border-right:solid 0px #eaeaea; }
 .m-left-panel2 ul li a{ text-decoration: none; color: #6b6b6b; text-align:center; }
 .m-left-panel2 ul li a:hover{ text-decoration: none; color: #319432; }
-.m-left-panel2 ul li h1{ text-align:center; padding:10px 0 0; margin:0; font-size:20px;}
+.m-left-panel2 ul li h1{ text-align:center; padding:10px 0 0; margin:0; font-size:20px; background: none;}
 

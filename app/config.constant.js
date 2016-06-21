@@ -175,7 +175,7 @@ app.constant('JS_REQUIRES', {
         },
         {
             name: '720kb.socialshare',
-            files: ['https://raw.githubusercontent.com/720kb/angular-socialshare/master/dist/angular-socialshare.min.js']
+            files: ['app/assets/js/angular-socialshare.min.js']
         },
     ]
 });

@@ -53,6 +53,30 @@ app.controller('websitemenusCtrl', function ($rootScope, $scope, $http, $locatio
                         }
                     }
                 });
+                var carousal = $('.newcarl');
+                carousal.owlCarousel({
+                    autoplay:true,
+                    touchDrag:false,
+                    loop:($scope.sliderImages && $scope.sliderImages.length>1?true:false),
+                    dots:true,
+                    nav:true,
+                    navContainerClass:"ca-nav",
+                    navText:false,
+                    autoplayTimeout:5000,
+                    autoplayHoverPause:true,
+                    singleItem:true,
+                    responsive:{
+                        0:{
+                            items:1
+                        },
+                        600:{
+                            items:2
+                        },
+                        1000:{
+                            items:2
+                        }
+                    }
+                });
                 //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseout', function (e){
                 //    console.log('hii');
                 //    carousal.trigger('play.owl.autoplay',[5000]);

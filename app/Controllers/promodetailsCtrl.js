@@ -1,4 +1,5 @@
 app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap,mFoodCart,$window,$cookieStore,$timeout) {
+    //alert(123);
     $scope.promoId = $stateParams.promoId;
     $scope.loggedindetails = myAuth.getUserNavlinks();
 

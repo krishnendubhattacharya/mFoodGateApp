@@ -170,7 +170,8 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
 
     $scope.loginRedirect = function(){
         //$timeout(function(){
-            if($scope.fetched_user_details.is_logged_in == 1){
+            console.log($scope.fetched_user_details);
+            if($scope.fetched_user_details.user_type_id == 1){
 
                 $location.path('admin/home');
             }else {
@@ -179,7 +180,13 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                     $location.path($scope.returnUrl);
                 }
                 else {
-                    $location.path('/');
+                    if($scope.fetched_user_details.user_type_id == 2){
+                        $location.path('dashboard');
+                    }else{
+                        $location.path('merchantprofile');
+
+                    }
+
                 }
             }
         //},3100);
