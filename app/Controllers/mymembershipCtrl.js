@@ -35,6 +35,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
                 columns: [{ dataField: 'title',caption:'Description'},
                     { dataField: 'restaurant_name',caption:'Restaurant'},
                     { dataField: 'purchased_date',caption:'Member Since'}, "expire_date",
+                    { dataField: 'member_id',caption:'Member Id'},
                     {
                         alignment: 'center',
                         cellTemplate: function (container, options) {

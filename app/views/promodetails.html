@@ -267,6 +267,7 @@
                     <div class="totals"><span>Total:</span> $1400</div>
                 </div>
             </div>-->
+
             <p ng-if="cartDetails"><input type="button" value="BUY NOW" ng-click="pay_now()"></p>
             <!--<div class="owl-carousel1">-->
                 <!--<div class="item" ng-repeat="featuredCatDetail in ads">-->
@@ -298,7 +299,13 @@
                                 onClick: add_to_cart }" ></div>
                     <div class="clearfix" style="margin-bottom: 10px;"></div>
                 </div>
-                <div class="banner"><img src="{{promodetails.image}}" alt=""/></div>
+                <div class="banner featured_carousel2">
+
+                    <div ng-repeat="relatedImg in related_images" class="item">
+                        <img src="{{relatedImg.image}}" alt=""/>
+                    </div>
+                </div>
+                <!--<div class="banner"><img src="{{promodetails.image}}" alt=""/></div>-->
             </div>
 
             <div class="share">
@@ -404,7 +411,7 @@
 </div>
     <div class="m-new-Promo tablet-hide">
         <h1>Related Products</h1>
-        <div class="featured_carousel">
+        <div class="featured_carousell">
             <div ng-repeat="related in related_products" class="item">
                 <div class="pro-item">
                     <img src="{{related.image}}" width="406" height="255"  alt=""/>

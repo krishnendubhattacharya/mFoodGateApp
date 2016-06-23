@@ -148,6 +148,32 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                         }
                     });
                 },30);
+                $timeout(function(){
+                    // $('#ca-container').contentcarousel();
+                    var banner_carousal = $('.featured_carousell');
+                    banner_carousal.owlCarousel({
+                        autoplay:true,
+                        touchDrag:false,
+                        loop:true,
+                        dots:true,
+                        nav:true,
+                        navContainerClass:"ca-nav",
+                        navText:false,
+                        autoplayTimeout:6000,
+                        autoplayHoverPause:true,
+                        responsive:{
+                            0:{
+                                items:1
+                            },
+                            600:{
+                                items:1
+                            },
+                            1000:{
+                                items:3
+                            }
+                        }
+                    });
+                },30);
 
             }
         })
