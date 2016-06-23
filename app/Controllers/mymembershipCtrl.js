@@ -1,4 +1,4 @@
-app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth) {
+app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth,$state) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
@@ -6,6 +6,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
 
         $location.path("/login");
     }
+    //console.log($state.$current.name);
     $scope.selectedEmployee = {};
     $scope.voucherInfo = null;
         $http({
@@ -48,7 +49,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
                             $('<button/>').addClass('dx-button')
                                 .text('Details')
                                 .on('dxclick', function () {
-                                    $location.path('/merchant-membership/'+options.data.merchant_id+'/');
+                                    $location.path('/merchant-membership/'+options.data.voucher_id+'/'+options.data.merchant_id+'/');
                                 })
                                 .appendTo(container);
                         }

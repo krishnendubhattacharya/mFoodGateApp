@@ -4,6 +4,7 @@
  */
 app.controller('merchantleftbarCtrl', function ($rootScope, $scope, $http, $location, myAuth,mFoodCart, $cookieStore,$stateParams,$state) {
     $scope.merchant_id = $stateParams.id;
+    $scope.v_id = $stateParams.v_id;
     $scope.res_id = $stateParams.res_id;
 
   $scope.getRestaurants =  function(){
@@ -31,7 +32,8 @@ app.controller('merchantleftbarCtrl', function ($rootScope, $scope, $http, $loca
 
     $scope.changerestaurant = function(res)
     {
-        $state.go('.', {res_id: res.id}, {notify: true});
+        //$state.go('.', {res_id: res.id}, {notify: true});
+       $state.go($state.$current.name, { 'v_id':$scope.v_id, 'id':$scope.merchant_id, 'res_id':res.id });
     }
    
 });

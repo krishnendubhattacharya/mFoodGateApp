@@ -326,37 +326,37 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Merchant-queuing'
             })
             .state('frontend.merchantmembership', {
-                url: '/merchant-membership/:id/:res_id?',
+                url: '/merchant-membership/:v_id/:id/:res_id?',
                 resolve: loadSequence('merchantmembership','merchantheader','merchantleftbar'),
                 templateUrl: 'app/views/merchantmembership.html',
                 title: 'Merchant-membership'
             })
             .state('frontend.websitemenus', {
-                url: '/websitemenus/:id/:res_id?',
+                url: '/websitemenus/:v_id/:id/:res_id?',
                 resolve: loadSequence('websitemenus','merchantheader','merchantleftbar'),
                 templateUrl: 'app/views/websitemenus.html',
                 title: 'Merchant-membership'
             })
             .state('frontend.websitefeatureds', {
-                url: '/websitefeatureds/:id/:res_id?',
+                url: '/websitefeatureds/:v_id/:id/:res_id?',
                 resolve: loadSequence('websitefeatureds','merchantheader','merchantleftbar'),
                 templateUrl: 'app/views/websitefeatureds.html',
                 title: 'Merchant-membership'
             })
             .state('frontend.websiteabout', {
-                url: '/websiteabout/:id/:res_id?',
+                url: '/websiteabout/:v_id/:id/:res_id?',
                 resolve: loadSequence('websiteabout','merchantheader','merchantleftbar','ngMap'),
                 templateUrl: 'app/views/websiteabout.html',
                 title: 'Merchant-membership'
             })
             .state('frontend.websitenews', {
-                url: '/websitenews/:id/:res_id?',
+                url: '/websitenews/:v_id/:id/:res_id?',
                 resolve: loadSequence('websitenews','merchantheader','merchantleftbar'),
                 templateUrl: 'app/views/websitenews.html',
                 title: 'Merchant-membership'
             })
             .state('frontend.websitepromos', {
-                url: '/websitepromos/:id/:res_id?',
+                url: '/websitepromos/:v_id/:id/:res_id?',
                 resolve: loadSequence('websitepromos','merchantheader','merchantleftbar'),
                 templateUrl: 'app/views/websitepromos.html',
                 title: 'Merchant-membership'
