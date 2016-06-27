@@ -99,6 +99,7 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
         },
         columns: ["member_name", {caption:"PromoID",dataField:"promo_id"},
             {caption:"Date Of Purchase",dataField:"purchased_date"},
+            {caption:"Expiry Date",dataField:"expiry_date"},
             {caption:"Merchant Id",dataField:"merchant_id"},
             {caption:"Member Id",dataField:"member_membership_id"},
             {
