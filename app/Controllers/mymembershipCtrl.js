@@ -131,7 +131,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
 
     $scope.viewDetails = function (data) {
         //console.log(data.itemData);
-        $location.path('/merchant-membership/'+data.itemData.merchant_id + '/');
+        $location.path('/merchant-membership/'+data.itemData.voucher_id+'/'+data.itemData.merchant_id + '/');
     }
 
 

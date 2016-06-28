@@ -2,6 +2,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
     $scope.promoId = $stateParams.promoId;
     $scope.loggedindetails = myAuth.getUserNavlinks();
 
+
     $scope.cartIds = [];
     $scope.save_to_db = function() {
         $scope.cartDetails = mFoodCart.get_cart();
@@ -144,27 +145,29 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
             $scope.cart_total_points += (value.quantity * value.mpoints);
         })
     }
-
-    $scope.pay_now = function(){
+    $scope.pay_now = function() {
 
         $scope.cartDetails = mFoodCart.get_cart();
-        console.log($scope.cartDetails);
-        if(!$scope.loggedindetails){
+        //console.log($scope.cartDetails);
+
+        if (!$scope.loggedindetails) {
             var ret = $location.path();
             $location.path("/login").search('returnUrl', ret);
         }
         else {
+            if(!$scope.loggedindetails.first_name) {
+                $location.path("/profile");
+            }else{
             $scope.getCartTotals();
-            if($scope.payments=='C')
-            {
+            if ($scope.payments == 'C') {
                 $http({
                     method: "POST",
-                    url: $rootScope.serviceurl+"cart_checkout",
+                    url: $rootScope.serviceurl + "cart_checkout",
                     headers: {'Content-Type': 'application/json'},
-                    data:{cart:$scope.cartDetails,total:$scope.cart_total,user_id:$scope.loggedindetails.id}
-                }).success(function(data) {
+                    data: {cart: $scope.cartDetails, total: $scope.cart_total, user_id: $scope.loggedindetails.id}
+                }).success(function (data) {
 
-                    if(data.type == 'success') {
+                    if (data.type == 'success') {
                         //console.log(data.getRelatedPromo);
                         //$scope.related_products = data.getRelatedPromo;
                         //console.log($scope.related_products);
@@ -184,12 +187,16 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
                 })
             }
             else {
-                if($scope.mpoints>=$scope.cart_total_points) {
+                if ($scope.mpoints >= $scope.cart_total_points) {
                     $http({
                         method: "POST",
                         url: $rootScope.serviceurl + "redeemUserPoints",
                         headers: {'Content-Type': 'application/json'},
-                        data: {cart:$scope.cartDetails,points: $scope.cart_total_points, user_id: $scope.loggedindetails.id}
+                        data: {
+                            cart: $scope.cartDetails,
+                            points: $scope.cart_total_points,
+                            user_id: $scope.loggedindetails.id
+                        }
                     }).success(function (data) {
 
                         if (data.status == 'success') {
@@ -234,6 +241,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
 
             }
         }
+    }
         /**/
     }
 
