@@ -35,6 +35,11 @@ app.controller('mobileMenuCtrl', function ($rootScope, $scope, $http, $location,
 
         //console.log('nnnnnnnnnnnnn');
          };
+
+    $scope.menuHide = function()
+    {
+        menuHide();
+    }
          
          $scope.userLogout=function(){
                 console.log($scope.loggedindetails);

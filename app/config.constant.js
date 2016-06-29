@@ -138,6 +138,10 @@ app.constant('JS_REQUIRES', {
         files: ['vendor/moment/angular-moment.min.js']
     },
         {
+            name: 'mn',
+            files: ['bower_components/mn_touch/mn-touch.js']
+        },
+        {
             name: 'datatables',
             files: ['bower_components/angular-datatables/jquery.dataTables.js','bower_components/angular-datatables/angular-datatables.js','bower_components/angular-datatables/dataTables.bootstrap.css']
         },

@@ -13,6 +13,13 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
 
     $scope.fads = false;
 
+    $scope.goto_page = function(t)
+    {
+        if(t)
+            $location.path('/' + t);
+        else
+            $location.path('/');
+    }
     $scope.lastShowHide = function () {
         if($scope.last_promo_show == 1){
             $scope.last_promo_show = 0;

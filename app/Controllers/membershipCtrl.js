@@ -11,6 +11,14 @@ app.controller('membershipCtrl', function ($rootScope, $scope, $http, $location)
     $scope.new_promo_show = 1;
     $scope.hot_promo_show = 1;
 
+    $scope.goto_page = function(t)
+    {
+        if(t)
+            $location.path('/' + t);
+        else
+            $location.path('/');
+    }
+
     $scope.lastShowHide = function () {
         if($scope.last_promo_show == 1){
             $scope.last_promo_show = 0;

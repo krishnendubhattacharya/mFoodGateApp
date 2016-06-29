@@ -8,6 +8,13 @@ app.controller('marketplaceCtrl', function ($rootScope, $scope, $http, $location
     $scope.event_promo_show = 1;
     $scope.swap_promo_show = 1;
 
+    $scope.goto_page = function(t)
+    {
+        if(t)
+            $location.path('/' + t);
+        else
+            $location.path('/');
+    }
 
     $scope.resellShowHide = function () {
         console.log($scope.resell_promo_show);

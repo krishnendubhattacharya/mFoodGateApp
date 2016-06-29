@@ -146,12 +146,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '',
                 templateUrl: 'app/views/app.html',
                 abstract :true,
-                resolve: loadSequence('footer','mCart'),
+                resolve: loadSequence('footer','mCart','mn'),
 
             })
             .state('frontend.index', {
                 url: '/',
-                resolve: loadSequence('home'),
+                resolve: loadSequence('home','mn'),
                 templateUrl: 'app/views/home.html',
                 title: 'Home'
             })
@@ -639,19 +639,19 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             })
             .state('frontend.voucher', {
                 url: '/voucher',
-                resolve: loadSequence('voucher'),
+                resolve: loadSequence('voucher','mn'),
                 templateUrl: 'app/views/voucher.html',
                 title: 'Voucher'
             })
             .state('frontend.membership', {
                 url: '/membership',
-                resolve: loadSequence('membership'),
+                resolve: loadSequence('membership','mn'),
                 templateUrl: 'app/views/membership.html',
                 title: 'Membership'
             })
             .state('frontend.marketplace', {
                 url: '/marketplace',
-                resolve: loadSequence('marketplace'),
+                resolve: loadSequence('marketplace','mn'),
                 templateUrl: 'app/views/marketplace.html',
                 title: 'Marketplace'
             })
@@ -765,7 +765,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
             })
             .state('frontend.paymentVoucher', {
                 url: '/paymentVoucher',
-                resolve: loadSequence('paymentVoucher'),
+                resolve: loadSequence('paymentVoucher','mn'),
                 templateUrl: 'app/views/paymentVoucher.html',
                 title: 'Payment Voucher Detail'
             })
