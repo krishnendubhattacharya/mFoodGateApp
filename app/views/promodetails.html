@@ -84,27 +84,38 @@
         <div class="details">
             <div class="banner-main">
                 <!--<p>{{restaurant.title}}</p>-->
-                <h1>{{promodetails.title}}</h1>
+                <h1>{{promodetails.title}} <span class="p-circle">{{promodetails.offer_percent}}%</span></h1>
                 <div >
-                    <div style="width:300px;float:left">
+                    <div>
                     <p ng-if="promodetails.offer_type_id != 3"><b>Voucher Price : </b>IDR{{promodetails.price | number}}</p>
                         <p ng-if="promodetails.offer_type_id == 3"><b>Voucher Price : </b>IDR{{promodetails.price | number}}</p>
-                        <p><b>Discount : </b>{{promodetails.offer_percent}}%</p>
+                        <!--<p><b>Discount : </b>{{promodetails.offer_percent}}%</p>-->
                     <p><b>Discounted Price : </b>IDR{{promodetails.offer_price | number}}</p>
                         <p><b>Quantity Sold : </b>{{promodetails.buy_count}}</p>
                         <p><b>Quantity Available : </b>{{promodetails.quantity - promodetails.buy_count}}</p>
-                    <p><b>M-points : </b>{{promodetails.mpoints}}</p>
+                        <p><b>M-points : </b>{{promodetails.mpoints}}</p>
+
+                        <p><b>Voucher Validation Start Date : </b>{{promodetails.item_start_date}}</p>
+                        <p><b>Voucher Expired Date : </b>{{promodetails.item_expire_date}}</p>
+                        <p><b>Voucher Validation Start Hour : </b>{{promodetails.item_start_hour}}</p>
+                        <p><b>Voucher Validation End Hour : </b>{{promodetails.item_end_hour}}</p>
+                        <p><b>Including Holiday : </b>{{promodetails.including_holidays==1?'Yes':'No'}}</p>
+                        <p><b>Validation Days : </b><span ng-repeat="day in offer_days | orderBy : '2'">{{day.day}}, </span> </p>
+                        <p><b>Time Left : </b><p countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
                         <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                     </div>
-                    <div class="dx-clearfix"></div>
-                    <div style="float:right" id="button" dx-button="{
+                    <div style="padding-top: 25px;" class="dx-clearfix"></div>
+                    <div id="button" dx-button="{
                                 text: 'Add to Cart',
                                 type: 'success',
                                 height:'40px',
                                 width:'130px',
-                                onClick: add_to_cart }" ></div>
-                    <div class="clearfix" style="clear:both;margin-bottom: 10px;"></div>
+                                onClick: add_to_cart }" >
+
+                    </div>
+
                 </div>
+                <div style="padding-top: 25px;" class="dx-clearfix"></div>
                 <div class="banner featured_carousel3">
 
                         <div ng-repeat="relatedImg in related_images" class="item">
@@ -168,11 +179,11 @@
                     <p>{{restaurantInfo1.sub_title}}</p>
                     <p ng-bind-html="restaurantInfo1.description"></p>
                     <h2 ng-if="restaurantInfo1.outlets.length">Outlets</h2>
-                    <ul>
-                        <li ng-repeat="outletsInfo in restaurantInfo1.outlets">
-                            <p style="cursor: pointer;" ng-click="changeMap(outletsInfo)">{{outletsInfo.title}}</p>
-                            <p style="cursor: pointer;" ng-click="changeMap(outletsInfo)">{{outletsInfo.address}}</p>
-                        </li>
+                    <ul ng-repeat="outletsInfo in restaurantInfo1.outlets">
+
+                            <li style="cursor: pointer;" ng-click="changeMap(outletsInfo)">{{outletsInfo.title}}</li>
+                            <li style="cursor: pointer;" ng-click="changeMap(outletsInfo)">{{outletsInfo.address}}</li>
+
 
                     </ul>
                 </div>
@@ -282,16 +293,26 @@
         <div class="details">
             <div class="banner-main">
                 <!--<p>{{restaurant.title}}</p>-->
-                <h1>{{promodetails.title}}</h1>
+                <h1>{{promodetails.title}} <span class="p-circle">{{promodetails.offer_percent}}%</span></h1>
                 <div >
-                    <div style="width:300px;float:left">
+                    <div>
                         <p><b>Voucher Price : </b>IDR{{promodetails.price | number}}</p>
                         <p><b>Discounted Price : </b>IDR{{promodetails.offer_price | number}}</p>
+                        <!--<p><b>Discount : </b>{{promodetails.offer_percent}}%</p>-->
                         <p><b>Quantity Sold : </b>{{promodetails.buy_count}}</p>
                         <p><b>Quantity Available : </b>{{promodetails.quantity - promodetails.buy_count}}</p>
                         <p><b>M-points : </b>{{promodetails.mpoints}}</p>
+
+                        <p><b>Voucher Validation Start Date : </b>{{promodetails.item_start_date}}</p>
+                        <p><b>Voucher Expired Date : </b>{{promodetails.item_expire_date}}</p>
+                        <p><b>Voucher Validation Start Hour : </b>{{promodetails.item_start_hour}}</p>
+                        <p><b>Voucher Validation End Hour : </b>{{promodetails.item_end_hour}}</p>
+                        <p><b>Including Holiday : </b>{{promodetails.including_holidays==1?'Yes':'No'}}</p>
+                        <p><b>Validation Days : </b><span ng-repeat="day in offer_days | orderBy : '2'">{{day.day}}, </span> </p>
+                        <p><b>Time Left : </b><p countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
                         <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                     </div>
+                    <div style="padding-top: 25px;" class="dx-clearfix"></div>
                     <div style="float:right" id="button" dx-button="{
                                 text: 'Add to Cart',
                                 type: 'success',
@@ -300,6 +321,7 @@
                                 onClick: add_to_cart }" ></div>
                     <div class="clearfix" style="margin-bottom: 10px;"></div>
                 </div>
+                <div style="padding-top: 25px;" class="dx-clearfix"></div>
                 <div class="banner featured_carousel2">
 
                     <div ng-repeat="relatedImg in related_images" class="item">
@@ -325,11 +347,11 @@
                     <p>{{restaurantInfo.sub_title}}</p>
                     <p ng-bind-html="restaurantInfo.description"></p>
                     <h2 ng-if="restaurantInfo.outlets.length">Outlets</h2>
-                    <ul>
-                        <li ng-repeat="outletsInfo in restaurantInfo.outlets">
-                            <p ng-click="changeMap(outletsInfo)">{{outletsInfo.title}}</p>
-                            <p ng-click="changeMap(outletsInfo)">{{outletsInfo.address}}</p>
-                        </li>
+                    <ul ng-repeat="outletsInfo in restaurantInfo.outlets">
+
+                            <li ng-click="changeMap(outletsInfo)">{{outletsInfo.title}}</li>
+                            <li ng-click="changeMap(outletsInfo)">{{outletsInfo.address}}</li>
+
 
                     </ul>
                 </div>

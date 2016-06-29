@@ -7,6 +7,7 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
         $location.path("/login");
     }
     $scope.img_uploader = null;
+    $scope.icon_uploader = null;
     $scope.all_locations = [];
     $scope.all_restaurant = [];
     $scope.textBox = {image:  {
@@ -29,8 +30,31 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
             onInitialized : function(e)
             {
                 $scope.img_uploader = e.component;
+
             }
     },
+        icon:  {
+            buttonText: 'Select file',
+            labelText: 'Drop file here',
+            multiple: false,
+            accept: 'image/*',
+            uploadUrl: $rootScope.serviceurl + 'MerchantRestaurantIconUpload',
+            onUploaded:function(ret){
+
+                //if($scope.menuInfo.id && $scope.menuInfo.imageurl && $scope.menuInfo.logo)
+                //{
+                //    console.log($scope.menuInfo.logo,$scope.menuInfo.imageurl,ret.file.value.name);
+                //    var s = $scope.menuInfo.imageurl;
+                //    $scope.menuInfo.imageurl.replace = s.replace(/$scope.menuInfo.logo/g,ret.file.value.name);
+                //    console.log($scope.menuInfo.imageurl);
+                //}
+                $scope.menuInfo.icon = ret.file.value.name;
+            },
+            onInitialized : function(e)
+            {
+                $scope.icon_uploader = e.component;
+            }
+        },
         price:{
             mode: "number"
         },location:{
@@ -61,12 +85,14 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
             description:'',
             sub_title:'',
             logo:'',
+            icon:'',
             is_active:false,
             is_featured:false,
         }
         //$scope.textBox.image.value = null;
         //$scope.img_uploader = ;
         $scope.img_uploader.reset();
+        $scope.icon_uploader.reset();
 
     }
 
@@ -230,6 +256,8 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
     $scope.save_menu = function(){
 
         //console.log($scope.textBox.image.value,$scope.menuInfo);
+        //console.log($scope.menuInfo);
+        //return false;
         if($scope.menuInfo.id)
         {
             $http({
@@ -317,12 +345,15 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
             description:menu.description,
             sub_title:menu.sub_title,
             logo:menu.logo,
+            icon:menu.icon,
             restaurant_id:menu.restaurant_id,
             is_active:menu.is_active==1?true:false,
             is_featured:menu.is_featured==1?true:false,
-            imageurl:menu.imageurl
+            imageurl:menu.imageurl,
+            iconurl:menu.iconurl
         }
         $scope.img_uploader.reset();
+        $scope.icon_uploader.reset();
     }
 
     $scope.loadList=function(e)

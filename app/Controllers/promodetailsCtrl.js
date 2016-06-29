@@ -70,6 +70,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                 $scope.restaurant = data.restaurants;
                 $scope.mapaddress = data.merchantInfo[0].address;
                 $scope.maptitle = data.merchantInfo[0].merchant_name;
+                $scope.offer_days = data.offer_days;
                 //console.log(data.restaurants.length);
                 if(data.restaurants.length == 1){
                     $scope.restName=data.restaurants[0].title;

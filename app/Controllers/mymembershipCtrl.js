@@ -131,6 +131,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
 
     $scope.viewDetails = function (data) {
         //console.log(data.itemData);
+        localStorage.setItem('merchantweb', "");
         $location.path('/merchant-membership/'+data.itemData.voucher_id+'/'+data.itemData.merchant_id + '/');
     }
 

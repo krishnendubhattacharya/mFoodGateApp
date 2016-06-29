@@ -6,6 +6,14 @@ app.controller('merchantleftbarCtrl', function ($rootScope, $scope, $http, $loca
     $scope.merchant_id = $stateParams.id;
     $scope.v_id = $stateParams.v_id;
     $scope.res_id = $stateParams.res_id;
+    $scope.resShow = localStorage.getItem('merchantweb');
+    //alert($scope.resShow);
+    if($scope.resShow){
+        $scope.restaurantShow = 1;
+    }else{
+        $scope.restaurantShow = 0;
+    }
+    //console.log($scope.restaurantShow);
 
   $scope.getRestaurants =  function(){
       $http({

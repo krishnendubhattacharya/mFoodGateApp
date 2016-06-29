@@ -10,6 +10,7 @@ $scope.v_id = $stateParams.v_id;
 $scope.res_id = $stateParams.res_id;
 //console.log($scope.merchant_id);
 //console.log($scope.res_id);
+    //localStorage.setItem('merchantweb', "");
     $scope.getMerResDetail = function() {
 
         $http({
@@ -50,6 +51,14 @@ $scope.res_id = $stateParams.res_id;
         });
     }
     $scope.viewIcon();
+
+    $scope.headerLink = function () {
+        //console.log(pageName+'/'+v_id+'/'+id+'/'+res_id);
+        //$cookieStore.put('merchantweb', v_id);
+        localStorage.setItem('merchantweb', 1);
+        //$location.path(pageName+'/'+v_id+'/'+id+'/'+res_id);
+
+    }
    
 });
 

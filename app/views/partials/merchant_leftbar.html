@@ -5,11 +5,14 @@
 			<li ng-repeat="restaurant in restaurants"><a href="javascript:void(0);" ng-click="changerestaurant(restaurant)">{{restaurant.title}}</a></li>
 		</ul>
 	</div>
+	<div style="padding-top: 15px;" class="dx-clearfix"></div>
+	<div class="m-merchant-nav2 tablet-hide" ng-if="restaurantShow"><h1>Restaurants</h1></div>
+	<div class="m-myaccount-details tablet-hide" ng-if="restaurantShow">
+	<div class="m-left-panel2 tablet-hide">
 
-	<div class="m-merchant-nav m-left-panel2 tablet-hide">
-		<h1>Restaurants</h1>
 		<ul>
-			<li ng-repeat="restaurant in restaurants"><p><a href="javascript:void(0);" ng-click="changerestaurant(restaurant)"><h1><img src="app/assets/Images/setting.png" width="35" height="35"  alt=""/></h1>{{restaurant.title}}</a></p></li>
+			<li ng-repeat="restaurant in restaurants"><p><a href="javascript:void(0);" ng-click="changerestaurant(restaurant)"><h1><img src="{{restaurant.iconurl}}" width="35" height="35"  alt=""/></h1>{{restaurant.title}}</a></p></li>
 		</ul>
+	</div>
 	</div>
 </div>
