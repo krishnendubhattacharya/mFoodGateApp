@@ -1012,11 +1012,11 @@ hidden; margin: 0 auto;}
 .m-item-details .details .share p span{ margin-right:10px; vertical-align: middle; height: 24px; line-height: 24px; padding-top:7px; }
 .m-item-details .details .highlights{width:100%; height: auto; padding: 20px 0; border-bottom: solid 1px #e9e9e9; overflow: hidden;}
 .m-item-details .details .highlights p{ font-size: 14px; line-height:21px; color: #787878; padding:0; margin: 10px 0; }
-.m-item-details .details .highlights ul{ padding: 0; margin: 0 0 20px; }
+.m-item-details .details .highlights ul{ padding: 0; margin: 10px 0 20px; }
 .m-item-details .details .highlights h1{ font-size:16px !important; color:#242424; padding: 0;
     margin: 0 0 15px !important; line-height: 24px;}
-.m-item-details .details .highlights ul li{ padding: 0; margin: 0 0 10px; float: none; list-style-type:disc;
-    list-style-position: inside; font-size:14px; color:#505050; }
+.m-item-details .details .highlights ul li{ padding: 0; margin: 0 0 10px 15px; float: none; list-style-type:disc;
+    list-style-position: outside; font-size:14px; color:#505050; }
 
 
 .m-item-details .details .location{ width:100%; height: auto; padding: 20px 0; }

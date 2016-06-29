@@ -174,11 +174,11 @@
                 </div>
             </div>-->
             <div class="highlights" ng-repeat="restaurantInfo1 in restaurant">
-                <div class="merchant-dsc">
-                    <h2>{{restaurantInfo1.title}}</h2>
+
+                    <h1>{{restaurantInfo1.title}}</h1>
                     <p>{{restaurantInfo1.sub_title}}</p>
                     <p ng-bind-html="restaurantInfo1.description"></p>
-                    <h2 ng-if="restaurantInfo1.outlets.length">Outlets</h2>
+                    <h1 ng-if="restaurantInfo1.outlets.length">Outlets</h1>
                     <ul ng-repeat="outletsInfo in restaurantInfo1.outlets">
 
                             <li style="cursor: pointer;" ng-click="changeMap(outletsInfo)">{{outletsInfo.title}}</li>
@@ -186,7 +186,7 @@
 
 
                     </ul>
-                </div>
+
             </div>
             <div class="location">
                 <div class="map"><!--<img src="app/assets/Images/map.png" alt=""/>-->
@@ -342,11 +342,11 @@
 
             </div>
             <div class="highlights" ng-repeat="restaurantInfo in restaurant">
-                <div class="merchant-dsc">
-                    <h2>{{restaurantInfo.title}}</h2>
+
+                    <h1>{{restaurantInfo.title}}</h1>
                     <p>{{restaurantInfo.sub_title}}</p>
                     <p ng-bind-html="restaurantInfo.description"></p>
-                    <h2 ng-if="restaurantInfo.outlets.length">Outlets</h2>
+                    <h1 ng-if="restaurantInfo.outlets.length">Outlets</h1>
                     <ul ng-repeat="outletsInfo in restaurantInfo.outlets">
 
                             <li ng-click="changeMap(outletsInfo)">{{outletsInfo.title}}</li>
@@ -354,7 +354,7 @@
 
 
                     </ul>
-                </div>
+
             </div>
             <div class="location">
                 <div class="map"><!--<img src="app/assets/Images/map.png" alt=""/>-->
