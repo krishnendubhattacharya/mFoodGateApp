@@ -107,7 +107,7 @@ angular
 
         factobj.getAdminNavlinks = function () {
             console.log(factobj.adminuserinfo.loginstatus);
-            factobj.adminuserinfo = $cookieStore.get('admin');
+            //factobj.adminuserinfo = $cookieStore.get('admin');
             var adminlogin = factobj.adminuserinfo.loginstatus;
             if (!adminlogin) {
                 return false;
