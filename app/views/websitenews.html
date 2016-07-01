@@ -18,7 +18,7 @@
                     <div class="card-img">
                         <img src="{{menu.image_url}}" alt=""/> </div>
                     <div class="card-dsc">
-                        <h1>{{menu.title}}</h1>
+                        <a ui-sref="frontend.newsdetail({ newsId: menu.id })"> <h1>{{menu.title}}</h1></a>
                         <h2 ng-bind-html="menu.description"></h2>
                         <!--<p class="price">Price: <span>IDR{{menu.price}}</span></p>-->
                     </div>
