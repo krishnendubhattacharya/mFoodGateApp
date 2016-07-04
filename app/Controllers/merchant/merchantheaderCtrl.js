@@ -22,6 +22,7 @@ $scope.res_id = $stateParams.res_id;
             $scope.merchantId = data.merchant_id;
             $scope.resId = data.restaurant_id;
             $scope.memberId = data.member_id;
+            console.log($scope.memberId);
             //$scope.voucherInfo = data.data;
             //console.log($scope.voucherInfo);
             //if($scope.datag)
