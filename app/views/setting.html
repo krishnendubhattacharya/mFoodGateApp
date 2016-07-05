@@ -97,29 +97,60 @@
             <div class="form">
                 <div class="dx-fieldset">
                     <div class="dx-field">
-                        <div class="dx-field-label">Other Notification Media : Whatsapp, Yahoo Messenger, SMS</div>
+                        <div class="dx-field-label">Other Notification Media</div>
                         <div class="dx-field-value">
-                            <div dx-check-box="checkBox.checked" ng-model="media_notification"></div>
-                        </div>
-                    </div>
-                    <div class="dx-field">
-                        <div class="dx-field-label">Reminder Before Expired in Day (Points, Voucher, Membership, Promo, Card)</div>
-                        <div class="dx-field-value">
-                            <div dx-check-box="checkBox.checked" ng-model="expire_date_notification"></div>
+                            <!--<div dx-check-box="checkBox.checked" ng-model="media_notification"></div>-->
+                            <div class="checkBox" dx-check-box="{
+                                onValueChanged: valueChanged
+                            }" ng-model="media_notification"></div>
                         </div>
                     </div>
 
-                    <div class="dx-field">
-                        <div class="dx-field-label">Allowed New/Hot/Last Day Promo Notification for start date and expired date</div>
+                    <div class="dx-field" ng-show="mediaCheck">
+                        <div class="dx-field-label">WA</div>
                         <div class="dx-field-value">
-                            <div dx-check-box="checkBox.checked" ng-model="promo_notification"></div>
+                            <div dx-check-box="checkBox.checked" ng-model="notification_wa"></div>
+                        </div>
+                    </div>
+                    <div class="dx-field" ng-show="mediaCheck">
+                        <div class="dx-field-label">SMS</div>
+                        <div class="dx-field-value">
+                            <div dx-check-box="checkBox.checked" ng-model="notification_sms"></div>
+                        </div>
+                    </div>
+                    <div class="dx-field" ng-show="mediaCheck">
+                        <div class="dx-field-label">Email</div>
+                        <div class="dx-field-value">
+                            <div dx-check-box="checkBox.checked" ng-model="notification_email"></div>
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Reminder Before Expired in Day</div>
+                        <div class="dx-field-value">
+                            <!--<div dx-check-box="checkBox.unchecked" ng-model="expire_date_notification"></div>-->
+                            <div class="checkBox" dx-check-box="{
+                                onValueChanged: valueChangedDate
+                            }" ng-model="expire_date_notification"></div>
+                        </div>
+                    </div>
+
+                    <div class="dx-field" ng-show="dayscheck">
+                        <div class="dx-field-label">No. of Days</div>
+                        <div class="dx-field-value">
+                            <div dx-text-box="textBox.remainder_days"  ng-model="remainder_days"></div>
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Allowed New/Hot/Last Day Promo Notification</div>
+                        <div class="dx-field-value">
+                            <div dx-check-box="checkBox.unchecked" ng-model="promo_notification"></div>
                         </div>
                     </div>
 
                     <div class="dx-field">
                         <div class="dx-field-label">Allowed News Letter</div>
                         <div class="dx-field-value">
-                            <div dx-check-box="checkBox.checked" ng-model="news_letter_notification"></div>
+                            <div dx-check-box="checkBox.unchecked" ng-model="news_letter_notification"></div>
                         </div>
                     </div>
                     <div class="dx-field">
@@ -128,12 +159,22 @@
                             <div id="button" dx-button="{
                                 text: 'Submit',
                                 type: 'success',
-                                class:'btn btn-success btn-lg btn-block',
-                                height:'40px',
-                                width:'110px',
                                 onClick: saveSetting }" ></div>
                         </div>
                     </div>
+
+                    <!--<div class="dx-field">-->
+                        <!--<div class="dx-field-label">&nbsp;</div>-->
+                        <!--<div class="dx-field-value">-->
+                            <!--<div id="button" dx-button="{-->
+                                <!--text: 'Submit',-->
+                                <!--type: 'success',-->
+                                <!--class:'btn btn-success btn-lg btn-block',-->
+                                <!--height:'40px',-->
+                                <!--width:'110px',-->
+                                <!--onClick: saveSetting }" ></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
 
                 </div>

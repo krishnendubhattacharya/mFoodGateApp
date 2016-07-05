@@ -32,7 +32,7 @@
                     </div>
                     <div class="all-news" ng-if="restaurant.outlets.length>0">
                         <h1>Our Outlets</h1>
-                        <div class="news-item" ng-repeat="outlet in restaurant.outlets" style="margin-bottom: 10px;">
+                        <div class="news-item" ng-repeat="outlet in restaurant.outlets" style="margin-bottom: 25px;">
                             <div class="pix"><img src="{{outlet.image_url}}" width="264" height="167"  alt=""/></div>
                             <div class="dsc">
                                 <h1>{{outlet.title}}</h1>
@@ -40,7 +40,7 @@
                                 <P><span>Address:</span>{{outlet.address}}</P>
                                 <h2>Description:</h2>
                                 <p>{{outlet.description}}</p>
-                                <a href="javascript:void(0)" ng-click="changeMap(outlet)" style="font-size: 16px;">Click here for Map</a>
+                                <a href="javascript:void(0)" ng-click="changeMap(outlet)" style="font-size: 16px;color:rgb(120,154,50)">Click here for Map</a>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
             </div>
             <div class="all-news" ng-if="restaurant.outlets.length>0">
                 <h1>Our Outlets</h1>
-                <div class="news-item"  ng-repeat="outlet in restaurant.outlets" style="margin-bottom: 10px;">
+                <div class="news-item"  ng-repeat="outlet in restaurant.outlets" style="margin-bottom: 25px;">
                     <div class="pix"><img src="{{outlet.image_url}}" width="264" height="167"  alt=""/></div>
                     <div class="dsc">
                         <h1>{{outlet.title}}</h1>
@@ -98,7 +98,7 @@
                         <P><span>Address:</span>{{outlet.address}}</P>
                         <h2>Description:</h2>
                         <p>{{outlet.description}}</p>
-                        <a href="javascript:void(0)" ng-click="changeMap(outlet)" style="font-size: 16px;">Click here for Map</a>
+                        <a href="javascript:void(0)" ng-click="changeMap(outlet)" style="font-size: 16px;color:rgb(120,154,50)">Click here for Map</a>
                     </div>
                 </div>
 

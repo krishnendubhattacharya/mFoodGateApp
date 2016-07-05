@@ -4,6 +4,11 @@
  */
 app.controller('newslistCtrl', function ($rootScope, $scope, $http, $location, myAuth, $cookieStore,$timeout) {
 
+    $scope.datepickerOptions = {format: 'mm/dd/yyyy',
+        language: 'en',
+        autoclose: true,
+        weekStart: 0}
+
     $scope.viewNews = function () {
         $http({
             method: "GET",
@@ -44,7 +49,8 @@ app.controller('newslistCtrl', function ($rootScope, $scope, $http, $location, m
             "image":'',
             "is_banner":0,
             "is_active":0,
-            "image_url":''
+            "image_url":'',
+            "published_date":moment().format('MM/DD/YYYY')
         };
         $scope.newView='edit';
     }

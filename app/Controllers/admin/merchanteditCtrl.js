@@ -29,7 +29,8 @@ app.controller('merchanteditCtrl', function ($rootScope, $scope, $http, NgMap, $
                 email:data.user_details.email,
                 is_active:data.user_details.is_active,
                 location_id:data.user_details.location_id,
-                address:data.user_details.address
+                address:data.user_details.address,
+                about_me:data.user_details.about_me
 
             }
             $scope.image_url=data.user_details.image;
@@ -90,24 +91,29 @@ app.controller('merchanteditCtrl', function ($rootScope, $scope, $http, NgMap, $
             }).success(function (data) {
                 console.log(data);
                 // $scope.viewMerchant();
-                $http({
-                    method: "POST",
-                    url: $rootScope.serviceurl + "updateBankDetails",
-                    data: $scope.bank,
-                    headers: {'Content-Type': 'application/json'},
-                }).success(function (data) {
-                    if(data.type=='error')
-                    {
-                        notify({
-                            message : data.message,
-                            classes : 'alert-danger'
-                        });
-                    }else{
-                        $location.path('/admin/merchantlist');
-                        $scope.item={};
-                        $scope.bank={};
-                    }
-                })
+                if($scope.bank.name) {
+                    $http({
+                        method: "POST",
+                        url: $rootScope.serviceurl + "updateBankDetails",
+                        data: $scope.bank,
+                        headers: {'Content-Type': 'application/json'},
+                    }).success(function (data) {
+                        if (data.type == 'error') {
+                            notify({
+                                message: data.message,
+                                classes: 'alert-danger'
+                            });
+                        } else {
+                            $location.path('/admin/merchantlist');
+                            $scope.item = {};
+                            $scope.bank = {};
+                        }
+                    })
+                }else{
+                    $location.path('/admin/merchantlist');
+                    $scope.item = {};
+                    $scope.bank = {};
+                }
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
             });

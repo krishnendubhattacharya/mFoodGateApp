@@ -91,11 +91,16 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
 
         if($scope.cartIds)
         {
+            if($scope.loggedindetails.id){
+                $scope.user_id = $scope.loggedindetails.id;
+            }else{
+                $scope.user_id = "";
+            }
             $http({
                 method: "POST",
                 url: $rootScope.serviceurl+"checkExpiredOffers",
                 headers: {'Content-Type': 'application/json'},
-                data:{offer_ids:$scope.cartIds}
+                data:{offer_ids:$scope.cartIds,user_id:$scope.user_id}
             }).success(function(data) {
                 if(data.type=='success')
                 {

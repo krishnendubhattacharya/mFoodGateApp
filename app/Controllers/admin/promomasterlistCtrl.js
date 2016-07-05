@@ -254,8 +254,9 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
             "item_start_hour":new Date(),
             "item_end_hour":new Date(),
             "item_start_date":moment().format("YYYY-MM-DD"),
-            "item_expire_date":''
-        };console.log($scope.item);
+            "item_expire_date":'',
+            "max_purchased":''
+        };//console.log($scope.item);
         /*$scope.example1model = [];
          $scope.example1data = [
          {id: 1, label: "David"},

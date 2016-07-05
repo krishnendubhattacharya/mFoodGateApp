@@ -75,6 +75,11 @@
                                 <img src="{{item.image_url}}" ng-if="item.image_url" width="200">
                             </div>
 
+                            <div class="form-group">
+                                <label for="exampleInputName">News Published Date</label>
+                                <input type="text" placeholder="Enter Published Date" data-ng-datepicker data-ng-options="datepickerOptions" id="published_date" ng-model="item.published_date" class="form-control">
+                            </div>
+
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" ng-model="item.is_banner" ng-true-value="1" ng-false-value="0"> Is Banner

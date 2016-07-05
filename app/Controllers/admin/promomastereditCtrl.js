@@ -94,6 +94,7 @@ app.controller('promomastereditCtrl', function ($rootScope, $scope, $http, NgMap
                 "item_expire_date":moment(data.offer.item_expire_date,'YYYY-MM-DD').format('YYYY-MM-DD'),
                 "item_start_hour":moment(data.offer.item_start_hour,'HH:mm:ss').toDate(),
                 "item_end_hour":moment(data.offer.item_end_hour,'HH:mm:ss').toDate(),
+                "max_purchased":data.offer.max_purchased
             }
             //$scope.getOutlet(data.offer.restaurant_id);
             console.log($scope.res.restaurant_id);

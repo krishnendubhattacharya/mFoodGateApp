@@ -6,6 +6,7 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
 
         $location.path("/login");
     }
+    $scope.serviceurl = $rootScope.serviceurl;
     $scope.img_uploader = null;
     $scope.icon_uploader = null;
     $scope.all_locations = [];

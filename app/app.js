@@ -394,7 +394,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/newslist',
                 templateUrl: 'app/views/admin/newslist.html',
                 title: 'News List',
-                resolve: loadSequence('newslist','ngCkeditor','naif.base64')
+                resolve: loadSequence('newslist','ngCkeditor','naif.base64','ng-bootstrap-datepicker')
             })
             .state('admin.iconlist', {
                 url: '/iconlist',

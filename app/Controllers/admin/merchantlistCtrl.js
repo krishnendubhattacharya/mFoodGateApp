@@ -61,6 +61,7 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
             "is_active":0,
             "user_type_id":3,
             "id":'',
+            about_me:''
         };console.log($scope.item);
         $scope.bank = {name:'',
             account_no:'',
@@ -99,24 +100,29 @@ app.controller('merchantlistCtrl', function ($rootScope, $scope, $http, $locatio
                     else
                     {
                         $scope.bank.user_id = data.data.id;
-                        $http({
-                            method: "POST",
-                            url: $rootScope.serviceurl + "addBankDetails",
-                            data: $scope.bank,
-                            headers: {'Content-Type': 'application/json'},
-                        }).success(function (data) {
-                            if(data.type=='error')
-                            {
-                                notify({
-                                    message : data.message,
-                                    classes : 'alert-danger'
-                                });
-                            }else{
-                                $scope.viewMerchant();
-                                $scope.item={};
-                                $scope.bank={};
-                            }
-                        })
+                        if($scope.bank.name) {
+                            $http({
+                                method: "POST",
+                                url: $rootScope.serviceurl + "addBankDetails",
+                                data: $scope.bank,
+                                headers: {'Content-Type': 'application/json'},
+                            }).success(function (data) {
+                                if (data.type == 'error') {
+                                    notify({
+                                        message: data.message,
+                                        classes: 'alert-danger'
+                                    });
+                                } else {
+                                    $scope.viewMerchant();
+                                    $scope.item = {};
+                                    $scope.bank = {};
+                                }
+                            })
+                        }else{
+                            $scope.viewMerchant();
+                            $scope.item = {};
+                            $scope.bank = {};
+                        }
                     }
 
                 });

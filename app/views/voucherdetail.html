@@ -10,9 +10,15 @@
 
                 <div class="img-box">
                     <div class="pro-item">
-                        <div class="logo-box">
-                            <!--<div class="p-circle">5X</div>-->
+                        <!--<div class="logo-box">
+
                             <img src="{{voucherInfo.voucher_details.image}}" style="width:100%;" alt=""/>
+                        </div>-->
+                        <div class="logo-box featured_carousel3">
+
+                            <div ng-repeat="relatedImg in related_images" class="item">
+                                <img src="{{relatedImg.image}}" alt="" style="width:100%;"/>
+                            </div>
                         </div>
 
                         <div class="logo-box" ng-if="qrlink" style="text-align: center">
@@ -72,9 +78,15 @@
 
             <div class="img-box">
                 <div class="pro-item">
-                    <div class="logo-box">
-                        <!--<div class="p-circle">5X</div>-->
+                    <!--<div class="logo-box">
+
                         <img src="{{voucherInfo.voucher_details.image}}"alt=""/>
+                    </div>-->
+                    <div class="logo-box featured_carousel2">
+
+                        <div ng-repeat="relatedImg in related_images" class="item">
+                            <img src="{{relatedImg.image}}" alt="" style="width:100%;"/>
+                        </div>
                     </div>
                     <div class="logo-box" ng-if="qrlink" style="text-align: center">
                         <!--<div class="p-circle">5X</div>-->
