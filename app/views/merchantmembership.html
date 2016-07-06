@@ -4,7 +4,11 @@
     <div ng-include="'app/views/partials/merchant_header.html'"></div>
     <div class="dx-clearfix"></div>
     <div class="container phone-hide">
-        <div ng-include="'app/views/partials/merchant_leftbar.html'"></div>
+        <!--<div ng-include="'app/views/partials/merchant_leftbar.html'"></div>-->
+        <div class="category-left phone-hide">
+            <h1>Restaurants</h1>
+            <div ng-include="'app/views/partials/merchant_leftbar.html'"></div>
+        </div>
         <div class="featured-Promo">
             <div class="merchant-card" ng-repeat="feature in featuredPromo | limitTo:1">
                 <div class="card-img">

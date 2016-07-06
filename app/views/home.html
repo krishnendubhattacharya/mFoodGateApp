@@ -105,7 +105,7 @@
         <div id="ca-container" class="m-featured-Promo m-ca-container tablet-hide" style="overflow:visible">
             <h1>Featured Promo</h1>
             <div class="ca-nav"></div>
-            <div class="ca-wrapper owl-carousel owl-theme">
+            <div class="ca-wrapper owl-carousel-mob owl-theme">
                 <div class="ca-item ca-item-{{$index+1}}" ng-repeat="featuredCatDetail in featuredCatInfo">
                     <div class="ca-item-main">
                         <div class="pro-item">
@@ -529,7 +529,7 @@
 
         <div class="m-restaurant-Promo tablet-hide">
             <h1 ng-click="resShowHide()">Featured Restaurant</h1>
-            <div ng-show="res_promo_show" class="featured_carousel">
+            <div ng-show="res_promo_show" class="featured_carousel-mob">
                 <div ng-repeat="restaurantDetail in restaurantInfo" ng-if="restaurantInfo.length != 0" class="item">
                     <div class="pro-item2">
                         <div class="logo-box"><img src="{{restaurantDetail.logo}}" alt=""/></div>

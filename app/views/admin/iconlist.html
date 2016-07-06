@@ -57,6 +57,18 @@
                     </header>
                     <div class="panel-body">
                         <form role="form" ng-submit="saveIcon()" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <label for="menu_type">Select Menu Type</label>
+                                <select id="menu_type"
+                                        ng-model="item.menu_type" required
+                                        class="form-control" >
+                                    <option value="">Select</option>
+                                    <option  ng-selected="item.menu_type == 'Member'" value="Member">Member</option>
+                                    <option  ng-selected="item.menu_type == 'Merchant'" value="Merchant">Merchant</option>
+                                    <option  ng-selected="item.menu_type == 'Member Website'" value="Member Website">Member Website</option>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputName">Title</label>
                                 <input type="text" placeholder="Enter Title"  id="exampleInputName" ng-model="item.title" class="form-control">

@@ -69,7 +69,11 @@
                         <div class="dx-field">
                             <div class="dx-field-label">Address</div>
                             <div class="dx-field-value">
-                                <div dx-text-box ng-model="userInfo.address"></div>
+                                <!--<div dx-text-box ng-model="userInfo.address"></div>-->
+                                <div class="dx-field-value dx-texteditor" style="width:100%">
+                                    <!--<div dx-text-area="textArea"  ng-model="menuInfo.address"></div>-->
+                                    <input places-auto-complete id="address" ng-model="userInfo.address" class="dx-texteditor-input" on-place-changed="placeChanged()"/>
+                                </div>
                             </div>
                         </div>
                         <div class="dx-field">
@@ -125,7 +129,7 @@
     <div class="m-myaccount-details tablet-hide">
 
         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
-        <h1>Edit Profile</h1>
+
         <div class="m-profile-details">
             <div class="form">
                 <div class="dx-fieldset">

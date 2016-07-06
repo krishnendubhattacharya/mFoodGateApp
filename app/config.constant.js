@@ -120,7 +120,7 @@ app.constant('JS_REQUIRES', {
         'swapinterestededit':['app/Controllers/swapinterestededitCtrl.js','app/Controllers/leftbarCtrl.js'],
         'humanize':['bower_components/humanize-duration/humanize-duration.js'],
         'merchantuserlist':['app/Controllers/admin/merchantuserlistCtrl.js'],
-        'owlCaraousl':['https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css','https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js'],
+        'owlCaraousl':['http://www.owlcarousel.owlgraphic.com/assets/owlcarousel/assets/owl.carousel.min.css','http://www.owlcarousel.owlgraphic.com/assets/owlcarousel/owl.carousel.js'],
         'merchantheader':['app/Controllers/merchant/merchantheaderCtrl.js'],
         'websitemenus':['app/Controllers/websitemenusCtrl.js'],
         'websitefeatureds':['app/Controllers/websitefeaturedsCtrl.js'],

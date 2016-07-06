@@ -11,6 +11,19 @@ $scope.res_id = $stateParams.res_id;
 //console.log($scope.merchant_id);
 //console.log($scope.res_id);
     //localStorage.setItem('merchantweb', "");
+    $scope.resShow = localStorage.getItem('merchantweb');
+    $scope.headerShow = localStorage.getItem('merchantheadername');
+    //alert($scope.resShow);
+    if($scope.headerShow){
+        $scope.merheaderShow = $scope.headerShow;
+    }else{
+        $scope.merheaderShow = 0;
+    }
+    if($scope.resShow){
+        $scope.restaurantShow = 1;
+    }else{
+        $scope.restaurantShow = 0;
+    }
     $scope.getMerResDetail = function() {
 
         $http({
@@ -53,11 +66,22 @@ $scope.res_id = $stateParams.res_id;
     }
     $scope.viewIcon();
 
-    $scope.headerLink = function () {
+    $scope.headerLink = function (link_name) {
         //console.log(pageName+'/'+v_id+'/'+id+'/'+res_id);
         //$cookieStore.put('merchantweb', v_id);
+        localStorage.setItem('merchantheadername', link_name);
         localStorage.setItem('merchantweb', 1);
         //$location.path(pageName+'/'+v_id+'/'+id+'/'+res_id);
+
+    }
+    $scope.backLink = function (v_id,merchant_id,res_id) {
+        //console.log(pageName+'/'+v_id+'/'+id+'/'+res_id);
+        //$cookieStore.put('merchantweb', v_id);
+        localStorage.setItem('merchantheadername', "");
+        localStorage.setItem('merchantweb', "");
+        //$location.path(pageName+'/'+v_id+'/'+id+'/'+res_id);
+        $location.path('/merchant-membership/'+v_id+'/'+merchant_id + '/'+res_id);
+
 
     }
    

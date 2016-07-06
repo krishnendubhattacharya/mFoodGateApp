@@ -82,9 +82,7 @@
 	</div>
 
 	<div class="m-left-panel2 tablet-hide">
-		<div class="profile-img" ng-if="urlParam == '/profile'">
-			<img src="{{userImagePath}}" width="100%" height="auto"  alt=""/>
-		</div>
+
 		<ul ng-if="loggedindetails.user_type_id == 2">
 			<!--<li><a ui-sref="frontend.setting">
             <h1><img src="app/assets/Images/setting.png" width="35" height="35"  alt=""/></h1> 
@@ -138,6 +136,11 @@
 			<li><a ui-sref="frontend.mypoints"><i class="fa fa-user"></i> My Points</a></li>-->
 			<!--<li ui-sref-active="active"><a ui-sref="frontend.allvoucher"><i class="fa fa-user"></i> Resell Voucher</a></li>-->
 		</ul>
+		<div class="dx-clearfix"></div>
+		<h1 ng-if="urlParam == '/profile'">Edit Profile</h1>
+		<div class="profile-img" ng-if="urlParam == '/profile'">
+			<img src="{{userImagePath}}" width="100%" height="auto"  alt=""/>
+		</div>
 	</div>
 </div>
 <style>
