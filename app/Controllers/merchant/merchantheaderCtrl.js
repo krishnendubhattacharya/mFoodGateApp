@@ -13,6 +13,8 @@ $scope.res_id = $stateParams.res_id;
     //localStorage.setItem('merchantweb', "");
     $scope.resShow = localStorage.getItem('merchantweb');
     $scope.headerShow = localStorage.getItem('merchantheadername');
+    $scope.headerImage = localStorage.getItem('merchantheaderimage');
+    //alert($scope.headerImage);
     //alert($scope.resShow);
     if($scope.headerShow){
         $scope.merheaderShow = $scope.headerShow;
@@ -66,10 +68,12 @@ $scope.res_id = $stateParams.res_id;
     }
     $scope.viewIcon();
 
-    $scope.headerLink = function (link_name) {
+    $scope.headerLink = function (link_name,image_path) {
         //console.log(pageName+'/'+v_id+'/'+id+'/'+res_id);
         //$cookieStore.put('merchantweb', v_id);
+        //alert(image_path);
         localStorage.setItem('merchantheadername', link_name);
+        localStorage.setItem('merchantheaderimage', image_path);
         localStorage.setItem('merchantweb', 1);
         //$location.path(pageName+'/'+v_id+'/'+id+'/'+res_id);
 
@@ -79,6 +83,7 @@ $scope.res_id = $stateParams.res_id;
         //$cookieStore.put('merchantweb', v_id);
         localStorage.setItem('merchantheadername', "");
         localStorage.setItem('merchantweb', "");
+        localStorage.setItem('merchantheaderimage', "");
         //$location.path(pageName+'/'+v_id+'/'+id+'/'+res_id);
         $location.path('/merchant-membership/'+v_id+'/'+merchant_id + '/'+res_id);
 

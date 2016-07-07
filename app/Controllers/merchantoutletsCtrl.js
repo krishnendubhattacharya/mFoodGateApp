@@ -39,7 +39,7 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
     },
         price:{
             mode: "number"
-        },location:{
+        }/*,location:{
             dataSource: $scope.all_locations,
             displayExpr: "name",
             valueExpr: "value",
@@ -55,7 +55,8 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
                 $scope.res_select = e.component;
                 $scope.getRestaurants();
             }
-        }};
+        }*/
+    };
 
 
     $scope.changeView = function(){
@@ -166,13 +167,24 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             angular.forEach(data.locations,function(val){
                 $scope.all_locations.push({name:val.city,value:val.id});
             })
-            $scope.loc_select.option({dataSource: $scope.all_locations});
+            //$scope.loc_select.option({dataSource: $scope.all_locations});
+            $scope.selectBox = {
+                location:{
+                    dataSource: $scope.all_locations,
+                    displayExpr: "name",
+                    valueExpr: "value",
+                    onInitialized:function(e){
+                        $scope.loc_select = e.component;
+                    }
+                }
+            };
 
 
 
         });
 
     }
+    $scope.getLocations();
 
     $scope.getRestaurants = function () {
         $http({
@@ -184,15 +196,25 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             angular.forEach(data.restaurants,function(val){
                 $scope.all_restaurant.push({name:val.title,value:val.id});
             })
-            $scope.res_select.option({dataSource: $scope.all_restaurant});
+            //$scope.res_select.option({dataSource: $scope.all_restaurant});
+            console.log($scope.all_restaurant);
+            $scope.selectBox = {
+                restaurant:{
+                    dataSource: $scope.all_restaurant,
+                    displayExpr: "name",
+                    valueExpr: "value",
+                    onInitialized:function(e){
+                        $scope.res_select = e.component;
+                    }
+                }
+            };
 
 
 
         });
 
     }
-
-
+    $scope.getRestaurants();
 
 
     $scope.getOutlets = function() {

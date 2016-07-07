@@ -91,7 +91,7 @@
                         <p ng-if="promodetails.offer_type_id == 3"><b>Voucher Value : </b>IDR{{promodetails.price | number}}</p>
                         <!--<p><b>Discount : </b>{{promodetails.offer_percent}}%</p>-->
                     <p><b>Discounted Price : </b>IDR{{promodetails.offer_price | number}} <span class="p-circle">{{promodetails.offer_percent}}%</span></p>
-                        <p><b>Operator : </b>{{promodetails.conditions==1?'And':'Or'}}</p>
+                        <p><b>And/OR : </b>{{promodetails.conditions==1?'And':'Or'}}</p>
                         <p><b>M-points : </b>{{promodetails.mpoints}}</p>
                         <p><b>Quantity Sold : </b>{{promodetails.buy_count}}</p>
                         <p><b>Quantity Available : </b>{{promodetails.quantity - promodetails.buy_count}}</p>
@@ -301,7 +301,7 @@
                     <div>
                         <p><b>Voucher Value : </b>IDR{{promodetails.price | number}}</p>
                         <p><b>Discounted Price : </b>IDR{{promodetails.offer_price | number}} <span class="p-circle">{{promodetails.offer_percent}}%</span></p>
-                        <p><b>Operator : </b>{{promodetails.conditions==1?'And':'Or'}}</p>
+                        <p><b>And/OR : </b>{{promodetails.conditions==1?'And':'Or'}}</p>
                         <p><b>M-points : </b>{{promodetails.mpoints}}</p>
 
                         <!--<p><b>Discount : </b>{{promodetails.offer_percent}}%</p>-->

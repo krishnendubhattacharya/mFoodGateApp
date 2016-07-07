@@ -88,29 +88,36 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                     /********************* Getting The Cart ************/
 
                     if ($scope.loggedindetails && $scope.loggedindetails.user_type_id==2) {
-                        $http({
-                            method: "GET",
-                            url: $rootScope.serviceurl + "getCartByUser/" + $scope.loggedindetails.id,
-                            headers: {'Content-Type': 'application/json'}
-                        }).success(function (data) {
-                            if(data)
-                            {
-                                $scope.cartItem = JSON.parse(localStorage.getItem('cart'));
-                                $scope.existed_cart = data;
-                                if(!$scope.cartItem && $scope.existed_cart)
-                                {
-                                    $scope.keepOldCart();
+                        if ($scope.loggedindetails.roll == 2) {
+                            var message = "You don't have login permission.";
+                            DevExpress.ui.notify({
+                                message: message,
+                                position: {
+                                    my: "center top",
+                                    at: "center top"
                                 }
-                                else if((!$scope.existed_cart || $scope.existed_cart.length==0) && $scope.cartItem)
-                                {
-                                    $scope.combineCart();
+                            }, "error", 3000);
+
+                        }else{
+                            $http({
+                                method: "GET",
+                                url: $rootScope.serviceurl + "getCartByUser/" + $scope.loggedindetails.id,
+                                headers: {'Content-Type': 'application/json'}
+                            }).success(function (data) {
+                                if (data) {
+                                    $scope.cartItem = JSON.parse(localStorage.getItem('cart'));
+                                    $scope.existed_cart = data;
+                                    if (!$scope.cartItem && $scope.existed_cart) {
+                                        $scope.keepOldCart();
+                                    }
+                                    else if ((!$scope.existed_cart || $scope.existed_cart.length == 0) && $scope.cartItem) {
+                                        $scope.combineCart();
+                                    }
+                                    else {
+                                        $scope.cartConfPopup = true;
+                                    }
                                 }
-                                else
-                                {
-                                    $scope.cartConfPopup = true;
-                                }
-                            }
-                        })
+                            })
                         $scope.cartItem = JSON.parse(localStorage.getItem('cart'));
                         //if($scope.cartItem)
                         //{
@@ -131,6 +138,7 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                         //        //$scope.getCartDetails();
                         //    }
                         //})
+                    }
                     }
                     else
                     {
@@ -167,7 +175,6 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
         }
     };
 
-
     $scope.loginRedirect = function(){
         //$timeout(function(){
             console.log($scope.fetched_user_details);
@@ -180,10 +187,35 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                     $location.path($scope.returnUrl);
                 }
                 else {
+
                     if($scope.fetched_user_details.user_type_id == 2){
-                        $location.path('dashboard');
+                        if ($scope.fetched_user_details.roll == 2) {
+                            var message = "You don't have login permission.";
+                            DevExpress.ui.notify({
+                                message: message,
+                                position: {
+                                    my: "center top",
+                                    at: "center top"
+                                }
+                            }, "error", 3000);
+
+                        }else {
+                            $location.path('dashboard');
+                        }
                     }else{
-                        $location.path('merchantprofile');
+                        if ($scope.fetched_user_details.roll == 2) {
+                            var message = "You don't have login permission.";
+                            DevExpress.ui.notify({
+                                message: message,
+                                position: {
+                                    my: "center top",
+                                    at: "center top"
+                                }
+                            }, "error", 3000);
+
+                        }else {
+                            $location.path('merchantprofile');
+                        }
 
                     }
 

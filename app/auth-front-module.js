@@ -7,7 +7,7 @@ angular
     
     
     /*********************************User Authorisation ***********************************/
-    factobj.userinfo = { loginstatus: false, id: "", email: "",first_name:"",last_name:"",username:"",user_type_id:"",merchant_name:"" };
+    factobj.userinfo = { loginstatus: false, id: "", email: "",first_name:"",last_name:"",username:"",user_type_id:"",merchant_name:"",roll:"" };
     factobj.updateUserinfo = function (obj) {
     if(obj)
 	{
@@ -31,12 +31,12 @@ angular
                         }
            	}
            }*/
-           factobj.userinfo = { loginstatus:true, id: obj.id, email: obj.email,first_name:obj.first_name,last_name:obj.last_name,username:obj.username,user_type_id:obj.user_type_id,merchant_name:obj.merchant_name};
+           factobj.userinfo = { loginstatus:true, id: obj.id, email: obj.email,first_name:obj.first_name,last_name:obj.last_name,username:obj.username,user_type_id:obj.user_type_id,merchant_name:obj.merchant_name,roll:obj.roll};
            return true;
 	}
     };
     factobj.resetUserinfo = function () {
-        factobj.userinfo = { loginstatus: false, id: "", email: "",first_name:"",last_name:"",username:"",user_type_id:"",merchant_name:"" };
+        factobj.userinfo = { loginstatus: false, id: "", email: "",first_name:"",last_name:"",username:"",user_type_id:"",merchant_name:"",roll:"" };
     };
     
     factobj.getUserAuthorisation = function () {      
