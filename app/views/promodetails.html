@@ -91,7 +91,7 @@
                         <p ng-if="promodetails.offer_type_id == 3"><b>Voucher Value : </b>IDR{{promodetails.price | number}}</p>
                         <!--<p><b>Discount : </b>{{promodetails.offer_percent}}%</p>-->
                     <p><b>Discounted Price : </b>IDR{{promodetails.offer_price | number}} <span class="p-circle">{{promodetails.offer_percent}}%</span></p>
-                        <p><b>And/OR : </b>{{promodetails.conditions==1?'And':'Or'}}</p>
+                        <p>{{promodetails.conditions==1?'And':'Or'}}</p>
                         <p><b>M-points : </b>{{promodetails.mpoints}}</p>
                         <p><b>Quantity Sold : </b>{{promodetails.buy_count}}</p>
                         <p><b>Quantity Available : </b>{{promodetails.quantity - promodetails.buy_count}}</p>
@@ -103,7 +103,7 @@
                         <p><b>Voucher Validation End Hour : </b>{{promodetails.item_end_hour}}</p>
                         <p><b>Including Holiday : </b>{{promodetails.including_holidays==1?'Yes':'No'}}</p>
                         <p><b>Validation Days : </b><span ng-repeat="day in offer_days | orderBy : '2'">{{day.day}}, </span> </p>
-                        <p><b>Time Left : </b><p countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
+                        <p><b>Time Left : </b><p style="color:green" countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
                         <p><b>About Merchant : </b>{{about_me}}</p>
                         <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                     </div>
@@ -301,9 +301,9 @@
                     <div>
                         <p><b>Voucher Value : </b>IDR{{promodetails.price | number}}</p>
                         <p><b>Discounted Price : </b>IDR{{promodetails.offer_price | number}} <span class="p-circle">{{promodetails.offer_percent}}%</span></p>
-                        <p><b>And/OR : </b>{{promodetails.conditions==1?'And':'Or'}}</p>
+                        <p>{{promodetails.conditions==1?'And':'Or'}}</p>
                         <p><b>M-points : </b>{{promodetails.mpoints}}</p>
-
+                        
                         <!--<p><b>Discount : </b>{{promodetails.offer_percent}}%</p>-->
                         <p><b>Quantity Sold : </b>{{promodetails.buy_count}}</p>
                         <p><b>Quantity Available : </b>{{promodetails.quantity - promodetails.buy_count}}</p>
@@ -315,7 +315,7 @@
                         <p><b>Voucher Validation End Hour : </b>{{promodetails.item_end_hour}}</p>
                         <p><b>Including Holiday : </b>{{promodetails.including_holidays==1?'Yes':'No'}}</p>
                         <p><b>Validation Days : </b><span ng-repeat="day in offer_days | orderBy : '2'">{{day.day}}, </span> </p>
-                        <p><b>Time Left : </b><p countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
+                        <p><b>Time Left : </b><p style="color=green;" countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
                         <p><b>About Merchant : </b>{{about_me}}</p>
                         <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                     </div>
@@ -393,103 +393,4 @@
         <div class="featured_carousel">
             <div ng-repeat="related in related_products" class="item">
                 <div class="pro-item2">
-                    <img src="{{related.image}}" width="406" height="255"  alt=""/>
-                    <div class="p-circle" >{{related.offer_percent}}%</div>
-                    <div class="desc">
-                        <div class="txt">
-                            <h2 ng-bind="related.title"></h2>
-                            <p ng-bind="related.offer_to_date"></p>
-                        </div>
-                        <div class="view-btn">
-                            <a ui-sref="frontend.promodetails({ promoId: related.id })" ><img width="66" height="42" alt="" src="app/assets/Images/view-btn.png"></a>
-                            <!--<p date="May 06,2016 23:59:59" countdown="" class="ng-isolate-scope">4d 6h 51m 38s</p>-->
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!--<li>
-                <div class="pro-item">
-                    <img src="app/assets/Images/pro-3.png" width="406" height="255"  alt=""/>
-                    <div class="p-circle">50%</div>
-                    <div class="desc">
-                        <div class="txt">
-                            <h2>Paket Hemat Sowe</h2>
-                            <p>11D:21H:50M:20S</p>
-                        </div>
-
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="pro-item">
-                    <img src="app/assets/Images/pro-3.png" width="406" height="255"  alt=""/>
-                    <div class="p-circle">50%</div>
-                    <div class="desc">
-                        <div class="txt">
-                            <h2>Paket Hemat Sowe</h2>
-                            <p>11D:21H:50M:20S</p>
-                        </div>
-
-                    </div>
-                </div>
-            </li>-->
-
-
-        </div>
-    </div>
-</div>
-    <div class="m-new-Promo tablet-hide">
-        <h1>Related Products</h1>
-        <div class="featured_carousell">
-            <div ng-repeat="related in related_products" class="item">
-                <div class="pro-item">
-                    <img src="{{related.image}}" width="406" height="255"  alt=""/>
-                    <div class="p-circle" >{{related.offer_percent}}%</div>
-                    <div class="desc">
-                        <div class="txt">
-                            <h2 ng-bind="related.title"></h2>
-                            <p ng-bind="related.offer_to_date"></p>
-                        </div>
-                        <div class="view-btn">
-                            <a ui-sref="frontend.promodetails({ promoId: related.id })" ><img width="66" height="42" alt="" src="app/assets/Images/view-btn.png"></a>
-                            <!--<p date="May 06,2016 23:59:59" countdown="" class="ng-isolate-scope">4d 6h 51m 38s</p>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--<li>
-                <div class="pro-item">
-                    <img src="app/assets/Images/pro-3.png" width="406" height="255"  alt=""/>
-                    <div class="p-circle">50%</div>
-                    <div class="desc">
-                        <div class="txt">
-                            <h2>Paket Hemat Sowe</h2>
-                            <p>11D:21H:50M:20S</p>
-                        </div>
-
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="pro-item">
-                    <img src="app/assets/Images/pro-3.png" width="406" height="255"  alt=""/>
-                    <div class="p-circle">50%</div>
-                    <div class="desc">
-                        <div class="txt">
-                            <h2>Paket Hemat Sowe</h2>
-                            <p>11D:21H:50M:20S</p>
-                        </div>
-
-                    </div>
-                </div>
-            </li>-->
-
-
-        </div>
-    </div>
-</div>
-
-<style>
-    .new-Promo .pro-item{ height:  154px !important;}
-</style>
+                    <img src="{{related.im

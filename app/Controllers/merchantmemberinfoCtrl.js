@@ -1,4 +1,4 @@
-app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth,$timeout) {
+app.controller('merchantmemberinfoCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, $timeout) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
@@ -6,19 +6,20 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
 
         $location.path("/login");
     }
-    console.log($stateParams.voucherId);
-    $scope.voucherInfo = null;
-
+    $scope.merchant_id = $stateParams.id;
+    $scope.v_id = $stateParams.v_id;
+    $scope.res_id = $stateParams.res_id;
+    //alert(123);
 
     $scope.getVoucherDetail = function () {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "vourcherdetail/"+$stateParams.voucherId,
+            url: $rootScope.serviceurl + "vourcherdetail/"+$stateParams.v_id,
         }).success(function (data) {
             //console.log('Voucher details === ',data);
             $scope.voucherInfo =data;
 
-                $scope.restaurant = data.restaurant;
+            $scope.restaurant = data.restaurant;
             $scope.related_images = data.promo_images;
             //console.log($scope.related_images);
             $timeout(function(){
@@ -82,60 +83,33 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
 
     $scope.qrlink = '';
     $scope.getQrCode = function(){
-        if($scope.voucherInfo) {
-            var query_string='';
-            query_string += "?merchant_id=" + $scope.voucherInfo.mer_name;
-            query_string += "&restaurant_ids=" + $scope.voucherInfo.all_res;
-            query_string += "&voucher_id=" + $scope.voucherInfo.voucher_no;
-            $scope.qrlink = $rootScope.serviceurl + "genVoucherQrCode" + query_string;
-        }
-    }
-
-    $scope.boucherResell = function () {
-        $location.path('/vouchersell/' + $stateParams.voucherId);
-    }
-
-    $scope.bocherGift = function () {
-        $location.path('/giftvoucher/' + $stateParams.voucherId);
-    }
-
-    $scope.swapvoucher = function (offer_id) {
-        //$location.path('/giftvoucher/' + $stateParams.voucherId);
-        //alert(offer_id);
-        //return false;
-        $location.path('/addswapvoucher/' + $stateParams.voucherId + '/' +offer_id);
-        /*$http({
-            method: "POST",
-            url: $rootScope.serviceurl + "swap",
-            data: {"voucher_id":$stateParams.voucherId,"user_id":$scope.loggedindetails.id,"offer_id":offer_id},
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getMerResDetail/" + $scope.merchant_id+"/"+$scope.res_id+"/"+$scope.loggedindetails.id+"/"+$scope.v_id,
         }).success(function (data) {
             console.log(data);
-            if(data.type == 'success'){
-                //var message = data.message;
-                //params.validationGroup.reset();
-                $location.path('/allvoucher');
+            $scope.det = data;
+            $scope.merchantId = data.merchant_id;
+            $scope.resId = data.restaurant_id;
+            $scope.memberId = data.member_id;
+            //console.log($scope.memberId);
+            var query_string='';
+            query_string += "?merchant_id=" + $scope.merchantId;
+            query_string += "&member_id=" + $scope.memberId;
+            $scope.qrlink = $rootScope.serviceurl + "genMembershipQrCode" + query_string;
+            //$scope.voucherInfo = data.data;
+            //console.log($scope.voucherInfo);
+            //if($scope.datag)
+            //$scope.datag.option({dataSource:$scope.voucherInfo});
 
-                DevExpress.ui.notify({
-                    message: data.message,
-                    position: {
-                        my: "center top",
-                        at: "center top"
-                    }
-                }, "success", 3000);
-            }else{
-                var message = "Error occured.";
-                DevExpress.ui.notify({
-                    message: data.message,
-                    position: {
-                        my: "center top",
-                        at: "center top"
-                    }
-                }, "error", 3000);
-            }
-        });*/
+
+
+
+
+        });
+
+
     }
-
-
 
 
 });
