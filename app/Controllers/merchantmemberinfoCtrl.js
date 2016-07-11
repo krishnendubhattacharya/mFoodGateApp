@@ -9,6 +9,9 @@ app.controller('merchantmemberinfoCtrl', function ($rootScope, $scope, $http, $l
     $scope.merchant_id = $stateParams.id;
     $scope.v_id = $stateParams.v_id;
     $scope.res_id = $stateParams.res_id;
+    $scope.start_date;
+    $scope.end_date;
+
     //alert(123);
 
     $scope.getVoucherDetail = function () {
@@ -18,9 +21,11 @@ app.controller('merchantmemberinfoCtrl', function ($rootScope, $scope, $http, $l
         }).success(function (data) {
             //console.log('Voucher details === ',data);
             $scope.voucherInfo =data;
-
+            console.log($scope.voucherInfo);
             $scope.restaurant = data.restaurant;
             $scope.related_images = data.promo_images;
+            $scope.start_date = $scope.voucherInfo.voucher_details.created_on;
+            $scope.end_date = $scope.voucherInfo.voucher_details.to_date;
             //console.log($scope.related_images);
             $timeout(function(){
                 // $('#ca-container').contentcarousel();
@@ -92,6 +97,11 @@ app.controller('merchantmemberinfoCtrl', function ($rootScope, $scope, $http, $l
             $scope.merchantId = data.merchant_id;
             $scope.resId = data.restaurant_id;
             $scope.memberId = data.member_id;
+            if(data.expire_date){
+                $scope.end_date = data.expire_date;
+            }
+            //$scope.memberId = 1;
+
             //console.log($scope.memberId);
             var query_string='';
             query_string += "?merchant_id=" + $scope.merchantId;

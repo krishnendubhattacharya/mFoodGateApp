@@ -188,6 +188,17 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         ]
     };
 
+    $scope.getAllEvents = function() {
+        $scope.edit_mode = false;
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getEventsByUser/" + $scope.loggedindetails.id,
+        }).success(function (data) {
+            $scope.eventInfo = data.data;
+        });
+    }
+    $scope.getAllEvents();
+
     $scope.getEvents = function() {
         $scope.edit_mode = false;
         $http({
@@ -198,13 +209,13 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
             //console.log($scope.voucherInfo);
             $scope.datagridobj.option('dataSource',$scope.voucherInfo);
 
-            $scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
+            //$scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
         });
     }
     $scope.loadList=function(e)
     {
         console.log("loadList")
-        $scope.listViewData= e.component;
+        //$scope.listViewData= e.component;
     }
     $scope.getEvents();
 
@@ -465,7 +476,11 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
     }
 
     $scope.inialType = function(e){
-        $scope.typeData = e.component;
+        //$scope.$apply(function() {
+            $scope.typeData = e.component;
+        //});
+
+
         //if($scope.allLoc[0])
         //$scope.locationData.option('values',$scope.allLoc[0]);
     }
