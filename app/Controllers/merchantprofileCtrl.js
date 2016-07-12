@@ -194,6 +194,7 @@ app.controller('merchantprofileCtrl', function ($rootScope, $scope, $http, $loca
 
     $scope.inialLoc = function(e){
         $scope.locationData = e.component;
+        console.log(12);
         //if($scope.allLoc[0])
             //$scope.locationData.option('values',$scope.allLoc[0]);
     }

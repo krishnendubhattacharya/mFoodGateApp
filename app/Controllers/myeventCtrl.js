@@ -13,6 +13,10 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
     $scope.areaList = [];
     $scope.selectedLocation = [];
     $scope.selectedTypes = [];
+    $scope.typeListMob = [];
+    $scope.areaListMob = [];
+    $scope.selectedLocationMob = [];
+    $scope.selectedTypesMob = [];
     //$scope.event.image = [];
     $scope.img_uploader = null;
     $scope.textBox = {image:  {
@@ -47,6 +51,8 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         }
         $scope.selectedLocation=[];
         $scope.selectedTypes =[];
+        $scope.selectedLocationMob = [];
+        $scope.selectedTypesMob = [];
         $scope.img_uploader.reset();
 
     }
@@ -70,6 +76,8 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         $scope.event_info=event;
         $scope.setSelectedTypes();
         $scope.setSelectedLocation();
+        $scope.setSelectedTypesMob();
+        $scope.setSelectedLocationMob();
         $scope.img_uploader.reset();
         //console.log($scope.event);
         //$scope.img_uploader.reset();
@@ -276,6 +284,10 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
             $scope.typeData.option('items',$scope.allcat);
             $scope.setSelectedTypes();
 
+            $scope.allcatMob = data.category;
+            $scope.typeDataMob.option('items',$scope.allcatMob);
+            $scope.setSelectedTypesMob();
+
             /*for (var i = 0; i < $scope.allcat.length; i++) {
                 $scope.tagBoxData.store().insert($scope.allcat[i]);
             }
@@ -303,6 +315,10 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
             $scope.allLoc = data.location;
             $scope.locationData.option('items',$scope.allLoc);
             $scope.setSelectedLocation();
+
+            $scope.allLocMob = data.location;
+            $scope.locationDataMob.option('items',$scope.allLocMob);
+            $scope.setSelectedLocationMob();
 
             /*for (var i = 0; i < $scope.allLoc.length; i++) {
                 $scope.tagBoxDataLocation.store().insert($scope.allLoc[i]);
@@ -437,6 +453,32 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         }
     }
 
+    $scope.setSelectedTypesMob = function(){
+        $scope.selectedTypesMob =[];
+        if($scope.allcatMob && $scope.event_info)
+        {
+            //console.log($scope.allLoc,$scope.userInfo.locations);
+
+            angular.forEach($scope.allcatMob,function(all,key){
+                angular.forEach($scope.event_info.categories,function(own){
+                    if(all.id == own.category_id)
+                    {
+                        $scope.selectedTypesMob.push($scope.allcat[key]);
+                    }
+                })
+            })
+            $scope.typeListMob = $scope.selectedTypesMob;
+            /*if($scope.typeDataMob)
+            {
+                console.log(' types ========',$scope.selectedTypes);
+                $scope.typeDataMob.option('values',$scope.selectedTypesMob);
+            }*/
+            //console.log('hellooo',$scope.allLoc[0]);
+
+        }
+    }
+
+
     $scope.setSelectedLocation = function(){
         $scope.selectedLocation=[];
         if($scope.allLoc && $scope.event_info)
@@ -456,17 +498,45 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         }
     }
 
-    $scope.$watchCollection('selectedLocation',function(){
+    $scope.setSelectedLocationMob = function(){
+        $scope.selectedLocationMob=[];
+        if($scope.allLocMob && $scope.event_info)
+        {
+            //console.log($scope.allLoc,$scope.userInfo.locations);
+
+            angular.forEach($scope.allLocMob,function(all,key){
+                angular.forEach($scope.event_info.locations,function(own){
+                    if(all.id == own.location_id)
+                    {
+                        $scope.selectedLocationMob.push($scope.allLocMob[key]);
+                    }
+                })
+            })
+            $scope.areaListMob = $scope.selectedLocationMob;
+
+        }
+    }
+
+
+    /*$scope.$watchCollection('selectedLocation',function(){
         if($scope.selectedLocation)
         //console.log('hellooo',$scope.allLoc[0]);
             $scope.locationData.option('values',$scope.selectedLocation);
-    })
+    })*/
+
+
 
     //$scope.$watchCollection('selectedTypes',function(){
     //    if($scope.typeData)
     //    //console.log('hellooo',$scope.allLoc[0]);
     //        $scope.typeData.option('values',$scope.selectedTypes);
     //})
+
+    $scope.inialLocMob = function(e){
+        $scope.locationDataMob = e.component;
+        //if($scope.allLoc[0])
+        //$scope.locationData.option('values',$scope.allLoc[0]);
+    }
 
 
     $scope.inialLoc = function(e){
@@ -478,6 +548,16 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
     $scope.inialType = function(e){
         //$scope.$apply(function() {
             $scope.typeData = e.component;
+        //});
+
+
+        //if($scope.allLoc[0])
+        //$scope.locationData.option('values',$scope.allLoc[0]);
+    }
+
+    $scope.inialTypeMob = function(e){
+        //$scope.$apply(function() {
+        $scope.typeDataMob = e.component;
         //});
 
 
