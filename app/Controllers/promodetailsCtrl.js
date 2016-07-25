@@ -62,6 +62,14 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.getPromoDetails = function(){
         $http({
             method: "GET",
+            url: $rootScope.serviceurl+"promoVisit/" + $scope.promoId,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            //alert(data);
+
+        });
+        $http({
+            method: "GET",
             url: $rootScope.serviceurl+"getPromoDetails/" + $scope.promoId,
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {

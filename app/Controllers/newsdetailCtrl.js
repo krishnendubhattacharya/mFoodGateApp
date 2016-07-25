@@ -26,6 +26,15 @@ app.controller('newsdetailCtrl', function ($rootScope, $scope, $http, $location,
     $scope.getNewsDetail = function(){
         $http({
             method: "GET",
+            url: $rootScope.serviceurl+"newsVisit/" + $stateParams.newsId,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            //alert(data);
+
+        });
+
+        $http({
+            method: "GET",
             url: $rootScope.serviceurl+"getNewsDetail/"+$stateParams.newsId,
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {

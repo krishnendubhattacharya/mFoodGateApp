@@ -805,6 +805,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/merchant/merchantnews.html',
                 title: 'News'
             })
+            .state('frontend.merchantdashboard', {
+                url: '/merchantdashboard',
+                resolve: loadSequence('merchantdashboard'),
+                templateUrl: 'app/views/merchant/merchantdashboard.html',
+                title: 'Dashboard'
+            })
 
 
         ;
