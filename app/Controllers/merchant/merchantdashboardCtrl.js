@@ -11,6 +11,29 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
         $location.path("/login");
     }
 
+    $scope.summeryTab = 1;
+    $scope.transactionTab = 1;
+
+    $scope.summeryTabShowHide = function () {
+        if($scope.summeryTab == 1){
+            $scope.summeryTab = 0;
+        }else{
+            $scope.summeryTab = 1;
+        }
+    }
+    $scope.transactionTabShowHide = function () {
+        if($scope.transactionTab == 1){
+            $scope.transactionTab = 0;
+        }else{
+            $scope.transactionTab = 1;
+        }
+    }
+
+    $scope.redirectto = function (id) {
+        console.log(id);
+        $location.path('/promodetails/' + id);
+    }
+
     $scope.all_outlet = [];
     $scope.all_restaurant = [];
     $scope.autoidArray = [];
@@ -55,6 +78,9 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
             }, {
                 day: "Male",
                 oranges: $scope.member_graph.male_user
+            }, {
+                day: "Purchase",
+                oranges: $scope.member_graph.purchase_member
             }];
 
             $scope.dataSource1 = [{

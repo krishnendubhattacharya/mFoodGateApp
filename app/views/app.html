@@ -58,6 +58,7 @@
         <div id='cssmenu'>
             <ul>
         <li><a onclick="menuClick()" title="Home" ui-sref="frontend.index">Home</a></li>
+        <li><a onclick="menuClick()" ui-sref="frontend.merchantdashboard"> Dashboard</a></li>
         <li class="has-sub"><a href=""><span>Restaurant Category</span></a>
             <ul>
                 <li ng-repeat="catdetail in catInfo"><a onclick="menuClick()" title="Category" ui-sref="frontend.refinerestaurent({ categoryId: catdetail.id })"><img src="{{catdetail.icon_url}}" width="20" height="20" ng-if="catdetail.icon_url"/>{{catdetail.name}}</a></li>
@@ -96,7 +97,7 @@
             </li>
             <li class="has-sub active" ng-if="loggedindetails.user_type_id == 3"><a href=""><span>Merchant</span></a>
                 <ul style="display: block;">
-                    <li><a onclick="menuClick()" ui-sref="frontend.merchantdashboard"><i class="fa fa-user"></i> Dashboard</a></li>
+
                     <li ng-if="user_details.merchant_id"><a href="http://52.39.33.188/Member_Ship/MasterData/member_master_mfoodgate.aspx?MerchantID={{user_details.merchant_id}}"><i class="fa fa-user"></i>Manage Member</a></li>
                     <li ><a onclick="menuClick()" ui-sref="frontend.purchasedmembrship"><i class="fa fa-user"></i>Purchased Membership</a></li>
                     <li><a onclick="menuClick()" ui-sref="frontend.merchantmenu"><i class="fa fa-user"></i> All Menu</a></li>

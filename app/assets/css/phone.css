@@ -812,6 +812,8 @@ body#mfoodmain{
     border-bottom: solid 1px #ccc;
 }
 
+.m-transaction-details .h-bg-color{ background-color: #39ac38; color: #fff !important}
+
 .m-transaction-details table th, td {
     padding: 12px 8px;
     text-align: left;

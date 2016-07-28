@@ -2,8 +2,8 @@
 <div ng-controller="merchantdashboardCtrl">
     <div class="container">
         <!-- ngIf: specialInfo.length != 0 --><div class="new-Promo phone-hide">
-        <h1>Summary</h1>
-        <div class="summery">
+        <h1 ng-click="summeryTabShowHide()">Summary</h1>
+        <div class="summery" ng-show="summeryTab">
             <div class="date-pi">
                 <ul>
 
@@ -19,7 +19,7 @@
             <ul>
                 <li>
                     <div class="item">
-                        <h1>Date</h1>
+                        <h1>{{rangeInfo.show_start_date}} to {{rangeInfo.show_end_date}}</h1>
                         <div class="cont">
                             <ul>
                                 <li>
@@ -61,7 +61,7 @@
                 </li>
                 <li>
                     <div class="item">
-                        <h1>Date</h1>
+                        <h1>{{rangeInfo.show_start_date}} to {{rangeInfo.show_end_date}}</h1>
                         <div class="cont">
                             <ul>
                                 <li>
@@ -106,7 +106,7 @@
                 </li>
                 <li>
                     <div class="item">
-                        <h1>Date</h1>
+                        <h1>Up to {{rangeInfo.show_end_date}}</h1>
                         <div class="cont">
                             <ul>
                                 <li>
@@ -151,7 +151,7 @@
                 </li>
                 <li>
                     <div class="item">
-                        <h1>Date</h1>
+                        <h1>{{rangeInfo.show_start_date}} to {{rangeInfo.show_end_date}}</h1>
                         <div class="cont">
                             <ul>
                                 <li>
@@ -209,6 +209,7 @@
                             series: {
                                 argumentField: 'day',
                                 valueField: 'oranges',
+                                name: 'Member',
                                 type: 'bar',
                                 color: '#ffa500'
                             }
@@ -224,48 +225,13 @@
                             series: {
                                 argumentField: 'day',
                                 valueField: 'oranges',
+                                name: 'New Member',
                                 type: 'line',
                                 color: '#ffa500'
                             }
                         }"></div>
                     </div>
                 </li>
-                <li>
-                    <div class="item2">
-                        <div class="graph" ng-if="reshow3">
-                            <!--<img src="app/assets/Images/bar-chart-movies.gif"  alt=""/>-->
-                            <div id="abc" dx-chart="{
-                            dataSource: dataSource3,
-                            series: {
-                                argumentField: 'day',
-                                valueField: 'oranges',
-                                type: 'line',
-                                color: '#ffa500'
-                            }
-                        }"></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="item2">
-                        <div class="graph" ng-if="reshow2">
-                            <!--<img src="app/assets/Images/bar-chart-movies.gif"  alt=""/> </div>-->
-                            <div id="abc" dx-chart="{
-                            dataSource: dataSource2,
-                            series: {
-                                argumentField: 'day',
-                                valueField: 'oranges',
-                                type: 'line',
-                                color: '#ffa500'
-                            }
-                        }"></div>
-                    </div>
-                </li>
-
-
-            </ul>
-
-            <ul>
                 <li>
                     <div class="item">
                         <h1>Member</h1>
@@ -333,6 +299,40 @@
                     </div>
                 </li>
                 <li>
+                    <div class="item2">
+                        <div class="graph" ng-if="reshow3">
+                            <!--<img src="app/assets/Images/bar-chart-movies.gif"  alt=""/>-->
+                            <div id="abc" dx-chart="{
+                            dataSource: dataSource3,
+                            series: {
+                                argumentField: 'day',
+                                valueField: 'oranges',
+                                name: 'in IDR 1,000',
+                                type: 'line',
+                                color: '#ffa500'
+                            }
+                        }"></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item2">
+                        <div class="graph" ng-if="reshow2">
+                            <!--<img src="app/assets/Images/bar-chart-movies.gif"  alt=""/> </div>-->
+                            <div id="abc" dx-chart="{
+                            dataSource: dataSource2,
+                            series: {
+                                argumentField: 'day',
+                                valueField: 'oranges',
+                                name: 'Promo Visit',
+                                type: 'line',
+                                color: '#ffa500'
+                            }
+                        }"></div>
+                    </div>
+                </li>
+
+                <li>
                     <div class="item">
                         <h1>Member Spending in IDR 1,000</h1>
                         <div class="cont">
@@ -399,7 +399,14 @@
                         </div>
                     </div>
                 </li>
+
+
             </ul>
+
+            <!--<ul>
+
+
+            </ul>-->
         </div>
 
 
@@ -407,8 +414,8 @@
     </div>
 
     <div class="m-new-Promo tablet-hide">
-        <h1>Summary</h1>
-        <div class="m-summery">
+        <h1 ng-click="summeryTabShowHide()">Summary</h1>
+        <div class="m-summery" ng-show="summeryTab">
             <div class="m-date-pi">
                 <ul>
 
@@ -424,7 +431,7 @@
             <ul>
                 <li>
                     <div class="item">
-                        <h1>Date</h1>
+                        <h1>{{rangeInfo.show_start_date}} to {{rangeInfo.show_end_date}}</h1>
                         <div class="cont">
                             <ul>
                                 <li>
@@ -466,7 +473,7 @@
                 </li>
                 <li>
                     <div class="item">
-                        <h1>Date</h1>
+                        <h1>{{rangeInfo.show_start_date}} to {{rangeInfo.show_end_date}}</h1>
                         <div class="cont">
                             <ul>
                                 <li>
@@ -511,7 +518,7 @@
                 </li>
                 <li>
                     <div class="item">
-                        <h1>Date</h1>
+                        <h1>Up to {{rangeInfo.show_end_date}}</h1>
                         <div class="cont">
                             <ul>
                                 <li>
@@ -556,7 +563,7 @@
                 </li>
                 <li>
                     <div class="item">
-                        <h1>Date</h1>
+                        <h1>{{rangeInfo.show_start_date}} to {{rangeInfo.show_end_date}}</h1>
                         <div class="cont">
                             <ul>
                                 <li>
@@ -642,61 +649,12 @@
                                 argumentField: 'day',
                                 valueField: 'oranges',
                                 type: 'bar',
+                                name: 'Member',
                                 color: '#ffa500'
                             }
                         }"></div>
                         </div>
                 </li>
-                <li>
-                    <div class="item2">
-                        <div class="graph" ng-if="reshow1">
-                            <!--<img src="app/assets/Images/bar-chart-movies.gif"  alt=""/> </div>-->
-                            <div id="abc" dx-chart="{
-                            dataSource: dataSource1,
-                            series: {
-                                argumentField: 'day',
-                                valueField: 'oranges',
-                                type: 'line',
-                                color: '#ffa500'
-                            }
-                        }"></div>
-                        </div>
-                </li>
-                <li>
-                    <div class="item2">
-                        <div class="graph" ng-if="reshow3">
-                            <!--<img src="app/assets/Images/bar-chart-movies.gif"  alt=""/>-->
-                            <div id="abc" dx-chart="{
-                            dataSource: dataSource3,
-                            series: {
-                                argumentField: 'day',
-                                valueField: 'oranges',
-                                type: 'line',
-                                color: '#ffa500'
-                            }
-                        }"></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="item2">
-                        <div class="graph" ng-if="reshow2">
-                            <!--<img src="app/assets/Images/bar-chart-movies.gif"  alt=""/> </div>-->
-                            <div id="abc" dx-chart="{
-                            dataSource: dataSource2,
-                            series: {
-                                argumentField: 'day',
-                                valueField: 'oranges',
-                                type: 'line',
-                                color: '#ffa500'
-                            }
-                        }"></div>
-                        </div>
-                </li>
-
-
-            </ul>
-            <ul>
                 <li>
                     <div class="item">
                         <h1>Member</h1>
@@ -723,13 +681,32 @@
                                     <div class="val">{{member_graph.male_user}}</div>
                                 </li>
                                 <li>
+                                <li>
                                     <div class="title">Purchased Member</div>
-                                    <div class="val"></div>
+                                    <div class="val">{{member_graph.purchase_member}}</div>
+                                </li>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </li>
+                <li>
+                    <div class="item2">
+                        <div class="graph" ng-if="reshow1">
+                            <!--<img src="app/assets/Images/bar-chart-movies.gif"  alt=""/> </div>-->
+                            <div id="abc" dx-chart="{
+                            dataSource: dataSource1,
+                            series: {
+                                argumentField: 'day',
+                                valueField: 'oranges',
+                                type: 'line',
+                                name: 'New Member',
+                                color: '#ffa500'
+                            }
+                        }"></div>
+                        </div>
+                </li>
+
                 <li>
                     <div class="item">
                         <h1>New Member</h1>
@@ -760,6 +737,23 @@
                                     <div class="val">{{new_member_graph.Jul}}</div>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item2">
+                        <div class="graph" ng-if="reshow3">
+                            <!--<img src="app/assets/Images/bar-chart-movies.gif"  alt=""/>-->
+                            <div id="abc" dx-chart="{
+                            dataSource: dataSource3,
+                            series: {
+                                argumentField: 'day',
+                                valueField: 'oranges',
+                                type: 'line',
+                                name: 'in IDR 1,000',
+                                color: '#ffa500'
+                            }
+                        }"></div>
                         </div>
                     </div>
                 </li>
@@ -797,6 +791,24 @@
                     </div>
                 </li>
                 <li>
+                    <div class="item2">
+                        <div class="graph" ng-if="reshow2">
+                            <!--<img src="app/assets/Images/bar-chart-movies.gif"  alt=""/> </div>-->
+                            <div id="abc" dx-chart="{
+                            dataSource: dataSource2,
+                            series: {
+                                argumentField: 'day',
+                                valueField: 'oranges',
+                                type: 'line',
+                                name: 'Promo Visit',
+                                color: '#ffa500'
+                            }
+                        }"></div>
+                        </div>
+                </li>
+
+
+                <li>
                     <div class="item">
                         <h1>Page and Promo Visit</h1>
                         <div class="cont">
@@ -830,7 +842,13 @@
                         </div>
                     </div>
                 </li>
+
+
             </ul>
+            <!--<ul>
+
+
+            </ul>-->
         </div>
 
 
@@ -838,8 +856,8 @@
 
     <div class="container">
         <div class="new-Promo phone-hide">
-            <h1>Transaction</h1>
-            <div class="transaction">
+            <h1 ng-click="transactionTabShowHide()">Transaction</h1>
+            <div class="transaction" ng-show="transactionTab">
                 <div class="t-form">
                     <ul>
                         <li>
@@ -857,7 +875,7 @@
                         </li>
 
                         <li>
-                            <div class="label">Restaurant:</div>
+                            <div class="label">All Restaurant:</div>
                             <div class="val">
                                 <!--<div class="checkdiv" ng-repeat="res in all_restaurant"><input type="checkbox" ng-model="rescheck"  ng-value="{{res.id}}" ng-click="checkclick()"> <span>{{res.name}}</span></div>-->
                                 <div class="checkdiv" ng-repeat="res in all_restaurant"><input type="checkbox" ng-model="res.selected" value={{res.id}} ng-change="save()"> <span>{{res.name}}</span></div>
@@ -870,7 +888,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="label">Outlet:</div>
+                            <div class="label">All Outlet:</div>
                             <div class="val" ng-if="all_outlet">
                                 <div class="checkdiv" ng-repeat="outl in all_outlet"><input type="checkbox" ng-model="outl.selected" value={{outl.id}}> <span>{{outl.name}}</span></div>
                                 <!--<div class="checkdiv"><input type="checkbox"> <span>All Resto</span></div>
@@ -906,13 +924,13 @@
         </div>
     </div>
 
-    <div class="container phone-hide">
+    <div class="container phone-hide" ng-show="transactionTab">
 
 
         <div class="transaction-details border-grey">
 
             <table>
-                <tr>
+                <tr style="background: #39ac38 none repeat scroll 0 0;">
                     <td class="header-color">Merchandise</td>
                     <td class="header-color">All Offer</td>
                     <td class="header-color">All Redeem</td>
@@ -1101,8 +1119,8 @@
     </div>
 
     <div class="m-new-Promo tablet-hide">
-        <h1>Transaction</h1>
-        <div class="m-transaction">
+        <h1 ng-click="transactionTabShowHide()">Transaction</h1>
+        <div class="m-transaction" ng-show="transactionTab">
             <div class="t-form">
                 <ul>
                     <li>
@@ -1120,7 +1138,7 @@
                     </li>
 
                     <li>
-                        <div class="label">Restaurant:</div>
+                        <div class="label">All Restaurant:</div>
                         <div class="val">
                             <!--<div class="checkdiv" ng-repeat="res in all_restaurant"><input type="checkbox" ng-model="rescheck"  ng-value="{{res.id}}" ng-click="checkclick()"> <span>{{res.name}}</span></div>-->
                             <div class="checkdiv" ng-repeat="res in all_restaurant"><input type="checkbox" ng-model="res.selected" value={{res.id}} ng-change="save()"> <span>{{res.name}}</span></div>
@@ -1133,7 +1151,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="label">Outlet:</div>
+                        <div class="label">All Outlet:</div>
                         <div class="val" ng-if="all_outlet">
                             <div class="checkdiv" ng-repeat="outl in all_outlet"><input type="checkbox" ng-model="outl.selected" value={{outl.id}}> <span>{{outl.name}}</span></div>
                             <!--<div class="checkdiv"><input type="checkbox"> <span>All Resto</span></div>
@@ -1168,11 +1186,11 @@
 
     </div>
 
-    <div class="m-transaction-details tablet-hide border-grey">
+    <div class="m-transaction-details tablet-hide border-grey" ng-show="transactionTab">
         <table>
             <tr>
-                <td width="30%" class="m-header-color">Merchandise</td>
-                <td>Payment Voucher</td>
+                <td class="h-bg-color" width="30%" class="m-header-color">Merchandise</td>
+                <td class="h-bg-color">Payment Voucher</td>
             </tr>
             <tr>
                 <td width="30%" class="m-header-color">All Offer</td>
@@ -1203,11 +1221,11 @@
 
     </div>
 
-    <div class="m-transaction-details tablet-hide border-grey">
+    <div class="m-transaction-details tablet-hide border-grey" ng-show="transactionTab">
         <table>
             <tr>
-                <td width="30%" class="m-header-color">Merchandise</td>
-                <td>Menu Voucher</td>
+                <td class="h-bg-color" width="30%" class="m-header-color">Merchandise</td>
+                <td class="h-bg-color">Menu Voucher</td>
             </tr>
             <tr>
                 <td width="30%" class="m-header-color">All Offer</td>
@@ -1238,11 +1256,11 @@
 
     </div>
 
-    <div class="m-transaction-details tablet-hide border-grey">
+    <div class="m-transaction-details tablet-hide border-grey" ng-show="transactionTab">
         <table>
             <tr>
-                <td width="30%" class="m-header-color">Merchandise</td>
-                <td>Membership</td>
+                <td class="h-bg-color" width="30%" class="m-header-color">Merchandise</td>
+                <td class="h-bg-color">Membership</td>
             </tr>
             <tr>
                 <td width="30%" class="m-header-color">All Offer</td>
@@ -1277,11 +1295,11 @@
         </table>
 
     </div>
-    <div class="m-transaction-details tablet-hide border-grey">
+    <div class="m-transaction-details tablet-hide border-grey" ng-show="transactionTab">
         <table>
             <tr>
-                <td width="30%" class="m-header-color">Promotion</td>
-                <td>Payment Voucher</td>
+                <td class="h-bg-color" width="30%" class="m-header-color">Promotion</td>
+                <td class="h-bg-color">Payment Voucher</td>
             </tr>
             <tr>
                 <td width="30%" class="m-header-color">Will Active</td>
@@ -1322,11 +1340,11 @@
 
     </div>
 
-    <div class="m-transaction-details tablet-hide border-grey">
+    <div class="m-transaction-details tablet-hide border-grey" ng-show="transactionTab">
         <table>
             <tr>
-                <td width="30%" class="m-header-color">Promotion</td>
-                <td>Menu Voucher</td>
+                <td class="h-bg-color" width="30%" class="m-header-color">Promotion</td>
+                <td class="h-bg-color">Menu Voucher</td>
             </tr>
             <tr>
                 <td width="30%" class="m-header-color">Will Active</td>
@@ -1357,11 +1375,11 @@
 
     </div>
 
-    <div class="m-transaction-details tablet-hide border-grey">
+    <div class="m-transaction-details tablet-hide border-grey" ng-show="transactionTab">
         <table>
             <tr>
-                <td width="30%" class="m-header-color">Promotion</td>
-                <td>Membership</td>
+                <td class="h-bg-color" width="30%" class="m-header-color">Promotion</td>
+                <td class="h-bg-color">Membership</td>
             </tr>
             <tr>
                 <td width="30%" class="m-header-color">Will Active</td>
@@ -1393,11 +1411,11 @@
 
     </div>
 
-    <div class="m-transaction-details tablet-hide border-grey">
+    <div class="m-transaction-details tablet-hide border-grey" ng-show="transactionTab">
         <table>
             <tr>
-                <td width="30%" class="m-header-color">Advertising</td>
-                <td>News & Events</td>
+                <td class="h-bg-color" width="30%" class="m-header-color">Advertising</td>
+                <td class="h-bg-color">News & Events</td>
             </tr>
             <tr>
                 <td width="30%" class="m-header-color">Will Active</td>
@@ -1431,11 +1449,11 @@
 
     </div>
 
-    <div class="m-transaction-details tablet-hide border-grey">
+    <div class="m-transaction-details tablet-hide border-grey" ng-show="transactionTab">
         <table>
             <tr>
-                <td width="30%" class="m-header-color">Advertising</td>
-                <td>Advertising</td>
+                <td class="h-bg-color" width="30%" class="m-header-color">Advertising</td>
+                <td class="h-bg-color">Advertising</td>
             </tr>
             <tr>
                 <td width="30%" class="m-header-color">Will Active</td>
@@ -1469,11 +1487,11 @@
 
     </div>
 
-    <div class="m-transaction-details tablet-hide border-grey">
+    <div class="m-transaction-details tablet-hide border-grey" ng-show="transactionTab">
         <table>
             <tr>
-                <td width="30%" class="m-header-color">Advertising</td>
-                <td>Banner</td>
+                <td class="h-bg-color" width="30%" class="m-header-color">Advertising</td>
+                <td class="h-bg-color">Banner</td>
             </tr>
             <tr>
                 <td width="30%" class="m-header-color">Will Active</td>
@@ -1506,11 +1524,11 @@
         </table>
 
     </div>
-    <div class="m-transaction-details tablet-hide border-grey">
+    <div class="m-transaction-details tablet-hide border-grey" ng-show="transactionTab">
         <table>
             <tr>
-                <td width="30%" class="m-header-color">Marketplace</td>
-                <td>Event Offers</td>
+                <td class="h-bg-color" width="30%" class="m-header-color">Marketplace</td>
+                <td class="h-bg-color"Event Offers</td>
             </tr>
             <tr>
                 <td width="30%" class="m-header-color">Available</td>
@@ -1549,11 +1567,11 @@
 
     </div>
 
-    <div class="m-transaction-details tablet-hide border-grey">
+    <div class="m-transaction-details tablet-hide border-grey" ng-show="transactionTab">
         <table>
             <tr>
-                <td width="30%" class="m-header-color">Points</td>
-                <td>Merchant-Point</td>
+                <td class="h-bg-color" width="30%" class="m-header-color ">Points</td>
+                <td class="h-bg-color">Merchant-Point</td>
             </tr>
             <tr>
                 <td width="30%" class="m-header-color">Generated</td>
