@@ -83,7 +83,7 @@ app.controller('promomasterimageCtrl', function ($rootScope, $scope, $http, $loc
         if ( window.confirm("Want to delete?") ) {
             $http({
                 method: "DELETE",
-                url: $rootScope.serviceurl + "deletePromo/"+c_id,
+                url: $rootScope.serviceurl + "deleteOfferImage/"+c_id,
                 //data: {"name": $scope.item.name,"is_active": $scope.item.is_active},
                 //headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
