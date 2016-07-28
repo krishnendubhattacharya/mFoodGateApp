@@ -86,6 +86,7 @@
 						</li>
 						<li ng-show="showMember" ng-if="loggedindetails.user_type_id==3" id="dropdown"><a href="">Merchant</a>
 							<ul  id="dropdown-content" style="width:190px !important;">
+								<li><a ui-sref="frontend.merchantdashboard"><i class="fa fa-user"></i> Dashboard</a></li>
 								<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantprofile"><i class="fa fa-user"></i> Change Profile</a></li>
 								<li ng-if="user_details.merchant_id"><a href="http://52.39.33.188/Member_Ship/MasterData/member_master_mfoodgate.aspx?MerchantID={{user_details.merchant_id}}" target="_blank"><i class="fa fa-user"></i>Manage Member</a></li>
 								<li ><a ui-sref="frontend.purchasedmembrship"><i class="fa fa-user"></i>Purchased Membership</a></li>

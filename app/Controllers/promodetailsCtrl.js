@@ -46,7 +46,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl+"getUsersPoints/" + $scope.loggedindetails.id,
+            url: $rootScope.serviceurl+"getUsersPoints/" + $scope.loggedindetails.id+"/"+$scope.promoId,
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
             if(data.status == 'success') {

@@ -92,6 +92,15 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
 
             $http({
                 method: "GET",
+                url: $rootScope.serviceurl+"websiteVisit",
+                headers: {'Content-Type': 'application/json'},
+            }).success(function(data) {
+                //alert(data);
+
+            });
+
+            $http({
+                method: "GET",
                 url: $rootScope.serviceurl + "getFeaturedCategories",
             }).success(function (data) {
                 $scope.featuredCatInfo = data.featuredcat;

@@ -48,6 +48,41 @@ app.controller('eventbidderCtrl', function ($rootScope, $scope, $http, $location
         ]
     };
 
+	$scope.dataGridOptionss = {
+        dataSource: $scope.bidInfo,
+        selection: {
+            mode: "single"
+        },
+        paging: {
+            pageSize: 5
+        },
+        pager: {
+            showPageSizeSelector: true,
+            allowedPageSizes: [5, 10, 20],
+            showInfo: true
+        },
+        onInitialized : function(e){
+            $scope.datagridobjj = e.component;
+        },
+        columns: ["price", "email", "name",
+            {
+                caption:'Action',
+                width: 200,
+                alignment: 'center',
+                cellTemplate: function (container, options) {
+                    $('<button/>').addClass('dx-button')
+                        .text('Accept')
+                        .on('dxclick',function(){$scope.accept_event(options.data.id); })
+                        .appendTo(container);
+
+
+                }
+            },
+
+
+        ]
+    };
+
     $scope.getEventBidder = function() {
         //$scope.edit_mode = false;
         $http({
@@ -57,6 +92,7 @@ app.controller('eventbidderCtrl', function ($rootScope, $scope, $http, $location
             $scope.bidInfo = data.event_bids;
             //console.log($scope.voucherInfo);
             $scope.datagridobj.option('dataSource',$scope.bidInfo);
+		$scope.datagridobjj.option('dataSource',$scope.bidInfo);
         });
     }
     $scope.getEventBidder();

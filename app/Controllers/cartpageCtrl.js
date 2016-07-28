@@ -25,6 +25,26 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
     }
     $scope.save_to_db();
 
+
+    $scope.getPromoDetails = function(){
+        //alert($scope.cartDetails[0].offer_id);
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getPromoDetails/" +$scope.cartDetails[0].offer_id,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            if(data.type == 'success') {
+                $scope.promodetails = data.offer;
+                $scope.condition = data.offer.conditions;
+                if($scope.loggedindetails)
+                {
+                    $scope.getUsersPoints();
+                }
+            }
+        })
+    }
+    $scope.getPromoDetails();
+
     //$scope.$watch(function(){
     //    var cart=$cookieStore.get('cart');
     //    if(cart)
@@ -40,7 +60,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
     {
         $http({
             method: "GET",
-            url: $rootScope.serviceurl+"getUsersPoints/" + $scope.loggedindetails.id,
+            url: $rootScope.serviceurl+"getUsersPoints/" + $scope.loggedindetails.id+"/"+$scope.promodetails.id,
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
             if(data.status == 'success') {
@@ -48,10 +68,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
             }
         })
     }
-    if($scope.loggedindetails)
-    {
-        $scope.getUsersPoints();
-    }
+
 
 
 
@@ -151,6 +168,10 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
         })
     }
     $scope.pay_now = function() {
+       // alert($scope.mpoints);
+       // alert($scope.cart_total_points);
+        //alert($scope.condition);
+        //return false;
 
         $scope.cartDetails = mFoodCart.get_cart();
         //console.log($scope.cartDetails);
@@ -162,25 +183,42 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
         else {
             if(!$scope.loggedindetails.first_name) {
                 $location.path("/profile");
-            }else{
-            $scope.getCartTotals();
-            if ($scope.payments == 'C') {
-                $http({
-                    method: "POST",
-                    url: $rootScope.serviceurl + "cart_checkout",
-                    headers: {'Content-Type': 'application/json'},
-                    data: {cart: $scope.cartDetails, total: $scope.cart_total, user_id: $scope.loggedindetails.id}
-                }).success(function (data) {
+            }else {
+                $scope.getCartTotals();
+                if($scope.condition == 1) {
+                    if ($scope.mpoints >= $scope.cart_total_points) {
+                        $http({
+                            method: "POST",
+                            url: $rootScope.serviceurl + "redeemUserPoints",
+                            headers: {'Content-Type': 'application/json'},
+                            data: {
+                                cart: $scope.cartDetails,
+                                points: $scope.cart_total_points,
+                                user_id: $scope.loggedindetails.id
+                            }
+                        }).success(function (data) {
 
-                    if (data.type == 'success') {
-                        //console.log(data.getRelatedPromo);
-                        //$scope.related_products = data.getRelatedPromo;
-                        //console.log($scope.related_products);
-                        $window.location.href = data.url;
+                            if (data.status == 'success') {
+                                //$cookieStore.remove('cart');
+                                //localStorage.removeItem('cart');
+                                //console.log(data.getRelatedPromo);
+                                //$scope.related_products = data.getRelatedPromo;
+                                //console.log($scope.related_products);
+                                //$window.location.href = data.url;
+                                /*var message = "Redeem successfull.";
+                                DevExpress.ui.notify({
+                                    message: message,
+                                    position: {
+                                        my: "center top",
+                                        at: "center top"
+                                    }
+                                }, "success", 3000);
+                                $location.path('/');*/
+                            }
 
-                    }
-                    else {
-                        var message = "Internal error. Please try again later";
+                        })
+                    }else {
+                        var message = "You don't have sufficient points to redeem.";
                         DevExpress.ui.notify({
                             message: message,
                             position: {
@@ -188,38 +226,49 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
                                 at: "center top"
                             }
                         }, "error", 3000);
+                        return false;
                     }
-                })
-            }
-            else {
-                if ($scope.mpoints >= $scope.cart_total_points) {
+
                     $http({
                         method: "POST",
-                        url: $rootScope.serviceurl + "redeemUserPoints",
+                        url: $rootScope.serviceurl + "cart_checkout",
                         headers: {'Content-Type': 'application/json'},
-                        data: {
-                            cart: $scope.cartDetails,
-                            points: $scope.cart_total_points,
-                            user_id: $scope.loggedindetails.id
-                        }
+                        data: {cart: $scope.cartDetails, total: $scope.cart_total, user_id: $scope.loggedindetails.id}
                     }).success(function (data) {
 
-                        if (data.status == 'success') {
-                            //$cookieStore.remove('cart');
-                            localStorage.removeItem('cart');
+                        if (data.type == 'success') {
                             //console.log(data.getRelatedPromo);
                             //$scope.related_products = data.getRelatedPromo;
                             //console.log($scope.related_products);
-                            //$window.location.href = data.url;
-                            var message = "Redeem successfull.";
+                            $window.location.href = data.url;
+
+                        }
+                        else {
+                            var message = "Internal error. Please try again later";
                             DevExpress.ui.notify({
                                 message: message,
                                 position: {
                                     my: "center top",
                                     at: "center top"
                                 }
-                            }, "success", 3000);
-                            $location.path('/');
+                            }, "error", 3000);
+                        }
+                    })
+                }else{
+                if ($scope.payments == 'C') {
+                    $http({
+                        method: "POST",
+                        url: $rootScope.serviceurl + "cart_checkout",
+                        headers: {'Content-Type': 'application/json'},
+                        data: {cart: $scope.cartDetails, total: $scope.cart_total, user_id: $scope.loggedindetails.id}
+                    }).success(function (data) {
+
+                        if (data.type == 'success') {
+                            //console.log(data.getRelatedPromo);
+                            //$scope.related_products = data.getRelatedPromo;
+                            //console.log($scope.related_products);
+                            $window.location.href = data.url;
+
                         }
                         else {
                             var message = "Internal error. Please try again later";
@@ -234,16 +283,60 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
                     })
                 }
                 else {
-                    var message = "You don't have sufficient points to redeem.";
-                    DevExpress.ui.notify({
-                        message: message,
-                        position: {
-                            my: "center top",
-                            at: "center top"
-                        }
-                    }, "error", 3000);
-                }
+                    if ($scope.mpoints >= $scope.cart_total_points) {
+                        $http({
+                            method: "POST",
+                            url: $rootScope.serviceurl + "redeemUserPoints",
+                            headers: {'Content-Type': 'application/json'},
+                            data: {
+                                cart: $scope.cartDetails,
+                                points: $scope.cart_total_points,
+                                user_id: $scope.loggedindetails.id
+                            }
+                        }).success(function (data) {
+                            //console.log(data);
+                            //return false;
+                            if (data.status == 'success') {
+                                //$cookieStore.remove('cart');
+                                localStorage.removeItem('cart');
+                                //console.log(data.getRelatedPromo);
+                                //$scope.related_products = data.getRelatedPromo;
+                                //console.log($scope.related_products);
+                                //$window.location.href = data.url;
+                                var message = "Redeem successfull.";
+                                DevExpress.ui.notify({
+                                    message: message,
+                                    position: {
+                                        my: "center top",
+                                        at: "center top"
+                                    }
+                                }, "success", 3000);
+                                $location.path('/');
+                            }
+                            else {
+                                var message = "Internal error. Please try again later";
+                                DevExpress.ui.notify({
+                                    message: message,
+                                    position: {
+                                        my: "center top",
+                                        at: "center top"
+                                    }
+                                }, "error", 3000);
+                            }
+                        })
+                    }
+                    else {
+                        var message = "You don't have sufficient points to redeem.";
+                        DevExpress.ui.notify({
+                            message: message,
+                            position: {
+                                my: "center top",
+                                at: "center top"
+                            }
+                        }, "error", 3000);
+                    }
 
+                }
             }
         }
     }

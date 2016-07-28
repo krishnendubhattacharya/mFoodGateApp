@@ -24,6 +24,8 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
         $scope.curDt = new Date();
         //console.log(d);
         $scope.current_date = moment($scope.curDt).format("YYYY-MM-DD");
+        $scope.current_year = moment($scope.curDt).format("YYYY");
+        $scope.current_month = moment($scope.curDt).format("MM");
         $http({
             method: "GET",
             url: $rootScope.serviceurl + "getAllInfoUptoDate/"+$scope.loggedindetails.id,
@@ -36,6 +38,7 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
             $scope.new_member_graph =data.new_member_graph;
             $scope.promo_graph =data.promo_graph;
             $scope.order_graph =data.order_graph;
+            $scope.month_name =data.month_name;
 
             $scope.dataSource = [{
                 day: "All",
@@ -55,60 +58,60 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
             }];
 
             $scope.dataSource1 = [{
-                day: "Feb",
+                day: $scope.month_name.first,
                 oranges: $scope.new_member_graph.Feb
             }, {
-                day: "Mar",
+                day: $scope.month_name.second,
                 oranges: $scope.new_member_graph.Mar
             }, {
-                day: "Apr",
+                day: $scope.month_name.third,
                 oranges: $scope.new_member_graph.Apr
             }, {
-                day: "May",
+                day: $scope.month_name.fourth,
                 oranges: $scope.new_member_graph.May
             }, {
-                day: "Jun",
+                day: $scope.month_name.fifth,
                 oranges: $scope.new_member_graph.Jun
             }, {
-                day: "Jul",
+                day: $scope.month_name.sixth,
                 oranges: $scope.new_member_graph.Jul
             }];
             $scope.dataSource2 = [{
-                day: "Feb",
+                day: $scope.month_name.first,
                 oranges: $scope.promo_graph.Feb
             }, {
-                day: "Mar",
+                day: $scope.month_name.second,
                 oranges: $scope.promo_graph.Mar
             }, {
-                day: "Apr",
+                day: $scope.month_name.third,
                 oranges: $scope.promo_graph.Apr
             }, {
-                day: "May",
+                day: $scope.month_name.fourth,
                 oranges: $scope.promo_graph.May
             }, {
-                day: "Jun",
+                day: $scope.month_name.fifth,
                 oranges: $scope.promo_graph.Jun
             }, {
-                day: "Jul",
+                day: $scope.month_name.sixth,
                 oranges: $scope.promo_graph.Jul
             }];
             $scope.dataSource3 = [{
-                day: "Feb",
+                day: $scope.month_name.first,
                 oranges: $scope.order_graph.Feb
             }, {
-                day: "Mar",
+                day: $scope.month_name.second,
                 oranges: $scope.order_graph.Mar
             }, {
-                day: "Apr",
+                day: $scope.month_name.third,
                 oranges: $scope.order_graph.Apr
             }, {
-                day: "May",
+                day: $scope.month_name.fourth,
                 oranges: $scope.order_graph.May
             }, {
-                day: "Jun",
+                day: $scope.month_name.fifth,
                 oranges: $scope.order_graph.Jun
             }, {
-                day: "Jul",
+                day: $scope.month_name.sixth,
                 oranges: $scope.order_graph.Jul
             }];
             $scope.reshow =true;
@@ -123,7 +126,7 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
         $http({
             method: "POST",
             url: $rootScope.serviceurl + "getAllInfoDateRange",
-            data: {"merchant_id":$scope.loggedindetails.id,"from_date":"2016-7-1","to_date":$scope.current_date},
+            data: {"merchant_id":$scope.loggedindetails.id,"from_date":$scope.current_year+"-"+$scope.current_month+"-1","to_date":$scope.current_date},
             headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
             console.log(data);

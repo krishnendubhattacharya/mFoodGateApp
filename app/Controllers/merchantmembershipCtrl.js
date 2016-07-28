@@ -8,6 +8,7 @@ app.controller('merchantmembershipCtrl', function ($rootScope, $scope, $http, $l
     }
 
     $scope.res_id = $stateParams.res_id;
+    $scope.merchant_id = $stateParams.id;
     $scope.checkBox = {
         checked: {
             value: 1
@@ -19,6 +20,14 @@ app.controller('merchantmembershipCtrl', function ($rootScope, $scope, $http, $l
     };
 
     $scope.getfeaturedNews = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"memberVisit/" + $scope.loggedindetails.id+'/'+$scope.merchant_id,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            //alert(data);
+
+        });
         $http({ 
             method: "GET",
             url: $rootScope.serviceurl + "getFeaturedMerchantNews/" + $scope.res_id,
