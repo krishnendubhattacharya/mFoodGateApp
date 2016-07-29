@@ -238,7 +238,26 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     console.log('cart',$scope.cartDetails);
 
     $scope.updateQuantity = function(data){
-        if(data.quantity>0) {
+        /*if(data.quantity>0) {
+            mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
+            $scope.getCartTotals();
+        }*/
+        if ($scope.loggedindetails) {
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl+"updateCartQuantity",
+                headers: {'Content-Type': 'application/json'},
+                data:{item:data,user_id:$scope.loggedindetails.id}
+            }).success(function(res) {
+
+                mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
+                $scope.getCartTotals();
+                $scope.save_to_db();
+
+            })
+        }
+        else
+        {
             mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
             $scope.getCartTotals();
         }

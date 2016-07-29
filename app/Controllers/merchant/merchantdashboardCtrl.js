@@ -67,19 +67,19 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
                 day: "All",
                 oranges: $scope.member_graph.all
             }, {
-                day: "Active",
+                day: "A",
                 oranges: $scope.member_graph.active_user
             }, {
-                day: "Non Active",
+                day: "N A",
                 oranges: $scope.member_graph.inactive_user
             }, {
-                day: "Female",
+                day: "F",
                 oranges: $scope.member_graph.female_user
             }, {
-                day: "Male",
+                day: "M",
                 oranges: $scope.member_graph.male_user
             }, {
-                day: "Purchase",
+                day: "P M",
                 oranges: $scope.member_graph.purchase_member
             }];
 
@@ -183,6 +183,88 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
     $scope.checkclick = function () {
         console.log($scope.rescheck);
     }
+    $scope.chkall = function(){
+        //alert(12);
+        //alert($scope.chka);
+
+        if($scope.chka){
+            $scope.all_restaurantt = $scope.all_restaurant;
+            //console.log($scope.all_restaurant);
+            $scope.all_restaurant = [];
+            $scope.autoidArray = [];
+            $scope.residArray = [];
+            angular.forEach($scope.all_restaurantt,function(val){
+                //console.log(val);
+                $scope.all_restaurant.push({name:val.name,id:val.id,'res_id':val.res_id,'selected':true});
+                $scope.autoidArray.push(val.id);
+                $scope.residArray.push(val.res_id);
+                $http({
+                    method: "POST",
+                    url: $rootScope.serviceurl + "getMerchantOutletsBySelectedRestaurant",
+                    data: {"restaurant_id":$scope.autoidArray},
+                    headers: {'Content-Type': 'application/json'},
+                }).success(function (data) {
+                    console.log(data);
+                    $scope.all_outlet = [];
+                    angular.forEach(data.data,function(val){
+                        $scope.all_outlet.push({name:val.title,id:val.id,'out_id':val.outlet_id});
+                    })
+
+                });
+            })
+            //console.log($scope.all_restaurant);
+        }else{
+            $scope.all_restaurantt = $scope.all_restaurant;
+            //console.log($scope.all_restaurant);
+            $scope.all_restaurant = [];
+
+            angular.forEach($scope.all_restaurantt,function(val){
+                //console.log(val);
+                $scope.all_restaurant.push({name:val.name,id:val.id,'res_id':val.res_id,'selected':false});
+
+            })
+            $scope.all_outlet = [];
+        }
+    }
+
+    $scope.chkallout = function(){
+        //alert(12);
+        //alert($scope.chkout);
+
+        if($scope.chkout){
+            $scope.all_outlett = $scope.all_outlet;
+            //console.log($scope.all_restaurant);
+            $scope.all_outlet = [];
+            angular.forEach($scope.all_outlett,function(val){
+                $scope.all_outlet.push({name:val.name,id:val.id,'out_id':val.out_id,'selected':true});
+            })
+            //console.log($scope.all_restaurant);
+        }else{
+            $scope.all_outlett = $scope.all_outlet;
+            //console.log($scope.all_restaurant);
+            $scope.all_outlet = [];
+
+            angular.forEach($scope.all_outlett,function(val){
+                $scope.all_outlet.push({name:val.name,id:val.id,'out_id':val.out_id,'selected':false});
+            })
+            //$scope.all_outlet = [];
+        }
+    }
+
+    $scope.outsave = function(){
+        $scope.autoidoutArray = [];
+        //$scope.residArray = [];
+        angular.forEach($scope.all_outlet, function(res){
+            if (res.selected) $scope.autoidoutArray.push(res.id);
+        });
+
+        if($scope.all_outlet.length > $scope.autoidoutArray.length){
+            $scope.chkout = false;
+        }
+
+
+
+    }
 
     $scope.save = function(){
         $scope.autoidArray = [];
@@ -193,6 +275,9 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
         });
         console.log($scope.autoidArray);
         console.log($scope.residArray);
+        if($scope.all_restaurant.length > $scope.autoidArray.length){
+            $scope.chka = false;
+        }
 
         $http({
             method: "POST",

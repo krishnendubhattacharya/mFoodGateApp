@@ -4,6 +4,7 @@
  */
 app.controller('promomasterimageCtrl', function ($rootScope, $scope, $http, $location, myAuth,$timeout,$stateParams) {
     $stateParams.resturantId = 1;
+    $scope.tableshow=false;
 
 
     $scope.viewPromo = function () {
@@ -26,6 +27,7 @@ app.controller('promomasterimageCtrl', function ($rootScope, $scope, $http, $loc
                     "autoWidth": false
                 });
             }, 3000, false);
+            $scope.tableshow=true;
             //console.log($scope.allcat);
 
 
@@ -88,7 +90,9 @@ app.controller('promomasterimageCtrl', function ($rootScope, $scope, $http, $loc
                 //headers: {'Content-Type': 'application/json'},
             }).success(function (data) {
                 console.log(data);
+                $scope.tableshow=false;
                 $scope.viewPromo();
+
                 //$scope.allcat = data.category;
                 //console.log($scope.allcat);
             });

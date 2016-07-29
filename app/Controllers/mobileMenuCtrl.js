@@ -118,6 +118,34 @@ app.controller('mobileMenuCtrl', function ($rootScope, $scope, $http, $location,
     }
     $scope.catList();
 
+    $scope.getImageInfo = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "user/"+$scope.loggedindetailss.id,
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            //console.log(data);
+            //$scope.userInfo =data;
+            $scope.user_details = data.user_details;
+            //$scope.userImagePath = data.user_details.image;
+            //console.log($scope.allcat);
+
+            //console.log($scope.userInfo.email);
+
+
+
+        });
+
+    }
+    myAuth.updateUserinfo(myAuth.getUserAuthorisation());
+    $scope.loggedindetailss = myAuth.getUserNavlinks();
+    console.log($scope.loggedindetailss);
+    if($scope.loggedindetailss.id){
+        $scope.getImageInfo();
+    }
+
+
          
    
 });
