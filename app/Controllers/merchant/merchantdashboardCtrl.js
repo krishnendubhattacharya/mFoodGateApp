@@ -85,60 +85,60 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
 
             $scope.dataSource1 = [{
                 day: $scope.month_name.first,
-                oranges: $scope.new_member_graph.Feb
-            }, {
-                day: $scope.month_name.second,
                 oranges: $scope.new_member_graph.Mar
             }, {
-                day: $scope.month_name.third,
+                day: $scope.month_name.second,
                 oranges: $scope.new_member_graph.Apr
             }, {
-                day: $scope.month_name.fourth,
+                day: $scope.month_name.third,
                 oranges: $scope.new_member_graph.May
             }, {
-                day: $scope.month_name.fifth,
+                day: $scope.month_name.fourth,
                 oranges: $scope.new_member_graph.Jun
             }, {
-                day: $scope.month_name.sixth,
+                day: $scope.month_name.fifth,
                 oranges: $scope.new_member_graph.Jul
+            }, {
+                day: $scope.month_name.sixth,
+                oranges: $scope.new_member_graph.Aug
             }];
             $scope.dataSource2 = [{
                 day: $scope.month_name.first,
-                oranges: $scope.promo_graph.Feb
-            }, {
-                day: $scope.month_name.second,
                 oranges: $scope.promo_graph.Mar
             }, {
-                day: $scope.month_name.third,
+                day: $scope.month_name.second,
                 oranges: $scope.promo_graph.Apr
             }, {
-                day: $scope.month_name.fourth,
+                day: $scope.month_name.third,
                 oranges: $scope.promo_graph.May
             }, {
-                day: $scope.month_name.fifth,
+                day: $scope.month_name.fourth,
                 oranges: $scope.promo_graph.Jun
             }, {
-                day: $scope.month_name.sixth,
+                day: $scope.month_name.fifth,
                 oranges: $scope.promo_graph.Jul
+            }, {
+                day: $scope.month_name.sixth,
+                oranges: $scope.promo_graph.Aug
             }];
             $scope.dataSource3 = [{
                 day: $scope.month_name.first,
-                oranges: $scope.order_graph.Feb
-            }, {
-                day: $scope.month_name.second,
                 oranges: $scope.order_graph.Mar
             }, {
-                day: $scope.month_name.third,
+                day: $scope.month_name.second,
                 oranges: $scope.order_graph.Apr
             }, {
-                day: $scope.month_name.fourth,
+                day: $scope.month_name.third,
                 oranges: $scope.order_graph.May
             }, {
-                day: $scope.month_name.fifth,
+                day: $scope.month_name.fourth,
                 oranges: $scope.order_graph.Jun
             }, {
-                day: $scope.month_name.sixth,
+                day: $scope.month_name.fifth,
                 oranges: $scope.order_graph.Jul
+            }, {
+                day: $scope.month_name.sixth,
+                oranges: $scope.order_graph.Aug
             }];
             $scope.reshow =true;
             $scope.reshow1 =true;

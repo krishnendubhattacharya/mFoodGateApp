@@ -63,8 +63,8 @@
                         <ul>
                             <li ng-repeat="catdetail in catInfo"><a onclick="menuClick()" title="Category" ui-sref="frontend.refinerestaurent({ categoryId: catdetail.id })"><img src="{{catdetail.icon_url}}" width="20" height="20" ng-if="catdetail.icon_url"/>{{catdetail.name}}</a></li>
                         </ul></li>
-                    <li class="has-sub active"><a href="" title="Voucher"><span>Voucher</span></a>
-                        <ul style="display: block;">
+                    <li class="has-sub"><a href="" title="Voucher"><span>Voucher</span></a>
+                        <ul>
                             <li><a onclick="menuClick()" title="My Voucher" ui-sref="frontend.voucher">Menu Voucher</a></li>
                             <li><a onclick="menuClick()" title="My Membership" ui-sref="frontend.paymentVoucher">Payment Voucher</a></li>
 
@@ -111,6 +111,8 @@
                         </ul>
                     </li>
                     <li><a onclick="menuClick()" title="Logout" ng-click="userLogout()" title="Logout">Logout</a></li>
+                    <li> &nbsp </li>
+                    <li> &nbsp </li>
                 </ul>
 
             </div>
