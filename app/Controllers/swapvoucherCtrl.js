@@ -13,7 +13,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
             url: $rootScope.serviceurl + "mySwapList/"+$scope.loggedindetails.id,
         }).success(function (data) {
             $scope.voucherInfo =data.data;
-            //console.log($scope.voucherInfo);
+            console.log($scope.voucherInfo);
             $scope.dataGridOptions = {
                 dataSource: $scope.voucherInfo,
                 selection: {

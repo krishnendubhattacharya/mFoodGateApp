@@ -159,6 +159,21 @@ app.controller('promomastereditCtrl', function ($rootScope, $scope, $http, NgMap
         })
     }
 
+    $scope.getmfoodPoints = function(){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getAllMFoodPointMaster",
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            if(data.data)
+            {
+                $scope.mfoodpointmasterlist = data.data;
+            }
+        })
+    }
+    $scope.getmfoodPoints();
+
     $scope.getRestaurentFirst = function(mer_id){
         $scope.getPoints(mer_id);
         $http({

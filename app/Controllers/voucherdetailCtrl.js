@@ -20,6 +20,7 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
 
                 $scope.restaurant = data.restaurant;
             $scope.related_images = data.promo_images;
+            $scope.offer_days = data.offer_days;
             //console.log($scope.related_images);
             $timeout(function(){
                 // $('#ca-container').contentcarousel();

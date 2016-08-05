@@ -124,6 +124,15 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
                     angular.forEach(data.ids,function(v){
                         $scope.remove_offer(v);
                     })
+                    var message = data.data;
+                    DevExpress.ui.notify({
+                        message: message,
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "error", 3000);
+
                 }
                 console.log(data);
             })
@@ -140,10 +149,20 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
                     headers: {'Content-Type': 'application/json'},
                     data:{item:data,user_id:$scope.loggedindetails.id}
                 }).success(function(res) {
-
+                    if(res.type=='success') {
                         mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
                         $scope.getCartTotals();
                         $scope.save_to_db();
+                    }else{
+                        var message = res.data;
+                        DevExpress.ui.notify({
+                            message: message,
+                            position: {
+                                my: "center top",
+                                at: "center top"
+                            }
+                        }, "error", 3000);
+                    }
 
                 })
             }

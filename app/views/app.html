@@ -58,7 +58,7 @@
             <div id='cssmenu'>
                 <ul>
                     <li><a onclick="menuClick()" title="Home" ui-sref="frontend.index">Home</a></li>
-                    <li><a onclick="menuClick()" ui-sref="frontend.merchantdashboard"> Dashboard</a></li>
+                    <li ng-show="loggedindetails.user_type_id == '3'"><a onclick="menuClick()" ui-sref="frontend.merchantdashboard"> Dashboard</a></li>
                     <li class="has-sub"><a href=""><span>Restaurant Category</span></a>
                         <ul>
                             <li ng-repeat="catdetail in catInfo"><a onclick="menuClick()" title="Category" ui-sref="frontend.refinerestaurent({ categoryId: catdetail.id })"><img src="{{catdetail.icon_url}}" width="20" height="20" ng-if="catdetail.icon_url"/>{{catdetail.name}}</a></li>
@@ -82,7 +82,7 @@
                 </ul>
                 <ul ng-show="showMember">
                     <li><a onclick="menuClick()" title="Login" ui-sref="frontend.profile" >My Profile</a></li>
-                    <li class="has-sub active" ng-if="loggedindetails.user_type_id != 3"><a href="" title="Member"><span>Member</span></a>
+                    <li class="has-sub active" ng-show="loggedindetails.user_type_id == '2'"><a href="" title="Member"><span>Member</span></a>
                         <ul style="display: block;">
                             <li><a onclick="menuClick()" title="My Voucher" ui-sref="frontend.allvoucher">My Voucher</a></li>
                             <li><a onclick="menuClick()" title="My Membership" ui-sref="frontend.mymembership">My Membership</a></li>
@@ -95,7 +95,7 @@
                             <li><a onclick="menuClick()" title="Setting" ui-sref="frontend.setting">Setting</a></li>
                         </ul>
                     </li>
-                    <li class="has-sub active" ng-if="loggedindetails.user_type_id == 3"><a href=""><span>Merchant</span></a>
+                    <li class="has-sub active" ng-show="loggedindetails.user_type_id == '3'"><a href=""><span>Merchant</span></a>
                         <ul style="display: block;">
                             <li><a onclick="menuClick()" ui-sref="frontend.merchantdashboard"><i class="fa fa-user"></i>Dashboard</a></li>
 

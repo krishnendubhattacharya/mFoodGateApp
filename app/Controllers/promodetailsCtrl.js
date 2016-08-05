@@ -94,6 +94,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     var banner_carousal = $('.featured_carousel2');
                     banner_carousal.owlCarousel({
                         autoplay:true,
+                        autoHeight:true,
                         touchDrag:false,
                         loop:true,
                         dots:true,
@@ -120,6 +121,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     var banner_carousal = $('.featured_carousel3');
                     banner_carousal.owlCarousel({
                         autoplay:true,
+                        autoHeight:true,
                         touchDrag:false,
                         loop:true,
                         dots:true,
@@ -162,6 +164,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     var banner_carousal = $('.featured_carousel');
                     banner_carousal.owlCarousel({
                         autoplay:true,
+                        autoHeight:true,
                         touchDrag:false,
                         loop:true,
                         dots:true,
@@ -188,6 +191,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     var banner_carousal = $('.featured_carousell');
                     banner_carousal.owlCarousel({
                         autoplay:true,
+                        autoHeight:true,
                         touchDrag:false,
                         loop:true,
                         dots:true,
@@ -216,22 +220,43 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.getRelatedProducts();
 
     $scope.add_to_cart = function(){
-        var cart_obj = {
-            offer_id            :   $scope.promodetails.id,
-            restaurant_id       :   $scope.restaurant.id,
-            offer_title         :   $scope.promodetails.title,
-            restaurant_title    :   $scope.restName,
-            offer_percent       :   $scope.promodetails.offer_percent,
-            price               :   $scope.promodetails.price,
-            mpoints             :   $scope.promodetails.mpoints,
-            offer_price         :   $scope.promodetails.offer_price,
-            quantity            :   1,
-            image               :   $scope.promodetails.image
-        }
-        mFoodCart.add_to_cart(cart_obj);
-        $scope.cartDetails = mFoodCart.get_cart();
-        $scope.getCartTotals();
-        $scope.save_to_db();
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"checkOfferId/"+$stateParams.promoId,
+            headers: {'Content-Type': 'application/json'},
+            //data:{item:data,user_id:$scope.loggedindetails.id}
+        }).success(function(res) {
+
+            if(res.type =='success'){
+                var cart_obj = {
+                    offer_id            :   $scope.promodetails.id,
+                    restaurant_id       :   $scope.restaurant.id,
+                    offer_title         :   $scope.promodetails.title,
+                    restaurant_title    :   $scope.restName,
+                    offer_percent       :   $scope.promodetails.offer_percent,
+                    price               :   $scope.promodetails.price,
+                    mpoints             :   $scope.promodetails.mpoints,
+                    offer_price         :   $scope.promodetails.offer_price,
+                    quantity            :   1,
+                    image               :   $scope.promodetails.image
+                }
+                mFoodCart.add_to_cart(cart_obj);
+                $scope.cartDetails = mFoodCart.get_cart();
+                $scope.getCartTotals();
+                $scope.save_to_db();
+            }else{
+                var message = res.message;
+                DevExpress.ui.notify({
+                    message: message,
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "error", 3000);
+            }
+        });
+
     }
 
     $scope.cartDetails = mFoodCart.get_cart();
@@ -249,15 +274,30 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                 headers: {'Content-Type': 'application/json'},
                 data:{item:data,user_id:$scope.loggedindetails.id}
             }).success(function(res) {
+                console.log(res);
+                if(res.type=='success'){
+                    //alert(1);
+                    mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
+                    $scope.getCartTotals();
+                    $scope.save_to_db();
+                }else{
+                    //alert(2);
+                    var message = res.data;
+                    DevExpress.ui.notify({
+                        message: message,
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "error", 3000);
+                }
 
-                mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
-                $scope.getCartTotals();
-                $scope.save_to_db();
 
             })
         }
         else
         {
+
             mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
             $scope.getCartTotals();
         }
@@ -277,7 +317,46 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     }
 
     $scope.pay_now = function(){
-        $location.path("/cartpage");
+        $scope.cartIds = [];
+        $scope.cartQty = [];
+        $scope.cartDetails = mFoodCart.get_cart();
+        console.log($scope.cartDetails);
+        if($scope.cartDetails)
+        {
+            angular.forEach($scope.cartDetails,function(v){
+                $scope.cartIds.push(v.offer_id);
+                $scope.cartQty.push(v.quantity);
+            })
+
+            if($scope.cartIds)
+            {
+
+                $http({
+                    method: "POST",
+                    url: $rootScope.serviceurl+"checkOffersQuantity",
+                    headers: {'Content-Type': 'application/json'},
+                    data:{offer_ids:$scope.cartIds,offer_qty:$scope.cartQty}
+                }).success(function(data) {
+                    if(data.type=='success'){
+                        $location.path("/cartpage");
+                    }else{
+                        //alert(2);
+                        var message = res.data;
+                        DevExpress.ui.notify({
+                            message: message,
+                            position: {
+                                my: "center top",
+                                at: "center top"
+                            }
+                        }, "error", 3000);
+                    }
+
+                })
+            }
+
+        }
+        //return false;
+
         /*
         $scope.cartDetails = mFoodCart.get_cart();
         console.log($scope.cartDetails);
@@ -386,6 +465,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                 var carousal = $('.owl-carousel1');
                 carousal.owlCarousel({
                     autoplay:true,
+                    autoHeight:true,
                     touchDrag:false,
                     loop:true,
                     dots:true,

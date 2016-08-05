@@ -74,7 +74,21 @@ app.controller('promomasterlistCtrl', function ($rootScope, $scope, $http, $loca
             }
         })
     }
-    //$scope.getPoints();
+    $scope.mfoodpointmasterlist = [];
+    $scope.getmfoodPoints = function(){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getAllMFoodPointMaster",
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            if(data.data)
+            {
+                $scope.mfoodpointmasterlist = data.data;
+            }
+        })
+    }
+    $scope.getmfoodPoints();
 
     $scope.getOutlet = function(res_id){
         $http({

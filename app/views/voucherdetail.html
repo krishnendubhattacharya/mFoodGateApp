@@ -36,6 +36,13 @@
                     <div class="pay-box">
                         <p>DISCOUNT  &nbsp; &nbsp; &nbsp;<span class="discount">{{voucherInfo.voucher_details.offer_percent}}%</span></p>
                         <p>Sold  &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;<span class="sold">{{voucherInfo.total_sold}}</span></p>
+                        <p><b>Voucher Validation Start Date : </b>{{voucherInfo.voucher_details.item_start_date}}</p>
+                        <p><b>Voucher Expired Date : </b>{{voucherInfo.voucher_details.item_expire_date}}</p>
+                        <p><b>Voucher Validation Start Hour : </b>{{voucherInfo.voucher_details.item_start_hour}}</p>
+                        <p><b>Voucher Validation End Hour : </b>{{voucherInfo.voucher_details.item_end_hour}}</p>
+                        <p><b>Including Holiday : </b>{{voucherInfo.voucher_details.including_holidays==1?'Yes':'No'}}</p>
+                        <p><b>Validation Days : </b><span ng-repeat="day in offer_days | orderBy : '2'">{{day.day}}, </span> </p>
+
                     </div>
                     <div class="pay-box">
                         <p>Share &nbsp; &nbsp; &nbsp;<img src="app/assets/Images/share.png" width="244" height="29"  alt=""/></p>
