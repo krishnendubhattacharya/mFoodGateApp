@@ -9,6 +9,10 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
     console.log($stateParams.voucherId);
     $scope.voucherInfo = null;
 
+    /*gMap.getMap().then(function(map) {
+        $scope.map = map;
+    });*/
+
 
     $scope.getVoucherDetail = function () {
         $http({
@@ -17,8 +21,9 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
         }).success(function (data) {
             //console.log('Voucher details === ',data);
             $scope.voucherInfo =data;
-
-                $scope.restaurant = data.restaurant;
+            //console.log($scope.voucherInfo);
+            $scope.promoId = $scope.voucherInfo.voucher_details.offer_id;
+                //$scope.restaurant = data.restaurant;
             $scope.related_images = data.promo_images;
             $scope.offer_days = data.offer_days;
             //console.log($scope.related_images);
@@ -74,12 +79,41 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
                     }
                 });
             },30);
-
+            $scope.getPromoDetails($scope.promoId);
             $scope.getQrCode();
         });
 
     }
     $scope.getVoucherDetail();
+
+    $scope.getPromoDetails = function(promoId){
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getPromoDetails/" + promoId,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            if(data.type == 'success') {
+                $scope.promodetails = data.offer;
+                $scope.restaurant = data.restaurants;
+                $scope.mapaddress = data.merchantInfo[0].address;
+                $scope.maptitle = data.merchantInfo[0].merchant_name;
+                $scope.offer_days = data.offer_days;
+               // $scope.about_me = data.merchantInfo[0].about_me;
+                //console.log(data.merchantInfo);
+                if(data.restaurants.length == 1){
+                    $scope.restName=data.restaurants[0].title;
+                }else{
+                    $scope.restName=data.merchantInfo[0].merchant_name;
+                }
+
+                $scope.related_images = data.promo_images;
+                //console.log($scope.related_products);
+
+
+            }
+        })
+    }
 
     $scope.qrlink = '';
     $scope.getQrCode = function(){
@@ -135,6 +169,11 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
             }
         });*/
     }
+
+    /*$scope.changeMap = function(outletInfo){
+        $scope.mapaddress = outletInfo.address;
+        $scope.maptitle = outletInfo.title;
+    }*/
 
 
 

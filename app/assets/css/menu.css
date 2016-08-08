@@ -2,7 +2,7 @@
 
 #page {
 	position: relative; /* Set the position property so z-index will apply */
-	z-index: 1; /* Make sure this is higher than #menu */
+	z-index: 12; /* Make sure this is higher than #menu */
 	height: 100%;
 	top: 50px;
 	overflow:  auto;
@@ -15,7 +15,7 @@
 
 #toggle-menu {
 	position: absolute;
-	/*top: 10px;
+	/*top: 50px;
 	right: 10px;
 	padding: 15px 10px;
 	border: 1px solid #eee;*/
@@ -25,14 +25,14 @@
 #menu {
 	display: none;
 	position: fixed;
-	top: 0px;
+	top: 50px;
 	right: 0;
 	margin: 0;
 	background: #dedede;
-	z-index: 1000; /* Make sure the z-index is lower than the #page */
+	z-index: 10001; /* Make sure the z-index is lower than the #page */
 	height: 100%;
 	width:80%;
-	height: 100% !important;
+	height: 90% !important;
 	/*min-height: 500px !important;*/
     padding: 15px 0;
 }
@@ -50,7 +50,7 @@
 	border-bottom: 1px solid #cfcfcf;
 	text-decoration: none;
 	font-size: 15px;
-	line-height: 42px;
+	line-height: 38px;
 	font-weight:  normal;;
 }
 #menu ul li ul{ list-style-type: none; height:  auto; padding:0 !important; width: 100%; }
