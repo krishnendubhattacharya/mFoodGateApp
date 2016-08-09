@@ -66,6 +66,22 @@ angular
 
     }
 
+    factobj.update_cart_previousquantity = function(offer_id,quantity){
+        //var cart=$cookieStore.get('cart');
+        console.log
+        var cart=JSON.parse(localStorage.getItem('cart'));
+        angular.forEach(cart,function(val,key){
+            if(val.offer_id == offer_id)
+            {
+                cart[key].previous_quantity = quantity;
+                //found = true;
+            }
+        })
+        //$cookieStore.put('cart',cart);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+    }
+
     factobj.remove = function(offer_id){
         //var cart=$cookieStore.get('cart');
         var cart=JSON.parse(localStorage.getItem('cart'));

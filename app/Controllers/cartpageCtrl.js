@@ -84,7 +84,8 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
             price               :   $scope.promodetails.price,
             mpoints             :   $scope.promodetails.mpoints,
             offer_price         :   $scope.promodetails.offer_price,
-            quantity            :   1
+            quantity            :   1,
+            previous_quantity   :   1
         }
         mFoodCart.add_to_cart(cart_obj);
         $scope.cartDetails = mFoodCart.get_cart();
@@ -151,6 +152,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
                 }).success(function(res) {
                     if(res.type=='success') {
                         mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
+                        mFoodCart.update_cart_previousquantity(data.offer_id, data.quantity);
                         $scope.getCartTotals();
                         $scope.save_to_db();
                     }else{
@@ -162,6 +164,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
                                 at: "center top"
                             }
                         }, "error", 3000);
+                        $scope.getCartTotals();
                     }
 
                 })

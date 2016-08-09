@@ -239,10 +239,12 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     mpoints             :   $scope.promodetails.mpoints,
                     offer_price         :   $scope.promodetails.offer_price,
                     quantity            :   1,
+                    previous_quantity   :   1,
                     image               :   $scope.promodetails.image
                 }
                 mFoodCart.add_to_cart(cart_obj);
                 $scope.cartDetails = mFoodCart.get_cart();
+                console.log($scope.cartDetails);
                 $scope.getCartTotals();
                 $scope.save_to_db();
             }else{
@@ -277,7 +279,17 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                 console.log(res);
                 if(res.type=='success'){
                     //alert(1);
+                    $scope.newcartdetails = mFoodCart.get_cart();
+                    console.log($scope.newcartdetails);
+                    /*if($scope.newcartdetails) {
+                        angular.forEach($scope.newcartdetails, function (v) {
+                            mFoodCart.update_cart_previousquantity(v.offer_id, v.quantity);
+                        })
+                    }*/
+                    mFoodCart.update_cart_previousquantity(data.offer_id, data.quantity);
                     mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
+                    $scope.newcartdetails = mFoodCart.get_cart();
+                    console.log($scope.newcartdetails);
                     $scope.getCartTotals();
                     $scope.save_to_db();
                 }else{
@@ -290,6 +302,26 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                             at: "center top"
                         }
                     }, "error", 3000);
+                    $scope.newcartdetails = mFoodCart.get_cart();
+                    console.log($scope.newcartdetails);
+                    if($scope.newcartdetails) {
+                        angular.forEach($scope.newcartdetails, function (v) {
+                            //$scope.cartIds.push(v.offer_id);
+                            //$scope.cartQty.push(v.quantity);
+                            //console.log(v);
+                            //alert(v.offer_id);
+                            //alert(data.offer_id);
+                            if(data.offer_id == v.offer_id){
+                                //alert(v.offer_id);
+                                //mFoodCart.update_cart_quantity(v.offer_id, v.previous_quantity);
+                            }
+
+                        })
+                    }
+                    //$scope.cartDetails = mFoodCart.get_cart();
+                    $scope.getCartTotals();
+
+
                 }
 
 
@@ -297,8 +329,19 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         }
         else
         {
+            $scope.newcartdetails = mFoodCart.get_cart();
+            //console.log($scope.newcartdetails);
+            if($scope.newcartdetails) {
+                angular.forEach($scope.newcartdetails, function (v) {
+                    //$scope.cartIds.push(v.offer_id);
+                    //$scope.cartQty.push(v.quantity);
+                    mFoodCart.update_cart_previousquantity(v.offer_id, v.quantity);
+                })
+            }
 
             mFoodCart.update_cart_quantity(data.offer_id, data.quantity);
+            $scope.newcartdetails = mFoodCart.get_cart();
+            console.log($scope.newcartdetails);
             $scope.getCartTotals();
         }
     }
@@ -320,7 +363,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         $scope.cartIds = [];
         $scope.cartQty = [];
         $scope.cartDetails = mFoodCart.get_cart();
-        console.log($scope.cartDetails);
+        //console.log($scope.cartDetails);
         if($scope.cartDetails)
         {
             angular.forEach($scope.cartDetails,function(v){
@@ -341,7 +384,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                         $location.path("/cartpage");
                     }else{
                         //alert(2);
-                        var message = res.data;
+                        var message = data.message;
                         DevExpress.ui.notify({
                             message: message,
                             position: {
@@ -349,6 +392,21 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                                 at: "center top"
                             }
                         }, "error", 3000);
+                    }
+                    $scope.newcartdetails = mFoodCart.get_cart();
+                    if($scope.newcartdetails) {
+                        angular.forEach($scope.newcartdetails, function (v) {
+                            //$scope.cartIds.push(v.offer_id);
+                            //$scope.cartQty.push(v.quantity);
+                            //v.offer_ids
+                            angular.forEach(data.offer_ids, function (v_id) {
+                                if (v.offer_id == v_id) {
+                                    mFoodCart.update_cart_quantity(v.offer_id, v.previous_quantity);
+                                }
+                            });
+
+                            $scope.cartDetails = mFoodCart.get_cart();
+                        })
                     }
 
                 })

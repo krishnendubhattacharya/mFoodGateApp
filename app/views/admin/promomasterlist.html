@@ -116,7 +116,7 @@
                                 <label for="category_id">Needed Point Name</label>
                                 <select id="restaurants" ng-model="item.point_master_id" required  class="form-control"">
                                     <option value="">Select Point</option>
-                                    <option ng-repeat="point in mfoodpointmasterlist | orderBy:'name' " value="{{point.id}}">{{point.name}}</option>
+                                    <option ng-repeat="point in pointmasterlist | orderBy:'name' " value="{{point.id}}">{{point.name}}</option>
                                 </select>
                             </div>
 
