@@ -74,7 +74,7 @@ body#mfoodmain{
     box-sizing: border-box;
     top: 0 !important;
 }
-#page{ position: relative !important; padding: 0px 0 60px !important; background: #fff !important;}
+#page{ position: relative !important; padding: 50px 0 60px !important; background: #fff !important;}
 .mobile-header .m-logo{ width:173px; height:17px; float: left; margin-top: 9px;}
 .mobile-header .m-top-link{ width:90px; height: 40px; float: right; margin-right:12px;}
 .mobile-header .m-top-link .search{ width: 24px; height: 24px; float: left; margin-right: 5px; position: relative; margin-top: 14px; }
@@ -1777,3 +1777,11 @@ code {
 .m-transaction .t-form ul li .val .dx-button .dx-button-text{ color:#fff; padding: 0 10px;}
 .border-grey{ border: solid 1px #dcdcdc !important; border-bottom: none !important; border-right: none !important; border-left: none !important;
 
+#page {
+    position: relative; /* Set the position property so z-index will apply */
+    z-index: 12; /* Make sure this is higher than #menu */
+    height: 100%;
+    top: 50px;
+    overflow:  auto;
+
+}

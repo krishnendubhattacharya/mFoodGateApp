@@ -26,12 +26,13 @@
                 <div  data-options="dxTemplate: { name: 'item' }">
 
                     <div>
-                        <p style="font-size:larger;"><b>{{source}}</b></p>
-                        <p>Points: <i>{{points}}</i></p>
-                        <p>Remaining Points: <i>{{remaining_points}}</i></p>
+                        <p style="font-size:larger;"><b>{{merchant_name}}</b></p>
+                        <p>Point name: <i>{{point_name}}</i></p>
+                        <p>Get: <i>{{total_point}}</i></p>
                     </div>
-                    <p>Area: <i>{{date}}</i></p>
-                    <p>Expire Date: <i>{{expire_date}}</i></p>
+                    <p>Redeem: <i>{{redeem_point}}</i></p>
+                    <p>Expired: <i>{{expired_point}}</i></p>
+                    <p>Available: <i>{{available_point}}</i></p>
                 </div>
             </div>
             <div class="dx-clearfix"></div>
@@ -44,12 +45,12 @@
                 <div data-options="dxTemplate: { name: 'item' }">
 
                     <div>
-                        <p style="font-size:larger;"><b>{{source}}</b></p>
-                        <p>Points: <i>{{points}}</i></p>
-                        <p>Remaining Points: <i>{{remaining_points}}</i></p>
+                        <p style="font-size:larger;"><b>{{merchant_name}}</b></p>
+                        <p>Point name: <i>{{point_name}}</i></p>
+                        <p>Expired in a month: <i>{{month_count}}</i></p>
                     </div>
-                    <p>Date: <i>{{date}}</i></p>
-                    <p>Expire Date: <i>{{expire_date}}</i></p>
+                    <!--<p>Date: <i>{{date}}</i></p>
+                    <p>Expire Date: <i>{{expire_date}}</i></p>-->
                 </div>
             </div>
         </div>

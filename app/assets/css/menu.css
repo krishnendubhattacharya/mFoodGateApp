@@ -1,13 +1,6 @@
 /* Base */
 
-#page {
-	position: relative; /* Set the position property so z-index will apply */
-	z-index: 12; /* Make sure this is higher than #menu */
-	height: 100%;
-	top: 50px;
-	overflow:  auto;
-	
-}
+
 
 #page h1 {
 	/*margin: 0;*/
@@ -80,7 +73,7 @@
 /***
 * If the left class is present then transform
 * the #page element 240px to the left.
-*/	
+*/
 .animating.left #page {
 	transform: translate3d( -240px, 0, 0 );
 	-webkit-transform: translate3d( -240px, 0, 0 );
@@ -98,7 +91,7 @@
 /***
 * If the menu-visible class is present then
 * shift the #page 240px from the right edge
-* via position: absolute to keep it in the 
+* via position: absolute to keep it in the
 * open position. When .animating, .left and
 * .right classes are not present the CSS
 * transform does not apply to #page.

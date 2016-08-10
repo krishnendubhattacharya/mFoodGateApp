@@ -30,8 +30,14 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
                     showInfo: true
                 },
 
-                columns: ["sl", "points","redeemed_points", "remaining_points" ,"source", "date","expire_date"
-                    /*{
+                columns: [{caption:"Name of Points",dataField:"point_name"},
+                    {caption:"Merchants",dataField:"merchant_name"},
+                    {caption:"Get",dataField:"total_point"},
+                    {caption:"Redeem",dataField:"redeem_point"},
+                    {caption:"Expired",dataField:"expired_point"},
+                    {caption:"Available",dataField:"available_point"},
+                    {
+                        caption:'',
                         width: 100,
                         alignment: 'center',
                         cellTemplate: function (container, options) {
@@ -39,12 +45,12 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
                             $('<button/>').addClass('dx-button')
                                 .text('Details')
                                 .on('dxclick', function () {
-                                    $location.path('/voucherdetail/' + options.data.id);
+                                    //$location.path('/voucherdetail/' + options.data.id);
                                 })
                                 .appendTo(container);
                         }
-                    },
-                    {
+                    }
+                    /*{
                         width: 100,
                         alignment: 'center',
                         cellTemplate: function (container, options) {
@@ -106,21 +112,24 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
                     showInfo: true
                 },
 
-                columns: ["sl", "points", "redeemed_points", "remaining_points", "source", "date","expire_date"
-                    /*{
-                     width: 100,
-                     alignment: 'center',
-                     cellTemplate: function (container, options) {
+                columns: [{caption:"Name of Points",dataField:"point_name"},
+                    {caption:"Merchants",dataField:"merchant_name"},
+                    {caption:"Expired in a month",dataField:"month_count"},
+                    {
+                        caption:'',
+                         width: 100,
+                         alignment: 'center',
+                         cellTemplate: function (container, options) {
 
-                     $('<button/>').addClass('dx-button')
-                     .text('Details')
-                     .on('dxclick', function () {
-                     $location.path('/voucherdetail/' + options.data.id);
-                     })
-                     .appendTo(container);
+                         $('<button/>').addClass('dx-button')
+                         .text('Details')
+                         .on('dxclick', function () {
+                         //$location.path('/voucherdetail/' + options.data.id);
+                         })
+                         .appendTo(container);
+                         }
                      }
-                     },
-                     {
+                    /*{
                      width: 100,
                      alignment: 'center',
                      cellTemplate: function (container, options) {
