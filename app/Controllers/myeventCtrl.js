@@ -102,7 +102,7 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         columns: ["title", "from_date", "to_date","status",
             {
                 caption:'Action',
-                width: 350,
+                width: 380,
                 alignment: 'center',
                 cellTemplate: function (container, options) {
                     $('<button/>').addClass('dx-button')

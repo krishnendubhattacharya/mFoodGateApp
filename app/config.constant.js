@@ -30,6 +30,7 @@ app.constant('JS_REQUIRES', {
         'setting':['app/Controllers/settingCtrl.js','app/Controllers/leftbarCtrl.js'],
         'giftvoucher':['app/Controllers/giftvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
         'mypoints':['app/Controllers/mypointsCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'mypointdetails':['app/Controllers/mypointsdetailsCtrl.js','app/Controllers/leftbarCtrl.js'],
         'voucherdetail':['app/Controllers/voucherdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
         'vouchersell':['app/Controllers/vouchersellCtrl.js','app/Controllers/leftbarCtrl.js'],
         'bidvoucher':['app/Controllers/bidvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],

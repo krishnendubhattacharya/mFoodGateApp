@@ -283,6 +283,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/mypoints.html',
                 title: 'My Points'
             })
+            .state('frontend.mypointdetails', {
+                url: '/mypointdetails/:pointId',
+                resolve: loadSequence('mypointdetails'),
+                templateUrl: 'app/views/mypointdetails.html',
+                title: 'My Point Details'
+            })
             .state('frontend.bidvoucher', {
                 url: '/bidvoucher',
                 resolve: loadSequence('bidvoucher'),

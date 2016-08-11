@@ -46,6 +46,9 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
                                 .text('Details')
                                 .on('dxclick', function () {
                                     //$location.path('/voucherdetail/' + options.data.id);
+                                    //alert(options.data.id);
+                                    //return false;
+                                    $scope.point_detail(options.data.id);
                                 })
                                 .appendTo(container);
                         }
@@ -96,10 +99,10 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
             method: "GET",
             url: $rootScope.serviceurl + "expiresoonpoints/" + $scope.loggedindetails.id,
         }).success(function (data) {
-            $scope.voucherInfo = data.data;
+            $scope.voucherInfo1 = data.data;
             //console.log($scope.voucherInfo);
             $scope.dataGridOptions2 = {
-                dataSource: $scope.voucherInfo,
+                dataSource: $scope.voucherInfo1,
                 selection: {
                     mode: "single"
                 },
@@ -114,6 +117,7 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
 
                 columns: [{caption:"Name of Points",dataField:"point_name"},
                     {caption:"Merchants",dataField:"merchant_name"},
+                    {caption:"Expired in a Week",dataField:"week_count"},
                     {caption:"Expired in a month",dataField:"month_count"},
                     {
                         caption:'',
@@ -125,6 +129,7 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
                          .text('Details')
                          .on('dxclick', function () {
                          //$location.path('/voucherdetail/' + options.data.id);
+                                 $scope.point_detail(options.data.id);
                          })
                          .appendTo(container);
                          }
@@ -146,7 +151,7 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
 
                 ]
             };
-            $scope.listExpiredPointViewData.option({"dataSource": $scope.voucherInfo,hoverStateEnabled: false });
+            $scope.listExpiredPointViewData.option({"dataSource": $scope.voucherInfo1,hoverStateEnabled: false });
         });
     }
     $scope.loadExpiredPointList=function(e)
@@ -155,6 +160,11 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
         $scope.listExpiredPointViewData= e.component;
     }
     $scope.getExpiredSoon();
+    $scope.point_detail = function (point_id) {
+
+        $location.path('/mypointdetails/' + point_id);
+    }
+    //$scope.event_detail(options.data.id);
 
 
 

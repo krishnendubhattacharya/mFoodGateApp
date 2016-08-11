@@ -99,7 +99,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                         }
                     },*/
                     {
-                        width: 230,
+                        width: 250,
                         alignment: 'center',
                         cellTemplate: function (container, options) {
                             $('<button/>').addClass('dx-button')

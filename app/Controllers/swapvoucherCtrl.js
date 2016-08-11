@@ -31,7 +31,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                 columns: ["title", "price", "expire_date",
                     {caption:"Highest Bid",dataField:"high_bid"},"posted_on",
                     {
-                        width: 240,
+                        width: 250,
                         alignment: 'center',
                         cellTemplate: function (container, options) {
 
@@ -95,7 +95,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                 {caption:"Swap Voucher Price",dataField:"swap_voucher.price"},
                 "expire_date",{caption:"Bidded On",dataField:"posted_on"},
                 {
-                    width: 150,
+                    width: 170,
                     alignment: 'center',
                     cellTemplate: function (container, options) {
 
