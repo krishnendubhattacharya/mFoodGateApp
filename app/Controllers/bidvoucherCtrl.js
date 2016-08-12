@@ -59,7 +59,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
         }).success(function (data) {
             $scope.voucherInfo =data.resale_details;
             //console.log($scope.voucherInfo);
-            $scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
+
             $scope.dataGridOptions = {
                 dataSource: $scope.voucherInfo,
                 selection: {
@@ -196,11 +196,10 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
         method: "GET",
         url: $rootScope.serviceurl + "ownbid/"+$scope.loggedindetails.id,
     }).success(function (data) {
-        $scope.voucherInfo =data.bid_details;
+        $scope.voucherInfo1 =data.bid_details;
         //console.log($scope.voucherInfo);
-        $scope.listViewData1.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
         $scope.dataGridOptions3 = {
-            dataSource: $scope.voucherInfo,
+            dataSource: $scope.voucherInfo1,
             selection: {
                 mode: "single"
             },
@@ -220,7 +219,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                 {caption:'Expire Date',dataField:"to_date"},
                 {caption:'Status',dataField:"Status"},
                 {
-                    width: 150,
+                    width: 160,
                     alignment: 'center',
                     cellTemplate: function (container, options) {
                         $('<button/>').addClass('dx-button')
@@ -266,7 +265,6 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
     }).success(function (data) {
         $scope.soonVoucherInfo =data.resale_details;
         //console.log($scope.voucherInfo);
-        $scope.listViewData2.option({"dataSource": $scope.soonVoucherInfo,showSelectionControls: true });
         $scope.dataGridOptions2 = {
             dataSource: $scope.soonVoucherInfo,
             paging: {
@@ -293,7 +291,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                     }
                 },*/
                 {
-                    width: 140,
+                    width: 160,
                     alignment: 'center',
                     cellTemplate: function (container, options) {
                         $('<button/>').addClass('dx-button')
@@ -301,7 +299,8 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                             .on('dxclick', function () {
                                 //Do something with options.data;
                                 //$scope.addBid();
-                                $location.path('/addbid/'+options.data.voucher_resale_id+'/'+options.data.voucher_id)
+                                $scope.addbid(options.data.voucher_resale_id,options.data.voucher_id);
+                                //$location.path('/addbid/'+options.data.voucher_resale_id+'/'+options.data.voucher_id)
 
                             })
                             .appendTo(container);
@@ -325,6 +324,12 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
 
     });
+
+    $scope.addbid = function (voucher_resale_id,voucher_id) {
+
+        $location.path('/addbid/'+voucher_resale_id+'/'+voucher_id);
+
+    }
 
     $scope.textBox = {
         bid_price: {
@@ -431,20 +436,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
         //}
     };
 
-    $scope.loadList=function(e)
-    {
-        $scope.listViewData= e.component;
-    }
 
-    $scope.loadList1=function(e)
-    {
-        $scope.listViewData1= e.component;
-    }
-
-    $scope.loadList2=function(e)
-    {
-        $scope.listViewData2= e.component;
-    }
 
 
 });

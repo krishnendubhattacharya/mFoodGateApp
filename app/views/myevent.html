@@ -175,7 +175,7 @@
                 text: 'Add Event',
                 onClick: changeView }" ></div>
         <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo">
-            <h1></h1>
+            <h1>{{voucherDetail.title}}</h1>
             <table>
                 <tr>
                     <td width="30%" class="m-header-color">Title</td>
@@ -198,7 +198,7 @@
                         <div class="nwe-btn"><span class="dx-button" ng-click="event_detail({{voucherDetail.id}})">Detail</span></div>
                 <div class="nwe-btn"><span class="dx-button" ng-click="edit_event({{voucherDetail.id}})">Edit</span></div>
                 <div class="nwe-btn"><span class="dx-button"  ng-click="image_event({{voucherDetail.id}})">Image</span></div>
-                <div class="nwe-btn"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>
+                <div class="nwe-btn" ng-if="voucherDetail.status == 'Open'"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>
                 </td>
                 </tr>
             </table>

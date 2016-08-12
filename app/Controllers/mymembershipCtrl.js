@@ -15,9 +15,9 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
         }).success(function (data) {
             $scope.voucherInfo =data;
             //console.log($scope.voucherInfo.membership);
-            $scope.listViewData.option({"dataSource": $scope.voucherInfo.membership,showSelectionControls: true });
 
-            $scope.listViewData.option({"onItemClick":$scope.viewDetails});
+
+
             $scope.dataGridOptions = {
                 dataSource: $scope.voucherInfo.membership,
                 selection: {
@@ -71,11 +71,11 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
             method: "GET",
             url: $rootScope.serviceurl + "getMyExpiredMembership/"+$scope.loggedindetails.id,
         }).success(function (data) {
-            $scope.voucherInfo =data;
+            $scope.voucherInfo1 =data;
             //console.log($scope.voucherInfo.membership);
-            $scope.listViewData1.option({"dataSource": $scope.voucherInfo.membership,showSelectionControls: true });
+
             $scope.dataGridOptions1 = {
-                dataSource: $scope.voucherInfo.membership,
+                dataSource: $scope.voucherInfo1.membership,
                 selection: {
                     mode: "single"
                 },
@@ -118,23 +118,13 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
 
     $scope.getExpiredMemberships();
 
-    $scope.loadList=function(e)
-    {
-        $scope.listViewData= e.component;
-
-    }
-
-    $scope.loadList1=function(e)
-    {
-        $scope.listViewData1= e.component;
-    }
 
     $scope.viewDetails = function (data) {
-        //console.log(data.itemData);
+        console.log(data);
         localStorage.setItem('merchantheadername', "");
         localStorage.setItem('merchantweb', "");
         localStorage.setItem('merchantheaderimage', "");
-        $location.path('/merchant-membership/'+data.itemData.voucher_id+'/'+data.itemData.merchant_id + '/');
+        $location.path('/merchant-membership/'+data.voucher_id+'/'+data.merchant_id + '/');
     }
 
 

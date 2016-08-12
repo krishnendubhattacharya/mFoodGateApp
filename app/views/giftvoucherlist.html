@@ -24,6 +24,64 @@
         <h1>Gift Voucher</h1>
 
         <div class="m-profile-details">
+            <h1>Give Voucher</h1>
+            <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo">
+                <h1>{{voucherDetail.voucher_name}}</h1>
+                <table>
+                    <tr>
+                        <td width="30%" class="m-header-color">Voucher Value</td>
+                        <td>{{voucherDetail.resturant_name}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Purchase Price</td>
+                        <td>{{voucherDetail.price}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Expire Date</td>
+                        <td>{{voucherDetail.offer_to_date}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">From Friend Name</td>
+                        <td>{{voucherDetail.friend}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Friend Email</td>
+                        <td>{{voucherDetail.friend_email}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="m-profile-details">
+            <h1>Received Gift Voucher</h1>
+            <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo2">
+                <h1>{{voucherDetail.voucher_name}}</h1>
+                <table>
+                    <tr>
+                        <td width="30%" class="m-header-color">Voucher Value</td>
+                        <td>{{voucherDetail.resturant_name}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Purchase Price</td>
+                        <td>{{voucherDetail.price}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Expire Date</td>
+                        <td>{{voucherDetail.offer_to_date}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">To Friend Name</td>
+                        <td>{{voucherDetail.friend}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Friend Email</td>
+                        <td>{{voucherDetail.friend_email}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!--<div class="m-profile-details">
             <h3 style="font-size: 18px; line-height: 30px; padding: 10px;">Give Voucher</h3>
             <div dx-list="{
       onInitialized:loadList
@@ -63,7 +121,7 @@
 
                 </div>
             </div>
-        </div>
+        </div>-->
 
     </div>
 

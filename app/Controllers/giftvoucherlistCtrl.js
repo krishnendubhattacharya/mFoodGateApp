@@ -34,13 +34,9 @@ app.controller('giftvoucherlistCtrl', function ($rootScope, $scope, $http, $loca
                 {caption:"Friend Email",dataField:"friend_email"}
             ]
         };
-        $scope.listExpiredPointViewData.option({"dataSource": $scope.voucherInfo,hoverStateEnabled: false });
+
     });
-    $scope.loadExpiredPointList=function(e)
-    {
-        //console.log("loadList")
-        $scope.listExpiredPointViewData= e.component;
-    }
+
 
     $http({
         method: "GET",
@@ -68,14 +64,10 @@ app.controller('giftvoucherlistCtrl', function ($rootScope, $scope, $http, $loca
                 {caption:"Friend Email",dataField:"friend_email"}
             ]
         };
-        $scope.listViewData.option({"dataSource": $scope.voucherInfo2,hoverStateEnabled: false });
+
     });
 
 
-    $scope.loadList=function(e)
-    {
-        console.log("loadList")
-        $scope.listViewData= e.component;
-    }
+
 
 });

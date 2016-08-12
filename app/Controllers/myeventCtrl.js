@@ -123,12 +123,12 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
                         .on('dxclick',function(){$scope.edit_event(options.data); })
                         .appendTo(container);
 
-                    $('<button/>').addClass('dx-button')
+                    /*$('<button/>').addClass('dx-button')
                         .text('Delete')
                         .on('dxclick', function () {
                             $scope.delete_event(options.data);
                         })
-                        .appendTo(container);
+                        .appendTo(container);*/
                     if(options.data.status == "Open"){
                         $('<button/>').addClass('dx-button')
                             .text('Bidder')

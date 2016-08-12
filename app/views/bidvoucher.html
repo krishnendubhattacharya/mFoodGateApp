@@ -24,6 +24,116 @@
         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
         <h1>Resell Voucher</h1>
         <div class="m-profile-details">
+            <h1>My Resell Voucher</h1>
+            <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo">
+                <h1>{{voucherDetail.title}}</h1>
+                <table>
+                    <tr>
+                        <td width="30%" class="m-header-color">Voucher Value</td>
+                        <td>{{voucherDetail.voucher_price}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Purchase Price</td>
+                        <td>{{voucherDetail.purchase_price}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Reseller Price</td>
+                        <td>{{voucherDetail.bid_price}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Points</td>
+                        <td>{{voucherDetail.bid_points}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Highest Bid</td>
+                        <td>{{voucherDetail.high_bid}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Expired Date</td>
+                        <td>{{voucherDetail.expire_date}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Status</td>
+                        <td>{{voucherDetail.status}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="nwe-btn"><span class="dx-button" ng-click="bidderList({{voucherDetail.voucher_resale_id}})">Bidder</span></div>
+                            <div class="nwe-btn"><span class="dx-button" ng-click="detailVoucher({{voucherDetail.voucher_id}})">Detail</span></div>
+                            <div class="nwe-btn"><span class="dx-button" ng-click="cancelResell({{voucherDetail.voucher_resale_id}})">Cancel</span></div>
+                            <!--<div class="nwe-btn"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>-->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="m-profile-details">
+            <h1>My Bid for Other’s Resell Voucher</h1>
+            <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo1">
+                <h1>{{voucherDetail.title}}</h1>
+                <table>
+                    <tr>
+                        <td width="30%" class="m-header-color">Voucher Value</td>
+                        <td>{{voucherDetail.voucher_price}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Purchase Price</td>
+                        <td>{{voucherDetail.purchase_price}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Bid Price</td>
+                        <td>{{voucherDetail.bid_price}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Bid Points</td>
+                        <td>{{voucherDetail.bid_points}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Expire Date</td>
+                        <td>{{voucherDetail.to_date}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Status</td>
+                        <td>{{voucherDetail.Status}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="nwe-btn"><span class="dx-button" ng-click="bidEdit({{voucherDetail.bid_id}})">Edit</span></div>
+                            <div class="nwe-btn"><span class="dx-button" ng-click="detailVoucher({{voucherDetail.voucher_id}})">Detail</span></div>
+
+                            <!--<div class="nwe-btn"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>-->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="m-profile-details">
+            <h1>Resell Voucher List</h1>
+            <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in soonVoucherInfo">
+                <h1>{{voucherDetail.title}}</h1>
+                <table>
+                    <tr>
+                        <td width="30%" class="m-header-color">Price</td>
+                        <td>{{voucherDetail.price}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Expire Date</td>
+                        <td>{{voucherDetail.expire_date}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="nwe-btn"><span class="dx-button" ng-click="addbid({{voucherDetail.voucher_resale_id}},{{voucherDetail.voucher_id}})">Bid</span></div>
+                            <div class="nwe-btn"><span class="dx-button" ng-click="detailVoucher({{voucherDetail.voucher_id}})">Detail</span></div>
+
+                            <!--<div class="nwe-btn"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>-->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!--<div class="m-profile-details">
             <h3 style="font-size: 18px; line-height: 30px; padding: 10px;">Resell Voucher posted by me</h3>
             <div dx-list="{onInitialized:loadList}">
                 <div data-options="dxTemplate: { name: 'item' }">  
@@ -34,16 +144,14 @@
                     </div>
 
                     <p>
-                    <!--<div id="button" dx-button="{-->
-                <!--text: 'Bidder',-->
-                <!--onClick: event_bidder({{id}}) }" ></div>-->
+
                     </p>
                 </div>
             </div>
-            <!--<div id="gridContainer" dx-data-grid="dataGridOptions"></div>-->
+
 
             <h3 style="font-size: 18px; line-height: 30px; padding: 10px;">Bidded by ownself</h3>
-            <!--<div id="gridContainer3" dx-data-grid="dataGridOptions3"></div>-->
+
             <div dx-list="{onInitialized:loadList1}">
                 <div data-options="dxTemplate: { name: 'item' }">
 
@@ -55,15 +163,13 @@
                     </div>
 
                     <p>
-                    <!--<div id="button" dx-button="{-->
-                <!--text: 'Bidder',-->
-                <!--onClick: event_bidder({{id}}) }" ></div>-->
+
                     </p>
                 </div>
             </div>
 
             <h3 style="font-size: 18px; line-height: 30px; padding: 10px;">Bid on voucher</h3>
-            <!--<div id="gridContainer2" dx-data-grid="dataGridOptions2"></div>-->
+
             <div dx-list="{onInitialized:loadList2}">
                 <div data-options="dxTemplate: { name: 'item' }">
 
@@ -74,13 +180,11 @@
                     </div>
 
                     <p>
-                    <!--<div id="button" dx-button="{-->
-                <!--text: 'Bidder',-->
-                <!--onClick: event_bidder({{id}}) }" ></div>-->
+
                     </p>
                 </div>
             </div>
-        </div>
+        </div>-->
 
     </div>
 
