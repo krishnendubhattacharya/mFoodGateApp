@@ -121,7 +121,7 @@
                                 text: 'Add Menu',
                                 onClick: changeView }" ></div>
             <!--<input type="button" ng-click="refresh_grid()" value="Refresh">-->
-            <div >
+            <!--<div >
                 <div ng-repeat="voucher in voucherInfo" style="border-top:1px solid #EAEAEA;margin-top:10px;padding-top: 5px;">
                     <div style="display:inline-block; margin: 5px;">
                         <p style="font-size:larger;"><b>{{voucher.title}}</b></p>
@@ -130,7 +130,6 @@
                         <p>Status: <i>{{voucher.status}}</i></p>
                         <p>Featured: <i>{{voucher.is_featured}}</i></p>
                         <p>Member Id: <i>{{voucher.member_membership_id}}</i></p>
-                        <!--<div class="btn_o"><a href="javascript:void(0);" ng-click="viewDetails(id)">Detail</a></div>-->
                     </div>
 
                     <p>
@@ -140,7 +139,38 @@
                     text: 'Delete' }" ng-click="delete_menu(voucher);" ></div>
                     </p>
                 </div>
+            </div>-->
+
+            <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo">
+                <h1>{{voucherDetail.title}}</h1>
+                <table>
+                    <tr>
+                        <td  colspan="2"><img src="{{voucherDetail.imageurl}}" width="100%" ng-if="voucherDetail.imageurl"></td>
+
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Price</td>
+                        <td>{{voucherDetail.price}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Status</td>
+                        <td>{{voucherDetail.status}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Featured</td>
+                        <td>{{voucherDetail.is_featured}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="nwe-btn"><span class="dx-button" ng-click="edit_menu({{voucherDetail}})">Edit</span></div>
+                            <div class="nwe-btn"><span class="dx-button" ng-click="delete_menu({{voucherDetail}})">Delete</span></div>
+                            <!--<div class="nwe-btn"><span c,lass="dx-button" ng-click="cancelResell({{voucherDetail.voucher_resale_id}})">Cancel</span></div>-->
+                            <!--<div class="nwe-btn"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>-->
+                        </td>
+                    </tr>
+                </table>
             </div>
+
         </div>
 
         <div class="m-profile-details" ng-show="edit_mode">
@@ -151,14 +181,14 @@
                     <div class="dx-field">
                         <div class="dx-field-label">Restaurant</div>
                         <div class="dx-field-value">
-                            <div dx-select-box="textBox.restaurant" ng-model="menuInfo.merchantrestaurant_id"></div>
+                            <div dx-select-box="textBox.restaurant1" ng-model="menuInfo.merchantrestaurant_id"></div>
                         </div>
                     </div>
 
                     <div class="dx-field">
                         <div class="dx-field-label">Category</div>
                         <div class="dx-field-value">
-                            <div dx-select-box="textBox.category" ng-model="menuInfo.menucategory_id"></div>
+                            <div dx-select-box="textBox.category1" ng-model="menuInfo.menucategory_id"></div>
                         </div>
                     </div>
 

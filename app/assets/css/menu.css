@@ -137,8 +137,9 @@ border: solid 1px #ccc; margin: 0 auto;}
 	color: #3b3b3b;
 	/*padding: 10px 0;*/
 	text-decoration: none;
-	font-size: 17px;
+	font-size: 14px;
 	font-weight: normal;
+	text-transform: uppercase;
 
 }
 #cssmenu > ul > li > a > span {
@@ -178,8 +179,9 @@ border: solid 1px #ccc; margin: 0 auto;}
 #cssmenu ul ul a {
 	display: block;
 	color: #595959;
-	font-size: 14px;
+	font-size: 12px;
 	padding-left: 10px;
+	text-transform: uppercase;
 }
 #cssmenu ul ul a img{ vertical-align:  middle !important; margin-right: 10px !important;}
 #cssmenu ul ul a:hover {

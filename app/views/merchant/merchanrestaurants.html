@@ -129,20 +129,42 @@
                                 text: 'Add Restaurant',
                                 onClick: changeView }" ></div>
 
-            <div ng-repeat="voucher in voucherInfo" style="border-top:1px solid #EAEAEA;margin-top:10px;padding-top: 5px;">
+            <!--<div ng-repeat="voucher in voucherInfo" style="border-top:1px solid #EAEAEA;margin-top:10px;padding-top: 5px;">
                 <div>
                     <p style="font-size:larger;"><b>{{voucher.title}}</b></p>
                     <img src="{{voucher.imageurl}}" width="100%" ng-if="voucher.imageurl">
                     <p>Active: <i>{{voucher.is_active==1?'Active':'Inactive'}}</i></p>
-                    <!--<div class="btn_o"><a href="javascript:void(0);" ng-click="viewDetails(id)">Detail</a></div>-->
                 </div>
-
                 <p>
                 <div id="button" dx-button="{
                     text: 'Edit' }" ng-click="edit_menu(voucher)"></div>
                 <div id="button" dx-button="{
                     text: 'Delete' }" ng-click="delete_menu(voucher);" ></div>
                 </p>
+            </div>-->
+            <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo">
+                <h1>{{voucherDetail.title}}</h1>
+                <table>
+                    <tr>
+                        <td  colspan="2"><img src="{{voucherDetail.imageurl}}" width="100%" ng-if="voucherDetail.imageurl"></td>
+
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Sequence</td>
+                        <td>{{voucherDetail.seq}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Active</td>
+                        <td>{{voucherDetail.is_active==1?'Yes':'No'}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="nwe-btn"><span class="dx-button" ng-click="edit_menu({{voucherDetail}})">EDIT</span></div>
+                            <div class="nwe-btn"><span class="dx-button" ng-click="delete_menu({{voucherDetail}})">DELETE</span></div>
+                        </td>
+
+                    </tr>
+                </table>
             </div>
 
             <div class="dx-clearfix"></div>

@@ -3188,7 +3188,9 @@
 }
 .dx-button
 {
-  padding: 8px;
+  padding: 4px;
+  font-size: 11px !important;
+  text-transform:  uppercase !important;
 }
 .dx-button .dx-icon
 {
@@ -3340,6 +3342,8 @@
 .dx-button .dx-button-text
 {
   color: #232323;
+  font-size: 12px !important;
+  text-transform:  uppercase !important;
 }
 .dx-button.dx-state-hover
 {

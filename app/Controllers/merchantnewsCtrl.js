@@ -119,7 +119,8 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
             cellTemplate: function (container, options) {
                 if(options.data.image) {
                     $('<img />')
-                        .width(200)
+                        .height('auto')
+                        .width('100%')
                         .attr('src', options.data.imageurl)
                         .appendTo(container);
                 }

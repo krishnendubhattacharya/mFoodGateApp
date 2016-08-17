@@ -219,8 +219,8 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
             //$timeout(function(){
                 //$scope.datag.refresh();
             //},3000)
-            $scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
-            $scope.listViewData.option({"onItemClick":$scope.callMember});
+            //$scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
+            //$scope.listViewData.option({"onItemClick":$scope.callMember});
 
 
         });
@@ -364,11 +364,11 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
 
     //$scope.test_save();
 
-    $scope.loadList=function(e)
+    /*$scope.loadList=function(e)
     {
         $scope.listViewData= e.component;
 
-    }
+    }*/
 
 
 });

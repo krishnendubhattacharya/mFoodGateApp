@@ -116,7 +116,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 .main-header .nab-bar .navigation{ width:613px; height:43px; margin: 6px 0 0 6px; float: left; }
 .main-header .nab-bar .navigation ul{ padding:0; margin:0; }
 .main-header .nab-bar .navigation ul li{ padding:0; margin: 0 3px 0 0; list-style-type: none; float: left;}
-.main-header .nab-bar .navigation ul li a{ line-height:43px; font-size:14px; color:#fdfdfd; text-decoration: none; padding: 0 17px; }
+.main-header .nab-bar .navigation ul li a{ line-height:43px; font-size:14px; color:#fdfdfd; text-decoration: none; padding: 0 17px; text-transform: uppercase; }
 .main-header .nab-bar .navigation ul li a:hover{ display: block; background:url(../Images/nav-hover.jpg) left top repeat-x; border-radius: 3px 3px 0 0; }
 .main-header .nab-bar .navigation ul li a.active{ display: block; background:url(../Images/nav-hover.jpg) left top repeat-x; border-radius: 3px 3px 0 0; }
 
@@ -147,24 +147,24 @@ h5 a:link, h5 a:visited, h5 a:active {
 .ads-banner{ width: 100%; height: 88px; margin: 18px 0 0; overflow: hidden;}
 .category-left{ float: left; width:226px; height: auto; overflow: hidden; border: solid 1px #e0e0e0; background:#f0f0f0; margin-top:  18px;}
 .category-left h1{ font-size:16px; line-height:41px; padding: 0 0 0 15px;
-    background: url(../Images/ln-title-bg.png) left top repeat-x; overflow: hidden; text-transform: uppercase; color:#f25d1b;  }
+    background: url(../Images/ln-title-bg.png) left top repeat-x; overflow: hidden; text-transform: uppercase; color:#f25d1b; font-weight: 600;
+	border-bottom: solid 1px #ccc;  }
 /*background: url(../Images/ln-title-bg.png) left top repeat-x; background: url(../Images/cat-h-bg.jpg)*/
 
 /*-------------------- Left menu ----------------------------*/
 .category-left ul{ padding:0; margin:0;}
 .category-left ul li{ padding:0; margin: 0; list-style-type: none; float: none; border-bottom: solid 1px #dcdcdc; width:100%; }
-.category-left ul li a{ font-size: 16px; color:#339933; line-height: 41px; text-decoration: none;
+.category-left ul li a{ font-size: 14px; color:#339933; line-height: 41px; text-decoration: none;
     background: url(../Images/cat-arrow.png) 96% center no-repeat #fff; padding-right:10px; padding-left:10px;
-    display: block;}
+    display: block; text-transform:uppercase;}
 .category-left ul li a:hover{color:#ff0000; background: url(../Images/cat-arrow.png) 96% center no-repeat #fff; }
 .category-left ul li:last-child{ border-bottom: none; }
 
 /*---------------------------- Featured Promo ------------------------*/
 .featured-Promo{ width:836px; float: right; margin:0; border: solid 0px green; overflow: hidden; margin-top:  18px; }
-.featured-Promo h1{ font-size:20px; color:#f25d1b; line-height:41px;
-    background: rgba(0, 0, 0, 0) url("../Images/ln-title-bg.png") repeat-x scroll left top;
-    display: block; padding-left:  15px; height: 41px;
-    border: solid 1px #e1e1e1;}
+.featured-Promo h1{ font-size:16px; line-height:41px; padding: 0 0 0 15px;
+    background: url(../Images/ln-title-bg.png) left top repeat-x; overflow: hidden; text-transform: uppercase; color:#f25d1b; font-weight: 600;
+	border: solid 1px #ccc;  }
 .featured-Promo ul{ padding:17px 0 0 0; margin:0;}
 .featured-Promo ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:48.5%; margin: 5px 0.7%; }
 /*.featured-Promo ul li:last-child{ margin-right: 0; }*/
@@ -188,8 +188,8 @@ h5 a:link, h5 a:visited, h5 a:active {
 
 /*------------------------------- New Promo -------------------------------------*/
 .new-Promo{ width:100%; margin:0; border-top: solid 0px #dcdcdc; margin-top:20px;}
-.new-Promo h1{ font-size:20px; color:#f25d1b; line-height:41px; background: rgba(0, 0, 0, 0) url("../Images/ln-title-bg.png") repeat-x scroll left top;
-    display: block; padding-left:  15px; height: 41px;  border: solid 1px #e1e1e1; line-height:35px;}
+.new-Promo h1{ font-size:16px; color:#f25d1b; background: rgba(0, 0, 0, 0) url("../Images/ln-title-bg.png") repeat-x scroll left top;
+    display: block; padding-left:  15px; height: 41px;  border: solid 1px #e1e1e1; line-height:40px; text-transform: uppercase; font-weight: 600;}
 .new-Promo h2{ font-size:24px; color:#666; line-height:41px; height: 41px; font-weight:  bold; padding-bottom: 15px;}
 .new-Promo h1 span{ color:#ff0000; font-size:18px; }
 .new-Promo ul{ padding:9px 0 0 0; margin:0; overflow: hidden; border:  solid 1px #e1e1e1; width: 99.9%;}
@@ -215,8 +215,8 @@ h5 a:link, h5 a:visited, h5 a:active {
 
 /*------------------------------- Featured Restaurant -------------------------------------*/
 .restaurant-Promo{ width:100%; margin:0; border-top: solid 0px #dcdcdc; margin-top:20px;  }
-.restaurant-Promo h1{ font-size:20px; color:#f25d1b; line-height:41px; background: rgba(0, 0, 0, 0) url("../Images/ln-title-bg.png") repeat-x scroll left top;
-    display: block; padding-left:  15px; height: 41px;  border: solid 1px #e1e1e1;}
+.restaurant-Promo h1{ font-size:16px; color:#f25d1b; background: rgba(0, 0, 0, 0) url("../Images/ln-title-bg.png") repeat-x scroll left top;
+    display: block; padding-left:  15px; height: 41px;  border: solid 1px #e1e1e1; line-height:40px; text-transform: uppercase; font-weight: 600;}
 .restaurant-Promo h1 span{ color:#ff0000; font-size:18px; }
 .restaurant-Promo ul{ padding:17px 0 0 0; margin:0; overflow: hidden; border:  solid 1px #e1e1e1; width: 99.9%;}
 .restaurant-Promo ul li{ padding: 0; float: left; list-style-type: none; width:31.3%; margin: 0 1% 15px; }
@@ -516,19 +516,20 @@ h5 a:link, h5 a:visited, h5 a:active {
 
 /*---------------------------------- my account -----------------------------*/
 
-.myaccount-details h1{font-size:26px; color:#3b3b3b; line-height:36px; padding-bottom:7px; margin-top:20px !important;}
+.myaccount-details h1{font-size:22px; color:#3b3b3b; line-height:36px; padding: 5px 0 5px 15px; margin-top:20px !important;
+background: #f5f5f5; border:  solid 1px #e8e8e8; margin-bottom: 20px; text-transform: uppercase; font-weight:600;}
 .left-panel{width:18%;height: auto;overflow: hidden;padding:10px;box-sizing: border-box;border:1px solid #eaeaea; float:left;}
 .left-panel .profile-img{width:100%;height: auto;overflow: hidden;}
 .left-panel.profile-img img{width:100%}
 .left-panel ul{ padding: 0px; margin: 0;}
-.left-panel ul li { padding: 0; margin: 0; line-height:35px; font-size:14px; height: 35px; list-style-type: none; float: none; border-bottom:dashed 1px #ccc;}
+.left-panel ul li { padding: 0; margin: 0; line-height:35px; font-size:12px; height: 35px; list-style-type: none; float: none; border-bottom:dashed 1px #ccc;}
 .left-panel ul li:last-child { border: none; }
-.left-panel ul li a{ text-decoration: none; color: #6b6b6b; }
+.left-panel ul li a{ text-decoration: none; color: #6b6b6b; text-transform:  uppercase; }
 .left-panel ul li a:hover{ text-decoration: none; color: #319432; }
 
 .profile-details{ width:80%; float: right; margin: 0; border: solid 1px #eaeaea;}
-.profile-details h1{ font-size: 24px; color:#1d1d1d; padding: 0; margin:0 0 3px; line-height:30px; }
-.profile-details h3{ font-size: 20px; color:#1d1d1d; padding: 0 0 0 15px; margin:0 0 3px; line-height:30px; }
+.profile-details h1{ font-size: 20px; color:#1d1d1d; padding: 0; margin:0 0 3px; line-height:30px; border: none; background: none; text-transform: inherit !important; }
+.profile-details h3{ font-size:16px; color:#fff; line-height: 24px; background:#319431; display: block; padding: 10px; margin: 0 !important; text-transform:uppercase !important; font-weight:600;}
 
 .profile-details p{ padding:5px 0; margin:0; font-size:14px; color:#292929; line-height:18px; overflow:hidden;}
 .profile-details p .title{ float:left; width:35%; font-weight:500; color:#1d1d1d; }
@@ -552,7 +553,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 .right-side {
     position: absolute;
     right: 9px !important;
-    top: 55px !important;
+    top: 78px !important;
 }
 
 .dx-pager .dx-page-sizes { margin-left: 10px;}
@@ -913,14 +914,14 @@ h5 a:link, h5 a:visited, h5 a:active {
 .merchant-nav ul li{ float: left; margin: 0; list-style-type: none; padding: 0 15px 0; display: inline-block; }
 /*.merchant-nav ul li:first-child{ padding: 0 20px 0 0; }*/
 .merchant-nav ul li p{ font-size:14px; font-weight: normal; text-align: left; color: #696969; line-height: 21px;}
-.merchant-nav ul li p a{ font-size:14px; color:#319230; text-decoration: none; }
+.merchant-nav ul li p a{ font-size:14px; color:#319230; text-decoration: none; text-transform:uppercase; }
 .merchant-nav ul li p a:hover{ color:#F00; }
 
 .merchant-card{ width:96%; height: auto; overflow: hidden; margin:10px auto; }
 .merchant-card .card-img{ width:35%; height: auto; float: left; }
 .merchant-card .card-img img{ width:100%; height: auto;}
 .merchant-card .card-dsc{ width:62%; height: auto; float: right; }
-.merchant-card .card-dsc h1{ padding: 0; margin: 0; color:#309030; font-size:24px; line-height:24px; margin-bottom:10px; background: none; border: none; font-weight:normal; height: auto;}
+.merchant-card .card-dsc h1{ padding: 0; margin: 0; color:#309030; font-size:24px; line-height:24px; margin-bottom:10px; background: none; border: none; font-weight:normal; height: auto; text-transform: inherit !important;}
 .merchant-card .card-dsc h2{ color:#232323; font-size:18px; line-height: 22px; padding: 0; margin: 0; }
 .merchant-card .card-dsc p{ padding: 0; margin: 0 0 5px; line-height: 21px; font-size:16px; color: #3c3c3c;}
 
@@ -938,7 +939,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 /*-------------------------- Item Details 14-03-2016 ---------------------------*/
 .item-details{ width:100%; height: auto; margin: 25px 0 0; overflow: hidden; }
 .item-details .offers{ width: 27%; height: auto; margin: 0; border: solid 1px #dfdfdf; float: left; }
-.item-details .offers h1{ font-size:24px; color:#fff; line-height: 24px; background:#319431; display: block; padding: 13px; margin: 0;}
+.item-details .offers h1{ font-size:18px; color:#fff; line-height: 24px; background:#319431; display: block; padding: 10px; margin: 0; text-transform:uppercase; font-weight:600;}
 .item-details .offers .offer{ width:92%; margin: 10px; background:#f8f8f8; border: solid 1px #dfdfdf; overflow: hidden; }
 .item-details .offers .offer p{ padding: 5px 10px 0; margin: 0; line-height: 24px; font-size:18px; color:#333333; }
 .item-details .offers .offer p span{ color:#969696;}
@@ -976,7 +977,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 
 .item-details .details{ width:71%; float: right; margin: 0;}
 .item-details .details .banner-main{ width:100%; height: auto; }
-.item-details .details .banner-main h1{ padding: 0; margin: 10px 0 5px; font-size:24px; font-weight: normal; color:#434343;}
+.item-details .details .banner-main h1{ padding: 0; margin: 10px 0; font-size:22px; font-weight: normal; color:#434343; text-transform:uppercase; font-weight: 600;}
 .item-details .details .banner-main p{padding: 0; margin: 0 0 10px 0; font-size:18px; font-weight: normal; color:#8c8c8c;}
 .item-details .details .banner-main .banner{width:100%; height: auto; }
 .item-details .details .banner-main .banner img{width:100%; height: auto;}
@@ -1042,8 +1043,8 @@ h5 a:link, h5 a:visited, h5 a:active {
 
 .news .right-col{width:27%; float: right; margin: 0; border: solid 0px green; }
 .news .right-col .latest-news{ width: 98%; height: auto; background:#fff; border: solid 1px #dedfde; overflow: hidden; margin-bottom: 15px; }
-.news .right-col .latest-news h1{ display: block; padding: 0 0 0 15px; height: 49px; line-height: 48px; font-size:18px;
-    color:#2a2a2a; text-transform: uppercase; margin: 0; background: url(../Images/ln-title-bg.png) left top repeat-x;}
+.news .right-col .latest-news h1{ display: block; padding: 0 0 0 15px; height: 41px; line-height: 40px; font-size:16px;
+    color:#2a2a2a; text-transform: uppercase; margin: 0; background: url(../Images/ln-title-bg.png) left top repeat-x; font-weight: 600;}
 .news .right-col .latest-news .ln-news{ width:100%; height: auto; padding: 12px; }
 .news .right-col .latest-news .ln-news ul{ margin: 0; overflow: hidden; padding: 0; list-style-type: none;}
 .news .right-col .latest-news .ln-news ul li{ list-style-type: none; margin: 0 0 15px; float: none; border-bottom: solid 1px #dfdfdf; padding-bottom:10px; overflow: hidden; width:92%}
@@ -1171,6 +1172,7 @@ h5 a:link, h5 a:visited, h5 a:active {
     padding: 10px;
     color: #fff;
     text-decoration: none;
+	text-transform:uppercase;
 
 }
 
@@ -1198,7 +1200,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 }
 /*------------------------ Search news -------------------------*/
 .d-latest-news{ width: 100%; height: auto; background:#fff; border: solid 1px #dedfde; overflow: hidden; margin: 15px auto; }
-.d-latest-news h1{ display: block; padding: 12px 15px; height: 24px; line-height: 24px; font-size:14px; color:#2a2a2a; text-transform: uppercase; margin: 0; background: url(../Images/ln-title-bg.png) left top repeat-x;}
+.d-latest-news h1{ display: block; padding: 12px 15px; height: 24px; line-height: 24px; font-size:16px; color:#2a2a2a; text-transform: uppercase; margin: 0; background: url(../Images/ln-title-bg.png) left top repeat-x; font-weight:600;}
 .d-latest-news .ln-news{ width:100%; height: auto; padding: 12px; }
 .d-latest-news .ln-news ul{ margin: 0; overflow: hidden; padding: 0; list-style-type: none;}
 .d-latest-news .ln-news ul li{ list-style-type: none; margin: 0 5px 15px;
@@ -1231,12 +1233,12 @@ h5 a:link, h5 a:visited, h5 a:active {
 
 
 /*---------------------------------- Profile My Voucher -----------------------------*/
-.pvoucher-section{ width:96%; margin:0; border-top: solid 0px #dcdcdc; margin:0 auto;  }
-.pvoucher-section h1{ font-size:26px; color:#3b3b3b; line-height:36px; padding-bottom:7px; margin-top:20px;}
+.pvoucher-section{ width:100%; margin:0; border-top: solid 0px #dcdcdc; margin:0 auto;  }
+.pvoucher-section  h1{ font-size:16px; color:#fff; line-height: 24px; background:#319431; display: block; padding: 10px; margin: 0 !important; text-transform:uppercase !important; font-weight:600;}
 .pvoucher-section h1 span{ color:#ff0000; font-size:18px; }
 .pvoucher-section ul{ padding:17px 0 0 0; margin:0;}
 .pvoucher-section ul li{ padding: 0; margin: 0; float: left; list-style-type: none; width:31.3%; margin: 0 1% 15px; }
-.pvoucher-section .pro-item{ width: 100%; height: 330px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4; padding-bottom:15px;}
+.pvoucher-section .pro-item{ width: 100%; height: 330px; position: relative; overflow: hidden; background:#fff; border: solid 1px #e4e4e4;}
 .pvoucher-section .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle; line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4;}
 .pvoucher-section .pro-item .logo-box img{ height: auto; vertical-align:middle; }
 .pvoucher-section .pro-item .desc{ padding: 10px;
@@ -1248,11 +1250,11 @@ h5 a:link, h5 a:visited, h5 a:active {
     padding: 2px 0; text-align: center; margin: 0;}
 .pvoucher-section .pro-item .desc p{ color:#ff0000; text-align: center; font-size:12px; font-weight: bold; padding: 0; margin: 0;}
 .pvoucher-section .pro-item .desc .btn_g{width:100px; height: 36px; margin: 10px 0 10px; overflow: hidden; float: left;}
-.pvoucher-section .pro-item .desc .btn_g a{ display: block; border-radius: 3px; background: #92d050; text-align:center; font-size: 16px; color:#fff; text-decoration: none; height: 36px; line-height: 36px; font-weight: bold;}
+.pvoucher-section .pro-item .desc .btn_g a{ display: block; border-radius: 3px; background: #92d050; text-align:center; font-size: 14px; color:#fff; text-decoration: none; height: 36px; line-height: 36px; text-transform: uppercase; font-weight:500;}
 .pvoucher-section .pro-item .desc .btn_g a:hover{ display: block; background:#3db63d;}
 
 .pvoucher-section .pro-item .desc .btn_o{width:100px; height: 36px; margin: 8px 0 10px; overflow: hidden; float: right;}
-.pvoucher-section .pro-item .desc .btn_o a{ display: block; border-radius: 3px; background: #e46c0a; text-align:center; font-size: 16px; color:#fff; text-decoration: none; height: 36px; line-height: 36px; font-weight: bold;}
+.pvoucher-section .pro-item .desc .btn_o a{ display: block; border-radius: 3px; background: #e46c0a; text-align:center; font-size: 16px; color:#fff; text-decoration: none; height: 36px; line-height: 36px; text-transform: uppercase; font-weight:500;}
 .pvoucher-section .pro-item .desc .btn_o a:hover{ display: block; background:#ca6009;}
 
 .pvoucher-section .pro-item .p-circle{ width:73px; height:73px; position: absolute; z-index: 1001; bottom: 130px; right:20px; font-size:24px; text-align: center;
@@ -1279,7 +1281,7 @@ h5 a:link, h5 a:visited, h5 a:active {
 /*----------------------------- Cart Page 15-04-2016 ---------------------------*/
 
 .carts{ width: 100%; height: auto; margin: 20px auto; border: solid 1px #dfdfdf; float: left;  }
-.carts h1{ font-size:24px; color:#fff; line-height: 24px; background:#319431; display: block; padding: 13px; margin: 0;}
+.carts h1{ font-size:18px; color:#fff; line-height: 24px; background:#319431; display: block; padding: 10px; margin: 0; text-transform:uppercase; font-weight:600;}
 .carts .offer{ width:98%; margin: 10px auto; background:#f8f8f8; border: solid 1px #dfdfdf; overflow: hidden; }
 .carts .offer p{ padding: 5px 10px 0; margin: 0; line-height: 24px; font-size:18px; color:#333333; }
 .carts .offer p span{ color:#969696;}
@@ -1458,10 +1460,10 @@ h5 a:link, h5 a:visited, h5 a:active {
 
 .ca-container:last-child{ margin-right: 0 !important; }
 
-.ca-container h1{ font-size:20px; color:#f25d1b; line-height:41px;
+.ca-container h1{ font-size:16px; color:#f25d1b; line-height:41px;
     background: rgba(0, 0, 0, 0) url("../Images/ln-title-bg.png") repeat-x scroll left top;
     display: block; padding-left:  15px; height: 41px;
-    border: solid 1px #e1e1e1;}
+    border: solid 1px #e1e1e1; text-transform: uppercase; font-weight: 600;}
 
 .ca-wrapper{
     width:100%;
@@ -1546,12 +1548,13 @@ h5 a:link, h5 a:visited, h5 a:active {
 .restaurant-Promo .pro-item_2 .desc h3{font-size:14px; color:#4b4b4b; padding: 5px 0; text-align: center;
     text-overflow: ellipsis; overflow:  hidden; white-space:  nowrap;}
 .restaurant-Promo .pro-item_2 .desc .btn{width:144px; height: 36px; margin: 5px auto; overflow: hidden;}
-.restaurant-Promo .pro-item_2 .desc .btn a{ display: block; border-radius: 3px; background: #339933; text-align:center; font-size: 16px; color:#fff; text-decoration: none; height: 36px; line-height: 36px; font-weight: bold;}
+.restaurant-Promo .pro-item_2 .desc .btn a{ display: block; border-radius: 3px; background: #339933;
+    text-align:center; font-size: 12px; color:#fff; text-decoration: none; height: 36px; line-height: 36px; text-transform:uppercase;}
 .restaurant-Promo .pro-item_2 .desc .btn a{ display: block; background:#3db63d;}
 .owl-carousel .owl-item img {display: inline !important;}
 
 .ads-banner {
-    height: 242px;
+    height: 222px;
 }
 
 .dx-gesture-cover{ display:  none;}

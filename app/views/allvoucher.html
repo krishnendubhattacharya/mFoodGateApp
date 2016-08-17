@@ -40,8 +40,8 @@
 
                 </div>-->
                 <div class="pvoucher-section phone-hide">
-                    <h1>All Voucher</h1>
-                    <ul>
+                    <h1 ng-click="firstShowHide()">All Voucher</h1>
+                    <ul ng-show="first_show">
                         <li ng-repeat="voucherDetail in voucherInfo">
                             <div class="pro-item" style="height: auto">
                                 <div class="logo-box">
@@ -63,8 +63,8 @@
                 </div>
                 <div class="dx-clearfix"></div>
                 <div class="pvoucher-section phone-hide">
-                    <h1>Expire soon Voucher</h1>
-                    <ul>
+                    <h1 ng-click="secondShowHide()">Expire soon Voucher</h1>
+                    <ul ng-show="second_show">
                         <li ng-repeat="voucherDetail in soonVoucherInfo">
                             <div class="pro-item">
                                 <div class="logo-box">
@@ -101,8 +101,8 @@
         <h1>Voucher</h1>
         <div class="m-profile-details">
             <div class="m-pvoucher-section tablet-hide">
-                <h1>All Voucher</h1>
-                <ul>
+                <h1 ng-click="firstShowHide()">All Voucher</h1>
+                <ul ng-show="first_show">
                     <li ng-repeat="voucherDetail in voucherInfo">
                         <div class="pro-item">
                             <div class="logo-box">
@@ -124,8 +124,8 @@
             </div>
             <div class="dx-clearfix"></div>
             <div class="m-pvoucher-section tablet-hide">
-                <h1>Expire soon Voucher</h1>
-                <ul>
+                <h1 ng-click="secondShowHide()">Expire soon Voucher</h1>
+                <ul ng-show="second_show">
                     <li ng-repeat="voucherDetail in soonVoucherInfo">
                         <div class="pro-item">
                             <div class="logo-box">

@@ -15,16 +15,16 @@
                 <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
 
             <div class="profile-details">
-                <h3>Active Membership</h3>
-                <div id="gridContainer" dx-data-grid="dataGridOptions"></div>
+                <h3 ng-click="firstShowHide()">Active Membership</h3>
+                <div ng-show="first_show" id="gridContainer" dx-data-grid="dataGridOptions"></div>
                 <div id="employeeInfo">
                     <p class="employeeNotes" ng-bind-html="selectedEmployee.benefits"></p>
                 </div>
             </div>
 
             <div class="profile-details">
-                <h3>Expired Membership</h3>
-                <div id="gridContainer" dx-data-grid="dataGridOptions1"></div>
+                <h3 ng-click="secondShowHide()">Expired Membership</h3>
+                <div ng-show="second_show" id="gridContainer" dx-data-grid="dataGridOptions1"></div>
                 <div id="employeeInfo">
                     <p class="employeeNotes" ng-bind-html="selectedEmployee.benefits"></p>
                 </div>
@@ -37,8 +37,8 @@
         <h1>My Membership</h1>
 
         <div class="m-profile-details">
-            <h1>Active Membership</h1>
-            <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo.membership">
+            <h1 ng-click="firstShowHide()">Active Membership</h1>
+            <div ng-show="first_show" class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo.membership">
                 <h1>{{voucherDetail.title}}</h1>
                 <table>
                     <tr>
@@ -69,8 +69,8 @@
         </div>
 
         <div class="m-profile-details">
-            <h1>Expired Membership</h1>
-            <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo1.membership">
+            <h1 ng-click="secondShowHide()">Expired Membership</h1>
+            <div ng-show="second_show" class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo1.membership">
                 <h1>{{voucherDetail.title}}</h1>
                 <table>
                     <tr>

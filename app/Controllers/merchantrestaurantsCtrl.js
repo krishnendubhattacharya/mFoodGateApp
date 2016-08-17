@@ -124,7 +124,8 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
             cellTemplate: function (container, options) {
                 if(options.data.imageurl) {
                     $('<img />')
-                        .width(100)
+                        .height('auto')
+                        .width('100%')
                         .attr('src', options.data.imageurl)
                         .appendTo(container);
                 }
@@ -242,7 +243,7 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
             //if($scope.datag)
             $scope.datag.option({dataSource:$scope.voucherInfo});
 
-            $scope.listViewData.option({"dataSource": $scope.voucherInfo,hoverStateEnabled: false });
+            //$scope.listViewData.option({"dataSource": $scope.voucherInfo,hoverStateEnabled: false });
             //$scope.refresh_grid();
             //$timeout(function(){
             //$scope.datag.refresh();
@@ -357,10 +358,10 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
         $scope.icon_uploader.reset();
     }
 
-    $scope.loadList=function(e)
+    /*$scope.loadList=function(e)
     {
         console.log("loadList")
         $scope.listViewData= e.component;
-    }
+    }*/
 
 });

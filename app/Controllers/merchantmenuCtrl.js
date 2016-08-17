@@ -41,6 +41,22 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
                 $scope.cat_select = e.component;
                 $scope.getCategories();
             }
+        },restaurant1:{
+            dataSource: $scope.all_restaurant,
+            displayExpr: "name",
+            valueExpr: "value",
+            onInitialized:function(e){
+                $scope.res_select1 = e.component;
+                $scope.getRestaurants();
+            }
+        },category1:{
+            dataSource: $scope.all_categories,
+            displayExpr: "name",
+            valueExpr: "value",
+            onInitialized:function(e){
+                $scope.cat_select1 = e.component;
+                $scope.getCategories();
+            }
         }};
 
 
@@ -107,7 +123,8 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             cellTemplate: function (container, options) {
                 if(options.data.image) {
                     $('<img />')
-                        .height(100)
+                        .height('auto')
+                        .width('100%')
                         .attr('src', options.data.imageurl)
                         .appendTo(container);
                 }
@@ -165,6 +182,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
                 $scope.all_restaurant.push({name:val.title,value:val.id});
             })
             $scope.res_select.option({dataSource: $scope.all_restaurant});
+            $scope.res_select1.option({dataSource: $scope.all_restaurant});
 
 
 
@@ -184,6 +202,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
                 $scope.all_categories.push({name:val.name,value:val.id});
             })
             $scope.cat_select.option({dataSource: $scope.all_categories});
+            $scope.cat_select1.option({dataSource: $scope.all_categories});
 
 
 

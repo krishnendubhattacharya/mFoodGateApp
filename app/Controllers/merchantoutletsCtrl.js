@@ -105,7 +105,8 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             cellTemplate: function (container, options) {
                 if(options.data.image) {
                     $('<img />')
-                        .width(100)
+                        .height('auto')
+                        .width('100%')
                         .attr('src', options.data.imageurl)
                         .appendTo(container);
                 }
@@ -229,7 +230,7 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             //if($scope.datag)
             $scope.datag.option({dataSource:$scope.voucherInfo});
 
-            $scope.listViewData.option({"dataSource": $scope.voucherInfo,hoverStateEnabled: false });
+            //$scope.listViewData.option({"dataSource": $scope.voucherInfo,hoverStateEnabled: false });
             //$scope.refresh_grid();
             //$timeout(function(){
             //$scope.datag.refresh();
@@ -340,11 +341,11 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         $scope.img_uploader.reset();
     }
 
-    $scope.loadList=function(e)
+    /*$scope.loadList=function(e)
     {
         console.log("loadList")
         $scope.listViewData= e.component;
-    }
+    }*/
 
     $scope.delete_menu = function (data) {
         if(confirm("Are you sure you want to delete?"))

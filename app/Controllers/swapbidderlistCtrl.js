@@ -7,6 +7,33 @@ app.controller('swapbidderlistCtrl', function ($rootScope, $scope, $http, $locat
         $location.path("/login");
     }
 
+    $scope.first_show = 1;
+    $scope.second_show = 1;
+    $scope.third_show = 1;
+    $scope.firstShowHide = function () {
+        if($scope.first_show == 1){
+            $scope.first_show = 0;
+        }else{
+            $scope.first_show = 1;
+        }
+    }
+    $scope.secondShowHide = function () {
+        if($scope.second_show == 1){
+            $scope.second_show = 0;
+        }else{
+            $scope.second_show = 1;
+        }
+
+    }
+    $scope.thirdShowHide = function () {
+        if($scope.third_show == 1){
+            $scope.third_show = 0;
+        }else{
+            $scope.third_show = 1;
+        }
+
+    }
+
 
 
     $scope.bidderList = function(){

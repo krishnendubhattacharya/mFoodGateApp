@@ -77,14 +77,14 @@
                                 text: 'Add Category',
                                 onClick: changeView }" ></div>
             <!--<input type="button" ng-click="refresh_grid()" value="Refresh">-->
-            <div >
+            <!--<div >
                 <div ng-repeat="voucher in voucherInfo" style="border-top:1px solid #EAEAEA;margin-top:10px;padding-top: 5px;">
                     <div>
                         <p style="font-size:larger;"><b>{{voucher.name}}</b></p>
 
                         <p>Sequence: <i>{{voucher.seq}}</i></p>
                         <p>Status: <i>{{voucher.is_active==1?'Active':'Inactive'}}</i></p>
-                        <!--<div class="btn_o"><a href="javascript:void(0);" ng-click="viewDetails(id)">Detail</a></div>-->
+
                     </div>
 
                     <p>
@@ -94,6 +94,26 @@
                     text: 'Delete' }" ng-click="delete_menu(voucher);" ></div>
                     </p>
                 </div>
+            </div>-->
+            <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo">
+                <h1>{{voucherDetail.name}}</h1>
+                <table>
+                    <tr>
+                        <td width="30%" class="m-header-color">Sequence</td>
+                        <td>{{voucherDetail.seq}}</td>
+                    </tr>
+                    <tr>
+                        <td width="30%" class="m-header-color">Status</td>
+                        <td>{{voucherDetail.is_active==1?'Active':'Inactive'}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="nwe-btn"><span class="dx-button" ng-click="edit_menu({{voucherDetail}})">EDIT</span></div>
+                            <div class="nwe-btn"><span class="dx-button" ng-click="delete_menu({{voucherDetail}})">DELETE</span></div>
+                        </td>
+
+                    </tr>
+                </table>
             </div>
         </div>
 

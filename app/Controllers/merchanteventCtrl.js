@@ -38,15 +38,16 @@ app.controller('merchanteventCtrl', function ($rootScope, $scope, $http, $locati
                     $('<button/>').addClass('dx-button')
                         .text('Detail')
                         .on('dxclick',function(){
-                            //$scope.accept_event(options.data.id);
-                            $location.path('/eventdetail/' + options.data.id);
+                            $scope.event_detail(options.data.id);
+
                         })
                         .appendTo(container);
                     $('<button/>').addClass('dx-button')
                         .text('Bid')
                         .on('dxclick',function(){
                             //$scope.accept_event(options.data.id);
-                            $location.path('/eventbid/' + options.data.id);
+                            $scope.event_bid(options.data.id);
+                            //$location.path('/eventbid/' + options.data.id);
                         })
                         .appendTo(container);
 
@@ -71,6 +72,13 @@ app.controller('merchanteventCtrl', function ($rootScope, $scope, $http, $locati
         });
     }
     $scope.getEventList();
+
+    $scope.event_detail = function(id) {
+        $location.path('/eventdetail/' +id);
+    }
+    $scope.event_bid = function(id) {
+        $location.path('/eventbid/' +id);
+    }
 
 
 
