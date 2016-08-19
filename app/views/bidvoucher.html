@@ -6,15 +6,23 @@
             <h1>Resell Voucher</h1>
                 <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
 
-            <div class="profile-details">
+            <div class="profile-details brt-none mb-15">
                 <h3 ng-click="firstShowHide()">My Resell Voucher</h3>
+                
                 <div ng-show="first_show" id="gridContainer" dx-data-grid="dataGridOptions"></div>
-
+                
+            </div>
+            <div class="profile-details brt-none mb-15">
                 <h3 ng-click="secondShowHide()">My Bid for Other’s Resell Voucher</h3>
+                
                 <div ng-show="second_show"  id="gridContainer3" dx-data-grid="dataGridOptions3"></div>
-
+                
+            </div>
+            <div class="profile-details brt-none">
                 <h3 ng-click="thirdShowHide()">Resell Voucher List</h3>
+               
                 <div ng-show="third_show"  id="gridContainer2" dx-data-grid="dataGridOptions2"></div>
+             
             </div>
 
         </div>
@@ -23,9 +31,10 @@
 
         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
         <h1>Resell Voucher</h1>
-        <div class="m-profile-details">
+        <div class="m-profile-details br-0 mb-0 pb-0">
             <h1 ng-click="firstShowHide()">My Resell Voucher</h1>
-            <div ng-show="first_show" class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo">
+            <div class="new-border">
+            	<div ng-show="first_show" class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo">
                 <h1>{{voucherDetail.title}}</h1>
                 <table>
                     <tr>
@@ -66,11 +75,13 @@
                     </tr>
                 </table>
             </div>
+            </div>
         </div>
 
-        <div class="m-profile-details">
+        <div class="m-profile-details br-0 mb-0 pb-0">
             <h1 ng-click="secondShowHide()">My Bid for Other’s Resell Voucher</h1>
-            <div ng-show="second_show" class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo1">
+            <div class="new-border">
+            	<div ng-show="second_show" class="m-transaction-details tablet-hide mb-15" ng-repeat="voucherDetail in voucherInfo1">
                 <h1>{{voucherDetail.title}}</h1>
                 <table>
                     <tr>
@@ -107,11 +118,13 @@
                     </tr>
                 </table>
             </div>
+            </div>
         </div>
 
-        <div class="m-profile-details">
+        <div class="m-profile-details br-0 mb-0 pb-0">
             <h1 ng-click="thirdShowHide()">Resell Voucher List</h1>
-            <div ng-show="third_show" class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in soonVoucherInfo">
+            <div class="new-border">
+            	<div ng-show="third_show" class="m-transaction-details tablet-hide mb-15" ng-repeat="voucherDetail in soonVoucherInfo">
                 <h1>{{voucherDetail.title}}</h1>
                 <table>
                     <tr>
@@ -131,6 +144,7 @@
                         </td>
                     </tr>
                 </table>
+            </div>
             </div>
         </div>
         <!--<div class="m-profile-details">

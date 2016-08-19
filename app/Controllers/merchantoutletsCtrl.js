@@ -10,6 +10,11 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
     NgMap.getMap().then(function(map) {
         $scope.map = map;
     });
+    $scope.event_info=null;
+    $scope.areaList = [];
+    $scope.areaListMob = [];
+    $scope.selectedLocation = [];
+    $scope.selectedLocationMob = [];
 
     $scope.placeChanged = function() {
         $scope.place = this.getPlace();
@@ -69,9 +74,13 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             restaurant_id:'',
             address:'',
             business_hours:'',
-            location_id:'',
+            //location_id:'',
             is_active:false
         }
+        $scope.selectedLocation=[];
+        //$scope.selectedTypes =[];
+        $scope.selectedLocationMob = [];
+        //$scope.selectedTypesMob = [];
         //$scope.textBox.image.value = null;
         //$scope.img_uploader = ;
         $scope.img_uploader.reset();
@@ -247,6 +256,7 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         //console.log($scope.textBox.image.value,$scope.menuInfo);
         if($scope.menuInfo.id)
         {
+            $scope.menuInfo.location_id = $scope.areaList;
             $http({
                 method: "POST",
                 url: $rootScope.serviceurl+"updateMerchantOutlet",
@@ -285,6 +295,8 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         {
             console.log($scope.menuInfo);
             $scope.menuInfo.user_id = $scope.loggedindetails.id;
+            //$scope.areadata = $scope.areaList;
+            $scope.menuInfo.location_id = $scope.areaList;
             $http({
                 method: "POST",
                 url: $rootScope.serviceurl+"addMerchantOutlet",
@@ -334,10 +346,15 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             restaurant_id:menu.restaurant_id,
             address:menu.address,
             business_hours:menu.business_hours,
-            location_id:menu.location_id,
+            //location_id:menu.location_id,
             outlet_id:menu.outlet_id,
             is_active:menu.is_active
         }
+        $scope.event_info=menu;
+        //$scope.setSelectedTypes();
+        $scope.setSelectedLocation();
+        //$scope.setSelectedTypesMob();
+        $scope.setSelectedLocationMob();
         $scope.img_uploader.reset();
     }
 
@@ -357,6 +374,89 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
                 $scope.getOutlets();
             });
         }
+    }
+
+    $scope.tagBoxDataLocation = new DevExpress.data.DataSource({ store: [], paginate: false });
+    $scope.viewLocation = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getLocations",
+
+        }).success(function (data) {
+
+
+            $scope.allLoc = data.location;
+            $scope.locationData.option('items',$scope.allLoc);
+            $scope.setSelectedLocation();
+
+            $scope.allLocMob = data.location;
+            $scope.locationDataMob.option('items',$scope.allLocMob);
+            $scope.setSelectedLocationMob();
+
+            /*for (var i = 0; i < $scope.allLoc.length; i++) {
+             $scope.tagBoxDataLocation.store().insert($scope.allLoc[i]);
+             }
+             $scope.tagBoxDataLocation.load();*/
+            //console.log($scope.tagBoxData._items);
+            //$scope.taglist = $scope.tagBoxData._items;
+
+
+
+        });
+
+    }
+
+    $scope.viewLocation();
+
+    $scope.setSelectedLocation = function(){
+        $scope.selectedLocation=[];
+        if($scope.allLoc && $scope.event_info)
+        {
+            //console.log($scope.allLoc,$scope.userInfo.locations);
+
+            angular.forEach($scope.allLoc,function(all,key){
+                angular.forEach($scope.event_info.locations,function(own){
+                    if(all.id == own.location_id)
+                    {
+                        $scope.selectedLocation.push($scope.allLoc[key]);
+                    }
+                })
+            })
+            $scope.areaList = $scope.selectedLocation;
+
+        }
+    }
+
+    $scope.setSelectedLocationMob = function(){
+        $scope.selectedLocationMob=[];
+        if($scope.allLocMob && $scope.event_info)
+        {
+            //console.log($scope.allLoc,$scope.userInfo.locations);
+
+            angular.forEach($scope.allLocMob,function(all,key){
+                angular.forEach($scope.event_info.locations,function(own){
+                    if(all.id == own.location_id)
+                    {
+                        $scope.selectedLocationMob.push($scope.allLocMob[key]);
+                    }
+                })
+            })
+            $scope.areaList = $scope.selectedLocationMob;
+
+        }
+    }
+
+    $scope.inialLocMob = function(e){
+        $scope.locationDataMob = e.component;
+        //if($scope.allLoc[0])
+        //$scope.locationData.option('values',$scope.allLoc[0]);
+    }
+
+
+    $scope.inialLoc = function(e){
+        $scope.locationData = e.component;
+        //if($scope.allLoc[0])
+        //$scope.locationData.option('values',$scope.allLoc[0]);
     }
 
 });

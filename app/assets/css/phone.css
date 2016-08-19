@@ -372,20 +372,25 @@ body#mfoodmain{
     background: #000;
     height: 35px;
     font-size: 16px;
+	float: none;
 }
+.m-app-menu ul li ul li:last-child{width:200px !important; }
 .m-app-menu ul li ul li a {
     font-size:14px;
     font-weight:normal;
     color:#fff;
     padding: 0 10px;
     line-height: 35px;
+	display: block !important;
+	white-space:nowrap;
+	display: block;
 
 }
 
 .m-app-menu ul li ul, .m-app-menu ul li ul, .m-app-menu ul li:hover ul li ul{
     display:none;
     list-style-type:none;
-    width: 200px;
+    width: 200px !important;
 
 }
 
@@ -394,6 +399,7 @@ body#mfoodmain{
     margin-top: 1px;
     display:block;
     bottom: 55px;
+	z-index:9999999;
 }
 
 .login-box{ width:75%; height: auto; overflow: hidden; padding: 25px; background: #fff; border: solid 1px #e9e9e9;
@@ -742,7 +748,9 @@ body#mfoodmain{
 
 .m-profile-details{ width:94%; float: none; margin: 0px auto 15px; border: solid 1px #eaeaea; overflow: hidden; padding:  0 3% 10px;}
 
-.m-profile-details h1{ font-size:17px; color:#fff; line-height: 24px; background:#319431; display: block; padding: 10px; margin: 20px 0 !important; text-transform:uppercase !important; font-weight:600; border-top: solid 1px #fff;}
+.m-profile-details h1{ font-size:13px; color:#f25d1b; background: rgba(0, 0, 0, 0) url("../Images/ln-title-bg.png") repeat-x scroll left top;
+    display: block; padding-left:  15px; height: 35px;  border-bottom: solid 1px #e1e1e1; line-height:29px; text-transform: uppercase; font-weight: 600; margin-top: 0px !important;  border-top: solid 1px #e1e1e1; padding-bottom:0; margin: 15px 0 0 !important;}
+
 .m-profile-details p{ padding:2px 0; margin:0; font-size:14px; color:#292929; line-height:18px; overflow:hidden;}
 .m-profile-details p .title{ float:left; width:45%; font-weight:500; color:#1d1d1d; }
 .m-profile-details p .val{ float:left; width:55%; font-weight: normal; color:#5e5e5e;}
@@ -806,9 +814,9 @@ body#mfoodmain{
 }
 .m-dash-board{ padding: 10px;}
 .m-dash-board h1{ font-size: 20px; color:#1d1d1d; padding: 0; margin:0 0 3px; line-height:30px; border: none; background: none; text-transform: inherit !important; }
-.m-transaction-details{ width:100%; height:auto;  border: solid 1px #349c34; margin:20px auto 0;}
+.m-transaction-details{ width:100%; height:auto;  border: solid 1px #349c34; margin:0 auto;}
 .m-transaction-details h1{ height:47px; display: block; line-height:47px;
-    background: url(../Images/green-bg.jpg) left top repeat-x; margin:0 !important; padding: 0 0 0 15px; font-size:16px;
+    background: url(../Images/green-bg.jpg) left top repeat-x; margin:0 !important; padding: 0 0 0 15px; font-size:13px;
     font-weight: bold; color:#fff; }
 .m-transaction-details table {
     border-collapse: collapse;
@@ -1282,13 +1290,14 @@ margin-bottom:15px; overflow: hidden;}*/
     text-transform: capitalize;}
 /*---------------------------------- My Voucher -----------------------------*/
 .m-pvoucher-section{ width:100%; margin:0 auto; border-top: solid 0px #dcdcdc; margin-top:12px;  }
-.m-pvoucher-section  h1{ font-size:16px; color:#fff; line-height: 24px; background:#319431; display: block; padding: 10px; margin: 0; text-transform:uppercase; font-weight:600; width:auto;}
+.m-pvoucher-section h1{ font-size:16px; color:#f25d1b; background: rgba(0, 0, 0, 0) url("../Images/ln-title-bg.png") repeat-x scroll left top;
+    display: block; padding-left:  15px; height: 35px;  border-bottom: solid 1px #e1e1e1; line-height:29px; text-transform: uppercase; font-weight: 600; margin-top: 0px !important;  border-top: solid 1px #e1e1e1; padding-bottom:0; margin: 0 !important;}
 .m-pvoucher-section ul{ padding:0; margin:0;}
-.m-pvoucher-section ul li{ padding: 0;  float: left; list-style-type: none; width:100%; margin: 10px 0; }
+.m-pvoucher-section ul li{ padding: 0;  float: left; list-style-type: none; width:100%; margin: 0 0 10px; }
 .m-pvoucher-section .pro-item{ width: 100%; height: auto; position: relative; overflow: hidden; background:#fff;
     border: solid 1px #e4e4e4; padding-bottom:15px;}
 .m-pvoucher-section .pro-item .logo-box{ width: 100%; text-align: center; vertical-align: middle;
-    line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4;}
+    line-height:100%; height: auto; border-bottom: solid 1px #e4e4e4;}
 .m-pvoucher-section .pro-item .logo-box img{ width: 100%; height: 100%; vertical-align:middle; }
 .m-pvoucher-section .pro-item .desc{ padding: 10px 10px;}
 .m-pvoucher-section .pro-item .desc h2{font-size:14px; color:#5187ca; text-transform: uppercase; padding: 5px 0; text-align: center;}
@@ -1701,7 +1710,7 @@ code {
 
 /*----------------------------- 17-06-16 ---------------------------*/
 .m-left-panel2{width:100%;height: auto;overflow: hidden;padding:0;box-sizing: border-box;border:0px solid #eaeaea; border-bottom: none;
-    float:none; margin: 0 auto;}
+    float:none; margin: 0 auto; padding-bottom:20px;}
 .m-left-panel2 .profile-img{width:100%;height: auto;overflow: hidden; margin-top: 0px;}
 .m-left-panel2 .profile-img img{width:100%}
 .m-left-panel2 ul{ padding: 0; margin: 0;}
@@ -1735,7 +1744,7 @@ code {
 .m-summery ul{ width:100%; height: auto; margin: 0;}
 .m-summery ul li{ width:94%; height: auto; margin: 10px auto; float: none; list-style-type: none; }
 .m-summery ul li .item{ width:100%; height: auto; border: solid 1px #349c34; background:#fff; overflow: hidden;}
-.m-summery ul li .item h1{ text-align: center;background:#39ac38; height:48px; line-height: 48px; font-size:18px; font-weight: bold; color: #fff; padding: 0 5px; }
+.m-summery ul li .item h1{ text-align: center;background:#39ac38; height:48px; line-height: 48px; font-size:18px; font-weight: bold; color: #fff; padding: 0 5px; margin-top:0 !important; }
 .m-summery ul li .item h2{margin: 2px; height:39px; line-height: 39px; border: solid 2px #36a336; font-size: 14px; padding: 0 5px; font-weight: normal; }
 .m-summery ul li .item h3{margin: 2px; height:20px; line-height: 20px; font-size: 18px; padding: 5px 10px; font-weight: normal; color:#36a637; }
 .m-summery ul li .item .cont{ width:100%; height: auto; overflow: hidden; background:#fff; margin: 0 auto;}
@@ -1776,13 +1785,12 @@ code {
 .m-transaction .t-form ul li .val{ width: 69%; text-align: left; float: right; font-size:14px; color:#000;}
 .m-transaction .t-form ul li .val .checkdiv{ width: auto; float: left; margin-right: 15px; vertical-align: middle; margin-bottom:5px;}
 .m-transaction .t-form ul li .val .dx-button .dx-button-text{ color:#fff; padding: 0 10px;}
-.border-grey{ border: solid 1px #dcdcdc !important; border-bottom: none !important; border-right: none !important; border-left: none !important;
+.border-grey{ border: solid 1px #dcdcdc !important; border-bottom: none !important; border-right: none !important; border-left: none !important;}
 
-#page {
-    position: relative; /* Set the position property so z-index will apply */
-    z-index: 12; /* Make sure this is higher than #menu */
-    height: 100%;
-    top: 50px;
-    overflow:  auto;
 
-}
+.new-border{ border: solid 1px #e1e1e1; padding:10px !important; border-top: none; overflow: hidden;}
+.mb-0{ margin-bottom: 0px !important;}
+.br-0{ border: none !important}
+.pb-0{ padding-bottom:0 !important}
+.mb-15{ margin-bottom:15px !important}
+.mt-15{ margin-top: 15px; }

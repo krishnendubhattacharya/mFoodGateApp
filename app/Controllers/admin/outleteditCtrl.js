@@ -71,14 +71,14 @@ app.controller('outleteditCtrl', function ($rootScope, $scope, $http, NgMap, $lo
     $scope.getLocation = function(){
         $http({
             method: "GET",
-            url: $rootScope.serviceurl + "getAllLocations",
+            url: $rootScope.serviceurl + "getLocations",
             //data: {"email":$scope.email,"password":$scope.password},
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
             console.log(data);
             if(angular.isObject(data))
             {
-                $scope.locationList=data.locations;
+                $scope.locationList=data.location;
                 $scope.locCat = [];
                 angular.forEach($scope.locationList,function(value){
                     $scope.locCat.push({id:value.id,label:value.city})
