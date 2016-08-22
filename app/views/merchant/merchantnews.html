@@ -18,10 +18,29 @@
             <div class="profile-details" ng-show="edit_mode">
                 <div class="form">
                     <div class="dx-fieldset">
+                        <!--<div class="dx-field">
+                            <div class="dx-field-label">Restaurants</div>
+                            <div class="dx-field-value">
+                                <div dx-tag-box="textBox.restaurant1"></div>
+                            </div>
+                        </div>-->
                         <div class="dx-field">
                             <div class="dx-field-label">Restaurants</div>
                             <div class="dx-field-value">
-                                <div dx-tag-box="textBox.restaurant"></div>
+                                <div class="tagBox" dx-tag-box="{
+
+                                placeholder: 'Select Restaurant',
+                                displayExpr: 'title',
+                                values:selectedLocation,
+                                onInitialized : inialLoc,
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'areaList'
+                                    }
+                                }
+                            }"></div>
                             </div>
                         </div>
 
@@ -178,10 +197,29 @@
         <div class="m-profile-details"  ng-show="edit_mode">
             <div class="form">
                 <div class="dx-fieldset">
-                    <div class="dx-field">
+                    <!--<div class="dx-field">
                         <div class="dx-field-label">Restaurants</div>
                         <div class="dx-field-value">
                             <div dx-tag-box="textBox.restaurant"></div>
+                        </div>
+                    </div>-->
+                    <div class="dx-field">
+                        <div class="dx-field-label">Restaurants</div>
+                        <div class="dx-field-value">
+                            <div class="tagBox" dx-tag-box="{
+
+                                placeholder: 'Select Restaurant',
+                                displayExpr: 'title',
+                                values:selectedLocationMob,
+                                onInitialized : inialLocMob,
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'areaList'
+                                    }
+                                }
+                            }"></div>
                         </div>
                     </div>
 

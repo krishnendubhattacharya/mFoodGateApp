@@ -80,6 +80,8 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
         $scope.selectedLocation=[];
         //$scope.selectedTypes =[];
         $scope.selectedLocationMob = [];
+        $scope.locationData.reset();
+        $scope.locationDataMob.reset();
         //$scope.selectedTypesMob = [];
         //$scope.textBox.image.value = null;
         //$scope.img_uploader = ;
@@ -207,6 +209,8 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
                 $scope.all_restaurant.push({name:val.title,value:val.id});
             })
             //$scope.res_select.option({dataSource: $scope.all_restaurant});
+            //$scope.res_select.option({dataSource: $scope.all_restaurant});
+            //$scope.res_select1.option({dataSource: $scope.all_restaurant});
             console.log($scope.all_restaurant);
             $scope.selectBox = {
                 restaurant:{
@@ -215,6 +219,14 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
                     valueExpr: "value",
                     onInitialized:function(e){
                         $scope.res_select = e.component;
+                    }
+                },
+                restaurant1:{
+                    dataSource: $scope.all_restaurant,
+                    displayExpr: "name",
+                    valueExpr: "value",
+                    onInitialized:function(e){
+                        $scope.res_select1 = e.component;
                     }
                 }
             };

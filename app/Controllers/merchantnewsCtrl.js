@@ -7,8 +7,13 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
         $location.path("/login");
     }
     $scope.img_uploader = null;
+    $scope.event_info=null;
     $scope.restaurants = [];
     $scope.restaurant_ids = [];
+    $scope.areaList = [];
+    $scope.areaListMob = [];
+    $scope.selectedLocation = [];
+    $scope.selectedLocationMob = [];
     $scope.textBox = {image:  {
             buttonText: 'Select file',
             labelText: 'Drop file here',
@@ -23,7 +28,7 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
             {
                 $scope.img_uploader = e.component;
             }
-        },restaurant:{
+        }/*,restaurant:{
         dataSource:$scope.restaurants,
             displayExpr: "title",
             valueExpr: "id",
@@ -34,11 +39,26 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
             },bindingOptions: {
             //valueExpr: 'id',
             values: {
-
                 dataPath: 'restaurant_ids'
             }
         }
-        }
+        },
+        restaurant1:{
+            dataSource:$scope.restaurants,
+            displayExpr: "title",
+            valueExpr: "id",
+            onInitialized : function(e)
+            {
+                $scope.res_selecter1 = e.component;
+                $scope.getRestaurant();
+            },bindingOptions: {
+                //valueExpr: 'id',
+                values: {
+
+                    dataPath: 'restaurant_ids'
+                }
+            }
+        }*/
     };
 
 
@@ -50,12 +70,24 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
            if(data.restaurants)
            {
                $scope.res_selecter.option({dataSource:data.restaurants});
+               $scope.res_selecter1.option({dataSource:data.restaurants});
            }
             //$scope.edit_mode = !$scope.edit_mode;
 
         })
     }
     $scope.changeView = function(){
+        $scope.event_info=null;
+        $scope.selectedLocation=[];
+        //$scope.selectedTypes =[];
+        $scope.selectedLocationMob = [];
+        $scope.locationData.reset();
+        $scope.locationDataMob.reset();
+        /*if($scope.locationData)
+            $scope.locationData.option('items',null);
+
+        if($scope.locationDataMob)
+            $scope.locationDataMob.option('items',null);*/
         $scope.edit_mode = !$scope.edit_mode;
         $scope.menuInfo = {
             id:'',
@@ -67,10 +99,18 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
             post_to_public:false,
             is_active:false,
         }
+
+        //alert(12);
         //$scope.textBox.image.value = null;
         //$scope.img_uploader = ;
+
+
+        //$scope.selectedLocation=[];
+        //$scope.selectedTypes =[];
+        //$scope.selectedLocationMob = [];
         $scope.img_uploader.reset();
-        $scope.res_selecter.reset();
+        //$scope.res_selecter.reset();
+        //$scope.res_selecter1.reset();
 
     }
 
@@ -84,14 +124,20 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
             description:menu.description,
             published_date:menu.published_date,
             featured_event:menu.featured_event==1?true:false,
-            special_event:menu.featured_event==1?true:false,
+            special_event:menu.special_event==1?true:false,
             post_to_public:menu.post_to_public==1?true:false,
             image:menu.image,
             imageurl:menu.imageurl
         }
+        $scope.event_info=menu;
+        //$scope.setSelectedTypes();
+        $scope.setSelectedLocation();
+        //$scope.setSelectedTypesMob();
+        $scope.setSelectedLocationMob();
         $scope.img_uploader.reset();
-        $scope.res_selecter.reset();
-        $scope.restaurant_ids = menu.restaurants_ids;
+        //$scope.res_selecter.reset();
+        //$scope.res_selecter1.reset();
+        //$scope.restaurant_ids = menu.restaurants_ids;
     }
     $scope.voucherInfo = null;
     $scope.datag = null;
@@ -204,8 +250,8 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
         }).success(function (data) {
             $scope.voucherInfo = data.data;
             //console.log($scope.voucherInfo);
-            if($scope.datag)
-                $scope.datag.option({dataSource:$scope.voucherInfo});
+            //if($scope.datag)
+                //$scope.datag.option({dataSource:$scope.voucherInfo});
 
 
             //$scope.refresh_grid();
@@ -235,8 +281,9 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.save_menu = function(){
 
         //console.log($scope.textBox.image.value,$scope.menuInfo);
-        $scope.menuInfo.restaurants_ids = $scope.restaurant_ids;
+        $scope.menuInfo.restaurants_ids = $scope.areaList;
         $scope.menuInfo.published_date = moment($scope.menuInfo.published_date).format("YYYY/MM/DD");
+        console.log($scope.menuInfo);
         if($scope.menuInfo.id)
         {
             $http({
@@ -310,6 +357,92 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
                 }
             })
         }
+    }
+
+    $scope.tagBoxDataLocation = new DevExpress.data.DataSource({ store: [], paginate: false });
+    $scope.viewLocation = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getActiveMerchantRestaurant/" + $scope.loggedindetails.id,
+
+        }).success(function (data) {
+
+
+            $scope.allLoc = data.restaurants;
+            $scope.locationData.option('items',$scope.allLoc);
+            $scope.setSelectedLocation();
+
+            $scope.allLocMob = data.restaurants;
+            $scope.locationDataMob.option('items',$scope.allLocMob);
+            $scope.setSelectedLocationMob();
+
+            /*for (var i = 0; i < $scope.allLoc.length; i++) {
+             $scope.tagBoxDataLocation.store().insert($scope.allLoc[i]);
+             }
+             $scope.tagBoxDataLocation.load();*/
+            //console.log($scope.tagBoxData._items);
+            //$scope.taglist = $scope.tagBoxData._items;
+
+
+
+        });
+
+    }
+
+    $scope.viewLocation();
+
+    $scope.setSelectedLocation = function(){
+        $scope.selectedLocation=[];
+        if($scope.allLoc && $scope.event_info)
+        {
+            //console.log($scope.allLoc,$scope.userInfo.locations);
+
+            angular.forEach($scope.allLoc,function(all,key){
+                angular.forEach($scope.event_info.restaurants_ids,function(own){
+                    //alert(own);
+                    if(all.id == own)
+                    {
+                        $scope.selectedLocation.push($scope.allLoc[key]);
+                    }
+                })
+            })
+            $scope.areaList = $scope.selectedLocation;
+
+        }
+    }
+
+    $scope.setSelectedLocationMob = function(){
+        $scope.selectedLocationMob=[];
+        if($scope.allLocMob && $scope.event_info)
+        {
+            //console.log($scope.allLoc,$scope.userInfo.locations);
+
+            angular.forEach($scope.allLocMob,function(all,key){
+                angular.forEach($scope.event_info.restaurants_ids,function(own){
+                    if(all.id == own)
+                    {
+                        $scope.selectedLocationMob.push($scope.allLocMob[key]);
+                    }
+                })
+            })
+            $scope.areaList = $scope.selectedLocationMob;
+
+        }
+    }
+
+    $scope.inialLocMob = function(e){
+        $scope.locationDataMob = e.component;
+        //if($scope.allLoc[0])
+        //$scope.locationData.option('values',$scope.allLoc[0]);
+    }
+
+
+    $scope.inialLoc = function(e){
+        //alert(11);
+        $scope.locationData = e.component;
+
+        //if($scope.allLoc[0])
+        //$scope.locationData.option('values',$scope.allLoc[0]);
     }
 
 

@@ -79,7 +79,7 @@
 
                             <div class="form-group">
                                 <label for="category_id">Select Merchant</label>
-                                <select id="merchant" ng-model="item.merchant_id" required  class="form-control" ng-change="getRestaurant(item.merchant_id)">
+                                <select id="merchant" ng-model="item.merchant_id"   class="form-control" ng-change="getRestaurant(item.merchant_id)">
                                     <option value="">Select</option>
                                     <option ng-repeat="merchant in merchants" value="{{merchant.id}}">{{merchant.merchant_name}}</option>
                                 </select>
@@ -87,7 +87,7 @@
 
                             <div class="form-group">
                                 <label for="category_id">Select Restaurant</label>
-                                <select id="restaurant" ng-model="item.restaurant_id" required  class="form-control" ng-change="getOutletsByRestaurant(item.restaurant_id)">
+                                <select id="restaurant" ng-model="item.restaurant_id"   class="form-control" ng-change="getOutletsByRestaurant(item.restaurant_id)">
                                     <option value="">Select</option>
                                     <option ng-repeat="restaurant in restaurantList" value="{{restaurant.id}}">{{restaurant.title}}</option>
                                 </select>

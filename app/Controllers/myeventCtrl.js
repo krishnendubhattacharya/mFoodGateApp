@@ -53,6 +53,10 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         $scope.selectedTypes =[];
         $scope.selectedLocationMob = [];
         $scope.selectedTypesMob = [];
+        $scope.typeDataMob.reset();
+        $scope.typeData.reset();
+        $scope.locationDataMob.reset();
+        $scope.locationData.reset();
         $scope.img_uploader.reset();
 
     }
