@@ -11,10 +11,12 @@
                     <span>{{cart.offer_title}}:</span> {{cart.restaurant_title}}
                 </p>
                 <div class="price-div">
-                    <div class="off">{{cart.offer_percent}}% <span>off</span></div>
+                    <div class="off">{{cart.offer_percent}}% <span>off</span> <span><input type="checkbox" id="paymentscash" name="paymentscash" ng-model="cart.paymentscash" ng-disabled="{{cart.condtn==1?true:false}}"></span></div>
                     <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
-                    <div class="off">M-points</div>
+                    <div class="price-m" style="float: right">{{cart.condtn==1?'And':'Or'}}</div>
+                    <div style="clear: both"></div>
+                    <div class="off">{{cart.point_name}}<span><input type="checkbox" name="payments" id="payments" ng-model="cart.payments" ng-disabled="{{cart.condtn==1?true:false}}"></span></div>
                     <div class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>
                 <div class="qty-totals">
@@ -26,7 +28,7 @@
                     <div class="totals" ><span>M-points:</span>{{cart.quantity*cart.mpoints}}</div>
                 </div>
             </div>
-            <div ng-if="cartDetails && loggedindetails" class="offer">
+            <!--<div ng-if="cartDetails && loggedindetails" class="offer">
                 <p>
                     <span>Payment By:-</span>
                 </p>
@@ -40,7 +42,7 @@
                     <div class="qty" ng-if="payments=='P'">Available M-points:</div>
                     <div class="totals" ng-if="payments=='P'">{{mpoints}}</div>
                 </div>
-            </div>
+            </div>-->
             <div ng-if="cartDetails" class="offer">
                 <div class="qty-totals">
                     <div class="qty">Total : </div>
@@ -227,7 +229,9 @@
                     <div class="off">{{cart.offer_percent}}% <span>off</span></div>
                     <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
-                    <div class="off">M-points</div>
+                    <div class="price-m" style="float: right">{{cart.condtn==1?'And':'Or'}}</div>
+                    <div style="clear: both"></div>
+                    <div class="off">{{cart.point_name}}</div>
                     <div class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>
                 <div class="qty-totals">
@@ -239,7 +243,8 @@
                     <div class="totals" ><span>M-points:</span>{{cart.quantity*cart.mpoints}}</div>
                 </div>
             </div>
-            <div ng-if="cartDetails && loggedindetails" class="offer">
+
+            <!--<div ng-if="cartDetails && loggedindetails" class="offer">
                 <p>
                     <span>Payment By:-</span>
                 </p>
@@ -253,7 +258,7 @@
                     <div class="qty" ng-if="payments=='P'">Available M-points:</div>
                     <div class="totals" ng-if="payments=='P'">{{mpoints}}</div>
                 </div>
-            </div>
+            </div>-->
             <div ng-if="cartDetails" class="offer">
                 <div class="qty-totals">
                     <div class="qty">Total : </div>

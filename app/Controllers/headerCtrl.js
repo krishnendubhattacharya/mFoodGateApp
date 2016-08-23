@@ -122,6 +122,7 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
             //console.log(data);
             //$scope.userInfo =data;
             $scope.user_details = data.user_details;
+            console.log($scope.user_details);
             $scope.userImagePath = data.user_details.image;
             //console.log($scope.allcat);
 

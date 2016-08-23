@@ -75,6 +75,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         }).success(function(data) {
             if(data.type == 'success') {
                 $scope.promodetails = data.offer;
+                $scope.pointdetails = data.point_details;
                 $scope.restaurant = data.restaurants;
                 $scope.mapaddress = data.merchantInfo[0].address;
                 $scope.maptitle = data.merchantInfo[0].merchant_name;
@@ -240,10 +241,30 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     offer_price         :   $scope.promodetails.offer_price,
                     quantity            :   1,
                     previous_quantity   :   1,
-                    image               :   $scope.promodetails.image
+                    image               :   $scope.promodetails.image,
+                    point_id            :   $scope.promodetails.point_master_id,
+                    point_name          :   $scope.pointdetails[0].name,
+                    condtn              :   $scope.promodetails.conditions,
                 }
                 mFoodCart.add_to_cart(cart_obj);
                 $scope.cartDetails = mFoodCart.get_cart();
+                if($scope.cartDetails) {
+                    angular.forEach($scope.cartDetails, function (v) {
+                        //$scope.cartIds.push(v.offer_id);
+                        //$scope.cartQty.push(v.quantity);
+                        //$scope.payments = true;
+                       //$scope.paymentscash = true;
+                        if(v.condtn == 1){
+                            v.payments =true;
+                            v.paymentscash=true;
+                        }else{
+                            v.payments =false;
+                            v.paymentscash=false;
+                        }
+
+
+                    })
+                }
                 console.log($scope.cartDetails);
                 $scope.getCartTotals();
                 $scope.save_to_db();
@@ -262,7 +283,24 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     }
 
     $scope.cartDetails = mFoodCart.get_cart();
-    console.log('cart',$scope.cartDetails);
+    /*if($scope.cartDetails) {
+        angular.forEach($scope.cartDetails, function (v) {
+            //$scope.cartIds.push(v.offer_id);
+            //$scope.cartQty.push(v.quantity);
+            //$scope.payments = true;
+            //$scope.paymentscash = true;
+            if(v.condtn == 1){
+                v.payments =true;
+                v.paymentscash=true;
+            }else{
+                v.payments =false;
+                v.paymentscash=false;
+            }
+
+
+        })
+    }*/
+    //console.log('cart',$scope.cartDetails);
 
     $scope.updateQuantity = function(data){
         /*if(data.quantity>0) {
@@ -557,5 +595,6 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         $scope.maptitle = outletInfo.title;
     }
 
-    $scope.payments = 'C';
+    //$scope.payments = true;
+    //$scope.paymentscash = true;
 });
