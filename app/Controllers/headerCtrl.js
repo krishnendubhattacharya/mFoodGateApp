@@ -134,6 +134,20 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
 
     }
     $scope.getImageInfo();
+
+    $scope.viewIcon = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getIconList",
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            $scope.allicons = data.icon;
+            //console.log($scope.allicons);
+
+        });
+    }
+    $scope.viewIcon();
          
    
 });

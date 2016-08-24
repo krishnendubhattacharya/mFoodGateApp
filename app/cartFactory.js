@@ -66,7 +66,48 @@ angular
 
     }
 
-    factobj.update_cart_previousquantity = function(offer_id,quantity){
+    factobj.update_cart_payment = function(offer_id,quantity){
+        //var cart=$cookieStore.get('cart');
+        var cart=JSON.parse(localStorage.getItem('cart'));
+        angular.forEach(cart,function(val,key){
+            if(val.offer_id == offer_id)
+            {
+                if(quantity ==1){
+                    cart[key].payments = true;
+                }else{
+                    cart[key].payments = false;
+                }
+
+                //found = true;
+            }
+        })
+        //$cookieStore.put('cart',cart);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+    }
+
+    factobj.update_cart_paymentcash = function(offer_id,quantity){
+        //var cart=$cookieStore.get('cart');
+        var cart=JSON.parse(localStorage.getItem('cart'));
+        angular.forEach(cart,function(val,key){
+            if(val.offer_id == offer_id)
+            {
+                //cart[key].paymentscash = quantity;
+                if(quantity ==1){
+                    cart[key].paymentscash = true;
+                }else{
+                    cart[key].paymentscash = false;
+                }
+                //found = true;
+            }
+        })
+        //$cookieStore.put('cart',cart);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+    }
+
+
+        factobj.update_cart_previousquantity = function(offer_id,quantity){
         //var cart=$cookieStore.get('cart');
         console.log
         var cart=JSON.parse(localStorage.getItem('cart'));

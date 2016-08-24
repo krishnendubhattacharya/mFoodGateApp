@@ -74,16 +74,16 @@
 						<li><a ui-sref="frontend.marketplace" ui-sref-active="active">Marketplace</a></li>
 						<li ng-show="showMember" ng-if="loggedindetails.user_type_id!=3" id="dropdown"><a href="">Member</a>
 						    <ul  id="dropdown-content">
-								<li><a ui-sref="frontend.setting">Setting</a></li>
-								<li><a ui-sref="frontend.changepassword">Change Password</a></li>
-								<li><a ui-sref="frontend.profile">Change Profile</a></li>
-						        <li><a ui-sref="frontend.allvoucher">Voucher</a></li>
-								<li><a ui-sref="frontend.bidvoucher">Resell Voucher</a></li>
-								<li><a ui-sref="frontend.swapvoucher">Swap Voucher</a></li>
-								<li><a ui-sref="frontend.giftvoucherlist">Gift Voucher</a></li>
-						        <li><a ui-sref="frontend.mymembership">My Membership</a></li>
-						        <li><a ui-sref="frontend.mypoints">My Points</a></li>
-						        <li><a ui-sref="frontend.myevent">My Events</a></li>
+								<li><a ui-sref="frontend.setting">{{allicons[0].title}}</a></li>
+								<li><a ui-sref="frontend.changepassword">{{allicons[1].title}}</a></li>
+								<li><a ui-sref="frontend.profile">{{allicons[2].title}}</a></li>
+						        <li><a ui-sref="frontend.allvoucher">{{allicons[3].title}}</a></li>
+								<li><a ui-sref="frontend.bidvoucher">{{allicons[4].title}}</a></li>
+								<li><a ui-sref="frontend.swapvoucher">{{allicons[5].title}}</a></li>
+								<li><a ui-sref="frontend.giftvoucherlist">{{allicons[6].title}}</a></li>
+						        <li><a ui-sref="frontend.mymembership">{{allicons[7].title}}</a></li>
+						        <li><a ui-sref="frontend.mypoints">{{allicons[8].title}}</a></li>
+						        <li><a ui-sref="frontend.myevent">{{allicons[9].title}}</a></li>
 						        <!--<li><a ui-sref="frontend.queuing">Queuing</a></li>
 						        <li><a ui-sref="frontend.preorder">Pre-Order</a></li>
 						        <li><a ui-sref="frontend.feedback">Feedback</a></li>-->
@@ -91,17 +91,17 @@
 						</li>
 						<li ng-show="showMember" ng-if="loggedindetails.user_type_id==3" id="dropdown"><a href="">Merchant</a>
 							<ul  id="dropdown-content" style="width:190px !important;">
-								<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantprofile"><i class="fa fa-user"></i> Change Profile</a></li>
-								<li><a ui-sref="frontend.merchantdashboard"><i class="fa fa-user"></i> Dashboard</a></li>
-								<li ng-if="user_details.merchant_id"><a href="http://52.39.33.188/Member_Ship/MasterData/member_master_mfoodgate.aspx?MerchantID={{user_details.merchant_id}}" target="_blank"><i class="fa fa-user"></i>Manage Member</a></li>
-								<li ><a ui-sref="frontend.purchasedmembrship"><i class="fa fa-user"></i>Purchased Membership</a></li>
-								<li><a ui-sref="frontend.merchantmenu"><i class="fa fa-user"></i> All Menu</a></li>
-								<li><a ui-sref="frontend.merchantmenucategories"><i class="fa fa-user"></i>Categories</a></li>
-								<li><a ui-sref="frontend.merchantrestaurants"><i class="fa fa-user"></i> Restaurants</a></li>
-								<li><a ui-sref="frontend.merchantoutlets"><i class="fa fa-user"></i> Outlets</a></li>
-								<li><a ui-sref="frontend.merchantevent"><i class="fa fa-user"></i> Events</a></li>
-								<li><a href="http://52.39.33.188/Member_Ship/MasterData/Promotion_Header_mfoodgate.aspx?MerchantID={{user_details.merchant_id}}" target="_blank"><i class="fa fa-user"></i> Memberships</a></li>
-								<li><a ui-sref="frontend.merchantnews"><i class="fa fa-user"></i> News</a></li>
+								<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantprofile"><i class="fa fa-user"></i> {{allicons[2].title}}</a></li>
+								<li><a ui-sref="frontend.merchantdashboard"><i class="fa fa-user"></i> {{allicons[27].title}}</a></li>
+								<li ng-if="user_details.merchant_id"><a href="http://52.39.33.188/Member_Ship/MasterData/member_master_mfoodgate.aspx?MerchantID={{user_details.merchant_id}}" target="_blank"><i class="fa fa-user"></i>{{allicons[17].title}}</a></li>
+								<li ><a ui-sref="frontend.purchasedmembrship"><i class="fa fa-user"></i>{{allicons[18].title}}</a></li>
+								<li><a ui-sref="frontend.merchantmenu"><i class="fa fa-user"></i> {{allicons[19].title}}</a></li>
+								<li><a ui-sref="frontend.merchantmenucategories"><i class="fa fa-user"></i>{{allicons[20].title}}</a></li>
+								<li><a ui-sref="frontend.merchantrestaurants"><i class="fa fa-user"></i> {{allicons[21].title}}</a></li>
+								<li><a ui-sref="frontend.merchantoutlets"><i class="fa fa-user"></i> {{allicons[22].title}}</a></li>
+								<li><a ui-sref="frontend.merchantevent"><i class="fa fa-user"></i> {{allicons[28].title}}</a></li>
+								<li><a href="http://52.39.33.188/Member_Ship/MasterData/Promotion_Header_mfoodgate.aspx?MerchantID={{user_details.merchant_id}}" target="_blank"><i class="fa fa-user"></i> {{allicons[23].title}}</a></li>
+								<li><a ui-sref="frontend.merchantnews"><i class="fa fa-user"></i> {{allicons[24].title}}</a></li>
 
 							</ul>
 						</li>

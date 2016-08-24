@@ -23,6 +23,8 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                 if(data)
                 {
                     mFoodCart.resetAndAdd(data);
+                    $scope.cartDetails = mFoodCart.get_cart();
+                    $scope.getCartTotals();
 
                 }
             })
@@ -244,7 +246,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     image               :   $scope.promodetails.image,
                     point_id            :   $scope.promodetails.point_master_id,
                     point_name          :   $scope.pointdetails[0].name,
-                    condtn              :   $scope.promodetails.conditions,
+                    condtn              :   $scope.promodetails.conditions
                 }
                 mFoodCart.add_to_cart(cart_obj);
                 $scope.cartDetails = mFoodCart.get_cart();
@@ -265,7 +267,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
 
                     })
                 }
-                console.log($scope.cartDetails);
+                //console.log($scope.cartDetails);
                 $scope.getCartTotals();
                 $scope.save_to_db();
             }else{
@@ -301,6 +303,41 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         })
     }*/
     //console.log('cart',$scope.cartDetails);
+
+    $scope.updateCheck = function(data,offerId,paytype){
+        //console.log(data);
+        $scope.newcartdetails = mFoodCart.get_cart();
+        //console.log($scope.newcartdetails);
+        if($scope.newcartdetails) {
+            angular.forEach($scope.newcartdetails, function (v) {
+                //$scope.cartIds.push(v.offer_id);
+                //$scope.cartQty.push(v.quantity);
+                //console.log(v);
+                //alert(v.offer_id);
+                //alert(data.offer_id);
+                if(offerId == v.offer_id){
+                    //alert(v.offer_id);
+                    if(paytype =='p') {
+                        if (v.payments == true)
+                            mFoodCart.update_cart_payment(v.offer_id, 0);
+                        else if (v.payments == false)
+                            mFoodCart.update_cart_payment(v.offer_id, 1);
+                    }
+                    if(paytype =='c') {
+                        if (v.paymentscash == true)
+                            mFoodCart.update_cart_paymentcash(v.offer_id, 0);
+                        else if (v.paymentscash == false)
+                            mFoodCart.update_cart_paymentcash(v.offer_id, 1);
+                    }
+                }
+
+            })
+        }
+        $scope.cartDetails = mFoodCart.get_cart();
+        //console.log($scope.cartDetails);
+        $scope.getCartTotals();
+
+    }
 
     $scope.updateQuantity = function(data){
         /*if(data.quantity>0) {
@@ -390,11 +427,51 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.getCartTotals = function(){
         $scope.cart_total = 0;
         $scope.cart_total_points = 0;
+        $scope.cart_ttl_point = [];
+        $scope.cart_ttl_cnt = [];
         $scope.cartDetails = mFoodCart.get_cart();
+        //console.log($scope.cartDetails);
         angular.forEach($scope.cartDetails,function(value){
-            $scope.cart_total = $scope.cart_total + (value.quantity * value.offer_price);
-            $scope.cart_total_points += (value.quantity * value.mpoints);
+            if(value.paymentscash == true){
+                $scope.cart_total = $scope.cart_total + (value.quantity * value.offer_price);
+                $scope.cart_total_points += (value.quantity * value.mpoints);
+            }
+
+            //alert($scope.cart_ttl_cnt.length);
+            if(value.payments == true){
+                if($scope.cart_ttl_cnt.length != 0){
+                    if($scope.cart_ttl_cnt.indexOf(value.point_id)== -1){
+                        $scope.cart_ttl_point.push(value.point_id);
+                        $scope.cart_ttl_point[$scope.cart_ttl_point.length-1]={};
+                        //$scope.cart_ttl_point[value.point_id].id = value.point_id;
+                        //alert('aa'+$scope.cart_ttl_point.length-1);
+                        $scope.cart_ttl_point[$scope.cart_ttl_point.length-1].point_name = value.point_name;
+                        $scope.cart_ttl_point[$scope.cart_ttl_point.length-1].point_value = (value.mpoints*value.quantity);
+                        $scope.cart_ttl_cnt.push(value.point_id);
+                    }else {
+
+                        //$scope.cart_ttl_point[$scope.cart_ttl_cnt.indexOf(value.point_id)].id = value.point_id;
+                        //alert('aaa'+$scope.cart_ttl_cnt.indexOf(value.point_id));
+                        $scope.cart_ttl_point[$scope.cart_ttl_cnt.indexOf(value.point_id)].point_name = value.point_name;
+                        $scope.cart_ttl_point[$scope.cart_ttl_cnt.indexOf(value.point_id)].point_value = parseInt($scope.cart_ttl_point[$scope.cart_ttl_cnt.indexOf(value.point_id)].point_value) + parseInt(value.mpoints*value.quantity);
+                        //$scope.cart_ttl_cnt.push(value.point_id);
+                    }
+                }else{
+                    //console.log(value.point_id);
+                    //alert(value.point_id);
+                    $scope.cart_ttl_point.push(value.point_id);
+                    //alert('a'+$scope.cart_ttl_point.length-1);
+                    $scope.cart_ttl_point[$scope.cart_ttl_point.length-1]={};
+                    $scope.cart_ttl_point[$scope.cart_ttl_point.length-1].point_name = value.point_name;
+                    $scope.cart_ttl_point[$scope.cart_ttl_point.length-1].point_value = (value.mpoints*value.quantity);
+                    $scope.cart_ttl_cnt.push(value.point_id);
+                }
+            }
+
+
+
         })
+        console.log($scope.cart_ttl_point);
     }
 
     $scope.pay_now = function(){
@@ -402,6 +479,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         $scope.cartQty = [];
         $scope.cartDetails = mFoodCart.get_cart();
         //console.log($scope.cartDetails);
+        //return false;
         if($scope.cartDetails)
         {
             angular.forEach($scope.cartDetails,function(v){
@@ -416,8 +494,9 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     method: "POST",
                     url: $rootScope.serviceurl+"checkOffersQuantity",
                     headers: {'Content-Type': 'application/json'},
-                    data:{offer_ids:$scope.cartIds,offer_qty:$scope.cartQty}
+                    data:{offer_ids:$scope.cartIds,offer_qty:$scope.cartQty,cart:$scope.cartDetails,user_id:$scope.loggedindetails.id}
                 }).success(function(data) {
+                    //return false;
                     if(data.type=='success'){
                         $location.path("/cartpage");
                     }else{
@@ -437,11 +516,11 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                             //$scope.cartIds.push(v.offer_id);
                             //$scope.cartQty.push(v.quantity);
                             //v.offer_ids
-                            angular.forEach(data.offer_ids, function (v_id) {
+                           /* angular.forEach(data.offer_ids, function (v_id) {
                                 if (v.offer_id == v_id) {
-                                    mFoodCart.update_cart_quantity(v.offer_id, v.previous_quantity);
+                                    //mFoodCart.update_cart_quantity(v.offer_id, v.previous_quantity);
                                 }
-                            });
+                            });*/
 
                             $scope.cartDetails = mFoodCart.get_cart();
                         })

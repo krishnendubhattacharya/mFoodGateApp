@@ -11,12 +11,12 @@
                     <span>{{cart.offer_title}}:</span> {{cart.restaurant_title}}
                 </p>
                 <div class="price-div">
-                    <div class="off">{{cart.offer_percent}}% <span>off</span> <span><input type="checkbox" id="paymentscash" name="paymentscash" ng-model="cart.paymentscash" ng-disabled="{{cart.condtn==1?true:false}}"></span></div>
+                    <div class="off">{{cart.offer_percent}}% <span>off</span> <span><input type="checkbox" id="paymentscash" name="paymentscash" ng-model="cart.paymentscash" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'c')"></span></div>
                     <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
                     <div class="price-m" style="float: right">{{cart.condtn==1?'And':'Or'}}</div>
                     <div style="clear: both"></div>
-                    <div class="off">{{cart.point_name}}<span><input type="checkbox" name="payments" id="payments" ng-model="cart.payments" ng-disabled="{{cart.condtn==1?true:false}}"></span></div>
+                    <div class="off">{{cart.point_name}}<span><input type="checkbox" name="payments" id="payments" ng-model="cart.payments" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'p')"></span></div>
                     <div class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>
                 <div class="qty-totals">
@@ -47,8 +47,10 @@
                 <div class="qty-totals">
                     <div class="qty">Total : </div>
                     <div class="totals" ng-init="getCartTotals()">IDR{{cart_total | number}}</div>
-                    <div class="qty">M-points : </div>
-                    <div class="totals">{{cart_total_points}}</div>
+                    <div ng-repeat="cartpn in cart_ttl_point">
+                    <div class="qty" >{{cartpn.point_name}} : </div>
+                    <div class="totals">{{cartpn.point_value}}</div>
+                        </div>
                 </div>
             </div>
 
@@ -225,13 +227,22 @@
                 <p>
                     <span>{{cart.offer_title}}:</span> {{cart.restaurant_title}}
                 </p>
-                <div class="price-div">
+                <!--<div class="price-div">
                     <div class="off">{{cart.offer_percent}}% <span>off</span></div>
                     <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
                     <div class="price-m" style="float: right">{{cart.condtn==1?'And':'Or'}}</div>
                     <div style="clear: both"></div>
                     <div class="off">{{cart.point_name}}</div>
+                    <div class="price-m" style="float: right">{{cart.mpoints}}</div>
+                </div>-->
+                <div class="price-div">
+                    <div class="off">{{cart.offer_percent}}% <span>off</span> <span><input type="checkbox" id="paymentscash" name="paymentscash" ng-model="cart.paymentscash" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'c')"></span></div>
+                    <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
+                    <div style="clear: both"></div>
+                    <div class="price-m" style="float: right">{{cart.condtn==1?'And':'Or'}}</div>
+                    <div style="clear: both"></div>
+                    <div class="off">{{cart.point_name}}<span><input type="checkbox" name="payments" id="payments" ng-model="cart.payments" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'p')"></span></div>
                     <div class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>
                 <div class="qty-totals">
@@ -263,8 +274,10 @@
                 <div class="qty-totals">
                     <div class="qty">Total : </div>
                     <div class="totals" ng-init="getCartTotals()">IDR{{cart_total | number}}</div>
-                    <div class="qty">M-points : </div>
-                    <div class="totals">{{cart_total_points}}</div>
+                    <div ng-repeat="cartpn in cart_ttl_point">
+                        <div class="qty" >{{cartpn.point_name}} : </div>
+                        <div class="totals">{{cartpn.point_value}}</div>
+                    </div>
                 </div>
             </div>
 
