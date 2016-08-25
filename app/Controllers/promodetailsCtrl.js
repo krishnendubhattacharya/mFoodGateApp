@@ -232,6 +232,14 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         }).success(function(res) {
 
             if(res.type =='success'){
+                if($scope.promodetails.conditions == 1){
+                    $scope.pay = true;
+                    $scope.paycash = true;
+                }else{
+                    $scope.pay = false;
+                    $scope.paycash = false;
+
+                }
                 var cart_obj = {
                     offer_id            :   $scope.promodetails.id,
                     restaurant_id       :   $scope.restaurant.id,
@@ -246,16 +254,15 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     image               :   $scope.promodetails.image,
                     point_id            :   $scope.promodetails.point_master_id,
                     point_name          :   $scope.pointdetails[0].name,
-                    condtn              :   $scope.promodetails.conditions
+                    condtn              :   $scope.promodetails.conditions,
+                    payments            :   $scope.pay,
+                    paymentscash        :   $scope.paycash
                 }
                 mFoodCart.add_to_cart(cart_obj);
                 $scope.cartDetails = mFoodCart.get_cart();
-                if($scope.cartDetails) {
+                /*if($scope.cartDetails) {
                     angular.forEach($scope.cartDetails, function (v) {
-                        //$scope.cartIds.push(v.offer_id);
-                        //$scope.cartQty.push(v.quantity);
-                        //$scope.payments = true;
-                       //$scope.paymentscash = true;
+
                         if(v.condtn == 1){
                             v.payments =true;
                             v.paymentscash=true;
@@ -266,7 +273,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
 
 
                     })
-                }
+                */
                 //console.log($scope.cartDetails);
                 $scope.getCartTotals();
                 $scope.save_to_db();
@@ -285,6 +292,8 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     }
 
     $scope.cartDetails = mFoodCart.get_cart();
+    //$scope.getCartTotals();
+
     /*if($scope.cartDetails) {
         angular.forEach($scope.cartDetails, function (v) {
             //$scope.cartIds.push(v.offer_id);
@@ -307,34 +316,35 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.updateCheck = function(data,offerId,paytype){
         //console.log(data);
         $scope.newcartdetails = mFoodCart.get_cart();
-        //console.log($scope.newcartdetails);
-        if($scope.newcartdetails) {
             angular.forEach($scope.newcartdetails, function (v) {
-                //$scope.cartIds.push(v.offer_id);
-                //$scope.cartQty.push(v.quantity);
-                //console.log(v);
-                //alert(v.offer_id);
-                //alert(data.offer_id);
                 if(offerId == v.offer_id){
                     //alert(v.offer_id);
                     if(paytype =='p') {
                         if (v.payments == true)
                             mFoodCart.update_cart_payment(v.offer_id, 0);
-                        else if (v.payments == false)
+                        else if (v.payments == false) {
                             mFoodCart.update_cart_payment(v.offer_id, 1);
+                            mFoodCart.update_cart_paymentcash(v.offer_id, 0);
+                        }
                     }
                     if(paytype =='c') {
+                        //alert(paytype);
                         if (v.paymentscash == true)
                             mFoodCart.update_cart_paymentcash(v.offer_id, 0);
-                        else if (v.paymentscash == false)
+                        else if (v.paymentscash == false){
+                            //alert(paytype);
+
                             mFoodCart.update_cart_paymentcash(v.offer_id, 1);
+                            mFoodCart.update_cart_payment(v.offer_id, 0);
+                        }
+
                     }
                 }
 
             })
-        }
         $scope.cartDetails = mFoodCart.get_cart();
         //console.log($scope.cartDetails);
+        //alert(paytype);
         $scope.getCartTotals();
 
     }
@@ -489,12 +499,17 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
 
             if($scope.cartIds)
             {
+                if($scope.loggedindetails){
+                    $scope.uuser_id = $scope.loggedindetails.id;
+                }else{
+                    $scope.uuser_id = '';
+                }
 
                 $http({
                     method: "POST",
                     url: $rootScope.serviceurl+"checkOffersQuantity",
                     headers: {'Content-Type': 'application/json'},
-                    data:{offer_ids:$scope.cartIds,offer_qty:$scope.cartQty,cart:$scope.cartDetails,user_id:$scope.loggedindetails.id}
+                    data:{offer_ids:$scope.cartIds,offer_qty:$scope.cartQty,cart:$scope.cartDetails,user_id:$scope.uuser_id}
                 }).success(function(data) {
                     //return false;
                     if(data.type=='success'){
