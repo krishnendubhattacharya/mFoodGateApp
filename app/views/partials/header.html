@@ -57,7 +57,7 @@
 	<header class="main-header phone-hide">
 		<div class="container">
 			<div class="logo"><img src="app/assets/Images/logo.jpg" width="306" height="61"  alt=""/></div>
-			<div class="top-link"><a ui-sref="frontend.cartpage"> <img src="app/assets/Images/cart.png" alt=""/><span class="cart-circle" ng-if="cartCount>0">{{cartCount}}</span></a> | <a ng-if="loggedindetails.loginstatus != 1" ui-sref="frontend.login">Login</a><a ng-if="loggedindetails.user_type_id == 2" ui-sref="frontend.dashboard">{{loggedindetails.email}}</a><a ng-if="loggedindetails.user_type_id == 3" ui-sref="frontend.merchantprofile">{{loggedindetails.email}}</a>  |  <a ng-if="loggedindetails.loginstatus != 1" ui-sref="frontend.register">Register</a><a ng-if="loggedindetails.loginstatus == 1" href="javascript:void(0)" ng-click="userLogout();">Logout</a></div>
+			<div class="top-link"><a ui-sref="frontend.cartpage"> <img src="app/assets/Images/cart.png" alt=""/><span class="cart-circle" ng-if="cartCount>0">{{cartCount}}</span></a> | <a ng-if="loggedindetails.loginstatus != 1" ui-sref="frontend.login">LOGIN</a><a ng-if="loggedindetails.user_type_id == 2" ui-sref="frontend.dashboard">{{loggedindetails.email}}</a><a ng-if="loggedindetails.user_type_id == 3" ui-sref="frontend.merchantprofile">{{loggedindetails.email}}</a>  |  <a ng-if="loggedindetails.loginstatus != 1" ui-sref="frontend.register">REGISTER</a><a ng-if="loggedindetails.loginstatus == 1" href="javascript:void(0)" ng-click="userLogout();">LOGOUT</a></div>
 			<div class="dx-clearfix"></div>
 			<div class="nab-bar">
 				<div class="navigation phone-hide">

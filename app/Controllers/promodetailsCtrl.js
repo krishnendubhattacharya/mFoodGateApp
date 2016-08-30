@@ -316,6 +316,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.updateCheck = function(data,offerId,paytype){
         //console.log(data);
         $scope.newcartdetails = mFoodCart.get_cart();
+        console.log($scope.newcartdetails);
             angular.forEach($scope.newcartdetails, function (v) {
                 if(offerId == v.offer_id){
                     //alert(v.offer_id);
@@ -343,6 +344,16 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
 
             })
         $scope.cartDetails = mFoodCart.get_cart();
+        if ($scope.loggedindetails) {
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl + "updateCheckType",
+                headers: {'Content-Type': 'application/json'},
+                data: {item: $scope.cartDetails, user_id: $scope.loggedindetails.id}
+            }).success(function (res) {
+
+            });
+        }
         //console.log($scope.cartDetails);
         //alert(paytype);
         $scope.getCartTotals();
@@ -481,6 +492,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
 
 
         })
+
         console.log($scope.cart_ttl_point);
     }
 

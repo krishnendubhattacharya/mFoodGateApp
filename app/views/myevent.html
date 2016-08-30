@@ -196,7 +196,7 @@
                 <tr>
                     <td colspan="2">
                         <div class="nwe-btn"><span class="dx-button" ng-click="event_detail({{voucherDetail.id}})">Detail</span></div>
-                <div class="nwe-btn"><span class="dx-button" ng-click="edit_event({{voucherDetail.id}})">Edit</span></div>
+                <div class="nwe-btn" ng-if="voucherDetail.status != 'Completed'"><span class="dx-button" ng-click="edit_event({{voucherDetail.id}})">Edit</span></div>
                 <div class="nwe-btn"><span class="dx-button"  ng-click="image_event({{voucherDetail.id}})">Image</span></div>
                 <div class="nwe-btn" ng-if="voucherDetail.status == 'Open'"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>
                 </td>

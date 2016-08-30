@@ -405,10 +405,109 @@
         </div>
     </div>
 
-<div class="container">
-    <div class="new-Promo phone-hide">
+    <div class="container">
+        <div class="new-Promo phone-hide">
+            <h1>Related Products</h1>
+            <div class="featured_carousel">
+                <div ng-repeat="related in related_products" class="item">
+                    <div class="pro-item2">
+                        <img src="{{related.image}}" width="406" height="255"  alt=""/>
+                        <div class="p-circle" >{{related.offer_percent}}%</div>
+                        <div class="desc">
+                            <div class="txt">
+                                <h2 ng-bind="related.title"></h2>
+                                <p ng-bind="related.offer_to_date"></p>
+                            </div>
+                            <div class="view-btn">
+                                <a ui-sref="frontend.promodetails({ promoId: related.id })" ><img width="66" height="42" alt="" src="app/assets/Images/view-btn.png"></a>
+                                <!--<p date="May 06,2016 23:59:59" countdown="" class="ng-isolate-scope">4d 6h 51m 38s</p>-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--<li>
+                    <div class="pro-item">
+                        <img src="app/assets/Images/pro-3.png" width="406" height="255"  alt=""/>
+                        <div class="p-circle">50%</div>
+                        <div class="desc">
+                            <div class="txt">
+                                <h2>Paket Hemat Sowe</h2>
+                                <p>11D:21H:50M:20S</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="pro-item">
+                        <img src="app/assets/Images/pro-3.png" width="406" height="255"  alt=""/>
+                        <div class="p-circle">50%</div>
+                        <div class="desc">
+                            <div class="txt">
+                                <h2>Paket Hemat Sowe</h2>
+                                <p>11D:21H:50M:20S</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>-->
+
+
+            </div>
+        </div>
+    </div>
+    <div class="m-new-Promo tablet-hide">
         <h1>Related Products</h1>
-        <div class="featured_carousel">
+        <div class="featured_carousell">
             <div ng-repeat="related in related_products" class="item">
-                <div class="pro-item2">
-                    <img src="{{related.im
+                <div class="pro-item">
+                    <img src="{{related.image}}" width="406" height="255"  alt=""/>
+                    <div class="p-circle" >{{related.offer_percent}}%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2 ng-bind="related.title"></h2>
+                            <p ng-bind="related.offer_to_date"></p>
+                        </div>
+                        <div class="view-btn">
+                            <a ui-sref="frontend.promodetails({ promoId: related.id })" ><img width="66" height="42" alt="" src="app/assets/Images/view-btn.png"></a>
+                            <!--<p date="May 06,2016 23:59:59" countdown="" class="ng-isolate-scope">4d 6h 51m 38s</p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<li>
+                <div class="pro-item">
+                    <img src="app/assets/Images/pro-3.png" width="406" height="255"  alt=""/>
+                    <div class="p-circle">50%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>Paket Hemat Sowe</h2>
+                            <p>11D:21H:50M:20S</p>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pro-item">
+                    <img src="app/assets/Images/pro-3.png" width="406" height="255"  alt=""/>
+                    <div class="p-circle">50%</div>
+                    <div class="desc">
+                        <div class="txt">
+                            <h2>Paket Hemat Sowe</h2>
+                            <p>11D:21H:50M:20S</p>
+                        </div>
+
+                    </div>
+                </div>
+            </li>-->
+
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .new-Promo .pro-item{ height:  154px !important;}
+</style>

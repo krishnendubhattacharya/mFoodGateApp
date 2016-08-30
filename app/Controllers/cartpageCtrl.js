@@ -285,6 +285,16 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
 
         })
         $scope.cartDetails = mFoodCart.get_cart();
+        if ($scope.loggedindetails) {
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl + "updateCheckType",
+                headers: {'Content-Type': 'application/json'},
+                data: {item: $scope.cartDetails, user_id: $scope.loggedindetails.id}
+            }).success(function (res) {
+
+            });
+        }
         //console.log($scope.cartDetails);
         //alert(paytype);
         $scope.getCartTotals();
@@ -372,6 +382,8 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
                         if(data.type=='success'){
                             $scope.isPointRedeem = 0;
                             $scope.isPrice = 0;
+                            $scope.isOnlyPrice = 1;
+                            localStorage.setItem('onlyPrice', $scope.isOnlyPrice);
                             angular.forEach($scope.cartDetails, function (v) {
 
                                 if (v.payments == true)
@@ -396,14 +408,17 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
 
                                         //console.log(data);
                                         //return false;
+
                                     if (data.status == 'success') {
                                         //console.log(data);
+                                        $scope.isOnlyPrice = 0;
+                                        localStorage.setItem('onlyPrice', $scope.isOnlyPrice);
                                         if($scope.isPrice == 0) {
                                             angular.forEach($scope.cartDetails, function (v) {
                                                 $scope.remove_offer_payment(v.offer_id);
                                             });
                                             localStorage.removeItem('cart');
-                                            var message = "Redeem successfull.";
+                                            var message = "Redeem Point success and your points have been deducted.";
                                             DevExpress.ui.notify({
                                                 message: message,
                                                 position: {
@@ -481,6 +496,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
                                     })
                                 }
                             }
+
 
                         }else{
                             //var message = "You don't have sufficient points to redeem.";

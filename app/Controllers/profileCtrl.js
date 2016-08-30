@@ -28,6 +28,10 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
         });
 
     }
+    /*$rootScope.$on('eventtName', function (event, args) {
+        $scope.message = args.message;
+        console.log($scope.message);
+    });*/
 
     $scope.change_cats = function() {
         if ($scope.userInfo && $scope.userInfo.categories && $scope.allcat) {

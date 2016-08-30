@@ -26,14 +26,32 @@ app.controller('paymentreturnCtrl', function ($rootScope, $scope, $http, $locati
 
             })
             $timeout(function(){
-            var message = "Payment successfull.";
-            DevExpress.ui.notify({
-                message: message,
-                position: {
-                    my: "center top",
-                    at: "center top"
+                $scope.onlyPrice = localStorage.getItem('onlyPrice');
+                //alert($scope.onlyPrice);
+                localStorage.setItem('onlyPrice', null);
+                //localStorage.setItem('onlyPrice', $scope.isOnlyPrice);
+                alert($scope.onlyPrice);
+                if($scope.onlyPrice == 1){
+                    var message = "Payment successfull.";
+
+                    DevExpress.ui.notify({
+                        message: message,
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "success", 3000);
+                }else{
+                    var message = "Purchase and Redeem Points success and your points have been deducted.";
+                    DevExpress.ui.notify({
+                        message: message,
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "success", 3000);
                 }
-            }, "success", 3000);
+
             $location.path('/');
             $location.search('success', null);
             $location.search('token', null);

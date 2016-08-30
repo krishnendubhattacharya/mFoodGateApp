@@ -121,11 +121,14 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
                         .text('Image')
                         .on('dxclick',function(){$scope.image_event(options.data.id); })
                         .appendTo(container);
-
-                    $('<button/>').addClass('dx-button')
-                        .text('Edit')
-                        .on('dxclick',function(){$scope.edit_event(options.data); })
-                        .appendTo(container);
+                    if(options.data.status != "Completed") {
+                        $('<button/>').addClass('dx-button')
+                            .text('Edit')
+                            .on('dxclick', function () {
+                                $scope.edit_event(options.data);
+                            })
+                            .appendTo(container);
+                    }
 
                     /*$('<button/>').addClass('dx-button')
                         .text('Delete')
