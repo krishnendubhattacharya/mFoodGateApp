@@ -89,12 +89,13 @@
                         </ul>
                     </div>
                 </div>
+
                 <div id="tab-3" class="tab-content" style="{{(promoInfo.length==0 || !promoInfo.length) && (resaleInfo.length==0 || !resaleInfo.length)?'display:block':''}}"  ng-if="eventInfo.length>0">
                     <div class="reseller-section">
 
                         <ul style="border:none">
                             <li ng-repeat="resaleDetail in eventInfo">
-                                <div class="pro-item" style="height:325px">
+                                <div class="pro-item" style="height:405px">
                                     <div class="logo-box">
                                         <!--<div class="p-circle">{{resaleDetail.offer_percent}}%</div>-->
                                         <img src="{{resaleDetail.image_url}}" width="218" height="100"  alt="" ng-click="eventdetails(resaleDetail.id)"/>
@@ -112,7 +113,7 @@
                                         <div class="pts">
                                             <!--<h2>mPts 120</h2>-->
                                             <!--<p>{{resaleDetail.buy_count}} Sold</p>-->
-                                            <!--<p> <button class="btn-default button-details" ng-click="eventdetails(resaleDetail.id)">Details</button></p>-->
+                                            <p> <button class="btn-default button-details" ng-click="eventdetails(resaleDetail.id)" style="margin-left:10px;">Details</button></p>
                                         </div>
                                     </div>
                                 </div>
@@ -216,6 +217,7 @@
                         <!--<h2>mPts 120</h2>-->
                         <!--<p>{{resaleDetail.buy_count}} Sold</p>-->
                         <!--<p> <button class="btn-default button-details" ng-click="eventdetails(resaleDetail.id)">Details</button></p>-->
+                        <p> <button class="btn-default button-details" ng-click="eventdetails(resaleDetail.id)" style="margin-left:10px;">Details</button></p>
                     </div>
                 </div>
             </li>
