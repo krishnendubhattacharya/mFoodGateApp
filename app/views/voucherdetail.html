@@ -14,7 +14,7 @@
 
                             <img src="{{voucherInfo.voucher_details.image}}" style="width:100%;" alt=""/>
                         </div>-->
-                        <div class="logo-box featured_carousel3">
+                        <div class="logo-box featured_carousel3" ng-if="showslider">
 
                             <div ng-repeat="relatedImg in related_images" class="item">
                                 <img src="{{relatedImg.image}}" alt="" style="width:100%;"/>

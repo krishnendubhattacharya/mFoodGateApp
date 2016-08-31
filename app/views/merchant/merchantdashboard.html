@@ -2,7 +2,7 @@
 <div ng-controller="merchantdashboardCtrl">
     <div class="container">
         <div class="myaccount-details phone-hide">
-            <h1>Dashboard</h1>
+            <h1>{{allicontext[27].title}}</h1>
             <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
 
             <!-- ngIf: specialInfo.length != 0 -->
@@ -693,7 +693,7 @@
     <div class="m-myaccount-details tablet-hide">
 
         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
-        <h1>DASHBOARD</h1>
+        <h1>{{allicontext[27].title}}</h1>
         <div class="m-new-Promo tablet-hide">
             <h1 ng-click="summeryTabShowHide()">Summary</h1>
             <div class="m-summery" ng-show="summeryTab">

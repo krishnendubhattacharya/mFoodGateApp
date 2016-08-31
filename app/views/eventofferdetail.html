@@ -1,11 +1,11 @@
 <!--Web header-->
-<div ng-controller="eventdetailCtrl">
+<div ng-controller="eventofferdetailCtrl">
 
     <div class="container phone-hide">
         <div class="voucher-details">
             <h1>Event Detail</h1>
-                <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
-            <div class="ev-details">
+
+            <div class="ev-details" style="float: left;">
                 <div class="event-d">
                     <div class="img-box">
 
@@ -26,7 +26,7 @@
                             <p><span class="title">Event End Date</span> <span class="val">{{eventInfo.data.to_date}}</span></p>
                             <p><span class="title">Offer Start Date</span> <span class="val">{{eventInfo.data.offer_from_date}}</span></p>
                             <p><span class="title">Offer End Date</span> <span class="val">{{eventInfo.data.offer_to_date}}</span></p>
-                            <p><span class="title"><div class="nwe-btn" ng-if="loggedindetails.user_type_id == 3"><span class="dx-button" ng-click="eventBid({{eventInfo.data.id}})">Bid</span></div></span></p>
+
 
 
                     </div>
@@ -39,7 +39,6 @@
     </div>
     <div class="m-myaccount-details tablet-hide">
 
-        <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
         <h1>Event Detail</h1>
         <div class="m-ev-details">
             <div class="event-d">
@@ -65,7 +64,7 @@
                     <p><span class="title">Event End Date</span> <span class="val">{{eventInfo.data.to_date}}</span></p>
                     <p><span class="title">Offer Start Date</span> <span class="val">{{eventInfo.data.offer_from_date}}</span></p>
                     <p><span class="title">Offer End Date</span> <span class="val">{{eventInfo.data.offer_to_date}}</span></p>
-                    <p if="loggedindetails.user_type_id==3"><span class="title"><div class="nwe-btn"><span class="dx-button" ng-click="eventBid({{eventInfo.data.id}})">Bid</span></div></span></p>
+
 
 
                 </div>

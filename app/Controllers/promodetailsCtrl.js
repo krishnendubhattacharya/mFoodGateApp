@@ -8,6 +8,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     NgMap.getMap().then(function(map) {
         $scope.map = map;
     });
+    //alert($rootScope.swipeValue);
 
     $scope.save_to_db = function() {
         console.log("saving -1",$scope.loggedindetails);

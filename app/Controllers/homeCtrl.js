@@ -495,6 +495,25 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
         $scope.showAll = true;
     }
     $scope.showAllFunc();
+    $scope.viewIcon = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getIconList",
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            $scope.allicons = data.icon;
+            $rootScope.allicontext = $scope.allicons;
+            //console.log($rootScope.allicontext);
+            //$rootScope.$broadcast('eventtName', { message: $scope.allicons });
+            //localStorage.setItem('icontext', $scope.allicons);
+
+            //console.log($scope.allicons);
+
+        });
+    }
+
+    $scope.viewIcon();
    
 });
 

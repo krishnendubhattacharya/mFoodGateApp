@@ -108,6 +108,7 @@ app.constant('JS_REQUIRES', {
         'myevent':['app/Controllers/myeventCtrl.js','app/Controllers/leftbarCtrl.js'],
         'eventimage':['app/Controllers/eventimageCtrl.js','app/Controllers/leftbarCtrl.js'],
         'eventdetail':['app/Controllers/eventdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'eventofferdetail':['app/Controllers/eventofferdetailCtrl.js'],
         'eventbidder':['app/Controllers/eventbidderCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantevent':['app/Controllers/merchanteventCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchanteventbid':['app/Controllers/merchanteventbidCtrl.js','app/Controllers/leftbarCtrl.js'],

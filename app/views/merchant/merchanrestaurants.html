@@ -3,7 +3,7 @@
 
     <div class="container phone-hide">
         <div class="myaccount-details">
-            <h1>Restaurants</h1>
+            <h1>{{allicontext[21].title}}</h1>
             <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
 
             <div class="profile-details"  ng-show="!edit_mode">
@@ -122,7 +122,7 @@
     <div class="m-myaccount-details tablet-hide">
 
         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
-        <h1>Restaurants</h1>
+        <h1>{{allicontext[21].title}}</h1>
         <div class="m-profile-details" ng-show="!edit_mode">
             <!--<h3 style="font-size: 18px; line-height: 30px; padding: 10px;">All Points</h3>-->
             <div style="margin-top: 10px;" id="button" dx-button="{

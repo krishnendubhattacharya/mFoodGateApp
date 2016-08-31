@@ -745,6 +745,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/eventdetail.html',
                 title: 'Event Detail'
             })
+            .state('frontend.eventofferdetail', {
+                url: '/eventofferdetail/:eventId',
+                resolve: loadSequence('eventofferdetail'),
+                templateUrl: 'app/views/eventofferdetail.html',
+                title: 'Event Detail'
+            })
             .state('frontend.eventbidder', {
                 url: '/eventbidder/:eventId',
                 resolve: loadSequence('eventbidder'),

@@ -110,7 +110,7 @@ app.controller('marketplaceCtrl', function ($rootScope, $scope, $http, $location
 
     $scope.eventdetails = function(event_id){
 
-        $location.path('/eventalldetail/'+event_id);
+        $location.path('/eventofferdetail/'+event_id);
 
     }
 

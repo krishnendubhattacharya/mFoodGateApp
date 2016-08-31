@@ -84,23 +84,7 @@ app.controller('settingCtrl', function ($rootScope, $scope, $http, $location, $s
     }
     $scope.settingList();
 
-    $scope.viewIcon = function () {
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "getIconList",
-            //data: {"email":$scope.email,"password":$scope.password},
-            //headers: {'Content-Type': 'application/json'},
-        }).success(function (data) {
-            $scope.allicons = data.icon;
-            $rootScope.$broadcast('eventtName', { message: $scope.allicons });
-            //localStorage.setItem('icontext', $scope.allicons);
 
-            //console.log($scope.allicons);
-
-        });
-    }
-
-    $scope.viewIcon();
 
     $scope.valueChanged = function (e) {
         //console.log($scope.media_notification);

@@ -8,6 +8,7 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
     }
     console.log($stateParams.voucherId);
     $scope.voucherInfo = null;
+    $scope.showslider = false;
 
     /*gMap.getMap().then(function(map) {
         $scope.map = map;
@@ -32,6 +33,7 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
                 var banner_carousal = $('.featured_carousel2');
                 banner_carousal.owlCarousel({
                     autoplay:true,
+                    autoHeight:true,
                     touchDrag:false,
                     loop:true,
                     dots:true,
@@ -58,6 +60,7 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
                 var banner_carousal = $('.featured_carousel3');
                 banner_carousal.owlCarousel({
                     autoplay:true,
+                    autoHeight:true,
                     touchDrag:false,
                     loop:true,
                     dots:true,
@@ -79,6 +82,7 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
                     }
                 });
             },30);
+            $scope.showslider = true;
             $scope.getPromoDetails($scope.promoId);
             $scope.getQrCode();
         });

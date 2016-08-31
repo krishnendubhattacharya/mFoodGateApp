@@ -25,6 +25,7 @@ $scope.res_id = $stateParams.res_id;
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
             $scope.allicons = data.icon;
+            $rootScope.allicontext = $scope.allicons;
             //console.log($scope.allicons);
 
 

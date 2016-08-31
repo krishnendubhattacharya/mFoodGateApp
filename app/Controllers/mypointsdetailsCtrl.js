@@ -79,6 +79,11 @@ app.controller('mypointsdetailsCtrl', function ($rootScope, $scope, $http, $loca
     $scope.getPoints();
 
 
+    $scope.gotoback = function() {
+        $location.path("/mypoints");
+    }
+
+
 
 
 

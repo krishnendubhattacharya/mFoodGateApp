@@ -108,6 +108,7 @@ app.controller('leftbarCtrl', function ($rootScope, $scope, $http, $location, $s
             //headers: {'Content-Type': 'application/json'},
         }).success(function (data) {
             $scope.allicons = data.icon;
+            $rootScope.allicontext = $scope.allicons;
             //console.log($scope.allicons);
 
         });
