@@ -30,7 +30,7 @@ app.controller('allvoucherCtrl', function ($rootScope, $scope, $http, $location,
             url: $rootScope.serviceurl + "allvoucher/"+$scope.loggedindetails.id,
         }).success(function (data) {
             $scope.voucherInfo =data;
-            console.log($scope.voucherInfo);
+            //console.log($scope.voucherInfo);
             //console.log($scope.voucherInfo);
             /*$scope.dataGridOptions = {
                 dataSource: $scope.voucherInfo,

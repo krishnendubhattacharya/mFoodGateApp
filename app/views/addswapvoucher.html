@@ -16,6 +16,57 @@
                             </div>
                         </div>
                         <div class="dx-field">
+                            <div class="dx-field-label">Outlet Type</div>
+                            <div class="dx-field-value">
+                                <div class="tagBox" dx-tag-box="{
+
+                                placeholder: 'Select Type',
+                                displayExpr: 'name',
+                                values:selectedTypes,
+                                onInitialized : inialType,
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'typeList'
+                                    }
+                                }
+                            }"></div>
+                            </div>
+                        </div>
+
+                        <div class="dx-field">
+                            <div class="dx-field-label">Outlet Location</div>
+                            <div class="dx-field-value">
+                                <div class="tagBox" dx-tag-box="{
+
+                                placeholder: 'Select Location',
+                                displayExpr: 'city',
+                                values:selectedLocation,
+                                onInitialized : inialLoc,
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'areaList'
+                                    }
+                                }
+                            }"></div>
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Offering Start Date </div>
+                            <div class="dx-field-value">
+                                <div dx-date-box="dateBox.offering_start_date" ng-model="offering_start_date"></div>
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Offering End Date </div>
+                            <div class="dx-field-value">
+                                <div dx-date-box="dateBox.offering_end_date" ng-model="offering_end_date"></div>
+                            </div>
+                        </div>
+                        <div class="dx-field">
                             <div class="dx-field-label">&nbsp;</div>
                             <div class="dx-field-value">
                                 <div id="button" dx-button="{
@@ -50,6 +101,60 @@
                             <div dx-text-area="textArea"  ng-model="description"></div>
                         </div>
                     </div>
+
+                    <div class="dx-field">
+                        <div class="dx-field-label">Outlet Type</div>
+                        <div class="dx-field-value">
+                            <div class="tagBox" dx-tag-box="{
+
+                                placeholder: 'Select Type',
+                                displayExpr: 'name',
+                                values:selectedTypesMob,
+                                onInitialized : inialTypeMob,
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'typeListMob'
+                                    }
+                                }
+                            }"></div>
+                        </div>
+                    </div>
+
+                    <div class="dx-field">
+                        <div class="dx-field-label">Outlet Location</div>
+                        <div class="dx-field-value">
+                            <div class="tagBox" dx-tag-box="{
+
+                                placeholder: 'Select Location',
+                                displayExpr: 'city',
+                                values:selectedLocationMob,
+                                onInitialized : inialLocMob,
+                                bindingOptions: {
+                                    valueExpr: 'id',
+                                    values: {
+
+                                        dataPath: 'areaListMob'
+                                    }
+                                }
+                            }"></div>
+                        </div>
+                    </div>
+
+                    <div class="dx-field">
+                        <div class="dx-field-label">Offering Start Date </div>
+                        <div class="dx-field-value">
+                            <div dx-date-box="dateBox.offering_start_date" ng-model="offering_start_date"></div>
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Offering End Date </div>
+                        <div class="dx-field-value">
+                            <div dx-date-box="dateBox.offering_end_date" ng-model="offering_end_date"></div>
+                        </div>
+                    </div>
+
                     <div class="dx-field">
                         <div class="dx-field-label">&nbsp;</div>
                         <div class="dx-field-value">

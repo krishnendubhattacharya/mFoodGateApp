@@ -95,7 +95,7 @@
 
                         <ul style="border:none">
                             <li ng-repeat="resaleDetail in eventInfo">
-                                <div class="pro-item" style="height:405px">
+                                <div class="pro-item auot-height" >
                                     <div class="logo-box">
                                         <!--<div class="p-circle">{{resaleDetail.offer_percent}}%</div>-->
                                         <img src="{{resaleDetail.image_url}}" width="218" height="100"  alt="" ng-click="eventdetails(resaleDetail.id)"/>
@@ -113,7 +113,7 @@
                                         <div class="pts">
                                             <!--<h2>mPts 120</h2>-->
                                             <!--<p>{{resaleDetail.buy_count}} Sold</p>-->
-                                            <p> <button class="btn-default button-details" ng-click="eventdetails(resaleDetail.id)" style="margin-left:10px;">Details</button></p>
+                                            <p> <button ng-if="eventdetailshow" class="btn-default button-details" ng-click="eventdetails(resaleDetail.id)" style="margin-left:10px;">Details</button></p>
                                         </div>
                                     </div>
                                 </div>

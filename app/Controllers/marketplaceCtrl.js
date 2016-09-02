@@ -2,8 +2,17 @@
 /** 
  * controllers used for the login
  */
-app.controller('marketplaceCtrl', function ($rootScope, $scope, $http, $location) {
+app.controller('marketplaceCtrl', function ($rootScope, $scope, $http, $location,myAuth) {
 
+    myAuth.updateUserinfo(myAuth.getUserAuthorisation());
+    $scope.loggedindetails = myAuth.getUserNavlinks();
+    $scope.eventdetailshow=0;
+    if($scope.loggedindetails){
+        if($scope.loggedindetails.user_type_id == 3){
+            $scope.eventdetailshow=1;
+        }
+
+    }
     $scope.resell_promo_show = 1;
     $scope.event_promo_show = 1;
     $scope.swap_promo_show = 1;

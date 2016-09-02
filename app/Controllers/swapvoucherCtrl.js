@@ -55,7 +55,10 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                     showInfo: true
                 },
 
-                columns: ["title", "price", "expire_date",
+                columns: [{caption:"Voucher Name",dataField:"title"},
+                    {caption:"Voucher Value",dataField:"price"},
+                    {caption:"Net Price",dataField:"netprice"},
+                    {caption:"Expired Swap Offer",dataField:"offering_end_date"},"expire_date",
                     {caption:"Highest Bid",dataField:"high_bid"},"posted_on",
                     {
                         width: 250,
@@ -116,11 +119,10 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                 showInfo: true
             },
 
-            columns: [{caption:"My Voucher Title",dataField:"my_offer.title"},
-                {caption:"My Voucher Price",dataField:"my_voucher.price"},
-                {caption:"Swap Voucher Title",dataField:"swap_offer.title"},
-                {caption:"Swap Voucher Price",dataField:"swap_voucher.price"},
-                "expire_date",{caption:"Bidded On",dataField:"posted_on"},
+            columns: [{caption:"Voucher Name",dataField:"swap_offer.title"},
+                {caption:"Value",dataField:"swap_voucher.price"},
+                "expire_date",{caption:"Posted Date",dataField:"posted_on"},
+                {caption:"Expired Swap Offer",dataField:"offering_end_date"},
                 {
                     width: 170,
                     alignment: 'center',
@@ -171,8 +173,8 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                 showInfo: true
             },
 
-            columns: ["title", {caption:"Voucher Value", dataField : "price"}, "expire_date",
-                {caption:"Swap Offer Date",dataField:"posted_on"},
+            columns: [{caption:"Voucher Name", dataField : "title"}, {caption:"Voucher Value", dataField : "price"}, "expire_date",
+                {caption:"Swap Offer Date",dataField:"posted_on"},{caption:"Expired Swap Offer",dataField:"offering_end_date"},
                 {
                     width: 150,
                     alignment: 'center',
