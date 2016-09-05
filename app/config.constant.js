@@ -98,7 +98,7 @@ app.constant('JS_REQUIRES', {
         'membershipdetail':['app/Controllers/membershipdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
         'swapvoucher':['app/Controllers/swapvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
         'giftvoucherlist':['app/Controllers/giftvoucherlistCtrl.js','app/Controllers/leftbarCtrl.js'],
-        'swapvoucherdetail':['app/Controllers/swapvoucherdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'swapvoucherdetail':['app/Controllers/swapvoucherdetailCtrl.js','app/Controllers/leftbarCtrl.js','app/directives/countdownDirective.js'],
         'swapinterested':['app/Controllers/swapinterestedCtrl.js','app/Controllers/leftbarCtrl.js'],
         'acceptswap':['app/Controllers/acceptswapCtrl.js'],
         'newsdetail':['app/Controllers/newsdetailCtrl.js'],

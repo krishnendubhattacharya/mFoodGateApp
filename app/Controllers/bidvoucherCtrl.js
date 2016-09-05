@@ -100,13 +100,14 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                     showInfo: true
                 },
 
-                columns: ["title", {caption:'Voucher Value',dataField:"voucher_price"},
+                columns: [{caption:'Voucher Name',dataField:"title"}, {caption:'Voucher Value',dataField:"voucher_price"},
                     {caption:'Purchase Price',dataField:"purchase_price"},
                     {caption:'Reseller Price',dataField:"price"},
                     {caption:'Points',dataField:"points"},
                     {caption:'Highest Bid',dataField:"high_bid"},
                     //{caption:'Higest Bid Price',dataField:"price"},
                     {caption:'Expired Date',dataField:"expire_date"},
+                    {caption:'Resell Posted Date',dataField:"created_on"},
                     {caption:'Status',dataField:"status"},
                     //{caption:'Reseller Date',dataField:"expire_date"},
                     //{caption:'Status',dataField:"is_sold==1?'Active':'Inactive'"},
@@ -238,11 +239,12 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                 showInfo: true
             },
 
-            columns: ["title", {caption:'Voucher Value',dataField:"voucher_price"},
-                {caption:'Purchase Price',dataField:"purchase_price"},
+            columns: [{caption:'Voucher Name',dataField:"title"},
+                {caption:'Voucher Value',dataField:"voucher_price"},
                 {caption:'Bid Price',dataField:"bid_price"},
                 {caption:'Bid Points',dataField:"bid_points"},
                 {caption:'Expire Date',dataField:"to_date"},
+                {caption:'Bid Date',dataField:"created_on"},
                 {caption:'Status',dataField:"Status"},
                 {
                     width: 160,
@@ -302,7 +304,10 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                 showInfo: true
             },
 
-            columns: ["title", "price", "expire_date",
+            columns: [{caption:'Voucher Name',dataField:"title"},
+                {caption:'Resell Price',dataField:"price"},
+                {caption:'Voucher Price',dataField:"voucher_price"},"expire_date",
+                {caption:'Resell Date',dataField:"created_on"},
                 /*{
                     width: 100,
                     alignment: 'center',
@@ -461,6 +466,23 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
         //params.validationGroup.reset();
         //}
     };
+
+    $scope.getResellVoucherDetails = function(){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getResellVoucherDetail/"+$stateParams.sellId,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            /*var vouchers = []
+             angular.forEach(data,function(val){
+             vouchers.push({name:val.title,value:val.voucher_id});
+             })
+             $scope.voucher_sel.option({dataSource:vouchers});*/
+            $scope.reselldetail = data.resale_details[0];
+            console.log($scope.reselldetail);
+        })
+    }
+    $scope.getResellVoucherDetails();
 
 
 

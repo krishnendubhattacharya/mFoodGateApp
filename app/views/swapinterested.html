@@ -10,11 +10,51 @@
                 <div class="form">
                     <div class="dx-fieldset">
                         <div class="dx-field">
-                            <div class="dx-field-label">Subject</div>
+                            <div class="dx-field-label">Voucher Name</div>
                             <div class="dx-field-value">
-                                <div dx-text-box="textBox.subject" dx-validator="subjectValidationRules"  ng-model="subject"></div>
-
-
+                                {{swapdetail.title}}
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Voucher Image</div>
+                            <div class="dx-field-value">
+                                <img src="{{swapdetail.image_url}}" ng-if="swapdetail.image_url" width="200">
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Voucher Price</div>
+                            <div class="dx-field-value">
+                                {{swapdetail.netprice}}
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Preferable Outlet Type</div>
+                            <div class="dx-field-value">
+                                <span ng-repeat="item in swapdetail.categories">{{item.name}}, </span>
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Preferable Outlet Location</div>
+                            <div class="dx-field-value">
+                                <span ng-repeat="item_loc in swapdetail.locations">{{item_loc.city}}, </span>
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Additional Information</div>
+                            <div class="dx-field-value">
+                                {{swapdetail.description}}
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Offering Start Date</div>
+                            <div class="dx-field-value">
+                                {{swapdetail.offering_start_date}}
+                            </div>
+                        </div>
+                        <div class="dx-field">
+                            <div class="dx-field-label">Offering End Date</div>
+                            <div class="dx-field-value">
+                                {{swapdetail.offering_end_date}}
                             </div>
                         </div>
                         <div class="dx-field">
@@ -58,11 +98,51 @@
             <div class="form">
                 <div class="dx-fieldset">
                     <div class="dx-field">
-                        <div class="dx-field-label">Subject</div>
+                        <div class="dx-field-label">Voucher Name</div>
                         <div class="dx-field-value">
-                            <div dx-text-box="textBox.subject" dx-validator="subjectValidationRules"  ng-model="subject"></div>
-
-
+                            {{swapdetail.title}}
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Voucher Image</div>
+                        <div class="dx-field-value">
+                            <img src="{{swapdetail.image_url}}" ng-if="swapdetail.image_url" width="200">
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Voucher Price</div>
+                        <div class="dx-field-value">
+                            {{swapdetail.netprice}}
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Preferable Outlet Type</div>
+                        <div class="dx-field-value">
+                            <span ng-repeat="item in swapdetail.categories">{{item.name}}, </span>
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Preferable Outlet Location</div>
+                        <div class="dx-field-value">
+                            <span ng-repeat="item_loc in swapdetail.locations">{{item_loc.city}}, </span>
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Additional Information</div>
+                        <div class="dx-field-value">
+                            {{swapdetail.description}}
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Offering Start Date</div>
+                        <div class="dx-field-value">
+                            {{swapdetail.offering_start_date}}
+                        </div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">Offering End Date</div>
+                        <div class="dx-field-value">
+                            {{swapdetail.offering_end_date}}
                         </div>
                     </div>
                     <div class="dx-field">

@@ -56,7 +56,7 @@
                                             <p style="text-align: left" class="price"><b>Price:</b> IDR {{resaleDetail.price | number}}</p>
                                         </div>
                                         <div class="view-btn">
-                                            <a ui-sref="frontend.promodetails({ promoId: resaleDetail.id })"><img src="app/assets/Images/view-btn-2.png" width="66" height="42"  alt=""/></a>
+                                            <a ui-sref="frontend.swapvoucherdetail({ swapId: resaleDetail.id,promoId: resaleDetail.offer_id })"><img src="app/assets/Images/view-btn-2.png" width="66" height="42"  alt=""/></a>
                                             <p countdown='' date='{{resaleDetail.expire_date}}'>&nbsp;</p>
                                         </div>
                                     </div>
@@ -184,7 +184,7 @@
                             <p style="text-align: left" class="price"><b>Price:</b> IDR {{resaleDetail.price | number}}</p>
                         </div>
                         <div class="view-btn">
-                            <a ui-sref="frontend.promodetails({ promoId: resaleDetail.id })"><img src="app/assets/Images/view-btn-2.png" width="66" height="42"  alt=""/></a>
+                            <a ui-sref="frontend.swapvoucherdetail({ swapId: resaleDetail.id,promoId: resaleDetail.offer_id })"><img src="app/assets/Images/view-btn-2.png" width="66" height="42"  alt=""/></a>
                             <p countdown='' date='{{resaleDetail.expire_date}}'>&nbsp;</p>
                         </div>
                     </div>

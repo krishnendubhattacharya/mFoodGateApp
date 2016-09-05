@@ -62,6 +62,7 @@ app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $locat
             //alert($scope.voucher_url);
             //alert($scope.comment);
             //return false;
+            $scope.subject = '';
             $http({
                 method: "POST",
                 url: $rootScope.serviceurl+"swapinterest",
@@ -116,5 +117,22 @@ app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $locat
         })
     }
     $scope.getSwapVouchers();
+
+    $scope.getSwapVoucherDetails = function(){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getSwapVoucherDetail/"+$stateParams.swapId,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            /*var vouchers = []
+            angular.forEach(data,function(val){
+                vouchers.push({name:val.title,value:val.voucher_id});
+            })
+            $scope.voucher_sel.option({dataSource:vouchers});*/
+            $scope.swapdetail = data.data[0];
+            console.log($scope.swapdetail);
+        })
+    }
+    $scope.getSwapVoucherDetails();
 
 });

@@ -69,7 +69,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                                 .text('Details')
                                 .on('dxclick', function () {
                                     //$location.path('/swapvoucherdetail/'+ options.data.id);
-                                    $scope.detailSwap(options.data.id);
+                                    $scope.detailSwap(options.data.id,options.data.offer_id);
                                 })
                                 .appendTo(container);
 
@@ -132,7 +132,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                             .text('Details')
                             .on('dxclick', function () {
                                 //$location.path('/swapvoucherdetail/'+ options.data.id);
-                                $scope.detailSwap(options.data.id);
+                                $scope.detailSwap(options.data.id,options.data.offer_id);
                             })
                             .appendTo(container);
                         $('<button/>').addClass('dx-button')
@@ -184,7 +184,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                             .text('Details')
                             .on('dxclick', function () {
                                 //$location.path('/swapvoucherdetail/'+ options.data.id);
-                                $scope.detailSwap(options.data.id);
+                                $scope.detailSwap(options.data.id,options.data.offer_id);
                             })
                             .appendTo(container);
                         $('<button/>').addClass('dx-button')
@@ -242,8 +242,8 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
         });
     }
 
-    $scope.detailSwap = function (swap_id) {
-        $location.path('/swapvoucherdetail/' + swap_id);
+    $scope.detailSwap = function (swap_id,promoId) {
+        $location.path('/swapvoucherdetail/' + swap_id+'/'+promoId);
 
     }
 

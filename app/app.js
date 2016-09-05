@@ -224,8 +224,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 controller:'membershipdetailCtrl'
             })
             .state('frontend.swapvoucherdetail', {
-                url: '/swapvoucherdetail/:swapId',
-                resolve: loadSequence('swapvoucherdetail'),
+                url: '/swapvoucherdetail/:swapId/:promoId',
+                resolve: loadSequence('swapvoucherdetail','ngMap','mCart','720kb.socialshare'),
                 templateUrl: 'app/views/swapvoucherdetail.html',
                 title: 'Swap Voucher Detail'
             })
