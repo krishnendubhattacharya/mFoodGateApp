@@ -26,7 +26,7 @@
                     <div class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>
                 <div class="qty-totals">
-                    <div class="qty">Qty: <span><input type="text" ng-model="cart.quantity" value="1" ng-change="updateQuantity(cart)"></span></div>
+                    <div class="qty" ng-if="cart.resell== 0">Qty: <span><input type="text" ng-model="cart.quantity" value="1" ng-change="updateQuantity(cart)"></span></div>
                     <div class="totals" ><span>Total:</span> IDR{{cart.quantity*cart.offer_price  | number}}</div>
                 </div>
                 <div style="clear:both"></div>

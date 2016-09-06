@@ -101,6 +101,7 @@ app.constant('JS_REQUIRES', {
         'swapvoucherdetail':['app/Controllers/swapvoucherdetailCtrl.js','app/Controllers/leftbarCtrl.js','app/directives/countdownDirective.js'],
         'swapinterested':['app/Controllers/swapinterestedCtrl.js','app/Controllers/leftbarCtrl.js'],
         'acceptswap':['app/Controllers/acceptswapCtrl.js'],
+        'resellvoucherdetail':['app/Controllers/resellvoucherdetailCtrl.js','app/directives/countdownDirective.js'],
         'newsdetail':['app/Controllers/newsdetailCtrl.js'],
         'bannerdetail':['app/Controllers/bannerdetailCtrl.js'],
         'advertisedetail':['app/Controllers/advertisedetailCtrl.js'],

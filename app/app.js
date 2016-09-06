@@ -229,6 +229,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/swapvoucherdetail.html',
                 title: 'Swap Voucher Detail'
             })
+
+            .state('frontend.resellvoucherdetail', {
+                url: '/resellvoucherdetail/:resellId/:promoId',
+                resolve: loadSequence('resellvoucherdetail','ngMap','mCart','720kb.socialshare'),
+                templateUrl: 'app/views/resellvoucherdetail.html',
+                title: 'Resell Voucher Detail'
+            })
             .state('frontend.swapinterested', {
                 url: '/swapinterested/:swapId',
                 resolve: loadSequence('swapinterested'),

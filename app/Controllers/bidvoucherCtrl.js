@@ -145,7 +145,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                                 .on('dxclick', function () {
                                     //Do something with options.data;
                                     //$location.path('/bidderlist/'+options.data.voucher_resale_id);
-                                    $scope.detailVoucher(options.data.voucher_id);
+                                    $scope.detailVoucher(options.data.voucher_resale_id,options.data.offer_id);
                                     //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
 
                                 })
@@ -214,8 +214,8 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
         });
     }
 
-    $scope.detailVoucher = function (voucher_id) {
-        $location.path('/voucherdetail/' + voucher_id);
+    $scope.detailVoucher = function (voucher_resell_id,offer_id) {
+        $location.path('/resellvoucherdetail/' + voucher_resell_id+'/'+offer_id);
 
     }
 
@@ -266,7 +266,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                             .on('dxclick', function () {
                                 //Do something with options.data;
                                 //$location.path('/bidderlist/'+options.data.voucher_resale_id);
-                                $scope.detailVoucher(options.data.voucher_id);
+                                $scope.detailVoucher(options.data.voucher_resale_id,options.data.offer_id);
                                 //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
 
                             })
@@ -341,7 +341,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                             .on('dxclick', function () {
                                 //Do something with options.data;
                                 //$location.path('/bidderlist/'+options.data.voucher_resale_id);
-                                $scope.detailVoucher(options.data.voucher_id);
+                                $scope.detailVoucher(options.data.voucher_resale_id,options.data.offer_id);
                                 //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
 
                             })
@@ -466,23 +466,25 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
         //params.validationGroup.reset();
         //}
     };
-
-    $scope.getResellVoucherDetails = function(){
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl+"getResellVoucherDetail/"+$stateParams.sellId,
-            headers: {'Content-Type': 'application/json'},
-        }).success(function(data) {
-            /*var vouchers = []
-             angular.forEach(data,function(val){
-             vouchers.push({name:val.title,value:val.voucher_id});
-             })
-             $scope.voucher_sel.option({dataSource:vouchers});*/
-            $scope.reselldetail = data.resale_details[0];
-            console.log($scope.reselldetail);
-        })
+    if($stateParams.sellId){
+        $scope.getResellVoucherDetails = function(){
+            $http({
+                method: "GET",
+                url: $rootScope.serviceurl+"getResellVoucherDetail/"+$stateParams.sellId,
+                headers: {'Content-Type': 'application/json'},
+            }).success(function(data) {
+                /*var vouchers = []
+                 angular.forEach(data,function(val){
+                 vouchers.push({name:val.title,value:val.voucher_id});
+                 })
+                 $scope.voucher_sel.option({dataSource:vouchers});*/
+                $scope.reselldetail = data.resale_details[0];
+                console.log($scope.reselldetail);
+            })
+        }
+        $scope.getResellVoucherDetails();
     }
-    $scope.getResellVoucherDetails();
+
 
 
 

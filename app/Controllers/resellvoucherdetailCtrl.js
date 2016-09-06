@@ -1,4 +1,4 @@
-app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap,mFoodCart,$window,$cookieStore,$timeout) {
+app.controller('resellvoucherdetailCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap,mFoodCart,$window,$cookieStore,$timeout) {
     //alert(123);
     $scope.promoId = $stateParams.promoId;
     $scope.loggedindetails = myAuth.getUserNavlinks();
@@ -63,22 +63,16 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     }
 
     $scope.getPromoDetails = function(){
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl+"promoVisit/" + $scope.promoId,
-            headers: {'Content-Type': 'application/json'},
-        }).success(function(data) {
-            //alert(data);
 
-        });
         $http({
             method: "GET",
-            url: $rootScope.serviceurl+"getPromoDetails/" + $scope.promoId,
+            url: $rootScope.serviceurl+"getResellPromoDetails/" + $scope.promoId+"/"+$stateParams.resellId,
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
             if(data.type == 'success') {
                 $scope.promodetails = data.offer;
                 $scope.pointdetails = data.point_details;
+                $scope.resell_user_details = data.resell_user_details[0];
                 $scope.restaurant = data.restaurants;
                 $scope.mapaddress = data.merchantInfo[0].address;
                 $scope.maptitle = data.merchantInfo[0].merchant_name;
@@ -233,7 +227,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         }).success(function(res) {
 
             if(res.type =='success'){
-                if($scope.promodetails.conditions == 1){
+                if($scope.promodetails.operator == 1){
                     $scope.pay = true;
                     $scope.paycash = true;
                 }else{
@@ -247,19 +241,19 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     offer_title         :   $scope.promodetails.title,
                     restaurant_title    :   $scope.restName,
                     offer_percent       :   $scope.promodetails.offer_percent,
-                    price               :   $scope.promodetails.price,
-                    mpoints             :   $scope.promodetails.mpoints,
-                    offer_price         :   $scope.promodetails.offer_price,
+                    price               :   $scope.promodetails.resell_price,
+                    mpoints             :   $scope.promodetails.resell_point,
+                    offer_price         :   $scope.promodetails.resell_price,
                     quantity            :   1,
                     previous_quantity   :   1,
                     image               :   $scope.promodetails.image,
-                    point_id            :   $scope.promodetails.point_master_id,
+                    point_id            :   $scope.promodetails.resell_point_id,
                     point_name          :   $scope.pointdetails[0].name,
-                    condtn              :   $scope.promodetails.conditions,
+                    condtn              :   $scope.promodetails.operator,
                     payments            :   $scope.pay,
                     paymentscash        :   $scope.paycash,
-                    isresell            :   0,
-                    resell_id           :   0
+                    isresell            :   1,
+                    resell_id           :   $scope.promodetails.resell_id,
                 }
                 mFoodCart.add_to_cart(cart_obj);
                 $scope.cartDetails = mFoodCart.get_cart();

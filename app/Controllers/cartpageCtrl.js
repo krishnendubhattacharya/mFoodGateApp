@@ -4,6 +4,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
 
 
     $scope.cartIds = [];
+    $scope.cartisresell = [];
     $scope.cartDetails = mFoodCart.get_cart();
 
     $scope.getCartTotals = function(){
@@ -185,6 +186,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
     {
         angular.forEach($scope.cartDetails,function(v){
             $scope.cartIds.push(v.offer_id);
+            $scope.cartisresell.push(v.isresell);
         })
 
         if($scope.cartIds)
@@ -198,7 +200,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
                 method: "POST",
                 url: $rootScope.serviceurl+"checkExpiredOffers",
                 headers: {'Content-Type': 'application/json'},
-                data:{offer_ids:$scope.cartIds,user_id:$scope.user_id}
+                data:{offer_ids:$scope.cartIds,user_id:$scope.user_id,cartisresell:$scope.cartisresell}
             }).success(function(data) {
                 if(data.type=='success')
                 {
