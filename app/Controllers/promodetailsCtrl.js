@@ -258,7 +258,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     condtn              :   $scope.promodetails.conditions,
                     payments            :   $scope.pay,
                     paymentscash        :   $scope.paycash,
-                    isresell            :   0,
+                    resell              :   0,
                     resell_id           :   0
                 }
                 mFoodCart.add_to_cart(cart_obj);

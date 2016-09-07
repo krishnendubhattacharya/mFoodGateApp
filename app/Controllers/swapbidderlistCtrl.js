@@ -58,11 +58,22 @@ app.controller('swapbidderlistCtrl', function ($rootScope, $scope, $http, $locat
                     showInfo: true
                 },
 
-                columns: ["first_name", "last_name", "email", "title","voucher_url",
+                columns: ["first_name", "last_name",
+                    {caption:'Voucher Name',dataField:"title"},
+                    {caption:'Voucher Value',dataField:"price"},
+                    {caption:'Voucher Expire Date',dataField:"expire_date"},
                     {
-                        width: 100,
+                        width: 170,
                         alignment: 'center',
                         cellTemplate: function (container, options) {
+
+                            $('<button/>').addClass('dx-button')
+                                .text('Detail')
+                                .on('dxclick', function () {
+                                    // $location.path('/voucherdetail/'+options.data.id);
+                                    $scope.detailSwap(options.data.swap_id,options.data.offer_id);
+                                })
+                                .appendTo(container);
 
                             $('<button/>').addClass('dx-button')
                                 .text('Accept')
@@ -81,7 +92,12 @@ app.controller('swapbidderlistCtrl', function ($rootScope, $scope, $http, $locat
         });
 
     }
+
     $scope.bidderList();
+    $scope.detailSwap = function (swap_id,promoId) {
+        $location.path('/swapvoucherdetail/' + swap_id+'/'+promoId);
+
+    }
     $scope.acceptSwapVoucher = function(swapInterestedId){
         $http({
             method: "GET",

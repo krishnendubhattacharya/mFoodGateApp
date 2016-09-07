@@ -150,7 +150,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
                                 })
                                 .appendTo(container);
-                            if(options.data.high_bid == 0) {
+                            //if(options.data.high_bid == 0) {
                                 $('<button/>').addClass('dx-button')
                                     .text('Cancel')
                                     .on('dxclick', function () {
@@ -161,7 +161,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
                                     })
                                     .appendTo(container);
-                            }
+                            //}
 
                         }
                     }
@@ -247,7 +247,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                 {caption:'Bid Date',dataField:"created_on"},
                 {caption:'Status',dataField:"Status"},
                 {
-                    width: 160,
+                    width: 250,
                     alignment: 'center',
                     cellTemplate: function (container, options) {
                         $('<button/>').addClass('dx-button')

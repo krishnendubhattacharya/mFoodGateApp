@@ -2,6 +2,11 @@ app.controller('resellvoucherdetailCtrl', function ($rootScope, $scope, $http, $
     //alert(123);
     $scope.promoId = $stateParams.promoId;
     $scope.loggedindetails = myAuth.getUserNavlinks();
+    if($scope.loggedindetails){
+        $scope.loggedinid = $scope.loggedindetails.id;
+    }else{
+        $scope.loggedinid = '';
+    }
 
     //stButtons.makeButtons();
     $scope.mpoints = 0;
@@ -252,7 +257,7 @@ app.controller('resellvoucherdetailCtrl', function ($rootScope, $scope, $http, $
                     condtn              :   $scope.promodetails.operator,
                     payments            :   $scope.pay,
                     paymentscash        :   $scope.paycash,
-                    isresell            :   1,
+                    resell              :   1,
                     resell_id           :   $scope.promodetails.resell_id,
                 }
                 mFoodCart.add_to_cart(cart_obj);

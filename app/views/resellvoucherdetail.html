@@ -112,7 +112,7 @@
                         <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                     </div>
                     <div style="padding-top: 25px;" class="dx-clearfix"></div>
-                    <div id="button" dx-button="{
+                    <div ng-if="loggedinid == promodetails.resell_bidder" id="button" dx-button="{
                                 text: 'Add to Cart',
                                 type: 'success',
                                 height:'40px',
