@@ -28,6 +28,14 @@ app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $locat
             onInitialized:function(e){
                 $scope.voucher_sel = e.component;
             }
+        },
+        vouchers1 : {
+            dataSource: [],
+            displayExpr: "name",
+            valueExpr: "value",
+            onInitialized:function(e){
+                $scope.voucher_sel1 = e.component;
+            }
         }
     };
 
@@ -114,6 +122,7 @@ app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $locat
                 vouchers.push({name:val.title,value:val.voucher_id});
             })
             $scope.voucher_sel.option({dataSource:vouchers});
+            $scope.voucher_sel1.option({dataSource:vouchers});
         })
     }
     $scope.getSwapVouchers();

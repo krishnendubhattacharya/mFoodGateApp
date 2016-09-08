@@ -156,7 +156,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                                     .on('dxclick', function () {
                                         //Do something with options.data;
                                         //$location.path('/bidderlist/' + options.data.voucher_resale_id);
-                                        $scope.cancelResell(options.data.voucher_resale_id);
+                                        $scope.cancelResell(options.data.voucher_resale_id,options.data.voucher_id);
                                         //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
 
                                     })
@@ -182,7 +182,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
         $http({
             method: "POST",
             url: $rootScope.serviceurl + "resaleCancel",
-            data: {"id":voucher_resale_id},
+            data: {"id":voucher_resale_id,"voucher_id":voucher_id},
         }).success(function (data) {
             //$scope.voucherInfo =data.bid_details;
             //console.log($scope.voucherInfo);
@@ -254,7 +254,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                             .text('Edit')
                             .on('dxclick', function () {
                                 //Do something with options.data;
-                                $scope.bidEdit(options.data.bid_id);
+                                $scope.bidEdit(options.data.bid_id,options.data.voucher_resale_id);
 
                                 //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
 
@@ -271,6 +271,18 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
                             })
                             .appendTo(container);
+                        if(options.data.Status != 'Accepted') {
+                            $('<button/>').addClass('dx-button')
+                                .text('Cancel')
+                                .on('dxclick', function () {
+                                    //Do something with options.data;
+                                    //$location.path('/bidderlist/' + options.data.voucher_resale_id);
+                                    $scope.cancelBid(options.data.bid_id,options.data.voucher_id);
+                                    //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
+
+                                })
+                                .appendTo(container);
+                        }
 
 
                     }
@@ -281,9 +293,46 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
     });
 
-    $scope.bidEdit = function (bid_id) {
+    $scope.cancelBid = function (bid_id,voucher_id) {
+        //$location.path('/resaleCancel/' + voucher_resale_id);
+        $http({
+            method: "POST",
+            url: $rootScope.serviceurl + "bidCancel",
+            data: {"id":bid_id,"voucher_id":voucher_id},
+        }).success(function (data) {
+            //$scope.voucherInfo =data.bid_details;
+            //console.log($scope.voucherInfo);
+            if(data.type == 'success'){
+                //var message = data.message;
+                //params.validationGroup.reset();
+                $location.path('/dashboard');
 
-            $location.path('/editbid/'+bid_id);
+                DevExpress.ui.notify({
+                    message: data.message,
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "success", 3000);
+            }else{
+                var message = "Error occured.";
+                DevExpress.ui.notify({
+                    message: data.message,
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "error", 3000);
+            }
+
+
+
+        });
+    }
+
+    $scope.bidEdit = function (bid_id,resell_id) {
+
+            $location.path('/editbid/'+bid_id+'/'+resell_id);
 
     }
 

@@ -248,17 +248,19 @@
                             <p><b>Voucher Validation End Hour : </b>{{promodetails.item_end_hour}}</p>
                             <p><b>Including Holiday : </b>{{promodetails.including_holidays==1?'Yes':'No'}}</p>
                             <p><b>Validation Days : </b><span ng-repeat="day in offer_days | orderBy : '2'">{{day.day}}, </span> </p>
-                            <p><b>Time Left : </b><p style="color=green;" countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
+                            <p><b>Time Left : </b><p style="color:green" countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
                             <p><b>About Merchant : </b>{{about_me}}</p>
                             <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                         </div>
                         <div style="padding-top: 25px;" class="dx-clearfix"></div>
-                        <div ng-if="loggedindetails" style="float:right" id="button" dx-button="{
+                        <div ng-if="loggedindetails" id="button" dx-button="{
                                 text: 'Bid',
                                 type: 'success',
                                 height:'40px',
                                 width:'130px',
-                                onClick: add_to_bid }" ></div>
+                                onClick: add_to_bid }" >
+
+                            </div>
                         <div class="clearfix" style="margin-bottom: 10px;"></div>
                     </div>
                     <div style="padding-top: 25px;" class="dx-clearfix"></div>

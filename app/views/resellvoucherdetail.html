@@ -11,8 +11,8 @@
                     <span>{{cart.offer_title}}:</span> {{cart.restaurant_title}}
                 </p>
                 <div class="price-div">
-                    <div class="off"><span><input type="checkbox" id="paymentscash" name="paymentscash" ng-model="cart.paymentscash" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'c')"></span>{{cart.offer_percent}}% <span>off</span> </div>
-                    <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
+                    <div class="off"><span><input type="checkbox" id="paymentscash" name="paymentscash" ng-model="cart.paymentscash" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'c')"></span> </div>
+                    <div class="price-m"><span></span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
                     <div class="price-m" style="float: right">{{cart.condtn==1?'And':'Or'}}</div>
                     <div style="clear: both"></div>
@@ -208,12 +208,15 @@
                 <div style="clear: both"></div>
             </div>
             <div style="text-align:right">
-                <div id="button" dx-button="{
+            	<div ng-if="loggedinid == promodetails.resell_bidder" id="button" dx-button="{
                                 text: 'Add to Cart',
                                 type: 'success',
                                 height:'40px',
                                 width:'130px',
-                                onClick: add_to_cart }" ></div>
+                                onClick: add_to_cart }" >
+
+                    </div>
+                
                 <div style="clear: both;margin-bottom: 10px;"></div>
             </div>
         </div>
@@ -237,8 +240,8 @@
                     <div class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>-->
                 <div class="price-div">
-                    <div class="off"><span><input type="checkbox" id="paymentscash" name="paymentscash" ng-model="cart.paymentscash" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'c')"></span>{{cart.offer_percent}}% <span>off</span> </div>
-                    <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
+                    <div class="off"><span><input type="checkbox" id="paymentscash" name="paymentscash" ng-model="cart.paymentscash" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'c')"></span> </div>
+                    <div class="price-m"><span></span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
                     <div class="price-m" style="float: right">{{cart.condtn==1?'And':'Or'}}</div>
                     <div style="clear: both"></div>
@@ -317,12 +320,12 @@
                 <h1>{{promodetails.title}} </h1>
                 <div >
                     <div>
-                        <p><b>Voucher Value : </b>IDR{{promodetails.price | number}}</p>
-                        <p><b>Discounted Price : </b>IDR{{promodetails.offer_price | number}} <span class="p-circle">{{promodetails.offer_percent}}%</span></p>
-                        <p>{{promodetails.conditions==1?'And':'Or'}}</p>
-                        <p><b>M-points : </b>{{promodetails.mpoints}}</p>
-                        
+                    <p ng-if="promodetails.offer_type_id != 3"><b>Voucher Value : </b>IDR{{promodetails.price | number}}</p>
+                        <p><b>Reseller Name : </b>{{resell_user_details.first_name}} {{resell_user_details.last_name}}</p>
                         <!--<p><b>Discount : </b>{{promodetails.offer_percent}}%</p>-->
+                    <p><b>Resell Price : </b>IDR{{promodetails.resell_price | number}} </p>
+                        <p>{{promodetails.operator==1?'And':'Or'}}</p>
+                        <p><b>M-points : </b>{{promodetails.resell_point}}</p>
                         <!--<p><b>Quantity Sold : </b>{{promodetails.buy_count}}</p>
                         <p><b>Quantity Available : </b>{{promodetails.quantity - promodetails.buy_count}}</p>-->
 
@@ -333,18 +336,20 @@
                         <p><b>Voucher Validation End Hour : </b>{{promodetails.item_end_hour}}</p>
                         <p><b>Including Holiday : </b>{{promodetails.including_holidays==1?'Yes':'No'}}</p>
                         <p><b>Validation Days : </b><span ng-repeat="day in offer_days | orderBy : '2'">{{day.day}}, </span> </p>
-                        <p><b>Time Left : </b><p style="color=green;" countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
+                        <p><b>Time Left : </b><p style="color:green" countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
                         <p><b>About Merchant : </b>{{about_me}}</p>
                         <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                     </div>
                     <div style="padding-top: 25px;" class="dx-clearfix"></div>
-                    <div style="float:right" id="button" dx-button="{
+                    <div ng-if="loggedinid == promodetails.resell_bidder" id="button" dx-button="{
                                 text: 'Add to Cart',
                                 type: 'success',
                                 height:'40px',
                                 width:'130px',
-                                onClick: add_to_cart }" ></div>
-                    <div class="clearfix" style="margin-bottom: 10px;"></div>
+                                onClick: add_to_cart }" >
+
+                    </div>
+
                 </div>
                 <div style="padding-top: 25px;" class="dx-clearfix"></div>
                 <div class="banner featured_carousel2">
@@ -394,12 +399,15 @@
                 <div style="clear: both"></div>
             </div>
             <div style="text-align:right">
-                <div id="button" dx-button="{
+            	<div ng-if="loggedinid == promodetails.resell_bidder" id="button" dx-button="{
                                 text: 'Add to Cart',
                                 type: 'success',
                                 height:'40px',
                                 width:'130px',
-                                onClick: add_to_cart }" ></div>
+                                onClick: add_to_cart }" >
+
+                    </div>
+                
                 <div style="clear: both;margin-bottom: 10px;"></div>
             </div>
         </div>

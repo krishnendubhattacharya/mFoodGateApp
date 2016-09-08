@@ -86,6 +86,23 @@ app.controller('editbidCtrl', function ($rootScope, $scope, $http, $location, $s
         //}
     };
 
+    $scope.getResellVoucherDetails = function(){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getResellVoucherDetail/"+$stateParams.sellId,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            /*var vouchers = []
+             angular.forEach(data,function(val){
+             vouchers.push({name:val.title,value:val.voucher_id});
+             })
+             $scope.voucher_sel.option({dataSource:vouchers});*/
+            $scope.reselldetail = data.resale_details[0];
+            console.log($scope.reselldetail);
+        })
+    }
+    $scope.getResellVoucherDetails();
+
 
 
 

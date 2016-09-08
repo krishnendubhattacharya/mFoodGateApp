@@ -33,15 +33,16 @@
                         <td>{{voucherDetail.last_name}}</td>
                     </tr>
                     <tr>
-                        <td width="30%" class="m-header-color">Email</td>
-                        <td>{{voucherDetail.email}}</td>
+                        <td width="30%" class="m-header-color">Voucher Value</td>
+                        <td>{{voucherDetail.price}}</td>
                     </tr>
                     <tr>
-                        <td width="30%" class="m-header-color">Voucher Url</td>
-                        <td>{{voucherDetail.voucher_url}}</td>
+                        <td width="30%" class="m-header-color">Voucher Expire Date</td>
+                        <td>{{voucherDetail.expire_date}}</td>
                     </tr>
                     <tr>
                         <td colspan="2">
+                            <div class="nwe-btn"><span class="dx-button" ng-click="detailSwap({{voucherDetail.swap_id}},{{voucherDetail.offer_id}})">Detail</span></div>
                             <div class="nwe-btn"><span class="dx-button" ng-click="acceptSwapVoucher({{voucherDetail.id}})">Accept</span></div>
 
                         </td>

@@ -78,7 +78,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                                 .on('dxclick', function () {
                                     //Do something with options.data;
                                     //$location.path('/swapinterested/' + options.data.id);
-                                    $scope.cancelSwap(options.data.id);
+                                    $scope.cancelSwap(options.data.id,options.data.voucher_id);
                                 })
                                 .appendTo(container);
 
@@ -124,7 +124,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                 "expire_date",{caption:"Posted Date",dataField:"posted_on"},
                 {caption:"Expired Swap Offer",dataField:"offering_end_date"},
                 {
-                    width: 170,
+                    width: 250,
                     alignment: 'center',
                     cellTemplate: function (container, options) {
 
@@ -140,7 +140,15 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                             .on('dxclick', function () {
                                 //Do something with options.data;
                                 //$location.path('/swapinterested/' + options.data.id);
-                                $scope.swapEdit(options.data.id);
+                                $scope.swapEdit(options.data.id,options.data.swap_id);
+                            })
+                            .appendTo(container);
+                        $('<button/>').addClass('dx-button')
+                            .text('Cancel')
+                            .on('dxclick', function () {
+                                //Do something with options.data;
+                                //$location.path('/swapinterested/' + options.data.id);
+                                $scope.cancelSwapBid(options.data.id);
                             })
                             .appendTo(container);
                     }
@@ -205,12 +213,49 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
     });
 
 
-    $scope.cancelSwap = function (swap_id) {
+    $scope.cancelSwap = function (swap_id,voucher_id) {
         //$location.path('/resaleCancel/' + voucher_resale_id);
         $http({
             method: "POST",
             url: $rootScope.serviceurl + "swapCancel",
-            data: {"id":swap_id},
+            data: {"id":swap_id,"voucher_id":voucher_id},
+        }).success(function (data) {
+            //$scope.voucherInfo =data.bid_details;
+            //console.log($scope.voucherInfo);
+            if(data.type == 'success'){
+                //var message = data.message;
+                //params.validationGroup.reset();
+                $location.path('/dashboard');
+
+                DevExpress.ui.notify({
+                    message: data.message,
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "success", 3000);
+            }else{
+                var message = "Error occured.";
+                DevExpress.ui.notify({
+                    message: data.message,
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "error", 3000);
+            }
+
+
+
+        });
+    }
+
+    $scope.cancelSwapBid = function (swapi_id) {
+        //$location.path('/resaleCancel/' + voucher_resale_id);
+        $http({
+            method: "POST",
+            url: $rootScope.serviceurl + "swapBidCancel",
+            data: {"id":swapi_id},
         }).success(function (data) {
             //$scope.voucherInfo =data.bid_details;
             //console.log($scope.voucherInfo);
@@ -247,9 +292,9 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
 
     }
 
-    $scope.swapEdit = function (swap_ins_id) {
+    $scope.swapEdit = function (swap_ins_id,swap_id) {
 
-        $location.path('/swapinterestededit/'+swap_ins_id);
+        $location.path('/swapinterestededit/'+swap_ins_id+'/'+swap_id);
     }
 
     $scope.swapBid = function (swap_id) {

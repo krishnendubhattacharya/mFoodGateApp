@@ -140,4 +140,21 @@ app.controller('swapinterestededitCtrl', function ($rootScope, $scope, $http, $l
     }
     $scope.getSwapVouchers();
 
+    $scope.getSwapVoucherDetails = function(){
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"getSwapVoucherDetail/"+$stateParams.swapId,
+            headers: {'Content-Type': 'application/json'},
+        }).success(function(data) {
+            /*var vouchers = []
+             angular.forEach(data,function(val){
+             vouchers.push({name:val.title,value:val.voucher_id});
+             })
+             $scope.voucher_sel.option({dataSource:vouchers});*/
+            $scope.swapdetail = data.data[0];
+            console.log($scope.swapdetail);
+        })
+    }
+    $scope.getSwapVoucherDetails();
+
 });

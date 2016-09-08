@@ -255,7 +255,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Add Bid'
             })
             .state('frontend.editbid', {
-                url: '/editbid/:bidId',
+                url: '/editbid/:bidId/:sellId',
                 resolve: loadSequence('editbid'),
                 templateUrl: 'app/views/editbid.html',
                 title: 'Edit Bid'
@@ -807,7 +807,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 title: 'Swap Voucher'
             })
             .state('frontend.swapinterestededit', {
-                url: '/swapinterestededit/:siid',
+                url: '/swapinterestededit/:siid/:swapId',
                 resolve: loadSequence('swapinterestededit'),
                 templateUrl: 'app/views/swapinterestededit.html',
                 title: 'Edit Swap Bid'
