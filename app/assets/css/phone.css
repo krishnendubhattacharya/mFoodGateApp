@@ -1231,9 +1231,9 @@ margin-bottom:15px; overflow: hidden;}*/
 .m-restaurant-Promo .pro-item .desc .btn a{ display: block; background:#3db63d;}
 
 .m-restaurant-Promo .pro-item2{ width: 94%; height: auto; position: relative; overflow: hidden; background:#fff;
-    border: solid 1px #e4e4e4; margin: 10px auto;}
+    /*border: solid 1px #e4e4e4;*/ margin: 10px auto;}
 .m-restaurant-Promo .pro-item2 .logo-box{ width: 100%; text-align: center; vertical-align: middle;
-    line-height: 185px; height: 185px; border-bottom: solid 1px #e4e4e4; overflow: hidden;}
+    line-height: 185px; height: 185px; /*border-bottom: solid 1px #e4e4e4;*/ overflow: hidden;}
 .m-restaurant-Promo .pro-item2 .logo-box img{ width: auto; vertical-align:middle; height: 100%; }
 .owl-carousel .owl-item img{ display:  inline !important;}
 .m-restaurant-Promo .pro-item2 .desc{ padding: 10px 10px; overflow: hidden;}

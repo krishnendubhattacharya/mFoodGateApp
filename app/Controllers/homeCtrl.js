@@ -10,6 +10,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
     $scope.new_promo_show = 1;
     $scope.hot_promo_show = 1;
     $scope.res_promo_show = 1;
+    $scope.showslider = false;
 
     $scope.fads = false;
 
@@ -131,6 +132,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
+
                     //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseout', function (e){
                     //    console.log('hii');
                     //    carousal.trigger('play.owl.autoplay',[5000]);
@@ -142,7 +144,8 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                     //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseleave', function (e){
                     //    carousal.trigger('play.owl.autoplay');
                     //});
-                },30);
+                },3000);
+                $scope.showslider = true;
 
                 $timeout(function(){
                     // $('#ca-container').contentcarousel();
@@ -181,7 +184,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                     //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseleave', function (e){
                     //    carousal.trigger('play.owl.autoplay');
                     //});
-                },30);
+                },8000);
 
 
 
@@ -327,7 +330,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                     //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseleave', function (e){
                     //    carousal.trigger('play.owl.autoplay');
                     //});
-                },30);
+                },3000);
                 //console.log($scope.newPromoInfo);
 
             });
@@ -369,7 +372,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
-                },30);
+                },3000);
                 $timeout(function(){
                     //$scope.fres = true;
                     // $('#ca-container').contentcarousel();
@@ -396,7 +399,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
-                },30);
+                },3000);
 
             });
         }
@@ -449,7 +452,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
-                },30);
+                },3000);
             });
         }
         $scope.getBanners();

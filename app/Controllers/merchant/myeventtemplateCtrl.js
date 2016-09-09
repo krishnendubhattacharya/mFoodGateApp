@@ -1,4 +1,4 @@
-app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth) {
+app.controller('myeventtemplateCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
@@ -6,35 +6,8 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
 
         $location.path("/login");
     }
-    
-    $scope.first_show = 1;
-    $scope.second_show = 1;
-    $scope.third_show = 1;
-    $scope.firstShowHide = function () {
-        if($scope.first_show == 1){
-            $scope.first_show = 0;
-        }else{
-            $scope.first_show = 1;
-        }
-    }
-    $scope.secondShowHide = function () {
-        if($scope.second_show == 1){
-            $scope.second_show = 0;
-        }else{
-            $scope.second_show = 1;
-        }
 
-    }
-    $scope.thirdShowHide = function () {
-        if($scope.third_show == 1){
-            $scope.third_show = 0;
-        }else{
-            $scope.third_show = 1;
-        }
-
-    }
-
-
+    //alert(12);
     $scope.event_info=null;
     $scope.typeList = [];
     $scope.areaList = [];
@@ -130,10 +103,10 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         onInitialized : function(e){
             $scope.datagridobj = e.component;
         },
-        columns: ["title", {caption:"Event from date",dataField:"from_date"}, {caption:"Event start time",dataField:"from_time"}, {caption:"Event end time",dataField:"to_time"}, {caption:"Offer from date",dataField:"offer_from_date"}, {caption:"Offer end date",dataField:"offer_to_date"}, "status",
+        columns: ["title", "from_date", "to_date","status",
             {
                 caption:'Action',
-                width: 280,
+                width: 380,
                 alignment: 'center',
                 cellTemplate: function (container, options) {
                     $('<button/>').addClass('dx-button')
@@ -229,42 +202,6 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
 
         ]
     };
-    
-    $scope.dataGridOptionsDeal = {
-        dataSource: $scope.voucherInfoDeal,
-        selection: {
-            mode: "single"
-        },
-        paging: {
-            pageSize: 5
-        },
-        pager: {
-            showPageSizeSelector: true,
-            allowedPageSizes: [5, 10, 20],
-            showInfo: true
-        },
-        onInitialized : function(e){
-            $scope.datagridobjdeal = e.component;
-        },
-        columns: ["title", {caption:"Event from date",dataField:"from_date"}, {caption:"Event start time",dataField:"from_time"}, {caption:"Event end time",dataField:"to_time"}, {caption:"Offer from date",dataField:"offer_from_date"}, {caption:"Offer end date",dataField:"offer_to_date"}, "status",
-            {
-                caption:'Action',
-                width: 100,
-                alignment: 'center',
-                cellTemplate: function (container, options) {
-                    $('<button/>').addClass('dx-button')
-                        .text('Detail')
-                        .on('dxclick',function(){
-                            //$scope.image_event(options.data.id);
-                            $scope.event_detail(options.data.id);
-                            //$location.path('/eventdetail/' + options.data.id);
-                        })
-                        .appendTo(container);
-                    
-                }
-            },
-         ]
-    };
 
     $scope.getAllEvents = function() {
         $scope.edit_mode = false;
@@ -290,28 +227,12 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
             //$scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
         });
     }
-    
-    $scope.getEventsDeal = function() {
-        $scope.edit_mode = false;
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl + "getEventsDealByUser/" + $scope.loggedindetails.id,
-        }).success(function (data) {
-            $scope.voucherInfoDeal = data.data;
-            //console.log($scope.voucherInfo);
-            $scope.datagridobjdeal.option('dataSource',$scope.voucherInfoDeal);
-
-            //$scope.listViewData.option({"dataSource": $scope.voucherInfo,showSelectionControls: true });
-        });
-    }
-    
     $scope.loadList=function(e)
     {
         console.log("loadList")
         //$scope.listViewData= e.component;
     }
     $scope.getEvents();
-    $scope.getEventsDeal();
 
     $scope.image_event = function (event_id) {
         $location.path('/eventimage/' + event_id);

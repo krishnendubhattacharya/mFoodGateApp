@@ -107,6 +107,7 @@ app.constant('JS_REQUIRES', {
         'advertisedetail':['app/Controllers/advertisedetailCtrl.js'],
         'membership':['app/Controllers/membershipCtrl.js'],
         'myevent':['app/Controllers/myeventCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'myeventtemplate':['app/Controllers/merchant/myeventtemplateCtrl.js','app/Controllers/leftbarCtrl.js'],
         'eventimage':['app/Controllers/eventimageCtrl.js','app/Controllers/leftbarCtrl.js'],
         'eventdetail':['app/Controllers/eventdetailCtrl.js','app/Controllers/leftbarCtrl.js'],
         'eventofferdetail':['app/Controllers/eventofferdetailCtrl.js'],

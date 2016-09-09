@@ -830,6 +830,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/merchant/merchantdashboard.html',
                 title: 'Dashboard'
             })
+            .state('frontend.myeventtemplate', {
+                url: '/myeventtemplate',
+                resolve: loadSequence('myeventtemplate'),
+                templateUrl: 'app/views/merchant/myeventtemplate.html',
+                title: 'My Event Template'
+            })
 
 
         ;
