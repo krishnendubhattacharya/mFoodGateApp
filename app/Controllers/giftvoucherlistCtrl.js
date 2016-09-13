@@ -43,6 +43,7 @@ app.controller('giftvoucherlistCtrl', function ($rootScope, $scope, $http, $loca
         //console.log($scope.voucherInfo);
         $scope.dataGridOptions = {
             dataSource: $scope.voucherInfo,
+            wordWrapEnabled: true,
             selection: {
                 mode: "single"
             },
@@ -73,6 +74,7 @@ app.controller('giftvoucherlistCtrl', function ($rootScope, $scope, $http, $loca
         //console.log($scope.voucherInfo);
         $scope.dataGridOptions2 = {
             dataSource: $scope.voucherInfo2,
+            wordWrapEnabled: true,
             selection: {
                 mode: "single"
             },

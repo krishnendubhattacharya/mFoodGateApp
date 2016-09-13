@@ -20,10 +20,10 @@
                     <div class="off"><span><input type="checkbox" id="paymentscash" name="paymentscash" ng-model="cart.paymentscash" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'c')"></span>{{cart.offer_percent}}% <span>off</span> </div>
                     <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
-                    <div class="price-m" style="float: right">{{cart.condtn==1?'And':'Or'}}</div>
+                    <div ng-if="cart.mpoints != 0" class="price-m" style="float: right">{{cart.condtn==1?'And':'Or'}}</div>
                     <div style="clear: both"></div>
-                    <div class="off"><span><input type="checkbox" name="payments" id="payments" ng-model="cart.payments" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'p')"></span>{{cart.point_name}}</div>
-                    <div class="price-m" style="float: right">{{cart.mpoints}}</div>
+                    <div ng-if="cart.mpoints != 0" class="off"><span><input type="checkbox" name="payments" id="payments" ng-model="cart.payments" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'p')"></span>{{cart.point_name}}</div>
+                    <div ng-if="cart.mpoints != 0" class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>
                 <div class="qty-totals">
                     <div class="qty" ng-if="cart.resell== 0">Qty: <span><input type="text" ng-model="cart.quantity" value="1" ng-change="updateQuantity(cart)"></span></div>
@@ -31,9 +31,12 @@
                 </div>
                 <div style="clear:both"></div>
                 <div class="qty-totals">
-                    <div class="qty"><a href="javascript:;" ng-click="remove_offer(cart.offer_id)" style="color:red">Delete</a></div>
-                    <div class="totals" ><span>M-points:</span>{{cart.quantity*cart.mpoints}}</div>
+                    <div class="qty" style="width:60%">
+                    	<div class="nwe-btn" ng-click="remove_offer({{cart.offer_id}})" ><span class="dx-button" ng-click="remove_offer({{cart.offer_id}})" style="color:red;">Remove from Cart</span></div>
+                    </div>
+                    <div class="totals" style="width:40%" ><span>M-points:</span>{{cart.quantity*cart.mpoints}}</div>
                 </div>
+                
             </div>
             <!--<div ng-if="cartDetails && loggedindetails" class="offer">
                 <p>
@@ -104,18 +107,21 @@
                     <div class="off"><span><input type="checkbox" id="paymentscash" name="paymentscash" ng-model="cart.paymentscash" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'c')"></span>{{cart.offer_percent}}% <span>off</span> </div>
                     <div class="price-m"><span>{{cart.price}}</span>  IDR{{cart.offer_price | number}}</div>
                     <div style="clear: both"></div>
-                    <div class="price-m" style="float: right">{{cart.condtn==1?'And':'Or'}}</div>
+                    <div ng-if="cart.mpoints != 0" class="price-m" style="float: right">{{cart.condtn==1?'And':'Or'}}</div>
                     <div style="clear: both"></div>
-                    <div class="off"><span><input type="checkbox" name="payments" id="payments" ng-model="cart.payments" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'p')"></span>{{cart.point_name}}</div>
-                    <div class="price-m" style="float: right">{{cart.mpoints}}</div>
+                    <div ng-if="cart.mpoints != 0" class="off"><span><input type="checkbox" name="payments" id="payments" ng-model="cart.payments" ng-disabled="{{cart.condtn==1?true:false}}" ng-change="updateCheck(cartDetails,cart.offer_id,'p')"></span>{{cart.point_name}}</div>
+                    <div ng-if="cart.mpoints != 0" class="price-m" style="float: right">{{cart.mpoints}}</div>
                 </div>
                 <div class="qty-totals">
                     <div class="qty">Qty: <span><input type="text" ng-model="cart.quantity" value="1" ng-change="updateQuantity(cart)"></span></div>
                     <div class="totals" ><span>Total:</span> IDR{{cart.quantity*cart.offer_price | number}}</div>
                 </div>
                 <div class="qty-totals">
-                    <div class="qty"><a href="javascript:;" ng-click="remove_offer(cart.offer_id)" style="color:red">Delete</a></div>
-                    <div class="totals" ><span>M-points:</span>{{cart.quantity*cart.mpoints}}</div>
+                	<div class="qty" style="width:60%">
+                    	<div class="nwe-btn" ng-click="remove_offer({{cart.offer_id}})" ><span class="dx-button" ng-click="remove_offer({{cart.offer_id}})" style="color:red;">Remove from Cart</span></div>
+                    </div>
+                    <div class="totals" style="width:40%" ><span>M-points:</span>{{cart.quantity*cart.mpoints}}</div>
+                    
                 </div>
             </div>
             <!--<div ng-if="cartDetails && loggedindetails" class="offer">

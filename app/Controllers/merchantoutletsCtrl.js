@@ -95,7 +95,7 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
 
     $scope.dataGridOptions = {
         dataSource: $scope.voucherInfo,
-
+	   wordWrapEnabled: true,
         selection: {
             mode: "single"
         },

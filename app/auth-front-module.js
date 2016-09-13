@@ -40,7 +40,8 @@ angular
     };
     
     factobj.getUserAuthorisation = function () {      
-       var obj=$cookieStore.get('users');
+       //var obj=$cookieStore.get('users');
+        var obj = JSON.parse(localStorage.getItem('users'));
        
        if(obj)
        {

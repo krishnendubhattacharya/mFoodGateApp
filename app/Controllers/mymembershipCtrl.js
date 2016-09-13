@@ -46,6 +46,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
 
             $scope.dataGridOptions = {
                 dataSource: $scope.voucherInfo.membership,
+                wordWrapEnabled: true,
                 selection: {
                     mode: "single"
                 },
@@ -64,6 +65,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
                     { dataField: 'member_id',caption:'Member Id'},
                     {
                         alignment: 'center',
+                        caption:'Action',
                         cellTemplate: function (container, options) {
 
                             //$('<button/>').addClass('dx-button')
@@ -102,6 +104,7 @@ app.controller('mymembershipCtrl', function ($rootScope, $scope, $http, $locatio
 
             $scope.dataGridOptions1 = {
                 dataSource: $scope.voucherInfo1.membership,
+                wordWrapEnabled: true,
                 selection: {
                     mode: "single"
                 },

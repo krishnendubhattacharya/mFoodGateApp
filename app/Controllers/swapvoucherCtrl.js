@@ -43,6 +43,8 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
             console.log($scope.voucherInfo);
             $scope.dataGridOptions = {
                 dataSource: $scope.voucherInfo,
+                
+                wordWrapEnabled: true,
                 selection: {
                     mode: "single"
                 },
@@ -62,6 +64,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                     {caption:"Highest Bid",dataField:"high_bid"},"posted_on",
                     {
                         width: 250,
+                        caption:'Action',
                         alignment: 'center',
                         cellTemplate: function (container, options) {
 
@@ -107,6 +110,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
         //console.log($scope.voucherInfo);
         $scope.dataGridOptions2 = {
             dataSource: $scope.voucherInfo2,
+            wordWrapEnabled: true,
             selection: {
                 mode: "single"
             },
@@ -125,6 +129,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                 {caption:"Expired Swap Offer",dataField:"offering_end_date"},
                 {
                     width: 250,
+                    caption:'Action',
                     alignment: 'center',
                     cellTemplate: function (container, options) {
 
@@ -169,6 +174,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
         //console.log($scope.voucherInfo);
         $scope.dataGridOptions3 = {
             dataSource: $scope.voucherInfo3,
+            wordWrapEnabled: true,
             selection: {
                 mode: "single"
             },
@@ -185,6 +191,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                 {caption:"Swap Offer Date",dataField:"posted_on"},{caption:"Expired Swap Offer",dataField:"offering_end_date"},
                 {
                     width: 150,
+                    caption:'Action',
                     alignment: 'center',
                     cellTemplate: function (container, options) {
 

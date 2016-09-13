@@ -88,6 +88,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
             $scope.dataGridOptions = {
                 dataSource: $scope.voucherInfo,
+                wordWrapEnabled: true,
                 selection: {
                     mode: "single"
                 },
@@ -126,7 +127,8 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                         }
                     },*/
                     {
-                        width: 250,
+                        width: 200,
+                        caption:'Action',
                         alignment: 'center',
                         cellTemplate: function (container, options) {
                             $('<button/>').addClass('dx-button')
@@ -227,6 +229,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
         //console.log($scope.voucherInfo);
         $scope.dataGridOptions3 = {
             dataSource: $scope.voucherInfo1,
+            wordWrapEnabled: true,
             selection: {
                 mode: "single"
             },
@@ -248,8 +251,10 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                 {caption:'Status',dataField:"Status"},
                 {
                     width: 250,
+                    caption:'Action',
                     alignment: 'center',
                     cellTemplate: function (container, options) {
+                    if(options.data.Status != 'Accepted') {
                         $('<button/>').addClass('dx-button')
                             .text('Edit')
                             .on('dxclick', function () {
@@ -260,6 +265,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
                             })
                             .appendTo(container);
+                        }
 
                         $('<button/>').addClass('dx-button')
                             .text('Detail')
@@ -344,6 +350,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
         //console.log($scope.voucherInfo);
         $scope.dataGridOptions2 = {
             dataSource: $scope.soonVoucherInfo,
+            wordWrapEnabled: true,
             paging: {
                 pageSize: 5
             },
@@ -372,6 +379,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                 },*/
                 {
                     width: 160,
+                    caption:'Action',
                     alignment: 'center',
                     cellTemplate: function (container, options) {
                         $('<button/>').addClass('dx-button')
@@ -440,7 +448,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
             if(data.type == 'success'){
                 //var message = data.message;
                 //params.validationGroup.reset();
-                $location.path('/dashboard');
+                $location.path('/bidvoucher');
 
                 DevExpress.ui.notify({
                     message: data.message,
@@ -489,7 +497,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
             if(data.type == 'success'){
                 //var message = data.message;
                 //params.validationGroup.reset();
-                $location.path('/dashboard');
+                $location.path('/bidvoucher');
 
                 DevExpress.ui.notify({
                     message: data.message,

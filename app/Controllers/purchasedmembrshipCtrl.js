@@ -81,6 +81,7 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
 
     $scope.dataGridOptions = {
         dataSource: $scope.voucherInfo,
+        wordWrapEnabled: true,
 
         selection: {
             mode: "single"

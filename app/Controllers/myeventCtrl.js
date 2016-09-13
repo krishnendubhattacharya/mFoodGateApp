@@ -116,6 +116,7 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
 
     $scope.dataGridOptions = {
         dataSource: $scope.voucherInfo,
+        wordWrapEnabled: true,
         selection: {
             mode: "single"
         },
@@ -232,6 +233,7 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
     
     $scope.dataGridOptionsDeal = {
         dataSource: $scope.voucherInfoDeal,
+        wordWrapEnabled: true,
         selection: {
             mode: "single"
         },

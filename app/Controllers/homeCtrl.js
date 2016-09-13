@@ -105,6 +105,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                 url: $rootScope.serviceurl + "getFeaturedCategories",
             }).success(function (data) {
                 $scope.featuredCatInfo = data.featuredcat;
+                $scope.showslider = true;
                 //console.log($scope.featuredCatInfo);
                 $timeout(function(){
                    // $('#ca-container').contentcarousel();
@@ -132,20 +133,9 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
-
-                    //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseout', function (e){
-                    //    console.log('hii');
-                    //    carousal.trigger('play.owl.autoplay',[5000]);
-                    //});
-                    //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseover', function (e){
-                    //    carousal.trigger('stop.owl.autoplay');
-                    //});
-                    //
-                    //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseleave', function (e){
-                    //    carousal.trigger('play.owl.autoplay');
-                    //});
+				$timeout(function(){$('.owl-carousel').trigger('next.owl.carousel');},6000);
                 },3000);
-                $scope.showslider = true;
+                
 
                 $timeout(function(){
                     // $('#ca-container').contentcarousel();
@@ -173,18 +163,8 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
-                    //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseout', function (e){
-                    //    console.log('hii');
-                    //    carousal.trigger('play.owl.autoplay',[5000]);
-                    //});
-                    //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseover', function (e){
-                    //    carousal.trigger('stop.owl.autoplay');
-                    //});
-                    //
-                    //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseleave', function (e){
-                    //    carousal.trigger('play.owl.autoplay');
-                    //});
-                },8000);
+                    $timeout(function(){$('.owl-carousel-mob').trigger('next.owl.carousel');},6000);
+                },3000);
 
 
 
@@ -292,6 +272,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                 url: $rootScope.serviceurl + "getActiveAdsByLocation/1",
             }).success(function (data) {
                 $scope.ads = data.ads;
+                $scope.fads = true;
                 $timeout(function(){
 
                     // $('#ca-container').contentcarousel();
@@ -318,18 +299,8 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
-                    $scope.fads = true;
-                    //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseout', function (e){
-                    //    console.log('hii');
-                    //    carousal.trigger('play.owl.autoplay',[5000]);
-                    //});
-                    //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseover', function (e){
-                    //    carousal.trigger('stop.owl.autoplay');
-                    //});
-                    //
-                    //$('.item,.ca-item-main,.desc,.desc.txt,.desc.view-btn').on('mouseleave', function (e){
-                    //    carousal.trigger('play.owl.autoplay');
-                    //});
+                    
+                    $timeout(function(){$('.owl-carousel1').trigger('next.owl.carousel');},6000);
                 },3000);
                 //console.log($scope.newPromoInfo);
 
@@ -372,6 +343,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
+                    $timeout(function(){$('.featured_carousel').trigger('next.owl.carousel');},6000);
                 },3000);
                 $timeout(function(){
                     //$scope.fres = true;
@@ -399,6 +371,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
+                    $timeout(function(){$('.featured_carousel-mob').trigger('next.owl.carousel');},6000);
                 },3000);
 
             });
@@ -425,9 +398,10 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                 url: $rootScope.serviceurl + "getActiveBanner",
             }).success(function (data) {
                 $scope.banners = data.banner;
+                $scope.bcar = true;
                 //console.log($scope.specialInfo);
                 $timeout(function(){
-                    $scope.bcar = true;
+                    
                     // $('#ca-container').contentcarousel();
                     var banner_carousal = $('.banner_carousel');
                     banner_carousal.owlCarousel({
@@ -452,6 +426,7 @@ app.controller('homeCtrl', function ($rootScope, $scope, $http, $location,$timeo
                             }
                         }
                     });
+                    $timeout(function(){$('.banner_carousel').trigger('next.owl.carousel');},6000);
                 },3000);
             });
         }

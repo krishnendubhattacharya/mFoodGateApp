@@ -26,12 +26,14 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
             $scope.promoId = $scope.voucherInfo.voucher_details.offer_id;
                 //$scope.restaurant = data.restaurant;
             $scope.related_images = data.promo_images;
+            $scope.related_images2 = data.promo_images;
             $scope.offer_days = data.offer_days;
             //console.log($scope.related_images);
             $timeout(function(){
+          
                 // $('#ca-container').contentcarousel();
-                var banner_carousal = $('.featured_carousel2');
-                banner_carousal.owlCarousel({
+                var banner_carousal1 = $('.featured_carousel2');
+                banner_carousal1.owlCarousel({
                     autoplay:true,
                     autoHeight:true,
                     touchDrag:false,
@@ -54,8 +56,11 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
                         }
                     }
                 });
-            },30);
+                banner_carousal1.trigger('next.owl.carousel');
+            },3000);
+            
             $timeout(function(){
+           
                 // $('#ca-container').contentcarousel();
                 var banner_carousal = $('.featured_carousel3');
                 banner_carousal.owlCarousel({
@@ -81,14 +86,19 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
                         }
                     }
                 });
-            },30);
-            $scope.showslider = true;
+                banner_carousal.trigger('next.owl.carousel');
+            },3000);
+            
+            $scope.showslider = true; 
             $scope.getPromoDetails($scope.promoId);
             $scope.getQrCode();
         });
 
     }
-    $scope.getVoucherDetail();
+     $scope.getVoucherDetail();
+    
+    
+    
 
     $scope.getPromoDetails = function(promoId){
 
@@ -173,6 +183,8 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
             }
         });*/
     }
+    
+    
 
     /*$scope.changeMap = function(outletInfo){
         $scope.mapaddress = outletInfo.address;

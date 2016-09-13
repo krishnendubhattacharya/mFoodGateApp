@@ -44,6 +44,7 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
             //console.log($scope.voucherInfo);
             $scope.dataGridOptions = {
                 dataSource: $scope.voucherInfo,
+                wordWrapEnabled: true,
                 selection: {
                     mode: "single"
                 },
@@ -63,7 +64,7 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
                     {caption:"Expired",dataField:"expired_point"},
                     {caption:"Available",dataField:"available_point"},
                     {
-                        caption:'',
+                        caption:'Action',
                         width: 100,
                         alignment: 'center',
                         cellTemplate: function (container, options) {
@@ -129,6 +130,7 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
             //console.log($scope.voucherInfo);
             $scope.dataGridOptions2 = {
                 dataSource: $scope.voucherInfo1,
+                wordWrapEnabled: true,
                 selection: {
                     mode: "single"
                 },
@@ -146,7 +148,7 @@ app.controller('mypointsCtrl', function ($rootScope, $scope, $http, $location, $
                     {caption:"Expired in a Week",dataField:"week_count"},
                     {caption:"Expired in a month",dataField:"month_count"},
                     {
-                        caption:'',
+                        caption:'Action',
                          width: 100,
                          alignment: 'center',
                          cellTemplate: function (container, options) {

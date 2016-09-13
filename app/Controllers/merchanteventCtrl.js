@@ -15,6 +15,7 @@ app.controller('merchanteventCtrl', function ($rootScope, $scope, $http, $locati
 
     $scope.dataGridOptions = {
         dataSource: $scope.eventInfo,
+        wordWrapEnabled: true,
         selection: {
             mode: "single"
         },

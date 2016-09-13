@@ -74,7 +74,8 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                     $scope.loggedindetails = '';
 
                     params.validationGroup.reset();
-                    $cookieStore.put('users', data.user_details);
+                    //$cookieStore.put('users', data.user_details);
+                    localStorage.setItem('users', JSON.stringify(data.user_details));
                     $scope.fetched_user_details = data.user_details;
                     $scope.user_username = '';
                     $scope.user_password = '';
@@ -304,7 +305,8 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                         $scope.loggedindetails = '';
                         var message = data.message;
                         //params.validationGroup.reset();
-                        $cookieStore.put('users', data.user_details);
+                        //$cookieStore.put('users', data.user_details);
+                        localStorage.setItem('users', JSON.stringify(data.user_details));
                         $scope.user_username = '';
                         $scope.user_password = '';
                         myAuth.updateUserinfo(myAuth.getUserAuthorisation());

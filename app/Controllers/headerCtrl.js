@@ -59,7 +59,8 @@ app.controller('headerCtrl', function ($rootScope, $scope, $http, $location, myA
                     
                     
                 myAuth.resetUserinfo();
-                    $cookieStore.put('users', null);
+                    //$cookieStore.put('users', null);
+                    localStorage.setItem('users', null);
                     //$cookieStore.put('cart', null);
                     localStorage.setItem('cart', null);
                     myAuth.updateUserinfo(myAuth.getUserAuthorisation());

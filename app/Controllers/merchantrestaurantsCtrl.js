@@ -103,7 +103,7 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
 
     $scope.dataGridOptions = {
         dataSource: $scope.voucherInfo,
-
+	   wordWrapEnabled: true,
         selection: {
             mode: "single"
         },

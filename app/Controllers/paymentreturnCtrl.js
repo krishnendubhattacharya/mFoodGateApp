@@ -30,7 +30,7 @@ app.controller('paymentreturnCtrl', function ($rootScope, $scope, $http, $locati
                 //alert($scope.onlyPrice);
                 localStorage.setItem('onlyPrice', null);
                 //localStorage.setItem('onlyPrice', $scope.isOnlyPrice);
-                alert($scope.onlyPrice);
+                //alert($scope.onlyPrice);
                 if($scope.onlyPrice == 1){
                     var message = "Payment successfull.";
 

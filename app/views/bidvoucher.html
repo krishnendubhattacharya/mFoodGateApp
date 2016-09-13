@@ -119,7 +119,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <div class="nwe-btn"><span class="dx-button" ng-click="bidEdit({{voucherDetail.bid_id}},{{voucherDetail.voucher_resale_id}})">Edit</span></div>
+                            <div ng-if="voucherDetail.Status != 'Accepted'" class="nwe-btn"><span class="dx-button" ng-click="bidEdit({{voucherDetail.bid_id}},{{voucherDetail.voucher_resale_id}})">Edit</span></div>
                             <div class="nwe-btn"><span class="dx-button" ng-click="detailVoucher({{voucherDetail.voucher_resale_id}},{{voucherDetail.offer_id}})">Detail</span></div>
                             <div ng-if="voucherDetail.Status != 'Accepted'" class="nwe-btn"><span class="dx-button" ng-click="cancelBid({{voucherDetail.bid_id}},{{voucherDetail.voucher_id}})">Cancel</span></div>
 

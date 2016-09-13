@@ -1,5 +1,5 @@
 <!--Web header-->
-<div ng-controller="voucherdetailCtrl">
+<div ng-controller="voucherdetailCtrl" >
 
     <div class="container phone-hide">
         <div class="voucher-details item-details">
@@ -11,14 +11,14 @@
                 <div class="img-box">
                     <div class="pro-item">
 
-                        <div class="logo-box featured_carousel3" ng-if="showslider">
+                        <div class="logo-box featured_carousel3" ng-if="showslider" >
 
-                            <div ng-repeat="relatedImg in related_images" class="item">
+                            <div ng-repeat="relatedImg in related_images" class="item" >
                                 <img src="{{relatedImg.image}}" alt="" style="width:100%;"/>
                             </div>
                         </div>
 <div class="dx-clearfix"></div>
-                        <div class="logo-box" ng-if="qrlink" style="text-align: center">
+                        <div class="logo-box" ng-if="qrlink" style="text-align: center" >
                             <!--<div class="p-circle">5X</div>-->
                             <img src="{{qrlink}}" alt="" style="width:100%"/>
                         </div>
@@ -100,7 +100,7 @@
 
                     <div class="logo-box featured_carousel2">
 
-                        <div ng-repeat="relatedImg in related_images">
+                        <div ng-repeat="relatedImg in related_images2">
                             <img src="{{relatedImg.image}}" alt="" style="width:100%;"/>
                         </div>
                     </div>

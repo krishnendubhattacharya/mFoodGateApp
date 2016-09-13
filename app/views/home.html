@@ -2,7 +2,7 @@
 <div ng-controller="homeCtrl">
 <div class="container phone-hide">
     <div class="ads-banner ">
-        <div class="banner_carousel" >
+        <div class="banner_carousel" data-ng-init="baner()" >
             <div class="item" ng-repeat="banner in banners">
                 <a ui-sref="frontend.bannerdetail({bannerId:banner.id})" target="_blank">
                     <img src="{{banner.image_url}}" alt="" width="1081" height="309" ng-show="bcar"/>
@@ -13,7 +13,7 @@
 </div>
 <div class="m-banner moblie-potrait">
     <div class="m-ads-banner">
-        <div class="banner_carousel">
+        <div class="banner_carousel" data-ng-init="baner()">
             <div class="item" ng-repeat="banner in banners">
                 <a ui-sref="frontend.bannerdetail({bannerId:banner.id})" target="_blank">
                     <img src="{{banner.image_url}}" alt=""/>
@@ -44,7 +44,7 @@
         <div class="ca-container">
          <h1>Featured Promo</h1>
         <div class="ca-nav"></div>
-        <div class="ca-wrapper owl-carousel owl-theme">
+        <div class="ca-wrapper owl-carousel owl-theme" >
             <div class="item ca-item ca-item-{{$index+1}}" ng-repeat="featuredCatDetail in featuredCatInfo">
                 <div class="ca-item-main">
                     <div class="pro-item">
