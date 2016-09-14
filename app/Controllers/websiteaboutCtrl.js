@@ -22,6 +22,7 @@ app.controller('websiteaboutCtrl', function ($rootScope, $scope, $http, $locatio
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
             $scope.restaurant = data.data;
+            //console.log($scope.restaurant.outlets);
         })
     }
     $scope.getFeatureds();
@@ -41,11 +42,34 @@ app.controller('websiteaboutCtrl', function ($rootScope, $scope, $http, $locatio
     }
     $scope.getMerchant();
 
-    $scope.changeMap = function(outletInfo){
+    /*$scope.changeMap = function(outletInfo){
         $scope.showMap = true;
         $scope.mapaddress = outletInfo.address;
         $scope.maptitle = outletInfo.title;
+        //alert($scope.maptitle);
+
+    }*/
+    /*function next(elem) {
+        do {
+            elem = elem.nextSibling;
+        } while (elem && elem.nodeType !== 1);
+        return elem;
     }
+    $scope.changeMap = function(that){
+        var target = angular.element(that);
+        var nextElem = next(target);
+
+        if (nextElem)
+            nextElem.style.display = 'block';
+        console.log(target);
+
+       // $scope.showDetails = ! $scope.showDetails
+     //$scope.showMap = true;
+     //$scope.mapaddress = outletInfo.address;
+     //$scope.maptitle = outletInfo.title;
+     //alert($scope.maptitle);
+
+     }*/
 
 
 });

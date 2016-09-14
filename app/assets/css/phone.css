@@ -1794,3 +1794,7 @@ code {
 .pb-0{ padding-bottom:0 !important}
 .mb-15{ margin-bottom:15px !important}
 .mt-15{ margin-top: 15px; }
+
+.new-search{ width: 60%; height:  32px; border: solid 1px #ccc; margin: 15px auto 10px; background: #fff; overflow: hidden;;
+    float: left;}
+.new-search input[type="text"]{ width: 100%; background:  none; height: 32px; line-height: 32px; font-size: 14px; color: #666; border:  none;}

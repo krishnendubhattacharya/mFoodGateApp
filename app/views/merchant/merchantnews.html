@@ -146,7 +146,8 @@
         <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
         <h1>{{allicontext[24].title}}</h1>
         <div class="m-profile-details"  ng-show="!edit_mode">
-            <div style="margin-top: 10px;" id="button" dx-button="{
+            <div class="new-search"> <input type="text" placeholder="Search.." ng-model="test"></div>
+            <div style="margin-top: 15px; margin-bottom: 10px; width: 35%; float:  right;" id="button" dx-button="{
                                 text: 'Add News',
                                 onClick: changeView }" ></div>
 
@@ -166,7 +167,8 @@
                     text: 'Delete' }" ng-click="delete_menu(voucher);" ></div>
                 </p>
             </div>-->
-            <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo">
+            <div class="dx-clearfix"></div>
+            <div class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo | filter:test">
                 <h1>{{voucherDetail.title}}</h1>
                 <table>
                     <tr>

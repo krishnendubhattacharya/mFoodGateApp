@@ -30,6 +30,11 @@ app.controller('merchanteventCtrl', function ($rootScope, $scope, $http, $locati
         onInitialized : function(e){
             $scope.datagridobj = e.component;
         },
+        searchPanel: {
+            visible: true,
+            width: 240,
+            placeholder: "Search..."
+        },
         columns: ["title", "from_date", "to_date",
             {
                 caption:'Action',

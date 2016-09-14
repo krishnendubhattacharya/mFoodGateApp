@@ -98,6 +98,11 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
             console.log('By Bikash  --  ',e);
             $scope.datag = e.component;
         },
+        searchPanel: {
+            visible: true,
+            width: 240,
+            placeholder: "Search..."
+        },
         columns: ["member_name", {caption:"PromoID",dataField:"promo_id"},
             {caption:"Date Of Purchase",dataField:"purchased_date"},
             {caption:"Expiry Date",dataField:"expiry_date"},
@@ -339,27 +344,49 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
                 headers: {'Content-Type': 'application/json'},
             }).success(function(data) {
                 console.log(data);
-                $scope.start_date = moment(data.MembershipStartDate).format("YYYY-MM-DD");
-                $scope.end_date = moment(data.MembershipExpiredDate).format("YYYY-MM-DD");
-                //console.log($scope.start_date);
-                //console.log($scope.end_date);
-                $scope.mapdata={"member_id":data.MerchantMemberID,"offer_id":memdata.offer_id,"voucher_id":memdata.voucher_id,"user_id":memdata.member_id,"email":memdata.member_email,"name":memdata.member_name,"membership_start_date":$scope.start_date,"membership_end_date":$scope.end_date,"is_active":1,"merchant_id":memdata.merchant_id};
-               // console.log($scope.mapdata);
-                $http({
-                    method: "POST",
-                    url: $rootScope.serviceurl+"saveMembershipMemberMap",
-                    data: $scope.mapdata,
-                    headers: {'Content-Type': 'application/json'},
-                }).success(function(data) {
+                if(data.Status == 'Success'){
+                    $scope.start_date = moment(data.MembershipStartDate).format("YYYY-MM-DD");
+                    $scope.end_date = moment(data.MembershipExpiredDate).format("YYYY-MM-DD");
+                    //console.log($scope.start_date);
+                    //console.log($scope.end_date);
+                    $scope.mapdata = {
+                        "member_id": data.MerchantMemberID,
+                        "offer_id": memdata.offer_id,
+                        "voucher_id": memdata.voucher_id,
+                        "user_id": memdata.member_id,
+                        "email": memdata.member_email,
+                        "name": memdata.member_name,
+                        "membership_start_date": $scope.start_date,
+                        "membership_end_date": $scope.end_date,
+                        "is_active": 1,
+                        "merchant_id": memdata.merchant_id
+                    };
+                    // console.log($scope.mapdata);
+                    $http({
+                        method: "POST",
+                        url: $rootScope.serviceurl + "saveMembershipMemberMap",
+                        data: $scope.mapdata,
+                        headers: {'Content-Type': 'application/json'},
+                    }).success(function (data) {
+                        DevExpress.ui.notify({
+                            message: "Added Successfilly",
+                            position: {
+                                my: "center top",
+                                at: "center top"
+                            }
+                        }, "success", 3000);
+                        $scope.getMenus();
+                    });
+                }
+                else{
                     DevExpress.ui.notify({
-                        message: "Added Successfilly",
+                        message: data.StatusMessage,
                         position: {
                             my: "center top",
                             at: "center top"
                         }
-                    }, "success", 3000);
-                    $scope.getMenus();
-                });
+                    }, "error", 3000);
+                }
             });
     }
 

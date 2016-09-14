@@ -119,6 +119,11 @@ app.controller('merchantrestaurantsCtrl', function ($rootScope, $scope, $http, $
             console.log('By Bikash  --  ',e);
             $scope.datag = e.component;
         },
+        searchPanel: {
+            visible: true,
+            width: 240,
+            placeholder: "Search..."
+        },
         columns: ["title", {
             caption:'Logo',
             cellTemplate: function (container, options) {

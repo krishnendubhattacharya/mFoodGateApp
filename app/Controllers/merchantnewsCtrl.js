@@ -160,6 +160,11 @@ app.controller('merchantnewsCtrl', function ($rootScope, $scope, $http, $locatio
             console.log('By Bikash  --  ',e);
             $scope.datag = e.component;
         },
+        searchPanel: {
+            visible: true,
+            width: 240,
+            placeholder: "Search..."
+        },
         columns: [ "title", {
             caption:'Image',
             cellTemplate: function (container, options) {

@@ -111,6 +111,11 @@ app.controller('merchantoutletsCtrl', function ($rootScope, $scope, $http, $loca
             console.log('By Bikash  --  ',e);
             $scope.datag = e.component;
         },
+        searchPanel: {
+            visible: true,
+            width: 240,
+            placeholder: "Search..."
+        },
         columns: ["title","address", {
             caption:'Image',
             cellTemplate: function (container, options) {

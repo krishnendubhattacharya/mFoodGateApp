@@ -100,6 +100,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.voucherInfo = null;
     $scope.datag = null;
 
+
     $scope.dataGridOptions = {
         dataSource: $scope.voucherInfo,
 	   wordWrapEnabled: true,	
@@ -117,6 +118,11 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
         onInitialized : function(e){
             console.log('By Bikash  --  ',e);
             $scope.datag = e.component;
+        },
+        searchPanel: {
+            visible: true,
+            width: 240,
+            placeholder: "Search..."
         },
         columns: ["sl", "title","price", {
             caption:'Image',

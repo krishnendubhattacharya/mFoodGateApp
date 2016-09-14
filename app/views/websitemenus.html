@@ -74,7 +74,8 @@
         <h1 style="margin-top:20px;"  ng-click="cats.hide=!cats.hide" ng-repeat-start="cats in featuredMenus">{{cats.name}}</h1>
         <div class="m-menu-cont" ng-repeat-end  ng-if="!cats.hide">
             <div class="m-menu-list">
-                <p ng-repeat="menu in cats.menus">{{menu.title}}: <span>IDR{{menu.price | number}}</span></p>
+                
+                <p ng-repeat="menu in cats.menus"><span style="float:left;width:70%;">{{menu.title}}:</span> <span>IDR{{menu.price | number}}</span></p>
             </div>
         </div>
     </div>

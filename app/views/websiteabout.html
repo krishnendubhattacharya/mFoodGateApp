@@ -43,10 +43,16 @@
                                 <P><span>Address:</span>{{outlet.address}}</P>
                                 <h2>Description:</h2>
                                 <p>{{outlet.description}}</p>
-                                <a href="javascript:void(0)" ng-click="changeMap(outlet)" style="font-size: 16px;color:rgb(120,154,50)">Click here for Map</a>
+                                <!--<a href="javascript:void(0)" ng-click="showDetails = ! showDetails" style="font-size: 16px;color:rgb(120,154,50)">Click here for Map</a>-->
+                                <div class="map"><!--<img src="app/assets/Images/map.png" alt=""/>-->
+                                    <ng-map center="{{outlet.address}}" zoom="6">
+                                        <marker title="{{outlet.title}}" position="{{outlet.lat}},{{outlet.lng}}" ></marker>
+                                    </ng-map>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="map" ng-if="showMap"><!--<img src="app/assets/Images/map.png" alt=""/>-->
                         <ng-map center="{{mapaddress}}" zoom="6">
                             <marker position="{{mapaddress}}"></marker>
@@ -101,7 +107,12 @@
                         <P><span>Address:</span>{{outlet.address}}</P>
                         <h2>Description:</h2>
                         <p>{{outlet.description}}</p>
-                        <a href="javascript:void(0)" ng-click="changeMap(outlet)" style="font-size: 16px;color:rgb(120,154,50)">Click here for Map</a>
+                        <!--<a href="javascript:void(0)" ng-click="changeMap(outlet)" style="font-size: 16px;color:rgb(120,154,50)">Click here for Map</a>-->
+                        <div class="map"><!--<img src="app/assets/Images/map.png" alt=""/>-->
+                            <ng-map center="{{outlet.address}}" zoom="5">
+                                <marker title="{{outlet.title}}" position="{{outlet.lat}},{{outlet.lng}}" ></marker>
+                            </ng-map>
+                        </div>
                     </div>
                 </div>
 

@@ -55,6 +55,11 @@ app.controller('merchantmenucategoriesCtrl', function ($rootScope, $scope, $http
             allowedPageSizes: [5, 10, 20],
             showInfo: true
         },
+        searchPanel: {
+            visible: true,
+            width: 240,
+            placeholder: "Search..."
+        },
         onInitialized : function(e){
             console.log('By Bikash  --  ',e);
             $scope.datag = e.component;
