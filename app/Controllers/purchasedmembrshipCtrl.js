@@ -379,8 +379,10 @@ app.controller('purchasedmembrshipCtrl', function ($rootScope, $scope, $http, $l
                     });
                 }
                 else{
+
+                    $scope.errorMsg = 'Added member fail';
                     DevExpress.ui.notify({
-                        message: data.StatusMessage,
+                        message: $scope.errorMsg,
                         position: {
                             my: "center top",
                             at: "center top"

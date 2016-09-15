@@ -66,7 +66,7 @@
                     <h1 ng-click="secondShowHide()">Expire soon Voucher</h1>
                     <ul ng-show="second_show">
                         <li ng-repeat="voucherDetail in soonVoucherInfo">
-                            <div class="pro-item">
+                            <div class="pro-item" style="height: auto">
                                 <div class="logo-box">
                                     <!--<div class="p-circle">5X</div>-->
                                     <a ui-sref="frontend.voucherdetail({ voucherId: voucherDetail.voucher_id })"><img src="{{voucherDetail.image}}" width="218" height="100"  alt=""/></a>
