@@ -14,6 +14,8 @@ app.controller('dashboardCtrl', function ($rootScope, $scope, $http, $location, 
         }).success(function (data) {
             //console.log(data.email);
             $scope.userInfo =data.user_details;
+            //$scope.catInfo =data.categories;
+            //console.log($scope.catInfo);
             //console.log($scope.allcat);
 
             //console.log($scope.userInfo.email);
@@ -24,5 +26,28 @@ app.controller('dashboardCtrl', function ($rootScope, $scope, $http, $location, 
 
     }
     $scope.getUserInfo();
+
+    $scope.getUserDashboardInfo = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "userRelatedPoint/"+$scope.loggedindetails.id,
+            //data: {"email":$scope.email,"password":$scope.password},
+            //headers: {'Content-Type': 'application/json'},
+        }).success(function (data) {
+            //console.log(data.email);
+            $scope.user_point_details =data.user_point_details;
+            $scope.user_voucher_details =data.user_voucher_details;
+            //$scope.catInfo =data.categories;
+            //console.log($scope.catInfo);
+            //console.log($scope.allcat);
+
+            //console.log($scope.userInfo.email);
+
+
+
+        });
+
+    }
+    $scope.getUserDashboardInfo();
 
 });

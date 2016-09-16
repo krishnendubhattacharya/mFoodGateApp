@@ -39,6 +39,7 @@
 			</div>
 		</div>
 		<ul>
+			<li ng-if="loggedindetails.user_type_id == 2"><a ui-sref="frontend.dashboard"><i class="fa fa-gear"></i> {{allicons[27].title}}</a></li>
 			<li ng-if="loggedindetails.user_type_id == 2"><a ui-sref="frontend.setting"><i class="fa fa-gear"></i> {{allicons[0].title}}</a></li>
 			<li ng-if="loggedindetails.user_type_id == 2"><a ui-sref="frontend.changepassword"><i class="fa fa-lock"></i> {{allicons[1].title}}</a></li>
 			<li ng-if="loggedindetails.user_type_id == 2"><a ui-sref="frontend.profile"><i class="fa fa-user"></i> {{allicons[2].title}}</a></li>
@@ -101,6 +102,10 @@
 			<li><a ui-sref="frontend.mypoints"><h1><img src="app/assets/Images/setting.png" width="35" height="35"  alt=""/></h1> My Points</a></li>
 			<li><a ui-sref="frontend.myevent"><h1><img src="app/assets/Images/setting.png" width="35" height="35"  alt=""/></h1> My Events</a></li>-->
 
+			<li><a ui-sref="frontend.dashboard">
+				<h1><img src="{{allicons[27].image_url}}" width="35" height="35"  alt=""/></h1>
+				{{allicons[27].title}}</a>
+			</li>
 			<li><a ui-sref="frontend.setting">
 				<h1><img src="{{allicons[0].image_url}}" width="35" height="35"  alt=""/></h1>
 				{{allicons[0].title}}</a>

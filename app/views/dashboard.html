@@ -7,19 +7,64 @@
                 <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
 
             <div class="profile-details">
-                <div class="dash-board">
+                <!--<div class="dash-board">
                 <h1>{{userInfo.first_name}} {{userInfo.last_name}}</h1>
                 <p><span class="title">Tel:</span> <span class="val">{{userInfo.phone}}</span></p>
                 <p><span class="title">Member Since:</span> <span class="val">{{userInfo.registration_date}}</span></p>
-                <!--<p><span class="title">Date of Birth:</span> <span class="val">18 oct 1970</span></p>-->
                 <p><span class="title">Email:</span> <span class="val">{{userInfo.email}}</span></p>
-                <!--<p><span class="title">mPoint:</span> <span class="val">120,000</span></p>-->
                 <div style="margin-top: 20px;" class="clear-fix"></div>
                 <h1>About me</h1>
                 <P style="padding:0; margin:0;">
                     {{userInfo.about_me}}
                 </P>
-            </div>
+            </div>-->
+                <div class="dash-board">
+                    <h1>Profile</h1>
+                    <p style="font-size: 18px;">{{userInfo.first_name}} {{userInfo.last_name}}</p>
+                    <p><span class="title">Member Since:</span> <span class="val">{{userInfo.registration_date}}</span></p>
+                    <p><span class="title">Mobile Phone:</span> <span class="val">{{userInfo.phone}}</span></p>
+
+                    <p><span class="title">Email/Login Name:</span> <span class="val">{{userInfo.email}}</span></p>
+                    <p><span class="title">Favourite Food:</span> <span class="val" ng-repeat="cat in userInfo.categories">{{cat.category}}, </span></p>
+                    <div style="margin-top: 20px;" class="clear-fix"></div>
+                    <h1>My Point</h1>
+                    <!--<P style="padding:0; margin:0;">
+                        {{userInfo.about_me}}
+                    </P>-->
+                    <div ng-repeat="user_point in user_point_details">
+                        <p><span class="title">Name:</span> <span class="val">{{user_point.point_name}}</span></p>
+                        <p><span class="title">Point:</span> <span class="val">{{user_point.total_remaining_point}}</span></p>
+
+                        <p><span class="title">Nearest Expired:</span> <span class="val">{{user_point.point_expire_date}}</span></p>
+                        <p><span class="title">Last {{user_point.point_name}} Get:</span> <span class="val">{{user_point.last_point_date}}</span></p>
+                        <div style="margin-top: 20px;" class="clear-fix"></div>
+                    </div>
+                    <div style="margin-top: 20px;" class="clear-fix"></div>
+
+                    <h1>My Deal</h1>
+
+
+                    <p><span class="title">Active Voucher:</span> <span class="val">{{user_voucher_details.active_voucher}}</span></p>
+                    <p><span class="title">Nearest Expired:</span> <span class="val">{{user_voucher_details.nearest_active_voucher}}</span></p>
+
+                    <p><span class="title">Resell Voucher:</span> <span class="val">{{user_voucher_details.resell_voucher}}</span></p>
+                    <p><span class="title">Nearest Offer Expired:</span> <span class="val">{{user_voucher_details.nearest_active_resell_voucher}}</span></p>
+
+                    <p><span class="title">Swap Voucher:</span> <span class="val">{{user_voucher_details.swap_voucher}}</span></p>
+                    <p><span class="title">Nearest Offer Expired:</span> <span class="val">{{user_voucher_details.nearest_active_swap_voucher}}</span></p>
+
+                    <p><span class="title">Active Membership:</span> <span class="val">{{user_voucher_details.membership_voucher}}</span></p>
+                    <p><span class="title">Nearest Membership Expiredd:</span> <span class="val">{{user_voucher_details.nearest_active_membership_voucher}}</span></p>
+
+                    <p><span class="title">Event Offer:</span> <span class="val">{{user_voucher_details.event_voucher}}</span></p>
+                    <p><span class="title">Nearest Offer Expired:</span> <span class="val">{{user_voucher_details.nearest_active_event_voucher}}</span></p>
+
+                    <p><span class="title">Item Cart:</span> <span class="val">{{user_voucher_details.cart_voucher}}</span></p>
+                    <p><span class="title">Nearest Offer Expired:</span> <span class="val">{{user_voucher_details.nearest_active_cart_voucher}}</span></p>
+
+
+                    <div style="margin-top: 20px;" class="clear-fix"></div>
+                </div>
 </div>
         </div>
     </div>
@@ -29,18 +74,65 @@
         <h1>My Account</h1>
         <div class="m-profile-details">
             <div class="m-dash-board">
-            <h1>{{userInfo.first_name}} {{userInfo.last_name}}</h1>
+            <!--<h1>{{userInfo.first_name}} {{userInfo.last_name}}</h1>
             <p><span class="title">Tel:</span> <span class="val">{{userInfo.phone}}</span></p>
             <p><span class="title">Member Since:</span> <span class="val">{{userInfo.registration_date}}</span></p>
-            <!--<p><span class="title">Date of Birth:</span> <span class="val">18 oct 1970</span></p>-->
+
             <p><span class="title">Email:</span> <span class="val">{{userInfo.email}}</span></p>
-            <!--<p><span class="title">mPoint:</span> <span class="val">120,000</span></p>-->
+
             <div style="margin-top: 20px;"
             ="clear-fix"></div>
             <h1>About me</h1>
             <P style="padding:0; margin:0;">
                 {{userInfo.about_me}}
-            </P>
+            </P>-->
+
+                <h1>Profile</h1>
+                <p style="font-size: 18px;">{{userInfo.first_name}} {{userInfo.last_name}}</p>
+                <p><span class="title">Member Since:</span> <span class="val">{{userInfo.registration_date}}</span></p>
+                <p><span class="title">Mobile Phone:</span> <span class="val">{{userInfo.phone}}</span></p>
+
+                <p><span class="title">Email/Login Name:</span> <span class="val">{{userInfo.email}}</span></p>
+                <p><span class="title">Favourite Food:</span> <span class="val" ng-repeat="cat in userInfo.categories">{{cat.category}}, </span></p>
+                <div style="margin-top: 20px;" class="clear-fix"></div>
+                <h1>My Point</h1>
+                <!--<P style="padding:0; margin:0;">
+                    {{userInfo.about_me}}
+                </P>-->
+                <div ng-repeat="user_point in user_point_details">
+                    <p><span class="title">Name:</span> <span class="val">{{user_point.point_name}}</span></p>
+                    <p><span class="title">Point:</span> <span class="val">{{user_point.total_remaining_point}}</span></p>
+
+                    <p><span class="title">Nearest Expired:</span> <span class="val">{{user_point.point_expire_date}}</span></p>
+                    <p><span class="title">Last {{user_point.point_name}} Get:</span> <span class="val">{{user_point.last_point_date}}</span></p>
+                    <div style="margin-top: 20px;" class="clear-fix"></div>
+                </div>
+                <div style="margin-top: 20px;" class="clear-fix"></div>
+
+                <h1>My Deal</h1>
+
+
+                <p><span class="title">Active Voucher:</span> <span class="val">{{user_voucher_details.active_voucher}}</span></p>
+                <p><span class="title">Nearest Expired:</span> <span class="val">{{user_voucher_details.nearest_active_voucher}}</span></p>
+
+                <p><span class="title">Resell Voucher:</span> <span class="val">{{user_voucher_details.resell_voucher}}</span></p>
+                <p><span class="title">Nearest Offer Expired:</span> <span class="val">{{user_voucher_details.nearest_active_resell_voucher}}</span></p>
+
+                <p><span class="title">Swap Voucher:</span> <span class="val">{{user_voucher_details.swap_voucher}}</span></p>
+                <p><span class="title">Nearest Offer Expired:</span> <span class="val">{{user_voucher_details.nearest_active_swap_voucher}}</span></p>
+
+                <p><span class="title">Active Membership:</span> <span class="val">{{user_voucher_details.membership_voucher}}</span></p>
+                <p><span class="title">Nearest Membership Expiredd:</span> <span class="val">{{user_voucher_details.nearest_active_membership_voucher}}</span></p>
+
+                <p><span class="title">Event Offer:</span> <span class="val">{{user_voucher_details.event_voucher}}</span></p>
+                <p><span class="title">Nearest Offer Expired:</span> <span class="val">{{user_voucher_details.nearest_active_event_voucher}}</span></p>
+
+                <p><span class="title">Item Cart:</span> <span class="val">{{user_voucher_details.cart_voucher}}</span></p>
+                <p><span class="title">Nearest Offer Expired:</span> <span class="val">{{user_voucher_details.nearest_active_cart_voucher}}</span></p>
+
+
+                <div style="margin-top: 20px;" class="clear-fix"></div>
+
         </div>
         </div>
 
