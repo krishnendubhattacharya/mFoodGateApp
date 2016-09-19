@@ -124,7 +124,9 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             width: 240,
             placeholder: "Search..."
         },
-        columns: ["sl", "title","price", {
+        columns: ["sl", "title",
+         {caption:'price',dataField:"formatprice"},
+         {
             caption:'Image',
             cellTemplate: function (container, options) {
                 if(options.data.image) {

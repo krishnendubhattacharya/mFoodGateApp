@@ -179,7 +179,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
     }
 
-    $scope.cancelResell = function (voucher_resale_id) {
+    $scope.cancelResell = function (voucher_resale_id,voucher_id) {
         //$location.path('/resaleCancel/' + voucher_resale_id);
         $http({
             method: "POST",
