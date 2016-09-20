@@ -481,7 +481,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
                                         if (data.type == 'success') {
                                             //console.log(data.getRelatedPromo);
                                             //$scope.related_products = data.getRelatedPromo;
-                                            //console.log($scope.related_products);
+                                            console.log(data);
                                             $window.location.href = data.url;
 
                                         }

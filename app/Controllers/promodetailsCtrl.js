@@ -92,7 +92,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                 }
 
                 $scope.related_images = data.promo_images;
-                //console.log($scope.related_products);
+                console.log($scope.related_images);
                 $timeout(function(){
                     // $('#ca-container').contentcarousel();
                     var banner_carousal = $('.featured_carousel2');

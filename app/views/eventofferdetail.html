@@ -8,9 +8,16 @@
             <div class="ev-details" style="float: left;">
                 <div class="event-d">
                     <div class="img-box">
+                    	
+                    	
+                    	<div class="banner featured_carousel3">
+				              <div ng-repeat="relatedImg in related_images" class="item">
+				          		<img src="{{relatedImg.image}}" alt=""/>
+				              </div>
+				     </div>
 
-                                <!--<div class="p-circle">5X</div>-->
-                                <img src="{{eventInfo.data.image}}" width="218" height="100"  alt=""/>
+                                <!--<div class="p-circle">5X</div>
+                                <img src="{{eventInfo.data.image}}" width="218" height="100"  alt=""/>-->
 
                     </div>
                     <div class="dsc-bx">
@@ -26,6 +33,7 @@
                             <p><span class="title">Event End Date</span> <span class="val">{{eventInfo.data.to_date}}</span></p>
                             <p><span class="title">Offer Start Date</span> <span class="val">{{eventInfo.data.offer_from_date}}</span></p>
                             <p><span class="title">Offer End Date</span> <span class="val">{{eventInfo.data.offer_to_date}}</span></p>
+                            <p><span class="title"><div class="nwe-btn" ng-if="loggedindetails.user_type_id == 3"><span class="dx-button" ng-click="eventBid({{eventInfo.data.id}})">Bid</span></div></span></p>
 
 
 
@@ -46,7 +54,12 @@
                     <div class="pro-item">
                         <div class="logo-box">
                             <!--<div class="p-circle">5X</div>-->
-                            <img src="{{eventInfo.data.image}}" width="218" height="100"  alt=""/>
+                            <div class="banner featured_carousel2">
+						     <div ng-repeat="relatedImg in related_images" class="item">
+						         <img src="{{relatedImg.image}}" alt=""/>
+						     </div>
+					  </div>
+                            <!--<img src="{{eventInfo.data.image}}" width="218" height="100"  alt=""/>-->
                         </div>
 
                     </div>
@@ -64,7 +77,7 @@
                     <p><span class="title">Event End Date</span> <span class="val">{{eventInfo.data.to_date}}</span></p>
                     <p><span class="title">Offer Start Date</span> <span class="val">{{eventInfo.data.offer_from_date}}</span></p>
                     <p><span class="title">Offer End Date</span> <span class="val">{{eventInfo.data.offer_to_date}}</span></p>
-
+				<p><span class="title"><div class="nwe-btn" ng-if="loggedindetails.user_type_id == 3"><span class="dx-button" ng-click="eventBid({{eventInfo.data.id}})">Bid</span></div></span></p>
 
 
                 </div>
