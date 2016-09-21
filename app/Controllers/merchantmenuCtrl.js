@@ -6,6 +6,25 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
 
         $location.path("/login");
     }
+    $scope.options = {
+    height: 300,
+    focus: true,
+    airMode: true,
+    toolbar: [
+            ['edit',['undo','redo']],
+            ['headline', ['style']],
+            ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
+            ['fontface', ['fontname']],
+            ['textsize', ['fontsize']],
+            ['fontclr', ['color']],
+            ['alignment', ['ul', 'ol', 'paragraph', 'lineheight']],
+            ['height', ['height']],
+            ['table', ['table']],
+            ['insert', ['link','picture','video','hr']],
+            ['view', ['fullscreen', 'codeview']],
+            ['help', ['help']]
+        ]
+  };
     $scope.img_uploader = null;
     $scope.all_restaurant = [];
     $scope.textBox = {image:  {

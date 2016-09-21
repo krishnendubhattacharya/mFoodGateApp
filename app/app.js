@@ -734,6 +734,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/advertisedetail.html',
                 title: 'Advertise Detail'
             })
+            .state('frontend.template', {
+                url: '/template',
+                resolve: loadSequence('template'),
+                templateUrl: 'app/views/template.html',
+                title: 'Event Templates'
+            })
             .state('frontend.myevent', {
                 url: '/myevent',
                 resolve: loadSequence('myevent'),
@@ -835,6 +841,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 resolve: loadSequence('myeventtemplate'),
                 templateUrl: 'app/views/merchant/myeventtemplate.html',
                 title: 'My Event Template'
+            })
+            .state('frontend.eventtemplateimage', {
+                url: '/eventtemplateimage/:eventTemplateId',
+                resolve: loadSequence('eventtemplateimage'),
+                templateUrl: 'app/views/merchant/eventtemplateimage.html',
+                title: 'Event Template Images'
             })
 
 
