@@ -15,24 +15,99 @@
                                 <div dx-text-box="textBox.price"   ng-model="price"></div>
                             </div>
                         </div>
+                        
+                        <div class="dx-field">
+                            <div class="dx-field-label">Restaurant</div>
+                            <div class="dx-field-value">
+                                <div dx-select-box="textBox.restaurant" ng-model="restaurant_id"></div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="dx-field">
+                            <div class="dx-field-label">Outlet</div>
+                            <div class="dx-field-value">
+                                <div dx-select-box="textBox.outlet" ng-model="outlet_id"></div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="dx-field">
+                            <div class="dx-field-label">Contact Person</div>
+                            <div class="dx-field-value">
+                                <div dx-text-box="textBox" ng-model="contact_person"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="dx-field">
+                            <div class="dx-field-label">Contact Phone</div>
+                            <div class="dx-field-value">
+                                <div dx-text-box="textBox" ng-model="contact_phone"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="dx-field">
+                            <div class="dx-field-label">Event Offer Bid Template</div>
+                            <div class="dx-field-value">
+                                <div dx-select-box="textBox.template" ng-model="template_id"></div>
+                            </div>
+                        </div>
 
                         <div class="dx-field">
                             <div class="dx-field-label">Description</div>
                             <div class="dx-field-value">
-                                <div dx-text-area="textArea"   ng-model="description"></div>
+                                <div dx-text-area="textArea.description" ng-model="description"></div>
                             </div>
                         </div>
+                        
+                        <div class="profile-details" style="width:100%"  ng-show="!edit_mode">
+						 <!--<div id="button" dx-button="{
+						                 text: 'Add Image',
+						                 onClick: changeView }" ></div>-->
+						 <!--<input type="button" ng-click="refresh_grid()" value="Refresh">-->
+						 <div id="gridContainer" dx-data-grid="dataGridOptions"></div>
+
+					  </div>
+
+					  <div class="profile-details" style="width:100%" ng-show="edit_mode">
+						 <div class="form">
+						     <div class="dx-fieldset">
+
+
+						         <div class="dx-field">
+						             <div class="dx-field-label">Image</div>
+						             <div class="dx-field-value">
+						                 <div dx-file-uploader="textBox.image"></div>
+						             </div>
+						         </div>
 
 
 
+						     </div>
+						     <!--<div id="summary" dx-validation-summary="{ }"></div>-->
+						     <div id="button" dx-button="{
+						                 text: 'Submit',
+						                 type: 'success',
+						                 onClick: save_event_image }" ></div>
 
+						     <div id="button" dx-button="{
+						                 text: 'Cancel',
+						                 onClick: changeView }" ></div>
+
+
+						 </div>
+					  </div>
+
+
+
+					<div id="button" dx-button="{
+                                text: 'Submit',
+                                type: 'success',
+                                onClick: saveEventBid }" ></div>		
 
                     </div>
                     <!--<div id="summary" dx-validation-summary="{ }"></div>-->
-                    <div id="button" dx-button="{
-                                text: 'Submit',
-                                type: 'success',
-                                onClick: saveEventBid }" ></div>
+                    
                 </div>
 
             </div>
