@@ -49,6 +49,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             displayExpr: "name",
             valueExpr: "value",
             onInitialized:function(e){
+                console.log(e);
                 $scope.res_select = e.component;
                 $scope.getRestaurants();
             }
@@ -65,6 +66,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             displayExpr: "name",
             valueExpr: "value",
             onInitialized:function(e){
+                console.log(e);
                 $scope.res_select1 = e.component;
                 $scope.getRestaurants();
             }

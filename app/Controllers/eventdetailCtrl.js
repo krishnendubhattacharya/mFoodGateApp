@@ -23,6 +23,18 @@ app.controller('eventdetailCtrl', function ($rootScope, $scope, $http, $location
 
     }
     $scope.getEventDetail();
+    
+    $scope.getisBidEvent = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "getIsBidEvent/"+$stateParams.eventId+"/"+$scope.loggedindetails.id,
+        }).success(function (data) {
+            console.log(data);
+            $scope.isBidEvent = data.data;
+        });
+
+    }
+    $scope.getisBidEvent();
 
     $scope.eventBid = function (id) {
         $location.path('/eventbid/' +$stateParams.eventId);

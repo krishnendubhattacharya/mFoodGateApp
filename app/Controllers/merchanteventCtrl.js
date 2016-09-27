@@ -68,6 +68,8 @@ app.controller('merchanteventCtrl', function ($rootScope, $scope, $http, $locati
 
                         })
                         .appendTo(container);
+                    if(!options.data.is_bid) 
+                    {   
                     $('<button/>').addClass('dx-button')
                         .text('Bid')
                         .on('dxclick',function(){
@@ -76,7 +78,7 @@ app.controller('merchanteventCtrl', function ($rootScope, $scope, $http, $locati
                             //$location.path('/eventbid/' + options.data.id);
                         })
                         .appendTo(container);
-
+				}
 
 
                 }

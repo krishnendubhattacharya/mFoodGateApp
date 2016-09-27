@@ -109,7 +109,7 @@
                 <tr>
                     <td colspan="2">
                         <div class="nwe-btn"><span class="dx-button" ng-click="event_detail({{voucherDetail.id}})">DETAIL</span></div>
-                        <div class="nwe-btn"><span class="dx-button" ng-click="event_bid({{voucherDetail.id}})">BID</span></div>
+                        <div class="nwe-btn" ng-if="!voucherDetail.is_bid"><span class="dx-button" ng-click="event_bid({{voucherDetail.id}})">BID</span></div>
                     </td>
 
                 </tr>

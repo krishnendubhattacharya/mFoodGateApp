@@ -134,7 +134,8 @@ app.constant('JS_REQUIRES', {
         'websitenews':['app/Controllers/websitenewsCtrl.js'],
         'merchantmemberinfo':['app/Controllers/merchantmemberinfoCtrl.js'],
         'websitepromos':['app/Controllers/websitepromosCtrl.js','app/directives/countdownDirective.js'],
-        'merchantdashboard':['app/Controllers/merchant/merchantdashboardCtrl.js','app/Controllers/leftbarCtrl.js']
+        'merchantdashboard':['app/Controllers/merchant/merchantdashboardCtrl.js','app/Controllers/leftbarCtrl.js'],
+        'eventbiddetail':['app/Controllers/eventbiddetailsCtrl.js','app/directives/countdownDirective.js']
 
     },
 

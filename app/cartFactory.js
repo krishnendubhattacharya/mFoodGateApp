@@ -16,9 +16,14 @@ angular
         {
             var found=false;
             angular.forEach(cart,function(val){
-                if(val.offer_id == promo.offer_id)
-                {
-                    found = true;
+                if(val.event == 1) {
+                    if (val.event_id == promo.event_id) {
+                        found = true;
+                    }
+                }else{
+                    if (val.offer_id == promo.offer_id) {
+                        found = true;
+                    }
                 }
             })
             if(!found)
@@ -127,10 +132,16 @@ angular
         //var cart=$cookieStore.get('cart');
         var cart=JSON.parse(localStorage.getItem('cart'));
         angular.forEach(cart,function(val,key){
-            if(val.offer_id == offer_id)
-            {
-               cart.splice(key,1);
-                //found = true;
+            if(val.event == 1){
+                if (val.event_id == offer_id) {
+                    cart.splice(key, 1);
+                    //found = true;
+                }
+            }else {
+                if (val.offer_id == offer_id) {
+                    cart.splice(key, 1);
+                    //found = true;
+                }
             }
         })
         //$cookieStore.put('cart',cart);

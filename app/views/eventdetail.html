@@ -26,7 +26,7 @@
                             <p><span class="title">Event End Date</span> <span class="val">{{eventInfo.data.to_date}}</span></p>
                             <p><span class="title">Offer Start Date</span> <span class="val">{{eventInfo.data.offer_from_date}}</span></p>
                             <p><span class="title">Offer End Date</span> <span class="val">{{eventInfo.data.offer_to_date}}</span></p>
-                            <p><span class="title"><div class="nwe-btn" ng-if="loggedindetails.user_type_id == 3"><span class="dx-button" ng-click="eventBid({{eventInfo.data.id}})">Bid</span></div></span></p>
+                            <p><span class="title"><div class="nwe-btn" ng-if="loggedindetails.user_type_id == 3 && !isBidEvent "><span class="dx-button" ng-click="eventBid({{eventInfo.data.id}})">Bid</span></div></span></p>
 
 
                     </div>
@@ -65,7 +65,7 @@
                     <p><span class="title">Event End Date</span> <span class="val">{{eventInfo.data.to_date}}</span></p>
                     <p><span class="title">Offer Start Date</span> <span class="val">{{eventInfo.data.offer_from_date}}</span></p>
                     <p><span class="title">Offer End Date</span> <span class="val">{{eventInfo.data.offer_to_date}}</span></p>
-                    <p if="loggedindetails.user_type_id==3"><span class="title"><div class="nwe-btn"><span class="dx-button" ng-click="eventBid({{eventInfo.data.id}})">Bid</span></div></span></p>
+                    <p ><span class="title"><div class="nwe-btn" ng-if="loggedindetails.user_type_id == 3 && !isBidEvent"><span class="dx-button" ng-click="eventBid({{eventInfo.data.id}})">Bid</span></div></span></p>
 
 
                 </div>

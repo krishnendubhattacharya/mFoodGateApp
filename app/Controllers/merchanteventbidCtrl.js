@@ -13,9 +13,13 @@ app.controller('merchanteventbidCtrl', function ($rootScope, $scope, $http, $loc
     
     
 
-    ;
+
     $scope.edit_mode = false;
     $scope.imageBid = [];
+    $scope.voucherInfo = [];
+    $scope.img_uploader = null;
+    //$scope.eventimage=null;
+    
     $scope.changeView = function(){
         $scope.edit_mode = !$scope.edit_mode;
         //$scope.textBox.image.value = null;
@@ -24,7 +28,31 @@ app.controller('merchanteventbidCtrl', function ($rootScope, $scope, $http, $loc
 
     }
     $scope.all_restaurant = [];
-    $scope.textBox = {restaurant:{
+    $scope.textBox = {image:  {
+            
+            buttonText: 'Select file',
+            labelText: 'Drop file here',
+            multiple: false,
+            accept: 'image/*',
+            
+            uploadUrl: $rootScope.serviceurl + 'templateFilesUpload',
+            onUploaded:function(ret){
+                console.log(ret);
+                $scope.imgUrl = $rootScope.serviceurl+'template_images/'+ret.file.value.name
+                $scope.imageBid.push(ret.file.value.name);
+                $scope.voucherInfo.push({image:ret.file.value.name});
+                
+                $scope.edit_mode = !$scope.edit_mode;
+                
+                
+                //$scope.eventimage={image:ret.file.value.name};
+                console.log(ret.file.value,ret.file.value.name);
+            },
+            onInitialized : function(e)
+            {
+                $scope.img_uploader = e.component;
+            }
+    },restaurant:{
             dataSource: $scope.all_restaurant,
             displayExpr: "name",
             valueExpr: "value",
@@ -46,7 +74,31 @@ app.controller('merchanteventbidCtrl', function ($rootScope, $scope, $http, $loc
 				  $scope.res_select1.option({dataSource: $scope.all_outlet});
 			   });
             }
-        },template:{
+        },
+        restaurantmob:{
+            dataSource: $scope.all_restaurant,
+            displayExpr: "name",
+            valueExpr: "value",
+
+            onInitialized:function(e){
+                $scope.res_selectmob = e.component;
+                $scope.getRestaurants();
+            },
+            onSelectionChanged:function(e){
+                $http({
+                    method: "GET",
+                    url: $rootScope.serviceurl + "getMerchantOutletsByRestaurant/"+e.selectedItem.value,
+
+                }).success(function (data) {
+                    $scope.all_outlet = [];
+                    angular.forEach(data.data,function(val){
+                        $scope.all_outlet.push({name:val.title,value:val.id});
+                    })
+                    $scope.res_select1mob.option({dataSource: $scope.all_outlet});
+                });
+            }
+        },
+        template:{
             dataSource: $scope.all_template,
             displayExpr: "name",
             valueExpr: "value",
@@ -63,17 +115,19 @@ app.controller('merchanteventbidCtrl', function ($rootScope, $scope, $http, $loc
 			   }).success(function (data) {
 				  $scope.description = data.data.content;
 				  $scope.res_select3.option({dataSource: $scope.description});
+                    //$scope.res_select3mob.option({dataSource: $scope.description});
 				  $http({
 					  method: "GET",
 					  url: $rootScope.serviceurl + "getImagesByEventTemplate/" + e.selectedItem.value,
 				   }).success(function (data) {
 					  $scope.edit_mode = false;
 					  $scope.voucherInfo = data.data;
-					  $scope.loadEventImages($scope.voucherInfo);
+                      $scope.imageBid=[];
 					  
-					  
+					  console.log($scope.voucherInfo);					  
 					  angular.forEach(data.data,function(val){
 					  	 $scope.imageBid.push(val.image);
+					  	 //$scope.voucherInfo.push({image:val.image});
 					  })
 					  //$scope.$apply();
 					  //$scope.datag.option('dataSource',$scope.voucherInfo);
@@ -81,7 +135,46 @@ app.controller('merchanteventbidCtrl', function ($rootScope, $scope, $http, $loc
 				   });
 			   });
             }           
-        },outlet:{
+        },
+        templatemob:{
+            dataSource: $scope.all_template,
+            displayExpr: "name",
+            valueExpr: "value",
+
+            onInitialized:function(e){
+                $scope.res_select2mob = e.component;
+                $scope.getTemplates();
+            },
+            onSelectionChanged:function(e){
+                $http({
+                    method: "GET",
+                    url: $rootScope.serviceurl + "getEventTemplate/"+e.selectedItem.value+"/"+$stateParams.eventId,
+
+                }).success(function (data) {
+                    $scope.description = data.data.content;
+                    //$scope.res_select3.option({dataSource: $scope.description});
+                    $scope.res_select3mob.option({dataSource: $scope.description});
+                    $http({
+                        method: "GET",
+                        url: $rootScope.serviceurl + "getImagesByEventTemplate/" + e.selectedItem.value,
+                    }).success(function (data) {
+                        $scope.edit_mode = false;
+                        $scope.voucherInfo = data.data;
+                        $scope.imageBid=[];
+
+                        console.log($scope.voucherInfo);
+                        angular.forEach(data.data,function(val){
+                            $scope.imageBid.push(val.image);
+                            //$scope.voucherInfo.push({image:val.image});
+                        })
+                        //$scope.$apply();
+                        //$scope.datag.option('dataSource',$scope.voucherInfo);
+                        console.log($scope.voucherInfo);
+                    });
+                });
+            }
+        },
+        outlet:{
             dataSource: $scope.all_outlet,
             displayExpr: "name",
             valueExpr: "value",
@@ -90,62 +183,56 @@ app.controller('merchanteventbidCtrl', function ($rootScope, $scope, $http, $loc
                 $scope.res_select1 = e.component;
                 //$scope.getRestaurants();
             }
+        },
+        outletmob:{
+            dataSource: $scope.all_outlet,
+            displayExpr: "name",
+            valueExpr: "value",
+
+            onInitialized:function(e){
+                $scope.res_select1mob = e.component;
+                //$scope.getRestaurants();
+            }
         }
         };
         
-    $scope.loadEventImages = function(voucherIn) {
-					   $scope.dataGridOptions = {
-						  dataSource: voucherIn,
-
-						  selection: {
-							 mode: "single"
-						  },
-						  paging: {
-							 pageSize: 5
-						  },
-						  pager: {
-							 showPageSizeSelector: true,
-							 allowedPageSizes: [5, 10, 20],
-							 showInfo: true
-						  },
-						  onInitialized: function (e) {
-							 console.log('By Bikash  --  ', e);
-							 $scope.datag = e.component;
-						  },
-						  columns: [{
-							 caption: 'Image',
-							 cellTemplate: function (container, options) {
-								if (options.data.image) {
-								    $('<img />')
-								        .height(100)
-								        .attr('src', options.data.image_url)
-								        .appendTo(container);
-								}
-							 }
-						  }/*,
-							 {
-								caption: 'Delete',
-								width: 100,
-								alignment: 'center',
-								cellTemplate: function (container, options) {
-								    $('<button/>').addClass('dx-button')
-								        .text('Delete')
-								        .on('dxclick', function () {
-								            $scope.delete_event_image(options.data.id);
-								        })
-								        .appendTo(container);
-								}
-							 }*/
-
-						  ]
-					   };
-				    }    
+    $scope.removeTemplateImage = function(imgId){
+    		console.log(imgId);
+            console.log($scope.imageBid);
+    		angular.forEach($scope.imageBid,function(val,key){
+            if(val == imgId){
+                    $scope.imageBid.splice(key, 1);
+            }
+        })
+        angular.forEach($scope.voucherInfo,function(val,key){
+            if(val.image == imgId){
+                    $scope.voucherInfo.splice(key, 1);
+            }
+        })
+    		//$scope.imageBid.splice($scope.imageBid.indexOf(imgId), 1);
+    		//$scope.voucherInfo.splice($scope.chckedIndexs.indexOf(imgId), 1);
+    		//$scope.imageBid.splice(imgId);
+    		/*var myEl = angular.element( document.querySelector( '#'+imgId ) );
+		myEl.remove();*/
+    }    
+        
+        
     
     $scope.textArea = {description:{
             dataSource: $scope.description,
             height: "200",               
             onInitialized:function(e){
                 $scope.res_select3 = e.component;
+                //$scope.res_select3mob = e.component;
+                //$scope.getRestaurants();
+            }
+        },
+        descriptionmob:{
+            dataSource: $scope.description,
+            height: "200",
+            onInitialized:function(e){
+                //$scope.res_select3 = e.component;
+                $scope.res_select3mob = e.component;
                 //$scope.getRestaurants();
             }
         }
@@ -161,6 +248,7 @@ app.controller('merchanteventbidCtrl', function ($rootScope, $scope, $http, $loc
                 $scope.all_restaurant.push({name:val.title,value:val.id});
             })
             $scope.res_select.option({dataSource: $scope.all_restaurant});
+            $scope.res_selectmob.option({dataSource: $scope.all_restaurant});
         });
 
     }
@@ -178,6 +266,7 @@ app.controller('merchanteventbidCtrl', function ($rootScope, $scope, $http, $loc
 				  	 $scope.all_template.push({name:val.title,value:val.id});
 				  })
             $scope.res_select2.option({dataSource: $scope.all_template});
+            $scope.res_select2mob.option({dataSource: $scope.all_template});
         });
     }
     $scope.getTemplates();   

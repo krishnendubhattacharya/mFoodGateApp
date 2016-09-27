@@ -848,6 +848,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/merchant/eventtemplateimage.html',
                 title: 'Event Template Images'
             })
+            .state('frontend.eventbiddetail', {
+                url: '/eventbiddetail/:eventBidId',
+                resolve: loadSequence('eventbiddetail','ngMap','mCart','720kb.socialshare'),
+                templateUrl: 'app/views/eventbiddetail.html',
+                title: 'Event Bid Detail'
+            })
 
 
         ;

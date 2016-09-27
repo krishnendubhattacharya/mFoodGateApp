@@ -1,12 +1,7 @@
-app.controller('resellvoucherdetailCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap,mFoodCart,$window,$cookieStore,$timeout) {
+app.controller('eventbiddetailsCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth, NgMap,mFoodCart,$window,$cookieStore,$timeout) {
     //alert(123);
-    $scope.promoId = $stateParams.promoId;
+    $scope.promoId = $stateParams.eventBidId;
     $scope.loggedindetails = myAuth.getUserNavlinks();
-    if($scope.loggedindetails){
-        $scope.loggedinid = $scope.loggedindetails.id;
-    }else{
-        $scope.loggedinid = '';
-    }
 
     //stButtons.makeButtons();
     $scope.mpoints = 0;
@@ -57,30 +52,23 @@ app.controller('resellvoucherdetailCtrl', function ($rootScope, $scope, $http, $
     }
 
     $scope.getPromoDetails = function(){
-
+        
         $http({
             method: "GET",
-            url: $rootScope.serviceurl+"getResellPromoDetails/" + $scope.promoId+"/"+$stateParams.resellId,
+            url: $rootScope.serviceurl+"getEventBidDetail/" + $scope.promoId,
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
             if(data.type == 'success') {
-                $scope.promodetails = data.offer;
-                $scope.pointdetails = data.point_details;
-                $scope.resell_user_details = data.resell_user_details[0];
-                $scope.restaurant = data.restaurants;
-                $scope.mapaddress = data.merchantInfo[0].address;
-                $scope.maptitle = data.merchantInfo[0].merchant_name;
-                $scope.offer_days = data.offer_days;
-                $scope.about_me = data.merchantInfo[0].about_me;
+                $scope.promodetails = data.event_bid;
+                $scope.event = data.events;
+                $scope.restaurant = data.restaurant;
+                $scope.outlet = data.outlet;
+                
                 //console.log(data.merchantInfo);
-                if(data.restaurants.length == 1){
-                    $scope.restName=data.restaurants[0].title;
-                }else{
-                    $scope.restName=data.merchantInfo[0].merchant_name;
-                }
+                
 
                 $scope.related_images = data.promo_images;
-                //console.log($scope.related_products);
+                console.log($scope.related_images);
                 $timeout(function(){
                     // $('#ca-container').contentcarousel();
                     var banner_carousal = $('.featured_carousel2');
@@ -213,77 +201,40 @@ app.controller('resellvoucherdetailCtrl', function ($rootScope, $scope, $http, $
 
     $scope.add_to_cart = function(){
 
-        $http({
-            method: "GET",
-            url: $rootScope.serviceurl+"checkOfferId/"+$stateParams.promoId,
-            headers: {'Content-Type': 'application/json'},
-            //data:{item:data,user_id:$scope.loggedindetails.id}
-        }).success(function(res) {
-
-            if(res.type =='success'){
-                if($scope.promodetails.operator == 1){
-                    $scope.pay = true;
-                    $scope.paycash = true;
-                }else{
-                    $scope.pay = false;
-                    $scope.paycash = false;
-
-                }
+        if($scope.promodetails){
+            //$scope.promodetails = data.event_bid;
+           // $scope.event = data.events;
+            //$scope.restaurant = data.restaurant;
                 var cart_obj = {
-                    offer_id            :   $scope.promodetails.id,
-                    restaurant_id       :   $scope.restaurant.id,
-                    offer_title         :   $scope.promodetails.title,
-                    restaurant_title    :   $scope.restName,
-                    offer_percent       :   $scope.promodetails.offer_percent,
-                    price               :   $scope.promodetails.resell_price,
-                    mpoints             :   $scope.promodetails.resell_point,
-                    offer_price         :   $scope.promodetails.resell_price,
+                    offer_id            :   0,
+                    restaurant_id       :   0,
+                    offer_title         :   $scope.event.title,
+                    restaurant_title    :   'Event',
+                    offer_percent       :   0,
+                    price               :   $scope.promodetails.price,
+                    mpoints             :   0,
+                    offer_price         :   $scope.promodetails.price,
                     quantity            :   1,
                     previous_quantity   :   1,
-                    image               :   $scope.promodetails.image,
-                    point_id            :   $scope.promodetails.resell_point_id,
-                    point_name          :   $scope.pointdetails[0].name,
-                    condtn              :   $scope.promodetails.operator,
-                    payments            :   $scope.pay,
-                    paymentscash        :   $scope.paycash,
-                    resell              :   1,
-                    resell_id           :   $scope.promodetails.resell_id,
-                    event               :   0,
-                    event_id            :   0,
-                    event_price         :   0,
-                    event_bid_id        :   0
+                    image               :   $scope.event.image,
+                    point_id            :   0,
+                    point_name          :   '',
+                    condtn              :   0,
+                    payments            :   false,
+                    paymentscash        :   true,
+                    resell              :   0,
+                    resell_id           :   0,
+                    event               :   1,
+                    event_id            :   $scope.event.id,
+                    event_price         :   $scope.promodetails.price,
+                    event_bid_id        :   $scope.promodetails.id
                 }
                 mFoodCart.add_to_cart(cart_obj);
                 $scope.cartDetails = mFoodCart.get_cart();
-                /*if($scope.cartDetails) {
-                    angular.forEach($scope.cartDetails, function (v) {
 
-                        if(v.condtn == 1){
-                            v.payments =true;
-                            v.paymentscash=true;
-                        }else{
-                            v.payments =false;
-                            v.paymentscash=false;
-                        }
-
-
-                    })
-                */
-                //console.log($scope.cartDetails);
                 $scope.getCartTotals();
                 $scope.save_to_db();
-            }else{
-                var message = res.message;
-                DevExpress.ui.notify({
-                    message: message,
-                    position: {
-                        my: "center top",
-                        at: "center top"
-                    }
-                }, "error", 3000);
             }
-        });
-
     }
 
     $scope.cartDetails = mFoodCart.get_cart();
@@ -504,7 +455,6 @@ app.controller('resellvoucherdetailCtrl', function ($rootScope, $scope, $http, $
                     $scope.cartIds.push(v.offer_id);
                     $scope.cartQty.push(v.quantity);
                 }
-
             })
 
             if($scope.cartIds)
@@ -646,6 +596,7 @@ app.controller('resellvoucherdetailCtrl', function ($rootScope, $scope, $http, $
         }*/
         /**/
     }
+
     $scope.delete_from_cart = function (id,event_promo)
     {
         if($scope.loggedindetails) {
@@ -678,6 +629,7 @@ app.controller('resellvoucherdetailCtrl', function ($rootScope, $scope, $http, $
         $scope.event_promo = 'e';
         $scope.delete_from_cart(offer_id,$scope.event_promo);
     }
+
 
     $scope.getAds = function () {
 

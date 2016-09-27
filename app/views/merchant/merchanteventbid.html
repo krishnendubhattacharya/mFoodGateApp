@@ -60,12 +60,22 @@
                             </div>
                         </div>
                         
-                        <div class="profile-details" style="width:100%"  ng-show="!edit_mode">
-						 <!--<div id="button" dx-button="{
+                        <div class="profile-details" style="width:100%; position:relative; overflow:hidden;"  ng-show="!edit_mode">
+						 <div id="button" dx-button="{
 						                 text: 'Add Image',
-						                 onClick: changeView }" ></div>-->
+						                 onClick: changeView }" ></div>
 						 <!--<input type="button" ng-click="refresh_grid()" value="Refresh">-->
-						 <div id="gridContainer" dx-data-grid="dataGridOptions"></div>
+                         <div class="img-bx">
+                         	<ul id="templateImg">
+                            		  <li ng-repeat="voucher in voucherInfo" id="{{voucher.image}}">
+		                           	<div class="closed" ng-click="removeTemplateImage('{{voucher.image}}')">X</div>
+		                           	<img style="height: 100px;" src="{{serviceurl}}template_images/{{voucher.image}}">
+		                           </li>
+                            </ul>
+                         </div>
+						 
+                         	
+                         </div>
 
 					  </div>
 
@@ -84,11 +94,7 @@
 
 
 						     </div>
-						     <!--<div id="summary" dx-validation-summary="{ }"></div>-->
-						     <div id="button" dx-button="{
-						                 text: 'Submit',
-						                 type: 'success',
-						                 onClick: save_event_image }" ></div>
+						     
 
 						     <div id="button" dx-button="{
 						                 text: 'Cancel',
@@ -113,164 +119,126 @@
             </div>
 
         </div>
-    </div>
-    <div class="m-myaccount-details tablet-hide">
 
-        <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
-        <h1>Event Bid</h1>
-        <div class="m-profile-details">
-            <div class="form">
-                <div class="dx-fieldset">
-                    <div class="dx-field">
-                        <div class="dx-field-label">Bid Price</div>
-                        <div class="dx-field-value">
-                            <div dx-text-box="textBox.bid_price"   ng-model="bid_price"></div>
+        <div class="m-myaccount-details tablet-hide">
+
+            <div data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
+            <h1>Event Bid</h1>
+            <div class="m-profile-details">
+                <div class="form">
+                    <div class="dx-fieldset">
+                        <div class="dx-field">
+                            <div class="dx-field-label">Bid Price</div>
+                            <div class="dx-field-value">
+                                <div dx-text-box="textBox.price"   ng-model="price"></div>
+                            </div>
+                        </div>
+
+                        <div class="dx-field">
+                            <div class="dx-field-label">Restaurant</div>
+                            <div class="dx-field-value">
+                                <div dx-select-box="textBox.restaurantmob" ng-model="restaurant_id"></div>
+
+                            </div>
+                        </div>
+
+                        <div class="dx-field">
+                            <div class="dx-field-label">Outlet</div>
+                            <div class="dx-field-value">
+                                <div dx-select-box="textBox.outletmob" ng-model="outlet_id"></div>
+
+                            </div>
+                        </div>
+
+                        <div class="dx-field">
+                            <div class="dx-field-label">Contact Person</div>
+                            <div class="dx-field-value">
+                                <div dx-text-box="textBox" ng-model="contact_person"></div>
+                            </div>
+                        </div>
+
+                        <div class="dx-field">
+                            <div class="dx-field-label">Contact Phone</div>
+                            <div class="dx-field-value">
+                                <div dx-text-box="textBox" ng-model="contact_phone"></div>
+                            </div>
+                        </div>
+
+                        <div class="dx-field">
+                            <div class="dx-field-label">Event Offer Bid Template</div>
+                            <div class="dx-field-value">
+                                <div dx-select-box="textBox.templatemob" ng-model="template_id"></div>
+                            </div>
+                        </div>
+
+                        <div class="dx-field">
+                            <div class="dx-field-label">Description</div>
+                            <div class="dx-field-value">
+                                <div dx-text-area="textArea.descriptionmob" ng-model="description"></div>
+                            </div>
+                        </div>
+
+                        <div class="profile-details" style="width:100%; position:relative; overflow:hidden;"  ng-show="!edit_mode">
+                            <div id="button" dx-button="{
+						                 text: 'Add Image',
+						                 onClick: changeView }" ></div>
+                            <!--<input type="button" ng-click="refresh_grid()" value="Refresh">-->
+                            <div class="img-bx">
+                                <ul id="templateImg">
+                                    <li ng-repeat="voucher in voucherInfo" id="{{voucher.image}}">
+                                        <div class="closed" ng-click="removeTemplateImage('{{voucher.image}}')">X</div>
+                                        <img style="height: 100px;" src="{{serviceurl}}template_images/{{voucher.image}}">
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-details" style="width:100%" ng-show="edit_mode">
+                        <div class="form">
+                            <div class="dx-fieldset">
+
+
+                                <div class="dx-field">
+                                    <div class="dx-field-label">Image</div>
+                                    <div class="dx-field-value">
+                                        <div dx-file-uploader="textBox.image"></div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                            <div id="button" dx-button="{
+						                 text: 'Cancel',
+						                 onClick: changeView }" ></div>
 
 
                         </div>
                     </div>
 
-                </div>
-                <!--<div id="summary" dx-validation-summary="{ }"></div>-->
-                <div id="button" dx-button="{
+
+
+                    <div id="button" dx-button="{
                                 text: 'Submit',
                                 type: 'success',
-                                onClick: saveBid }" ></div>
+                                onClick: saveEventBid }" ></div>
+
+                </div>
+
+
+
             </div>
+
         </div>
-
-    </div>
-    <div class="dx-clearfix"></div>
-    <!--<div class="container phone-hide">
-        <div class="transaction-details">
-            <h1>Transaction Details</h1>
-            <table>
-                <tr>
-                    <td width="15%" class="header-color">Transaction Date</td>
-                    <td width="14%" class="header-color">Transaction ID</td>
-                    <td width="33%" class="header-color">Transaction Description</td>
-                    <td width="13%" class="header-color">Debit (mPts)</td>
-                    <td width="12%" class="header-color">Credit (mPts)</td>
-                    <td width="13%" class="header-color">Total (mPts)</td>
-                </tr>
-                <tr>
-                    <td><div class="select-box"><select>
-                        <option>Select</option>
-                        <option>Select</option>
-                        <option>Select</option>
-                    </select></div></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><div class="select-box"><select>
-                        <option>Select</option>
-                        <option>Select</option>
-                        <option>Select</option>
-                    </select></div></td>
-                </tr>
-                <tr>
-                    <td>7/1/2015</td>
-                    <td>TRN120953549</td>
-                    <td>Brought Forward Balance</td>
-                    <td>250,000</td>
-                    <td>0</td>
-                    <td>250,000</td>
-                </tr>
-                <tr>
-                    <td>7/1/2015</td>
-                    <td>TRN120953549</td>
-                    <td>Brought Forward Balance</td>
-                    <td>250,000</td>
-                    <td>0</td>
-                    <td>250,000</td>
-                </tr>
-                <tr>
-                    <td>7/1/2015</td>
-                    <td>TRN120953549</td>
-                    <td>Brought Forward Balance</td>
-                    <td>250,000</td>
-                    <td>0</td>
-                    <td>250,000</td>
-                </tr>
-                <tr>
-                    <td>7/1/2015</td>
-                    <td>TRN120953549</td>
-                    <td>Brought Forward Balance</td>
-                    <td>250,000</td>
-                    <td>0</td>
-                    <td>250,000</td>
-                </tr>
-            </table>
-        </div>
-
     </div>
 
-    <div class="m-transaction-details tablet-hide">
-        <h1>Transaction Details</h1>
-        <table>
-            <tr>
-                <td width="30%" class="m-header-color">Transaction Date</td>
-                <td>7/1/2015</td>
-            </tr>
-            <tr>
-                <td width="30%" class="m-header-color">Transaction ID</td>
-                <td>TRN120953549</td>
-            </tr>
-            <tr>
-                <td width="30%" class="m-header-color">Transaction Description</td>
-                <td>Brought Forward Balance</td>
-            </tr>
-            <tr>
-                <td width="30%" class="m-header-color">Debit (mPts)</td>
-                <td>250,000</td>
-            </tr>
-            <tr>
-                <td width="12%" class="m-header-color">Credit (mPts)</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td width="13%" class="m-header-color">Total (mPts)</td>
-                <td>250,000</td>
-            </tr>
-            </tr>
-        </table>
 
-    </div>
 
-    <div class="m-transaction-details tablet-hide">
-        <h1>Transaction Details</h1>
-        <table>
-            <tr>
-                <td width="30%" class="m-header-color">Transaction Date</td>
-                <td>7/1/2015</td>
-            </tr>
-            <tr>
-                <td width="30%" class="m-header-color">Transaction ID</td>
-                <td>TRN120953549</td>
-            </tr>
-            <tr>
-                <td width="30%" class="m-header-color">Transaction Description</td>
-                <td>Brought Forward Balance</td>
-            </tr>
-            <tr>
-                <td width="30%" class="m-header-color">Debit (mPts)</td>
-                <td>250,000</td>
-            </tr>
-            <tr>
-                <td width="12%" class="m-header-color">Credit (mPts)</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td width="13%" class="m-header-color">Total (mPts)</td>
-                <td>250,000</td>
-            </tr>
-            </tr>
-        </table>
-
-    </div>-->
-
-    <div class="dx-clearfix"></div>
-</div>
 
 

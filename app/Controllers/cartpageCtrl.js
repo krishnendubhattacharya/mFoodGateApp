@@ -185,8 +185,10 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
     if($scope.cartDetails)
     {
         angular.forEach($scope.cartDetails,function(v){
-            $scope.cartIds.push(v.offer_id);
-            $scope.cartisresell.push(v.isresell);
+            if(v.event == 0){
+                $scope.cartIds.push(v.offer_id);
+                $scope.cartisresell.push(v.isresell);
+            }
         })
 
         if($scope.cartIds)
@@ -254,7 +256,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
         }
         $scope.cartDetails = mFoodCart.get_cart();
         //console.log($scope.cartDetails);
-        $scope.getCartTotals();
+        $scope.remove_offer();
 
     }*/
     $scope.updateCheck = function(data,offerId,paytype){
@@ -658,14 +660,14 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
         /**/
     }
 
-    $scope.delete_from_cart = function (id)
+    $scope.delete_from_cart = function (id,event_promo)
     {
         if($scope.loggedindetails) {
             $http({
                 method: "POST",
                 url: $rootScope.serviceurl + "deleteFromCart",
                 headers: {'Content-Type': 'application/json'},
-                data: {user_id: $scope.loggedindetails.id, offer_id: id}
+                data: {user_id: $scope.loggedindetails.id, offer_id: id,event_promo:event_promo}
             }).success(function (data) {
             })
         }
@@ -674,13 +676,21 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
     $scope.remove_offer = function(offer_id){
         mFoodCart.remove(offer_id);
         $scope.getCartTotals();
-        $scope.delete_from_cart(offer_id);
+        $scope.event_promo = 'p';
+        $scope.delete_from_cart(offer_id,$scope.event_promo);
     }
 
     $scope.remove_offer_payment = function(offer_id){
         mFoodCart.remove(offer_id);
         $scope.getCartTotals();
-        $scope.delete_from_cart(offer_id);
+        $scope.event_promo = 'p';
+        $scope.delete_from_cart(offer_id,$scope.event_promo);
+    }
+    $scope.remove_event = function(offer_id){
+        mFoodCart.remove(offer_id);
+        $scope.getCartTotals();
+        $scope.event_promo = 'e';
+        $scope.delete_from_cart(offer_id,$scope.event_promo);
     }
 
     $scope.payments = 'C';

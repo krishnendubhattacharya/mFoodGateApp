@@ -31,18 +31,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
             })
         }
     }
-    $scope.delete_from_cart = function (id)
-    {
-        if($scope.loggedindetails) {
-            $http({
-                method: "POST",
-                url: $rootScope.serviceurl + "deleteFromCart",
-                headers: {'Content-Type': 'application/json'},
-                data: {user_id: $scope.loggedindetails.id, offer_id: id}
-            }).success(function (data) {
-            })
-        }
-    }
+
 
 
     $scope.getUsersPoints = function()
@@ -259,7 +248,11 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
                     payments            :   $scope.pay,
                     paymentscash        :   $scope.paycash,
                     resell              :   0,
-                    resell_id           :   0
+                    resell_id           :   0,
+                    event               :   0,
+                    event_id            :   0,
+                    event_price         :   0,
+                    event_bid_id        :   0
                 }
                 mFoodCart.add_to_cart(cart_obj);
                 $scope.cartDetails = mFoodCart.get_cart();
@@ -508,8 +501,11 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         if($scope.cartDetails)
         {
             angular.forEach($scope.cartDetails,function(v){
-                $scope.cartIds.push(v.offer_id);
-                $scope.cartQty.push(v.quantity);
+                if(v.event == 0){
+                    $scope.cartIds.push(v.offer_id);
+                    $scope.cartQty.push(v.quantity);
+                }
+
             })
 
             if($scope.cartIds)
@@ -652,10 +648,37 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
         /**/
     }
 
+    $scope.delete_from_cart = function (id,event_promo)
+    {
+        if($scope.loggedindetails) {
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl + "deleteFromCart",
+                headers: {'Content-Type': 'application/json'},
+                data: {user_id: $scope.loggedindetails.id, offer_id: id,event_promo:event_promo}
+            }).success(function (data) {
+            })
+        }
+    }
+
     $scope.remove_offer = function(offer_id){
         mFoodCart.remove(offer_id);
         $scope.getCartTotals();
-        $scope.delete_from_cart(offer_id);
+        $scope.event_promo = 'p';
+        $scope.delete_from_cart(offer_id,$scope.event_promo);
+    }
+
+    $scope.remove_offer_payment = function(offer_id){
+        mFoodCart.remove(offer_id);
+        $scope.getCartTotals();
+        $scope.event_promo = 'p';
+        $scope.delete_from_cart(offer_id,$scope.event_promo);
+    }
+    $scope.remove_event = function(offer_id){
+        mFoodCart.remove(offer_id);
+        $scope.getCartTotals();
+        $scope.event_promo = 'e';
+        $scope.delete_from_cart(offer_id,$scope.event_promo);
     }
 
     $scope.getAds = function () {
