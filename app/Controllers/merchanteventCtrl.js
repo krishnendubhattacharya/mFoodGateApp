@@ -55,7 +55,7 @@ app.controller('merchanteventCtrl', function ($rootScope, $scope, $http, $locati
         columns: ["title", 
         {caption:'Offer Start Date',dataField:"offer_from_date"},
         {caption:'Offer End Date',dataField:"offer_to_date"},
-        "event_date","event_start_time","event_end_time","status",
+        "event_date","event_start_time","event_end_time","bid_price","status",
             {
                 caption:'Action',
                 width: 200,

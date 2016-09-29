@@ -75,7 +75,16 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                                     $scope.detailSwap(options.data.id,options.data.offer_id);
                                 })
                                 .appendTo(container);
-
+                            if(options.data.Status!='Expired'){
+                            
+					   $('<button/>').addClass('dx-button')
+                                .text('Bidder')
+                                .on('dxclick', function () {
+                                    //Do something with options.data;
+                                    //$location.path('/swapinterested/' + options.data.id);
+                                    $scope.swapBidder(options.data.id);
+                                })
+                                .appendTo(container);
                             $('<button/>').addClass('dx-button')
                                 .text('Cancel')
                                 .on('dxclick', function () {
@@ -84,15 +93,10 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                                     $scope.cancelSwap(options.data.id,options.data.voucher_id);
                                 })
                                 .appendTo(container);
+                             }   
+                            
 
-                            $('<button/>').addClass('dx-button')
-                                .text('Bidder')
-                                .on('dxclick', function () {
-                                    //Do something with options.data;
-                                    //$location.path('/swapinterested/' + options.data.id);
-                                    $scope.swapBidder(options.data.id);
-                                })
-                                .appendTo(container);
+                            
                         }
                     }
 
@@ -140,6 +144,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                                 $scope.detailSwap(options.data.id,options.data.offer_id);
                             })
                             .appendTo(container);
+                        if(options.data.Status!='Expired'){
                         $('<button/>').addClass('dx-button')
                             .text('Edit')
                             .on('dxclick', function () {
@@ -156,6 +161,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                                 $scope.cancelSwapBid(options.data.id);
                             })
                             .appendTo(container);
+                        }
                     }
                 }
 
@@ -202,6 +208,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                                 $scope.detailSwap(options.data.id,options.data.offer_id);
                             })
                             .appendTo(container);
+                        if(options.data.Status!='Expired'){
                         $('<button/>').addClass('dx-button')
                             .text('Bid')
                             .on('dxclick', function () {
@@ -210,6 +217,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
                                 $scope.swapBid(options.data.id);
                             })
                             .appendTo(container);
+                         }   
                     }
                 }
 

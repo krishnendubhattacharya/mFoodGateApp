@@ -71,9 +71,9 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <div class="nwe-btn"><span class="dx-button" ng-click="bidderList({{voucherDetail.voucher_resale_id}})">Bidder</span></div>
+                            <div class="nwe-btn" ng-if="voucherDetail.status != 'Expired'"><span class="dx-button" ng-click="bidderList({{voucherDetail.voucher_resale_id}})">Bidder</span></div>
                             <div class="nwe-btn"><span class="dx-button" ng-click="detailVoucher({{voucherDetail.voucher_resale_id}},{{voucherDetail.offer_id}})">Detail</span></div>
-                            <div class="nwe-btn"><span class="dx-button" ng-click="cancelResell({{voucherDetail.voucher_resale_id}},{{voucherDetail.voucher_id}})">Cancel</span></div>
+                            <div class="nwe-btn" ng-if="voucherDetail.status != 'Expired'"><span class="dx-button" ng-click="cancelResell({{voucherDetail.voucher_resale_id}},{{voucherDetail.voucher_id}})">Cancel</span></div>
                             <!--<div class="nwe-btn"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>-->
                         </td>
                     </tr>
@@ -119,9 +119,9 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <div ng-if="voucherDetail.Status != 'Accepted'" class="nwe-btn"><span class="dx-button" ng-click="bidEdit({{voucherDetail.bid_id}},{{voucherDetail.voucher_resale_id}})">Edit</span></div>
+                            <div ng-if="voucherDetail.Status != 'Accepted' && voucherDetail.Status != 'Expired'" class="nwe-btn"><span class="dx-button" ng-click="bidEdit({{voucherDetail.bid_id}},{{voucherDetail.voucher_resale_id}})">Edit</span></div>
                             <div class="nwe-btn"><span class="dx-button" ng-click="detailVoucher({{voucherDetail.voucher_resale_id}},{{voucherDetail.offer_id}})">Detail</span></div>
-                            <div ng-if="voucherDetail.Status != 'Accepted'" class="nwe-btn"><span class="dx-button" ng-click="cancelBid({{voucherDetail.bid_id}},{{voucherDetail.voucher_id}})">Cancel</span></div>
+                            <div ng-if="voucherDetail.Status != 'Accepted' && voucherDetail.Status != 'Expired'" class="nwe-btn"><span class="dx-button" ng-click="cancelBid({{voucherDetail.bid_id}},{{voucherDetail.voucher_id}})">Cancel</span></div>
 
                             <!--<div class="nwe-btn"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>-->
                         </td>
@@ -155,7 +155,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <div class="nwe-btn"><span class="dx-button" ng-click="addbid({{voucherDetail.voucher_resale_id}},{{voucherDetail.voucher_id}})">Bid</span></div>
+                            <div class="nwe-btn" ng-if="voucherDetail.Status != 'Expired'"><span class="dx-button" ng-click="addbid({{voucherDetail.voucher_resale_id}},{{voucherDetail.voucher_id}})">Bid</span></div>
                             <div class="nwe-btn"><span class="dx-button" ng-click="detailVoucher({{voucherDetail.voucher_resale_id}},{{voucherDetail.offer_id}})">Detail</span></div>
 
                             <!--<div class="nwe-btn"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>-->

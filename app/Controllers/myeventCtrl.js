@@ -320,7 +320,6 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
     }
 
     $scope.event_detail = function (event_id) {
-
         $location.path('/eventdetail/' + event_id);
     }
 
@@ -439,6 +438,19 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
         $scope.eventdata = $scope.event;
         $scope.typedata = $scope.typeList;
         $scope.areadata = $scope.areaList;
+   if(($scope.event.offer_from_date > $scope.event.from_date) || ($scope.event.offer_from_date > $scope.event.to_date) || ($scope.event.offer_to_date > $scope.event.from_date) || ($scope.event.offer_to_date > $scope.event.to_date))
+   {
+   	var message = "Sorry! Offer start end date cannot be more than event date.";
+                    DevExpress.ui.notify({
+                        message: message,
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "error", 3000);
+   }
+   else
+   {
         if ($scope.event.id) {
 
             $http({
@@ -513,6 +525,7 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
             }
 
         })
+    }
     }
     }
 

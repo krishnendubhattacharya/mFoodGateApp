@@ -131,7 +131,8 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                         caption:'Action',
                         alignment: 'center',
                         cellTemplate: function (container, options) {
-                            $('<button/>').addClass('dx-button')
+                           if(options.data.status!='Expired')
+                           { $('<button/>').addClass('dx-button')
                                 .text('Bidder')
                                 .on('dxclick', function () {
                                     //Do something with options.data;
@@ -141,7 +142,17 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
                                 })
                                 .appendTo(container);
+						$('<button/>').addClass('dx-button')
+                                    .text('Cancel')
+                                    .on('dxclick', function () {
+                                        //Do something with options.data;
+                                        //$location.path('/bidderlist/' + options.data.voucher_resale_id);
+                                        $scope.cancelResell(options.data.voucher_resale_id,options.data.voucher_id);
+                                        //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
 
+                                    })
+                                    .appendTo(container);
+                           }         
                             $('<button/>').addClass('dx-button')
                                 .text('Detail')
                                 .on('dxclick', function () {
@@ -153,16 +164,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                                 })
                                 .appendTo(container);
                             //if(options.data.high_bid == 0) {
-                                $('<button/>').addClass('dx-button')
-                                    .text('Cancel')
-                                    .on('dxclick', function () {
-                                        //Do something with options.data;
-                                        //$location.path('/bidderlist/' + options.data.voucher_resale_id);
-                                        $scope.cancelResell(options.data.voucher_resale_id,options.data.voucher_id);
-                                        //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
-
-                                    })
-                                    .appendTo(container);
+                                
                             //}
 
                         }
@@ -254,6 +256,8 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                     caption:'Action',
                     alignment: 'center',
                     cellTemplate: function (container, options) {
+                    if(options.data.Status != 'Expired')
+                    {
                     if(options.data.Status != 'Accepted') {
                         $('<button/>').addClass('dx-button')
                             .text('Edit')
@@ -266,17 +270,6 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                             })
                             .appendTo(container);
                         }
-
-                        $('<button/>').addClass('dx-button')
-                            .text('Detail')
-                            .on('dxclick', function () {
-                                //Do something with options.data;
-                                //$location.path('/bidderlist/'+options.data.voucher_resale_id);
-                                $scope.detailVoucher(options.data.voucher_resale_id,options.data.offer_id);
-                                //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
-
-                            })
-                            .appendTo(container);
                         if(options.data.Status != 'Accepted') {
                             $('<button/>').addClass('dx-button')
                                 .text('Cancel')
@@ -289,6 +282,18 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                                 })
                                 .appendTo(container);
                         }
+				}	
+                        $('<button/>').addClass('dx-button')
+                            .text('Detail')
+                            .on('dxclick', function () {
+                                //Do something with options.data;
+                                //$location.path('/bidderlist/'+options.data.voucher_resale_id);
+                                $scope.detailVoucher(options.data.voucher_resale_id,options.data.offer_id);
+                                //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
+
+                            })
+                            .appendTo(container);
+                        
 
 
                     }
@@ -382,6 +387,8 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                     caption:'Action',
                     alignment: 'center',
                     cellTemplate: function (container, options) {
+                        if(options.data.Status != 'Expired')
+                       {
                         $('<button/>').addClass('dx-button')
                             .text('Bid')
                             .on('dxclick', function () {
@@ -392,7 +399,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
                             })
                             .appendTo(container);
-
+				    }
                         $('<button/>').addClass('dx-button')
                             .text('Detail')
                             .on('dxclick', function () {

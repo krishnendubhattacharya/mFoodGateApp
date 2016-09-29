@@ -95,11 +95,35 @@ app.controller('myeventtemplateCtrl', function ($rootScope, $scope, $http, $loca
                             })
                             .appendTo(container);
                     }
-
+                    $('<button/>').addClass('dx-button')
+				              .text('Delete')
+				              .on('dxclick',function(){$scope.delete_menu(options.data); })
+				              .appendTo(container);
                 }
             },
         ]
     };
+    
+    $scope.delete_menu = function(data)
+    {
+        if(confirm('Are you sure you want to delete this menu?'))
+        {
+            $http({
+                method: "delete",
+                url: $rootScope.serviceurl + "deleteEventTemplate/" + data.id,
+            }).success(function (data) {
+                DevExpress.ui.notify({
+                    message: "Deleted Successfilly",
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "success", 3000);
+                //$scope.edit_mode = !$scope.edit_mode;
+                $scope.getAllEvents();
+            })
+        }
+    }
 
     $scope.getAllEvents = function() {
         $scope.edit_mode = false;
@@ -201,7 +225,7 @@ app.controller('myeventtemplateCtrl', function ($rootScope, $scope, $http, $loca
                     }
                 }, "success", 3000);
                 $scope.edit_mode = !$scope.edit_mode;
-                $scope.getEvents();
+                $scope.getAllEvents();
             } else {
                 var message = "Error occured.";
                 DevExpress.ui.notify({
