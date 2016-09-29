@@ -22,7 +22,7 @@ app.controller('voucherdetailCtrl', function ($rootScope, $scope, $http, $locati
         }).success(function (data) {
             //console.log('Voucher details === ',data);
             $scope.voucherInfo =data;
-            //console.log($scope.voucherInfo);
+            console.log($scope.voucherInfo);
             $scope.promoId = $scope.voucherInfo.voucher_details.offer_id;
                 //$scope.restaurant = data.restaurant;
             $scope.related_images = data.promo_images;

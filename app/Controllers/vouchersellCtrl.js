@@ -11,7 +11,6 @@ app.controller('vouchersellCtrl', function ($rootScope, $scope, $http, $location
     $scope.operator_list = [];
     $scope.operator_list.push({name:'AND',value:1});
     $scope.operator_list.push({name:'OR',value:0});
-
     $scope.textBox = {
         price: {
             mode: "text"
@@ -28,6 +27,8 @@ app.controller('vouchersellCtrl', function ($rootScope, $scope, $http, $location
             onInitialized:function(e){
                 //$scope.res_select = e.component;
             }
+
+
         },
         operator1:{
             dataSource: $scope.operator_list,
@@ -136,7 +137,12 @@ app.controller('vouchersellCtrl', function ($rootScope, $scope, $http, $location
                     valueExpr: "value",
                     onInitialized:function(e){
                         //$scope.res_select = e.component;
+                    },
+                    onSelectionChanged:function(e){
+                        //console.log(12);
+                        $scope.points = '';
                     }
+
                 },
                 point_id1:{
                     dataSource: $scope.all_point,
@@ -144,6 +150,9 @@ app.controller('vouchersellCtrl', function ($rootScope, $scope, $http, $location
                     valueExpr: "value",
                     onInitialized:function(e){
                         //$scope.res_select1 = e.component;
+                    },
+                    onSelectionChanged:function(e){
+                        $scope.points = '';
                     }
                 }
             };

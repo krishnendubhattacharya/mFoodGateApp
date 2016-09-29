@@ -48,6 +48,19 @@ app.controller('swapvoucherdetailCtrl', function ($rootScope, $scope, $http, $lo
     //alert($rootScope.swipeValue);
 
 
+    $scope.getSwapVoucherDetail = function () {
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "swapdetails/"+$stateParams.swapId,
+        }).success(function (data) {
+            console.log(data);
+            $scope.swapvoucherInfo =data.voucher_details;
+        });
+
+    }
+    $scope.getSwapVoucherDetail();
+
+
 
 
 

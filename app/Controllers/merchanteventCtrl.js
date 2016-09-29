@@ -68,7 +68,7 @@ app.controller('merchanteventCtrl', function ($rootScope, $scope, $http, $locati
 
                         })
                         .appendTo(container);
-                    if(!options.data.is_bid) 
+                    if(!options.data.is_bid && options.data.status!='Expired') 
                     {   
                     $('<button/>').addClass('dx-button')
                         .text('Bid')

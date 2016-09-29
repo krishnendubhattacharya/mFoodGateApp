@@ -145,6 +145,7 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
                             //$location.path('/eventdetail/' + options.data.id);
                         })
                         .appendTo(container);
+                   if(options.data.status != "Expired") {
                     $('<button/>').addClass('dx-button')
                         .text('Image')
                         .on('dxclick',function(){$scope.image_event(options.data.id); })
@@ -157,6 +158,7 @@ app.controller('myeventCtrl', function ($rootScope, $scope, $http, $location, $s
                             })
                             .appendTo(container);
                     }
+                   } 
 
                     /*$('<button/>').addClass('dx-button')
                         .text('Delete')

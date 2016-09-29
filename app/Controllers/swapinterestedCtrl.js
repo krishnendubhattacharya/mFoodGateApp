@@ -84,7 +84,7 @@ app.controller('swapinterestedCtrl', function ($rootScope, $scope, $http, $locat
                     //var message = data.message;
                     //params.validationGroup.reset();
                     //$location.path('/dashboard');
-
+                    $location.path('/swapvoucher');
                     DevExpress.ui.notify({
                         message: data.message,
                         position: {

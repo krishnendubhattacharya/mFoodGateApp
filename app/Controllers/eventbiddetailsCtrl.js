@@ -451,7 +451,7 @@ app.controller('eventbiddetailsCtrl', function ($rootScope, $scope, $http, $loca
         if($scope.cartDetails)
         {
             angular.forEach($scope.cartDetails,function(v){
-                if(v.event == 0){
+                if(v.event == 0 && v.resell == 0){
                     $scope.cartIds.push(v.offer_id);
                     $scope.cartQty.push(v.quantity);
                 }

@@ -117,7 +117,7 @@
                         <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                     </div>
                     <div style="padding-top: 25px;" class="dx-clearfix"></div>
-                    <div id="button" dx-button="{
+                    <div id="button" ng-if="((promodetails.quantity - promodetails.buy_count)>0) " dx-button="{
                                 text: 'Add to Cart',
                                 type: 'success',
                                 height:'40px',
@@ -213,7 +213,7 @@
                 <div style="clear: both"></div>
             </div>
             <div style="text-align:right">
-                <div id="button" dx-button="{
+                <div id="button" ng-if="((promodetails.quantity - promodetails.buy_count)>0) " dx-button="{
                                 text: 'Add to Cart',
                                 type: 'success',
                                 height:'40px',
@@ -348,7 +348,7 @@
                         <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                     </div>
                     <div style="padding-top: 25px;" class="dx-clearfix"></div>
-                    <div style="float:right" id="button" dx-button="{
+                    <div ng-if="((promodetails.quantity - promodetails.buy_count)>0) " style="float:right" id="button" dx-button="{
                                 text: 'Add to Cart',
                                 type: 'success',
                                 height:'40px',
@@ -404,7 +404,7 @@
                 <div style="clear: both"></div>
             </div>
             <div style="text-align:right">
-                <div id="button" dx-button="{
+                <div ng-if="((promodetails.quantity - promodetails.buy_count)>0) " id="button" dx-button="{
                                 text: 'Add to Cart',
                                 type: 'success',
                                 height:'40px',

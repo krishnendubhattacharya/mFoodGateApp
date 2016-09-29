@@ -1,4 +1,4 @@
-app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location, $stateParams, myAuth) {
+app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location, mFoodCart, $stateParams, myAuth) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
@@ -269,9 +269,8 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
                             })
                             .appendTo(container);
-                        }
-                        if(options.data.Status != 'Accepted') {
-                            $('<button/>').addClass('dx-button')
+                            
+                        $('<button/>').addClass('dx-button')
                                 .text('Cancel')
                                 .on('dxclick', function () {
                                     //Do something with options.data;
@@ -280,7 +279,22 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                                     //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
 
                                 })
-                                .appendTo(container);
+                                .appendTo(container);    
+                        }
+                        if(options.data.Status == 'Accepted') {
+                           if($scope.loggedindetails.id = options.data.user_id)
+						{
+						$('<button/>').addClass('dx-button')
+		                       .text('Add to Cart')
+		                       .on('dxclick', function () {
+		                           //Do something with options.data;
+		                           $scope.add_to_cart(options.data.voucher_resale_id,options.data.offer_id);
+
+		                           //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
+
+		                       })
+		                       .appendTo(container);
+		                    }  
                         }
 				}	
                         $('<button/>').addClass('dx-button')
@@ -303,6 +317,191 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
 
     });
+    
+    
+    $scope.add_to_cart = function(resellId,offerId){
+
+        $http({
+            method: "GET",
+            url: $rootScope.serviceurl+"checkOfferId/"+offerId,
+            headers: {'Content-Type': 'application/json'},
+            //data:{item:data,user_id:$scope.loggedindetails.id}
+        }).success(function(res) {
+
+            if(res.type =='success')
+            {
+                $http({
+				  method: "GET",
+				  url: $rootScope.serviceurl+"getResellPromoDetails/" + offerId+"/"+resellId,
+				  headers: {'Content-Type': 'application/json'},
+			   }).success(function(data) {
+				  if(data.type == 'success') {
+				      $scope.promodetails = data.offer;
+				      $scope.pointdetails = data.point_details;
+				      $scope.resell_user_details = data.resell_user_details[0];
+				      $scope.restaurant = data.restaurants;
+				      $scope.mapaddress = data.merchantInfo[0].address;
+				      $scope.maptitle = data.merchantInfo[0].merchant_name;
+				      $scope.offer_days = data.offer_days;
+				      $scope.about_me = data.merchantInfo[0].about_me;
+				      //console.log(data.merchantInfo);
+				      if(data.restaurants.length == 1){
+				          $scope.restName=data.restaurants[0].title;
+				      }else{
+				          $scope.restName=data.merchantInfo[0].merchant_name;
+				      }
+				      
+				      if($scope.promodetails.operator == 1){
+					     $scope.pay = true;
+					     $scope.paycash = true;
+					 }else{
+					     $scope.pay = false;
+					     $scope.paycash = false;
+					 }
+					 var cart_obj = {
+					     offer_id            :   $scope.promodetails.id,
+					     restaurant_id       :   $scope.restaurant.id,
+					     offer_title         :   $scope.promodetails.title,
+					     restaurant_title    :   $scope.restName,
+					     offer_percent       :   $scope.promodetails.offer_percent,
+					     price               :   $scope.promodetails.resell_price,
+					     mpoints             :   $scope.promodetails.resell_point,
+					     offer_price         :   $scope.promodetails.resell_price,
+					     quantity            :   1,
+					     previous_quantity   :   1,
+					     image               :   $scope.promodetails.image,
+					     point_id            :   $scope.promodetails.resell_point_id,
+					     point_name          :   $scope.pointdetails[0].name,
+					     condtn              :   $scope.promodetails.operator,
+					     payments            :   $scope.pay,
+					     paymentscash        :   $scope.paycash,
+					     resell              :   1,
+					     resell_id           :   $scope.promodetails.resell_id,
+					     event               :   0,
+					     event_id            :   0,
+					     event_price         :   0,
+					     event_bid_id        :   0
+					 }
+					 mFoodCart.add_to_cart(cart_obj);
+					 $scope.cartDetails = mFoodCart.get_cart();
+					 /*if($scope.cartDetails) {
+					     angular.forEach($scope.cartDetails, function (v) {
+
+					         if(v.condtn == 1){
+					             v.payments =true;
+					             v.paymentscash=true;
+					         }else{
+					             v.payments =false;
+					             v.paymentscash=false;
+					         }
+
+
+					     })
+					 */
+					 //console.log($scope.cartDetails);
+					 $scope.getCartTotals();
+					 $scope.save_to_db();
+					 var message = "Added to cart successfully";
+                            DevExpress.ui.notify({
+                                message: message,
+                                position: {
+                                    my: "center top",
+                                    at: "center top"
+                                }
+                            }, "success", 3000);
+				  }
+			   })
+                
+            }
+            else
+            {
+                var message = res.message;
+                DevExpress.ui.notify({
+                    message: message,
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "error", 3000);
+            }
+        });
+
+    }
+    
+    $scope.save_to_db = function() {
+        console.log("saving -1",$scope.loggedindetails);
+        if ($scope.loggedindetails) {
+            $scope.cartDetails = mFoodCart.get_cart();
+            console.log("saving -2");
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl + "addToCart",
+                headers: {'Content-Type': 'application/json'},
+                data:{user_id:$scope.loggedindetails.id,cart:$scope.cartDetails}
+            }).success(function (data) {
+                console.log('saved');
+                if(data)
+                {
+                    mFoodCart.resetAndAdd(data);
+                    $scope.cartDetails = mFoodCart.get_cart();
+                    $scope.getCartTotals();
+                    console.log(mFoodCart.get_cart());
+
+                }
+            })
+        }
+    }
+
+    $scope.getCartTotals = function(){
+        $scope.cart_total = 0;
+        $scope.cart_total_points = 0;
+        $scope.cart_ttl_point = [];
+        $scope.cart_ttl_cnt = [];
+        $scope.cartDetails = mFoodCart.get_cart();
+        //console.log($scope.cartDetails);
+        angular.forEach($scope.cartDetails,function(value){
+            if(value.paymentscash == true){
+                $scope.cart_total = $scope.cart_total + (value.quantity * value.offer_price);
+                $scope.cart_total_points += (value.quantity * value.mpoints);
+            }
+
+            //alert($scope.cart_ttl_cnt.length);
+            if(value.payments == true){
+                if($scope.cart_ttl_cnt.length != 0){
+                    if($scope.cart_ttl_cnt.indexOf(value.point_id)== -1){
+                        $scope.cart_ttl_point.push(value.point_id);
+                        $scope.cart_ttl_point[$scope.cart_ttl_point.length-1]={};
+                        //$scope.cart_ttl_point[value.point_id].id = value.point_id;
+                        //alert('aa'+$scope.cart_ttl_point.length-1);
+                        $scope.cart_ttl_point[$scope.cart_ttl_point.length-1].point_name = value.point_name;
+                        $scope.cart_ttl_point[$scope.cart_ttl_point.length-1].point_value = (value.mpoints*value.quantity);
+                        $scope.cart_ttl_cnt.push(value.point_id);
+                    }else {
+
+                        //$scope.cart_ttl_point[$scope.cart_ttl_cnt.indexOf(value.point_id)].id = value.point_id;
+                        //alert('aaa'+$scope.cart_ttl_cnt.indexOf(value.point_id));
+                        $scope.cart_ttl_point[$scope.cart_ttl_cnt.indexOf(value.point_id)].point_name = value.point_name;
+                        $scope.cart_ttl_point[$scope.cart_ttl_cnt.indexOf(value.point_id)].point_value = parseInt($scope.cart_ttl_point[$scope.cart_ttl_cnt.indexOf(value.point_id)].point_value) + parseInt(value.mpoints*value.quantity);
+                        //$scope.cart_ttl_cnt.push(value.point_id);
+                    }
+                }else{
+                    //console.log(value.point_id);
+                    //alert(value.point_id);
+                    $scope.cart_ttl_point.push(value.point_id);
+                    //alert('a'+$scope.cart_ttl_point.length-1);
+                    $scope.cart_ttl_point[$scope.cart_ttl_point.length-1]={};
+                    $scope.cart_ttl_point[$scope.cart_ttl_point.length-1].point_name = value.point_name;
+                    $scope.cart_ttl_point[$scope.cart_ttl_point.length-1].point_value = (value.mpoints*value.quantity);
+                    $scope.cart_ttl_cnt.push(value.point_id);
+                }
+            }
+
+
+
+        })
+
+        console.log($scope.cart_ttl_point);
+    }
 
     $scope.cancelBid = function (bid_id,voucher_id) {
         //$location.path('/resaleCancel/' + voucher_resale_id);

@@ -108,11 +108,13 @@
 
                         <p><b>Voucher Validation Start Date : </b>{{promodetails.item_start_date}}</p>
                         <p><b>Voucher Expired Date : </b>{{promodetails.item_expire_date}}</p>
+                        <p><b>Resell Offer Start Date : </b>{{promodetails.resell_start_date}}</p>
+                        <p><b>Resell Offer End Date : </b>{{promodetails.resell_end_date}}</p>
                         <p><b>Voucher Validation Start Hour : </b>{{promodetails.item_start_hour}}</p>
                         <p><b>Voucher Validation End Hour : </b>{{promodetails.item_end_hour}}</p>
                         <p><b>Including Holiday : </b>{{promodetails.including_holidays==1?'Yes':'No'}}</p>
                         <p><b>Validation Days : </b><span ng-repeat="day in offer_days | orderBy : '2'">{{day.day}}, </span> </p>
-                        <p><b>Time Left : </b><p style="color:green" countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
+                        <p><b>Time Left : </b><p style="color:green" countdown='' date="{{promodetails.resell_expire_date}}" ng-if="promodetails.resell_expire_date">&nbsp;</p></p>
                         <p><b>About Merchant : </b>{{about_me}}</p>
                         <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                     </div>
@@ -342,11 +344,13 @@
 
                         <p><b>Voucher Validation Start Date : </b>{{promodetails.item_start_date}}</p>
                         <p><b>Voucher Expired Date : </b>{{promodetails.item_expire_date}}</p>
+                        <p><b>Resell Offer Start Date : </b>{{promodetails.resell_start_date}}</p>
+                        <p><b>Resell Offer End Date : </b>{{promodetails.resell_end_date}}</p>
                         <p><b>Voucher Validation Start Hour : </b>{{promodetails.item_start_hour}}</p>
                         <p><b>Voucher Validation End Hour : </b>{{promodetails.item_end_hour}}</p>
                         <p><b>Including Holiday : </b>{{promodetails.including_holidays==1?'Yes':'No'}}</p>
                         <p><b>Validation Days : </b><span ng-repeat="day in offer_days | orderBy : '2'">{{day.day}}, </span> </p>
-                        <p><b>Time Left : </b><p style="color:green" countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
+                        <p><b>Time Left : </b><p style="color:green" countdown='' date="{{promodetails.resell_expire_date}}" ng-if="promodetails.resell_expire_date">&nbsp;</p></p>
                         <p><b>About Merchant : </b>{{about_me}}</p>
                         <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                     </div>
