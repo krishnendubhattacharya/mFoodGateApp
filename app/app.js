@@ -854,6 +854,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/eventbiddetail.html',
                 title: 'Event Bid Detail'
             })
+            .state('frontend.merchantredeem', {
+                url: '/merchantredeem',
+                resolve: loadSequence('merchantredeem'),
+                templateUrl: 'app/views/merchant/merchantredeem.html',
+                title: 'Merchanr Redeem'
+            })
 
 
         ;

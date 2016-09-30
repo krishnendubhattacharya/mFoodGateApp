@@ -598,6 +598,17 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
                             })
                             .appendTo(container);
+
+                           $('<button/>').addClass('dx-button')
+                               .text('Add to Cart')
+                               .on('dxclick', function () {
+                                   //Do something with options.data;
+                                   $scope.add_to_cart(options.data.voucher_resale_id,options.data.offer_id);
+
+                                   //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
+
+                               })
+                               .appendTo(container);
 				    }
                         $('<button/>').addClass('dx-button')
                             .text('Detail')

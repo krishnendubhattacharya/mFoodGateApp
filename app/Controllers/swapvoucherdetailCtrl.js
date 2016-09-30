@@ -81,6 +81,7 @@ app.controller('swapvoucherdetailCtrl', function ($rootScope, $scope, $http, $lo
             headers: {'Content-Type': 'application/json'},
         }).success(function(data) {
             if(data.type == 'success') {
+                console.log(data);
                 $scope.promodetails = data.offer;
                 $scope.pointdetails = data.point_details;
                 $scope.restaurant = data.restaurants;

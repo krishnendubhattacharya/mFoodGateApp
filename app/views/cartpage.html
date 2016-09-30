@@ -1,9 +1,13 @@
 <div ng-controller="cartpageCtrl" class="container">
 
 
-        <div class="carts phone-hide">
+        <div class="container phone-hide">
+        <div class="myaccount-details">
             <h1>Cart</h1>
-            <div ng-if="cartDetails" class="offer" ng-repeat="cart in cartDetails">
+                <div ng-if="loggedindetails" data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
+
+            <div class="profile-details carts">
+                <div ng-if="cartDetails" class="offer" ng-repeat="cart in cartDetails">
                 <img src="{{cart.image}}" width="200" style="float:left;margin:10px">
                 <p>
                     <span>{{cart.offer_title}}:</span> {{cart.restaurant_title}}
@@ -87,13 +91,16 @@
             </div>-->
             <p ng-if="cartDetails"><input type="button" value="BUY NOW" ng-click="pay_now()"></p>
         </div>
+                
+            </div>
+    </div>
+    <div class="m-myaccount-details tablet-hide">
 
-
-
-
-
-        <div class="m-carts tablet-hide">
-            <h1>Cart</h1>
+        <div ng-if="loggedindetails" data-ng-include=" 'app/views/partials/leftbar.html' " ></div>
+        <h1>Cart</h1>
+        <div class="m-profile-details">
+            <div class="m-carts tablet-hide">
+            
             <div ng-if="cartDetails" class="offer" ng-repeat="cart in cartDetails">
                 <p>
                     <span>{{cart.offer_title}}:</span> {{cart.restaurant_title}}
@@ -175,9 +182,21 @@
             </div>-->
             <p ng-if="cartDetails"><input type="button" value="BUY NOW" ng-click="pay_now()"></p>
         </div>
+        </div>
+
+    </div>
+    <div class="dx-clearfix"></div>
 
 
 
 
 
 </div>
+<style>
+.profile-details {
+width: 80% !important;
+float: right !important;
+margin: 0 !important;
+border: solid 1px #eaeaea !important;
+}
+</style>

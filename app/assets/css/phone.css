@@ -1798,3 +1798,39 @@ code {
 .new-search{ width: 60%; height:  32px; border: solid 1px #ccc; margin: 15px auto 10px; background: #fff; overflow: hidden;;
     float: left;}
 .new-search input[type="text"]{ width: 100%; background:  none; height: 32px; line-height: 32px; font-size: 14px; color: #666; border:  none;}
+
+/*------------------------- new Profile 20-09-2016 --------------------------*/
+.m-new_profile{ width:100%; height: auto;}
+.m-new_profile h1{ font-size:18px; color:#e35702; line-height:36px; padding: 5px 0 5px 15px;
+background: #f5f5f5; border:  solid 0px #e8e8e8; margin-bottom: 20px; text-transform: uppercase; font-weight:600; margin-top: 0 !important; text-transform:uppercase;}
+.p-box{ width:100%; height: auto;}
+.p-box ul{ padding: 0; margin: 0;}
+.p-box ul li{ margin: 20px auto; width:100%; border: solid 0px red; float: none; list-style-type: none; text-align:center; }
+.p-box ul li h1{ text-align:center; color:#e35702; font-size:24px; font-weight: bold; line-height:30px; padding: 10px 0; margin: 0; background:none; text-transform:inherit;}
+.p-box ul li h2{ text-align:center; color:#007a36; font-size:24px; font-weight: bold; line-height:30px; padding: 10px 0; margin: 0; background:none;}
+.circle_or{ width:180px; height:180px; text-align: center; border-radius: 100%; border: solid 10px #e35702; display:block; text-align: center; line-height:100%; margin: 0 auto; vertical-align: middle; line-height:180px; color:#e35702; font-size:24px; font-weight: bold; margin-bottom:15px;}
+.circle_gr{ width:180px; height:180px; text-align: center; border-radius: 100%; border: solid 10px #007a36; display:block; text-align: center; line-height:100%; margin: 0 auto; vertical-align: middle; line-height:180px; color:#007a36; font-size:24px; font-weight: bold; margin-bottom:15px;}
+.color-or{ color:#e35702 !important;}
+.color-gr{ color:#007a36 !important;}
+
+.m-new_profile .item{ width:100%; height: auto; border: solid 1px #349c34; background:#fff; overflow: hidden;}
+.m-new_profile .item h1{ text-align: center;background:#39ac38; height:48px; line-height: 48px; font-size:16px; font-weight: bold; color: #fff; padding: 0 5px; margin: 0 !important; margin-top: 0 !important; }
+.m-new_profile .item h2{margin: 2px; height:39px; line-height: 39px; border: solid 2px #36a336; font-size: 14px; padding: 0 5px; font-weight: normal; }
+.m-new_profile .item h3{margin: 2px; height:20px; line-height: 20px; font-size: 18px; padding: 5px 10px; font-weight: normal; color:#36a637; }
+.m-new_profile .item .cont{ width:100%; height: auto; overflow: hidden; background:#fff; margin: 0 auto;}
+.m-new_profile .item .cont ul{ width:100%; height: auto; margin: 0; border: none; padding:0 }
+.m-new_profile .item .cont ul li{ float: none; margin:0; padding: 0;list-style-type:none; line-height: 25px; height: 30px; border-bottom: solid 1px #d0d0d0; font-size: 14px;
+    color: #313131; font-weight: normal; width:100%; overflow:hidden; }
+.m-new_profile .item .cont ul li .title{ width:47%; border-right: solid 1px #d0d0d0; font-weight: bold; float: left; margin: 0; color:#339933; line-height:20px; padding: 5px; }
+.m-new_profile .item .cont ul li h1{ padding: 5px 0; text-align:center; background: #339933; color:#fff; height: auto !important; line-height: 20px; font-size:14px; width:100%; padding-left: 0;}
+.m-new_profile .item .cont ul li .val{ width:48%; float: left; margin: 0; color:#000; text-align:right; line-height:20px; padding:5px 0; }
+.m-new_profile .item .cont ul li:last-child{ border: none;}
+.m-dash-board{ padding: 0 20px 20px !important;}
+.pd-0{ padding: 0 !important; width:100% !important;}
+
+/*------------------------------------- 26-09-2016 ----------------------------*/
+.m-img-bx{ width:100%; height: auto; z-index:900000; position: relative;}
+.m-img-bx ul{ padding:0; margin: 0; }
+.m-img-bx ul li{ padding:0; margin: 5px; float: left; width:60px; height: 60px; border: solid 2px #ccc; list-style-type: none; overflow: hidden; position:relative; }
+.m-img-bx ul li .closed{ width:16px; height: 16px; font-size:16px; color:red; position:absolute; z-index:10000; right:2px; top:2px; cursor:pointer;}
+.m-img-bx ul li img{ width:100%; height: auto; }

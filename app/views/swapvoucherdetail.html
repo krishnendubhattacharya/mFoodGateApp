@@ -118,7 +118,7 @@
                                 <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                             </div>
                             <div style="padding-top: 25px;" class="dx-clearfix"></div>
-                            <div ng-if="loggedindetails" id="button" dx-button="{
+                            <div ng-if="loggedindetails && promodetails.status!='Expired'" id="button" dx-button="{
                                 text: 'Bid',
                                 type: 'success',
                                 height:'40px',
@@ -214,7 +214,7 @@
                         <div style="clear: both"></div>
                     </div>
                     <div style="text-align:right">
-                        <div ng-if="loggedindetails" id="button" dx-button="{
+                        <div ng-if="loggedindetails && promodetails.status!='Expired'" id="button" dx-button="{
                                 text: 'Bid',
                                 type: 'success',
                                 height:'40px',
@@ -255,7 +255,7 @@
                             <!--<p countdown='' date='{{promodetails.expire_date}}'>&nbsp;</p>-->
                         </div>
                         <div style="padding-top: 25px;" class="dx-clearfix"></div>
-                        <div ng-if="loggedindetails" id="button" dx-button="{
+                        <div ng-if="loggedindetails && promodetails.status!='Expired'" id="button" dx-button="{
                                 text: 'Bid',
                                 type: 'success',
                                 height:'40px',
@@ -313,7 +313,7 @@
                     <div style="clear: both"></div>
                 </div>
                 <div style="text-align:right">
-                    <div ng-if="loggedindetails" id="button" dx-button="{
+                    <div ng-if="loggedindetails && promodetails.status!='Expired'" id="button" dx-button="{
                                 text: 'Bid',
                                 type: 'success',
                                 height:'40px',

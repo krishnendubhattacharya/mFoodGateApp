@@ -119,7 +119,7 @@ app.constant('JS_REQUIRES', {
         'searchresult':['app/Controllers/searchresultCtrl.js'],
         'swapallvoucherdetail':['app/Controllers/swapallvoucherdetailCtrl.js'],
         'paymentVoucher':['app/Controllers/paymentVoucherCtrl.js'],
-        'cartpage':['app/Controllers/cartpageCtrl.js'],
+        'cartpage':['app/Controllers/cartpageCtrl.js','app/Controllers/leftbarCtrl.js'],
         'merchantmembershiplist':['app/Controllers/merchantmembershiplistCtrl.js','app/Controllers/leftbarCtrl.js'],
         'addswapvoucher':['app/Controllers/addswapvoucherCtrl.js','app/Controllers/leftbarCtrl.js'],
         'swapinterestededit':['app/Controllers/swapinterestededitCtrl.js','app/Controllers/leftbarCtrl.js'],
@@ -135,7 +135,8 @@ app.constant('JS_REQUIRES', {
         'merchantmemberinfo':['app/Controllers/merchantmemberinfoCtrl.js'],
         'websitepromos':['app/Controllers/websitepromosCtrl.js','app/directives/countdownDirective.js'],
         'merchantdashboard':['app/Controllers/merchant/merchantdashboardCtrl.js','app/Controllers/leftbarCtrl.js'],
-        'eventbiddetail':['app/Controllers/eventbiddetailsCtrl.js','app/directives/countdownDirective.js']
+        'eventbiddetail':['app/Controllers/eventbiddetailsCtrl.js','app/directives/countdownDirective.js'],
+        'merchantredeem':['app/Controllers/merchant/merchantredeemCtrl.js','app/Controllers/leftbarCtrl.js'],
 
     },
 

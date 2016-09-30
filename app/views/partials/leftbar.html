@@ -54,6 +54,7 @@
 
 			<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantprofile"><i class="fa fa-user"></i> {{allicons[2].title}}</a></li>
 			<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantdashboard"><i class="fa fa-user"></i> {{allicons[27].title}}</a></li>
+			<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantredeem"><i class="fa fa-user"></i> {{allicons[32].title}}</a></li>
 			<!--<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantaddmember"><i class="fa fa-user"></i> Add Member</a></li>-->
 			<!--<li ng-if="loggedindetails.user_type_id == 3" ng-if="user_details.merchant_id"><a href="http://118.137.201.43:8181/Member_Ship/MasterData/member_master_mfoodgate.aspx?MerchantID={{user_details.merchant_id}}"><i class="fa fa-user"></i>Manage Member</a></li>-->
 			<li ng-if="loggedindetails.user_type_id == 3" ng-if="user_details.merchant_id"><a href="http://52.39.33.188/Member_Ship/MasterData/member_master_mfoodgate.aspx?MerchantID={{user_details.merchant_id}}" target="_blank"><i class="fa fa-user"></i>{{allicons[17].title}}</a></li>
@@ -132,6 +133,7 @@
 		<ul ng-if="loggedindetails.user_type_id == 3">
 		  <li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantprofile"><h1><img src="{{allicons[2].image_url}}" width="35" height="35"  alt=""/></h1> {{allicons[2].title}}</a></li>
 			<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantdashboard"><h1><img src="{{allicons[27].image_url}}" width="35" height="35"  alt=""/></h1> {{allicons[27].title}}</a></li>
+			<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantredeem"><h1><img src="{{allicons[32].image_url}}" width="35" height="35"  alt=""/></h1> {{allicons[32].title}}</a></li>
 			<!--<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.merchantaddmember"><i class="fa fa-user"></i> Add Member</a></li>-->
 			<li ng-if="loggedindetails.user_type_id == 3" ng-if="user_details.merchant_id"><a href="http://52.39.33.188/Member_Ship/MasterData/member_master_mfoodgate.aspx?MerchantID={{user_details.merchant_id}}" target="_blank"><h1><img src="{{allicons[17].image_url}}" width="35" height="35"  alt=""/></h1>{{allicons[17].title}}</a></li>
 			<li ng-if="loggedindetails.user_type_id == 3"><a ui-sref="frontend.purchasedmembrship"><h1><img src="{{allicons[18].image_url}}" width="35" height="35"  alt=""/></h1>{{allicons[18].title}}</a></li>

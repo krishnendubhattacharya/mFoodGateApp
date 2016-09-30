@@ -68,8 +68,8 @@
                     <tr>
                         <td colspan="2">
                             <div class="nwe-btn"><span class="dx-button" ng-click="detailSwap({{voucherDetail.id}},{{voucherDetail.offer_id}})">Details</span></div>
-                            <div class="nwe-btn"><span class="dx-button" ng-click="cancelSwap({{voucherDetail.id}},{{voucherDetail.voucher_id}})">Cancel</span></div>
-                            <div class="nwe-btn"><span class="dx-button"  ng-click="swapBidder({{voucherDetail.id}})">Bidder</span></div>
+                            <div class="nwe-btn" ng-if="voucherDetail.Status!='Expired'"><span class="dx-button" ng-click="cancelSwap({{voucherDetail.id}},{{voucherDetail.voucher_id}})">Cancel</span></div>
+                            <div class="nwe-btn" ng-if="voucherDetail.Status!='Expired'"><span class="dx-button"  ng-click="swapBidder({{voucherDetail.id}})">Bidder</span></div>
                             <!--<div class="nwe-btn"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>-->
                         </td>
                     </tr>
@@ -106,8 +106,8 @@
                     <tr>
                         <td colspan="2">
                             <div class="nwe-btn"><span class="dx-button" ng-click="detailSwap({{voucherDetail.id}},{{voucherDetail.offer_id}})">Details</span></div>
-                            <div class="nwe-btn"><span class="dx-button" ng-click="swapEdit({{voucherDetail.id}},{{voucherDetail.swap_id}})">Edit</span></div>
-                            <div class="nwe-btn"><span class="dx-button" ng-click="cancelSwapBid({{voucherDetail.id}})">Cancel</span></div>
+                            <div class="nwe-btn" ng-if="voucherDetail.Status!='Expired'"><span class="dx-button" ng-click="swapEdit({{voucherDetail.id}},{{voucherDetail.swap_id}})">Edit</span></div>
+                            <div class="nwe-btn" ng-if="voucherDetail.Status!='Expired'"><span class="dx-button" ng-click="cancelSwapBid({{voucherDetail.id}})">Cancel</span></div>
                             <!--<div class="nwe-btn"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>-->
                         </td>
                     </tr>
@@ -145,7 +145,7 @@
                     <tr>
                         <td colspan="2">
                             <div class="nwe-btn"><span class="dx-button" ng-click="detailSwap({{voucherDetail.id}},{{voucherDetail.offer_id}})">Details</span></div>
-                            <div class="nwe-btn"><span class="dx-button" ng-click="swapBid({{voucherDetail.id}})">Bid</span></div>
+                            <div class="nwe-btn" ng-if="voucherDetail.Status!='Expired'"><span class="dx-button" ng-click="swapBid({{voucherDetail.id}})">Bid</span></div>
                             <!--<div class="nwe-btn"><span class="dx-button" ng-click="event_bidder({{voucherDetail.id}})">Bidder</span></div>-->
                         </td>
                     </tr>
