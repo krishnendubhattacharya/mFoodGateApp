@@ -61,6 +61,7 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
             $scope.new_member_graph =data.new_member_graph;
             $scope.promo_graph =data.promo_graph;
             $scope.order_graph =data.order_graph;
+            $scope.order_graph_format =data.order_graph_format;
             $scope.month_name =data.month_name;
 
             $scope.dataSource = [{
@@ -123,22 +124,22 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
             }];
             $scope.dataSource3 = [{
                 day: $scope.month_name.first,
-                oranges: $scope.order_graph.first
+                oranges: $scope.order_graph_format.first
             }, {
                 day: $scope.month_name.second,
-                oranges: $scope.order_graph.second
+                oranges: $scope.order_graph_format.second
             }, {
                 day: $scope.month_name.third,
-                oranges: $scope.order_graph.third
+                oranges: $scope.order_graph_format.third
             }, {
                 day: $scope.month_name.fourth,
-                oranges: $scope.order_graph.fourth
+                oranges: $scope.order_graph_format.fourth
             }, {
                 day: $scope.month_name.fifth,
-                oranges: $scope.order_graph.fifth
+                oranges: $scope.order_graph_format.fifth
             }, {
                 day: $scope.month_name.sixth,
-                oranges: $scope.order_graph.sixth
+                oranges: $scope.order_graph_format.sixth
             }];
             $scope.reshow =true;
             $scope.reshow1 =true;
@@ -321,7 +322,6 @@ app.controller('merchantdashboardCtrl', function ($rootScope, $scope, $http, $lo
 
     $scope.validateAndSubmitTransaction = function(params) {
 
-        console.log($scope.trans);
         $scope.start_date = moment($scope.userInfo.start_date).format("YYYY-MM-DD");
         $scope.end_date = moment($scope.userInfo.end_date).format("YYYY-MM-DD");
         console.log($scope.start_date);

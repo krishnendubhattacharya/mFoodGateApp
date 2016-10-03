@@ -43,7 +43,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             }
     },
         price:{
-            mode: "number"
+            mode: "text"
         },restaurant:{
             dataSource: $scope.all_restaurant,
             displayExpr: "name",
