@@ -13,8 +13,8 @@
         
         <div class="profile-details">
         <div class="new_profile">
-        	<h1>Profile</h1>
-            <div class="dash-board">
+        	<h1 ng-click="firstShowHide()">Profile</h1>
+            <div ng-show="first_show" class="dash-board">
                     <p style="font-size: 18px;">{{userInfo.first_name}} {{userInfo.last_name}}</p>
                     <p><span class="title">Member Since:</span> <span class="val">{{userInfo.registration_date}}</span></p>
                     <p><span class="title">Mobile Phone:</span> <span class="val">{{userInfo.phone}}</span></p>
@@ -25,15 +25,16 @@
                 </div>
             </div>
             <div class="new_profile">
-        	<h1>MY POINT</h1>
-            <div class="dash-board">
+        	<h1 ng-click="secondShowHide()">MY POINT</h1>
+            <div ng-show="second_show" class="dash-board">
             	<div class="p-box">
                 	<ul>
                     	<li ng-repeat="user_point in user_point_details">
-                        	<h1>{{user_point.point_name}}</h1>
-                            <div class="circle_or">{{user_point.total_remaining_point}}</div>
-                            <p class="color-or">Nearest Expired : {{user_point.point_expire_date}}</p>
-                            <p class="color-or">Last {{user_point.point_name}} Get : {{user_point.last_point_date}}</p>
+                        	<h1 ng-if="user_point.point_name=='mCash'">{{user_point.point_name}}</h1>
+                        	<h2 ng-if="user_point.point_name!='mCash'">{{user_point.point_name}}</h2>
+                            <div ng:class="{true:'circle_or', false:'circle_gr'}[user_point.point_name=='mCash']">{{user_point.total_remaining_point}}</div>
+                            <p ng:class="{true:'color-or', false:'color-gr'}[user_point.point_name=='mCash']" >Nearest Expired : {{user_point.point_expire_date}}</p>
+                            <p ng:class="{true:'color-or', false:'color-gr'}[user_point.point_name=='mCash']">Last {{user_point.point_name}} Get : {{user_point.last_point_date}}</p>
                            
                         </li>
                         <!--<li>
@@ -49,8 +50,8 @@
             </div>
             </div>
             <div class="new_profile">
-        	<h1>MY Deal</h1>
-            <div class="dash-board">
+        	<h1 ng-click="thirdShowHide()">MY Deal</h1>
+            <div ng-show="third_show" class="dash-board">
             <div class="item">
                 
                 <div class="cont">
@@ -129,8 +130,8 @@
         
         <div class="m-profile-details pd-0">
         	<div class="m-new_profile">
-        	<h1>Profile</h1>
-            <div class="m-dash-board">
+        	<h1 ng-click="firstShowHide()">Profile</h1>
+            <div ng-show="first_show" class="m-dash-board">
                     <p style="font-size: 18px;">{{userInfo.first_name}} {{userInfo.last_name}}</p>
                     <p><span class="title">Member Since:</span> <span class="val">{{userInfo.registration_date}}</span></p>
                     <p><span class="title">Mobile Phone:</span> <span class="val">{{userInfo.phone}}</span></p>
@@ -141,15 +142,16 @@
                 </div>
             </div>
             <div class="m-new_profile">
-        	<h1>MY POINT</h1>
-            <div class="m-dash-board">
+        	<h1 ng-click="secondShowHide()">MY POINT</h1>
+            <div ng-show="second_show" class="m-dash-board">
             	<div class="p-box">
                 	<ul>
                     	<li ng-repeat="user_point in user_point_details">
-                        	<h1>{{user_point.point_name}}</h1>
-                            <div class="circle_or">{{user_point.total_remaining_point}}</div>
-                            <p class="color-or">Nearest Expired : {{user_point.point_expire_date}}</p>
-                            <p class="color-or">Last {{user_point.point_name}} Get : {{user_point.last_point_date}}</p>
+                        	<h1 ng-if="user_point.point_name=='mCash'">{{user_point.point_name}}</h1>
+                        	<h2 ng-if="user_point.point_name!='mCash'">{{user_point.point_name}}</h2>
+                            <div ng:class="{true:'circle_or', false:'circle_gr'}[user_point.point_name=='mCash']">{{user_point.total_remaining_point}}</div>
+                            <p ng:class="{true:'color-or', false:'color-gr'}[user_point.point_name=='mCash']" >Nearest Expired : {{user_point.point_expire_date}}</p>
+                            <p ng:class="{true:'color-or', false:'color-gr'}[user_point.point_name=='mCash']">Last {{user_point.point_name}} Get : {{user_point.last_point_date}}</p>
                            
                         </li>
                     </ul>
@@ -158,8 +160,8 @@
             </div>
             </div>
             <div class="m-new_profile">
-        	<h1>MY DEAL</h1>
-            <div class="m-dash-board">
+        	<h1 ng-click="thirdShowHide()">MY DEAL</h1>
+            <div ng-show="third_show" class="m-dash-board">
             <div class="item">
                 <div class="cont">
                 	<ul>

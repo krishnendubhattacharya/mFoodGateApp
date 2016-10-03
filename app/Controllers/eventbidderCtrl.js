@@ -196,6 +196,14 @@ app.controller('eventbidderCtrl', function ($rootScope, $scope, $http, $location
                 //localStorage.setItem('cart', null);
                 mFoodCart.add_to_cart(cart_obj);
                 $scope.save_to_db();
+                 $location.path('/myevent');
+                 DevExpress.ui.notify({
+                    message: 'You have successfully accepted the bid.',
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "success", 3000);
             } else {
 
             }

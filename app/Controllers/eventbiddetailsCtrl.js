@@ -234,6 +234,14 @@ app.controller('eventbiddetailsCtrl', function ($rootScope, $scope, $http, $loca
 
                 $scope.getCartTotals();
                 $scope.save_to_db();
+                $location.path('/myevent');
+                 DevExpress.ui.notify({
+                    message: 'You have successfully accepted the bid.',
+                    position: {
+                        my: "center top",
+                        at: "center top"
+                    }
+                }, "success", 3000);
             }
     }
 
