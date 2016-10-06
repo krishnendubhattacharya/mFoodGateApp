@@ -24,8 +24,12 @@
             <h1 ng-click="firstShowHide()">Redeem Details</h1>
             <div class="new-border">
             	<div ng-show="first_show" class="m-transaction-details tablet-hide" ng-repeat="voucherDetail in voucherInfo">
-                <h1>{{voucherDetail.offer_title}}</h1>
+                <h1>{{voucherDetail.title}}</h1>
                 <table>
+                    <tr>
+                        <td width="30%" class="m-header-color">Voucher Name</td>
+                        <td>{{voucherDetail.offer_title}}</td>
+                    </tr>
                     <tr>
                         <td width="30%" class="m-header-color">Voucher Number</td>
                         <td>{{voucherDetail.voucher_number}}</td>
@@ -35,6 +39,10 @@
                         <td>{{voucherDetail.price}}</td>
                     </tr>
                     <tr>
+                        <td width="30%" class="m-header-color">Redeem Date</td>
+                        <td>{{voucherDetail.RedeemDate}}</td>
+                    </tr>
+                    <!--<tr>
                         <td width="30%" class="m-header-color">Voucher Price</td>
                         <td>{{voucherDetail.offer_price}}</td>
                     </tr>
@@ -53,7 +61,7 @@
                     <tr>
                         <td width="30%" class="m-header-color">Status</td>
                         <td>{{voucherDetail.Status}}</td>
-                    </tr>
+                    </tr>-->
 
                 </table>
             </div>

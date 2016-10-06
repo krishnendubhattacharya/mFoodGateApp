@@ -145,7 +145,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             width: 240,
             placeholder: "Search..."
         },
-        columns: ["sl", "title",
+        columns: ["sl",{caption:'Restaurant Name',dataField:"restaurant"}, "title",
          {caption:'price',dataField:"formatprice"},
          {
             caption:'Image',
@@ -267,7 +267,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             url: $rootScope.serviceurl + "getMenuByUser/" + $scope.loggedindetails.id,
         }).success(function (data) {
             $scope.voucherInfo = data.data;
-            //console.log($scope.voucherInfo);
+            console.log($scope.voucherInfo);
             //if($scope.datag)
                 //$scope.datag.option({dataSource:$scope.voucherInfo});
 

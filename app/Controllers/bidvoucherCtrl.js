@@ -1,4 +1,4 @@
-app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location, mFoodCart, $stateParams, myAuth) {
+app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location, mFoodCart, $stateParams, myAuth, $timeout) {
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
@@ -28,6 +28,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
         }
 
     }
+    $scope.thirdcheck =false;
     if(!$scope.loggedindetails){
 
         $location.path("/login");
@@ -269,7 +270,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
                             })
                             .appendTo(container);
-                            
+
                         $('<button/>').addClass('dx-button')
                                 .text('Cancel')
                                 .on('dxclick', function () {
@@ -279,7 +280,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                                     //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
 
                                 })
-                                .appendTo(container);    
+                                .appendTo(container);
                         }
                         if(options.data.Status == 'Accepted') {
                            if($scope.loggedindetails.id = options.data.user_id)
@@ -294,9 +295,9 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
 		                       })
 		                       .appendTo(container);
-		                    }  
+		                    }
                         }
-				}	
+				}
                         $('<button/>').addClass('dx-button')
                             .text('Detail')
                             .on('dxclick', function () {
@@ -307,7 +308,7 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
                             })
                             .appendTo(container);
-                        
+
 
 
                     }
@@ -545,16 +546,25 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
             $location.path('/editbid/'+bid_id+'/'+resell_id);
 
     }
+    //$scope.soonVoucherInfo =null;
+    //$scope.datagOne = null;
 
+
+    $scope.soonVoucherInfo = null;
     $http({
         method: "GET",
-        url: $rootScope.serviceurl + "othersresellList/"+$scope.loggedindetails.id,
+        url: $rootScope.serviceurl + "othersresellList/" + $scope.loggedindetails.id,
     }).success(function (data) {
-        $scope.soonVoucherInfo =data.resale_details;
-        //console.log($scope.voucherInfo);
-        $scope.dataGridOptions2 = {
+        $scope.soonVoucherInfo = data.resale_details;
+        $timeout(function(){
+
+
+        $scope.dataGridOptions22 = {
             dataSource: $scope.soonVoucherInfo,
             wordWrapEnabled: true,
+            selection: {
+                mode: "single"
+            },
             paging: {
                 pageSize: 5
             },
@@ -564,58 +574,44 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
                 showInfo: true
             },
 
-            columns: [{caption:'Voucher Name',dataField:"title"},
-                {caption:'Resell Price',dataField:"price"},
-                {caption:'Voucher Price',dataField:"voucher_price"},"expire_date",
-                {caption:'Resell Date',dataField:"created_on"},
-                /*{
-                    width: 100,
-                    alignment: 'center',
-                    cellTemplate: function (container, options) {
-                        $('<button/>').addClass('dx-button')
-                            .text('Details')
-                            .on('dxclick', function () {
-                                //Do something with options.data;
-                                $location.path('/voucherdetail/'+options.data.id);
-                            })
-                            .appendTo(container);
-                    }
-                },*/
+            columns: [{caption: 'Voucher Name', dataField: "title"},
+                {caption: 'Resell Price', dataField: "price"},
+                {caption: 'Voucher Price', dataField: "voucher_price"}, "expire_date",
+                {caption: 'Resell Date', dataField: "created_on"},
                 {
                     width: 160,
-                    caption:'Action',
+                    caption: 'Action',
                     alignment: 'center',
                     cellTemplate: function (container, options) {
-                        if(options.data.Status != 'Expired')
-                       {
-                        $('<button/>').addClass('dx-button')
-                            .text('Bid')
-                            .on('dxclick', function () {
-                                //Do something with options.data;
-                                //$scope.addBid();
-                                $scope.addbid(options.data.voucher_resale_id,options.data.voucher_id);
-                                //$location.path('/addbid/'+options.data.voucher_resale_id+'/'+options.data.voucher_id)
+                        if (options.data.Status != 'Expired') {
+                            $('<button/>').addClass('dx-button')
+                                .text('Bid')
+                                .on('dxclick', function () {
+                                    //Do something with options.data;
+                                    //$scope.addBid();
+                                    $scope.addbid(options.data.voucher_resale_id, options.data.voucher_id);
+                                    //$location.path('/addbid/'+options.data.voucher_resale_id+'/'+options.data.voucher_id)
 
-                            })
-                            .appendTo(container);
+                                })
+                                .appendTo(container);
 
-                           $('<button/>').addClass('dx-button')
-                               .text('Add to Cart')
-                               .on('dxclick', function () {
-                                   //Do something with options.data;
-                                   $scope.add_to_cart(options.data.voucher_resale_id,options.data.offer_id);
+                            $('<button/>').addClass('dx-button')
+                                .text('Add to Cart')
+                                .on('dxclick', function () {
+                                    //Do something with options.data;
+                                    $scope.add_to_cart(options.data.voucher_resale_id, options.data.offer_id);
 
-                                   //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
+                                    //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
 
-                               })
-                               .appendTo(container);
-				    }
+                                })
+                                .appendTo(container);
+                        }
                         $('<button/>').addClass('dx-button')
                             .text('Detail')
                             .on('dxclick', function () {
                                 //Do something with options.data;
                                 //$location.path('/bidderlist/'+options.data.voucher_resale_id);
-                                $scope.detailVoucher(options.data.voucher_resale_id,options.data.offer_id);
+                                $scope.detailVoucher(options.data.voucher_resale_id, options.data.offer_id);
                                 //$scope.bidderList(options.data.voucher_resale_id,$scope.loggedindetails.id);
 
                             })
@@ -626,9 +622,13 @@ app.controller('bidvoucherCtrl', function ($rootScope, $scope, $http, $location,
 
             ]
         };
+        },3000);
 
 
     });
+    //$scope.getothersresellList();
+
+
 
     $scope.addbid = function (voucher_resale_id,voucher_id) {
 

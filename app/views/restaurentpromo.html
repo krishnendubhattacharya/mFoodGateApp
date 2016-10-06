@@ -19,7 +19,8 @@
 
 
     <div class="new-Promo phone-hide">
-        <h2>{{restaurantInfo.title}}</h2>
+        <!--<h2>{{restaurantInfo.title}}</h2>-->
+        <img src="{{restaurantInfo.linklogo}}" alt="{{restaurantInfo.title}}" title="{{restaurantInfo.title}}">
         <div ng-bind-html="restaurantInfo.description"></div>
     </div>
     <div class="dx-clearfix"></div>
@@ -213,7 +214,8 @@
 </div>-->
 
     <div class="m-new-Promo tablet-hide">
-        <h2>{{restaurantInfo.title}}</h2>
+        <!--<h2>{{restaurantInfo.title}}</h2>-->
+        <img src="{{restaurantInfo.linklogo}}" alt="{{restaurantInfo.title}}" title="{{restaurantInfo.title}}">
         <p ng-bind-html="restaurantInfo.description | limitTo:800"></p>
     </div>
     <div class="dx-clearfix"></div>
@@ -223,7 +225,7 @@
     <div class="dx-clearfix"></div>
 
 <div class="m-new-Promo tablet-hide" ng-if="specialInfo.length != 0">
-    <h2 class="tablet-hide">{{restaurantInfo.title}}</h2>
+    <!--<h2 class="tablet-hide">{{restaurantInfo.title}}</h2>-->
     <h1 ng-click="specialShowHide()">{{specialTitle}}</h1>
     <ul ng-show="special_promo_show">
         <li ng-repeat="specialDetail in specialInfo">

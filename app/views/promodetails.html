@@ -96,8 +96,8 @@
                 <h1>{{promodetails.title}} </h1>
                 <div >
                     <div>
-                    <p ng-if="promodetails.offer_type_id != 3"><b>Voucher Value : </b>IDR{{promodetails.price | number}}</p>
-                        <p ng-if="promodetails.offer_type_id == 3"><b>Voucher Value : </b>IDR{{promodetails.price | number}}</p>
+                    <p ng-if="promodetails.offer_type_id != 3"><b>Membership Value : </b>IDR{{promodetails.price | number}}</p>
+                        <p ng-if="promodetails.offer_type_id == 3"><b>Membership Value : </b>IDR{{promodetails.price | number}}</p>
                         <!--<p><b>Discount : </b>{{promodetails.offer_percent}}%</p>-->
                     <p><b>Discounted Price : </b>IDR{{promodetails.offer_price | number}} <span class="p-circle">{{promodetails.offer_percent}}%</span></p>
                         <p ng-if="promodetails.mpoints != 0">{{promodetails.conditions==1?'And':'Or'}}</p>
@@ -106,10 +106,10 @@
                         <p><b>Quantity Available : </b>{{promodetails.quantity - promodetails.buy_count}}</p>
 
 
-                        <p><b>Voucher Validation Start Date : </b>{{promodetails.item_start_date}}</p>
-                        <p><b>Voucher Expired Date : </b>{{promodetails.item_expire_date}}</p>
-                        <p><b>Voucher Validation Start Hour : </b>{{promodetails.item_start_hour}}</p>
-                        <p><b>Voucher Validation End Hour : </b>{{promodetails.item_end_hour}}</p>
+                        <p><b>Membership Validation Start Date : </b>{{promodetails.item_start_date}}</p>
+                        <p><b>Membership Expired Date : </b>{{promodetails.item_expire_date}}</p>
+                        <p><b>Membership Validation Start Hour : </b>{{promodetails.item_start_hour}}</p>
+                        <p><b>Membership Validation End Hour : </b>{{promodetails.item_end_hour}}</p>
                         <p><b>Including Holiday : </b>{{promodetails.including_holidays==1?'Yes':'No'}}</p>
                         <p><b>Validation Days : </b><span ng-repeat="day in offer_days | orderBy : '2'">{{day.day}}, </span> </p>
                         <p><b>Time Left : </b><p style="color:green" countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>
@@ -327,7 +327,7 @@
                 <h1>{{promodetails.title}} </h1>
                 <div >
                     <div>
-                        <p><b>Voucher Value : </b>IDR{{promodetails.price | number}}</p>
+                        <p><b>Membership Value : </b>IDR{{promodetails.price | number}}</p>
                         <p><b>Discounted Price : </b>IDR{{promodetails.offer_price | number}} <span class="p-circle">{{promodetails.offer_percent}}%</span></p>
                         <p ng-if="promodetails.mpoints != 0">{{promodetails.conditions==1?'And':'Or'}}</p>
                         <p ng-if="promodetails.mpoints != 0"><b>M-points : </b>{{promodetails.mpoints}}</p>
@@ -337,10 +337,10 @@
                         <p><b>Quantity Available : </b>{{promodetails.quantity - promodetails.buy_count}}</p>
 
 
-                        <p><b>Voucher Validation Start Date : </b>{{promodetails.item_start_date}}</p>
-                        <p><b>Voucher Expired Date : </b>{{promodetails.item_expire_date}}</p>
-                        <p><b>Voucher Validation Start Hour : </b>{{promodetails.item_start_hour}}</p>
-                        <p><b>Voucher Validation End Hour : </b>{{promodetails.item_end_hour}}</p>
+                        <p><b>Membership Validation Start Date : </b>{{promodetails.item_start_date}}</p>
+                        <p><b>Membership Expired Date : </b>{{promodetails.item_expire_date}}</p>
+                        <p><b>Membership Validation Start Hour : </b>{{promodetails.item_start_hour}}</p>
+                        <p><b>Membership Validation End Hour : </b>{{promodetails.item_end_hour}}</p>
                         <p><b>Including Holiday : </b>{{promodetails.including_holidays==1?'Yes':'No'}}</p>
                         <p><b>Validation Days : </b><span ng-repeat="day in offer_days | orderBy : '2'">{{day.day}}, </span> </p>
                         <p><b>Time Left : </b><p style="color=green;" countdown='' date="{{promodetails.expire_date}}" ng-if="promodetails.expire_date">&nbsp;</p></p>

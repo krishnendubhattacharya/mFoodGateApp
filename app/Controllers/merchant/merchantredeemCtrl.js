@@ -56,14 +56,17 @@ app.controller('merchantredeemCtrl', function ($rootScope, $scope, $http, $locat
                     showInfo: true
                 },
 
-                columns: [{caption:'Voucher Number',dataField:"voucher_number"}, {caption:'Voucher Name',dataField:"offer_title"},
+                columns: [{caption:'Restaurant',dataField:"title"},
+                    {caption:'Voucher Name',dataField:"offer_title"},
+                    {caption:'Voucher Number',dataField:"voucher_number"},
                     {caption:'Voucher Value',dataField:"price"},
-                    {caption:'Voucher Price',dataField:"offer_price"},
-                    {caption:'Voucher Expired Date',dataField:"to_date"},
                     {caption:'Redeem Date',dataField:"RedeemDate"},
+                    //{caption:'Voucher Price',dataField:"offer_price"},
+                   // {caption:'Voucher Expired Date',dataField:"to_date"},
+                    
                     //{caption:'Higest Bid Price',dataField:"price"},
-                    {caption:'Restaurant Redeem',dataField:"title"},
-                    {caption:'Status',dataField:"Status"}
+                    
+                  //  {caption:'Status',dataField:"Status"}
 
 
 
