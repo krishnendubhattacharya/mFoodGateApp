@@ -20,7 +20,7 @@
                     <p><span class="title">Mobile Phone:</span> <span class="val">{{userInfo.phone}}</span></p>
 
                     <p><span class="title">Email/Login Name:</span> <span class="val">{{userInfo.email}}</span></p>
-                    <p><span class="title">Favourite Food:</span> <span class="val" ng-repeat="cat in userInfo.categories">{{cat.category}}, </span></p>
+                    <p><span class="title">Favourite Food:</span> <span class="val" ><span style="width:100%;float:left;" ng-repeat="cat in userInfo.categories">{{cat.category}},</span> </span></p>
                     <div class="clear-fix" style="margin-top: 20px;"></div>
                 </div>
         </div>
@@ -138,7 +138,8 @@
                     <p><span class="title">Mobile Phone:</span> <span class="val">{{userInfo.phone}}</span></p>
 
                     <p><span class="title">Email/Login Name:</span> <span class="val">{{userInfo.email}}</span></p>
-                    <p><span class="title">Favourite Food:</span> <span class="val" ng-repeat="cat in userInfo.categories">{{cat.category}}, </span></p>
+                    <p><span class="title">Favourite Food:</span> 
+                    <span class="val" ><span style="width:100%;float:left;" ng-repeat="cat in userInfo.categories">{{cat.category}},</span> </span></p>
                     <div class="clear-fix" style="margin-top: 20px;"></div>
             </div>
             </div>
