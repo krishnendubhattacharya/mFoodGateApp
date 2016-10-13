@@ -145,7 +145,7 @@ app.controller('merchantmenuCtrl', function ($rootScope, $scope, $http, $locatio
             width: 240,
             placeholder: "Search..."
         },
-        columns: ["sl",{caption:'Restaurant Name',dataField:"restaurant"}, "title",
+        columns: [{caption:'No',dataField:"sl"},{caption:'Restaurant Name',dataField:"restaurant"}, "title",
          {caption:'price',dataField:"formatprice"},
          {
             caption:'Image',

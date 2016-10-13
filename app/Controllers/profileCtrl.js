@@ -42,11 +42,16 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
                 })
             })
             $scope.foodlist.option({values:$scope.capitals});
+            $scope.foodlistmob.option({values:$scope.capitals});
+            //$scope.foodlistmob.option({items:$scope.allcat});
         }
     }
 
     $scope.init_food = function(e){
         $scope.foodlist = e.component;
+    }
+    $scope.init_food_mob = function(e){
+        $scope.foodlistmob = e.component;
     }
     $scope.getUserInfo();
     $scope.dateBox = {
@@ -151,6 +156,7 @@ app.controller('profileCtrl', function ($rootScope, $scope, $http, $location, $s
             $scope.allcat = data.category;
 
             $scope.foodlist.option({items:$scope.allcat});
+            $scope.foodlistmob.option({items:$scope.allcat});
             $scope.change_cats();
             //for (var i = 0; i < $scope.allcat.length; i++) {
             //    $scope.tagBoxData.store().insert($scope.allcat[i]);

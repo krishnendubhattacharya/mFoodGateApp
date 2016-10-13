@@ -77,7 +77,7 @@
 		<div class="owl-carousel1 new-Promo">
 			<div class="item pro-item" ng-repeat="featuredCatDetail in ads">
 				<a ui-sref="frontend.advertisedetail({advertiseId:featuredCatDetail.id})"><img src="{{featuredCatDetail.image_url}}"  alt=""/></a>
-				<div class="desc" ng-if="featuredCatDetail.title">
+                                <div class="desc" ng-if="featuredCatDetail.title" style="padding:5px 5px;">
 					<h3 class="ng-binding">{{featuredCatDetail.title}}</h3>
 				</div>
 			</div>
@@ -163,4 +163,3 @@
 <style>
 	.new-Promo .pro-item{ height:  154px !important;}
 </style>
-

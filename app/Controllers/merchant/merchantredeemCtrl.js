@@ -28,6 +28,7 @@ app.controller('merchantredeemCtrl', function ($rootScope, $scope, $http, $locat
         }
 
     }
+    $scope.resname = [];
     if(!$scope.loggedindetails){
 
         $location.path("/login");
@@ -39,6 +40,20 @@ app.controller('merchantredeemCtrl', function ($rootScope, $scope, $http, $locat
             url: $rootScope.serviceurl + "getRedeemVoucher/"+$scope.loggedindetails.id,
         }).success(function (data) {
             $scope.voucherInfo =data.data;
+            $scope.resname.push('All');
+            angular.forEach($scope.voucherInfo, function (v) {
+                if($scope.resname.indexOf(v.restaurant_title) == -1){
+                    $scope.resname.push(v.restaurant_title);
+                }
+                /*angular.forEach($scope.resname, function (r) {
+                    if(r == v.restaurant_title){
+                        $scope.resname.push(v.restaurant_title);
+                    }else{
+                        $scope.resname.push(v.restaurant_title);
+                    }
+                })*/
+                                
+            })
             //console.log($scope.voucherInfo);
 
             $scope.dataGridOptions = {
@@ -56,11 +71,14 @@ app.controller('merchantredeemCtrl', function ($rootScope, $scope, $http, $locat
                     showInfo: true
                 },
 
-                columns: [{caption:'Restaurant',dataField:"title"},
+                columns: [{caption:'Restaurant',dataField:"restaurant_title"},
+			{caption:'Outlet Redeem',dataField:"title"},
+			{caption:'Redeem Date',dataField:"RedeemDate"},
                     {caption:'Voucher Name',dataField:"offer_title"},
                     {caption:'Voucher Number',dataField:"voucher_number"},
                     {caption:'Voucher Value',dataField:"price"},
-                    {caption:'Redeem Date',dataField:"RedeemDate"},
+                    
+			{caption:'Status Redeem',dataField:"Status"}
                     //{caption:'Voucher Price',dataField:"offer_price"},
                    // {caption:'Voucher Expired Date',dataField:"to_date"},
                     
@@ -76,5 +94,33 @@ app.controller('merchantredeemCtrl', function ($rootScope, $scope, $http, $locat
 
 
         });
+        
+        $scope.selectStatusOptions = {
+            dataSource: $scope.resname,
+            value: $scope.resname[0],
+            onValueChanged: function(data) {
+                if (data.value == "All")
+                    $("#gridContainer")
+                        .dxDataGrid("instance")
+                        .clearFilter();
+                else
+                    $("#gridContainer")
+                        .dxDataGrid("instance")
+                        .filter(["restaurant_title", "=", data.value]);
+            }
+        };
+        $scope.resnamemob = '';
+        $scope.selectStatusOptionsmob = {
+            dataSource: $scope.resname,
+            value: $scope.resname[0],
+            onValueChanged: function(data) {
+                if (data.value == "All")
+                    $scope.resnamemob = '';
+                else
+                    $scope.resnamemob = data.value;
+                
+                console.log($scope.resnamemob);
+            }
+        };
 
 });
