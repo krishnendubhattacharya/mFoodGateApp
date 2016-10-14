@@ -27,7 +27,7 @@ app.controller('leftbarCtrl', function ($rootScope, $scope, $http, $location, $s
     $scope.getImageInfo();
 
     $scope.urlParam = $location.path();
-    //console.log($scope.urlParam);
+    console.log($scope.urlParam);
 
     $scope.uploadResult = [];
     $scope.onFileSelect = function($files) {
