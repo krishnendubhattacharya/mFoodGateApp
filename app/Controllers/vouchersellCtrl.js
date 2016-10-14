@@ -71,8 +71,8 @@ app.controller('vouchersellCtrl', function ($rootScope, $scope, $http, $location
         //alert($scope.loggedindetails.id);
         //var result = params.validationGroup.validate();
        // if(result.isValid) {
-        $scope.offering_start_date = moment($scope.offering_start_date).format("YYYY/MM/DD HH:mm:ss");
-        $scope.offering_end_date = moment($scope.offering_end_date).format("YYYY/MM/DD HH:mm:ss");
+        $scope.offering_start_date = moment($scope.offering_start_date).format("YYYY/MM/DD");
+        $scope.offering_end_date = moment($scope.offering_end_date).format("YYYY/MM/DD");
         //console.log($scope.offering_start_date);
         //console.log($scope.offering_end_date);
         //return false;

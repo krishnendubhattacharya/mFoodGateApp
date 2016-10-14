@@ -234,8 +234,8 @@ app.controller('addswapvoucherCtrl', function ($rootScope, $scope, $http, $locat
        // $location.path('/addswapvoucher/' + $stateParams.voucherId + '/' + $stateParams.offerId);
         $scope.typedata = $scope.typeList;
         $scope.areadata = $scope.areaList;
-        $scope.offering_start_date = moment($scope.offering_start_date).format("YYYY/MM/DD HH:mm:ss");
-        $scope.offering_end_date = moment($scope.offering_end_date).format("YYYY/MM/DD HH:mm:ss");
+        $scope.offering_start_date = moment($scope.offering_start_date).format("YYYY/MM/DD");
+        $scope.offering_end_date = moment($scope.offering_end_date).format("YYYY/MM/DD");
         $http({
             method: "POST",
             url: $rootScope.serviceurl + "swap",
