@@ -3,7 +3,7 @@
  * controllers used for the register
  */
  
-app.controller('registerCtrl', function ($rootScope, $scope, $http, $location, $facebook, $stateParams) {
+app.controller('registerCtrl', function ($rootScope, $scope, $http, $location, $facebook, GooglePlus, myAuth, $cookieStore,ngToast,$stateParams,$timeout) {
 var user_type = ["Merchant", "Client"];
 //var user_type = {"M":"Merchant", "C":"Client"};
 $scope.textBox = {
@@ -249,6 +249,72 @@ $scope.fbsignuser = function () {
                 //$scope.alertmessage = true;
                 //$scope.alert = myAuth.addAlert('danger', 'Please provide your email.');
             });
+    }
+    
+    $scope.gpluslogin = function (idmsg) {
+	    $scope.idmsg = idmsg;
+		GooglePlus.login().then(function (authResult) {
+            console.log(authResult);
+
+            GooglePlus.getUser().then(gfresh);
+            /*GooglePlus.getUser().then(function (user) {
+                gfresh();
+            });*/
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    
+    function gfresh(user) {
+    		console.log(user);
+        console.log('GooGle SignUp:----'+user.name+'|'+user.id+'|'+user.picture+'|'+user.email);
+        	$http({
+                    method: "POST",
+                    url: $rootScope.serviceurl+"gplusLoginUser",
+                    data: {"email":user.email,"id":user.id,"name":user.name},
+                    headers: {'Content-Type': 'application/json'},
+                }).success(function(data) {
+                    console.log(data);
+                    if(data.type == 'success'){
+                        $scope.loggedindetails = '';
+                        var message = data.message;
+                        //params.validationGroup.reset();
+                        //$cookieStore.put('users', data.user_details);
+                        localStorage.setItem('users', JSON.stringify(data.user_details));
+                        $scope.user_username = '';
+                        $scope.user_password = '';
+                        myAuth.updateUserinfo(myAuth.getUserAuthorisation());
+                        $scope.loggedindetails = myAuth.getUserNavlinks();
+                        //console.log('hiiiiiiiiii');
+                        console.log($scope.loggedindetails);
+                        $rootScope.$emit('updateLoginDetails');
+                        $scope.loggedin = true;
+                        $scope.notloggedin = false;
+                        //console.log($scope.loggedindetails);
+                        if(data.user_details.user_type_id == 1){
+                            $location.path('admin/home');
+                        }else {
+                            $location.path('/');
+                        }
+                        DevExpress.ui.notify({
+                            message: message,
+                            position: {
+                                my: "center top",
+                                at: "center top"
+                            }
+                        }, "success", 3000);
+                    }else{
+                        var message = "Login failed.";
+                        DevExpress.ui.notify({
+                            message: message,
+                            position: {
+                                my: "center top",
+                                at: "center top"
+                            }
+                        }, "error", 3000);
+                    }
+
+                });      
     }
    
    
