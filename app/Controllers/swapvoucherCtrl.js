@@ -2,6 +2,8 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
     myAuth.updateUserinfo(myAuth.getUserAuthorisation());
     $scope.loggedindetails = myAuth.getUserNavlinks();
     $scope.voucherInfo;
+    $scope.voucherInfo2;
+    $scope.voucherInfo3;
     if(!$scope.loggedindetails){
 
         $location.path("/login");
@@ -106,6 +108,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
 
         });
 
+    $scope.voucherInfo2 = null;
     $http({
         method: "GET",
         url: $rootScope.serviceurl + "myBidSwapList/"+$scope.loggedindetails.id,
@@ -171,7 +174,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
 
     });
 
-
+	$scope.voucherInfo3 = null;
     $http({
         method: "GET",
         url: $rootScope.serviceurl + "otherSwapList/"+$scope.loggedindetails.id,

@@ -16,6 +16,7 @@ var app = angular.module("mFoodApp", [
         'angularjs-dropdown-multiselect',
         'angularMoment',
         'angularUtils.directives.dirPagination',
+        'googleplus',
 ]);
 
 app.config(['$facebookProvider', function($facebookProvider) {
@@ -78,6 +79,23 @@ app.run(['$rootScope', '$state', '$stateParams',
 
     }]);
 
+
+/////////Gplus Config///////////////////// 
+ /*app.config(['GooglePlusProvider', function(GooglePlusProvider) {
+     GooglePlusProvider.init({
+        clientId: '612181755298-lpkrunqgt3860479r850dif58p9p2o12.apps.googleusercontent.com',
+        apiKey: 'AIzaSyC0eRHUoe9BA3FDewLO-YJ5WzKrDEuxR5M',
+        scopes: ['profile', 'email']
+     });
+}]);*/
+
+app.config(['GooglePlusProvider', function(GooglePlusProvider) {
+     GooglePlusProvider.init({
+        clientId: '612181755298-lpkrunqgt3860479r850dif58p9p2o12.apps.googleusercontent.com',
+        apiKey: 'AIzaSyDj9qJ9WZXl6zqhTczV9Z9Z0yZx7VaH3mo',
+        scopes: ['profile', 'email']
+     });
+}]);
 //angular.module('mFoodApp').run(['$http',function($http){
 //    $http.defaults.headers.common.Authorization = 'YmVlcDpib29w';
 //}])
