@@ -315,7 +315,7 @@ $scope.fbsignuser = function () {
                     }
 
                 });      
-    }
+    } 
    
    
 });

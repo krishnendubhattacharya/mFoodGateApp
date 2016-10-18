@@ -88,7 +88,7 @@ app.run(['$rootScope', '$state', '$stateParams',
         scopes: ['profile', 'email']
      });
 }]);*/
-
+  
 app.config(['GooglePlusProvider', function(GooglePlusProvider) {
      GooglePlusProvider.init({
         clientId: '612181755298-lpkrunqgt3860479r850dif58p9p2o12.apps.googleusercontent.com',

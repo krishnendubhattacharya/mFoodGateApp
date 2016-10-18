@@ -174,13 +174,63 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
 
     });
 
-	$scope.voucherInfo3 = null;
+	$scope.deddy3 = null;
     $http({
+            method: "GET",
+            url: $rootScope.serviceurl + "otherSwapList/"+$scope.loggedindetails.id,
+        }).success(function (data2) {
+            $scope.deddy3 =data2.data;
+        //console.log($scope.voucherInfo);
+        $scope.dataGridOptions3 = {
+		       dataSource: $scope.deddy3,
+		       wordWrapEnabled: true,
+		       selection: {
+		           mode: "single"
+		       },
+		       paging: {
+		           pageSize: 5
+		       },
+		       pager: {
+		           showPageSizeSelector: true,
+		           allowedPageSizes: [5, 10, 20],
+		           showInfo: true
+		       },
+		       columns: [{caption:"Voucher Name", dataField : "title"}, {caption:"Voucher Value", dataField : "price"}, "expire_date",
+                {caption:"Swap Offer Date",dataField:"posted_on"},{caption:"Expired Swap Offer",dataField:"offering_end_date"},
+                {
+                    width: 150,
+                    caption:'Action',
+                    alignment: 'center',
+                    cellTemplate: function (container, options) {
+
+                        $('<button/>').addClass('dx-button')
+                            .text('Details')
+                            .on('dxclick', function () {
+                                //$location.path('/swapvoucherdetail/'+ options.data.id);
+                                $scope.detailSwap(options.data.id,options.data.offer_id);
+                            })
+                            .appendTo(container);
+                        if(options.data.Status!='Expired'){
+                        $('<button/>').addClass('dx-button')
+                            .text('Bid')
+                            .on('dxclick', function () {
+                                //Do something with options.data;
+                                //$location.path('/swapinterested/' + options.data.id);
+                                $scope.swapBid(options.data.id);
+                            })
+                            .appendTo(container);
+                         }   
+                    }
+                }
+
+            ]
+            };
+        });
+    /*$http({
         method: "GET",
         url: $rootScope.serviceurl + "otherSwapList/"+$scope.loggedindetails.id,
     }).success(function (data) {
         $scope.voucherInfo3 =data.data;
-        //console.log($scope.voucherInfo);
         $scope.dataGridOptions3 = {
             dataSource: $scope.voucherInfo3,
             wordWrapEnabled: true,
@@ -228,7 +278,7 @@ app.controller('swapvoucherCtrl', function ($rootScope, $scope, $http, $location
         };
 
 
-    });
+    });*/
 
 
     $scope.cancelSwap = function (swap_id,voucher_id) {
