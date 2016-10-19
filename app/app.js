@@ -59,6 +59,7 @@ app.run(['$rootScope', '$state', '$stateParams',
         //$rootScope.serviceurl = "http://livehelpout.com/beta.admin";
         $rootScope.serviceurl = "http://107.170.152.166/mFoodGateAPI/";
          $rootScope.siteurl = "http://107.170.152.166/mFood/#/";
+        $rootScope.googleClientID = "612181755298-lpkrunqgt3860479r850dif58p9p2o12.apps.googleusercontent.com";
         $rootScope.app = {
             name: 'mFoodGate', // name of your project
             author: 'NITS', // author's name or company name
@@ -88,7 +89,7 @@ app.run(['$rootScope', '$state', '$stateParams',
         scopes: ['profile', 'email']
      });
 }]);*/
-  
+
 app.config(['GooglePlusProvider', function(GooglePlusProvider) {
      GooglePlusProvider.init({
         clientId: '612181755298-lpkrunqgt3860479r850dif58p9p2o12.apps.googleusercontent.com',

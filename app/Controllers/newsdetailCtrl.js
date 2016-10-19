@@ -22,7 +22,10 @@ app.controller('newsdetailCtrl', function ($rootScope, $scope, $http, $location,
         })
     }
     $scope.getPageDetails();*/
-
+	
+    
+    
+    
     $scope.getNewsDetail = function(){
         $http({
             method: "GET",
@@ -40,6 +43,8 @@ app.controller('newsdetailCtrl', function ($rootScope, $scope, $http, $location,
         }).success(function(data) {
             if(data.news) {
                 $scope.allnews = data.news;
+                $scope.newspagetitle = encodeURIComponent($scope.allnews.title);
+                $scope.newspagedescription = encodeURIComponent('Posted on:  '+$scope.allnews.date);
             }
         })
     }
@@ -84,4 +89,49 @@ app.controller('newsdetailCtrl', function ($rootScope, $scope, $http, $location,
         })
     }
     $scope.getNewsBanner();
+    
+    $scope.pageLink = encodeURIComponent($rootScope.siteurl+'newsdetail/'+$stateParams.newsId);
+    
+    
+    $scope.fbsharedialog = function(){
+        var attachment = {
+				     'name':$scope.allnews.title,
+				     'description':$scope.allnews.description,
+				     'caption': 'MFoodGate',
+				     'href':$scope.allnews.image,
+				     'media':[{'type':'image',
+				     'src':$scope.allnews.image,
+				     'href':$rootScope.siteurl
+				      }]
+				   };
+		console.log(attachment);		   
+		FB.ui({
+			method: 'feed',
+			name:$scope.allnews.title,
+			link: $rootScope.siteurl+'newsdetail/'+$stateParams.newsId,
+			picture: $scope.allnews.image,
+			caption: 'MFoodGate',
+			description: $scope.allnews.description,
+			message: $scope.allnews.description,
+			display: 'iframe',
+			width: 300,
+			height: 150
+		})
+    }
+    
+    window.fbAsyncInit = function() {
+        FB.init({
+        appId: '646829092146685',
+        status: true,
+        cookie: true,
+        xfbml: true
+        });
+    };
+    (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
 });
