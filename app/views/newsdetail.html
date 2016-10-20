@@ -2,6 +2,7 @@
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5742fe39425e31de"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+<!--<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>-->
 <!--<div ng-controller="loginCtrl">-->
 <div class="container phone-hide" ng-controller="newsdetailCtrl">
     <div class="news">
@@ -44,10 +45,10 @@
                      </a>
                      
                      <a  href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{pageLink}}&amp;title={{newspagetitle}}&amp;summary={{newspagedescription}}" target="_new" class="fa fa-facebook">
-                     <img src="app/assets/Images/s-icon-1.png" width="25" height="25" >
+                     <img src="app/assets/Images/linkedin.png" width="25" height="25" >
                      </a>
 
-                     <a style="cursor: pointer;" class="g-interactivepost"
+                     <!--<a style="cursor: pointer;" class="g-interactivepost"
                         data-clientid="{{googleClientID}}"
                         data-contenturl="{{pageLink}}"
                         data-calltoactionlabel="INVITE"
@@ -55,7 +56,11 @@
                         data-cookiepolicy="single_host_origin"
                         data-prefilltext="{{newspagedescription}}">
                          <img src="app/assets/Images/s-icon-1.png" width="25" height="25" >
-                     </a>
+                     </a>-->
+                     <a href="https://plus.google.com/share?url={{pageLink}}" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img src="app/assets/Images/g-plus.png" width="25" height="25" ></a>
+                     <!--<span class='st_googleplus_large'><img src="app/assets/Images/g-plus.png" width="25" height="25" ></span>-->
+
                  </li>
                 </div>
             </div>
@@ -145,18 +150,11 @@
                     </a>
 
                     <a  href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{pageLink}}&amp;title={{newspagetitle}}&amp;summary={{newspagedescription}}" target="_new" class="fa fa-facebook">
-                        <img src="app/assets/Images/s-icon-1.png" width="25" height="25" >
+                        <img src="app/assets/Images/linkedin.png" width="25" height="25" >
                     </a>
 
-                    <a style="cursor: pointer;" class="g-interactivepost"
-                       data-clientid="{{googleClientID}}"
-                       data-contenturl="{{pageLink}}"
-                       data-calltoactionlabel="INVITE"
-                       data-calltoactionurl="{{pageLink}}"
-                       data-cookiepolicy="single_host_origin"
-                       data-prefilltext="{{newspagedescription}}">
-                        <img src="app/assets/Images/s-icon-1.png" width="25" height="25" >
-                    </a>
+                    <a href="https://plus.google.com/share?url={{pageLink}}" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img src="app/assets/Images/g-plus.png" width="25" height="25" ></a>
                 </li>
             </div>
         </div>
