@@ -182,6 +182,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 templateUrl: 'app/views/login.html',
                 title: 'Login'
             })
+            .state('frontend.forgotpassword', {
+                url: '/forgotpassword',
+                resolve: loadSequence('login'),
+                templateUrl: 'app/views/forgotpassword.html',
+                title: 'Forgot Password'
+            })
             .state('frontend.register', {
                 url: '/register/:email',
                 resolve: loadSequence('register'),

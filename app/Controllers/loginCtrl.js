@@ -23,6 +23,11 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
             mode: "email",
 
         },
+        forgotemail: {
+            placeholder: "Enter Email",
+            mode: "email",
+
+        },
         username: {
             placeholder: "Enter Username",
             mode: "text",
@@ -477,7 +482,49 @@ app.controller('loginCtrl', function ($rootScope, $scope, $http, $location,$face
                     }
 
                 });      
-    } 
+    }
+
+    $scope.forgotpassword = function(params) {
+
+
+        var result = params.validationGroup.validate();
+        if(result.isValid) {
+            console.log($scope.forgotemail);
+            $http({
+                method: "POST",
+                url: $rootScope.serviceurl+"users/forgotPass",
+                data: {"email":$scope.forgotemail},
+                headers: {'Content-Type': 'application/json'},
+            }).success(function(data) {
+                console.log(data);
+                if(data.type == 'success'){
+                    $scope.message = data.message;
+                    $location.path('/login');
+                    DevExpress.ui.notify({
+                        message: data.message,
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "success", 3000);
+                }else{
+                    DevExpress.ui.notify({
+                        message: data.message,
+                        position: {
+                            my: "center top",
+                            at: "center top"
+                        }
+                    }, "error", 3000);
+                }
+
+            })
+
+        }
+    };
+
+    $scope.backtologin = function() {
+        $location.path('/login');
+    };
 
 });
 

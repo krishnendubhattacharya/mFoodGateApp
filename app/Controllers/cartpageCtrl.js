@@ -484,6 +484,7 @@ app.controller('cartpageCtrl', function ($rootScope, $scope, $http, $location, $
                                             //console.log(data.getRelatedPromo);
                                             //$scope.related_products = data.getRelatedPromo;
                                             console.log(data);
+                                            //cordova.InAppBrowser.open(data.url, '_blank', 'location=yes');
                                             $window.location.href = data.url;
 
                                         }

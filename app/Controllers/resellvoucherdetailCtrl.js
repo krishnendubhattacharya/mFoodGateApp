@@ -732,7 +732,7 @@ app.controller('resellvoucherdetailCtrl', function ($rootScope, $scope, $http, $
     $scope.fbsharedialog = function(){
         var attachment = {
             'name':$scope.promodetails.title,
-            'description':$scope.promodetails.description,
+            'description':$scope.promodetails.sharedescription,
             'caption': 'MFoodGate',
             'href':$scope.promodetails.image,
             'media':[{'type':'image',
@@ -747,8 +747,8 @@ app.controller('resellvoucherdetailCtrl', function ($rootScope, $scope, $http, $
             link: $rootScope.siteurl+'resellvoucherdetail/'+$stateParams.resellId+'/'+$stateParams.promoId,
             picture: $scope.promodetails.image,
             caption: 'MFoodGate',
-            description: $scope.promodetails.description,
-            message: $scope.promodetails.description,
+            description: $scope.promodetails.sharedescription,
+            message: $scope.promodetails.sharedescription,
             display: 'iframe',
             width: 300,
             height: 150

@@ -734,7 +734,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     $scope.fbsharedialog = function(){
         var attachment = {
             'name':$scope.promodetails.title,
-            'description':$scope.promodetails.description,
+            'description':$scope.promodetails.sharedescription,
             'caption': 'MFoodGate',
             'href':$scope.promodetails.image,
             'media':[{'type':'image',
@@ -749,8 +749,8 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
             link: $rootScope.siteurl+'promodetails/'+$stateParams.promoId,
             picture: $scope.promodetails.image,
             caption: 'MFoodGate',
-            description: $scope.promodetails.description,
-            message: $scope.promodetails.description,
+            description: $scope.promodetails.sharedescription,
+            message: $scope.promodetails.sharedescription,
             display: 'iframe',
             width: 300,
             height: 150
