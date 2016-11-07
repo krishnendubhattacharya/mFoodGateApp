@@ -885,7 +885,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$controllerProvider', '$com
                 url: '/merchantredeem',
                 resolve: loadSequence('merchantredeem'),
                 templateUrl: 'app/views/merchant/merchantredeem.html',
-                title: 'Merchanr Redeem'
+                title: 'Merchant Redeem'
+            })
+            .state('frontend.merchantreport', {
+                url: '/merchantreport',
+                resolve: loadSequence('merchantreport'),
+                templateUrl: 'app/views/merchant/merchantreport.html',
+                title: 'Merchant Report'
             })
 
 
