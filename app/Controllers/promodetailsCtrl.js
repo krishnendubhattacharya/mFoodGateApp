@@ -346,6 +346,7 @@ app.controller('promodetailsCtrl', function ($rootScope, $scope, $http, $locatio
     }*/
     //console.log('cart',$scope.cartDetails);
 
+
     $scope.updateCheck = function(data,offerId,paytype){
         //console.log(data);
         $scope.newcartdetails = mFoodCart.get_cart();
